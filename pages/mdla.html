@@ -17,7 +17,15 @@
       --manulife-dark: #003D73;
       --manulife-light: #0073CF;
       --manulife-accent: #00539B;
+      --manulife-gold: #E5A100;
+      --manulife-green: #00875A;
     }
+    .kw-blue { color: var(--manulife-blue); font-weight: 700; }
+    .kw-gold { color: var(--manulife-gold); font-weight: 700; }
+    .kw-green { color: var(--manulife-green); font-weight: 700; }
+    html.dark .kw-blue { color: var(--manulife-light); }
+    html.dark .kw-gold { color: #FFB800; }
+    html.dark .kw-green { color: #00C978; }
     .mdla-hero {
       background: linear-gradient(135deg, #EBF4FF 0%, #E0EFFF 50%, #F0F7FF 100%);
       padding: var(--sp-16) 0;
@@ -285,7 +293,7 @@
         </div>
 
         <h1 id="mdla-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
-          <span>Bagaimana Jika Ada Satu Produk yang Memberikan Proteksi Jiwa SEKALIGUS Mengembalikan Seluruh Premi?</span>
+          <span>Bagaimana Jika Ada Satu Produk yang Memberikan <span class="kw-blue">Proteksi Jiwa</span> <span class="kw-gold">SEKALIGUS</span> <span class="kw-green">Mengembalikan Seluruh Premi</span>?</span>
         </h1>
 
         <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
@@ -351,7 +359,7 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-10)">
       <span class="section-tag mdla-section-tag">Perbandingan Plan</span>
-      <h2 id="plans-heading" class="section-title fade-up">Pernahkah Anda Membayangkan Asuransi Jiwa yang Bisa Menyesuaikan Diri dengan Setiap Tahapan Kehidupan Anda?</h2>
+      <h2 id="plans-heading" class="section-title fade-up">Pernahkah Anda Membayangkan <span class="kw-blue">Asuransi Jiwa</span> yang Bisa Menyesuaikan Diri dengan <span class="kw-green">Setiap Tahapan Kehidupan</span> Anda?</h2>
       <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:700px;margin-left:auto;margin-right:auto">MDLA hadir dengan 3 Plan berbeda yang dirancang untuk kebutuhan yang berbeda pula. Pilih yang paling sesuai dengan prioritas Anda.</p>
     </div>
     <div class="plan-grid">
@@ -359,9 +367,9 @@
       <div class="plan-card fade-up">
         <div class="plan-card-badge">Plan A</div>
         <div class="plan-card-title">Proteksi Jiwa Berjangka</div>
-        <div class="plan-card-desc">Perlindungan jiwa murni dengan premi terjangkau. Cocok untuk Anda yang mengutamakan proteksi maksimal dengan biaya minimal.</div>
+        <div class="plan-card-desc">Perlindungan jiwa murni dengan premi terjangkau. Cocok untuk Anda yang mengutamakan <span class="kw-blue">proteksi maksimal</span> dengan biaya minimal.</div>
         <ul class="plan-card-features">
-          <li>&#10003; Manfaat Meninggal Dunia 100% UP</li>
+          <li>&#10003; Manfaat Meninggal Dunia <span class="kw-blue">100% UP</span></li>
           <li>&#10003; Masa Pertanggungan 20 atau 30 tahun</li>
           <li>&#10003; Premi paling terjangkau</li>
           <li>&#10003; Cocok untuk proteksi kredit/hutang</li>
@@ -371,10 +379,10 @@
       <div class="plan-card fade-up stagger-1">
         <div class="plan-card-badge" style="background:var(--manulife-light)">Plan B</div>
         <div class="plan-card-title">Proteksi + Return of Premium</div>
-        <div class="plan-card-desc">Bagaimana jika premi yang sudah dibayar bisa kembali 100% di akhir masa pertanggungan? Plan B mewujudkannya.</div>
+        <div class="plan-card-desc">Bagaimana jika <span class="kw-gold">premi yang sudah dibayar bisa kembali 100%</span> di akhir masa pertanggungan? Plan B mewujudkannya.</div>
         <ul class="plan-card-features">
-          <li>&#10003; Manfaat Meninggal Dunia 100% UP</li>
-          <li>&#10003; Pengembalian 100% Total Premi saat jatuh tempo</li>
+          <li>&#10003; Manfaat Meninggal Dunia <span class="kw-blue">100% UP</span></li>
+          <li>&#10003; <span class="kw-gold">Pengembalian 100% Total Premi</span> saat jatuh tempo</li>
           <li>&#10003; Masa Pertanggungan 20, 30, atau 40 tahun</li>
           <li>&#10003; Seperti menabung + proteksi</li>
         </ul>
@@ -383,10 +391,10 @@
       <div class="plan-card fade-up stagger-2">
         <div class="plan-card-badge" style="background:var(--manulife-dark)">Plan C</div>
         <div class="plan-card-title">Proteksi + 100% UP Maturity</div>
-        <div class="plan-card-desc">Tahukah Anda bahwa ada asuransi jiwa yang membayar 100% Uang Pertanggungan meskipun Anda SEHAT di akhir kontrak?</div>
+        <div class="plan-card-desc">Tahukah Anda bahwa ada asuransi jiwa yang membayar <span class="kw-green">100% Uang Pertanggungan</span> meskipun Anda SEHAT di akhir kontrak?</div>
         <ul class="plan-card-features">
-          <li>&#10003; Manfaat Meninggal Dunia 100% UP</li>
-          <li>&#10003; Manfaat Hidup 100% UP saat jatuh tempo</li>
+          <li>&#10003; Manfaat Meninggal Dunia <span class="kw-blue">100% UP</span></li>
+          <li>&#10003; <span class="kw-green">Manfaat Hidup 100% UP</span> saat jatuh tempo</li>
           <li>&#10003; Masa Pertanggungan 20, 30, atau 40 tahun</li>
           <li>&#10003; Investasi terencana + proteksi maksimal</li>
         </ul>
@@ -400,7 +408,7 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-10)">
       <span class="section-tag mdla-section-tag">Keunggulan</span>
-      <h2 id="advantages-heading" class="section-title fade-up">Mengapa Puluhan Ribu Orang Memilih MDLA Sebagai Asuransi Jiwa Mereka?</h2>
+      <h2 id="advantages-heading" class="section-title fade-up">Mengapa <span class="kw-gold">Puluhan Ribu Orang</span> Memilih <span class="kw-blue">MDLA</span> Sebagai Asuransi Jiwa Mereka?</h2>
     </div>
     <div class="advantage-grid">
       <div class="advantage-card fade-up">
@@ -442,7 +450,7 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-10)">
       <span class="section-tag mdla-section-tag">Ketentuan</span>
-      <h2 id="eligibility-heading" class="section-title fade-up">Apa Saja Syarat untuk Memiliki Perlindungan MDLA?</h2>
+      <h2 id="eligibility-heading" class="section-title fade-up">Apa Saja Syarat untuk Memiliki <span class="kw-blue">Perlindungan MDLA</span>?</h2>
     </div>
     <div class="eligibility-grid">
       <div class="eligibility-card fade-up">
@@ -484,7 +492,7 @@
   <div class="container"><div style="max-width:720px;margin:0 auto">
     <div style="text-align:center;margin-bottom:var(--sp-8)">
       <span class="section-tag mdla-section-tag">Kalkulator Premi</span>
-      <h2 id="calc-heading" class="section-title fade-up">Berapa Biaya untuk Melindungi Masa Depan Keluarga Anda?</h2>
+      <h2 id="calc-heading" class="section-title fade-up">Berapa Biaya untuk <span class="kw-green">Melindungi Masa Depan Keluarga</span> Anda?</h2>
       <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Hitung estimasi premi MDLA berdasarkan plan, usia, masa pertanggungan, dan uang pertanggungan.</p>
     </div>
     <div class="calculator-wrap fade-up stagger-1">
@@ -669,7 +677,7 @@
 <!-- CTA -->
 <section class="cta-section mdla-cta">
   <div class="container" style="position:relative;z-index:1;text-align:center">
-    <h2 class="cta-title fade-up">Sudahkah Anda Menyiapkan Warisan Finansial untuk Orang yang Anda Cintai?</h2>
+    <h2 class="cta-title fade-up">Sudahkah Anda Menyiapkan <span style="color:#FFB800">Warisan Finansial</span> untuk Orang yang Anda Cintai?</h2>
     <p class="cta-sub fade-up stagger-1">MDLA memberikan proteksi jiwa sekaligus manfaat hidup. Premi bisa kembali 100%, atau dapatkan UP penuh saat jatuh tempo. Konsultasi gratis sekarang.</p>
     <div class="cta-btns fade-up stagger-2">
       <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MDLA%20Manulife"
