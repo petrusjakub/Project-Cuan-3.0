@@ -1,0 +1,50 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete mps-flexi.html page with all content sections, premium table, and lookup-table-based calculator. This is a single comprehensive feature that produces the full page.",
+  "status": "completed",
+  "steps": [
+    "Create /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html following the exact structure and design patterns from pages/magna-sehat-premium.html",
+    "Include the HTML boilerplate: DOCTYPE, lang=id, meta charset/viewport, title, link to /assets/style.css, dark mode inline script, page-specific <style> block",
+    "Use Manulife green theme colors (#00a758, #006838) for hero gradient and accents instead of tangerine orange used in magna-sehat-premium.html",
+    "Include <div id='site-header'></div> at top and <div id='site-footer'></div> at bottom, with <script src='/assets/main.js'></script> at very end",
+    "HERO SECTION: Product title 'MPS Flexi - Manulife Perlindungan Syariah', tagline about flexible Syariah protection, breadcrumb navigation, CTA buttons (WhatsApp and #kalkulator link)",
+    "RINGKASAN PRODUK section: Write ALL product info using question-based language (bahasa pertanyaan). E.g. 'Tahukah Anda bahwa ada produk asuransi jiwa murni tanpa risiko investasi?' Include key points: not unit-link, no investment risk, clear benefits from day one, Syariah and Conventional options, affordable premium",
+    "3 PLAN CARDS section: Plan A (Amanah/Syariah/Term Life), Plan B (Berkah/Syariah/Level Premium), Plan C (Cermat/Konvensional/Limited Pay). Each card shows specs from Sample/Flexi.html tab1-tab3 content. Use question-based language in descriptions.",
+    "PLAN COMPARISON TABLE section: Table comparing all 3 plans side by side (Basis, Usia Masuk, Masa Perlindungan, Masa Bayar, Manfaat Hidup/Pengembalian) - data from Sample/Flexi.html tab4",
+    "TABEL PREMI section: Show sample premium rates for common ages (30, 40, 50) for UP Rp 1 Miliar, both genders. Data from Sample/Flexi.html tab5.",
+    "KALKULATOR PREMI section: Full interactive calculator using LOOKUP TABLE approach. Must embed the complete dataPremiJSON array (extract from Sample/Flexi.html line 683). Build premiumMap hash. Implement getBaseRate() and calculate() functions. Support: Plan selection (A/B/C), Gender (Pria/Wanita), Age (0-70), Currency (IDR/USD), Input method (UP or Premi - only for Plan A), Masa Bayar, Masa Perlindungan, Payment Mode (Tahunan 1x, Semesteran 0.525x, Kuartalan 0.275x, Bulanan 0.095x). Show 'Kombinasi tidak tersedia / di bawah minimum kontribusi' when rate is null or result below minimum.",
+    "FAQ section: Use .faq-list, .faq-item, .faq-trigger, .faq-body, .faq-answer classes from style.css. Include 5-6 FAQs from Sample/Flexi.html tab9 content.",
+    "TRAINING/SALES IDEAS section: Target segments, Syariah provisions, discount structure info from Sample/Flexi.html tab8",
+    "CTA section at bottom: Green gradient background with WhatsApp CTA button",
+    "Ensure all content uses question-based phrasing where appropriate to make users think about the product benefits",
+    "Calculator must validate: Plan A min UP IDR 100M/USD 10K and min kontribusi IDR 4M/USD 400. Plan B/C min kontribusi IDR 5M/USD 500. Show warning message if below minimum.",
+    "The dataPremiJSON MUST be copied exactly from Sample/Flexi.html - it contains ~3490 rate entries covering ages 0-70, plans A/B/C, IDR/USD, both genders, all term combinations"
+  ],
+  "acceptance_criteria": [
+    "File exists at /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html",
+    "Page uses /assets/style.css and includes site-header/site-footer divs with main.js script",
+    "Hero section uses Manulife green gradient (#00a758 to #006838)",
+    "Product content is written in question-based language (bahasa pertanyaan)",
+    "All 3 plans (Amanah, Berkah, Cermat) are documented with their specifications",
+    "Plan comparison table is present",
+    "Sample premium table shows rates for common ages",
+    "Calculator uses dataPremiJSON lookup table approach (not formulas)",
+    "Calculator supports all input variables: plan, gender, age 0-70, currency, input method (UP/Premi for Plan A), masa bayar, masa perlindungan, payment mode",
+    "Calculator shows 'Kombinasi tidak tersedia / di bawah minimum kontribusi' for null rates or below-minimum results",
+    "Payment frequency modes work correctly: Tahunan (1x), Semesteran (0.525x), Kuartalan (0.275x), Bulanan (0.095x)",
+    "FAQ accordion uses existing CSS classes from style.css",
+    "Page is responsive and supports dark mode",
+    "Training material / sales ideas section with discount structure is included"
+  ],
+  "verification": [
+    "Run: test -f /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html && echo 'EXISTS'",
+    "Run: grep -c 'dataPremiJSON' /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html to confirm lookup table is embedded",
+    "Run: grep -c 'premiumMap' /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html to confirm hash map lookup is used",
+    "Run: grep 'Kombinasi tidak tersedia' /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html to confirm error message exists",
+    "Run: grep 'site-header' /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html to confirm component placeholders",
+    "Run: grep 'main.js' /projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html to confirm script inclusion"
+  ],
+  "blocked_reason": null,
+  "findings": "Successfully created mps-flexi.html (328KB) with embedded dataPremiJSON lookup table. All verification checks pass: file exists, dataPremiJSON and premiumMap are present, error message for invalid combinations works, site-header/footer divs included, main.js script loaded. The page follows magna-sehat-premium.html patterns with Manulife green theme (#00a758/#006838) replacing tangerine orange. Code review fixes applied: (1) static premium table shows 'Hubungi agen*' for Plan A at age 30 where no data exists, (2) age-range-info note below age dropdown updates per plan, (3) Plan A null lookups show specific masa bayar in message, (4) innerHTML replaced with textContent for numeric premium values."
+}
