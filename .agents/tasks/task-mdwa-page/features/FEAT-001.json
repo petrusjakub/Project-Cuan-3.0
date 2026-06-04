@@ -1,0 +1,48 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the full MDWA product page at /pages/mdwa.html with product information in question-style language, premium table, and error-free data lookup calculator",
+  "status": "in_progress",
+  "steps": [
+    "Create /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html following the exact structure and patterns from /pages/mdla.html (hero section, content sections, calculator, CTA, footer)",
+    "Use the same HTML skeleton: DOCTYPE, head with meta tags, title 'MDWA - Manulife Dynamic Wealth Assurance | PROJECTCUAN', link to /assets/style.css, dark mode script, inline <style> for page-specific styles (use Manulife blue color scheme like mdla.html)",
+    "Include <div id='site-header'></div> at start of body and <div id='site-footer'></div> before closing body, plus <script src='/assets/main.js'></script> to load components",
+    "HERO SECTION: Badge 'Manulife Indonesia', H1 in question-style like 'Bagaimana Jika Ada Produk Tabungan yang Memberikan Hasil DIJAMIN Tanpa Risiko Investasi?', description of MDWA as wealth accumulation product, stats (Min Premi Rp 50 Jt, Usia 30 hr-85 th, 3 Plan), WhatsApp CTA button, breadcrumb nav",
+    "PLANS SECTION: 3 plan cards - Plan A (Anuitas/Penghasilan Tahunan), Plan B (Beasiswa/Dana Pendidikan), Plan C (Combo/Gabungan). Each with key features list. Use question-style section title like 'Pernahkah Anda Membayangkan Tabungan yang Memberikan Penghasilan Tahunan DIJAMIN?'",
+    "KEUNGGULAN SECTION: 6 advantage cards covering: GIO (tanpa medical), Manfaat DIJAMIN, Lebih Tinggi dari Deposito, 3 Plan Fleksibel, Riders (ALP Plus/WOP Plus/Payor Benefit Plus), Mata Uang IDR & USD. Use question-style heading.",
+    "KETENTUAN SECTION: Eligibility cards - Usia Masuk (30 hari-85 thn sekaligus, 30 hari-70 thn regular), Min Premi (IDR: 50jt sekaligus/24jt regular, USD: 5000/2400), Masa Pertanggungan, Underwriting GIO, Riders, Mata Uang",
+    "TABEL PREMI SECTION: Display premium tables from the Sample/Mdwa.html source data - show Plan A IDR tables for Manfaat Tunai 50 Juta and 100 Juta with columns: Term, MPP, Premi, Total Manfaat. Use the premi-table class pattern from mps-flexi.html",
+    "KALKULATOR SECTION (CRITICAL): Build an error-free data lookup calculator. Form inputs: Besar Manfaat (dropdown: 50 Juta, 100 Juta), Masa Pertanggungan (dropdown: 20 Tahun, 30 Tahun), Gender (Pria/Wanita radio-style buttons), Usia (dropdown: 25,30,35,40,45,50,55,60). Embed the full JSON premium data as a JavaScript object. On input change, perform EXACT lookup from the JSON - no mathematical formulas, no interpolation, no rounding. Display: Premi Dasar (base_benefits lookup), Premi Rider ALP+ (rider lookup by gender+age), and Total (sum of both). Show 'Data tidak tersedia' if combination not found.",
+    "JSON DATA TO EMBED IN CALCULATOR: base_benefits: {Manfaat_50_Juta: {Masa_Pertanggungan_20_Tahun: {Premi_Sekaligus: 527500000}, Masa_Pertanggungan_30_Tahun: {Premi_Sekaligus: 725000000}}, Manfaat_100_Juta: {Masa_Pertanggungan_20_Tahun: {Premi_Sekaligus: 1055000000}, Masa_Pertanggungan_30_Tahun: {Premi_Sekaligus: 1440000000}}}. rider_advanced_life_protector_plus: {Manfaat_50_Juta_20_Tahun_Sekaligus: {pria: {25:7791200, 30:9632200, 35:14305800, 40:21326800, 45:36487200, 50:54084600, 55:81541000, 60:133125200}, wanita: {25:6678200, 30:7717300, 35:9421200, 40:14295300, 45:20118900, 50:32240800, 55:47390600, 60:70616400}}, Manfaat_50_Juta_30_Tahun_Sekaligus: {pria: {25:14413000, 30:22250300, 35:30203500, 40:50315000, 45:75784300, 50:112831800, 55:179024300, 60:243679800}, wanita: {25:11672500, 30:15087300, 35:20872800, 40:28949300, 45:46777000, 50:67881800, 55:102906500, 60:152373300}}}",
+    "CTA SECTION: Final call-to-action section with gradient background, question-style heading, WhatsApp button",
+    "Ensure all WhatsApp links use number 6287781896087 with pre-filled text about MDWA",
+    "Use fade-up and stagger-N classes for scroll animations consistent with other pages",
+    "Format all currency values with Indonesian format (Rp xxx.xxx.xxx) using toLocaleString('id-ID')"
+  ],
+  "acceptance_criteria": [
+    "File /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html exists and is valid HTML",
+    "Page loads shared CSS from /assets/style.css and main.js from /assets/main.js",
+    "Header and footer divs are present for component loading",
+    "Content is written in question-style language (bahasa pertanyaan)",
+    "Premium table displays accurate data matching the Sample/Mdwa.html source",
+    "Calculator uses EXACT JSON data lookup - no formulas, no interpolation",
+    "Calculator inputs: Besar Manfaat, Masa Pertanggungan, Gender, Usia",
+    "Calculator returns exact Premi Dasar and Premi Rider values from embedded JSON",
+    "Calculator displays 'Data tidak tersedia' for invalid combinations",
+    "All currency values formatted as Indonesian Rupiah (Rp xxx.xxx.xxx)",
+    "Page follows the same visual style as mdla.html (Manulife blue color scheme, card-based sections, section tags)",
+    "Dark mode support via CSS variables and html.dark selectors"
+  ],
+  "verification": [
+    "Run: test -f /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html && echo 'EXISTS' || echo 'MISSING'",
+    "Run: grep -c 'site-header' /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html (should be >= 1)",
+    "Run: grep -c 'site-footer' /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html (should be >= 1)",
+    "Run: grep -c 'main.js' /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html (should be >= 1)",
+    "Run: grep -c '527500000' /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html (should be >= 1 - verifying JSON data is embedded)",
+    "Run: grep -c '133125200' /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html (should be >= 1 - verifying rider data is embedded)",
+    "Run: grep -c 'toLocaleString' /projects/sandbox/Project-Cuan-3.0/pages/mdwa.html (should be >= 1 - currency formatting)",
+    "Run: node -e \"const html = require('fs').readFileSync('/projects/sandbox/Project-Cuan-3.0/pages/mdwa.html','utf8'); console.log(html.includes('Besar Manfaat') && html.includes('Masa Pertanggungan') && html.includes('Gender') && html.includes('Usia') ? 'CALCULATOR_INPUTS_OK' : 'MISSING_INPUTS')\""
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

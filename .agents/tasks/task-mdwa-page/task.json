@@ -1,0 +1,7 @@
+{
+  "task_id": "task-mdwa-page",
+  "task_description": "Create /pages/mdwa.html - a full product information page for MDWA (Manulife Dynamic Wealth Assurance) with question-style content, premium table, and error-free data lookup calculator",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}
