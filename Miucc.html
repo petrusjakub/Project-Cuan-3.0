@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiUCC - Mi Ultimate Critical Care | Manulife Indonesia</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;background:#f5f5f5;padding-top:48px;padding-bottom:80px}
+a{color:#00a758}
+
+/* WA Banner */
+.wa-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#25D366;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;text-decoration:none;color:#fff;font-weight:700;font-size:clamp(0.85rem,2.5vw,1rem);box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer;transition:background .2s}
+.wa-banner:hover{background:#1DA851}
+.wa-banner svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+.wa-banner span{white-space:nowrap}
+
+/* Floating WA Button */
+.floating-wa{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:9999;transition:transform .2s,box-shadow .2s}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.6)}
+.floating-wa svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:fixed;bottom:90px;right:25px;background:#fff;color:#333;padding:8px 14px;border-radius:8px;font-size:.75rem;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.15);z-index:9999;white-space:nowrap;opacity:0;transform:translateY(5px);transition:all .3s;pointer-events:none}
+.floating-wa:hover+.wa-tooltip{opacity:1;transform:translateY(0)}
+
+/* Header */
+.header{background:linear-gradient(135deg,#00a758 0%,#006838 100%);color:#fff;padding:30px 20px;text-align:center}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:5px}
+.header p{font-size:1rem;opacity:.9}
+
+/* Tabs */
+.tabs-container{background:#fff;border-bottom:2px solid #00a758;position:sticky;top:48px;z-index:998;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,0.1);-webkit-overflow-scrolling:touch}
+.tabs{display:flex;padding:0;list-style:none;min-width:max-content}
+.tabs li{padding:12px 16px;cursor:pointer;font-size:.85rem;font-weight:500;color:#555;border-bottom:3px solid transparent;transition:all .2s;user-select:none}
+.tabs li:hover{background:#e8f5e9;color:#00a758}
+.tabs li.active{color:#00a758;border-bottom-color:#00a758;background:#e8f5e9;font-weight:700}
+
+/* Tab Content */
+.tab-content{display:none;padding:30px 20px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:25px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card h2{color:#00a758;margin-bottom:15px;font-size:1.4rem}
+.card h3{color:#006838;margin:18px 0 10px;font-size:1.1rem}
+.card p,.card li{line-height:1.7;margin-bottom:8px}
+.card ul,.card ol{padding-left:20px}
+
+/* Badges */
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:8px;margin-bottom:5px}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.badge-orange{background:#fff3e0;color:#e65100}
+.badge-red{background:#fce4ec;color:#c62828}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.85rem;overflow-x:auto;display:block}
+th{background:#00a758;color:#fff;padding:10px 8px;text-align:center;font-weight:600;white-space:nowrap}
+td{padding:8px;text-align:center;border-bottom:1px solid #e0e0e0;white-space:nowrap}
+tr:nth-child(even){background:#f8fdf9}
+tr:hover{background:#e8f5e9}
+
+/* Info boxes */
+.info-box{background:#e8f5e9;border-left:4px solid #00a758;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.highlight-box{background:#fff8e1;border-left:4px solid #ffc107;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+
+/* FAQ Accordion */
+.faq-item{background:#fff;border-radius:8px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.faq-question{padding:16px 20px;cursor:pointer;font-weight:600;color:#333;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-question:hover{background:#e8f5e9}
+.faq-question::after{content:'+';font-size:1.4rem;color:#00a758;font-weight:700;transition:transform .3s}
+.faq-item.open .faq-question::after{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px}
+.faq-item.open .faq-answer{max-height:500px;padding:0 20px 16px}
+.faq-answer p{line-height:1.7;color:#555;font-size:.9rem}
+
+/* Stat cards */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:15px;margin:20px 0}
+.stat-card{background:#fff;border-radius:10px;padding:18px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:3px solid #00a758}
+.stat-card .stat-value{font-size:1.6rem;font-weight:700;color:#00a758}
+.stat-card .stat-label{font-size:.8rem;color:#666;margin-top:4px}
+
+/* Calculator */
+.calc-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:20px 0;padding:20px;background:#f8fdf9;border-radius:12px;border:1px solid #e0e0e0}
+.calc-control-group{display:flex;flex-direction:column;gap:6px}
+.calc-control-group label{font-weight:600;color:#333;font-size:.9rem}
+.calc-control-group select{padding:12px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;color:#333;background:#fff;cursor:pointer;transition:border-color .2s,box-shadow .2s;appearance:auto}
+.calc-control-group select:focus{border-color:#00a758;box-shadow:0 0 0 3px rgba(0,167,88,0.15);outline:none}
+.calc-subtitle{color:#555;margin-bottom:15px;font-size:.95rem}
+.calc-animated{transition:transform .3s ease,opacity .3s ease}
+.calc-animated.pop{animation:calcPop .4s ease}
+.calc-info-box{margin-top:25px}
+#calc-results h3{color:#00a758;margin:25px 0 8px;font-size:1.2rem}
+#calc-results h3:first-child{margin-top:20px}
+
+@keyframes calcPop{0%{transform:scale(0.95);opacity:.6}50%{transform:scale(1.03)}100%{transform:scale(1);opacity:1}}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:600px){
+.header{padding:20px 15px}
+.tab-content{padding:20px 12px}
+.card{padding:18px}
+table{font-size:.75rem}
+.stats-grid{grid-template-columns:1fr 1fr;gap:10px}
+}
+
+@media print{
+.wa-banner,.floating-wa,.wa-tooltip{display:none!important}
+body{padding-top:0}
+.tabs-container{position:static}
+.tab-content{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<!-- WA Banner -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20MiUCC" target="_blank" class="wa-banner" aria-label="WhatsApp Petrus Jakub">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<span>Petrus Jakub Partner Bisnis Manulife</span>
+<span>087781896087</span>
+</a>
+
+<!-- Header -->
+<div class="header">
+<h1>MiUCC - Mi Ultimate Critical Care</h1>
+<p>Asuransi Penyakit Kritis dari PT Asuransi Jiwa Manulife Indonesia</p>
+</div>
+
+<!-- Tabs Navigation -->
+<div class="tabs-container">
+<ul class="tabs" id="mainTabs" role="tablist">
+<li class="active" data-tab="ringkasan" role="tab">Ringkasan Produk</li>
+<li data-tab="manfaat" role="tab">Manfaat</li>
+<li data-tab="kalkulator" role="tab">Kalkulator Premi</li>
+<li data-tab="ilustrasi" role="tab">Ilustrasi</li>
+<li data-tab="klaim" role="tab">Cara Klaim</li>
+<li data-tab="faq" role="tab">FAQ</li>
+</ul>
+</div>
+<!-- Tab 1: Ringkasan Produk -->
+<div class="tab-content active" id="tab-ringkasan" role="tabpanel">
+<div class="card">
+<h2>Apa itu MiUCC?</h2>
+<p><strong>MiUCC (Mi Ultimate Critical Care)</strong> adalah asuransi penyakit kritis dari Manulife Indonesia yang memberikan uang tunai langsung (lump sum) saat Anda terdiagnosis penyakit kritis. Uang ini bisa digunakan untuk apa saja: biaya pengobatan, biaya hidup keluarga, atau kebutuhan lainnya.</p>
+
+<div class="highlight-box">
+<p><strong>Penuhi Perlindungan, Atasi Kritis!</strong> Persiapan terbaik bagi Anda dan keluarga menghadapi risiko penyakit kritis.</p>
+</div>
+
+<h3>Keunggulan Utama MiUCC</h3>
+<ul>
+<li><span class="badge badge-green">Bayar 5 Tahun</span> Premi hanya dibayar 5 tahun, tapi perlindungan berlaku selama 20 tahun!</li>
+<li><span class="badge badge-orange">Double Benefit</span> Jika terdiagnosis penyakit kritis: dapat 100% Uang Pertanggungan + 100% total premi kembali</li>
+<li><span class="badge badge-blue">50 Penyakit</span> Melindungi dari 50 penyakit kritis termasuk kanker, jantung, stroke, ginjal</li>
+<li><span class="badge badge-green">Uang Tunai Langsung</span> Uang diberikan langsung saat terdiagnosis, bisa dipakai untuk apa saja</li>
+<li><span class="badge badge-orange">Tidak Rugi</span> Jika sehat 20 tahun, tetap dapat 110% total premi kembali!</li>
+<li><span class="badge badge-blue">Semua Dijamin</span> Semua manfaat dijamin (guaranteed), tidak ada yang tidak pasti</li>
+</ul>
+
+<h3>Spesifikasi Produk</h3>
+<table>
+<tr><th>Ketentuan</th><th>Detail</th></tr>
+<tr><td>Usia Masuk Tertanggung</td><td>6 bulan - 60 tahun</td></tr>
+<tr><td>Pemegang Polis</td><td>Minimal 18 tahun</td></tr>
+<tr><td>Masa Pertanggungan</td><td>20 tahun</td></tr>
+<tr><td>Masa Bayar Premi</td><td>5 tahun saja</td></tr>
+<tr><td>Mata Uang</td><td>Rupiah</td></tr>
+<tr><td>Minimal UP</td><td>Rp 200.000.000</td></tr>
+<tr><td>Maksimal UP</td><td>Rp 10.000.000.000</td></tr>
+<tr><td>Jumlah Penyakit Kritis</td><td>50 penyakit</td></tr>
+<tr><td>Mode Pembayaran</td><td>Tahunan, Semesteran, Kuartalan, Bulanan</td></tr>
+<tr><td>Periode Eliminasi</td><td>90 hari</td></tr>
+<tr><td>Survival Period</td><td>30 hari</td></tr>
+<tr><td>Masa Mempelajari Polis</td><td>14 hari kalender</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Mengapa Perlu Asuransi Penyakit Kritis?</h2>
+<p>Data klaim Manulife tahun 2024 menunjukkan fakta mengejutkan:</p>
+
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-value">71%</div>
+<div class="stat-label">Klaim Kanker<br>Rp 108,2 Milyar</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">13%</div>
+<div class="stat-label">Klaim Jantung<br>Rp 28,8 Milyar</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">8%</div>
+<div class="stat-label">Klaim Ginjal</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">5%</div>
+<div class="stat-label">Klaim Diabetes</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">3%</div>
+<div class="stat-label">Klaim Stroke</div>
+</div>
+</div>
+
+<div class="info-box">
+<p><strong>Kanker paling sering terjadi!</strong> Kanker payudara, kanker paru-paru, dan kanker serviks adalah 3 jenis kanker dengan klaim terbanyak. Biaya pengobatan kanker bisa mencapai ratusan juta hingga milyaran rupiah.</p>
+</div>
+
+<p>Dengan MiUCC, Anda mendapat uang tunai langsung saat terdiagnosis. Tidak perlu khawatir soal biaya pengobatan atau biaya hidup keluarga selama Anda berobat.</p>
+</div>
+</div>
+<!-- Tab 2: Manfaat -->
+<div class="tab-content" id="tab-manfaat" role="tabpanel">
+<div class="card">
+<h2>Manfaat MiUCC</h2>
+<p>MiUCC memberikan 4 manfaat utama yang semuanya <strong>DIJAMIN (guaranteed)</strong>:</p>
+
+<h3>1. Manfaat Penyakit Kritis (Double Benefit!)</h3>
+<div class="highlight-box">
+<p><strong>100% Uang Pertanggungan + 100% Total Premi yang telah dibayarkan</strong></p>
+<p style="margin-top:8px">Contoh: UP Rp 1 Miliar, total premi Rp 130 juta. Jika terdiagnosis penyakit kritis, Anda mendapat: Rp 1 Miliar + Rp 130 juta = <strong>Rp 1,13 Miliar!</strong></p>
+</div>
+<p>Manfaat ini dibayarkan sekaligus (lump sum) saat Anda terdiagnosis salah satu dari 50 penyakit kritis yang dijamin, setelah melewati Survival Period 30 hari.</p>
+
+<h3>2. Manfaat Meninggal Dunia</h3>
+<div class="info-box">
+<p><strong>160% Total Premi yang telah dibayarkan</strong></p>
+<p style="margin-top:8px">Contoh: Total premi Rp 130 juta. Ahli waris mendapat: 160% x Rp 130 juta = <strong>Rp 208 juta</strong></p>
+</div>
+
+<h3>3. Manfaat Akhir Pertanggungan (Sehat 20 Tahun)</h3>
+<div class="info-box">
+<p><strong>110% Total Premi yang telah dibayarkan</strong></p>
+<p style="margin-top:8px">Jika Anda sehat selama 20 tahun dan tidak pernah klaim, Anda tetap mendapat uang kembali! Contoh: Total premi Rp 130 juta, Anda mendapat: 110% x Rp 130 juta = <strong>Rp 143 juta</strong>. Tidak rugi sama sekali!</p>
+</div>
+
+<h3>4. Manfaat Angioplasti (Manfaat Awal)</h3>
+<div class="info-box">
+<p><strong>25% Uang Pertanggungan / Maksimal Rp 200 juta</strong></p>
+<p style="margin-top:8px">Jika Anda menjalani prosedur Angioplasti (pemasangan ring jantung), Anda mendapat manfaat awal ini tanpa mengurangi manfaat penyakit kritis utama.</p>
+</div>
+</div>
+
+<div class="card">
+<h2>Tabel Premi MiUCC</h2>
+<p>Premi dihitung berdasarkan usia masuk dan Uang Pertanggungan (UP) yang dipilih. Berikut tabel premi per Rp 1.000 UP (dalam ribuan Rupiah):</p>
+
+<table>
+<tr><th>Usia Masuk</th><th>Premi Tahunan per 1.000 UP (ribuan)</th><th>Contoh UP Rp 1 Miliar</th></tr>
+<tr><td>0 - 17 tahun</td><td>19,51</td><td>Rp 19.510.000/tahun</td></tr>
+<tr><td>18 - 30 tahun</td><td>26,07</td><td>Rp 26.070.000/tahun</td></tr>
+<tr><td>31 - 40 tahun</td><td>50,29</td><td>Rp 50.290.000/tahun</td></tr>
+<tr><td>41 - 50 tahun</td><td>117,11</td><td>Rp 117.110.000/tahun</td></tr>
+<tr><td>51 - 55 tahun</td><td>216,46</td><td>Rp 216.460.000/tahun</td></tr>
+<tr><td>56 - 60 tahun</td><td>259,75</td><td>Rp 259.750.000/tahun</td></tr>
+</table>
+
+<div class="highlight-box">
+<p><strong>Cara hitung:</strong> Premi = (UP / 1.000) x tarif premi. Contoh: Usia 30, UP Rp 1 Miliar = (1.000.000 / 1.000) x 26,07 = 26.070 (ribuan) = Rp 26.070.000/tahun. Bayar hanya 5 tahun!</p>
+</div>
+</div>
+
+<div class="card">
+<h2>Tabel Nilai Tunai (Surrender Value)</h2>
+<p>Jika Anda ingin membatalkan polis sebelum masa pertanggungan berakhir, berikut persentase nilai tunai yang akan dikembalikan dari total premi yang telah dibayarkan:</p>
+
+<table>
+<tr><th>Tahun Polis</th><th>Nilai Tunai (% dari Total Premi)</th></tr>
+<tr><td>Tahun 1 - 2</td><td>0%</td></tr>
+<tr><td>Tahun 3 - 4</td><td>40%</td></tr>
+<tr><td>Tahun 5 - 6</td><td>50%</td></tr>
+<tr><td>Tahun 7 - 9</td><td>55%</td></tr>
+<tr><td>Tahun 10 - 11</td><td>60%</td></tr>
+<tr><td>Tahun 12 - 13</td><td>65%</td></tr>
+<tr><td>Tahun 14 - 16</td><td>70%</td></tr>
+<tr><td>Tahun 17 - 19</td><td>75%</td></tr>
+<tr><td>Tahun 20 (akhir)</td><td>110% (Manfaat Akhir Pertanggungan)</td></tr>
+</table>
+
+<div class="info-box">
+<p><strong>Catatan:</strong> Jika Anda membatalkan polis di tahun 1-2, tidak ada nilai tunai yang dikembalikan. Semakin lama Anda mempertahankan polis, semakin besar nilai tunai yang Anda dapatkan. Di tahun ke-20, Anda mendapat 110% total premi (bonus 10%!).</p>
+</div>
+</div>
+</div>
+<!-- Tab: Kalkulator Premi -->
+<div class="tab-content" id="tab-kalkulator" role="tabpanel">
+<div class="card">
+<h2>Kalkulator Premi MiUCC</h2>
+<p>Hitung estimasi premi MiUCC sesuai usia dan Uang Pertanggungan (UP) yang Anda inginkan:</p>
+
+<div class="calc-controls">
+<div class="calc-control-group">
+<label for="calc-usia">Usia Tertanggung</label>
+<select id="calc-usia"></select>
+</div>
+<div class="calc-control-group">
+<label for="calc-up">Uang Pertanggungan (UP)</label>
+<select id="calc-up">
+<option value="200000000">Rp 200 Juta</option>
+<option value="300000000">Rp 300 Juta</option>
+<option value="500000000">Rp 500 Juta</option>
+<option value="750000000">Rp 750 Juta</option>
+<option value="1000000000" selected>Rp 1 Miliar</option>
+<option value="1500000000">Rp 1,5 Miliar</option>
+<option value="2000000000">Rp 2 Miliar</option>
+<option value="3000000000">Rp 3 Miliar</option>
+<option value="5000000000">Rp 5 Miliar</option>
+<option value="10000000000">Rp 10 Miliar</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label for="calc-mode">Mode Pembayaran</label>
+<select id="calc-mode">
+<option value="tahunan" selected>Tahunan</option>
+<option value="semesteran">Semesteran</option>
+<option value="kuartalan">Kuartalan</option>
+<option value="bulanan">Bulanan</option>
+</select>
+</div>
+</div>
+
+<div id="calc-results">
+<h3>Premi MiUCC</h3>
+<p class="calc-subtitle">Premi hanya dibayar <strong>5 tahun</strong>, perlindungan berlaku <strong>20 tahun</strong></p>
+<div class="stats-grid" id="calc-premi-grid">
+<div class="stat-card calc-animated" style="grid-column:1/-1;border-top:4px solid #00a758">
+<div class="stat-value" id="calc-premi-display" style="font-size:2rem">-</div>
+<div class="stat-label" id="calc-premi-label" style="font-size:.95rem;margin-top:6px">Premi Tahunan</div>
+</div>
+</div>
+<p class="calc-subtitle" id="calc-premi-annual-ref" style="text-align:center;margin-top:10px;display:none">Premi Tahunan: <strong id="calc-annual-ref-value">-</strong></p>
+
+<h3>Ringkasan Manfaat</h3>
+<div class="stats-grid" id="calc-manfaat-grid">
+<div class="stat-card calc-animated">
+<div class="stat-value" id="calc-total-premi">-</div>
+<div class="stat-label">Total Premi 5 Tahun</div>
+</div>
+<div class="stat-card calc-animated">
+<div class="stat-value" id="calc-manfaat-pk">-</div>
+<div class="stat-label">Manfaat Penyakit Kritis<br>(UP + Total Premi)</div>
+</div>
+<div class="stat-card calc-animated">
+<div class="stat-value" id="calc-manfaat-md">-</div>
+<div class="stat-label">Manfaat Meninggal Dunia<br>(160% Total Premi)</div>
+</div>
+<div class="stat-card calc-animated">
+<div class="stat-value" id="calc-manfaat-akhir">-</div>
+<div class="stat-label">Manfaat Akhir Pertanggungan<br>(Sehat 20 Tahun: 110% Total Premi)</div>
+</div>
+<div class="stat-card calc-animated">
+<div class="stat-value" id="calc-manfaat-angio">-</div>
+<div class="stat-label">Manfaat Angioplasti<br>(25% UP, maks Rp 200 jt)</div>
+</div>
+</div>
+
+<div class="info-box calc-info-box">
+<p><strong>Informasi Penting:</strong> Premi MiUCC hanya dibayar selama <strong>5 tahun</strong>, tetapi perlindungan berlaku selama <strong>20 tahun</strong>. Setelah 5 tahun setor premi, Anda tidak perlu membayar lagi namun tetap dilindungi dari 50 penyakit kritis. Semua manfaat di atas bersifat <strong>DIJAMIN (guaranteed)</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Tab 3: Ilustrasi -->
+<div class="tab-content" id="tab-ilustrasi" role="tabpanel">
+<div class="card">
+<h2>Ilustrasi MiUCC</h2>
+<p>Berikut contoh ilustrasi untuk <strong>Pria usia 30 tahun</strong>, Uang Pertanggungan <strong>Rp 1 Miliar</strong>, Masa Bayar Premi <strong>5 tahun</strong>:</p>
+
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-value">Rp 26 jt</div>
+<div class="stat-label">Premi per Tahun</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">5 Tahun</div>
+<div class="stat-label">Masa Bayar Premi</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">Rp 130 jt</div>
+<div class="stat-label">Total Premi 5 Tahun</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">20 Tahun</div>
+<div class="stat-label">Masa Perlindungan</div>
+</div>
+</div>
+
+<h3>Ringkasan Manfaat</h3>
+<div class="highlight-box">
+<p><strong>Jika terdiagnosis Penyakit Kritis (tahun ke-5):</strong></p>
+<p>100% UP + 100% Total Premi = Rp 1.000.000.000 + Rp 130.350.000 = <strong>Rp 1.130.348.000</strong></p>
+<p style="margin-top:10px"><strong>Jika Meninggal Dunia:</strong></p>
+<p>160% x Total Premi = 160% x Rp 130.350.000 = <strong>Rp 208.556.000</strong></p>
+<p style="margin-top:10px"><strong>Jika Sehat sampai akhir (tahun ke-20):</strong></p>
+<p>110% x Total Premi = 110% x Rp 130.350.000 = <strong>Rp 143.382.000</strong></p>
+<p style="margin-top:10px"><strong>Manfaat Angioplasti:</strong></p>
+<p>25% x UP = 25% x Rp 1.000.000.000 = <strong>Rp 200.000.000</strong> (maks Rp 200 juta)</p>
+</div>
+</div>
+
+<div class="card">
+<h2>Tabel Ilustrasi Tahun per Tahun</h2>
+<p>Semua nilai dalam <strong>ribuan Rupiah</strong> (contoh: 26.070 = Rp 26.070.000)</p>
+
+<table>
+<tr><th>Usia</th><th>Tahun Polis</th><th>Premi Dasar</th><th>Manfaat Penyakit Kritis</th><th>Manfaat Meninggal</th><th>Nilai Tunai</th></tr>
+<tr><td>31</td><td>1</td><td>26.070</td><td>1.026.070</td><td>41.711</td><td>0</td></tr>
+<tr><td>32</td><td>2</td><td>26.070</td><td>1.052.139</td><td>83.422</td><td>0</td></tr>
+<tr><td>33</td><td>3</td><td>26.070</td><td>1.078.209</td><td>125.134</td><td>31.283</td></tr>
+<tr><td>34</td><td>4</td><td>26.070</td><td>1.104.278</td><td>166.845</td><td>41.711</td></tr>
+<tr><td>35</td><td>5</td><td>26.070</td><td>1.130.348</td><td>208.556</td><td>65.174</td></tr>
+<tr><td>36</td><td>6</td><td>0</td><td>1.130.348</td><td>208.556</td><td>65.174</td></tr>
+<tr><td>37</td><td>7</td><td>0</td><td>1.130.348</td><td>208.556</td><td>71.691</td></tr>
+<tr><td>38</td><td>8</td><td>0</td><td>1.130.348</td><td>208.556</td><td>71.691</td></tr>
+<tr><td>39</td><td>9</td><td>0</td><td>1.130.348</td><td>208.556</td><td>71.691</td></tr>
+<tr><td>40</td><td>10</td><td>0</td><td>1.130.348</td><td>208.556</td><td>78.209</td></tr>
+<tr><td>41</td><td>11</td><td>0</td><td>1.130.348</td><td>208.556</td><td>78.209</td></tr>
+<tr><td>42</td><td>12</td><td>0</td><td>1.130.348</td><td>208.556</td><td>84.726</td></tr>
+<tr><td>43</td><td>13</td><td>0</td><td>1.130.348</td><td>208.556</td><td>84.726</td></tr>
+<tr><td>44</td><td>14</td><td>0</td><td>1.130.348</td><td>208.556</td><td>91.243</td></tr>
+<tr><td>45</td><td>15</td><td>0</td><td>1.130.348</td><td>208.556</td><td>91.243</td></tr>
+<tr><td>46</td><td>16</td><td>0</td><td>1.130.348</td><td>208.556</td><td>91.243</td></tr>
+<tr><td>47</td><td>17</td><td>0</td><td>1.130.348</td><td>208.556</td><td>97.761</td></tr>
+<tr><td>48</td><td>18</td><td>0</td><td>1.130.348</td><td>208.556</td><td>97.761</td></tr>
+<tr><td>49</td><td>19</td><td>0</td><td>1.130.348</td><td>208.556</td><td>97.761</td></tr>
+<tr><td>50</td><td>20</td><td>0</td><td>0</td><td>0</td><td>143.382</td></tr>
+</table>
+
+<div class="info-box">
+<p><strong>Penjelasan tabel:</strong></p>
+<ul style="padding-left:20px;margin-top:8px">
+<li>Premi hanya dibayar tahun 1-5, setelah itu Rp 0 (tidak perlu bayar lagi)</li>
+<li>Manfaat Penyakit Kritis naik setiap tahun karena termasuk pengembalian premi yang sudah dibayar</li>
+<li>Di tahun ke-20, polis berakhir dan Anda mendapat Manfaat Akhir Pertanggungan = Rp 143.382.000 (110% total premi)</li>
+</ul>
+</div>
+
+<div class="highlight-box">
+<p><strong>Disclaimer:</strong> Ilustrasi ini hanya sebagai contoh perhitungan. Manfaat aktual akan sesuai dengan polis yang diterbitkan. Hubungi kami untuk mendapatkan ilustrasi sesuai usia dan kebutuhan Anda.</p>
+</div>
+</div>
+</div>
+<!-- Tab 4: Cara Klaim -->
+<div class="tab-content" id="tab-klaim" role="tabpanel">
+<div class="card">
+<h2>Cara Klaim MiUCC</h2>
+<p>Proses klaim MiUCC cukup mudah. Berikut panduan lengkapnya:</p>
+
+<h3>1. Klaim Penyakit Kritis</h3>
+<div class="info-box">
+<p><strong>Dokumen yang diperlukan:</strong></p>
+<ol style="padding-left:20px;margin-top:8px">
+<li>Polis asli</li>
+<li>Formulir Klaim Penyakit Kritis (dari Manulife)</li>
+<li>Surat Keterangan Dokter (diisi lengkap oleh dokter yang merawat)</li>
+<li>Surat Pemeriksaan Penunjang Medis (hasil lab, MRI, CT scan, biopsi, dll)</li>
+<li>Fotokopi KTP Tertanggung dan Pemegang Polis</li>
+</ol>
+</div>
+
+<h3>2. Klaim Meninggal Dunia</h3>
+<div class="info-box">
+<p><strong>Dokumen yang diperlukan:</strong></p>
+<ol style="padding-left:20px;margin-top:8px">
+<li>Polis asli</li>
+<li>Formulir Klaim Meninggal Dunia</li>
+<li>Surat Keterangan Dokter / Surat Keterangan Kematian</li>
+<li>Akta Kematian dari Catatan Sipil</li>
+<li>Fotokopi KTP Penerima Manfaat / Ahli Waris</li>
+<li>Surat Keterangan Ahli Waris</li>
+</ol>
+</div>
+
+<h3>3. Klaim Akhir Masa Pertanggungan</h3>
+<div class="info-box">
+<p><strong>Dokumen yang diperlukan:</strong></p>
+<ol style="padding-left:20px;margin-top:8px">
+<li>Polis asli</li>
+<li>Formulir Pengajuan Klaim</li>
+<li>Fotokopi KTP Pemegang Polis</li>
+</ol>
+<p style="margin-top:8px">Klaim ini adalah yang paling sederhana karena polis sudah jatuh tempo secara otomatis di akhir tahun ke-20.</p>
+</div>
+
+<h3>Batas Waktu Pengajuan Klaim</h3>
+<div class="highlight-box">
+<p><strong>Penting!</strong> Klaim penyakit kritis harus diajukan dalam waktu <strong>30 hari sejak tanggal diagnosis</strong>. Pastikan segera mengumpulkan dokumen yang diperlukan.</p>
+<p style="margin-top:8px">Pembayaran klaim akan dilakukan <strong>maksimal 30 hari setelah klaim disetujui</strong> oleh Manulife.</p>
+</div>
+
+<h3>Kontak Klaim Manulife</h3>
+<div class="highlight-box">
+<p><strong>Customer Service:</strong> (021) 2555 7777</p>
+<p><strong>Email:</strong> customerserviceid@manulife.com</p>
+<p style="margin-top:10px">Atau hubungi langsung:</p>
+<p><strong>Petrus Jakub - 087781896087</strong> (Partner Bisnis Manulife)</p>
+</div>
+
+<h3>Tips Klaim Lancar</h3>
+<ul>
+<li>Simpan polis asli di tempat yang aman dan mudah ditemukan</li>
+<li>Informasikan kepada keluarga tentang keberadaan polis</li>
+<li>Segera hubungi kami begitu ada diagnosis penyakit kritis</li>
+<li>Pastikan semua dokumen medis lengkap sebelum mengajukan klaim</li>
+<li>Jangan tunggu terlalu lama, ingat batas waktu 30 hari</li>
+</ul>
+</div>
+</div>
+<!-- Tab 5: FAQ -->
+<div class="tab-content" id="tab-faq" role="tabpanel">
+<div class="card">
+<h2>Pertanyaan yang Sering Ditanya (FAQ)</h2>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu MiUCC?</div>
+<div class="faq-answer"><p>MiUCC (Mi Ultimate Critical Care) adalah asuransi penyakit kritis dari Manulife Indonesia. Produk ini memberikan uang tunai langsung (lump sum) saat Anda terdiagnosis salah satu dari 50 penyakit kritis yang dijamin. Uang tersebut bisa digunakan untuk biaya pengobatan, biaya hidup keluarga, atau kebutuhan apapun. Berbeda dengan asuransi kesehatan yang membayar biaya rumah sakit, MiUCC memberikan uang tunai langsung kepada Anda.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Berapa penyakit yang di-cover MiUCC?</div>
+<div class="faq-answer"><p>MiUCC melindungi Anda dari <strong>50 penyakit kritis</strong>, termasuk berbagai jenis kanker, penyakit jantung, stroke, gagal ginjal, diabetes dengan komplikasi, dan penyakit kritis lainnya. Penyakit-penyakit ini mencakup kondisi yang paling sering terjadi berdasarkan data klaim Manulife.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa bedanya MiUCC dengan asuransi kesehatan?</div>
+<div class="faq-answer"><p><strong>Asuransi Kesehatan:</strong> Membayar biaya rumah sakit dan perawatan medis secara langsung ke rumah sakit (cashless) atau reimburse. Manfaatnya sesuai tagihan RS.<br><br><strong>MiUCC (Asuransi Penyakit Kritis):</strong> Memberikan uang tunai langsung (lump sum) kepada Anda saat terdiagnosis penyakit kritis. Uang ini bebas digunakan untuk apa saja: pengobatan alternatif, biaya hidup, membayar cicilan, atau kebutuhan lainnya. Kedua produk ini saling melengkapi.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Berapa premi MiUCC?</div>
+<div class="faq-answer"><p>Premi MiUCC tergantung usia masuk dan Uang Pertanggungan (UP) yang Anda pilih. Sebagai contoh, untuk pria usia 30 tahun dengan UP Rp 1 Miliar, preminya sekitar Rp 26 juta per tahun. Premi hanya dibayar selama 5 tahun saja, setelah itu Anda tetap dilindungi selama 20 tahun tanpa bayar lagi. Hubungi kami untuk mendapatkan perhitungan premi sesuai usia Anda.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Periode Eliminasi 90 hari?</div>
+<div class="faq-answer"><p>Periode Eliminasi adalah masa tunggu 90 hari sejak polis aktif. Jika Anda terdiagnosis penyakit kritis dalam 90 hari pertama sejak polis aktif, maka klaim tidak dapat diajukan. Ini adalah ketentuan standar di industri asuransi untuk mencegah pembelian polis setelah seseorang sudah mengetahui kondisi kesehatannya. Setelah 90 hari, perlindungan penuh berlaku.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa yang terjadi jika tidak ada klaim sampai akhir masa pertanggungan?</div>
+<div class="faq-answer"><p>Jika Anda sehat selama 20 tahun dan tidak pernah mengajukan klaim, Anda akan mendapat <strong>Manfaat Akhir Pertanggungan sebesar 110% dari total premi yang telah dibayarkan</strong>. Jadi Anda tidak rugi sama sekali! Contoh: jika total premi 5 tahun adalah Rp 130 juta, di akhir tahun ke-20 Anda mendapat Rp 143 juta (untung Rp 13 juta plus sudah dilindungi 20 tahun).</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apakah premi bisa dicicil?</div>
+<div class="faq-answer"><p>Ya! Meskipun masa pembayaran premi adalah 5 tahun, Anda bisa memilih mode pembayaran: <strong>Tahunan, Semesteran (per 6 bulan), Kuartalan (per 3 bulan), atau Bulanan</strong>. Jadi premi bisa dicicil sesuai kemampuan keuangan Anda. Hubungi kami untuk mengetahui detail cicilan preminya.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Siapa saja yang bisa membeli MiUCC?</div>
+<div class="faq-answer"><p>MiUCC bisa dibeli untuk siapa saja berusia <strong>6 bulan sampai 60 tahun</strong> sebagai tertanggung. Pemegang polis harus berusia minimal 18 tahun. Jadi orang tua bisa membelikan MiUCC untuk anaknya yang masih bayi. Proses pembelian memerlukan Full Underwriting (pemeriksaan kesehatan dan pengisian formulir kesehatan).</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana jika saya mau batalkan polis?</div>
+<div class="faq-answer"><p>Anda memiliki <strong>Masa Mempelajari Polis selama 14 hari kalender</strong> sejak polis diterima. Dalam periode ini, Anda bisa membatalkan polis dan mendapat pengembalian premi penuh.<br><br>Jika membatalkan setelah 14 hari, Anda akan mendapat Nilai Tunai (Surrender Value) sesuai tabel: tahun 1-2 = 0%, tahun 3-4 = 40%, tahun 5-6 = 50%, dan seterusnya meningkat sampai 75% di tahun 17-19. Sebaiknya pertahankan polis sampai akhir untuk mendapat 110% total premi kembali.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Survival Period 30 hari?</div>
+<div class="faq-answer"><p>Survival Period berarti setelah terdiagnosis penyakit kritis, Tertanggung harus bertahan hidup minimal 30 hari agar klaim Manfaat Penyakit Kritis bisa dibayarkan. Jika Tertanggung meninggal dalam 30 hari setelah diagnosis, maka yang dibayarkan adalah Manfaat Meninggal Dunia (160% total premi), bukan Manfaat Penyakit Kritis.</p></div>
+</div>
+
+</div>
+</div>
+<!-- Floating WA Button -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20MiUCC" target="_blank" class="floating-wa" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<div class="wa-tooltip">Petrus Jakub - 087781896087</div>
+
+<script>
+// Tab Navigation
+(function(){
+var tabs = document.querySelectorAll('.tabs li');
+var contents = document.querySelectorAll('.tab-content');
+tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        contents.forEach(function(c){ c.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+    });
+});
+})();
+
+// FAQ Accordion
+(function(){
+var questions = document.querySelectorAll('.faq-question');
+questions.forEach(function(q){
+    q.addEventListener('click', function(){
+        var item = q.parentElement;
+        item.classList.toggle('open');
+        q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+    });
+});
+})();
+
+// Kalkulator Premi
+(function(){
+var rateTable = [
+    {min:0, max:17, rate:19.51},
+    {min:18, max:30, rate:26.07},
+    {min:31, max:40, rate:50.29},
+    {min:41, max:50, rate:117.1065},
+    {min:51, max:55, rate:216.46},
+    {min:56, max:60, rate:259.75}
+];
+
+function getRate(age) {
+    for (var i = 0; i < rateTable.length; i++) {
+        if (age >= rateTable[i].min && age <= rateTable[i].max) return rateTable[i].rate;
+    }
+    return 0;
+}
+
+function roundToHundred(num) {
+    return Math.round(num / 100) * 100;
+}
+
+function formatRp(num) {
+    var rounded = Math.round(num);
+    var str = rounded.toString();
+    var result = '';
+    var count = 0;
+    for (var i = str.length - 1; i >= 0; i--) {
+        result = str[i] + result;
+        count++;
+        if (count % 3 === 0 && i > 0) result = '.' + result;
+    }
+    return 'Rp ' + result;
+}
+
+// Populate age dropdown
+var usiaSelect = document.getElementById('calc-usia');
+for (var i = 0; i <= 60; i++) {
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = i + ' tahun';
+    if (i === 30) opt.selected = true;
+    usiaSelect.appendChild(opt);
+}
+
+var modeLabels = {
+    tahunan: 'Premi Tahunan',
+    semesteran: 'Premi Semesteran (per 6 bulan)',
+    kuartalan: 'Premi Kuartalan (per 3 bulan)',
+    bulanan: 'Premi Bulanan'
+};
+
+var modeMultipliers = {
+    tahunan: 1,
+    semesteran: 0.525,
+    kuartalan: 0.275,
+    bulanan: 0.095
+};
+
+var modePerYear = {
+    tahunan: 1,
+    semesteran: 2,
+    kuartalan: 4,
+    bulanan: 12
+};
+
+function calculate() {
+    var age = parseInt(document.getElementById('calc-usia').value);
+    var up = parseInt(document.getElementById('calc-up').value);
+    var mode = document.getElementById('calc-mode').value;
+    var rate = getRate(age);
+
+    var annualPremium = roundToHundred((up / 1000000) * rate * 1000);
+
+    var modePremium;
+    if (mode === 'tahunan') {
+        modePremium = annualPremium;
+    } else {
+        modePremium = roundToHundred(annualPremium * modeMultipliers[mode]);
+    }
+
+    // Display selected mode premium
+    document.getElementById('calc-premi-display').textContent = formatRp(modePremium);
+    document.getElementById('calc-premi-label').textContent = modeLabels[mode];
+
+    // Show annual reference if not tahunan
+    var annualRef = document.getElementById('calc-premi-annual-ref');
+    if (mode !== 'tahunan') {
+        annualRef.style.display = 'block';
+        document.getElementById('calc-annual-ref-value').textContent = formatRp(annualPremium);
+    } else {
+        annualRef.style.display = 'none';
+    }
+
+    // Total premi 5 tahun based on selected mode
+    var totalPerYear = modePremium * modePerYear[mode];
+    var totalPremi5 = totalPerYear * 5;
+
+    var manfaatPK = up + totalPremi5;
+    var manfaatMD = totalPremi5 * 1.6;
+    var manfaatAkhir = totalPremi5 * 1.1;
+    var manfaatAngio = Math.min(up * 0.25, 200000000);
+
+    document.getElementById('calc-total-premi').textContent = formatRp(totalPremi5);
+    document.getElementById('calc-manfaat-pk').textContent = formatRp(manfaatPK);
+    document.getElementById('calc-manfaat-md').textContent = formatRp(manfaatMD);
+    document.getElementById('calc-manfaat-akhir').textContent = formatRp(manfaatAkhir);
+    document.getElementById('calc-manfaat-angio').textContent = formatRp(manfaatAngio);
+
+    // Animate cards
+    var cards = document.querySelectorAll('.calc-animated');
+    cards.forEach(function(card) {
+        card.classList.remove('pop');
+        void card.offsetWidth;
+        card.classList.add('pop');
+    });
+}
+
+document.getElementById('calc-usia').addEventListener('change', calculate);
+document.getElementById('calc-up').addEventListener('change', calculate);
+document.getElementById('calc-mode').addEventListener('change', calculate);
+
+// Initial calculation
+calculate();
+})();
+</script>
+</body>
+</html>

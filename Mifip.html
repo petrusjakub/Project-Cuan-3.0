@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiFIP - MiFuture Income Protector | Manulife Indonesia</title>
+<meta property="og:title" content="MiFIP - MiFuture Income Protector | Manulife Indonesia">
+<meta property="og:description" content="Program perencanaan keuangan dengan total manfaat hingga 800% Dana Mapan. Perlindungan jiwa + penghasilan tahunan selama 20 tahun. Hubungi Petrus Jakub 087781896087.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' fill='%2300a758'%3E%3Crect width='1200' height='630'/%3E%3Ctext x='600' y='280' text-anchor='middle' font-family='sans-serif' font-size='72' font-weight='bold' fill='white'%3EMiFIP%3C/text%3E%3Ctext x='600' y='370' text-anchor='middle' font-family='sans-serif' font-size='36' fill='white'%3EMiFuture Income Protector%3C/text%3E%3Ctext x='600' y='430' text-anchor='middle' font-family='sans-serif' font-size='28' fill='%23e8f5e9'%3ETotal Manfaat 800%25 Dana Mapan%3C/text%3E%3C/svg%3E">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;background:#f5f5f5;padding-top:48px;padding-bottom:80px}
+a{color:#00a758}
+
+.wa-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#25D366;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;text-decoration:none;color:#fff;font-weight:700;font-size:clamp(0.85rem,2.5vw,1rem);box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer;transition:background .2s}
+.wa-banner:hover{background:#1DA851}
+.wa-banner svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+.wa-banner span{white-space:nowrap}
+
+.floating-wa{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:9999;transition:transform .2s,box-shadow .2s}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.6)}
+.floating-wa svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:fixed;bottom:90px;right:25px;background:#fff;color:#333;padding:8px 14px;border-radius:8px;font-size:.75rem;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.15);z-index:9999;white-space:nowrap;opacity:0;transform:translateY(5px);transition:all .3s;pointer-events:none}
+.floating-wa:hover+.wa-tooltip{opacity:1;transform:translateY(0)}
+
+.header{background:linear-gradient(135deg,#00a758 0%,#006838 100%);color:#fff;padding:30px 20px;text-align:center}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:5px}
+.header p{font-size:1rem;opacity:.9}
+
+.tabs-container{background:#fff;border-bottom:2px solid #00a758;position:sticky;top:48px;z-index:998;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,0.1);-webkit-overflow-scrolling:touch}
+.tabs{display:flex;padding:0;list-style:none;min-width:max-content}
+.tabs li{padding:12px 16px;cursor:pointer;font-size:.85rem;font-weight:500;color:#555;border-bottom:3px solid transparent;transition:all .2s;user-select:none}
+.tabs li:hover{background:#e8f5e9;color:#00a758}
+.tabs li.active{color:#00a758;border-bottom-color:#00a758;background:#e8f5e9;font-weight:700}
+
+.tab-content{display:none;padding:30px 20px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+
+.card{background:#fff;border-radius:12px;padding:25px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card h2{color:#00a758;margin-bottom:15px;font-size:1.4rem}
+.card h3{color:#006838;margin:18px 0 10px;font-size:1.1rem}
+.card p,.card li{line-height:1.7;margin-bottom:8px}
+.card ul,.card ol{padding-left:20px}
+
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:8px;margin-bottom:5px}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.badge-orange{background:#fff3e0;color:#e65100}
+
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.85rem;overflow-x:auto;display:block}
+th{background:#00a758;color:#fff;padding:10px 8px;text-align:center;font-weight:600;white-space:nowrap}
+td{padding:8px;text-align:center;border-bottom:1px solid #e0e0e0;white-space:nowrap}
+tr:nth-child(even){background:#f8fdf9}
+tr:hover{background:#e8f5e9}
+
+.info-box{background:#e8f5e9;border-left:4px solid #00a758;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.highlight-box{background:#fff8e1;border-left:4px solid #ffc107;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+
+.calc-controls{background:#fff;border-radius:12px;padding:20px 25px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:25px;display:flex;flex-wrap:wrap;gap:15px;align-items:flex-end}
+.calc-control-group{display:flex;flex-direction:column;gap:5px}
+.calc-control-group label{font-size:.8rem;font-weight:600;color:#00a758;text-transform:uppercase;letter-spacing:.5px}
+.calc-control-group select,.calc-control-group input{padding:10px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:.95rem;font-family:inherit;background:#fff;cursor:pointer;transition:all .3s}
+.calc-control-group select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300a758' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:35px}
+.calc-control-group select:focus,.calc-control-group input:focus{outline:none;border-color:#00a758;box-shadow:0 0 0 3px rgba(0,167,88,0.15)}
+.calc-btn{padding:12px 28px;background:linear-gradient(135deg,#00a758,#006838);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,167,88,0.3)}
+
+.result-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin:25px 0}
+.result-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,167,88,0.12);transition:all .3s}
+.result-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,167,88,0.2)}
+.result-card .rc-header{background:linear-gradient(135deg,#00a758,#006838);color:#fff;padding:14px 16px;font-weight:700;font-size:.95rem}
+.result-card .rc-header.gold{background:linear-gradient(135deg,#F39C12,#E67E22)}
+.result-card .rc-header.blue{background:linear-gradient(135deg,#2980B9,#1565C0)}
+.result-card .rc-body{padding:16px}
+.result-card .rc-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0}
+.result-card .rc-row:last-child{border-bottom:none}
+.result-card .rc-label{font-size:.82rem;color:#777;font-weight:500}
+.result-card .rc-value{font-size:1rem;font-weight:700;color:#00a758}
+.result-card .rc-value.big{font-size:1.2rem;color:#006838}
+
+.benefit-card{background:#fff;border-radius:12px;padding:20px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:4px solid #00a758;transition:all .3s}
+.benefit-card:hover{transform:translateX(5px);box-shadow:0 4px 15px rgba(0,167,88,0.15)}
+.benefit-card h4{color:#00a758;font-size:1rem;margin-bottom:6px}
+.benefit-card .percent{font-size:1.4rem;font-weight:800;color:#006838;margin-bottom:4px}
+.benefit-card p{font-size:.88rem;color:#555;line-height:1.6}
+.benefit-card.accent{border-left-color:#F39C12}
+.benefit-card.accent .percent{color:#E67E22}
+
+.timeline{position:relative;padding-left:30px;margin:20px 0}
+.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#00a758,#006838)}
+.timeline-item{position:relative;margin-bottom:20px;padding:12px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:16px;width:12px;height:12px;border-radius:50%;background:#00a758;border:3px solid #e8f5e9}
+.timeline-item .tl-year{font-size:.75rem;color:#00a758;font-weight:700;text-transform:uppercase}
+.timeline-item .tl-desc{font-size:.88rem;color:#333;margin-top:4px}
+.timeline-item .tl-amount{font-size:1rem;font-weight:700;color:#006838;margin-top:4px}
+
+.faq-item{background:#fff;border-radius:8px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.faq-question{padding:16px 20px;cursor:pointer;font-weight:600;color:#333;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-question:hover{background:#e8f5e9}
+.faq-question::after{content:'+';font-size:1.4rem;color:#00a758;font-weight:700;transition:transform .3s}
+.faq-item.open .faq-question::after{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px}
+.faq-item.open .faq-answer{max-height:800px;padding:0 20px 16px}
+.faq-answer p{line-height:1.7;color:#555;font-size:.9rem}
+
+.calc-info-box{background:linear-gradient(135deg,#E8F5EE,#D5F5E3);border-radius:12px;padding:18px 22px;margin:20px 0;border-left:4px solid #2ECC71}
+.calc-info-box h4{color:#00a758;font-size:.9rem;margin-bottom:6px}
+.calc-info-box p{font-size:.82rem;color:#333;margin:4px 0}
+
+.total-highlight{background:linear-gradient(135deg,#00a758,#006838);color:#fff;border-radius:12px;padding:25px;text-align:center;margin:20px 0}
+.total-highlight h3{font-size:1.1rem;margin-bottom:8px;opacity:.9}
+.total-highlight .total-number{font-size:2rem;font-weight:800}
+.total-highlight .total-sub{font-size:.9rem;opacity:.8;margin-top:5px}
+
+.error-msg{background:#ffebee;border-left:4px solid #e53935;padding:12px 15px;border-radius:0 8px 8px 0;color:#c62828;font-size:.88rem;margin:10px 0;display:none}
+.error-msg.show{display:block}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:600px){
+.header{padding:20px 15px}
+.tab-content{padding:20px 12px}
+.card{padding:18px}
+.calc-controls{padding:15px;gap:10px;flex-direction:column;align-items:stretch}
+.result-cards{grid-template-columns:1fr;gap:12px}
+table{font-size:.75rem}
+.benefit-card .percent{font-size:1.2rem}
+.total-highlight .total-number{font-size:1.5rem}
+}
+
+@media print{
+.wa-banner,.floating-wa,.wa-tooltip{display:none!important}
+body{padding-top:0}
+.tabs-container{position:static}
+.tab-content{display:block!important}
+}
+</style>
+</head>
+<body>
+<!-- WA Banner -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20MiFiP" target="_blank" class="wa-banner" aria-label="WhatsApp Petrus Jakub">
+<span>Petrus Jakub Partner Bisnis Manulife</span>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<span>087781896087</span>
+</a>
+
+<!-- Header -->
+<div class="header">
+<h1>MiFuture Income Protector (MiFIP)</h1>
+<p>Perlindungan Terus Tanpa Putus | Manulife Indonesia</p>
+</div>
+
+<!-- Tabs Navigation -->
+<div class="tabs-container">
+<ul class="tabs" id="mainTabs" role="tablist">
+<li class="active" id="tab-btn-ringkasan" data-tab="ringkasan" role="tab" aria-controls="tab-ringkasan" aria-selected="true">Ringkasan Produk</li>
+<li id="tab-btn-manfaat" data-tab="manfaat" role="tab" aria-controls="tab-manfaat" aria-selected="false">Manfaat</li>
+<li id="tab-btn-kalkulator" data-tab="kalkulator" role="tab" aria-controls="tab-kalkulator" aria-selected="false">Kalkulator Manfaat</li>
+<li id="tab-btn-simulasi" data-tab="simulasi" role="tab" aria-controls="tab-simulasi" aria-selected="false">Simulasi Ilustrasi</li>
+<li id="tab-btn-faq" data-tab="faq" role="tab" aria-controls="tab-faq" aria-selected="false">FAQ</li>
+</ul>
+</div>
+<!-- Tab 1: Ringkasan Produk -->
+<div class="tab-content active" id="tab-ringkasan" role="tabpanel" aria-labelledby="tab-btn-ringkasan">
+<div class="card">
+<h2>Apa itu MiFIP?</h2>
+<p><strong>MiFuture Income Protector (MiFIP)</strong> adalah program perencanaan keuangan dari Manulife Indonesia yang dirancang untuk memberikan perlindungan finansial jangka panjang. Bayangkan memiliki "gaji" yang terus mengalir bahkan setelah Anda pensiun - itulah yang ditawarkan MiFIP.</p>
+<p>MiFIP adalah produk <strong>Asuransi Jiwa Dwiguna (Endowment)</strong> yang menggabungkan perlindungan jiwa dengan manfaat tabungan jangka panjang. Dengan total manfaat hingga <strong>800% dari Dana Mapan</strong>, program ini cocok untuk siapa saja yang ingin mempersiapkan masa depan yang sejahtera.</p>
+
+<h3>Untuk Siapa MiFIP?</h3>
+<ul>
+<li><strong>Profesional muda</strong> yang ingin mulai menabung untuk masa pensiun sejak dini</li>
+<li><strong>Orang tua</strong> yang ingin menyiapkan dana warisan untuk keluarga</li>
+<li><strong>Siapa saja</strong> yang menginginkan penghasilan tetap di masa depan tanpa harus bekerja</li>
+</ul>
+
+<h3>Keunggulan Utama</h3>
+<ul>
+<li><span class="badge badge-green">800%</span> Total manfaat hingga 800% dari Dana Mapan</li>
+<li><span class="badge badge-blue">IDR & USD</span> Tersedia dalam Rupiah atau Dolar AS</li>
+<li><span class="badge badge-orange">Mudah</span> Hanya 3 pertanyaan kesehatan (SIO)</li>
+<li><strong>Perlindungan Jiwa Otomatis</strong> - Jika terjadi risiko meninggal dunia, keluarga Anda tetap terlindungi</li>
+<li><strong>Pembebasan Premi</strong> - Jika tertanggung meninggal saat masa bayar, premi selanjutnya dibebaskan</li>
+<li><strong>Penghasilan Tahunan</strong> - Menerima 20% Dana Mapan setiap tahun selama 20 tahun</li>
+</ul>
+
+<h3>Pilihan Pembayaran</h3>
+<div class="highlight-box">
+<p><strong>Bayar 5 Tahun (Reguler):</strong> Cicil premi selama 5 tahun, lalu nikmati manfaat seumur hidup. Cocok untuk yang ingin merencanakan dari penghasilan rutin.</p>
+<p style="margin-top:8px"><strong>Bayar Sekaligus (Single Premium):</strong> Bayar sekali di awal, langsung aman. Cocok untuk yang memiliki dana lump sum yang ingin dioptimalkan.</p>
+</div>
+
+<h3>Spesifikasi Produk</h3>
+<table>
+<tr><th>Ketentuan</th><th>Detail</th></tr>
+<tr><td>Mata Uang</td><td>IDR atau USD</td></tr>
+<tr><td>Min. Dana Mapan</td><td>IDR 50.000.000 / USD 5.000</td></tr>
+<tr><td>Usia Mapan</td><td>25, 35, 45, 55, atau 60 tahun</td></tr>
+<tr><td>Pembayaran Premi</td><td>5 Tahun atau Sekaligus</td></tr>
+<tr><td>Mode Bayar</td><td>Bulanan / Kuartalan / Semesteran / Tahunan</td></tr>
+<tr><td>Masa Pertanggungan</td><td>Sampai Usia Mapan + 20 tahun</td></tr>
+<tr><td>Underwriting</td><td>SIO (3 pertanyaan kesehatan saja)</td></tr>
+</table>
+
+<h3>Usia Masuk (Reguler 5 Tahun)</h3>
+<table>
+<tr><th>Usia Mapan</th><th>Usia Masuk Min</th><th>Usia Masuk Maks</th></tr>
+<tr><td>25 tahun</td><td>18 tahun</td><td>20 tahun</td></tr>
+<tr><td>35 tahun</td><td>18 tahun</td><td>30 tahun</td></tr>
+<tr><td>45 tahun</td><td>18 tahun</td><td>40 tahun</td></tr>
+<tr><td>55 tahun</td><td>18 tahun</td><td>50 tahun</td></tr>
+<tr><td>60 tahun</td><td>18 tahun</td><td>55 tahun</td></tr>
+</table>
+
+<div class="info-box">
+<p><strong>Catatan:</strong> Untuk pembayaran Sekaligus (Single Premium), usia masuk bisa mulai dari 1 bulan hingga usia mapan dikurangi 1 tahun. Single Premium wajib dipilih jika usia masuk kurang dari 5 tahun sebelum usia mapan.</p>
+</div>
+</div>
+</div>
+<!-- Tab 2: Manfaat -->
+<div class="tab-content" id="tab-manfaat" role="tabpanel" aria-labelledby="tab-btn-manfaat">
+<div class="card">
+<h2>Manfaat MiFIP - Total Hingga 800% Dana Mapan</h2>
+<p>MiFIP memberikan rangkaian manfaat yang komprehensif. Berikut rincian lengkapnya:</p>
+</div>
+
+<div class="benefit-card">
+<div class="percent">100% Dana Mapan</div>
+<h4>1. Manfaat Usia Mapan</h4>
+<p>Saat Anda mencapai Usia Mapan yang dipilih, Anda menerima <strong>100% Dana Mapan</strong> secara lump sum (sekaligus). Ini ibarat "hadiah" saat Anda memasuki masa emas kehidupan.</p>
+</div>
+
+<div class="benefit-card">
+<div class="percent">400% Dana Mapan</div>
+<h4>2. Manfaat Tunai Tahunan</h4>
+<p>Mulai 1 tahun setelah Usia Mapan, Anda menerima <strong>20% Dana Mapan setiap tahun selama 20 tahun</strong>. Seperti menerima "gaji pensiun" yang terus mengalir. Total: 20% x 20 = 400% Dana Mapan.</p>
+</div>
+
+<div class="benefit-card">
+<div class="percent">200% Dana Mapan</div>
+<h4>3. Manfaat Akhir Masa Pertanggungan</h4>
+<p>Di akhir masa pertanggungan (Usia Mapan + 20 tahun), Anda menerima <strong>200% Dana Mapan</strong> sekaligus. Bonus besar di penghujung program!</p>
+</div>
+
+<div class="benefit-card accent">
+<div class="percent">100% Dana Mapan</div>
+<h4>4. Manfaat Meninggal Dunia</h4>
+<p>Jika tertanggung meninggal dunia selama masa pertanggungan, ahli waris menerima <strong>100% Dana Mapan</strong>. Keluarga Anda tetap terlindungi.</p>
+</div>
+
+<div class="benefit-card accent">
+<div class="percent">+100% Dana Mapan</div>
+<h4>5. Manfaat Meninggal Dunia Akibat Kecelakaan</h4>
+<p>Jika meninggal akibat kecelakaan, ahli waris menerima <strong>tambahan 100% Dana Mapan</strong> di atas manfaat meninggal dunia biasa.</p>
+</div>
+
+<div class="benefit-card">
+<div class="percent">Pembebasan Premi</div>
+<h4>6. Pembebasan Premi</h4>
+<p>Jika tertanggung meninggal dunia selama masa pembayaran premi (5 tahun), seluruh premi yang belum dibayar akan <strong>dibebaskan</strong>. Polis tetap aktif dan manfaat tetap berjalan.</p>
+</div>
+
+<div class="benefit-card">
+<div class="percent">IDR & USD</div>
+<h4>7. Fleksibilitas Mata Uang</h4>
+<p>Pilih mata uang yang sesuai kebutuhan Anda: <strong>Rupiah (IDR)</strong> untuk kebutuhan dalam negeri atau <strong>US Dollar (USD)</strong> untuk proteksi nilai tukar.</p>
+</div>
+
+<div class="benefit-card">
+<div class="percent">SIO</div>
+<h4>8. Kemudahan Underwriting</h4>
+<p>Proses pendaftaran mudah dengan <strong>Simplified Issuance Offer (SIO)</strong>. Hanya perlu menjawab 3 pertanyaan kesehatan sederhana - tanpa medical check-up!</p>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h3>Ringkasan Total Manfaat 800%</h3>
+<table>
+<tr><th>Komponen Manfaat</th><th>Persentase</th><th>Keterangan</th></tr>
+<tr><td>Manfaat Usia Mapan</td><td><strong>100%</strong></td><td>Lump sum saat mencapai Usia Mapan</td></tr>
+<tr><td>Manfaat Tunai Tahunan</td><td><strong>400%</strong></td><td>20% x 20 tahun setelah Usia Mapan</td></tr>
+<tr><td>Manfaat Akhir Pertanggungan</td><td><strong>200%</strong></td><td>Lump sum di akhir masa pertanggungan</td></tr>
+<tr><td>Manfaat Meninggal Dunia</td><td><strong>100%</strong></td><td>Perlindungan selama masa pertanggungan*</td></tr>
+<tr><td colspan="3" style="text-align:left;font-size:.8rem;color:#777">*Manfaat Meninggal Dunia mengurangi Manfaat Akhir Pertanggungan jika sudah dibayarkan</td></tr>
+</table>
+
+<div class="total-highlight">
+<h3>Total Manfaat yang Dijamin</h3>
+<div class="total-number">800% Dana Mapan</div>
+<div class="total-sub">Terdiri dari 100% + 400% + 200% + 100% (perlindungan)</div>
+</div>
+
+<h3>Premium Banding (Tingkatan Dana Mapan)</h3>
+<p>Semakin besar Dana Mapan yang dipilih, semakin efisien tarif premi Anda:</p>
+<table>
+<tr><th>Band</th><th>Dana Mapan (IDR)</th><th>Dana Mapan (USD)</th></tr>
+<tr><td>Band 1</td><td>Rp 50 juta - 99,9 juta</td><td>USD 5.000 - 9.999</td></tr>
+<tr><td>Band 2</td><td>Rp 100 juta - 199,9 juta</td><td>USD 10.000 - 19.999</td></tr>
+<tr><td>Band 3</td><td>Rp 200 juta - 499,9 juta</td><td>USD 20.000 - 49.999</td></tr>
+<tr><td>Band 4</td><td>Rp 500 juta ke atas</td><td>USD 50.000 ke atas</td></tr>
+</table>
+<div class="info-box">
+<p><strong>Tips:</strong> Semakin tinggi Band, semakin rendah persentase premi terhadap Dana Mapan. Pilih Dana Mapan yang sesuai dengan rencana keuangan masa depan Anda.</p>
+</div>
+</div>
+</div>
+<!-- Tab 3: Kalkulator Manfaat -->
+<div class="tab-content" id="tab-kalkulator" role="tabpanel" aria-labelledby="tab-btn-kalkulator">
+<div class="card">
+<h2>Kalkulator Manfaat MiFIP</h2>
+<p style="margin-bottom:20px">Masukkan data Anda untuk menghitung premi dan melihat proyeksi manfaat MiFIP. Semua manfaat bersifat <strong>DIJAMIN</strong> (guaranteed).</p>
+<div class="calc-controls">
+<div class="calc-control-group">
+<label>Jenis Kelamin</label>
+<select id="calcGender" onchange="updateCalc()">
+<option value="pria">Pria</option>
+<option value="wanita">Wanita</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Mata Uang</label>
+<select id="calcCurrency" onchange="updateCalc()">
+<option value="IDR">Rupiah (IDR)</option>
+<option value="USD">US Dollar (USD)</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Usia Masuk</label>
+<select id="calcUsiaMasuk" onchange="updateUsiaMapanOptions();updateCalc()"></select>
+</div>
+<div class="calc-control-group">
+<label>Usia Mapan</label>
+<select id="calcUsiaMapan" onchange="updateCalc()"></select>
+</div>
+<div class="calc-control-group">
+<label>Mode Pembayaran</label>
+<select id="calcPaymentMode" onchange="updateCalc()">
+<option value="tahunan">Tahunan</option>
+<option value="semesteran">Semesteran</option>
+<option value="kuartalan">Kuartalan</option>
+<option value="bulanan">Bulanan</option>
+<option value="tunggal">Premi Tunggal</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Model Penginputan</label>
+<select id="calcInputMode" onchange="switchInputMode();updateCalc()">
+<option value="danamapan">Dana Mapan (Uang Pertanggungan)</option>
+<option value="premi">Premi</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label id="calcInputLabel">Dana Mapan</label>
+<input type="text" id="calcInputValue" placeholder="Masukkan jumlah" value="100.000.000" oninput="formatInputAndCalc(this)">
+</div>
+</div>
+<div class="error-msg" id="calcError"></div>
+<div id="calcPremiResults" style="display:none">
+<div class="result-cards">
+<div class="result-card" id="calcMainResultCard">
+<div class="rc-header" id="calcMainResultHeader">Hasil Perhitungan Premi</div>
+<div class="rc-body" id="calcMainResultBody"></div>
+</div>
+<div class="result-card">
+<div class="rc-header">Premi Semua Mode Pembayaran</div>
+<div class="rc-body" id="calcAllModesBody"></div>
+</div>
+<div class="result-card">
+<div class="rc-header gold">Total Dana Mapan (Manfaat Hidup)</div>
+<div class="rc-body">
+<div class="rc-row"><span class="rc-label">Dana Mapan (UP)</span><span class="rc-value" id="resDanaMapanValue">-</span></div>
+<div class="rc-row"><span class="rc-label">Total Manfaat Hidup (7x)</span><span class="rc-value big" id="resTotalDanaMapan">-</span></div>
+<div class="rc-row"><span class="rc-label">Rincian</span><span class="rc-value" style="font-size:.75rem;color:#555">100% Usia Mapan + 400% Tunai + 200% Akhir</span></div>
+<div class="rc-row" style="border-top:1px dashed #e0e0e0;margin-top:4px;padding-top:8px"><span class="rc-label" style="font-size:.72rem;color:#999;line-height:1.4">*Total 800% (di bagian bawah) termasuk 100% manfaat meninggal dunia, yang bersifat OR terhadap manfaat hidup.</span></div>
+</div>
+</div>
+<div class="result-card" id="calcMinPremiCard" style="display:none">
+<div class="rc-header blue">Informasi Minimum Premi</div>
+<div class="rc-body" id="calcMinPremiBody"></div>
+</div>
+</div>
+</div>
+<div id="calcResults" style="display:none">
+<div class="total-highlight" id="calcTotalHighlight">
+<h3>Total Manfaat yang Dijamin (800%)</h3>
+<div class="total-number" id="calcTotalAmount">-</div>
+<div class="total-sub" id="calcTotalSub">-</div>
+<div style="font-size:.78rem;opacity:.85;margin-top:10px;line-height:1.5">*Total 800% berlaku jika tertanggung hidup hingga akhir masa pertanggungan.</div>
+</div>
+<div class="result-cards">
+<div class="result-card">
+<div class="rc-header">Manfaat Usia Mapan (100%)</div>
+<div class="rc-body">
+<div class="rc-row"><span class="rc-label">Diterima saat usia</span><span class="rc-value" id="resUsiaMapan">-</span></div>
+<div class="rc-row"><span class="rc-label">Jumlah (lump sum)</span><span class="rc-value big" id="resManfaatUM">-</span></div>
+</div>
+</div>
+<div class="result-card">
+<div class="rc-header">Manfaat Tunai Tahunan (400%)</div>
+<div class="rc-body">
+<div class="rc-row"><span class="rc-label">Per tahun (20%)</span><span class="rc-value" id="resPerTahun">-</span></div>
+<div class="rc-row"><span class="rc-label">Durasi</span><span class="rc-value">20 tahun</span></div>
+<div class="rc-row"><span class="rc-label">Total</span><span class="rc-value big" id="resTotalTahunan">-</span></div>
+</div>
+</div>
+<div class="result-card">
+<div class="rc-header gold">Manfaat Akhir Pertanggungan (200%)</div>
+<div class="rc-body">
+<div class="rc-row"><span class="rc-label">Diterima saat usia</span><span class="rc-value" id="resUsiaAkhir">-</span></div>
+<div class="rc-row"><span class="rc-label">Jumlah (lump sum)</span><span class="rc-value big" id="resManfaatAkhir">-</span></div>
+</div>
+</div>
+<div class="result-card">
+<div class="rc-header blue">Perlindungan Jiwa (100%)</div>
+<div class="rc-body">
+<div class="rc-row"><span class="rc-label">Manfaat Meninggal Dunia</span><span class="rc-value" id="resMeninggal">-</span></div>
+<div class="rc-row"><span class="rc-label">Tambahan Kecelakaan</span><span class="rc-value" id="resKecelakaan">-</span></div>
+<div class="rc-row"><span class="rc-label">Masa Perlindungan</span><span class="rc-value" id="resMasaLindung">-</span></div>
+</div>
+</div>
+</div>
+<div class="card" style="margin-top:20px">
+<h3>Jadwal Penerimaan Manfaat</h3>
+<div id="calcTimeline" class="timeline"></div>
+</div>
+<div class="card" style="margin-top:20px">
+<h3>Tabel Manfaat Per Tahun</h3>
+<div id="calcTable"></div>
+</div>
+</div>
+<div class="calc-info-box">
+<h4>Catatan Penting</h4>
+<p>Perhitungan di atas adalah proyeksi manfaat yang <strong>dijamin</strong> berdasarkan Dana Mapan.</p>
+<p>Total Dana Mapan = 7x Dana Mapan (100% Usia Mapan + 400% Tunai Tahunan + 200% Akhir).</p>
+</div>
+</div>
+</div>
+<!-- Tab 4: Simulasi Ilustrasi -->
+<div class="tab-content" id="tab-simulasi" role="tabpanel" aria-labelledby="tab-btn-simulasi">
+<div class="card">
+<h2>Simulasi Ilustrasi MiFIP</h2>
+<p>Berikut contoh nyata bagaimana MiFIP bekerja untuk Anda. Lihat bagaimana investasi hari ini berubah menjadi penghasilan jangka panjang di masa depan.</p>
+</div>
+
+<div class="card">
+<h3>Contoh 1: Pria, Usia 35 Tahun, Usia Mapan 55</h3>
+<div class="info-box">
+<p><strong>Profil:</strong> Bapak Andi, 35 tahun, memilih Dana Mapan USD 11.276</p>
+<p><strong>Premi:</strong> USD 10.000/tahun selama 5 tahun (total premi: USD 50.000)</p>
+<p><strong>Mata Uang:</strong> US Dollar (USD)</p>
+</div>
+
+<div class="timeline">
+<div class="timeline-item">
+<div class="tl-year">Tahun 1-5 (Usia 35-40)</div>
+<div class="tl-desc">Masa pembayaran premi</div>
+<div class="tl-amount">Bayar: USD 10.000/tahun</div>
+</div>
+<div class="timeline-item">
+<div class="tl-year">Tahun 20 (Usia 55 - Usia Mapan)</div>
+<div class="tl-desc">Menerima Manfaat Usia Mapan</div>
+<div class="tl-amount">Terima: USD 11.276 (100% Dana Mapan)</div>
+</div>
+<div class="timeline-item">
+<div class="tl-year">Tahun 21-40 (Usia 56-75)</div>
+<div class="tl-desc">Menerima Manfaat Tunai Tahunan selama 20 tahun</div>
+<div class="tl-amount">Terima: USD 2.255,2/tahun x 20 = USD 45.104</div>
+</div>
+<div class="timeline-item">
+<div class="tl-year">Tahun 40 (Usia 75 - Akhir Pertanggungan)</div>
+<div class="tl-desc">Menerima Manfaat Akhir Masa Pertanggungan</div>
+<div class="tl-amount">Terima: USD 22.552 (200% Dana Mapan)</div>
+</div>
+</div>
+
+<div class="total-highlight">
+<h3>Total Manfaat Diterima</h3>
+<div class="total-number">USD 90.208</div>
+<div class="total-sub">800% x Dana Mapan USD 11.276 | Total Premi Dibayar: USD 50.000</div>
+</div>
+
+<table>
+<tr><th>Periode</th><th>Usia</th><th>Kejadian</th><th>Manfaat Diterima</th></tr>
+<tr><td>Tahun 1-5</td><td>35-40</td><td>Bayar Premi</td><td>-</td></tr>
+<tr><td>Tahun 6-19</td><td>41-54</td><td>Masa Tunggu (polis aktif)</td><td>Perlindungan jiwa aktif</td></tr>
+<tr><td>Tahun 20</td><td>55</td><td>Usia Mapan tercapai</td><td>USD 11.276</td></tr>
+<tr><td>Tahun 21</td><td>56</td><td>Tunai Tahunan ke-1</td><td>USD 2.255,2</td></tr>
+<tr><td>Tahun 22</td><td>57</td><td>Tunai Tahunan ke-2</td><td>USD 2.255,2</td></tr>
+<tr><td>Tahun 23-39</td><td>58-74</td><td>Tunai Tahunan ke-3 s/d 19</td><td>USD 2.255,2/tahun</td></tr>
+<tr><td>Tahun 40</td><td>75</td><td>Tunai Tahunan ke-20 + Manfaat Akhir</td><td>USD 2.255,2 + USD 22.552</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>Contoh 2: Pria, Usia 30 Tahun, Usia Mapan 55</h3>
+<div class="info-box">
+<p><strong>Profil:</strong> Bapak Budi, 30 tahun, memilih Dana Mapan IDR 1.200.000.000</p>
+<p><strong>Mata Uang:</strong> Rupiah (IDR)</p>
+<p><strong>Usia Mapan:</strong> 55 tahun (25 tahun lagi)</p>
+</div>
+
+<div class="timeline">
+<div class="timeline-item">
+<div class="tl-year">Usia 55 (Usia Mapan)</div>
+<div class="tl-desc">Menerima Manfaat Usia Mapan</div>
+<div class="tl-amount">Terima: Rp 1.200.000.000</div>
+</div>
+<div class="timeline-item">
+<div class="tl-year">Usia 56-75 (20 tahun)</div>
+<div class="tl-desc">Menerima Manfaat Tunai Tahunan</div>
+<div class="tl-amount">Terima: Rp 240.000.000/tahun x 20 = Rp 4.800.000.000</div>
+</div>
+<div class="timeline-item">
+<div class="tl-year">Usia 75 (Akhir Pertanggungan)</div>
+<div class="tl-desc">Menerima Manfaat Akhir</div>
+<div class="tl-amount">Terima: Rp 2.400.000.000</div>
+</div>
+</div>
+
+<div class="total-highlight">
+<h3>Total Manfaat Diterima</h3>
+<div class="total-number">Rp 9.600.000.000</div>
+<div class="total-sub">800% x Dana Mapan Rp 1.200.000.000</div>
+</div>
+
+<table>
+<tr><th>Komponen</th><th>Perhitungan</th><th>Jumlah</th></tr>
+<tr><td>Manfaat Usia Mapan</td><td>100% x Rp 1,2 M</td><td>Rp 1.200.000.000</td></tr>
+<tr><td>Manfaat Tunai Tahunan</td><td>20% x Rp 1,2 M x 20 thn</td><td>Rp 4.800.000.000</td></tr>
+<tr><td>Manfaat Akhir Pertanggungan</td><td>200% x Rp 1,2 M</td><td>Rp 2.400.000.000</td></tr>
+<tr><td>Perlindungan Jiwa</td><td>100% x Rp 1,2 M</td><td>Rp 1.200.000.000</td></tr>
+<tr><td><strong>TOTAL</strong></td><td><strong>800%</strong></td><td><strong>Rp 9.600.000.000</strong></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>Mengapa MiFIP Menguntungkan?</h3>
+<div class="highlight-box">
+<p><strong>Analoginya seperti ini:</strong> Bayangkan Anda menanam pohon hari ini. Selama beberapa tahun Anda menyiraminya (membayar premi). Kemudian pohon itu tumbuh besar dan mulai berbuah setiap tahun selama 20 tahun (Manfaat Tunai Tahunan). Di akhir, Anda juga mendapatkan kayunya yang bernilai tinggi (Manfaat Akhir Pertanggungan).</p>
+</div>
+<ul>
+<li><strong>Kepastian:</strong> Semua manfaat DIJAMIN - tidak terpengaruh fluktuasi pasar</li>
+<li><strong>Penghasilan Pasif:</strong> Seperti memiliki "gaji" yang terus mengalir tanpa bekerja</li>
+<li><strong>Warisan:</strong> Jika terjadi risiko, keluarga tetap menerima manfaat</li>
+<li><strong>Disiplin Keuangan:</strong> Memaksa Anda menabung secara teratur untuk masa depan</li>
+</ul>
+</div>
+</div>
+<!-- Tab 5: FAQ -->
+<div class="tab-content" id="tab-faq" role="tabpanel" aria-labelledby="tab-btn-faq">
+<div class="card">
+<h2>Pertanyaan yang Sering Ditanya (FAQ)</h2>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu MiFIP (MiFuture Income Protector)?</div>
+<div class="faq-answer"><p>MiFIP adalah produk asuransi jiwa dwiguna (endowment) dari Manulife Indonesia yang menggabungkan perlindungan jiwa dengan manfaat keuangan jangka panjang. Dengan MiFIP, Anda membayar premi selama 5 tahun (atau sekaligus), lalu menikmati manfaat hingga 800% dari Dana Mapan yang dijamin. Produk ini cocok untuk perencanaan pensiun, dana pendidikan anak, atau warisan keluarga.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Dana Mapan?</div>
+<div class="faq-answer"><p>Dana Mapan adalah jumlah dasar yang Anda pilih saat mendaftar MiFIP. Semua manfaat dihitung berdasarkan persentase dari Dana Mapan ini. Misalnya, jika Dana Mapan Anda Rp 100 juta, maka total manfaat yang akan Anda terima adalah 800% x Rp 100 juta = Rp 800 juta. Minimum Dana Mapan: Rp 50 juta (IDR) atau USD 5.000.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Berapa total manfaat yang saya terima?</div>
+<div class="faq-answer"><p>Total manfaat yang dijamin adalah <strong>800% dari Dana Mapan</strong>, terdiri dari:<br>- 100% saat mencapai Usia Mapan (lump sum)<br>- 400% dari Manfaat Tunai Tahunan (20% x 20 tahun)<br>- 200% di akhir masa pertanggungan (lump sum)<br>- 100% perlindungan jiwa selama masa pertanggungan<br>Semua manfaat ini DIJAMIN dan tidak terpengaruh kondisi pasar.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa bedanya bayar 5 tahun (Reguler) vs Sekaligus (Single Premium)?</div>
+<div class="faq-answer"><p><strong>Reguler (5 Tahun):</strong> Premi dibayar selama 5 tahun secara berkala (bulanan/kuartalan/semesteran/tahunan). Cocok untuk yang ingin mencicil dari penghasilan rutin. Usia masuk minimal 18 tahun.<br><br><strong>Single Premium (Sekaligus):</strong> Premi dibayar sekali di awal. Cocok untuk yang memiliki dana lump sum. Usia masuk bisa mulai dari 1 bulan. Single Premium wajib dipilih jika usia masuk kurang dari 5 tahun sebelum usia mapan.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Berapa minimal Dana Mapan yang harus dipilih?</div>
+<div class="faq-answer"><p>Minimal Dana Mapan adalah:<br>- <strong>IDR:</strong> Rp 50.000.000 (lima puluh juta rupiah)<br>- <strong>USD:</strong> USD 5.000 (lima ribu dolar)<br><br>Tidak ada batas maksimum. Semakin besar Dana Mapan, semakin efisien tarif premi Anda (karena sistem premium banding).</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Siapa yang bisa mendaftar MiFIP (usia masuk)?</div>
+<div class="faq-answer"><p>Untuk pembayaran <strong>Reguler (5 tahun)</strong>: Usia masuk 18-55 tahun (tergantung Usia Mapan yang dipilih).<br><br>Untuk <strong>Single Premium</strong>: Usia masuk mulai dari 1 bulan hingga usia mapan dikurangi 1 tahun.<br><br>Usia Mapan yang tersedia: 25, 35, 45, 55, atau 60 tahun. Aturannya: gap antara usia masuk dan usia mapan harus lebih dari 5 tahun untuk pembayaran reguler.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa yang terjadi jika tertanggung meninggal dunia?</div>
+<div class="faq-answer"><p>Jika tertanggung meninggal dunia selama masa pertanggungan:<br>- Ahli waris menerima <strong>100% Dana Mapan</strong><br>- Jika meninggal akibat kecelakaan, ada tambahan <strong>100% Dana Mapan</strong><br>- Jika meninggal selama masa bayar premi (5 tahun), premi yang belum dibayar akan <strong>dibebaskan</strong><br><br>Catatan: Manfaat Meninggal Dunia akan mengurangi Manfaat Akhir Masa Pertanggungan.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Pembebasan Premi?</div>
+<div class="faq-answer"><p>Pembebasan Premi (Premium Waiver) adalah fitur yang melindungi polis Anda jika tertanggung meninggal dunia selama masa pembayaran premi (5 tahun). Jika hal ini terjadi, seluruh sisa premi yang belum dibayar akan ditanggung oleh Manulife, dan polis tetap aktif dengan semua manfaat tetap berjalan seperti biasa. Keluarga Anda tetap terlindungi tanpa harus membayar premi lagi.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Mata uang apa saja yang tersedia?</div>
+<div class="faq-answer"><p>MiFIP tersedia dalam dua mata uang:<br><br><strong>Rupiah (IDR):</strong> Cocok untuk kebutuhan dalam negeri. Min Dana Mapan Rp 50 juta.<br><br><strong>US Dollar (USD):</strong> Cocok untuk proteksi nilai tukar dan kebutuhan internasional (pendidikan luar negeri, dll). Min Dana Mapan USD 5.000.<br><br>Pilihan mata uang ditentukan saat pendaftaran dan tidak dapat diubah selama masa polis.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana proses pendaftaran MiFIP?</div>
+<div class="faq-answer"><p>Proses pendaftaran MiFIP sangat mudah:<br><br>1. <strong>Konsultasi:</strong> Hubungi Petrus Jakub untuk konsultasi gratis tentang kebutuhan Anda<br>2. <strong>Pilih Plan:</strong> Tentukan mata uang, Dana Mapan, dan Usia Mapan<br>3. <strong>Isi Formulir:</strong> Lengkapi data diri dan jawab 3 pertanyaan kesehatan (SIO)<br>4. <strong>Pembayaran:</strong> Bayar premi pertama<br>5. <strong>Polis Aktif:</strong> Polis Anda langsung aktif!<br><br>Tidak perlu medical check-up - cukup 3 pertanyaan kesehatan sederhana!</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Usia Mapan?</div>
+<div class="faq-answer"><p>Usia Mapan adalah usia yang Anda pilih sebagai titik awal menerima manfaat. Saat Anda mencapai Usia Mapan, Anda mulai menerima Manfaat Usia Mapan (100% Dana Mapan), diikuti Manfaat Tunai Tahunan selama 20 tahun setelahnya.<br><br>Pilihan Usia Mapan: 25, 35, 45, 55, atau 60 tahun.<br><br>Contoh: Jika Anda pilih Usia Mapan 55, maka di usia 55 Anda mulai menerima manfaat, dan masa pertanggungan berakhir di usia 75 (55 + 20).</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apakah manfaat MiFIP dijamin?</div>
+<div class="faq-answer"><p><strong>Ya, 100% dijamin!</strong> Semua manfaat MiFIP bersifat guaranteed (dijamin) dan tidak terpengaruh oleh fluktuasi pasar, suku bunga, atau kondisi ekonomi. Begitu polis aktif, Anda pasti menerima manfaat sesuai yang tertulis di polis. Ini berbeda dengan produk unit link yang nilainya bisa naik-turun mengikuti pasar.</p></div>
+</div>
+
+</div>
+</div>
+<!-- Floating WA Button -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20MiFiP" target="_blank" class="floating-wa" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<div class="wa-tooltip">Pak Petrus Jakub - 087781896087</div>
+<script>
+(function(){
+var tabs=document.querySelectorAll('.tabs li');
+var contents=document.querySelectorAll('.tab-content');
+tabs.forEach(function(tab){
+tab.addEventListener('click',function(){
+tabs.forEach(function(t){t.classList.remove('active');t.setAttribute('aria-selected','false');});
+contents.forEach(function(c){c.classList.remove('active');});
+tab.classList.add('active');tab.setAttribute('aria-selected','true');
+document.getElementById('tab-'+tab.getAttribute('data-tab')).classList.add('active');
+});});
+})();
+(function(){
+var questions=document.querySelectorAll('.faq-question');
+questions.forEach(function(q){
+q.addEventListener('click',function(){
+var item=q.parentElement;item.classList.toggle('open');
+q.setAttribute('aria-expanded',item.classList.contains('open')?'true':'false');
+});});
+})();
+(function(){
+var knownRates={'pria_45_55':0.84796,'pria_45_60':0.66719,'pria_34_55':0.48141,'pria_30_55':0.4155,'wanita_37_45':0.95489,'wanita_37_55':0.60445,'wanita_37_60':0.51484};
+var knownTunggalFactors={'pria_45_55':4.5518,'pria_45_60':4.2132,'wanita_37_45':4.0245,'wanita_37_55':4.2787,'wanita_37_60':4.0611};
+var paymentMultipliers={'tahunan':1.0,'semesteran':0.525,'kuartalan':0.275,'bulanan':0.095};
+function getBandFactor(dm,cur){
+var t=cur==='IDR'?[50000000,100000000,200000000,500000000]:[5000,10000,20000,50000];
+if(dm<t[1])return 1.05;if(dm<t[2])return 1.0;if(dm<t[3])return 0.925;return 0.88;
+}
+function generateRate(gender,um,umap){
+var key=gender+'_'+um+'_'+umap;
+if(knownRates[key]!==undefined)return knownRates[key];
+var gap=umap-um;if(gap<=0)return 0;
+var rate;
+if(gender==='pria'){rate=4.85*Math.pow(gap,-0.82);}
+else{rate=4.50*Math.pow(gap,-0.78);}
+if(rate>1.5)rate=1.5;if(rate<0.15)rate=0.15;
+return rate;
+}
+function getTunggalFactor(gender,um,umap){
+var key=gender+'_'+um+'_'+umap;
+if(knownTunggalFactors[key]!==undefined)return knownTunggalFactors[key];
+var gap=umap-um;var f=4.7-0.03*gap;
+if(f<4.0)f=4.0;if(f>4.6)f=4.6;return f;
+}
+var usiaMapanOptions=[25,35,45,55,60];
+var lastCurrency='IDR';
+var regularRules={25:{min:18,max:20},35:{min:18,max:30},45:{min:18,max:40},55:{min:18,max:50},60:{min:18,max:55}};
+var selUsiaMasuk=document.getElementById('calcUsiaMasuk');
+for(var i=18;i<=59;i++){var opt=document.createElement('option');opt.value=i;opt.textContent=i+' tahun';if(i===30)opt.selected=true;selUsiaMasuk.appendChild(opt);}
+function updateUsiaMapanOptions(){
+var um=parseInt(selUsiaMasuk.value);
+var sel=document.getElementById('calcUsiaMapan');var cv=sel.value;sel.innerHTML='';
+usiaMapanOptions.forEach(function(umap){var rule=regularRules[umap];
+if(um>=rule.min&&um<=rule.max){var o=document.createElement('option');o.value=umap;o.textContent=umap+' tahun';if(String(umap)===cv)o.selected=true;sel.appendChild(o);}
+});if(!sel.value&&sel.options.length>0)sel.options[sel.options.length-1].selected=true;
+}
+window.updateUsiaMapanOptions=updateUsiaMapanOptions;
+function formatIDR(num){if(num===0)return'Rp 0';var s=Math.round(num).toString(),r='',c=0;for(var i=s.length-1;i>=0;i--){r=s[i]+r;c++;if(c%3===0&&i>0)r='.'+r;}return'Rp '+r;}
+function formatUSD(num){if(num===0)return'USD 0';var p=num.toFixed(2).split('.'),ip=p[0],dp=p[1],r='',c=0;for(var i=ip.length-1;i>=0;i--){r=ip[i]+r;c++;if(c%3===0&&i>0)r=','+r;}if(dp==='00')return'USD '+r;return'USD '+r+'.'+dp;}
+function formatNumber(num,cur){return cur==='IDR'?formatIDR(num):formatUSD(num);}
+function formatInputNumber(s,cur){var cl=s.replace(/[^0-9]/g,'');if(!cl)return'';
+if(cur==='IDR'){var r='',c=0;for(var i=cl.length-1;i>=0;i--){r=cl[i]+r;c++;if(c%3===0&&i>0)r='.'+r;}return r;}
+else{var r2='',c2=0;for(var j=cl.length-1;j>=0;j--){r2=cl[j]+r2;c2++;if(c2%3===0&&j>0)r2=','+r2;}return r2;}}
+function formatInputAndCalc(el){var cur=document.getElementById('calcCurrency').value;var oldVal=el.value;var cp=el.selectionStart;var digitsBeforeCursor=oldVal.substring(0,cp).replace(/[^0-9]/g,'').length;var raw=oldVal.replace(/[^0-9]/g,'');el.value=formatInputNumber(raw,cur);var newVal=el.value;var np=0;var dCount=0;for(var i=0;i<newVal.length;i++){if(/[0-9]/.test(newVal[i])){dCount++;if(dCount===digitsBeforeCursor){np=i+1;break;}}};if(digitsBeforeCursor===0)np=0;if(dCount<digitsBeforeCursor)np=newVal.length;el.setSelectionRange(np,np);updateCalc();}
+window.formatInputAndCalc=formatInputAndCalc;
+function switchInputMode(){var mode=document.getElementById('calcInputMode').value;var lbl=document.getElementById('calcInputLabel');var inp=document.getElementById('calcInputValue');var cur=document.getElementById('calcCurrency').value;
+if(mode==='danamapan'){lbl.textContent='Dana Mapan';inp.value=cur==='IDR'?'100.000.000':'10,000';}
+else{lbl.textContent='Premi';inp.value=cur==='IDR'?'50.000.000':'5,000';}}
+window.switchInputMode=switchInputMode;
+function updateCalc(){
+var currency=document.getElementById('calcCurrency').value;
+var gender=document.getElementById('calcGender').value;
+var inputMode=document.getElementById('calcInputMode').value;
+var paymentMode=document.getElementById('calcPaymentMode').value;
+var inputEl=document.getElementById('calcInputValue');
+if(currency!==lastCurrency){var m=document.getElementById('calcInputMode').value;
+if(m==='danamapan'){inputEl.value=currency==='USD'?'10,000':'100.000.000';}
+else{inputEl.value=currency==='USD'?'5,000':'50.000.000';}lastCurrency=currency;}
+var rawVal=inputEl.value.replace(/[^0-9]/g,'');
+var inputAmount=parseInt(rawVal)||0;
+var usiaMasuk=parseInt(document.getElementById('calcUsiaMasuk').value)||30;
+var usiaMapan=parseInt(document.getElementById('calcUsiaMapan').value)||55;
+var errorEl=document.getElementById('calcError');
+var premiResultsEl=document.getElementById('calcPremiResults');
+var benefitResultsEl=document.getElementById('calcResults');
+if(usiaMasuk>=usiaMapan){errorEl.textContent='Usia Masuk harus lebih kecil dari Usia Mapan.';errorEl.classList.add('show');premiResultsEl.style.display='none';benefitResultsEl.style.display='none';return;}
+var rateBase=generateRate(gender,usiaMasuk,usiaMapan);
+var danaMapan,premi;
+var minDM=currency==='IDR'?50000000:5000;
+var minLabel=currency==='IDR'?'Rp 50.000.000':'USD 5.000';
+if(inputMode==='danamapan'){
+danaMapan=inputAmount;
+if(danaMapan<minDM){errorEl.textContent='Dana Mapan minimum adalah '+minLabel+'.';errorEl.classList.add('show');premiResultsEl.style.display='none';benefitResultsEl.style.display='none';return;}
+var bf=getBandFactor(danaMapan,currency);var ra=rateBase*bf;
+if(paymentMode==='tunggal'){premi=Math.round(danaMapan*ra*getTunggalFactor(gender,usiaMasuk,usiaMapan));}
+else{premi=Math.round(danaMapan*ra*paymentMultipliers[paymentMode]);}
+}else{
+premi=inputAmount;
+if(premi<=0){errorEl.textContent='Silakan masukkan jumlah premi yang valid.';errorEl.classList.add('show');premiResultsEl.style.display='none';benefitResultsEl.style.display='none';return;}
+var bandsList=currency==='IDR'?[{min:500000000,mx:Infinity,f:0.88},{min:200000000,mx:499999999,f:0.925},{min:100000000,mx:199999999,f:1.0},{min:50000000,mx:99999999,f:1.05}]:[{min:50000,mx:Infinity,f:0.88},{min:20000,mx:49999,f:0.925},{min:10000,mx:19999,f:1.0},{min:5000,mx:9999,f:1.05}];
+var mult=paymentMode==='tunggal'?getTunggalFactor(gender,usiaMasuk,usiaMapan):paymentMultipliers[paymentMode];
+danaMapan=0;
+for(var bi=0;bi<bandsList.length;bi++){var bd=bandsList[bi];var tryDM=Math.round(premi/(rateBase*bd.f*mult));if(tryDM>=bd.min&&tryDM<=bd.mx){danaMapan=tryDM;break;}}
+if(danaMapan===0){var fallbackDM=Math.round(premi/(rateBase*1.05*mult));if(fallbackDM>=minDM){danaMapan=fallbackDM;}else{errorEl.textContent='Premi terlalu kecil. Premi menghasilkan Dana Mapan di bawah minimum ('+minLabel+').';errorEl.classList.add('show');premiResultsEl.style.display='none';benefitResultsEl.style.display='none';return;}}
+if(danaMapan<minDM){errorEl.textContent='Premi menghasilkan Dana Mapan di bawah minimum ('+minLabel+').';errorEl.classList.add('show');premiResultsEl.style.display='none';benefitResultsEl.style.display='none';return;}
+}
+errorEl.classList.remove('show');premiResultsEl.style.display='block';benefitResultsEl.style.display='block';
+var bff=getBandFactor(danaMapan,currency);var rf=rateBase*bff;var tff=getTunggalFactor(gender,usiaMasuk,usiaMapan);
+var pT=Math.round(danaMapan*rf);var pS=Math.round(danaMapan*rf*0.525);var pK=Math.round(danaMapan*rf*0.275);var pB=Math.round(danaMapan*rf*0.095);var pTg=Math.round(danaMapan*rf*tff);
+var mh=document.getElementById('calcMainResultHeader');var mb=document.getElementById('calcMainResultBody');
+if(inputMode==='danamapan'){
+mh.textContent='Hasil Perhitungan Premi';
+var ml=paymentMode==='tunggal'?'Premi Tunggal':paymentMode==='tahunan'?'Premi Tahunan':paymentMode==='semesteran'?'Premi Semesteran':paymentMode==='kuartalan'?'Premi Kuartalan':'Premi Bulanan';
+mb.innerHTML='<div class="rc-row"><span class="rc-label">'+ml+'</span><span class="rc-value big">'+formatNumber(premi,currency)+'</span></div><div class="rc-row"><span class="rc-label">Dana Mapan (UP)</span><span class="rc-value">'+formatNumber(danaMapan,currency)+'</span></div>';
+}else{
+mh.textContent='Hasil Perhitungan Dana Mapan';
+mb.innerHTML='<div class="rc-row"><span class="rc-label">Dana Mapan (UP)</span><span class="rc-value big">'+formatNumber(danaMapan,currency)+'</span></div><div class="rc-row"><span class="rc-label">Premi diinput</span><span class="rc-value">'+formatNumber(premi,currency)+'</span></div>';
+}
+document.getElementById('calcAllModesBody').innerHTML='<div class="rc-row"><span class="rc-label">Tahunan</span><span class="rc-value">'+formatNumber(pT,currency)+'</span></div><div class="rc-row"><span class="rc-label">Semesteran</span><span class="rc-value">'+formatNumber(pS,currency)+'</span></div><div class="rc-row"><span class="rc-label">Kuartalan</span><span class="rc-value">'+formatNumber(pK,currency)+'</span></div><div class="rc-row"><span class="rc-label">Bulanan</span><span class="rc-value">'+formatNumber(pB,currency)+'</span></div><div class="rc-row"><span class="rc-label">Premi Tunggal</span><span class="rc-value">'+formatNumber(pTg,currency)+'</span></div>';
+var tdm=danaMapan*7;
+document.getElementById('resDanaMapanValue').textContent=formatNumber(danaMapan,currency);
+document.getElementById('resTotalDanaMapan').textContent=formatNumber(tdm,currency);
+var mpc=document.getElementById('calcMinPremiCard');
+if(inputMode==='premi'){mpc.style.display='block';
+var mpT=Math.round(minDM*rateBase*getBandFactor(minDM,currency));
+var mpB=Math.round(minDM*rateBase*getBandFactor(minDM,currency)*0.095);
+document.getElementById('calcMinPremiBody').innerHTML='<div class="rc-row"><span class="rc-label">Min. Dana Mapan</span><span class="rc-value">'+minLabel+'</span></div><div class="rc-row"><span class="rc-label">Min. Premi Tahunan</span><span class="rc-value">'+formatNumber(mpT,currency)+'</span></div><div class="rc-row"><span class="rc-label">Min. Premi Bulanan</span><span class="rc-value">'+formatNumber(mpB,currency)+'</span></div>';
+}else{mpc.style.display='none';}
+var mUM=danaMapan;var tPT=danaMapan*0.20;var tTM=tPT*20;var mA=danaMapan*2;var mD=danaMapan;var mK=danaMapan;var tM=danaMapan*8;
+var uA=usiaMapan+20;var mP=uA-usiaMasuk;
+document.getElementById('calcTotalAmount').textContent=formatNumber(tM,currency);
+document.getElementById('calcTotalSub').textContent='800% x Dana Mapan '+formatNumber(danaMapan,currency);
+document.getElementById('resUsiaMapan').textContent=usiaMapan+' tahun';
+document.getElementById('resManfaatUM').textContent=formatNumber(mUM,currency);
+document.getElementById('resPerTahun').textContent=formatNumber(tPT,currency);
+document.getElementById('resTotalTahunan').textContent=formatNumber(tTM,currency);
+document.getElementById('resUsiaAkhir').textContent=uA+' tahun';
+document.getElementById('resManfaatAkhir').textContent=formatNumber(mA,currency);
+document.getElementById('resMeninggal').textContent=formatNumber(mD,currency);
+document.getElementById('resKecelakaan').textContent='+'+formatNumber(mK,currency);
+document.getElementById('resMasaLindung').textContent=mP+' tahun (usia '+usiaMasuk+'-'+uA+')';
+var th='';
+th+='<div class="timeline-item"><div class="tl-year">Usia '+usiaMasuk+'-'+(usiaMasuk+5)+'</div><div class="tl-desc">Masa pembayaran premi (5 tahun)</div></div>';
+if(usiaMapan>usiaMasuk+5){th+='<div class="timeline-item"><div class="tl-year">Usia '+(usiaMasuk+5)+'-'+usiaMapan+'</div><div class="tl-desc">Masa tunggu - polis aktif</div></div>';}
+th+='<div class="timeline-item"><div class="tl-year">Usia '+usiaMapan+' (Usia Mapan)</div><div class="tl-desc">Manfaat Usia Mapan</div><div class="tl-amount">'+formatNumber(mUM,currency)+'</div></div>';
+th+='<div class="timeline-item"><div class="tl-year">Usia '+(usiaMapan+1)+'-'+uA+' (20 tahun)</div><div class="tl-desc">Manfaat Tunai Tahunan</div><div class="tl-amount">'+formatNumber(tPT,currency)+'/tahun</div></div>';
+th+='<div class="timeline-item"><div class="tl-year">Usia '+uA+' (Akhir)</div><div class="tl-desc">Manfaat Akhir Pertanggungan</div><div class="tl-amount">'+formatNumber(mA,currency)+'</div></div>';
+document.getElementById('calcTimeline').innerHTML=th;
+var tb='<table><tr><th>Tahun</th><th>Usia</th><th>Kejadian</th><th>Manfaat</th><th>Kumulatif</th></tr>';
+var km=0;
+for(var y=1;y<=5;y++){tb+='<tr><td>'+y+'</td><td>'+(usiaMasuk+y-1)+'</td><td>Bayar Premi</td><td>-</td><td>-</td></tr>';}
+var yUM=usiaMapan-usiaMasuk+1;
+if(yUM>6){tb+='<tr><td>6-'+(yUM-1)+'</td><td>'+(usiaMasuk+5)+'-'+(usiaMapan-1)+'</td><td>Masa tunggu</td><td>-</td><td>-</td></tr>';}
+km+=mUM;tb+='<tr style="background:#e8f5e9;font-weight:600"><td>'+yUM+'</td><td>'+usiaMapan+'</td><td>Manfaat Usia Mapan</td><td>'+formatNumber(mUM,currency)+'</td><td>'+formatNumber(km,currency)+'</td></tr>';
+for(var t=1;t<=20;t++){km+=tPT;var pY=yUM+t;var cA=usiaMapan+t;var mc=formatNumber(tPT,currency);
+if(t===20){km+=mA;mc=formatNumber(tPT,currency)+' + '+formatNumber(mA,currency);tb+='<tr style="background:#fff8e1;font-weight:600"><td>'+pY+'</td><td>'+cA+'</td><td>Tunai ke-'+t+' + Akhir</td><td>'+mc+'</td><td>'+formatNumber(km,currency)+'</td></tr>';}
+else if(t<=3||t>=19){tb+='<tr><td>'+pY+'</td><td>'+cA+'</td><td>Tunai Tahunan ke-'+t+'</td><td>'+mc+'</td><td>'+formatNumber(km,currency)+'</td></tr>';}
+else if(t===4){tb+='<tr><td>...</td><td>...</td><td>Tunai ke-4 s/d 18</td><td>'+mc+'/thn</td><td>...</td></tr>';}}
+tb+='</table>';document.getElementById('calcTable').innerHTML=tb;
+}
+window.updateCalc=updateCalc;
+updateUsiaMapanOptions();updateCalc();
+})();
+</script>
+</body>
+</html>

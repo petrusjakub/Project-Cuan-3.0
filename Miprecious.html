@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiPrecious - MiPreparation Legacy for Our Assurance | Manulife Indonesia</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;background:#f5f5f5;padding-top:48px;padding-bottom:80px}
+a{color:#00a758}
+
+/* WA Banner */
+.wa-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#25D366;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;text-decoration:none;color:#fff;font-weight:700;font-size:clamp(0.85rem,2.5vw,1rem);box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer;transition:background .2s}
+.wa-banner:hover{background:#1DA851}
+.wa-banner svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+.wa-banner span{white-space:nowrap}
+
+/* Floating WA Button */
+.floating-wa{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:9999;transition:transform .2s,box-shadow .2s}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.6)}
+.floating-wa svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:fixed;bottom:90px;right:25px;background:#fff;color:#333;padding:8px 14px;border-radius:8px;font-size:.75rem;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.15);z-index:9999;white-space:nowrap;opacity:0;transform:translateY(5px);transition:all .3s;pointer-events:none}
+.floating-wa:hover+.wa-tooltip{opacity:1;transform:translateY(0)}
+
+/* Header */
+.header{background:linear-gradient(135deg,#00a758 0%,#006838 100%);color:#fff;padding:30px 20px;text-align:center}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:5px}
+.header p{font-size:1rem;opacity:.9}
+
+/* Tabs */
+.tabs-container{background:#fff;border-bottom:2px solid #00a758;position:sticky;top:48px;z-index:998;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,0.1);-webkit-overflow-scrolling:touch}
+.tabs{display:flex;padding:0;list-style:none;min-width:max-content}
+.tabs li{padding:12px 16px;cursor:pointer;font-size:.85rem;font-weight:500;color:#555;border-bottom:3px solid transparent;transition:all .2s;user-select:none}
+.tabs li:hover{background:#e8f5e9;color:#00a758}
+.tabs li.active{color:#00a758;border-bottom-color:#00a758;background:#e8f5e9;font-weight:700}
+
+/* Tab Content */
+.tab-content{display:none;padding:30px 20px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:25px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card h2{color:#00a758;margin-bottom:15px;font-size:1.4rem}
+.card h3{color:#006838;margin:18px 0 10px;font-size:1.1rem}
+.card p,.card li{line-height:1.7;margin-bottom:8px}
+.card ul,.card ol{padding-left:20px}
+
+/* Badges */
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:8px;margin-bottom:5px}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.badge-orange{background:#fff3e0;color:#e65100}
+.badge-gold{background:#fff8e1;color:#f57f17}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.85rem}
+th{background:#00a758;color:#fff;padding:10px 8px;text-align:center;font-weight:600;white-space:nowrap}
+td{padding:8px;text-align:center;border-bottom:1px solid #e0e0e0;white-space:nowrap}
+tr:nth-child(even){background:#f8fdf9}
+tr:hover{background:#e8f5e9}
+
+/* Info boxes */
+.info-box{background:#e8f5e9;border-left:4px solid #00a758;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.highlight-box{background:#fff8e1;border-left:4px solid #ffc107;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+
+/* Calculator styles */
+.calc-controls{background:#fff;border-radius:12px;padding:20px 25px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:25px;display:flex;flex-wrap:wrap;gap:15px;align-items:flex-end}
+.calc-control-group{display:flex;flex-direction:column;gap:5px;flex:1;min-width:180px}
+.calc-control-group label{font-size:.8rem;font-weight:600;color:#00a758;text-transform:uppercase;letter-spacing:.5px}
+.calc-control-group select,.calc-control-group input{padding:10px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:.95rem;font-family:inherit;background:#fff;cursor:pointer;transition:all .3s;width:100%}
+.calc-control-group select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300a758' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:35px}
+.calc-control-group select:focus,.calc-control-group input:focus{outline:none;border-color:#00a758;box-shadow:0 0 0 3px rgba(0,167,88,0.15)}
+.calc-btn{padding:12px 30px;background:#00a758;color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all .3s;white-space:nowrap}
+.calc-btn:hover{background:#006838;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,167,88,0.3)}
+
+/* Result Cards */
+.section-title{font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:#00a758;margin:25px 0 15px;padding-left:12px;border-left:4px solid #2ECC71}
+.section-title .badge-sm{display:inline-block;background:#2ECC71;color:#fff;font-size:.7rem;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:30px}
+.result-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,167,88,0.12);transition:all .3s;opacity:0;transform:translateY(15px)}
+.result-card.animate{animation:fadeInUp .4s ease forwards}
+.result-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,167,88,0.2)}
+.result-card .card-header{background:linear-gradient(135deg,#00a758,#006838);color:#fff;padding:14px 16px;font-weight:700;font-size:1rem}
+.result-card.gold .card-header{background:linear-gradient(135deg,#F39C12,#E67E22)}
+.result-card .card-body{padding:16px}
+.result-card .row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0}
+.result-card .row:last-child{border-bottom:none}
+.result-card .row-label{font-size:.8rem;color:#777;font-weight:500}
+.result-card .row-value{font-size:.95rem;font-weight:700;color:#00a758}
+.result-card .row-value.highlight{color:#E67E22;font-size:1rem}
+.calc-info-box{background:linear-gradient(135deg,#E8F5EE,#D5F5E3);border-radius:12px;padding:18px 22px;margin:20px 0;border-left:4px solid #2ECC71}
+.calc-info-box h4{color:#00a758;font-size:.9rem;margin-bottom:6px}
+.calc-info-box p{font-size:.82rem;color:#333;margin:4px 0}
+
+/* Benefit timeline */
+.timeline{position:relative;padding-left:30px;margin:20px 0}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:3px;background:#00a758;border-radius:2px}
+.timeline-item{position:relative;margin-bottom:20px;padding:12px 16px;background:#f8fdf9;border-radius:8px;border-left:3px solid #2ECC71}
+.timeline-item::before{content:'';position:absolute;left:-25px;top:16px;width:12px;height:12px;background:#00a758;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px #00a758}
+.timeline-item h4{color:#006838;font-size:.9rem;margin-bottom:4px}
+.timeline-item p{font-size:.82rem;color:#555;margin:0}
+
+/* FAQ Accordion */
+.faq-item{background:#fff;border-radius:8px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.faq-question{padding:16px 20px;cursor:pointer;font-weight:600;color:#333;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-question:hover{background:#e8f5e9}
+.faq-question::after{content:'+';font-size:1.4rem;color:#00a758;font-weight:700;transition:transform .3s}
+.faq-item.open .faq-question::after{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px}
+.faq-item.open .faq-answer{max-height:1000px;padding:0 20px 16px}
+.faq-answer p{line-height:1.7;color:#555;font-size:.9rem}
+
+/* Keunggulan cards */
+.keunggulan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin:20px 0}
+.keunggulan-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-top:4px solid #00a758;transition:transform .2s}
+.keunggulan-card:hover{transform:translateY(-3px)}
+.keunggulan-card h3{color:#00a758;margin-bottom:10px;font-size:1.1rem}
+.keunggulan-card p{font-size:.9rem;line-height:1.6;color:#555}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:600px){
+.header{padding:20px 15px}
+.tab-content{padding:20px 12px}
+.card{padding:18px}
+.calc-controls{padding:15px;gap:10px;flex-direction:column}
+.calc-control-group{min-width:100%}
+.cards-grid{grid-template-columns:1fr;gap:12px}
+.keunggulan-grid{grid-template-columns:1fr;gap:12px}
+table{font-size:.75rem;display:block;overflow-x:auto}
+}
+
+@media print{
+.wa-banner,.floating-wa,.wa-tooltip{display:none!important}
+body{padding-top:0}
+.tabs-container{position:static}
+.tab-content{display:block!important}
+}
+</style>
+</head>
+<body>
+<!-- WA Banner -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20MiPrecious" target="_blank" class="wa-banner" aria-label="WhatsApp Petrus Jakub">
+<span>Petrus Jakub Partner Bisnis Manulife</span>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<span>087781896087</span>
+</a>
+
+<!-- Header -->
+<div class="header">
+<h1>MiPrecious</h1>
+<p>MiPreparation Legacy for Our Assurance - Asuransi Jiwa Dwiguna dari PT Asuransi Jiwa Manulife Indonesia</p>
+</div>
+
+<!-- Tabs Navigation -->
+<div class="tabs-container">
+<ul class="tabs" id="mainTabs" role="tablist">
+<li class="active" data-tab="ringkasan" role="tab">Ringkasan Produk</li>
+<li data-tab="manfaat" role="tab">Manfaat</li>
+<li data-tab="kalkulator" role="tab">Kalkulator</li>
+<li data-tab="klaim" role="tab">Cara Klaim</li>
+<li data-tab="faq" role="tab">FAQ</li>
+</ul>
+</div>
+
+<!-- Tab 1: Ringkasan Produk -->
+<div class="tab-content active" id="tab-ringkasan" role="tabpanel">
+<div class="card">
+<h2>Apa itu MiPrecious?</h2>
+<p><strong>MiPrecious (MiPreparation Legacy for Our Assurance)</strong> adalah asuransi jiwa dwiguna (endowment) dari Manulife Indonesia yang memberikan <strong>perlindungan jiwa sekaligus pembayaran tunai berkala yang DIJAMIN</strong>.</p>
+<p>Produk ini dirancang untuk perencanaan keuangan jangka panjang dengan manfaat yang pasti diterima selama masa pertanggungan, serta bisa diwariskan ke generasi berikutnya.</p>
+
+<div class="info-box">
+<p><strong>Produk Multi Generasi Pertama di Indonesia!</strong> Polis MiPrecious bisa dialihkan ke anak atau cucu (maksimal 3 kali) tanpa perlu tes kesehatan ulang. Semua manfaat tetap berlanjut untuk Tertanggung baru.</p>
+</div>
+
+<h3>3 Keunggulan Utama MiPrecious</h3>
+</div>
+
+<div class="keunggulan-grid">
+<div class="keunggulan-card">
+<h3>KUAT</h3>
+<p><strong>Guaranteed Issuance Offer (GIO)</strong> - Diterima tanpa tes medis hingga usia 70 tahun. Total Manfaat Tunai Pasti hingga <strong>550%</strong> dari Dana Masa Depan (untuk masa pertanggungan 50 tahun).</p>
+</div>
+<div class="keunggulan-card">
+<h3>BERKILAU</h3>
+<p><strong>Tambahan Manfaat Tunai</strong> (tidak dijamin, berdasarkan surplus investasi) bisa menambah total manfaat hingga <strong>342%</strong> dari Dana Masa Depan.</p>
+</div>
+<div class="keunggulan-card" style="border-top-color:#F39C12">
+<h3>BERHARGA</h3>
+<p><strong>Multi Generation</strong> - Polis bisa dilanjutkan ke generasi berikutnya (maks 3x). Perlindungan mulai usia <strong>30 hari</strong>. Masa pertanggungan hingga <strong>50 tahun</strong>.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Spesifikasi Produk</h3>
+<table>
+<tr><th>Komponen</th><th>Keterangan</th></tr>
+<tr><td>Masa Pertanggungan</td><td>30 tahun atau 50 tahun</td></tr>
+<tr><td>Masa Pembayaran Premi</td><td>Sekaligus (Single Premium), 2 tahun, atau 5 tahun</td></tr>
+<tr><td>Usia Masuk (Single Premium)</td><td>30 hari - 70 tahun</td></tr>
+<tr><td>Usia Masuk (Reguler 2 tahun)</td><td>30 hari - 70 tahun</td></tr>
+<tr><td>Usia Masuk (Reguler 5 tahun)</td><td>30 hari - 65 tahun</td></tr>
+<tr><td>Mata Uang</td><td>Rupiah (IDR) atau Dolar Amerika (USD)</td></tr>
+<tr><td>Min. Dana Masa Depan</td><td>Rp50.000.000 / USD 5,000</td></tr>
+<tr><td>Underwriting</td><td>Guaranteed Issuance Offer (tanpa tes medis)</td></tr>
+</table>
+
+<h3>Pilihan Plan</h3>
+<table>
+<tr><th>Plan</th><th>Premi (IDR)</th><th>Premi (USD)</th></tr>
+<tr><td><span class="badge badge-orange">Bronze</span></td><td>&le; Rp99.999.999</td><td>&le; USD 9,999</td></tr>
+<tr><td><span class="badge badge-blue">Silver</span></td><td>Rp100.000.000 - Rp199.999.999</td><td>USD 10,000 - 19,999</td></tr>
+<tr><td><span class="badge badge-gold">Gold</span></td><td>Rp200.000.000 - Rp499.999.999</td><td>USD 20,000 - 49,999</td></tr>
+<tr><td><span class="badge badge-green">Platinum</span></td><td>&ge; Rp500.000.000</td><td>&ge; USD 50,000</td></tr>
+</table>
+
+<div class="highlight-box">
+<p><strong>Metode Pembayaran Premi:</strong> Sekaligus (lump sum), atau Reguler (Bulanan / Kuartalan / Semesteran / Tahunan)</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 2: Manfaat -->
+<div class="tab-content" id="tab-manfaat" role="tabpanel">
+<div class="card">
+<h2>Manfaat MiPrecious</h2>
+<p>MiPrecious memberikan berbagai manfaat yang <strong>DIJAMIN (pasti dibayarkan)</strong> dan manfaat tambahan yang tidak dijamin:</p>
+
+<h3>A. Manfaat Tunai Pasti (DIJAMIN)</h3>
+
+<div class="timeline">
+<div class="timeline-item">
+<h4>1. Manfaat Pembayaran Tunai Sepuluh Tahunan</h4>
+<p><strong>25% Dana Masa Depan</strong> dibayarkan setiap 10 tahun (tahun ke-10, 20, 30, 40, 50)</p>
+</div>
+<div class="timeline-item">
+<h4>2. Manfaat Pembayaran Tunai Tahunan</h4>
+<p><strong>10% Dana Masa Depan</strong> dibayarkan setiap tahun mulai tahun ke-11 hingga akhir masa pertanggungan</p>
+</div>
+<div class="timeline-item">
+<h4>3. Manfaat Akhir Masa Pertanggungan</h4>
+<p><strong>100% Dana Masa Depan</strong> dibayarkan di akhir masa perlindungan</p>
+</div>
+</div>
+
+<div class="info-box">
+<p><strong>Total Manfaat Tunai Pasti:</strong></p>
+<p>Masa Pertanggungan 30 tahun: Total <strong>320%</strong> dari Dana Masa Depan</p>
+<p>Masa Pertanggungan 50 tahun: Total <strong>550%</strong> dari Dana Masa Depan</p>
+</div>
+
+<h3>B. Tambahan Manfaat Tunai (Tidak Dijamin)</h3>
+<p>Bonus dari surplus investasi yang bisa menambah total manfaat:</p>
+<ul>
+<li><strong>Tambahan Manfaat Tunai Sepuluh Tahunan</strong> - Bonus tambahan setiap 10 tahun</li>
+<li><strong>Tambahan Manfaat Tunai Tahunan</strong> - Bonus tambahan tahunan mulai tahun ke-11</li>
+<li><strong>Tambahan Manfaat Tunai Akhir Masa Pertanggungan</strong> - Bonus di akhir masa</li>
+</ul>
+<p>Total Tambahan Manfaat Tunai bisa mencapai hingga <strong>342%</strong> dari Dana Masa Depan.</p>
+
+<h3>C. Manfaat Perlindungan Jiwa</h3>
+<ul>
+<li><strong>Manfaat Pengembalian Premi</strong> - Jika Tertanggung meninggal dunia dalam 2 tahun pertama, seluruh premi yang telah dibayarkan akan dikembalikan</li>
+<li><strong>Manfaat Pembebasan Premi</strong> - Jika Tertanggung meninggal setelah tahun ke-2, sisa premi dibebaskan dan semua manfaat tetap berjalan hingga akhir masa pertanggungan</li>
+<li><strong>Manfaat Meninggal Akibat Kecelakaan</strong> - Tambahan manfaat sebesar total premi yang sudah dibayarkan</li>
+</ul>
+
+<h3>D. Multi Generasi (Perubahan Tertanggung)</h3>
+<div class="highlight-box">
+<p><strong>Polis bisa dialihkan ke generasi berikutnya!</strong></p>
+<p>Maksimal 3 kali pengalihan selama masa pertanggungan. Tanpa perlu underwriting (tes kesehatan) untuk Tertanggung baru. Bisa dilakukan setelah masa pembayaran premi berakhir ATAU setelah 2 tahun polis berjalan (mana yang lebih lama). Semua manfaat tetap berlanjut untuk Tertanggung baru.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Ilustrasi Manfaat (Contoh: Dana Masa Depan Rp300 Juta, 50 Tahun)</h3>
+<table>
+<tr><th>Tahun</th><th>Jenis Manfaat</th><th>Jumlah (Dijamin)</th></tr>
+<tr><td>10</td><td>Tunai Sepuluh Tahunan</td><td>Rp75.000.000 (25%)</td></tr>
+<tr><td>11-19</td><td>Tunai Tahunan (per tahun)</td><td>Rp30.000.000 (10%)</td></tr>
+<tr><td>20</td><td>Tunai Sepuluh Tahunan</td><td>Rp75.000.000 (25%)</td></tr>
+<tr><td>21-29</td><td>Tunai Tahunan (per tahun)</td><td>Rp30.000.000 (10%)</td></tr>
+<tr><td>30</td><td>Tunai Sepuluh Tahunan</td><td>Rp75.000.000 (25%)</td></tr>
+<tr><td>31-39</td><td>Tunai Tahunan (per tahun)</td><td>Rp30.000.000 (10%)</td></tr>
+<tr><td>40</td><td>Tunai Sepuluh Tahunan</td><td>Rp75.000.000 (25%)</td></tr>
+<tr><td>41-49</td><td>Tunai Tahunan (per tahun)</td><td>Rp30.000.000 (10%)</td></tr>
+<tr><td>50</td><td>Tunai Sepuluh Tahunan + Akhir Masa</td><td>Rp75.000.000 + Rp300.000.000</td></tr>
+</table>
+<div class="info-box">
+<p><strong>Total Manfaat Tunai Pasti = Rp1.650.000.000 (550% x Rp300 Juta)</strong></p>
+<p>Belum termasuk Tambahan Manfaat Tunai (tidak dijamin) yang bisa menambah total penerimaan.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Asuransi Tambahan: ALP Extra</h3>
+<p>Perlindungan jiwa tambahan yang bisa ditambahkan ke polis MiPrecious:</p>
+<ul>
+<li>Perlindungan tambahan hingga usia 80 tahun</li>
+<li>100% uang pertanggungan dibayarkan jika meninggal dunia</li>
+<li>Usia masuk: 30 hari - 59 tahun</li>
+<li>Minimum uang pertanggungan: Rp50.000.000 / USD 5,000</li>
+</ul>
+</div>
+</div>
+
+<!-- Tab 3: Kalkulator -->
+<div class="tab-content" id="tab-kalkulator" role="tabpanel">
+<div class="card">
+<h2>Kalkulator MiPrecious</h2>
+<p style="margin-bottom:20px">Hitung estimasi premi dan proyeksi manfaat MiPrecious berdasarkan Dana Masa Depan yang Anda inginkan.</p>
+
+<!-- Calculator Controls -->
+<div class="calc-controls">
+<div class="calc-control-group">
+<label>Mata Uang</label>
+<select id="calcCurrency" onchange="updateCalc()">
+<option value="IDR">Rupiah (IDR)</option>
+<option value="USD">Dolar AS (USD)</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Dana Masa Depan</label>
+<select id="calcDMD" onchange="updateCalc()">
+</select>
+</div>
+<div class="calc-control-group">
+<label>Masa Pertanggungan</label>
+<select id="calcTerm" onchange="updateCalc()">
+<option value="30">30 Tahun</option>
+<option value="50" selected>50 Tahun</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Masa Pembayaran Premi</label>
+<select id="calcPayment" onchange="updateCalc()">
+<option value="single">Sekaligus (Single Premium)</option>
+<option value="2">Reguler 2 Tahun</option>
+<option value="5" selected>Reguler 5 Tahun</option>
+</select>
+</div>
+</div>
+
+<!-- Calculator Results -->
+<div id="calcResults"></div>
+
+<!-- Info Box -->
+<div class="calc-info-box">
+<h4>Catatan Penting</h4>
+<p>Perhitungan ini adalah estimasi untuk tujuan ilustrasi. Angka sebenarnya dapat berbeda tergantung usia, plan, dan ketentuan yang berlaku saat pengajuan.</p>
+<p>Tambahan Manfaat Tunai (tidak dijamin) tidak termasuk dalam perhitungan ini. Manfaat aktual bisa lebih besar.</p>
+<p style="margin-top:8px"><strong>Hubungi kami untuk ilustrasi personal yang lebih akurat!</strong></p>
+</div>
+</div>
+</div>
+
+<!-- Tab 4: Cara Klaim -->
+<div class="tab-content" id="tab-klaim" role="tabpanel">
+<div class="card">
+<h2>Cara Klaim MiPrecious</h2>
+
+<h3>1. Klaim Manfaat Tunai Berkala</h3>
+<div class="info-box">
+<p>Pembayaran tunai berkala (tahunan dan sepuluh tahunan) akan dibayarkan secara otomatis sesuai jadwal ke rekening yang terdaftar.</p>
+</div>
+
+<h3>2. Klaim Meninggal Dunia</h3>
+<p>Ajukan klaim tertulis dalam waktu <strong>90 hari</strong> sejak kejadian. Dokumen yang diperlukan:</p>
+<ol>
+<li>Polis asli</li>
+<li>Formulir klaim yang sudah diisi lengkap</li>
+<li>Surat keterangan dokter yang merawat</li>
+<li>Surat keterangan kematian dari instansi berwenang</li>
+<li>Fotokopi KTP/identitas Tertanggung dan Pemegang Polis</li>
+<li>Laporan polisi (jika meninggal akibat kecelakaan)</li>
+</ol>
+
+<h3>3. Klaim Akhir Masa Pertanggungan</h3>
+<p>Dokumen yang diperlukan:</p>
+<ol>
+<li>Polis asli</li>
+<li>Formulir klaim yang sudah diisi lengkap</li>
+<li>Fotokopi KTP/identitas Pemegang Polis</li>
+</ol>
+
+<h3>4. Proses Pembayaran</h3>
+<div class="highlight-box">
+<p>Pembayaran klaim akan dilakukan dalam waktu <strong>30 hari kerja</strong> setelah dokumen lengkap dan klaim disetujui.</p>
+</div>
+
+<h3>Kontak Klaim Manulife</h3>
+<div class="info-box">
+<p><strong>Customer Service:</strong> (021) 2555-7777</p>
+<p><strong>Toll-Free:</strong> 0800 1 606060</p>
+<p><strong>Email:</strong> customer_id@manulife.com</p>
+<p><strong>Alamat:</strong> Sampoerna Strategic Square, Ground Floor, North Tower, Jl. Jenderal Sudirman Kav. 45-46 Jakarta 12930</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 5: FAQ -->
+<div class="tab-content" id="tab-faq" role="tabpanel">
+<div class="card">
+<h2>Pertanyaan yang Sering Ditanya (FAQ)</h2>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Apa itu MiPrecious?</div>
+<div class="faq-answer"><p>MiPrecious (MiPreparation Legacy for Our Assurance) adalah asuransi jiwa dwiguna dari Manulife Indonesia. Produk ini memberikan perlindungan jiwa sekaligus pembayaran tunai berkala yang DIJAMIN, serta bisa diwariskan ke generasi berikutnya (multi generasi). Cocok untuk perencanaan keuangan jangka panjang dan warisan keluarga.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Siapa yang bisa mendaftar?</div>
+<div class="faq-answer"><p>Usia masuk mulai dari <strong>30 hari sampai 70 tahun</strong> (tergantung masa pembayaran premi yang dipilih). Untuk Reguler 5 tahun, maksimal usia masuk 65 tahun. Yang istimewa, MiPrecious menggunakan <strong>Guaranteed Issuance Offer (GIO)</strong> - artinya Anda langsung diterima tanpa perlu tes kesehatan (medical check-up), sesuai syarat dan ketentuan yang berlaku.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Berapa minimum premi?</div>
+<div class="faq-answer"><p>Minimum Dana Masa Depan adalah <strong>Rp50.000.000</strong> (untuk IDR) atau <strong>USD 5,000</strong> (untuk USD). Premi yang dibayarkan tergantung pada Dana Masa Depan, masa pertanggungan, dan masa pembayaran premi yang dipilih. Gunakan Kalkulator di tab sebelumnya untuk estimasi premi.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Apa bedanya masa pertanggungan 30 dan 50 tahun?</div>
+<div class="faq-answer"><p><strong>30 Tahun:</strong> Total Manfaat Tunai Pasti = 320% dari Dana Masa Depan. Cocok untuk perencanaan keuangan jangka menengah, misalnya dana pendidikan anak atau dana pensiun.<br><br><strong>50 Tahun:</strong> Total Manfaat Tunai Pasti = 550% dari Dana Masa Depan. Cocok untuk perencanaan warisan multi generasi dan perlindungan jangka panjang keluarga.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Apa itu Manfaat Tunai Pasti?</div>
+<div class="faq-answer"><p>Manfaat Tunai Pasti adalah pembayaran tunai yang <strong>DIJAMIN</strong> akan Anda terima selama polis aktif. Terdiri dari:<br>- <strong>10% Dana Masa Depan</strong> setiap tahun mulai tahun ke-11<br>- <strong>25% Dana Masa Depan</strong> setiap 10 tahun (tahun ke-10, 20, 30, dst)<br>- <strong>100% Dana Masa Depan</strong> di akhir masa pertanggungan<br><br>Semua pembayaran ini pasti diterima selama polis aktif, tidak tergantung kondisi pasar.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Apa itu Tambahan Manfaat Tunai?</div>
+<div class="faq-answer"><p>Tambahan Manfaat Tunai adalah bonus <strong>TIDAK DIJAMIN</strong> yang berasal dari surplus investasi perusahaan. Jika kinerja investasi bagus, Anda bisa mendapat tambahan manfaat hingga 342% dari Dana Masa Depan. Ini adalah bonus di atas Manfaat Tunai Pasti yang sudah dijamin. Jadi total penerimaan bisa jauh lebih besar dari yang dijamin.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Apa itu Multi Generasi (Perubahan Tertanggung)?</div>
+<div class="faq-answer"><p>Fitur Multi Generasi memungkinkan polis MiPrecious <strong>dialihkan ke generasi berikutnya</strong> (anak atau cucu). Ketentuan:<br>- Maksimal 3 kali pengalihan selama masa pertanggungan<br>- Tanpa perlu tes kesehatan (underwriting) untuk Tertanggung baru<br>- Bisa dilakukan setelah masa pembayaran premi selesai ATAU setelah 2 tahun (mana yang lebih lama)<br>- Semua manfaat polis tetap berlanjut untuk Tertanggung baru<br><br>Ini berarti satu polis bisa melindungi hingga 4 generasi keluarga!</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Bagaimana jika Tertanggung meninggal dunia?</div>
+<div class="faq-answer"><p>Perlindungan berbeda tergantung waktu kejadian:<br><br><strong>Di 2 tahun pertama:</strong> Seluruh premi yang sudah dibayarkan dikembalikan (Manfaat Pengembalian Premi).<br><br><strong>Setelah tahun ke-2:</strong> Sisa premi yang belum dibayar dibebaskan, dan semua Manfaat Tunai Pasti tetap berjalan hingga akhir masa pertanggungan (Manfaat Pembebasan Premi). Ahli waris tetap menerima semua pembayaran tunai berkala.<br><br><strong>Jika karena kecelakaan:</strong> Selain manfaat di atas, ahli waris juga menerima tambahan sebesar total premi yang sudah dibayarkan.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" tabindex="0" role="button" aria-expanded="false">Apa itu Guaranteed Issuance Offer (GIO)?</div>
+<div class="faq-answer"><p>GIO (Guaranteed Issuance Offer) berarti Anda <strong>dijamin diterima</strong> sebagai nasabah tanpa perlu menjalani pemeriksaan kesehatan (medical check-up). Cukup mengisi formulir pengajuan dan memenuhi persyaratan administrasi, polis Anda langsung aktif. Ini berlaku untuk semua usia masuk yang memenuhi syarat (sesuai ketentuan yang berlaku).</p></div>
+</div>
+
+</div>
+</div>
+
+<!-- Floating WA Button -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20MiPrecious" target="_blank" class="floating-wa" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<div class="wa-tooltip">Petrus Jakub - 087781896087</div>
+
+<script>
+// Tab Navigation
+(function(){
+var tabs = document.querySelectorAll('.tabs li');
+var contents = document.querySelectorAll('.tab-content');
+tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        contents.forEach(function(c){ c.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+    });
+});
+})();
+
+// FAQ Accordion
+(function(){
+var questions = document.querySelectorAll('.faq-question');
+questions.forEach(function(q){
+    function toggleFaq() {
+        var item = q.parentElement;
+        item.classList.toggle('open');
+        q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+    }
+    q.addEventListener('click', toggleFaq);
+    q.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleFaq();
+        }
+    });
+});
+})();
+
+// ============ KALKULATOR MiPrecious ============
+var PREMIUM_RATIOS = {
+    IDR: {
+        single: { 30: 2.8, 50: 3.5 },
+        2: { 30: 0.75, 50: 0.85 },
+        5: { 30: 0.42, 50: 0.56 }
+    },
+    USD: {
+        single: { 30: 3.0, 50: 4.2 },
+        2: { 30: 0.80, 50: 0.95 },
+        5: { 30: 0.45, 50: 0.56 }
+    }
+};
+
+function formatIDR(num) {
+    return 'Rp' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function formatUSD(num) {
+    return 'USD ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function populateDMDOptions() {
+    var currency = document.getElementById('calcCurrency').value;
+    var select = document.getElementById('calcDMD');
+    select.innerHTML = '';
+    if (currency === 'IDR') {
+        var options = [50000000, 100000000, 150000000, 200000000, 300000000, 500000000, 750000000, 1000000000];
+        for (var i = 0; i < options.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = options[i];
+            opt.textContent = formatIDR(options[i]);
+            if (options[i] === 300000000) opt.selected = true;
+            select.appendChild(opt);
+        }
+    } else {
+        var options = [5000, 10000, 15000, 20000, 25000, 50000, 75000, 100000];
+        for (var i = 0; i < options.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = options[i];
+            opt.textContent = formatUSD(options[i]);
+            if (options[i] === 25000) opt.selected = true;
+            select.appendChild(opt);
+        }
+    }
+}
+
+function updateCalc() {
+    populateDMDOptions();
+    calculate();
+}
+
+function calculate() {
+    var currency = document.getElementById('calcCurrency').value;
+    var dmd = parseFloat(document.getElementById('calcDMD').value);
+    var term = parseInt(document.getElementById('calcTerm').value);
+    var payment = document.getElementById('calcPayment').value;
+
+    var fmt = currency === 'IDR' ? formatIDR : formatUSD;
+    var ratio = PREMIUM_RATIOS[currency][payment][term];
+    
+    var premiumPerYear, totalPremium, premiumLabel;
+    if (payment === 'single') {
+        totalPremium = dmd * ratio;
+        premiumPerYear = totalPremium;
+        premiumLabel = 'Premi Sekaligus';
+    } else {
+        var years = parseInt(payment);
+        premiumPerYear = dmd * ratio;
+        totalPremium = premiumPerYear * years;
+        premiumLabel = 'Premi per Tahun (x' + years + ' tahun)';
+    }
+
+    // Calculate guaranteed benefits
+    var numDecadal = Math.floor(term / 10); // payments every 10 years (years 10, 20, 30, 40, 50)
+    var decadalTotal = numDecadal * 0.25 * dmd;
+    
+    var annualStart = 11;
+    var numAnnual = 0;
+    for (var yr = annualStart; yr <= term - 1; yr++) {
+        if (yr % 10 !== 0) { // annual payments skip decade years
+            numAnnual++;
+        }
+    }
+    var annualTotal = numAnnual * 0.10 * dmd;
+    
+    var endOfTerm = 1.0 * dmd;
+    var totalGuaranteed = decadalTotal + annualTotal + endOfTerm;
+    var totalPercent = (totalGuaranteed / dmd * 100).toFixed(0) + '%';
+
+    var html = '';
+    
+    // Summary Cards
+    html += '<div class="section-title">Ringkasan Estimasi <span class="badge-sm">Dijamin</span></div>';
+    html += '<div class="cards-grid">';
+    
+    // Card 1: Premium
+    html += '<div class="result-card animate">';
+    html += '<div class="card-header">Total Premi yang Dibayar</div>';
+    html += '<div class="card-body">';
+    html += '<div class="row"><span class="row-label">' + premiumLabel + '</span><span class="row-value">' + fmt(premiumPerYear) + '</span></div>';
+    html += '<div class="row"><span class="row-label">Total Premi</span><span class="row-value highlight">' + fmt(totalPremium) + '</span></div>';
+    html += '<div class="row"><span class="row-label">Masa Pertanggungan</span><span class="row-value">' + term + ' Tahun</span></div>';
+    html += '</div></div>';
+
+    // Card 2: Total Guaranteed
+    html += '<div class="result-card animate">';
+    html += '<div class="card-header">Total Manfaat Tunai Pasti</div>';
+    html += '<div class="card-body">';
+    html += '<div class="row"><span class="row-label">Tunai Sepuluh Tahunan (' + numDecadal + 'x)</span><span class="row-value">' + fmt(decadalTotal) + '</span></div>';
+    html += '<div class="row"><span class="row-label">Tunai Tahunan (' + numAnnual + ' tahun)</span><span class="row-value">' + fmt(annualTotal) + '</span></div>';
+    html += '<div class="row"><span class="row-label">Akhir Masa Pertanggungan</span><span class="row-value">' + fmt(endOfTerm) + '</span></div>';
+    html += '<div class="row"><span class="row-label">Total Dijamin (' + totalPercent + ')</span><span class="row-value highlight">' + fmt(totalGuaranteed) + '</span></div>';
+    html += '</div></div>';
+
+    // Card 3: Comparison
+    var returnRatio = (totalGuaranteed / totalPremium * 100).toFixed(0);
+    html += '<div class="result-card gold animate">';
+    html += '<div class="card-header">Perbandingan Premi vs Manfaat</div>';
+    html += '<div class="card-body">';
+    html += '<div class="row"><span class="row-label">Total Premi Dibayar</span><span class="row-value">' + fmt(totalPremium) + '</span></div>';
+    html += '<div class="row"><span class="row-label">Total Manfaat Pasti Diterima</span><span class="row-value">' + fmt(totalGuaranteed) + '</span></div>';
+    html += '<div class="row"><span class="row-label">Rasio Pengembalian</span><span class="row-value highlight">' + returnRatio + '%</span></div>';
+    html += '<div class="row"><span class="row-label">+ Tambahan Manfaat Tunai</span><span class="row-value" style="color:#777;font-size:.8rem">Tidak dijamin, bisa lebih besar</span></div>';
+    html += '</div></div>';
+    
+    html += '</div>';
+
+    // Payment Schedule
+    html += '<div class="section-title">Jadwal Pembayaran Tunai Pasti <span class="badge-sm" style="background:#F39C12">Dijamin</span></div>';
+    html += '<div class="card" style="margin-top:0">';
+    html += '<table><tr><th>Tahun</th><th>Jenis Manfaat</th><th>Jumlah</th></tr>';
+    
+    for (var y = 1; y <= term; y++) {
+        var payments = [];
+        if (y % 10 === 0) {
+            payments.push({type: 'Tunai Sepuluh Tahunan (25%)', amount: 0.25 * dmd});
+        }
+        if (y >= 11 && y <= term - 1 && y % 10 !== 0) {
+            payments.push({type: 'Tunai Tahunan (10%)', amount: 0.10 * dmd});
+        }
+        if (y === term) {
+            payments.push({type: 'Akhir Masa Pertanggungan (100%)', amount: 1.0 * dmd});
+        }
+        for (var p = 0; p < payments.length; p++) {
+            html += '<tr><td>' + y + '</td><td>' + payments[p].type + '</td><td><strong>' + fmt(payments[p].amount) + '</strong></td></tr>';
+        }
+    }
+    
+    html += '<tr style="background:#e8f5e9;font-weight:700"><td></td><td>TOTAL MANFAAT TUNAI PASTI</td><td><strong>' + fmt(totalGuaranteed) + '</strong></td></tr>';
+    html += '</table></div>';
+
+    document.getElementById('calcResults').innerHTML = html;
+    
+    // Animate cards
+    var cards = document.querySelectorAll('.result-card');
+    for (var c = 0; c < cards.length; c++) {
+        cards[c].style.animationDelay = (c * 0.1) + 's';
+    }
+}
+
+// Initialize
+populateDMDOptions();
+calculate();
+</script>
+</body>
+</html>

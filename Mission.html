@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiSSION - MiSmart Insurance Solution | Manulife Indonesia</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;background:#f5f5f5;padding-top:48px;padding-bottom:80px}
+a{color:#00a758}
+
+/* WA Banner */
+.wa-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#25D366;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;text-decoration:none;color:#fff;font-weight:700;font-size:clamp(0.85rem,2.5vw,1rem);box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer;transition:background .2s}
+.wa-banner:hover{background:#1DA851}
+.wa-banner svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+.wa-banner span{white-space:nowrap}
+
+/* Floating WA Button */
+.floating-wa{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:9999;transition:transform .2s,box-shadow .2s}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.6)}
+.floating-wa svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:fixed;bottom:90px;right:25px;background:#fff;color:#333;padding:8px 14px;border-radius:8px;font-size:.75rem;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.15);z-index:9999;white-space:nowrap;opacity:0;transform:translateY(5px);transition:all .3s;pointer-events:none}
+.floating-wa:hover+.wa-tooltip{opacity:1;transform:translateY(0)}
+
+/* Header */
+.header{background:linear-gradient(135deg,#00a758 0%,#006838 100%);color:#fff;padding:30px 20px;text-align:center}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:5px}
+.header p{font-size:1rem;opacity:.9}
+
+/* Tabs */
+.tabs-container{background:#fff;border-bottom:2px solid #00a758;position:sticky;top:48px;z-index:998;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,0.1);-webkit-overflow-scrolling:touch}
+.tabs{display:flex;padding:0;list-style:none;min-width:max-content}
+.tabs li{padding:12px 16px;cursor:pointer;font-size:.85rem;font-weight:500;color:#555;border-bottom:3px solid transparent;transition:all .2s;user-select:none}
+.tabs li:hover{background:#e8f5e9;color:#00a758}
+.tabs li.active{color:#00a758;border-bottom-color:#00a758;background:#e8f5e9;font-weight:700}
+
+/* Tab Content */
+.tab-content{display:none;padding:30px 20px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:25px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card h2{color:#00a758;margin-bottom:15px;font-size:1.4rem}
+.card h3{color:#006838;margin:18px 0 10px;font-size:1.1rem}
+.card p,.card li{line-height:1.7;margin-bottom:8px}
+.card ul,.card ol{padding-left:20px}
+
+/* Badges */
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:8px;margin-bottom:5px}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.badge-orange{background:#fff3e0;color:#e65100}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.85rem}
+th{background:#00a758;color:#fff;padding:10px 8px;text-align:center;font-weight:600;white-space:nowrap}
+td{padding:8px;text-align:center;border-bottom:1px solid #e0e0e0;white-space:nowrap}
+tr:nth-child(even){background:#f8fdf9}
+tr:hover{background:#e8f5e9}
+
+/* Info boxes */
+.info-box{background:#e8f5e9;border-left:4px solid #00a758;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.highlight-box{background:#fff8e1;border-left:4px solid #ffc107;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+
+/* Plan Cards */
+.section-title{font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:#00a758;margin:25px 0 15px;padding-left:12px;border-left:4px solid #2ECC71}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-bottom:30px}
+.plan-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,167,88,0.12);transition:all .3s;opacity:0;transform:translateY(15px)}
+.plan-card.animate{animation:fadeInUp .4s ease forwards}
+.plan-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,167,88,0.2)}
+.plan-card .card-header{background:linear-gradient(135deg,#00a758,#006838);color:#fff;padding:14px 16px;font-weight:700;font-size:1rem}
+.plan-card .card-body{padding:16px}
+.plan-card .premi-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0}
+.plan-card .premi-row:last-child{border-bottom:none}
+.plan-card .premi-label{font-size:.8rem;color:#777;font-weight:500}
+.plan-card .premi-value{font-size:.95rem;font-weight:700;color:#00a758}
+
+/* Calculator */
+.calc-controls{background:#fff;border-radius:12px;padding:20px 25px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:25px;display:flex;flex-wrap:wrap;gap:15px;align-items:center}
+.calc-control-group{display:flex;flex-direction:column;gap:5px}
+.calc-control-group label{font-size:.8rem;font-weight:600;color:#00a758;text-transform:uppercase;letter-spacing:.5px}
+.calc-control-group select{padding:10px 35px 10px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:.95rem;font-family:inherit;background:#fff;cursor:pointer;transition:all .3s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300a758' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.calc-control-group select:focus{outline:none;border-color:#00a758;box-shadow:0 0 0 3px rgba(0,167,88,0.15)}
+.calc-info-box{background:linear-gradient(135deg,#E8F5EE,#D5F5E3);border-radius:12px;padding:18px 22px;margin:20px 0;border-left:4px solid #2ECC71}
+.calc-info-box h4{color:#00a758;font-size:.9rem;margin-bottom:6px}
+.calc-info-box p{font-size:.82rem;color:#333;margin:4px 0}
+
+/* FAQ Accordion */
+.faq-item{background:#fff;border-radius:8px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.faq-question{padding:16px 20px;cursor:pointer;font-weight:600;color:#333;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-question:hover{background:#e8f5e9}
+.faq-question::after{content:'+';font-size:1.4rem;color:#00a758;font-weight:700;transition:transform .3s}
+.faq-item.open .faq-question::after{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px}
+.faq-item.open .faq-answer{max-height:500px;padding:0 20px 16px}
+.faq-answer p{line-height:1.7;color:#555;font-size:.9rem}
+
+/* Feature grid */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:20px 0}
+.feature-item{background:#f8fdf9;border-radius:10px;padding:18px;border:1px solid #e8f5e9}
+.feature-item strong{color:#00a758;display:block;margin-bottom:5px}
+
+/* Rider card */
+.rider-card{background:#fff;border-radius:10px;padding:18px;margin-bottom:12px;border-left:4px solid #00a758;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.rider-card h4{color:#006838;margin-bottom:6px;font-size:.95rem}
+.rider-card p{font-size:.85rem;color:#555;margin:0}
+
+/* Calculator Tabs */
+.calc-tabs{display:flex;gap:0;margin-bottom:20px;background:#fff;border-radius:12px;padding:5px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.calc-tab-btn{flex:1;padding:12px 20px;border:none;background:transparent;font-size:.95rem;font-weight:600;font-family:inherit;color:#777;cursor:pointer;border-radius:8px;transition:all .3s}
+.calc-tab-btn.active{background:#00a758;color:#fff;box-shadow:0 2px 8px rgba(0,167,88,0.3)}
+.calc-tab-btn:hover:not(.active){background:rgba(0,167,88,0.08);color:#00a758}
+.plan-card.smart .card-header{background:linear-gradient(135deg,#F39C12,#E67E22)}
+.plan-card .premi-value.monthly{color:#006838;font-size:.88rem}
+.plan-card .detail-row{font-size:.78rem;color:#777;padding:3px 0;display:flex;justify-content:space-between}
+.plan-card .detail-row .detail-val{font-weight:600;color:#333}
+.plan-card .deductible-badge{display:inline-block;background:#FFF3CD;color:#856404;font-size:.72rem;padding:3px 8px;border-radius:6px;font-weight:600;margin-top:6px}
+.section-title .badge-sm{display:inline-block;background:#2ECC71;color:#fff;font-size:.7rem;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle;font-weight:600}
+.expand-btn{display:block;width:100%;padding:14px;border:2px dashed #00a758;border-radius:12px;background:transparent;color:#00a758;font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;transition:all .3s;margin:20px 0}
+.expand-btn:hover{background:rgba(0,167,88,0.05);border-color:#006838}
+.all-plans{display:none}
+.all-plans.show{display:block;animation:fadeInUp .4s ease}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:600px){
+.header{padding:20px 15px}
+.tab-content{padding:20px 12px}
+.card{padding:18px}
+.calc-controls{padding:15px;gap:10px}
+.cards-grid{grid-template-columns:1fr;gap:12px}
+.feature-grid{grid-template-columns:1fr}
+.calc-tabs{flex-direction:column;gap:5px}
+table{font-size:.75rem}
+}
+
+@media print{
+.wa-banner,.floating-wa,.wa-tooltip{display:none!important}
+body{padding-top:0}
+.tabs-container{position:static}
+.tab-content{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<!-- WA Banner -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20Manulife%20Produk%20Mission" target="_blank" class="wa-banner" aria-label="WhatsApp Petrus Jakub">
+<span>Petrus Jakub Partner Bisnis Manulife</span>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<span>087781896087</span>
+</a>
+
+<!-- Header -->
+<div class="header">
+<h1>MiSmart Insurance Solution (MiSSION)</h1>
+<p>Asuransi Jiwa Unit Link dari PT Asuransi Jiwa Manulife Indonesia</p>
+</div>
+
+<!-- Tabs Navigation -->
+<div class="tabs-container">
+<ul class="tabs" id="mainTabs" role="tablist">
+<li class="active" data-tab="ringkasan" role="tab">Ringkasan Produk</li>
+<li data-tab="manfaat" role="tab">Manfaat</li>
+<li data-tab="rider" role="tab">Asuransi Tambahan</li>
+<li data-tab="investasi" role="tab">Pilihan Investasi</li>
+<li data-tab="biaya" role="tab">Biaya-biaya</li>
+<li data-tab="kalkulator" role="tab">Kalkulator Premi</li>
+<li data-tab="ilustrasi" role="tab">Ilustrasi</li>
+<li data-tab="faq" role="tab">FAQ</li>
+</ul>
+</div>
+<!-- Tab 1: Ringkasan Produk -->
+<div class="tab-content active" id="tab-ringkasan" role="tabpanel">
+<div class="card">
+<h2>Apa itu MiSSION?</h2>
+<p><strong>MiSSION (MiSmart Insurance Solution)</strong> adalah produk asuransi jiwa unit link dari Manulife Indonesia. Ini adalah solusi 3-in-1 yang menggabungkan <strong>Proteksi Jiwa</strong>, <strong>Investasi</strong>, dan <strong>Kesehatan</strong> dalam satu produk.</p>
+<p>Jadi, dengan satu polis MiSSION, Anda mendapat perlindungan jiwa, uang Anda diinvestasikan agar bisa tumbuh, dan Anda juga bisa menambahkan perlindungan kesehatan.</p>
+
+<p>Tersedia dalam 2 versi:</p>
+<ul>
+<li><span class="badge badge-blue">Konvensional</span> Berbasis premi asuransi jiwa unit link</li>
+<li><span class="badge badge-green">Syariah</span> Berbasis kontribusi dengan akad Wakalah bil Ujrah (sesuai prinsip syariah)</li>
+</ul>
+
+<h3>Keunggulan Utama MiSSION</h3>
+<div class="feature-grid">
+<div class="feature-item">
+<strong>Premi Terjangkau</strong>
+Mulai dari Rp4.000.000/tahun (atau sekitar Rp340.000/bulan). Dalam mata uang USD mulai dari USD 400/tahun.
+</div>
+<div class="feature-item">
+<strong>Uang Pertanggungan Optimal</strong>
+Minimal Rp100 juta atau 5x premi tahunan (mana yang lebih besar). Perlindungan jiwa yang memadai untuk keluarga Anda.
+</div>
+<div class="feature-item">
+<strong>Alokasi Investasi Tinggi</strong>
+70% dari premi dasar dialokasikan ke investasi di tahun 1-3, lalu 100% di tahun ke-4 dan seterusnya. Top-up selalu 100%.
+</div>
+<div class="feature-item">
+<strong>Manfaat Loyalitas Besar</strong>
+Bonus loyalitas 50% premi dasar di tahun ke-10, dan 700% premi dasar di tahun ke-25. Reward besar bagi nasabah setia!
+</div>
+<div class="feature-item">
+<strong>Usia Masuk Luas</strong>
+30 hari sampai 70 tahun. Bisa daftar sejak bayi hingga usia pensiun.
+</div>
+<div class="feature-item">
+<strong>Masa Pertanggungan Panjang</strong>
+Perlindungan hingga Tertanggung berusia 110 tahun. Seumur hidup!
+</div>
+<div class="feature-item">
+<strong>17+ Pilihan Dana Investasi</strong>
+Dari risiko rendah (pasar uang) hingga risiko tinggi (saham/ekuitas), termasuk opsi syariah.
+</div>
+<div class="feature-item">
+<strong>Metode Bayar Fleksibel</strong>
+Tahunan, Semesteran (6 bulan), Kuartalan (3 bulan), atau Bulanan. Pilih yang paling nyaman.
+</div>
+</div>
+
+<h3>Versi Syariah (MiSSION Syariah)</h3>
+<div class="info-box">
+<p>MiSSION Syariah menggunakan prinsip syariah Islam:</p>
+<ul>
+<li><strong>Akad Wakalah bil Ujrah</strong> - Manulife bertindak sebagai wakil (pengelola) dengan ujrah (fee) yang jelas</li>
+<li><strong>Kontribusi (bukan premi)</strong> - Dana yang dibayarkan disebut kontribusi, bukan premi</li>
+<li><strong>Tabarru (dana kebajikan)</strong> - Sebagian kontribusi masuk ke dana tolong-menolong sesama peserta</li>
+<li><strong>Surplus Sharing</strong> - Jika dana tabarru surplus, dibagikan ke peserta</li>
+<li><strong>Investasi Syariah</strong> - Dana hanya diinvestasikan di instrumen yang halal dan sesuai syariah</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Tab 2: Manfaat -->
+<div class="tab-content" id="tab-manfaat" role="tabpanel">
+<div class="card">
+<h2>Manfaat Utama MiSSION</h2>
+<p>MiSSION memberikan <strong>Solusi 3-in-1</strong>: Proteksi Jiwa + Investasi + Kesehatan (dengan rider tambahan). Berikut manfaat utama yang Anda dapatkan:</p>
+
+<h3>1. Manfaat Meninggal Dunia</h3>
+<div class="info-box">
+<p><strong>100% Uang Pertanggungan + Nilai Polis (jika ada)</strong></p>
+<p>Jika Tertanggung meninggal dunia dalam masa pertanggungan, ahli waris akan menerima seluruh Uang Pertanggungan (UP) ditambah Nilai Polis yang sudah terbentuk dari investasi.</p>
+</div>
+
+<h3>2. Manfaat Akhir Masa Pertanggungan</h3>
+<div class="info-box">
+<p><strong>= Nilai Polis yang terbentuk</strong></p>
+<p>Jika Tertanggung masih hidup hingga akhir masa pertanggungan (usia 110 tahun), maka akan menerima seluruh Nilai Polis yang sudah terbentuk dari hasil investasi selama bertahun-tahun.</p>
+</div>
+
+<h3>3. Manfaat Loyalitas (Bonus dari Manulife)</h3>
+<div class="highlight-box">
+<p><strong>Tahun ke-10:</strong> Manulife akan menambahkan unit investasi senilai <strong>50% dari premi dasar tahun pertama</strong> ke polis Anda.</p>
+<p><strong>Tahun ke-25:</strong> Manulife akan menambahkan unit investasi senilai <strong>700% dari premi dasar tahun pertama</strong> ke polis Anda.</p>
+<p style="margin-top:10px;font-size:.85rem;"><strong>Contoh:</strong> Jika premi dasar tahun pertama Rp16 juta, maka di tahun ke-10 Anda dapat bonus Rp8 juta, dan di tahun ke-25 dapat bonus Rp112 juta!</p>
+</div>
+
+<h3>Syarat Mendapat Manfaat Loyalitas</h3>
+<ul>
+<li>Membayar premi tepat waktu selama <strong>7 tahun pertama</strong></li>
+<li>Tidak pernah mengambil cuti premi selama <strong>7 tahun pertama</strong></li>
+<li>Polis masih aktif pada saat tanggal pemberian manfaat loyalitas</li>
+</ul>
+
+<h3>Tentang Nilai Polis</h3>
+<p><strong>Nilai Polis</strong> adalah nilai investasi yang terbentuk dari premi Anda. Karena ini produk unit link, sebagian premi dialokasikan untuk investasi. Nilai Polis bisa naik atau turun tergantung kinerja dana investasi yang Anda pilih.</p>
+<p><strong>Penting:</strong> Nilai Polis <em>tidak dijamin</em>. Jika kinerja investasi bagus, Nilai Polis naik. Jika kinerja investasi turun, Nilai Polis juga bisa turun.</p>
+
+<h3>Cuti Premi (Premium Holiday)</h3>
+<div class="info-box">
+<p>Setelah polis berjalan minimal 2 tahun dan Nilai Polis mencukupi, Anda bisa mengambil <strong>Cuti Premi</strong> (berhenti bayar premi sementara). Selama cuti premi, biaya asuransi akan dipotong dari Nilai Polis yang ada. Polis tetap aktif selama Nilai Polis masih cukup untuk membayar biaya-biaya.</p>
+</div>
+
+<h3>Ringkasan Manfaat</h3>
+<div style="overflow-x:auto">
+<table>
+<tr><th>Manfaat</th><th>Keterangan</th></tr>
+<tr><td>Meninggal Dunia</td><td>100% UP + Nilai Polis</td></tr>
+<tr><td>Akhir Masa Pertanggungan</td><td>Nilai Polis yang terbentuk</td></tr>
+<tr><td>Loyalitas Tahun ke-10</td><td>50% premi dasar tahun pertama</td></tr>
+<tr><td>Loyalitas Tahun ke-25</td><td>700% premi dasar tahun pertama</td></tr>
+<tr><td>Cuti Premi</td><td>Tersedia jika Nilai Polis mencukupi</td></tr>
+</table>
+</div>
+</div>
+</div>
+<!-- Tab 3: Asuransi Tambahan (Riders) -->
+<div class="tab-content" id="tab-rider" role="tabpanel">
+<div class="card">
+<h2>Asuransi Tambahan (Riders)</h2>
+<p>Selain manfaat dasar asuransi jiwa, Anda bisa menambahkan perlindungan ekstra sesuai kebutuhan. Berikut rider yang tersedia:</p>
+
+<h3>MiSmart Health Care (Rider Utama Kesehatan)</h3>
+<p>Rider rawat inap dengan sistem <strong>As Charged</strong> (sesuai tagihan rumah sakit). Tersedia 8 pilihan plan dengan cakupan wilayah dan limit berbeda:</p>
+
+<div style="overflow-x:auto">
+<table>
+<tr><th>Plan</th><th>Wilayah</th><th>Limit Tahunan</th><th>Kamar</th><th>Deductible (Smart)</th></tr>
+<tr><td>Sapphire</td><td>Indonesia</td><td>2 Milyar</td><td>Rp500rb/hari</td><td>-</td></tr>
+<tr><td>Jade Indonesia</td><td>Indonesia</td><td>4 Milyar</td><td>Rp500rb/hari atau Double Room</td><td>-</td></tr>
+<tr><td>Jade / Jade Smart</td><td>Asia (kec. SG/HK/JP)</td><td>4 Milyar</td><td>Rp500rb/hari atau Double Room</td><td>5 Juta</td></tr>
+<tr><td>Topaz Indonesia</td><td>Indonesia</td><td>10 Milyar</td><td>Rp1jt/hari atau Single Room</td><td>-</td></tr>
+<tr><td>Topaz / Topaz Smart</td><td>Asia (kec. SG/HK/JP)</td><td>10 Milyar</td><td>Rp1jt/hari atau Single Room</td><td>8 Juta</td></tr>
+<tr><td>Emerald / Emerald Smart</td><td>Worldwide (kec. USA)</td><td>10 Milyar</td><td>Rp1jt/hari atau Single Room</td><td>10 Juta</td></tr>
+<tr><td>Ruby / Ruby Smart</td><td>Worldwide (kec. USA)</td><td>15 Milyar</td><td>Rp2jt/hari atau Single Room</td><td>15 Juta</td></tr>
+<tr><td>Diamond / Diamond Smart</td><td>Worldwide (kec. USA)</td><td>20 Milyar</td><td>Rp3jt/hari atau Single Room</td><td>20 Juta</td></tr>
+</table>
+</div>
+
+<h3>Keunggulan MiSmart Health Care</h3>
+<ul>
+<li><strong>No Claim Bonus:</strong> Limit tahunan naik 10% per tahun tanpa klaim, maksimal 50% dari limit awal</li>
+<li><strong>Annual Limit Booster:</strong> Tambahan limit seumur hidup Rp1 Milyar - Rp15 Milyar (tergantung plan)</li>
+<li><strong>Rawat Inap Sesuai Tagihan:</strong> Tidak ada sub-limit per item biaya</li>
+<li><strong>Perawatan Kanker:</strong> Kemoterapi, radioterapi, dan perawatan kanker lainnya ditanggung</li>
+<li><strong>Cuci Darah (Dialisis):</strong> Biaya cuci darah ditanggung sesuai plan</li>
+<li><strong>Cashless:</strong> Cukup tunjukkan kartu di RS rekanan, tanpa bayar di muka</li>
+</ul>
+
+<h3>Rider Lainnya</h3>
+
+<div class="rider-card">
+<h4>MiSmart Critical Care</h4>
+<p>Perlindungan terhadap <strong>56 penyakit kritis</strong> (kanker, serangan jantung, stroke, dll). Manfaat hingga <strong>300% dari Uang Pertanggungan</strong> rider. Dibayarkan bertahap sesuai tingkat keparahan penyakit.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Waiver Premium</h4>
+<p>Pembebasan premi jika Tertanggung terdiagnosis salah satu dari <strong>49 penyakit kritis</strong>. Manulife yang bayar premi Anda sampai usia 65 tahun, sehingga polis tetap aktif tanpa Anda perlu bayar lagi.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Early Stage Critical Care</h4>
+<p>Perlindungan penyakit kritis <strong>sejak tahap awal</strong>. Cover mulai dari tahap awal (early stage) hingga tahap lanjut. Perlindungan hingga usia 85 tahun.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Medicare Plus</h4>
+<p>Penggantian biaya rumah sakit sesuai plan yang dipilih. Alternatif rider kesehatan dengan sistem <strong>reimbursement</strong> per item biaya.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Payor Benefit Plus</h4>
+<p>Pembebasan premi jika <strong>Pemegang Polis</strong> (orang yang bayar premi) meninggal dunia atau mengalami cacat tetap total. Cocok untuk orang tua yang mengasuransikan anaknya.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Yearly Renewable Term</h4>
+<p>Tambahan manfaat meninggal dunia dengan biaya terjangkau. Perlindungan tambahan hingga usia 74 tahun. Cocok untuk menambah UP tanpa biaya besar.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Accidental Death and Disability</h4>
+<p>Perlindungan khusus jika meninggal dunia atau cacat akibat <strong>kecelakaan</strong>. Manfaat tambahan di atas UP dasar.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Income Replacement</h4>
+<p>Pembayaran manfaat <strong>bulanan</strong> jika Tertanggung meninggal dunia atau mengalami cacat tetap total. Memberikan penghasilan pengganti untuk keluarga.</p>
+</div>
+
+<div class="rider-card">
+<h4>MiSmart Spouse Waiver</h4>
+<p>Pembebasan premi jika <strong>pasangan (suami/istri)</strong> Tertanggung meninggal dunia atau mengalami cacat tetap total. Polis tetap aktif tanpa bayar premi.</p>
+</div>
+</div>
+</div>
+<!-- Tab 4: Pilihan Investasi -->
+<div class="tab-content" id="tab-investasi" role="tabpanel">
+<div class="card">
+<h2>Pilihan Dana Investasi</h2>
+<p>MiSSION menyediakan <strong>17+ pilihan dana investasi</strong> yang bisa Anda pilih sesuai profil risiko. Anda bisa memilih satu atau kombinasi beberapa dana investasi.</p>
+
+<h3>Alokasi Investasi dari Premi</h3>
+<div class="highlight-box">
+<p><strong>Premi Dasar:</strong></p>
+<ul>
+<li>Tahun 1-3: <strong>70%</strong> dari premi masuk ke investasi (30% untuk biaya akuisisi)</li>
+<li>Tahun 4 dan seterusnya: <strong>100%</strong> dari premi masuk ke investasi</li>
+</ul>
+<p style="margin-top:10px"><strong>Top-Up (Premi Tambahan):</strong> Selalu <strong>100%</strong> masuk ke investasi (setelah biaya top-up 5%)</p>
+<p style="margin-top:10px"><strong>Free Switching:</strong> Gratis pindah dana investasi <strong>4x per tahun</strong></p>
+</div>
+
+<h3 style="color:#2e7d32">Risiko Rendah - Dana Pasar Uang</h3>
+<div style="overflow-x:auto">
+<table>
+<tr><th>Nama Dana</th><th>Mata Uang</th><th>Alokasi Aset</th><th>Biaya Pengelolaan</th></tr>
+<tr><td>Manulife Dana Pasar Uang</td><td>IDR</td><td>Deposito & Obligasi jangka pendek</td><td>1,25% per tahun</td></tr>
+</table>
+</div>
+
+<h3 style="color:#1565c0">Risiko Menengah - Dana Pendapatan Tetap & Berimbang</h3>
+<div style="overflow-x:auto">
+<table>
+<tr><th>Nama Dana</th><th>Mata Uang</th><th>Alokasi Aset</th><th>Biaya Pengelolaan</th></tr>
+<tr><td>Manulife Pendapatan Tetap Negara</td><td>IDR</td><td>Obligasi Pemerintah RI</td><td>2% per tahun</td></tr>
+<tr><td>Manulife Pendapatan Tetap Korporasi</td><td>IDR</td><td>Obligasi Korporasi Indonesia</td><td>2% per tahun</td></tr>
+<tr><td>Manulife Pendapatan Tetap Dollar</td><td>USD</td><td>Obligasi berdenominasi USD</td><td>2% per tahun</td></tr>
+<tr><td>Manulife Dana Berimbang</td><td>IDR</td><td>Campuran Saham & Obligasi</td><td>2% per tahun</td></tr>
+</table>
+</div>
+
+<h3 style="color:#e65100">Risiko Tinggi - Dana Ekuitas (Saham)</h3>
+<div style="overflow-x:auto">
+<table>
+<tr><th>Nama Dana</th><th>Mata Uang</th><th>Alokasi Aset</th><th>Biaya Pengelolaan</th></tr>
+<tr><td>Manulife Dana Ekuitas</td><td>IDR</td><td>Saham Indonesia</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas (USD)</td><td>USD</td><td>Saham Indonesia (dalam USD)</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Asia Pasifik</td><td>USD</td><td>Saham Asia Pasifik</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Indonesia-China</td><td>USD</td><td>Saham Indonesia & China</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Indonesia-India</td><td>USD</td><td>Saham Indonesia & India</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Small Mid Capital</td><td>IDR/USD</td><td>Saham kapitalisasi kecil-menengah</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Sejahtera (Syariah)</td><td>IDR</td><td>Saham Syariah Indonesia</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Global Dollar</td><td>USD</td><td>Saham Global</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Teknologi Global</td><td>USD</td><td>Saham Teknologi Dunia</td><td>2,5% per tahun</td></tr>
+<tr><td>Schroder Dana Ekuitas Premier</td><td>IDR</td><td>Saham Indonesia (dikelola Schroder)</td><td>2,5% per tahun</td></tr>
+<tr><td>Manulife Ekuitas Unggulan</td><td>IDR</td><td>Saham Unggulan Indonesia</td><td>2,5% per tahun</td></tr>
+</table>
+</div>
+
+<div class="info-box">
+<p><strong>Tips Memilih Dana Investasi:</strong></p>
+<ul>
+<li><strong>Jangka pendek (1-3 tahun):</strong> Pilih Dana Pasar Uang (risiko rendah)</li>
+<li><strong>Jangka menengah (3-7 tahun):</strong> Pilih Dana Pendapatan Tetap atau Berimbang</li>
+<li><strong>Jangka panjang (7+ tahun):</strong> Pilih Dana Ekuitas untuk potensi pertumbuhan lebih tinggi</li>
+<li>Anda bisa mengkombinasikan beberapa dana sekaligus</li>
+<li>Untuk MiSSION Syariah, pilih dana investasi yang berlabel Syariah</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Tab 5: Biaya-biaya -->
+<div class="tab-content" id="tab-biaya" role="tabpanel">
+<div class="card">
+<h2>Biaya-biaya MiSSION</h2>
+<p>Sebagai produk unit link, MiSSION memiliki beberapa biaya yang perlu Anda ketahui. Transparansi biaya penting agar Anda memahami ke mana premi Anda dialokasikan.</p>
+
+<h3>Ringkasan Biaya</h3>
+<div style="overflow-x:auto">
+<table>
+<tr><th>Jenis Biaya</th><th>Ketentuan</th></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Akuisisi (dari Premi Dasar)</td><td>Tahun 1-3: 30% | Tahun 4+: 0%</td></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Administrasi Bulanan</td><td>Rp37.500/bulan (USD 3,75)</td></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Pertanggungan Dasar</td><td>Bervariasi sesuai usia, jenis kelamin, dan UP</td></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Pengelolaan Dana Investasi</td><td>1,25% - 2,5% per tahun (tergantung jenis dana)</td></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Pengambilan Unit (Premi Dasar)</td><td>Thn 1-2: 2% | Thn 3: 1,5% | Thn 4: 1% | Thn 5: 0,5% | Thn 6+: 0%</td></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Pengambilan Unit (Top-Up)</td><td>0% (gratis)</td></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Pengalihan Dana</td><td>Gratis 4x/tahun, selanjutnya Rp100.000 (USD 10)/transaksi</td></tr>
+<tr><td style="text-align:left;font-weight:600">Biaya Top-Up Sekaligus</td><td>5% dari nilai top-up</td></tr>
+</table>
+</div>
+
+<h3>Penjelasan Sederhana</h3>
+<div class="info-box">
+<p><strong>Biaya Akuisisi</strong> = Biaya di awal untuk memproses polis Anda. Di 3 tahun pertama, 30% premi dasar digunakan untuk biaya ini. Setelah tahun ke-4, tidak ada lagi biaya akuisisi (100% premi dasar masuk investasi).</p>
+</div>
+<div class="info-box">
+<p><strong>Biaya Administrasi</strong> = Biaya bulanan untuk pengelolaan polis. Dipotong dari Nilai Polis setiap bulan sebesar Rp37.500.</p>
+</div>
+<div class="info-box">
+<p><strong>Biaya Pertanggungan (COI)</strong> = Biaya untuk perlindungan asuransi jiwa. Dipotong dari Nilai Polis setiap bulan. Makin tua usia, biaya ini makin besar.</p>
+</div>
+<div class="info-box">
+<p><strong>Biaya Pengambilan Unit</strong> = Biaya jika Anda menarik (mencairkan) sebagian Nilai Polis. Makin lama polis berjalan, biaya ini makin kecil sampai akhirnya 0%.</p>
+</div>
+
+<div class="highlight-box">
+<p><strong>Penting:</strong> Biaya-biaya ini normal untuk produk unit link. Yang perlu diperhatikan adalah di tahun ke-4 dan seterusnya, 100% premi dasar Anda sudah masuk ke investasi. Biaya pertanggungan dan administrasi dipotong dari Nilai Polis yang sudah terbentuk.</p>
+</div>
+</div>
+</div>
+<!-- Tab 6: Kalkulator Premi -->
+<div class="tab-content" id="tab-kalkulator" role="tabpanel">
+<div class="card">
+<h2>Kalkulator Kontribusi MiSSION Syariah</h2>
+<p style="margin-bottom:20px">Hitung estimasi kontribusi (premi) produk <strong>MiSSION Syariah</strong> berdasarkan usia, jenis kelamin, dan santunan yang dipilih. MiSSION Syariah adalah produk asuransi jiwa berbasis syariah dengan akad Tabarru' dan Wakalah bil Ujrah.</p>
+
+<div class="calc-info-box">
+<h4>Tentang MiSSION Syariah</h4>
+<p><strong>MiSmart Insurance Solution Syariah (MiSSION Syariah)</strong> memberikan perlindungan jiwa sekaligus investasi berbasis syariah. Produk ini hanya tersedia dalam versi Syariah. Kontribusi terdiri dari Tabarru' (dana kebajikan) dan Ujrah (fee pengelolaan).</p>
+</div>
+
+<!-- Calculator Controls -->
+<div class="calc-controls" style="flex-direction:column;align-items:stretch">
+<div style="display:flex;flex-wrap:wrap;gap:15px">
+<div class="calc-control-group">
+<label>Mata Uang</label>
+<select id="missionCurrency" onchange="updateCurrencyUI();hitungMission()">
+<option value="IDR">IDR</option>
+<option value="USD">USD</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Jenis Kelamin</label>
+<select id="missionGender" onchange="hitungMission()">
+<option value="pria">Pria</option>
+<option value="wanita">Wanita</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Usia Masuk</label>
+<select id="missionUsia" onchange="hitungMission()">
+</select>
+</div>
+<div class="calc-control-group">
+<label>Santunan Asuransi</label>
+<input type="text" id="missionSantunan" value="1.000.000.000" onchange="hitungMission()" onkeyup="formatSantunanInput(this)" style="padding:8px 12px;border:2px solid #e0e0e0;border-radius:6px;font-size:.95rem;width:180px">
+<small id="missionSantunanHint" style="color:#666;font-size:.75rem;margin-top:2px;display:block">Min: Rp 100.000.000</small>
+</div>
+<div class="calc-control-group">
+<label>Mode Pembayaran</label>
+<select id="missionFreq" onchange="hitungMission()">
+<option value="1">Tahunan</option>
+<option value="2">Semesteran</option>
+<option value="4">Kuartalan</option>
+<option value="12">Bulanan</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Top Up Berkala</label>
+<input type="text" id="missionTopUp" value="0" onchange="hitungMission()" onkeyup="formatSantunanInput(this)" style="padding:8px 12px;border:2px solid #e0e0e0;border-radius:6px;font-size:.95rem;width:140px">
+<small id="missionTopUpHint" style="color:#666;font-size:.75rem;margin-top:2px;display:block">Min: Rp 1.000.000 (Tahunan)</small>
+</div>
+<div class="calc-control-group">
+<label>Masa Pembayaran Kontribusi</label>
+<input type="text" id="missionMasaBayar" value="79" readonly disabled style="padding:8px 12px;border:2px solid #e0e0e0;border-radius:6px;font-size:.95rem;width:80px;background:#f0f0f0;color:#666">
+<small style="color:#666;font-size:.75rem;margin-top:2px;display:block">110 - Usia (tahun)</small>
+</div>
+<div class="calc-control-group">
+<label>Pilihan Masa Asuransi Tambahan</label>
+<select id="missionMasaRider" onchange="hitungMission()">
+<option value="sama">Sama seperti Kontribusi Dasar</option>
+</select>
+</div>
+</div>
+
+<!-- Rider Options -->
+<div style="margin-top:10px;padding-top:15px;border-top:1px solid #e0e0e0">
+<p style="font-size:.8rem;font-weight:600;color:#00a758;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Opsi Proteksi Tambahan (Rider)</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div>
+<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.95rem">
+<input type="checkbox" id="missionCI" onchange="hitungMission()" style="width:18px;height:18px;accent-color:#00a758">
+MiSmart Critical Care Syariah <span style="font-size:.8rem;color:#666">(santunan penyakit kritis)</span>
+</label>
+<div id="missionCIInputWrap" style="margin-top:8px;margin-left:26px;display:none">
+<label style="font-size:.85rem;color:#333">Santunan CI:</label>
+<input type="text" id="missionCISantunan" value="1.000.000.000" onchange="hitungMission()" onkeyup="formatSantunanInput(this)" style="padding:6px 10px;border:2px solid #e0e0e0;border-radius:6px;font-size:.85rem;width:160px;margin-left:8px">
+<small id="missionCIHint" style="color:#666;font-size:.75rem;margin-left:8px">Min: Rp 20.000.000, Max: 3x Santunan Dasar</small>
+</div>
+</div>
+<div>
+<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.95rem">
+<input type="checkbox" id="missionWaiver" onchange="hitungMission()" style="width:18px;height:18px;accent-color:#00a758">
+MiSmart Waiver Syariah <span style="font-size:.8rem;color:#666">(pembebasan kontribusi jika sakit kritis/cacat tetap total)</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Calculator Results -->
+<div id="missionCalcResults"></div>
+
+<div class="highlight-box" style="margin-top:20px">
+<p><strong>DISCLAIMER:</strong> Angka kontribusi di atas adalah estimasi untuk referensi. Kontribusi aktual dapat berbeda tergantung kondisi kesehatan, riwayat medis, dan ketentuan underwriting yang berlaku saat pengajuan. Hubungi kami untuk penawaran resmi.</p>
+</div>
+</div>
+</div>
+<!-- Tab 7: Ilustrasi -->
+<div class="tab-content" id="tab-ilustrasi" role="tabpanel">
+<div class="card">
+<h2>Ilustrasi MiSSION</h2>
+<p>Berikut gambaran bagaimana MiSSION bekerja untuk Anda. Pilih premi per tahun untuk melihat perkiraan manfaat.</p>
+
+<div class="calc-controls">
+<div class="calc-control-group">
+<label>Premi per Tahun</label>
+<select id="premiSelect" onchange="updateIlustrasi()">
+<option value="4000000">Rp 4.000.000</option>
+<option value="8000000">Rp 8.000.000</option>
+<option value="12000000">Rp 12.000.000</option>
+<option value="16000000" selected>Rp 16.000.000</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Usia Masuk</label>
+<select id="usiaSelect" onchange="updateIlustrasi()">
+<option value="25">25 tahun</option>
+<option value="30" selected>30 tahun</option>
+<option value="35">35 tahun</option>
+<option value="40">40 tahun</option>
+<option value="45">45 tahun</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Uang Pertanggungan (UP)</label>
+<select id="upSelect" onchange="updateIlustrasi()">
+<option value="100000000">Rp 100.000.000</option>
+<option value="250000000">Rp 250.000.000</option>
+<option value="500000000">Rp 500.000.000</option>
+<option value="1000000000" selected>Rp 1.000.000.000</option>
+</select>
+</div>
+</div>
+
+<div id="ilustrasiResult">
+</div>
+
+<div class="highlight-box" style="margin-top:20px">
+<p><strong>DISCLAIMER / PERINGATAN PENTING:</strong></p>
+<p>Angka-angka di atas hanya <strong>ilustrasi</strong>, bukan jaminan. Nilai Polis <strong>tidak dijamin</strong> dan dapat naik atau turun tergantung kinerja investasi. Hasil aktual bisa berbeda secara signifikan dari ilustrasi ini. Ilustrasi menggunakan asumsi tingkat pengembalian investasi yang mungkin tidak tercapai di masa depan.</p>
+</div>
+
+<h3>Contoh Ilustrasi Lengkap</h3>
+<div class="info-box">
+<p><strong>Profil:</strong> Pria, Usia 30 tahun</p>
+<p><strong>Premi Dasar:</strong> Rp16.000.000/tahun</p>
+<p><strong>Uang Pertanggungan (UP) Jiwa:</strong> Rp1.000.000.000 (1 Milyar)</p>
+<p><strong>Rider Critical Illness:</strong> Rp1.000.000.000 (1 Milyar)</p>
+<p><strong>Manfaat Loyalitas Tahun ke-10:</strong> Rp8.000.000 (50% x Rp16jt)</p>
+<p><strong>Manfaat Loyalitas Tahun ke-25:</strong> Rp112.000.000 (700% x Rp16jt)</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 7: FAQ -->
+<div class="tab-content" id="tab-faq" role="tabpanel">
+<div class="card">
+<h2>Pertanyaan yang Sering Ditanya (FAQ)</h2>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu MiSSION?</div>
+<div class="faq-answer"><p>MiSSION (MiSmart Insurance Solution) adalah produk asuransi jiwa unit link dari Manulife Indonesia. Artinya, dalam satu produk Anda mendapat perlindungan jiwa (jika meninggal, ahli waris dapat uang pertanggungan) sekaligus investasi (sebagian premi diinvestasikan agar tumbuh). Ini seperti menabung sambil mendapat perlindungan.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa bedanya MiSSION dan MiSSION Syariah?</div>
+<div class="faq-answer"><p>MiSSION Syariah menggunakan prinsip syariah Islam. Bedanya: (1) Menggunakan akad tolong-menolong antar peserta (bukan jual-beli risiko), (2) Dana hanya diinvestasikan di instrumen halal, (3) Ada surplus sharing jika dana tabarru lebih. Manfaat dan biaya secara umum sama, hanya prinsip pengelolaannya yang berbeda sesuai syariah.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Berapa minimal premi MiSSION?</div>
+<div class="faq-answer"><p>Minimal premi MiSSION adalah <strong>Rp4.000.000 per tahun</strong> (sekitar Rp340.000 per bulan jika bayar bulanan). Dalam mata uang USD, minimal USD 400 per tahun. Premi bisa dibayar tahunan, semesteran (6 bulan), kuartalan (3 bulan), atau bulanan.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Unit Link?</div>
+<div class="faq-answer"><p>Unit Link adalah produk asuransi yang preminya dialokasikan untuk dua hal: (1) Sebagian untuk membayar biaya perlindungan asuransi (proteksi jiwa), dan (2) Sebagian lagi diinvestasikan di dana investasi pilihan Anda. Jadi Anda mendapat proteksi sekaligus potensi pertumbuhan uang melalui investasi. Bedanya dengan asuransi murni: di unit link ada komponen investasi yang nilainya bisa naik-turun.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana cara bayar premi MiSSION?</div>
+<div class="faq-answer"><p>Premi bisa dibayar dengan beberapa cara: transfer bank, auto-debet rekening/kartu kredit, atau melalui virtual account. Frekuensi pembayaran bisa dipilih: <strong>Tahunan</strong> (1x setahun), <strong>Semesteran</strong> (2x setahun), <strong>Kuartalan</strong> (4x setahun), atau <strong>Bulanan</strong> (12x setahun). Pilih yang paling nyaman untuk cashflow Anda.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Manfaat Loyalitas?</div>
+<div class="faq-answer"><p>Manfaat Loyalitas adalah bonus dari Manulife untuk nasabah yang setia membayar premi. Di <strong>akhir tahun ke-10</strong>, Manulife menambahkan unit investasi senilai 50% premi dasar tahun pertama ke polis Anda. Di <strong>akhir tahun ke-25</strong>, bonusnya jauh lebih besar: 700% premi dasar tahun pertama! Syaratnya: bayar premi tepat waktu dan tidak pernah cuti premi selama 7 tahun pertama.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa saja risiko investasi di MiSSION?</div>
+<div class="faq-answer"><p>Karena MiSSION adalah produk unit link, ada risiko investasi yang perlu Anda pahami: (1) <strong>Nilai investasi bisa turun</strong> - jika pasar saham/obligasi turun, Nilai Polis Anda juga bisa turun, (2) <strong>Tidak ada jaminan hasil</strong> - return investasi tidak dijamin, bisa lebih tinggi atau lebih rendah dari ilustrasi, (3) <strong>Risiko likuiditas</strong> - dalam kondisi pasar ekstrem, pencairan unit bisa tertunda. Untuk mengurangi risiko, pilih dana investasi sesuai profil risiko dan jangka waktu Anda.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Berapa usia masuk MiSSION?</div>
+<div class="faq-answer"><p>Usia masuk MiSSION adalah <strong>30 hari sampai 70 tahun</strong>. Jadi bisa didaftarkan sejak bayi berusia 1 bulan hingga orang dewasa usia 70 tahun. Masa pertanggungannya hingga Tertanggung berusia 110 tahun, sehingga perlindungan berlaku seumur hidup selama polis aktif.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana jika tidak bisa bayar premi?</div>
+<div class="faq-answer"><p>Jika suatu saat Anda tidak bisa bayar premi, Anda bisa mengambil <strong>Cuti Premi (Premium Holiday)</strong>. Syaratnya: polis sudah berjalan minimal 2 tahun dan Nilai Polis mencukupi. Selama cuti premi, biaya asuransi dan administrasi tetap dipotong dari Nilai Polis. Polis tetap aktif selama Nilai Polis masih cukup. Jika Nilai Polis habis, polis bisa lapse (tidak aktif).</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu MiSmart Health Care?</div>
+<div class="faq-answer"><p>MiSmart Health Care adalah rider (asuransi tambahan) kesehatan yang bisa ditambahkan ke polis MiSSION. Rider ini memberikan perlindungan rawat inap dengan sistem <strong>As Charged</strong> (sesuai tagihan RS, tanpa sub-limit). Tersedia 8 pilihan plan dari Sapphire (limit 2M/tahun, Indonesia) hingga Diamond (limit 20M/tahun, Worldwide). Keunggulannya: No Claim Bonus (limit naik 10%/tahun tanpa klaim), cashless di RS rekanan, dan cover perawatan kanker serta cuci darah.</p></div>
+</div>
+
+</div>
+</div>
+<!-- Floating WA Button -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20Manulife%20Produk%20Mission" target="_blank" class="floating-wa" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<div class="wa-tooltip">Petrus Jakub - 087781896087</div>
+
+<script>
+// Tab Navigation
+(function(){
+var tabs = document.querySelectorAll('.tabs li');
+var contents = document.querySelectorAll('.tab-content');
+tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        contents.forEach(function(c){ c.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+    });
+});
+})();
+
+// FAQ Accordion
+(function(){
+var questions = document.querySelectorAll('.faq-question');
+questions.forEach(function(q){
+    q.addEventListener('click', function(){
+        var item = q.parentElement;
+        item.classList.toggle('open');
+        q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+    });
+});
+})();
+
+// Ilustrasi Calculator
+function updateIlustrasi(){
+    var premi = parseInt(document.getElementById('premiSelect').value);
+    var usia = parseInt(document.getElementById('usiaSelect').value);
+    var up = parseInt(document.getElementById('upSelect').value);
+    
+    // Validate UP: minimum is max(5x annual premium, Rp100jt)
+    var minUp = Math.max(premi * 5, 100000000);
+    if(up < minUp) up = minUp;
+    
+    // Simplified projection using assumed 8% gross return for illustration
+    // After fees (approx 2.5% fund fee + insurance charges), net ~5% growth assumed
+    var netReturn = 0.05;
+    var adminPerYear = 37500 * 12;
+    
+    var nilaiPolis = 0;
+    var projections = [];
+    var years = [5, 10, 15, 20, 25];
+    
+    for(var y = 1; y <= 25; y++){
+        var akuisiRate = (y <= 3) ? 0.30 : 0;
+        var investAmount = premi * (1 - akuisiRate);
+        nilaiPolis += investAmount;
+        nilaiPolis -= adminPerYear;
+        // Exponential insurance cost estimate based on attained age
+        var coiEstimate = Math.round(1000 * Math.pow(1.05, usia + y - 25) * (up / 100000000));
+        nilaiPolis -= coiEstimate;
+        nilaiPolis *= (1 + netReturn);
+        
+        // Add loyalty bonus
+        if(y === 10) nilaiPolis += premi * 0.5;
+        if(y === 25) nilaiPolis += premi * 7.0;
+        
+        if(years.indexOf(y) !== -1){
+            projections.push({year: y, value: Math.max(0, Math.round(nilaiPolis))});
+        }
+    }
+    
+    var totalPremi = [];
+    for(var i = 0; i < years.length; i++){
+        totalPremi.push(premi * years[i]);
+    }
+    
+    var html = '<h3>Perkiraan Nilai Polis (Skenario Optimis - Return 8%/tahun gross)</h3>';
+    html += '<div style="overflow-x:auto"><table><tr><th>Tahun ke-</th><th>Usia</th><th>Total Premi Dibayar</th><th>Perkiraan Nilai Polis</th><th>UP Jiwa</th></tr>';
+    for(var i = 0; i < projections.length; i++){
+        html += '<tr>';
+        html += '<td>' + projections[i].year + '</td>';
+        html += '<td>' + (usia + projections[i].year) + ' tahun</td>';
+        html += '<td>Rp ' + totalPremi[i].toLocaleString('id-ID') + '</td>';
+        html += '<td style="font-weight:700;color:#00a758">Rp ' + projections[i].value.toLocaleString('id-ID') + '</td>';
+        html += '<td>Rp ' + up.toLocaleString('id-ID') + '</td>';
+        html += '</tr>';
+    }
+    html += '</table></div>';
+    
+    html += '<div class="calc-info-box">';
+    html += '<h4>Ringkasan untuk Premi Rp ' + premi.toLocaleString('id-ID') + '/tahun</h4>';
+    html += '<p>Uang Pertanggungan (UP) Jiwa: <strong>Rp ' + up.toLocaleString('id-ID') + '</strong></p>';
+    html += '<p>Minimum UP untuk premi ini: <strong>Rp ' + minUp.toLocaleString('id-ID') + '</strong> (maks antara 5x premi tahunan dan Rp100jt)</p>';
+    html += '<p>Manfaat Loyalitas Tahun ke-10: <strong>Rp ' + (premi * 0.5).toLocaleString('id-ID') + '</strong></p>';
+    html += '<p>Manfaat Loyalitas Tahun ke-25: <strong>Rp ' + (premi * 7).toLocaleString('id-ID') + '</strong></p>';
+    html += '<p>Premi per Bulan (jika bayar bulanan): <strong>Rp ' + Math.round(premi/12).toLocaleString('id-ID') + '</strong></p>';
+    html += '<p style="margin-top:8px;font-size:.8rem;color:#555;">Biaya asuransi meningkat seiring bertambahnya usia.</p>';
+    html += '</div>';
+    
+    document.getElementById('ilustrasiResult').innerHTML = html;
+}
+
+
+
+
+// ============ KALKULATOR KONTRIBUSI MiSSION Syariah ============
+(function(){
+// IDR Rate tables per 1 Milyar (1,000,000,000) santunan, annual
+var RATES_IDR = {
+    kontribusiDasar: {
+        pria: {31: 8140000, 45: 14830000},
+        wanita: {37: 8750000, 59: 30970000}
+    },
+    ujrahDasar: {
+        pria: {31: 130000, 45: 350000},
+        wanita: {37: 158308, 59: 945819}
+    },
+    ci: {
+        pria: {31: 8640000, 45: 24630000},
+        wanita: {37: 14540000, 59: 40860000}
+    },
+    ciUjrah: {
+        pria: {31: 152500, 45: 617500},
+        wanita: {37: 361290, 59: 1808288}
+    },
+    waiver: {
+        pria: {31: 1115900, 45: 5442400},
+        wanita: {37: 840308, 59: 9615187}
+    },
+    waiverUjrah: {
+        pria: {31: 20100, 45: 216500},
+        wanita: {37: 27231, 59: 425611}
+    }
+};
+
+// USD Rate tables per 100,000 santunan, annual
+var RATES_USD = {
+    kontribusiDasar: {
+        pria: {31: 814, 45: 1482.22},
+        wanita: {37: 875, 59: 3097}
+    },
+    ujrahDasar: {
+        pria: {31: 13, 45: 35},
+        wanita: {37: 15.825, 59: 94.58}
+    },
+    ci: {
+        pria: {31: 864, 45: 2480},
+        wanita: {37: 1466.67, 59: 4086.57}
+    },
+    ciUjrah: {
+        pria: {31: 15.25, 45: 60.8},
+        wanita: {37: 36.33, 59: 180.84}
+    },
+    waiver: {
+        pria: {31: 148, 45: 286.67},
+        wanita: {37: 102.5, 59: 774.79}
+    },
+    waiverUjrah: {
+        pria: {31: 3, 45: 13.33},
+        wanita: {37: 5, 59: 34.19}
+    }
+};
+
+// Exponential interpolation between 2 known data points
+function expInterpolate(rateTable, age) {
+    var ages = Object.keys(rateTable).map(Number).sort(function(a,b){return a-b;});
+    var age1 = ages[0], age2 = ages[1];
+    var rate1 = rateTable[age1], rate2 = rateTable[age2];
+    if (age === age1) return rate1;
+    if (age === age2) return rate2;
+    return rate1 * Math.pow(rate2 / rate1, (age - age1) / (age2 - age1));
+}
+
+// Rounding helpers
+function roundIDR(val) {
+    return Math.round(val / 100) * 100;
+}
+
+function roundUSD(val) {
+    return Math.round(val);
+}
+
+function formatRupiah(val) {
+    return 'Rp ' + Math.round(val).toLocaleString('id-ID');
+}
+
+function formatUSD(val) {
+    return 'USD ' + Math.round(val).toLocaleString('id-ID');
+}
+
+function formatUSDDecimal(val) {
+    var parts = val.toFixed(2).split('.');
+    return 'USD ' + parseInt(parts[0]).toLocaleString('id-ID') + ',' + parts[1];
+}
+
+function getFreqLabel(freq) {
+    if (freq == 1) return 'Tahunan';
+    if (freq == 2) return 'Semesteran';
+    if (freq == 4) return 'Kuartalan';
+    if (freq == 12) return 'Bulanan';
+    return '';
+}
+
+function parseSantunanValue(str) {
+    if (!str) return 0;
+    return parseInt(str.replace(/[.\s]/g, '').replace(/,/g, ''), 10) || 0;
+}
+
+function formatNumberIDR(val) {
+    return val.toLocaleString('id-ID');
+}
+
+function formatNumberUSD(val) {
+    return val.toLocaleString('id-ID');
+}
+
+window.formatSantunanInput = function(el) {
+    var currency = document.getElementById('missionCurrency').value;
+    var raw = el.value.replace(/[^\d]/g, '');
+    if (!raw) { el.value = '0'; return; }
+    var num = parseInt(raw, 10);
+    if (currency === 'IDR') {
+        el.value = num.toLocaleString('id-ID');
+    } else {
+        el.value = num.toLocaleString('id-ID');
+    }
+};
+
+function populateMissionUsia() {
+    var sel = document.getElementById('missionUsia');
+    if (!sel) return;
+    sel.innerHTML = '';
+    for (var i = 18; i <= 70; i++) {
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = i + ' tahun';
+        if (i === 31) opt.selected = true;
+        sel.appendChild(opt);
+    }
+}
+
+function updateMasaBayar() {
+    var age = parseInt(document.getElementById('missionUsia').value) || 31;
+    var masaBayar = 110 - age;
+    document.getElementById('missionMasaBayar').value = masaBayar;
+}
+
+window.updateCurrencyUI = function() {
+    var currency = document.getElementById('missionCurrency').value;
+    var santunanInput = document.getElementById('missionSantunan');
+    var santunanHint = document.getElementById('missionSantunanHint');
+    var topUpHint = document.getElementById('missionTopUpHint');
+    var ciHint = document.getElementById('missionCIHint');
+    var ciInput = document.getElementById('missionCISantunan');
+    var freq = parseInt(document.getElementById('missionFreq').value);
+
+    if (currency === 'IDR') {
+        santunanInput.value = '1.000.000.000';
+        santunanHint.textContent = 'Min: Rp 100.000.000';
+        ciInput.value = '1.000.000.000';
+        ciHint.textContent = 'Min: Rp 20.000.000, Max: 3x Santunan Dasar';
+        updateTopUpHint('IDR', freq);
+    } else {
+        santunanInput.value = '100.000';
+        santunanHint.textContent = 'Min: USD 40.000';
+        ciInput.value = '100.000';
+        ciHint.textContent = 'Min: USD 2.000, Max: 3x Santunan Dasar';
+        updateTopUpHint('USD', freq);
+    }
+    document.getElementById('missionTopUp').value = '0';
+};
+
+function updateTopUpHint(currency, freq) {
+    var hint = document.getElementById('missionTopUpHint');
+    if (currency === 'IDR') {
+        var mins = {1: '1.000.000', 2: '500.000', 4: '250.000', 12: '100.000'};
+        hint.textContent = 'Min: Rp ' + (mins[freq] || '1.000.000') + ' (' + getFreqLabel(freq) + ')';
+    } else {
+        var mins = {1: '100', 2: '50', 4: '25', 12: '10'};
+        hint.textContent = 'Min: USD ' + (mins[freq] || '100') + ' (' + getFreqLabel(freq) + ')';
+    }
+}
+
+function updateMasaRiderOptions() {
+    var sel = document.getElementById('missionMasaRider');
+    var waiverChecked = document.getElementById('missionWaiver').checked;
+    var age = parseInt(document.getElementById('missionUsia').value) || 31;
+    var currentVal = sel.value;
+    sel.innerHTML = '<option value="sama">Sama seperti Kontribusi Dasar</option>';
+    if (waiverChecked) {
+        var opts = [60, 70, 80, 90];
+        for (var i = 0; i < opts.length; i++) {
+            if (opts[i] >= age + 2) {
+                var o = document.createElement('option');
+                o.value = opts[i];
+                o.textContent = opts[i];
+                sel.appendChild(o);
+            }
+        }
+    }
+    // Try to restore previous selection
+    var found = false;
+    for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === currentVal) { sel.value = currentVal; found = true; break; }
+    }
+    if (!found) sel.value = 'sama';
+}
+
+window.hitungMission = function() {
+    var currency = document.getElementById('missionCurrency').value;
+    var gender = document.getElementById('missionGender').value;
+    var age = parseInt(document.getElementById('missionUsia').value);
+    var santunanRaw = parseSantunanValue(document.getElementById('missionSantunan').value);
+    var freq = parseInt(document.getElementById('missionFreq').value);
+    var topUpRaw = parseSantunanValue(document.getElementById('missionTopUp').value);
+    var waiverChecked = document.getElementById('missionWaiver').checked;
+    var ciChecked = document.getElementById('missionCI').checked;
+    var ciSantunanRaw = parseSantunanValue(document.getElementById('missionCISantunan').value);
+
+    // Update dependent UI
+    updateMasaBayar();
+    updateMasaRiderOptions();
+    updateTopUpHint(currency, freq);
+
+    // Show/hide CI input
+    document.getElementById('missionCIInputWrap').style.display = ciChecked ? 'block' : 'none';
+
+    // Validate santunan
+    var minSantunan = currency === 'IDR' ? 100000000 : 40000;
+    if (santunanRaw < minSantunan) {
+        document.getElementById('missionCalcResults').innerHTML = '<div class="calc-info-box" style="margin-top:5px;border-color:#e74c3c"><p style="color:#e74c3c">Santunan Asuransi minimum adalah ' + (currency === 'IDR' ? 'Rp 100.000.000' : 'USD 40.000') + '</p></div>';
+        return;
+    }
+
+    // Validate CI santunan
+    var minCI = currency === 'IDR' ? 20000000 : 2000;
+    var maxCI = santunanRaw * 3;
+    if (ciChecked) {
+        if (ciSantunanRaw < minCI) ciSantunanRaw = minCI;
+        if (ciSantunanRaw > maxCI) ciSantunanRaw = maxCI;
+    }
+
+    // Select rate tables
+    var RATES = currency === 'IDR' ? RATES_IDR : RATES_USD;
+    var baseUnit = currency === 'IDR' ? 1000000000 : 100000;
+    var multiplier = santunanRaw / baseUnit;
+    var ciMultiplier = ciSantunanRaw / baseUnit;
+
+    // Calculate annual values
+    var kontribusiDasarAnnualRaw = expInterpolate(RATES.kontribusiDasar[gender], age) * multiplier;
+    var ujrahDasarAnnualRaw = expInterpolate(RATES.ujrahDasar[gender], age) * multiplier;
+
+    var kontribusiDasarAnnual, ujrahDasarAnnual;
+    if (currency === 'IDR') {
+        kontribusiDasarAnnual = roundIDR(kontribusiDasarAnnualRaw);
+        ujrahDasarAnnual = roundIDR(ujrahDasarAnnualRaw);
+    } else {
+        kontribusiDasarAnnual = roundUSD(kontribusiDasarAnnualRaw);
+        ujrahDasarAnnual = ujrahDasarAnnualRaw; // USD ujrah keeps decimals
+    }
+
+    // CI
+    var ciKontribusiAnnual = 0, ciUjrahAnnual = 0;
+    if (ciChecked) {
+        var ciKontribusiRaw = expInterpolate(RATES.ci[gender], age) * ciMultiplier;
+        var ciUjrahRaw = expInterpolate(RATES.ciUjrah[gender], age) * ciMultiplier;
+        if (currency === 'IDR') {
+            ciKontribusiAnnual = roundIDR(ciKontribusiRaw);
+            ciUjrahAnnual = roundIDR(ciUjrahRaw);
+        } else {
+            ciKontribusiAnnual = roundUSD(ciKontribusiRaw);
+            ciUjrahAnnual = ciUjrahRaw;
+        }
+    }
+
+    // Waiver (based on BASE santunan)
+    var waiverKontribusiAnnual = 0, waiverUjrahAnnual = 0;
+    if (waiverChecked) {
+        var waiverKontribusiRaw = expInterpolate(RATES.waiver[gender], age) * multiplier;
+        var waiverUjrahRaw = expInterpolate(RATES.waiverUjrah[gender], age) * multiplier;
+        if (currency === 'IDR') {
+            waiverKontribusiAnnual = roundIDR(waiverKontribusiRaw);
+            waiverUjrahAnnual = roundIDR(waiverUjrahRaw);
+        } else {
+            waiverKontribusiAnnual = roundUSD(waiverKontribusiRaw);
+            waiverUjrahAnnual = waiverUjrahRaw;
+        }
+    }
+
+    // Per-frequency calculation (round each component individually, then sum)
+    var kontribusiDasarFreq, ciKontribusiFreq, waiverKontribusiFreq;
+    if (currency === 'IDR') {
+        kontribusiDasarFreq = roundIDR(kontribusiDasarAnnual / freq);
+        ciKontribusiFreq = ciChecked ? roundIDR(ciKontribusiAnnual / freq) : 0;
+        waiverKontribusiFreq = waiverChecked ? roundIDR(waiverKontribusiAnnual / freq) : 0;
+    } else {
+        kontribusiDasarFreq = roundUSD(kontribusiDasarAnnual / freq);
+        ciKontribusiFreq = ciChecked ? roundUSD(ciKontribusiAnnual / freq) : 0;
+        waiverKontribusiFreq = waiverChecked ? roundUSD(waiverKontribusiAnnual / freq) : 0;
+    }
+
+    // Total Kontribusi Dasar & Rider (sum of per-frequency kontribusi only, NOT ujrah)
+    var totalKontribusiFreq = kontribusiDasarFreq + ciKontribusiFreq + waiverKontribusiFreq;
+
+    // Format functions based on currency
+    var fmtKontribusi = currency === 'IDR' ? formatRupiah : formatUSD;
+    var fmtUjrah = currency === 'IDR' ? formatRupiah : formatUSDDecimal;
+    var freqLabel = getFreqLabel(freq);
+
+    // Build results HTML
+    var html = '';
+    html += '<div class="calc-info-box" style="margin-top:5px">';
+    html += '<h4 style="color:#006838;margin-bottom:12px">Hasil Perhitungan</h4>';
+
+    // Base
+    html += '<div style="padding:10px 0;border-bottom:1px solid rgba(0,167,88,0.2)">';
+    html += '<p style="font-weight:600;color:#00a758;margin-bottom:5px">Asuransi Dasar (Santunan ' + fmtKontribusi(santunanRaw).replace(currency === 'IDR' ? 'Rp ' : 'USD ', '') + ')</p>';
+    html += '<p>Kontribusi Dasar (' + freqLabel + ') : <strong>' + fmtKontribusi(kontribusiDasarFreq) + '</strong></p>';
+    html += '<p>Ujrah (Fee) Asuransi Dasar : <strong>' + fmtUjrah(ujrahDasarAnnual) + '</strong> <span style="font-size:.8rem;color:#666">(tahunan)</span></p>';
+    html += '</div>';
+
+    // CI
+    if (ciChecked) {
+        html += '<div style="padding:10px 0;border-bottom:1px solid rgba(0,167,88,0.2)">';
+        html += '<p style="font-weight:600;color:#00a758;margin-bottom:5px">MiSmart Critical Care Syariah (Santunan ' + fmtKontribusi(ciSantunanRaw).replace(currency === 'IDR' ? 'Rp ' : 'USD ', '') + ')</p>';
+        html += '<p>Kontribusi (' + freqLabel + ') : <strong>' + fmtKontribusi(ciKontribusiFreq) + '</strong></p>';
+        html += '<p>Ujrah (Fee) Asuransi Tambahan : <strong>' + fmtUjrah(ciUjrahAnnual) + '</strong> <span style="font-size:.8rem;color:#666">(tahunan)</span></p>';
+        html += '</div>';
+    }
+
+    // Waiver
+    if (waiverChecked) {
+        html += '<div style="padding:10px 0;border-bottom:1px solid rgba(0,167,88,0.2)">';
+        html += '<p style="font-weight:600;color:#00a758;margin-bottom:5px">MiSmart Waiver Syariah</p>';
+        html += '<p>Kontribusi (' + freqLabel + ') : <strong>' + fmtKontribusi(waiverKontribusiFreq) + '</strong></p>';
+        html += '<p>Ujrah (Fee) Asuransi Tambahan : <strong>' + fmtUjrah(waiverUjrahAnnual) + '</strong> <span style="font-size:.8rem;color:#666">(tahunan)</span></p>';
+        html += '</div>';
+    }
+
+    // Total
+    html += '<div style="padding:12px 0;margin-top:5px">';
+    html += '<p style="font-weight:700;font-size:1.1rem;color:#006838">Total Kontribusi Dasar & Rider (' + freqLabel + '):</p>';
+    html += '<p style="font-size:1.2rem;margin-top:5px"><strong style="color:#006838;font-size:1.3rem">' + fmtKontribusi(totalKontribusiFreq) + '</strong></p>';
+
+    // Show all frequency breakdowns
+    if (freq === 1) {
+        var semTotal, kuarTotal, bulTotal;
+        if (currency === 'IDR') {
+            semTotal = roundIDR(kontribusiDasarAnnual/2) + (ciChecked ? roundIDR(ciKontribusiAnnual/2) : 0) + (waiverChecked ? roundIDR(waiverKontribusiAnnual/2) : 0);
+            kuarTotal = roundIDR(kontribusiDasarAnnual/4) + (ciChecked ? roundIDR(ciKontribusiAnnual/4) : 0) + (waiverChecked ? roundIDR(waiverKontribusiAnnual/4) : 0);
+            bulTotal = roundIDR(kontribusiDasarAnnual/12) + (ciChecked ? roundIDR(ciKontribusiAnnual/12) : 0) + (waiverChecked ? roundIDR(waiverKontribusiAnnual/12) : 0);
+        } else {
+            semTotal = roundUSD(kontribusiDasarAnnual/2) + (ciChecked ? roundUSD(ciKontribusiAnnual/2) : 0) + (waiverChecked ? roundUSD(waiverKontribusiAnnual/2) : 0);
+            kuarTotal = roundUSD(kontribusiDasarAnnual/4) + (ciChecked ? roundUSD(ciKontribusiAnnual/4) : 0) + (waiverChecked ? roundUSD(waiverKontribusiAnnual/4) : 0);
+            bulTotal = roundUSD(kontribusiDasarAnnual/12) + (ciChecked ? roundUSD(ciKontribusiAnnual/12) : 0) + (waiverChecked ? roundUSD(waiverKontribusiAnnual/12) : 0);
+        }
+        html += '<p style="font-size:.85rem;color:#555;margin-top:5px">Semesteran: ' + fmtKontribusi(semTotal) + ' | Kuartalan: ' + fmtKontribusi(kuarTotal) + ' | Bulanan: ' + fmtKontribusi(bulTotal) + '</p>';
+    }
+
+    html += '<p style="font-size:.85rem;color:#555;margin-top:8px">Masa Pembayaran Kontribusi: <strong>' + (110 - age) + ' tahun</strong></p>';
+    html += '</div>';
+
+    // Top Up info
+    if (topUpRaw > 0) {
+        html += '<div style="padding:10px 0;border-top:1px solid rgba(0,167,88,0.2)">';
+        html += '<p style="font-size:.9rem;color:#333">Top Up Berkala (' + freqLabel + '): <strong>' + fmtKontribusi(topUpRaw) + '</strong></p>';
+        html += '</div>';
+    }
+
+    // Top Up Berkala minimum validation warning
+    if (topUpRaw > 0) {
+        var topUpMinimumsIDR = {1: 1000000, 2: 500000, 4: 250000, 12: 100000};
+        var topUpMinimumsUSD = {1: 100, 2: 50, 4: 25, 12: 10};
+        var topUpMins = currency === 'IDR' ? topUpMinimumsIDR : topUpMinimumsUSD;
+        var topUpMin = topUpMins[freq];
+        if (topUpRaw < topUpMin) {
+            var topUpFreqLabels = {1:'Tahunan',2:'Semesteran',4:'Kuartalan',12:'Bulanan'};
+            html += '<div style="padding:10px;margin-top:10px;background:#fff3cd;border:1px solid #ffc107;border-radius:6px">';
+            html += '<p style="color:#856404;font-size:.9rem;margin:0"><strong>Perhatian:</strong> Top Up Berkala minimum adalah ' + fmtKontribusi(topUpMin) + ' untuk pembayaran ' + topUpFreqLabels[freq] + '.</p>';
+            html += '</div>';
+        }
+    }
+
+    // USD minimum warning
+    if (currency === 'USD' && totalKontribusiFreq < 34) {
+        html += '<div style="padding:10px;margin-top:10px;background:#fff3cd;border:1px solid #ffc107;border-radius:6px">';
+        html += '<p style="color:#856404;font-size:.9rem;margin:0"><strong>Perhatian:</strong> Minimum Kontribusi Dasar & Rider untuk produk ini adalah USD 34.</p>';
+        html += '</div>';
+    }
+
+    html += '</div>';
+
+    document.getElementById('missionCalcResults').innerHTML = html;
+};
+
+populateMissionUsia();
+hitungMission();
+})();
+
+// Initialize illustration on page load
+document.addEventListener('DOMContentLoaded', function(){
+    updateIlustrasi();
+    
+    // Animate cards on scroll
+    var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+            if(entry.isIntersecting){
+                entry.target.classList.add('animate');
+            }
+        });
+    }, {threshold: 0.1});
+    
+    document.querySelectorAll('.plan-card').forEach(function(card){
+        observer.observe(card);
+    });
+});
+</script>
+</body>
+</html>

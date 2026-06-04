@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProActive Plus (PAP) - Asuransi Jiwa Berjangka | Manulife Indonesia</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;background:#f5f5f5;padding-top:48px;padding-bottom:80px}
+a{color:#00a758}
+.wa-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#25D366;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;text-decoration:none;color:#fff;font-weight:700;font-size:clamp(0.85rem,2.5vw,1rem);box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer;transition:background .2s}
+.wa-banner:hover{background:#1DA851}
+.wa-banner svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+.wa-banner span{white-space:nowrap}
+.floating-wa{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:9999;transition:transform .2s,box-shadow .2s}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.6)}
+.floating-wa svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:fixed;bottom:90px;right:25px;background:#fff;color:#333;padding:8px 14px;border-radius:8px;font-size:.75rem;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.15);z-index:9999;white-space:nowrap;opacity:0;transform:translateY(5px);transition:all .3s;pointer-events:none}
+.floating-wa:hover+.wa-tooltip{opacity:1;transform:translateY(0)}
+.header{background:linear-gradient(135deg,#00a758 0%,#006838 100%);color:#fff;padding:30px 20px;text-align:center}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:5px}
+.header p{font-size:1rem;opacity:.9}
+.tabs-container{background:#fff;border-bottom:2px solid #00a758;position:sticky;top:48px;z-index:998;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,0.1);-webkit-overflow-scrolling:touch}
+.tabs{display:flex;padding:0;list-style:none;min-width:max-content}
+.tabs li{padding:12px 16px;cursor:pointer;font-size:.85rem;font-weight:500;color:#555;border-bottom:3px solid transparent;transition:all .2s;user-select:none}
+.tabs li:hover{background:#e8f5e9;color:#00a758}
+.tabs li.active{color:#00a758;border-bottom-color:#00a758;background:#e8f5e9;font-weight:700}
+.tab-content{display:none;padding:30px 20px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+.card{background:#fff;border-radius:12px;padding:25px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card h2{color:#00a758;margin-bottom:15px;font-size:1.4rem}
+.card h3{color:#006838;margin:18px 0 10px;font-size:1.1rem}
+.card p,.card li{line-height:1.7;margin-bottom:8px}
+.card ul,.card ol{padding-left:20px}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:8px;margin-bottom:5px}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.badge-orange{background:#fff3e0;color:#e65100}
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.85rem;overflow-x:auto;display:block}
+th{background:#00a758;color:#fff;padding:10px 8px;text-align:center;font-weight:600;white-space:nowrap}
+td{padding:8px;text-align:center;border-bottom:1px solid #e0e0e0;white-space:nowrap}
+tr:nth-child(even){background:#f8fdf9}
+tr:hover{background:#e8f5e9}
+.info-box{background:#e8f5e9;border-left:4px solid #00a758;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.highlight-box{background:#fff8e1;border-left:4px solid #ffc107;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.calc-controls{background:#fff;border-radius:12px;padding:20px 25px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:25px;display:flex;flex-wrap:wrap;gap:15px;align-items:flex-end}
+.calc-control-group{display:flex;flex-direction:column;gap:5px}
+.calc-control-group label{font-size:.8rem;font-weight:600;color:#00a758;text-transform:uppercase;letter-spacing:.5px}
+.calc-control-group select,.calc-control-group input{padding:10px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:.95rem;font-family:inherit;background:#fff;cursor:pointer;transition:all .3s}
+.calc-control-group select{padding-right:35px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300a758' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.calc-control-group select:focus,.calc-control-group input:focus{outline:none;border-color:#00a758;box-shadow:0 0 0 3px rgba(0,167,88,0.15)}
+.calc-control-group input{width:200px}
+.calc-btn{padding:10px 24px;background:#00a758;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;transition:all .3s}
+.calc-btn:hover{background:#006838}
+.quick-amounts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 20px}
+.quick-amt{padding:6px 14px;border:2px solid #00a758;border-radius:20px;background:transparent;color:#00a758;font-size:.82rem;font-weight:600;font-family:inherit;cursor:pointer;transition:all .2s}
+.quick-amt:hover,.quick-amt.active{background:#00a758;color:#fff}
+.section-title{font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:#00a758;margin:25px 0 15px;padding-left:12px;border-left:4px solid #2ECC71}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-bottom:30px}
+.plan-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,167,88,0.12);transition:all .3s}
+.plan-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,167,88,0.2)}
+.plan-card .card-header{background:linear-gradient(135deg,#00a758,#006838);color:#fff;padding:14px 16px;font-weight:700;font-size:1rem}
+.plan-card .card-body{padding:16px}
+.plan-card .premi-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0}
+.plan-card .premi-row:last-child{border-bottom:none}
+.plan-card .premi-label{font-size:.8rem;color:#777;font-weight:500}
+.plan-card .premi-value{font-size:.95rem;font-weight:700;color:#00a758}
+.plan-card .premi-value.monthly{color:#006838;font-size:.88rem}
+.calc-info-box{background:linear-gradient(135deg,#E8F5EE,#D5F5E3);border-radius:12px;padding:18px 22px;margin:20px 0;border-left:4px solid #2ECC71}
+.calc-info-box h4{color:#00a758;font-size:.9rem;margin-bottom:6px}
+.calc-info-box p{font-size:.82rem;color:#333;margin:4px 0}
+.calc-error{background:#ffebee;border-left:4px solid #e53935;padding:15px;border-radius:0 8px 8px 0;margin:15px 0;color:#c62828;font-weight:500}
+.faq-item{background:#fff;border-radius:8px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.faq-question{padding:16px 20px;cursor:pointer;font-weight:600;color:#333;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-question:hover{background:#e8f5e9}
+.faq-question::after{content:'+';font-size:1.4rem;color:#00a758;font-weight:700;transition:transform .3s}
+.faq-item.open .faq-question::after{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px}
+.faq-item.open .faq-answer{max-height:600px;padding:0 20px 16px}
+.faq-answer p{line-height:1.7;color:#555;font-size:.9rem}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:20px 0}
+.feature-card{background:#f8fdf9;border:1px solid #c8e6c9;border-radius:10px;padding:18px;transition:all .2s}
+.feature-card:hover{box-shadow:0 4px 12px rgba(0,167,88,0.15);border-color:#00a758}
+.feature-card h4{color:#00a758;margin-bottom:8px;font-size:1rem}
+.feature-card p{font-size:.88rem;color:#555;line-height:1.6}
+.timeline{position:relative;padding-left:30px;margin:20px 0}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:3px;background:#c8e6c9;border-radius:3px}
+.timeline-item{position:relative;margin-bottom:20px;padding-left:15px}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:#00a758;border:3px solid #e8f5e9}
+.timeline-item h4{color:#006838;font-size:.95rem;margin-bottom:4px}
+.timeline-item p{font-size:.85rem;color:#555;line-height:1.6}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+.header{padding:20px 15px}
+.tab-content{padding:20px 12px}
+.card{padding:18px}
+.calc-controls{padding:15px;gap:10px}
+.cards-grid{grid-template-columns:1fr;gap:12px}
+.feature-grid{grid-template-columns:1fr}
+table{font-size:.75rem}
+.calc-control-group input{width:150px}
+}
+@media print{
+.wa-banner,.floating-wa,.wa-tooltip{display:none!important}
+body{padding-top:0}
+.tabs-container{position:static}
+.tab-content{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20ProActive%20Plus" target="_blank" class="wa-banner" aria-label="WhatsApp Petrus Jakub">
+<span>Petrus Jakub Partner Bisnis Manulife</span>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<span>087781896087</span>
+</a>
+
+<div class="header">
+<h1>ProActive Plus (PAP)</h1>
+<p>Asuransi Jiwa Berjangka dari PT Asuransi Jiwa Manulife Indonesia</p>
+</div>
+
+<div class="tabs-container">
+<ul class="tabs" id="mainTabs" role="tablist">
+<li class="active" data-tab="ringkasan" role="tab">Ringkasan Produk</li>
+<li data-tab="manfaat" role="tab">Manfaat</li>
+<li data-tab="kalkulator" role="tab">Kalkulator Premi</li>
+<li data-tab="ketentuan" role="tab">Ketentuan Polis</li>
+<li data-tab="klaim" role="tab">Cara Klaim</li>
+<li data-tab="ilustrasi" role="tab">Ilustrasi</li>
+<li data-tab="faq" role="tab">FAQ</li>
+</ul>
+</div>
+
+<!-- Tab 1: Ringkasan Produk -->
+<div class="tab-content active" id="tab-ringkasan" role="tabpanel">
+<div class="card">
+<h2>Apa itu ProActive Plus (PAP)?</h2>
+<p><strong>ProActive Plus (PAP)</strong> adalah asuransi jiwa berjangka (term life insurance) dari PT Asuransi Jiwa Manulife Indonesia. Produk ini memberikan perlindungan finansial bagi keluarga Anda jika terjadi risiko meninggal dunia, dengan manfaat 100% Uang Pertanggungan.</p>
+<p>Dengan premi yang terjangkau mulai dari <strong>Rp 380.000/bulan</strong>, Anda bisa mendapatkan proteksi jiwa dengan Uang Pertanggungan minimal Rp 100 juta.</p>
+
+<h3>6 Keunggulan ProActive Plus</h3>
+<div class="feature-grid">
+<div class="feature-card">
+<h4>1. Proteksi Optimal</h4>
+<p>Manfaat meninggal dunia sebesar 100% Uang Pertanggungan dibayarkan kepada ahli waris. Perlindungan menyeluruh untuk keluarga tercinta.</p>
+</div>
+<div class="feature-card">
+<h4>2. Premi Terjangkau</h4>
+<p>Premi mulai dari Rp 380.000 per bulan. Tersedia pilihan bayar tahunan, semesteran, kuartalan, atau bulanan sesuai kemampuan Anda.</p>
+</div>
+<div class="feature-card">
+<h4>3. Masa Pertanggungan Fleksibel</h4>
+<p>Pilih masa pertanggungan sesuai kebutuhan: 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, atau 20 tahun.</p>
+</div>
+<div class="feature-card">
+<h4>4. Jaminan Premi Tetap</h4>
+<p>Premi Anda tidak akan naik selama masa pembayaran premi. Anda bayar premi yang sama dari awal sampai akhir.</p>
+</div>
+<div class="feature-card">
+<h4>5. Dapat Diperpanjang Tanpa Seleksi Ulang</h4>
+<p>Polis bisa diperpanjang secara otomatis sampai usia 70 tahun tanpa perlu tes kesehatan ulang.</p>
+</div>
+<div class="feature-card">
+<h4>6. Pilihan Mata Uang</h4>
+<p>Tersedia dalam mata uang Rupiah (IDR) dan Dolar Amerika (USD) sesuai preferensi Anda.</p>
+</div>
+</div>
+
+<h3>Spesifikasi Produk</h3>
+<table>
+<tr><th>Keterangan</th><th>Detail</th></tr>
+<tr><td>Usia Masuk</td><td>18 s/d (70 dikurangi Masa Pembayaran Premi) tahun</td></tr>
+<tr><td>Masa Pertanggungan / Pembayaran</td><td>5 - 20 tahun</td></tr>
+<tr><td>Uang Pertanggungan Minimum</td><td>Rp 100.000.000 / USD 10.000</td></tr>
+<tr><td>Premi Minimum Tahunan</td><td>Rp 4.000.000</td></tr>
+<tr><td>Premi Minimum Semesteran</td><td>Rp 2.100.000</td></tr>
+<tr><td>Premi Minimum Kuartalan</td><td>Rp 1.100.000</td></tr>
+<tr><td>Premi Minimum Bulanan</td><td>Rp 380.000</td></tr>
+<tr><td>Mata Uang</td><td>IDR dan USD</td></tr>
+<tr><td>Underwriting</td><td>Full Underwriting</td></tr>
+<tr><td>Perpanjangan</td><td>Sampai usia 70 tahun tanpa seleksi ulang</td></tr>
+</table>
+
+</div>
+</div>
+
+<!-- Tab 2: Manfaat -->
+<div class="tab-content" id="tab-manfaat" role="tabpanel">
+<div class="card">
+<h2>Manfaat ProActive Plus</h2>
+
+<h3>Manfaat Utama: Meninggal Dunia</h3>
+<div class="info-box">
+<p><strong>100% Uang Pertanggungan</strong> dibayarkan kepada ahli waris jika Tertanggung meninggal dunia selama masa pertanggungan. Pembayaran dilakukan sekaligus (lump sum) maksimal 30 hari setelah klaim disetujui.</p>
+</div>
+
+<h3>Jaminan Premi Tetap</h3>
+<p>Premi yang Anda bayar akan tetap sama selama masa pembayaran premi. Tidak ada kenaikan premi meskipun usia bertambah.</p>
+
+<h3>Perpanjangan Otomatis</h3>
+<p>Setelah masa pertanggungan berakhir, polis dapat diperpanjang sampai usia 70 tahun <strong>tanpa perlu tes kesehatan ulang</strong> (tanpa seleksi ulang). Premi saat perpanjangan akan disesuaikan berdasarkan usia saat perpanjangan.</p>
+
+<h3>Tabel Minimum Premi per Mode Bayar</h3>
+<table>
+<tr><th>Mode Pembayaran</th><th>Minimum Premi (IDR)</th><th>Frekuensi</th></tr>
+<tr><td>Tahunan</td><td>Rp 4.000.000</td><td>1x setahun</td></tr>
+<tr><td>Semesteran</td><td>Rp 2.100.000</td><td>2x setahun</td></tr>
+<tr><td>Kuartalan</td><td>Rp 1.100.000</td><td>4x setahun</td></tr>
+<tr><td>Bulanan</td><td>Rp 380.000</td><td>12x setahun</td></tr>
+</table>
+
+<h3>Kategori Premi</h3>
+<p>Premi ProActive Plus ditentukan berdasarkan 4 kategori:</p>
+<table>
+<tr><th>Kategori</th><th>Keterangan</th></tr>
+<tr><td>Pria Merokok</td><td>Laki-laki yang merokok atau pernah merokok dalam 12 bulan terakhir</td></tr>
+<tr><td>Pria Tidak Merokok</td><td>Laki-laki yang tidak merokok selama minimal 12 bulan</td></tr>
+<tr><td>Wanita Merokok</td><td>Perempuan yang merokok atau pernah merokok dalam 12 bulan terakhir</td></tr>
+<tr><td>Wanita Tidak Merokok</td><td>Perempuan yang tidak merokok selama minimal 12 bulan</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Tab 3: Kalkulator Premi -->
+<div class="tab-content" id="tab-kalkulator" role="tabpanel">
+<div class="card">
+<h2>Kalkulator Premi ProActive Plus</h2>
+<p style="margin-bottom:20px">Hitung estimasi premi ProActive Plus berdasarkan profil Anda. Masukkan data di bawah, lalu klik "Hitung Premi".</p>
+
+<div class="calc-controls">
+<div class="calc-control-group">
+<label>Jenis Kelamin</label>
+<select id="gender" onchange="onPPPChange()">
+<option value="pria">Pria</option>
+<option value="wanita">Wanita</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Status Merokok</label>
+<select id="smoking" onchange="calculate()">
+<option value="no">Tidak Merokok</option>
+<option value="yes">Merokok</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Usia Saat Ini</label>
+<select id="age" onchange="calculate()">
+</select>
+</div>
+<div class="calc-control-group">
+<label>Masa Pembayaran Premi (PPP)</label>
+<select id="ppp" onchange="onPPPChange()">
+<option value="5">5 tahun</option>
+<option value="6">6 tahun</option>
+<option value="7">7 tahun</option>
+<option value="8">8 tahun</option>
+<option value="9">9 tahun</option>
+<option value="10">10 tahun</option>
+<option value="11">11 tahun</option>
+<option value="12">12 tahun</option>
+<option value="13">13 tahun</option>
+<option value="14">14 tahun</option>
+<option value="15">15 tahun</option>
+<option value="16">16 tahun</option>
+<option value="17">17 tahun</option>
+<option value="18">18 tahun</option>
+<option value="19">19 tahun</option>
+<option value="20" selected>20 tahun</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Uang Pertanggungan (Rp)</label>
+<input type="text" id="sumAssured" value="1.000.000.000" oninput="formatSA(this)" onchange="calculate()">
+</div>
+<button class="calc-btn" onclick="calculate()">Hitung Premi</button>
+</div>
+
+<p style="font-size:.82rem;color:#777;margin-bottom:8px">Pilih cepat Uang Pertanggungan:</p>
+<div class="quick-amounts">
+<button class="quick-amt" onclick="setSA(100000000, this)">100 Juta</button>
+<button class="quick-amt" onclick="setSA(250000000, this)">250 Juta</button>
+<button class="quick-amt" onclick="setSA(500000000, this)">500 Juta</button>
+<button class="quick-amt active" onclick="setSA(1000000000, this)">1 Miliar</button>
+<button class="quick-amt" onclick="setSA(2000000000, this)">2 Miliar</button>
+<button class="quick-amt" onclick="setSA(3000000000, this)">3 Miliar</button>
+<button class="quick-amt" onclick="setSA(5000000000, this)">5 Miliar</button>
+</div>
+
+<div id="calcResults"></div>
+
+<div class="calc-info-box">
+<h4>Cara Baca Hasil</h4>
+<p>Premi yang ditampilkan adalah estimasi berdasarkan tabel rate ProActive Plus.</p>
+<p>Rate berbeda untuk UP di bawah 1 Miliar dan UP 1 Miliar ke atas (rate lebih murah untuk UP besar).</p>
+<h4 style="margin-top:10px">Mode Pembayaran</h4>
+<p>Tahunan (1x), Semesteran (0,525x premi tahunan per cicilan), Kuartalan (0,2675x per cicilan), Bulanan (0,09x per cicilan).</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 4: Ketentuan Polis -->
+<div class="tab-content" id="tab-ketentuan" role="tabpanel">
+<div class="card">
+<h2>Ketentuan Polis ProActive Plus</h2>
+<p>Berikut ringkasan ketentuan polis dalam bahasa yang mudah dipahami:</p>
+
+<h3>Masa Percobaan (Cooling Off Period)</h3>
+<div class="info-box">
+<p><strong>14 hari kalender</strong> sejak polis diterima. Dalam periode ini, Anda bisa membatalkan polis dan mendapat pengembalian premi penuh (dikurangi biaya pemeriksaan kesehatan jika ada).</p>
+</div>
+
+<h3>Masa Tenggang (Grace Period)</h3>
+<div class="info-box">
+<p><strong>45 hari kalender</strong> setelah tanggal jatuh tempo premi. Selama masa tenggang, polis masih aktif. Jika premi tidak dibayar dalam 45 hari, polis akan berakhir.</p>
+</div>
+
+<h3>Perpanjangan Polis (Renewal)</h3>
+<ul>
+<li>Polis dapat diperpanjang sampai Tertanggung berusia <strong>70 tahun</strong></li>
+<li>Tidak perlu seleksi risiko ulang (tanpa tes kesehatan lagi)</li>
+<li>Premi saat perpanjangan akan disesuaikan berdasarkan usia pada saat perpanjangan</li>
+<li>Perpanjangan otomatis kecuali Pemegang Polis mengajukan pembatalan</li>
+</ul>
+
+<h3>Pemulihan Polis (Reinstatement)</h3>
+<ul>
+<li>Polis yang sudah berakhir dapat dipulihkan dalam waktu <strong>maksimal 2 tahun</strong> sejak berakhir</li>
+<li>Harus melunasi semua premi yang tertunggak beserta bunga</li>
+<li>Perlu menyerahkan pernyataan kesehatan atau menjalani pemeriksaan kesehatan ulang</li>
+<li>Persetujuan pemulihan tergantung hasil penilaian risiko oleh Manulife</li>
+</ul>
+
+<h3>Perubahan Polis</h3>
+<ul>
+<li>Pemegang Polis bisa mengajukan perubahan data (alamat, ahli waris, dll)</li>
+<li>Perubahan Uang Pertanggungan bisa dilakukan dengan persetujuan Manulife</li>
+
+</ul>
+
+<h3>Pengecualian (Exclusions)</h3>
+<div class="highlight-box">
+<p>Manfaat meninggal dunia <strong>tidak dibayarkan</strong> jika disebabkan oleh:</p>
+<ul style="margin-top:8px;padding-left:20px">
+<li>Bunuh diri dalam <strong>2 tahun pertama</strong> sejak polis berlaku atau dipulihkan</li>
+<li>Akibat tindakan melawan hukum yang dilakukan oleh Tertanggung</li>
+<li>Perang, pemberontakan, atau kerusuhan</li>
+<li>Senjata nuklir, kimia, atau biologi</li>
+</ul>
+</div>
+
+<h3>Berakhirnya Pertanggungan</h3>
+<p>Pertanggungan berakhir pada saat yang paling awal terjadi:</p>
+<ul>
+<li>Tertanggung meninggal dunia</li>
+<li>Masa pertanggungan berakhir dan tidak diperpanjang</li>
+<li>Polis dibatalkan oleh Pemegang Polis</li>
+<li>Premi tidak dibayar melewati masa tenggang 45 hari</li>
+<li>Tertanggung mencapai usia 70 tahun</li>
+</ul>
+</div>
+</div>
+
+<!-- Tab 5: Cara Klaim -->
+<div class="tab-content" id="tab-klaim" role="tabpanel">
+<div class="card">
+<h2>Cara Klaim ProActive Plus</h2>
+
+<h3>Langkah-langkah Pengajuan Klaim</h3>
+<div class="timeline">
+<div class="timeline-item">
+<h4>1. Lapor Klaim</h4>
+<p>Ajukan klaim tertulis kepada Manulife dalam waktu <strong>90 hari</strong> sejak Tertanggung meninggal dunia.</p>
+</div>
+<div class="timeline-item">
+<h4>2. Siapkan Dokumen</h4>
+<p>Kumpulkan semua dokumen yang dibutuhkan (lihat daftar di bawah).</p>
+</div>
+<div class="timeline-item">
+<h4>3. Kirim Dokumen</h4>
+<p>Serahkan dokumen lengkap ke kantor Manulife atau melalui agen/partner bisnis Anda.</p>
+</div>
+<div class="timeline-item">
+<h4>4. Proses Verifikasi</h4>
+<p>Manulife akan memproses dan memverifikasi klaim Anda.</p>
+</div>
+<div class="timeline-item">
+<h4>5. Pembayaran</h4>
+<p>Manfaat klaim dibayarkan <strong>maksimal 30 hari</strong> setelah klaim disetujui dan dokumen lengkap.</p>
+</div>
+</div>
+
+<h3>Dokumen yang Dibutuhkan</h3>
+<table>
+<tr><th>No</th><th>Dokumen</th><th>Keterangan</th></tr>
+<tr><td>1</td><td>Polis Asli</td><td>Dokumen polis asuransi asli</td></tr>
+<tr><td>2</td><td>Formulir Klaim</td><td>Diisi lengkap dan ditandatangani</td></tr>
+<tr><td>3</td><td>Akta Kematian</td><td>Dari instansi yang berwenang</td></tr>
+<tr><td>4</td><td>KTP Tertanggung</td><td>Fotokopi KTP Tertanggung</td></tr>
+<tr><td>5</td><td>KTP Ahli Waris</td><td>Fotokopi KTP penerima manfaat</td></tr>
+<tr><td>6</td><td>Surat Keterangan Dokter/RS</td><td>Menerangkan penyebab kematian</td></tr>
+<tr><td>7</td><td>Surat Keterangan Kepolisian</td><td>Jika meninggal akibat kecelakaan</td></tr>
+</table>
+
+<h3>Kontak Klaim Manulife</h3>
+<div class="highlight-box">
+<p><strong>Customer Contact Center:</strong> 021-2555-7777</p>
+<p><strong>Email:</strong> customer_id@manulife.com</p>
+<p><strong>Jam Operasional:</strong> Senin - Jumat, 08:00 - 17:00 WIB</p>
+</div>
+
+<div class="info-box">
+<p><strong>Tips:</strong> Segera hubungi agen/partner bisnis Anda (Petrus Jakub - 087781896087) untuk pendampingan proses klaim. Kami siap membantu dari awal sampai manfaat cair.</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 6: Ilustrasi -->
+<div class="tab-content" id="tab-ilustrasi" role="tabpanel">
+<div class="card">
+<h2>Ilustrasi ProActive Plus</h2>
+<p>Berikut contoh ilustrasi perlindungan ProActive Plus untuk membantu Anda memahami cara kerja produk ini.</p>
+
+<h3>Contoh Kasus</h3>
+<div class="info-box">
+<p><strong>Profil:</strong> Pria, 45 tahun, Tidak Merokok</p>
+<p><strong>Uang Pertanggungan:</strong> Rp 1.000.000.000 (1 Miliar)</p>
+<p><strong>Masa Pembayaran Premi (PPP):</strong> 5 tahun</p>
+<p><strong>Rate (dari tabel ge1m, PPP 5, usia 45, Male Non-Smoker):</strong> 6,39 per juta per tahun</p>
+<p><strong>Premi Tahunan:</strong> 6,39 x 1.000 = <strong>Rp 6.390.000 / tahun</strong></p>
+</div>
+
+<h3>Timeline Pembayaran dan Perlindungan</h3>
+<table>
+<tr><th>Tahun ke-</th><th>Usia</th><th>Premi Tahunan</th><th>Status Polis</th><th>Manfaat Jika Meninggal</th></tr>
+<tr><td>1</td><td>45</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+<tr><td>2</td><td>46</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+<tr><td>3</td><td>47</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+<tr><td>4</td><td>48</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+<tr><td>5</td><td>49</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+</table>
+
+<h3>Ringkasan</h3>
+<div class="highlight-box">
+<p><strong>Total Premi Dibayar (5 tahun):</strong> 5 x Rp 6.390.000 = <strong>Rp 31.950.000</strong></p>
+<p><strong>Perlindungan yang Didapat:</strong> Rp 1.000.000.000 (1 Miliar) selama 5 tahun</p>
+<p><strong>Rasio Perlindungan:</strong> Dengan membayar Rp 31,95 juta, keluarga Anda terlindungi senilai Rp 1 Miliar. Itu artinya perlindungan <strong>31x lipat</strong> dari total premi yang dibayar!</p>
+</div>
+
+<h3>Opsi Setelah PPP Berakhir</h3>
+<ul>
+<li><strong>Perpanjang:</strong> Polis bisa diperpanjang tanpa tes kesehatan ulang (premi disesuaikan usia baru)</li>
+<li><strong>Tidak perpanjang:</strong> Pertanggungan berakhir, tidak ada nilai tunai (karena ini asuransi jiwa berjangka murni)</li>
+</ul>
+
+<div class="info-box">
+<p><strong>Catatan:</strong> ProActive Plus adalah asuransi jiwa berjangka murni (pure term life). Tidak ada nilai tunai atau investasi. Semua premi digunakan untuk perlindungan jiwa, sehingga premi jauh lebih terjangkau dibanding asuransi jiwa seumur hidup atau unit link.</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 7: FAQ -->
+<div class="tab-content" id="tab-faq" role="tabpanel">
+<div class="card">
+<h2>Pertanyaan yang Sering Ditanya (FAQ)</h2>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu ProActive Plus (PAP)?</div>
+<div class="faq-answer"><p>ProActive Plus (PAP) adalah produk asuransi jiwa berjangka (term life insurance) dari Manulife Indonesia. Produk ini memberikan perlindungan finansial berupa 100% Uang Pertanggungan kepada ahli waris jika Tertanggung meninggal dunia selama masa pertanggungan. Ini adalah asuransi murni tanpa investasi, sehingga preminya sangat terjangkau.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Siapa yang bisa membeli ProActive Plus?</div>
+<div class="faq-answer"><p>Siapa saja berusia <strong>18 tahun</strong> sampai maksimal <strong>70 dikurangi masa pembayaran premi</strong>. Contoh: jika memilih PPP 20 tahun, usia masuk maksimal adalah 50 tahun (70 - 20 = 50). Jika memilih PPP 5 tahun, usia masuk maksimal 65 tahun (70 - 5 = 65). Proses pembelian melalui Full Underwriting (pemeriksaan kesehatan).</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana cara menghitung premi ProActive Plus?</div>
+<div class="faq-answer"><p>Premi dihitung berdasarkan: (1) Usia masuk, (2) Jenis kelamin, (3) Status merokok, (4) Masa pembayaran premi (PPP), dan (5) Uang Pertanggungan. Gunakan Kalkulator Premi di tab "Kalkulator Premi" untuk menghitung estimasi premi Anda secara langsung. Rate premi lebih murah untuk UP 1 Miliar ke atas.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa yang terjadi jika saya telat bayar premi?</div>
+<div class="faq-answer"><p>Anda memiliki <strong>masa tenggang 45 hari</strong> setelah tanggal jatuh tempo. Selama 45 hari tersebut, polis masih aktif dan Anda masih terlindungi. Namun jika setelah 45 hari premi tetap belum dibayar, polis akan berakhir (lapse). Polis yang sudah lapse masih bisa dipulihkan dalam 2 tahun dengan membayar tunggakan plus bunga dan pemeriksaan kesehatan ulang.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana cara memperpanjang polis?</div>
+<div class="faq-answer"><p>Setelah masa pertanggungan berakhir, polis akan otomatis diperpanjang <strong>tanpa perlu tes kesehatan ulang</strong> sampai usia 70 tahun. Premi saat perpanjangan akan disesuaikan berdasarkan usia Anda pada saat perpanjangan dan tabel premi yang berlaku. Jika tidak ingin perpanjang, Anda bisa mengajukan pembatalan.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa saja yang tidak ditanggung (pengecualian)?</div>
+<div class="faq-answer"><p>Manfaat tidak dibayarkan jika kematian disebabkan oleh: (1) Bunuh diri dalam 2 tahun pertama polis, (2) Tindakan melawan hukum oleh Tertanggung, (3) Perang, pemberontakan, atau kerusuhan, (4) Senjata nuklir, kimia, atau biologi. Di luar pengecualian tersebut, semua penyebab kematian ditanggung termasuk sakit, kecelakaan, dan sebagainya.</p></div>
+</div>
+
+
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana cara mengajukan klaim?</div>
+<div class="faq-answer"><p>Ajukan klaim tertulis dalam <strong>90 hari</strong> sejak Tertanggung meninggal. Siapkan dokumen: polis asli, formulir klaim, akta kematian, KTP, dan surat keterangan dokter/RS tentang penyebab kematian. Pembayaran klaim dilakukan maksimal 30 hari setelah klaim disetujui. Hubungi Customer Contact Center 021-2555-7777 atau partner bisnis Anda untuk bantuan.</p></div>
+</div>
+
+</div>
+</div>
+
+<!-- Floating WA Button -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20ProActive%20Plus" target="_blank" class="floating-wa" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<div class="wa-tooltip">Petrus Jakub - 087781896087</div>
+
+<script>
+// Premium Rate Data
+var RATES = {"ge1m":{"20":{"18":[2.49,1.87,1.98,1.46],"19":[2.53,1.9,2.0,1.48],"20":[2.57,1.93,2.04,1.51],"21":[2.63,1.97,2.09,1.54],"22":[2.69,2.03,2.14,1.58],"23":[2.78,2.09,2.21,1.63],"24":[2.88,2.16,2.29,1.69],"25":[2.99,2.25,2.38,1.77],"26":[3.14,2.36,2.49,1.85],"27":[3.3,2.48,2.62,1.95],"28":[3.5,2.63,2.78,2.06],"29":[3.72,2.8,2.95,2.2],"30":[3.99,3.0,3.16,2.35],"31":[4.28,3.22,3.38,2.52],"32":[4.61,3.46,3.62,2.69],"33":[4.98,3.73,3.89,2.9],"34":[5.39,4.03,4.19,3.12],"35":[5.84,4.37,4.52,3.37],"36":[6.33,4.74,4.87,3.64],"37":[6.88,5.16,5.25,3.92],"38":[7.48,5.61,5.66,4.23],"39":[8.13,6.1,6.09,4.56],"40":[8.84,6.63,6.54,4.9],"41":[9.6,7.2,7.01,5.26],"42":[10.44,7.82,7.51,5.63],"43":[11.35,8.51,8.04,6.02],"44":[12.34,9.25,8.6,6.44],"45":[13.43,10.07,9.21,6.9],"46":[14.62,10.97,9.87,7.4],"47":[15.93,11.95,10.58,7.94],"48":[17.38,13.03,11.36,8.53],"49":[18.96,14.22,12.21,9.16],"50":[20.7,15.53,13.13,9.85],"51":[22.03,16.53,13.82,10.37],"52":[23.44,17.58,14.54,10.91],"53":[24.93,18.68,15.3,11.47],"54":[26.48,19.84,16.05,12.04],"55":[28.09,21.05,16.84,12.63],"56":[29.76,22.31,17.65,13.24],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"19":{"18":[2.48,1.86,1.96,1.45],"19":[2.51,1.88,1.99,1.47],"20":[2.55,1.91,2.02,1.49],"21":[2.6,1.95,2.06,1.52],"22":[2.66,2.0,2.11,1.56],"23":[2.74,2.06,2.17,1.61],"24":[2.83,2.13,2.25,1.67],"25":[2.94,2.21,2.34,1.73],"26":[3.08,2.31,2.45,1.81],"27":[3.24,2.43,2.57,1.91],"28":[3.42,2.57,2.72,2.02],"29":[3.64,2.74,2.89,2.15],"30":[3.9,2.93,3.09,2.3],"31":[4.19,3.15,3.31,2.46],"32":[4.51,3.38,3.55,2.64],"33":[4.87,3.64,3.81,2.84],"34":[5.27,3.94,4.1,3.06],"35":[5.7,4.26,4.43,3.3],"36":[6.18,4.63,4.78,3.56],"37":[6.72,5.04,5.15,3.84],"38":[7.3,5.48,5.55,4.15],"39":[7.94,5.95,5.97,4.47],"40":[8.62,6.47,6.42,4.81],"41":[9.37,7.02,6.89,5.16],"42":[10.18,7.63,7.37,5.53],"43":[11.07,8.3,7.9,5.92],"44":[12.03,9.02,8.45,6.32],"45":[13.1,9.82,9.05,6.77],"46":[14.25,10.7,9.69,7.26],"47":[15.53,11.65,10.38,7.78],"48":[16.93,12.7,11.13,8.36],"49":[18.47,13.85,11.95,8.97],"50":[20.16,15.13,12.85,9.64],"51":[22.03,16.53,13.82,10.37],"52":[23.44,17.58,14.54,10.91],"53":[24.93,18.68,15.3,11.47],"54":[26.48,19.84,16.05,12.04],"55":[28.09,21.05,16.84,12.63],"56":[29.76,22.31,17.65,13.24],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"18":{"18":[2.46,1.85,1.95,1.44],"19":[2.49,1.87,1.97,1.46],"20":[2.53,1.9,2.0,1.48],"21":[2.57,1.93,2.04,1.51],"22":[2.63,1.97,2.09,1.54],"23":[2.7,2.03,2.14,1.59],"24":[2.78,2.09,2.21,1.64],"25":[2.89,2.17,2.3,1.7],"26":[3.02,2.27,2.4,1.78],"27":[3.17,2.38,2.52,1.87],"28":[3.35,2.52,2.66,1.98],"29":[3.56,2.68,2.83,2.11],"30":[3.81,2.87,3.03,2.25],"31":[4.09,3.08,3.24,2.41],"32":[4.41,3.3,3.48,2.58],"33":[4.76,3.56,3.73,2.78],"34":[5.15,3.84,4.02,3.0],"35":[5.57,4.16,4.34,3.23],"36":[6.04,4.52,4.68,3.49],"37":[6.56,4.91,5.05,3.76],"38":[7.12,5.35,5.44,4.07],"39":[7.74,5.81,5.86,4.39],"40":[8.41,6.3,6.3,4.71],"41":[9.13,6.85,6.76,5.07],"42":[9.93,7.44,7.24,5.43],"43":[10.79,8.09,7.76,5.81],"44":[11.73,8.8,8.3,6.21],"45":[12.76,9.57,8.88,6.65],"46":[13.88,10.42,9.5,7.12],"47":[15.12,11.34,10.17,7.63],"48":[16.48,12.36,10.9,8.18],"49":[17.98,13.48,11.7,8.78],"50":[19.62,14.72,12.56,9.43],"51":[21.44,16.08,13.51,10.14],"52":[23.44,17.58,14.54,10.91],"53":[24.93,18.68,15.3,11.47],"54":[26.48,19.84,16.05,12.04],"55":[28.09,21.05,16.84,12.63],"56":[29.76,22.31,17.65,13.24],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"17":{"18":[2.45,1.84,1.94,1.43],"19":[2.47,1.86,1.96,1.45],"20":[2.5,1.88,1.98,1.47],"21":[2.54,1.91,2.02,1.49],"22":[2.59,1.95,2.06,1.52],"23":[2.66,2.0,2.11,1.56],"24":[2.74,2.06,2.18,1.61],"25":[2.84,2.13,2.26,1.67],"26":[2.96,2.22,2.35,1.74],"27":[3.1,2.33,2.47,1.83],"28":[3.28,2.46,2.61,1.94],"29":[3.48,2.62,2.77,2.06],"30":[3.73,2.8,2.96,2.21],"31":[4.0,3.0,3.17,2.36],"32":[4.3,3.23,3.4,2.53],"33":[4.65,3.47,3.66,2.72],"34":[5.02,3.75,3.94,2.93],"35":[5.43,4.06,4.25,3.16],"36":[5.89,4.41,4.58,3.42],"37":[6.39,4.79,4.94,3.69],"38":[6.94,5.21,5.33,3.98],"39":[7.54,5.66,5.74,4.3],"40":[8.19,6.14,6.17,4.62],"41":[8.9,6.67,6.63,4.97],"42":[9.67,7.25,7.11,5.33],"43":[10.51,7.88,7.62,5.7],"44":[11.42,8.57,8.15,6.1],"45":[12.42,9.32,8.72,6.53],"46":[13.51,10.14,9.32,6.98],"47":[14.71,11.04,9.97,7.48],"48":[16.03,12.02,10.67,8.01],"49":[17.49,13.11,11.44,8.58],"50":[19.08,14.32,12.28,9.22],"51":[20.85,15.64,13.2,9.91],"52":[22.8,17.09,14.2,10.65],"53":[24.93,18.68,15.3,11.47],"54":[26.48,19.84,16.05,12.04],"55":[28.09,21.05,16.84,12.63],"56":[29.76,22.31,17.65,13.24],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"16":{"18":[2.43,1.83,1.93,1.42],"19":[2.45,1.84,1.95,1.44],"20":[2.48,1.86,1.97,1.45],"21":[2.51,1.89,1.99,1.47],"22":[2.56,1.92,2.03,1.5],"23":[2.62,1.97,2.08,1.54],"24":[2.69,2.02,2.14,1.58],"25":[2.78,2.09,2.21,1.64],"26":[2.9,2.18,2.3,1.71],"27":[3.04,2.28,2.42,1.79],"28":[3.2,2.41,2.55,1.89],"29":[3.4,2.56,2.71,2.02],"30":[3.64,2.74,2.9,2.16],"31":[3.9,2.93,3.1,2.31],"32":[4.2,3.15,3.33,2.47],"33":[4.53,3.39,3.58,2.66],"34":[4.9,3.66,3.85,2.87],"35":[5.3,3.96,4.16,3.1],"36":[5.74,4.3,4.49,3.35],"37":[6.23,4.67,4.84,3.61],"38":[6.76,5.08,5.22,3.9],"39":[7.35,5.51,5.63,4.21],"40":[7.98,5.98,6.05,4.53],"41":[8.67,6.49,6.5,4.87],"42":[9.42,7.05,6.97,5.23],"43":[10.23,7.67,7.48,5.6],"44":[11.12,8.34,8.0,5.98],"45":[12.09,9.07,8.55,6.4],"46":[13.14,9.86,9.14,6.85],"47":[14.3,10.73,9.76,7.32],"48":[15.58,11.69,10.44,7.84],"49":[16.99,12.74,11.19,8.39],"50":[18.54,13.91,12.0,9.01],"51":[20.26,15.2,12.89,9.68],"52":[22.15,16.61,13.86,10.4],"53":[24.22,18.16,14.92,11.19],"54":[26.48,19.84,16.05,12.04],"55":[28.09,21.05,16.84,12.63],"56":[29.76,22.31,17.65,13.24],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"15":{"18":[2.42,1.82,1.92,1.41],"19":[2.43,1.83,1.93,1.42],"20":[2.46,1.85,1.95,1.44],"21":[2.49,1.87,1.97,1.46],"22":[2.53,1.9,2.0,1.48],"23":[2.58,1.94,2.05,1.51],"24":[2.65,1.99,2.1,1.55],"25":[2.73,2.05,2.17,1.61],"26":[2.84,2.14,2.26,1.67],"27":[2.97,2.24,2.36,1.75],"28":[3.13,2.35,2.49,1.85],"29":[3.32,2.5,2.65,1.97],"30":[3.55,2.67,2.83,2.11],"31":[3.81,2.86,3.03,2.26],"32":[4.1,3.07,3.25,2.42],"33":[4.42,3.31,3.5,2.6],"34":[4.78,3.57,3.77,2.81],"35":[5.17,3.86,4.07,3.03],"36":[5.59,4.19,4.39,3.27],"37":[6.07,4.55,4.74,3.53],"38":[6.58,4.94,5.11,3.82],"39":[7.15,5.37,5.51,4.13],"40":[7.76,5.82,5.93,4.44],"41":[8.43,6.32,6.38,4.78],"42":[9.16,6.86,6.84,5.13],"43":[9.95,7.46,7.34,5.49],"44":[10.81,8.11,7.85,5.87],"45":[11.75,8.81,8.39,6.28],"46":[12.77,9.59,8.95,6.71],"47":[13.9,10.43,9.56,7.17],"48":[15.13,11.35,10.21,7.67],"49":[16.5,12.37,10.93,8.2],"50":[18.0,13.51,11.72,8.79],"51":[19.67,14.75,12.58,9.44],"52":[21.5,16.12,13.52,10.14],"53":[23.51,17.63,14.55,10.92],"54":[25.71,19.27,15.65,11.74],"55":[28.09,21.05,16.84,12.63],"56":[29.76,22.31,17.65,13.24],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"14":{"18":[2.41,1.81,1.91,1.41],"19":[2.43,1.82,1.92,1.42],"20":[2.44,1.84,1.94,1.43],"21":[2.47,1.86,1.96,1.45],"22":[2.5,1.88,1.99,1.47],"23":[2.55,1.92,2.02,1.5],"24":[2.61,1.96,2.07,1.53],"25":[2.69,2.02,2.14,1.58],"26":[2.79,2.1,2.22,1.64],"27":[2.91,2.19,2.32,1.72],"28":[3.06,2.3,2.44,1.81],"29":[3.24,2.44,2.58,1.92],"30":[3.46,2.61,2.76,2.05],"31":[3.71,2.79,2.95,2.2],"32":[3.99,2.99,3.17,2.35],"33":[4.3,3.22,3.41,2.53],"34":[4.65,3.47,3.67,2.73],"35":[5.03,3.75,3.97,2.95],"36":[5.44,4.08,4.29,3.2],"37":[5.91,4.43,4.63,3.45],"38":[6.41,4.81,5.0,3.73],"39":[6.96,5.22,5.39,4.03],"40":[7.56,5.67,5.8,4.34],"41":[8.2,6.15,6.24,4.67],"42":[8.91,6.67,6.69,5.01],"43":[9.67,7.25,7.17,5.37],"44":[10.51,7.88,7.68,5.74],"45":[11.42,8.56,8.21,6.14],"46":[12.41,9.31,8.76,6.57],"47":[13.49,10.13,9.36,7.02],"48":[14.7,11.02,10.0,7.51],"49":[16.02,12.01,10.71,8.03],"50":[17.48,13.11,11.47,8.61],"51":[19.09,14.32,12.3,9.24],"52":[20.87,15.65,13.21,9.91],"53":[22.81,17.1,14.2,10.65],"54":[24.94,18.69,15.25,11.44],"55":[27.25,20.42,16.39,12.3],"56":[29.76,22.31,17.65,13.24],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"13":{"18":[2.41,1.81,1.91,1.41],"19":[2.42,1.82,1.92,1.41],"20":[2.43,1.83,1.93,1.42],"21":[2.45,1.84,1.95,1.44],"22":[2.48,1.87,1.97,1.46],"23":[2.52,1.9,2.0,1.48],"24":[2.58,1.94,2.05,1.51],"25":[2.65,1.99,2.1,1.56],"26":[2.74,2.06,2.18,1.61],"27":[2.85,2.15,2.27,1.68],"28":[2.99,2.25,2.38,1.77],"29":[3.16,2.38,2.52,1.87],"30":[3.37,2.54,2.69,2.0],"31":[3.61,2.71,2.88,2.14],"32":[3.88,2.91,3.09,2.29],"33":[4.19,3.13,3.32,2.47],"34":[4.52,3.37,3.58,2.66],"35":[4.89,3.65,3.87,2.88],"36":[5.3,3.96,4.18,3.12],"37":[5.75,4.31,4.52,3.37],"38":[6.24,4.68,4.88,3.64],"39":[6.77,5.08,5.26,3.94],"40":[7.35,5.51,5.67,4.24],"41":[7.98,5.98,6.09,4.56],"42":[8.66,6.48,6.54,4.9],"43":[9.4,7.04,7.01,5.25],"44":[10.2,7.65,7.5,5.61],"45":[11.08,8.31,8.02,6.0],"46":[12.04,9.04,8.57,6.42],"47":[13.09,9.83,9.16,6.87],"48":[14.26,10.69,9.79,7.35],"49":[15.54,11.65,10.48,7.86],"50":[16.95,12.72,11.22,8.42],"51":[18.51,13.89,12.03,9.03],"52":[20.23,15.17,12.89,9.67],"53":[22.11,16.57,13.84,10.38],"54":[24.17,18.11,14.84,11.14],"55":[26.4,19.79,15.95,11.97],"56":[28.84,21.62,17.15,12.87],"57":[31.5,23.62,18.48,13.87],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"12":{"18":[2.41,1.81,1.91,1.41],"19":[2.41,1.81,1.91,1.41],"20":[2.42,1.82,1.92,1.42],"21":[2.44,1.83,1.93,1.43],"22":[2.46,1.85,1.95,1.44],"23":[2.49,1.88,1.98,1.46],"24":[2.54,1.91,2.02,1.49],"25":[2.6,1.96,2.07,1.53],"26":[2.69,2.02,2.13,1.58],"27":[2.79,2.1,2.22,1.65],"28":[2.92,2.2,2.32,1.72],"29":[3.08,2.32,2.46,1.82],"30":[3.28,2.47,2.62,1.95],"31":[3.51,2.64,2.8,2.08],"32":[3.77,2.83,3.0,2.22],"33":[4.07,3.04,3.23,2.4],"34":[4.39,3.28,3.48,2.59],"35":[4.75,3.55,3.77,2.8],"36":[5.15,3.85,4.08,3.04],"37":[5.59,4.19,4.41,3.28],"38":[6.06,4.55,4.77,3.55],"39":[6.58,4.94,5.14,3.85],"40":[7.14,5.36,5.53,4.14],"41":[7.75,5.8,5.95,4.46],"42":[8.41,6.29,6.38,4.78],"43":[9.12,6.84,6.84,5.12],"44":[9.89,7.42,7.33,5.48],"45":[10.74,8.06,7.84,5.87],"46":[11.67,8.76,8.38,6.28],"47":[12.69,9.53,8.96,6.72],"48":[13.82,10.37,9.58,7.2],"49":[15.07,11.3,10.26,7.69],"50":[16.43,12.33,10.98,8.24],"51":[17.93,13.45,11.75,8.82],"52":[19.59,14.69,12.58,9.44],"53":[21.41,16.05,13.48,10.11],"54":[23.4,17.53,14.44,10.83],"55":[25.56,19.16,15.5,11.63],"56":[27.92,20.93,16.66,12.5],"57":[30.49,22.87,17.94,13.47],"58":[33.32,24.98,19.36,14.53],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"11":{"18":[2.4,1.8,1.9,1.4],"19":[2.41,1.81,1.91,1.4],"20":[2.41,1.81,1.91,1.41],"21":[2.42,1.82,1.92,1.42],"22":[2.44,1.83,1.94,1.43],"23":[2.47,1.86,1.96,1.45],"24":[2.51,1.89,1.99,1.47],"25":[2.56,1.93,2.03,1.51],"26":[2.63,1.98,2.09,1.55],"27":[2.73,2.05,2.17,1.61],"28":[2.85,2.14,2.27,1.68],"29":[3.0,2.26,2.39,1.77],"30":[3.19,2.41,2.55,1.89],"31":[3.41,2.57,2.72,2.02],"32":[3.66,2.75,2.92,2.16],"33":[3.95,2.95,3.14,2.33],"34":[4.27,3.18,3.38,2.52],"35":[4.61,3.44,3.67,2.73],"36":[5.0,3.74,3.97,2.96],"37":[5.43,4.07,4.3,3.2],"38":[5.89,4.42,4.65,3.47],"39":[6.4,4.8,5.02,3.75],"40":[6.94,5.2,5.4,4.04],"41":[7.52,5.63,5.81,4.35],"42":[8.16,6.11,6.23,4.67],"43":[8.84,6.63,6.68,5.0],"44":[9.58,7.19,7.16,5.35],"45":[10.41,7.81,7.66,5.73],"46":[11.3,8.49,8.19,6.13],"47":[12.29,9.23,8.76,6.57],"48":[13.39,10.04,9.37,7.04],"49":[14.59,10.94,10.03,7.52],"50":[15.9,11.93,10.73,8.05],"51":[17.35,13.02,11.47,8.61],"52":[18.96,14.21,12.27,9.2],"53":[20.71,15.52,13.12,9.84],"54":[22.63,16.96,14.04,10.53],"55":[24.71,18.52,15.05,11.3],"56":[27.0,20.24,16.16,12.13],"57":[29.49,22.12,17.39,13.06],"58":[32.23,24.16,18.77,14.09],"59":[35.23,26.41,20.32,15.24],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"10":{"18":[2.4,1.8,1.9,1.4],"19":[2.4,1.8,1.9,1.4],"20":[2.4,1.8,1.9,1.4],"21":[2.41,1.81,1.91,1.41],"22":[2.42,1.82,1.92,1.42],"23":[2.44,1.84,1.94,1.43],"24":[2.47,1.86,1.96,1.45],"25":[2.52,1.9,2.0,1.48],"26":[2.58,1.95,2.05,1.52],"27":[2.67,2.01,2.12,1.57],"28":[2.78,2.09,2.21,1.64],"29":[2.92,2.2,2.33,1.73],"30":[3.11,2.34,2.48,1.84],"31":[3.31,2.5,2.64,1.96],"32":[3.55,2.67,2.83,2.09],"33":[3.83,2.86,3.05,2.26],"34":[4.14,3.09,3.29,2.45],"35":[4.47,3.34,3.57,2.65],"36":[4.85,3.63,3.86,2.88],"37":[5.27,3.95,4.19,3.11],"38":[5.72,4.29,4.53,3.38],"39":[6.21,4.66,4.89,3.66],"40":[6.73,5.04,5.27,3.94],"41":[7.29,5.46,5.67,4.24],"42":[7.9,5.92,6.08,4.56],"43":[8.56,6.42,6.52,4.88],"44":[9.28,6.96,6.98,5.22],"45":[10.07,7.55,7.47,5.59],"46":[10.94,8.21,8.0,5.99],"47":[11.89,8.93,8.56,6.42],"48":[12.95,9.71,9.16,6.88],"49":[14.11,10.58,9.81,7.36],"50":[15.38,11.54,10.48,7.87],"51":[16.78,12.59,11.2,8.41],"52":[18.32,13.74,11.95,8.96],"53":[20.01,14.99,12.77,9.58],"54":[21.86,16.38,13.64,10.23],"55":[23.87,17.89,14.61,10.96],"56":[26.07,19.55,15.67,11.76],"57":[28.48,21.36,16.85,12.65],"58":[31.13,23.34,18.18,13.64],"59":[34.04,25.52,19.67,14.76],"60":[37.24,27.92,21.35,16.01],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"9":{"18":[2.4,1.8,1.9,1.4],"19":[2.4,1.8,1.9,1.4],"20":[2.4,1.8,1.9,1.4],"21":[2.4,1.8,1.9,1.4],"22":[2.41,1.81,1.91,1.41],"23":[2.43,1.83,1.93,1.43],"24":[2.46,1.85,1.95,1.44],"25":[2.49,1.88,1.98,1.46],"26":[2.55,1.92,2.03,1.5],"27":[2.62,1.98,2.09,1.55],"28":[2.72,2.05,2.17,1.61],"29":[2.86,2.16,2.28,1.69],"30":[3.03,2.29,2.42,1.8],"31":[3.23,2.43,2.57,1.91],"32":[3.45,2.59,2.75,2.03],"33":[3.72,2.78,2.95,2.19],"34":[4.01,2.99,3.18,2.37],"35":[4.33,3.23,3.45,2.56],"36":[4.7,3.51,3.74,2.79],"37":[5.1,3.82,4.06,3.02],"38":[5.54,4.16,4.4,3.28],"39":[6.02,4.52,4.75,3.56],"40":[6.53,4.89,5.13,3.84],"41":[7.08,5.3,5.52,4.13],"42":[7.67,5.74,5.92,4.44],"43":[8.31,6.23,6.35,4.75],"44":[9.0,6.75,6.81,5.08],"45":[9.76,7.32,7.28,5.45],"46":[10.59,7.95,7.79,5.83],"47":[11.51,8.64,8.34,6.25],"48":[12.52,9.39,8.92,6.7],"49":[13.64,10.23,9.55,7.16],"50":[14.86,11.16,10.21,7.67],"51":[16.21,12.17,10.92,8.2],"52":[17.72,13.28,11.67,8.75],"53":[19.35,14.5,12.48,9.36],"54":[21.14,15.84,13.33,9.99],"55":[23.09,17.3,14.25,10.69],"56":[25.2,18.9,15.25,11.45],"57":[27.51,20.64,16.36,12.29],"58":[30.06,22.54,17.6,13.21],"59":[32.86,24.64,19.02,14.27],"60":[35.94,26.95,20.62,15.47],"61":[39.35,29.5,22.48,16.86],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"8":{"18":[2.4,1.8,1.9,1.4],"19":[2.4,1.8,1.9,1.4],"20":[2.4,1.8,1.9,1.4],"21":[2.4,1.8,1.9,1.4],"22":[2.41,1.81,1.91,1.41],"23":[2.42,1.82,1.92,1.42],"24":[2.44,1.84,1.94,1.43],"25":[2.47,1.86,1.96,1.45],"26":[2.52,1.89,2.0,1.48],"27":[2.58,1.95,2.05,1.52],"28":[2.67,2.02,2.13,1.58],"29":[2.79,2.11,2.23,1.65],"30":[2.95,2.24,2.36,1.75],"31":[3.14,2.37,2.5,1.86],"32":[3.35,2.52,2.67,1.97],"33":[3.61,2.69,2.86,2.12],"34":[3.89,2.89,3.08,2.29],"35":[4.19,3.12,3.34,2.48],"36":[4.54,3.4,3.62,2.69],"37":[4.93,3.7,3.93,2.92],"38":[5.36,4.03,4.27,3.18],"39":[5.83,4.37,4.62,3.46],"40":[6.32,4.74,4.98,3.73],"41":[6.86,5.13,5.37,4.03],"42":[7.44,5.56,5.77,4.33],"43":[8.05,6.03,6.19,4.63],"44":[8.72,6.54,6.63,4.95],"45":[9.45,7.09,7.1,5.3],"46":[10.25,7.69,7.58,5.67],"47":[11.12,8.35,8.11,6.08],"48":[12.09,9.07,8.67,6.52],"49":[13.16,9.87,9.29,6.97],"50":[14.34,10.77,9.95,7.47],"51":[15.65,11.75,10.65,8.0],"52":[17.11,12.83,11.4,8.54],"53":[18.7,14.01,12.19,9.14],"54":[20.43,15.31,13.01,9.76],"55":[22.3,16.71,13.9,10.43],"56":[24.33,18.25,14.84,11.14],"57":[26.55,19.91,15.87,11.92],"58":[28.99,21.73,17.03,12.78],"59":[31.68,23.75,18.36,13.78],"60":[34.65,25.98,19.9,14.93],"61":[37.94,28.45,21.69,16.27],"62":[41.55,31.15,23.71,17.78],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"7":{"18":[2.4,1.8,1.9,1.4],"19":[2.4,1.8,1.9,1.4],"20":[2.4,1.8,1.9,1.4],"21":[2.4,1.8,1.9,1.4],"22":[2.41,1.81,1.91,1.41],"23":[2.41,1.81,1.91,1.41],"24":[2.43,1.83,1.93,1.42],"25":[2.45,1.84,1.94,1.43],"26":[2.48,1.87,1.97,1.46],"27":[2.54,1.91,2.02,1.5],"28":[2.61,1.98,2.09,1.55],"29":[2.73,2.07,2.18,1.62],"30":[2.88,2.18,2.3,1.71],"31":[3.05,2.3,2.43,1.81],"32":[3.25,2.44,2.59,1.91],"33":[3.5,2.6,2.77,2.05],"34":[3.76,2.79,2.98,2.21],"35":[4.05,3.02,3.23,2.39],"36":[4.39,3.29,3.5,2.6],"37":[4.77,3.58,3.8,2.82],"38":[5.18,3.9,4.13,3.08],"39":[5.64,4.23,4.48,3.36],"40":[6.12,4.59,4.84,3.63],"41":[6.64,4.97,5.23,3.92],"42":[7.2,5.38,5.62,4.21],"43":[7.8,5.84,6.03,4.5],"44":[8.44,6.33,6.46,4.82],"45":[9.15,6.85,6.91,5.16],"46":[9.9,7.44,7.38,5.52],"47":[10.73,8.06,7.88,5.91],"48":[11.66,8.75,8.43,6.33],"49":[12.69,9.52,9.03,6.78],"50":[13.82,10.38,9.68,7.27],"51":[15.09,11.33,10.38,7.79],"52":[16.51,12.37,11.12,8.33],"53":[18.04,13.52,11.9,8.92],"54":[19.72,14.77,12.7,9.52],"55":[21.52,16.12,13.54,10.16],"56":[23.46,17.59,14.42,10.83],"57":[25.58,19.19,15.37,11.55],"58":[27.92,20.93,16.45,12.35],"59":[30.49,22.86,17.71,13.29],"60":[33.36,25.01,19.18,14.39],"61":[36.54,27.4,20.91,15.68],"62":[40.04,30.02,22.86,17.14],"63":[43.84,32.87,25.02,18.76],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"6":{"18":[2.4,1.8,1.9,1.4],"19":[2.4,1.8,1.9,1.4],"20":[2.4,1.8,1.9,1.4],"21":[2.4,1.8,1.9,1.4],"22":[2.4,1.8,1.9,1.4],"23":[2.41,1.81,1.91,1.41],"24":[2.41,1.81,1.91,1.41],"25":[2.42,1.82,1.92,1.42],"26":[2.45,1.84,1.94,1.44],"27":[2.49,1.88,1.98,1.47],"28":[2.56,1.94,2.04,1.52],"29":[2.66,2.02,2.13,1.58],"30":[2.8,2.13,2.24,1.67],"31":[2.97,2.24,2.36,1.75],"32":[3.15,2.37,2.51,1.85],"33":[3.38,2.51,2.67,1.98],"34":[3.63,2.69,2.87,2.13],"35":[3.91,2.91,3.12,2.3],"36":[4.24,3.17,3.38,2.51],"37":[4.6,3.45,3.68,2.72],"38":[5.0,3.76,4.0,2.98],"39":[5.45,4.09,4.34,3.26],"40":[5.92,4.43,4.7,3.52],"41":[6.42,4.8,5.08,3.81],"42":[6.97,5.2,5.46,4.09],"43":[7.54,5.65,5.87,4.38],"44":[8.16,6.12,6.28,4.68],"45":[8.84,6.62,6.72,5.01],"46":[9.56,7.18,7.17,5.36],"47":[10.35,7.77,7.66,5.74],"48":[11.23,8.43,8.18,6.15],"49":[12.21,9.16,8.78,6.59],"50":[13.3,10.0,9.41,7.07],"51":[14.53,10.91,10.11,7.59],"52":[15.9,11.92,10.84,8.12],"53":[17.39,13.03,11.62,8.71],"54":[19.01,14.24,12.38,9.29],"55":[20.74,15.54,13.19,9.9],"56":[22.59,16.94,14.01,10.52],"57":[24.61,18.46,14.88,11.19],"58":[26.84,20.12,15.87,11.92],"59":[29.31,21.98,17.06,12.8],"60":[32.07,24.05,18.46,13.84],"61":[35.14,26.35,20.12,15.09],"62":[38.52,28.88,22.02,16.51],"63":[42.21,31.65,24.14,18.09],"64":[46.21,34.64,26.36,19.77],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]},"5":{"18":[2.4,1.8,1.9,1.4],"19":[2.4,1.8,1.9,1.4],"20":[2.4,1.8,1.9,1.4],"21":[2.4,1.8,1.9,1.4],"22":[2.4,1.8,1.9,1.4],"23":[2.4,1.8,1.9,1.4],"24":[2.4,1.8,1.9,1.4],"25":[2.4,1.8,1.9,1.4],"26":[2.42,1.82,1.92,1.42],"27":[2.45,1.85,1.95,1.45],"28":[2.5,1.9,2.0,1.49],"29":[2.59,1.98,2.08,1.54],"30":[2.73,2.08,2.18,1.62],"31":[2.88,2.18,2.29,1.7],"32":[3.05,2.29,2.43,1.79],"33":[3.27,2.43,2.58,1.91],"34":[3.5,2.6,2.77,2.05],"35":[3.77,2.8,3.0,2.22],"36":[4.08,3.06,3.26,2.41],"37":[4.43,3.33,3.55,2.62],"38":[4.83,3.63,3.87,2.88],"39":[5.26,3.95,4.2,3.16],"40":[5.71,4.28,4.56,3.42],"41":[6.2,4.63,4.93,3.7],"42":[6.74,5.03,5.31,3.98],"43":[7.29,5.46,5.71,4.26],"44":[7.88,5.91,6.11,4.55],"45":[8.53,6.39,6.53,4.87],"46":[9.22,6.92,6.96,5.2],"47":[9.96,7.49,7.43,5.57],"48":[10.8,8.11,7.94,5.97],"49":[11.74,8.81,8.52,6.39],"50":[12.78,9.61,9.15,6.87],"51":[13.97,10.49,9.84,7.38],"52":[15.3,11.46,10.57,7.91],"53":[16.74,12.54,11.33,8.49],"54":[18.3,13.7,12.07,9.05],"55":[19.95,14.95,12.83,9.63],"56":[21.72,16.29,13.59,10.21],"57":[23.64,17.74,14.39,10.82],"58":[25.77,19.32,15.3,11.49],"59":[28.13,21.09,16.4,12.31],"60":[30.78,23.08,17.73,13.3],"61":[33.74,25.3,19.33,14.5],"62":[37.01,27.75,21.18,15.88],"63":[40.59,30.44,23.25,17.43],"64":[44.47,33.33,25.43,19.07],"65":[48.62,36.45,27.71,20.79],"66":[51.07,38.28,29.07,21.8],"67":[53.55,40.14,30.39,22.8],"68":[56.06,42.0,31.68,23.75],"69":[58.6,43.9,33.0,24.7]}},"lt1m":{"20":{"18":[2.8,2.08,2.18,1.65],"19":[2.83,2.11,2.21,1.68],"20":[2.88,2.15,2.25,1.7],"21":[2.94,2.19,2.3,1.74],"22":[3.01,2.25,2.36,1.79],"23":[3.1,2.32,2.44,1.84],"24":[3.21,2.4,2.53,1.9],"25":[3.34,2.5,2.63,1.98],"26":[3.49,2.62,2.75,2.07],"27":[3.67,2.75,2.9,2.18],"28":[3.89,2.92,3.07,2.3],"29":[4.13,3.11,3.26,2.44],"30":[4.42,3.33,3.49,2.61],"31":[4.75,3.57,3.73,2.8],"32":[5.11,3.85,4.01,3.01],"33":[5.52,4.15,4.31,3.24],"34":[5.97,4.49,4.65,3.49],"35":[6.47,4.86,5.01,3.76],"36":[7.03,5.28,5.41,4.06],"37":[7.64,5.74,5.84,4.38],"38":[8.3,6.23,6.3,4.73],"39":[9.02,6.78,6.78,5.09],"40":[9.8,7.36,7.28,5.47],"41":[10.66,7.99,7.8,5.86],"42":[11.59,8.69,8.35,6.27],"43":[12.6,9.45,8.93,6.7],"44":[13.7,10.28,9.55,7.17],"45":[14.92,11.19,10.22,7.68],"46":[16.25,12.19,10.96,8.23],"47":[17.7,13.29,11.76,8.83],"48":[19.3,14.49,12.63,9.48],"49":[21.06,15.81,13.57,10.19],"50":[23.0,17.25,14.6,10.95],"51":[24.48,18.36,15.37,11.52],"52":[26.04,19.53,16.17,12.12],"53":[27.69,20.77,16.99,12.74],"54":[29.41,22.06,17.84,13.38],"55":[31.21,23.4,18.71,14.03],"56":[33.08,24.8,19.6,14.7],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"19":{"18":[2.78,2.07,2.17,1.64],"19":[2.81,2.09,2.2,1.66],"20":[2.86,2.13,2.23,1.69],"21":[2.91,2.17,2.28,1.72],"22":[2.98,2.22,2.33,1.76],"23":[3.06,2.28,2.4,1.81],"24":[3.16,2.36,2.48,1.87],"25":[3.28,2.46,2.58,1.94],"26":[3.43,2.57,2.7,2.03],"27":[3.6,2.7,2.84,2.13],"28":[3.8,2.86,3.0,2.25],"29":[4.04,3.04,3.19,2.39],"30":[4.33,3.26,3.42,2.55],"31":[4.64,3.49,3.66,2.74],"32":[5.0,3.76,3.93,2.95],"33":[5.4,4.05,4.22,3.17],"34":[5.84,4.39,4.55,3.42],"35":[6.32,4.75,4.91,3.68],"36":[6.86,5.15,5.31,3.98],"37":[7.45,5.6,5.72,4.3],"38":[8.1,6.08,6.17,4.63],"39":[8.8,6.61,6.65,4.99],"40":[9.57,7.18,7.15,5.37],"41":[10.4,7.8,7.66,5.75],"42":[11.3,8.48,8.2,6.16],"43":[12.29,9.22,8.77,6.59],"44":[13.36,10.03,9.38,7.05],"45":[14.55,10.91,10.04,7.54],"46":[15.83,11.88,10.75,8.08],"47":[17.25,12.95,11.53,8.66],"48":[18.8,14.12,12.38,9.29],"49":[20.52,15.39,13.29,9.97],"50":[22.4,16.81,14.29,10.71],"51":[24.48,18.36,15.37,11.52],"52":[26.04,19.53,16.17,12.12],"53":[27.69,20.77,16.99,12.74],"54":[29.41,22.06,17.84,13.38],"55":[31.21,23.4,18.71,14.03],"56":[33.08,24.8,19.6,14.7],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"18":{"18":[2.76,2.05,2.16,1.64],"19":[2.79,2.08,2.18,1.65],"20":[2.83,2.11,2.21,1.67],"21":[2.88,2.15,2.25,1.7],"22":[2.94,2.19,2.3,1.74],"23":[3.02,2.25,2.36,1.79],"24":[3.11,2.32,2.44,1.84],"25":[3.22,2.41,2.54,1.91],"26":[3.36,2.52,2.65,1.99],"27":[3.53,2.65,2.78,2.09],"28":[3.72,2.8,2.94,2.2],"29":[3.95,2.97,3.13,2.34],"30":[4.23,3.18,3.34,2.5],"31":[4.53,3.42,3.58,2.68],"32":[4.88,3.67,3.84,2.88],"33":[5.27,3.96,4.14,3.1],"34":[5.7,4.28,4.46,3.34],"35":[6.17,4.63,4.81,3.61],"36":[6.7,5.03,5.2,3.9],"37":[7.27,5.46,5.61,4.21],"38":[7.9,5.93,6.05,4.54],"39":[8.59,6.45,6.52,4.9],"40":[9.33,7.0,7.01,5.26],"41":[10.14,7.6,7.52,5.65],"42":[11.02,8.26,8.05,6.05],"43":[11.98,8.98,8.62,6.47],"44":[13.02,9.77,9.21,6.92],"45":[14.17,10.63,9.86,7.4],"46":[15.42,11.57,10.55,7.93],"47":[16.79,12.61,11.31,8.49],"48":[18.3,13.74,12.12,9.1],"49":[19.97,14.98,13.0,9.76],"50":[21.8,16.36,13.97,10.48],"51":[23.82,17.87,15.03,11.26],"52":[26.04,19.53,16.17,12.12],"53":[27.69,20.77,16.99,12.74],"54":[29.41,22.06,17.84,13.38],"55":[31.21,23.4,18.71,14.03],"56":[33.08,24.8,19.6,14.7],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"17":{"18":[2.75,2.04,2.14,1.63],"19":[2.77,2.06,2.16,1.64],"20":[2.81,2.09,2.19,1.66],"21":[2.85,2.12,2.23,1.68],"22":[2.9,2.16,2.27,1.72],"23":[2.97,2.22,2.33,1.76],"24":[3.06,2.29,2.4,1.81],"25":[3.17,2.37,2.49,1.87],"26":[3.3,2.47,2.59,1.95],"27":[3.45,2.59,2.72,2.04],"28":[3.64,2.74,2.88,2.16],"29":[3.87,2.91,3.06,2.29],"30":[4.13,3.11,3.27,2.45],"31":[4.43,3.34,3.5,2.63],"32":[4.76,3.59,3.76,2.82],"33":[5.15,3.87,4.05,3.04],"34":[5.56,4.18,4.37,3.27],"35":[6.02,4.52,4.71,3.53],"36":[6.54,4.91,5.09,3.82],"37":[7.09,5.33,5.49,4.13],"38":[7.71,5.78,5.93,4.45],"39":[8.37,6.29,6.4,4.8],"40":[9.09,6.82,6.88,5.16],"41":[9.88,7.4,7.38,5.54],"42":[10.73,8.05,7.9,5.94],"43":[11.67,8.75,8.46,6.35],"44":[12.68,9.52,9.05,6.79],"45":[13.8,10.35,9.67,7.27],"46":[15.01,11.26,10.35,7.77],"47":[16.34,12.27,11.08,8.32],"48":[17.8,13.37,11.87,8.91],"49":[19.42,14.57,12.72,9.55],"50":[21.2,15.91,13.66,10.24],"51":[23.16,17.38,14.68,11.01],"52":[25.33,18.99,15.79,11.84],"53":[27.69,20.77,16.99,12.74],"54":[29.41,22.06,17.84,13.38],"55":[31.21,23.4,18.71,14.03],"56":[33.08,24.8,19.6,14.7],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"16":{"18":[2.73,2.03,2.13,1.62],"19":[2.75,2.05,2.15,1.63],"20":[2.78,2.07,2.17,1.65],"21":[2.82,2.1,2.2,1.67],"22":[2.87,2.14,2.24,1.69],"23":[2.93,2.19,2.29,1.73],"24":[3.01,2.25,2.36,1.78],"25":[3.11,2.33,2.44,1.84],"26":[3.23,2.42,2.54,1.91],"27":[3.38,2.54,2.67,2.0],"28":[3.56,2.67,2.81,2.11],"29":[3.78,2.84,2.99,2.24],"30":[4.03,3.04,3.2,2.39],"31":[4.32,3.26,3.43,2.57],"32":[4.65,3.5,3.68,2.76],"33":[5.02,3.77,3.96,2.97],"34":[5.43,4.08,4.27,3.2],"35":[5.88,4.41,4.61,3.46],"36":[6.37,4.78,4.98,3.74],"37":[6.91,5.19,5.38,4.04],"38":[7.51,5.63,5.81,4.36],"39":[8.15,6.12,6.27,4.71],"40":[8.85,6.64,6.74,5.06],"41":[9.61,7.21,7.24,5.44],"42":[10.45,7.84,7.76,5.83],"43":[11.36,8.52,8.3,6.24],"44":[12.34,9.26,8.88,6.67],"45":[13.43,10.07,9.49,7.13],"46":[14.6,10.96,10.14,7.62],"47":[15.89,11.93,10.85,8.15],"48":[17.3,13.0,11.61,8.72],"49":[18.87,14.16,12.44,9.33],"50":[20.6,15.46,13.35,10.01],"51":[22.5,16.88,14.34,10.75],"52":[24.61,18.45,15.41,11.55],"53":[26.91,20.18,16.58,12.43],"54":[29.41,22.06,17.84,13.38],"55":[31.21,23.4,18.71,14.03],"56":[33.08,24.8,19.6,14.7],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"15":{"18":[2.72,2.02,2.12,1.61],"19":[2.73,2.03,2.13,1.62],"20":[2.76,2.05,2.15,1.63],"21":[2.79,2.07,2.17,1.65],"22":[2.83,2.11,2.21,1.67],"23":[2.88,2.15,2.26,1.7],"24":[2.96,2.21,2.31,1.75],"25":[3.05,2.28,2.39,1.8],"26":[3.17,2.37,2.49,1.87],"27":[3.31,2.48,2.61,1.96],"28":[3.48,2.61,2.75,2.06],"29":[3.69,2.77,2.92,2.19],"30":[3.93,2.97,3.13,2.34],"31":[4.22,3.18,3.35,2.51],"32":[4.53,3.41,3.6,2.7],"33":[4.9,3.68,3.87,2.91],"34":[5.29,3.98,4.18,3.13],"35":[5.73,4.3,4.51,3.38],"36":[6.21,4.66,4.88,3.66],"37":[6.73,5.06,5.26,3.96],"38":[7.31,5.48,5.69,4.27],"39":[7.93,5.96,6.14,4.61],"40":[8.61,6.46,6.61,4.96],"41":[9.35,7.01,7.1,5.33],"42":[10.16,7.62,7.61,5.71],"43":[11.05,8.29,8.15,6.12],"44":[12.0,9.01,8.71,6.54],"45":[13.05,9.79,9.31,6.99],"46":[14.19,10.65,9.94,7.47],"47":[15.43,11.59,10.62,7.98],"48":[16.8,12.62,11.35,8.53],"49":[18.32,13.75,12.15,9.12],"50":[20.0,15.01,13.03,9.77],"51":[21.85,16.39,13.99,10.49],"52":[23.89,17.91,15.04,11.27],"53":[26.13,19.59,16.17,12.12],"54":[28.56,21.41,17.39,13.04],"55":[31.21,23.4,18.71,14.03],"56":[33.08,24.8,19.6,14.7],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"14":{"18":[2.71,2.01,2.11,1.61],"19":[2.73,2.02,2.12,1.61],"20":[2.74,2.04,2.14,1.62],"21":[2.77,2.06,2.16,1.64],"22":[2.81,2.09,2.19,1.66],"23":[2.86,2.13,2.23,1.69],"24":[2.92,2.18,2.28,1.72],"25":[3.0,2.25,2.35,1.77],"26":[3.11,2.33,2.44,1.84],"27":[3.24,2.43,2.55,1.92],"28":[3.4,2.56,2.69,2.01],"29":[3.6,2.71,2.85,2.13],"30":[3.84,2.89,3.05,2.27],"31":[4.11,3.1,3.26,2.44],"32":[4.41,3.32,3.5,2.63],"33":[4.76,3.58,3.77,2.83],"34":[5.15,3.87,4.07,3.05],"35":[5.57,4.18,4.4,3.3],"36":[6.04,4.54,4.76,3.57],"37":[6.55,4.92,5.14,3.86],"38":[7.12,5.34,5.56,4.17],"39":[7.72,5.8,6.0,4.51],"40":[8.38,6.29,6.46,4.85],"41":[9.1,6.82,6.94,5.21],"42":[9.88,7.41,7.44,5.59],"43":[10.74,8.05,7.97,5.98],"44":[11.66,8.75,8.52,6.4],"45":[12.68,9.51,9.1,6.84],"46":[13.78,10.34,9.73,7.31],"47":[14.99,11.26,10.4,7.82],"48":[16.32,12.26,11.12,8.35],"49":[17.79,13.35,11.9,8.93],"50":[19.41,14.57,12.76,9.56],"51":[21.2,15.91,13.69,10.26],"52":[23.18,17.38,14.69,11.01],"53":[25.35,19.01,15.77,11.82],"54":[27.7,20.77,16.94,12.7],"55":[30.27,22.7,18.21,13.66],"56":[33.08,24.8,19.6,14.7],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"13":{"18":[2.71,2.01,2.11,1.61],"19":[2.72,2.02,2.12,1.61],"20":[2.73,2.03,2.13,1.62],"21":[2.75,2.05,2.15,1.63],"22":[2.78,2.07,2.17,1.65],"23":[2.83,2.11,2.21,1.67],"24":[2.88,2.15,2.25,1.7],"25":[2.96,2.21,2.32,1.75],"26":[3.05,2.29,2.4,1.8],"27":[3.17,2.38,2.5,1.88],"28":[3.32,2.5,2.62,1.97],"29":[3.51,2.64,2.78,2.08],"30":[3.74,2.82,2.96,2.21],"31":[4.0,3.02,3.17,2.38],"32":[4.29,3.23,3.41,2.56],"33":[4.63,3.48,3.67,2.75],"34":[5.01,3.76,3.97,2.97],"35":[5.42,4.07,4.29,3.22],"36":[5.88,4.41,4.64,3.49],"37":[6.38,4.79,5.02,3.77],"38":[6.92,5.19,5.43,4.08],"39":[7.51,5.64,5.86,4.4],"40":[8.15,6.12,6.31,4.74],"41":[8.85,6.63,6.78,5.09],"42":[9.6,7.2,7.27,5.46],"43":[10.43,7.82,7.78,5.85],"44":[11.32,8.5,8.32,6.25],"45":[12.3,9.23,8.9,6.69],"46":[13.37,10.03,9.52,7.15],"47":[14.54,10.93,10.18,7.65],"48":[15.83,11.89,10.89,8.18],"49":[17.26,12.96,11.65,8.75],"50":[18.83,14.13,12.48,9.36],"51":[20.56,15.43,13.38,10.02],"52":[22.47,16.85,14.34,10.74],"53":[24.57,18.43,15.38,11.53],"54":[26.85,20.13,16.49,12.37],"55":[29.33,21.99,17.72,13.29],"56":[32.06,24.03,19.05,14.29],"57":[35.02,26.25,20.54,15.4],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"12":{"18":[2.71,2.01,2.11,1.6],"19":[2.71,2.01,2.11,1.61],"20":[2.72,2.02,2.12,1.61],"21":[2.74,2.03,2.13,1.62],"22":[2.76,2.05,2.15,1.63],"23":[2.8,2.08,2.18,1.65],"24":[2.85,2.12,2.22,1.68],"25":[2.91,2.18,2.28,1.72],"26":[3.0,2.24,2.35,1.77],"27":[3.11,2.33,2.44,1.83],"28":[3.25,2.44,2.56,1.92],"29":[3.42,2.58,2.7,2.02],"30":[3.64,2.75,2.88,2.15],"31":[3.89,2.94,3.08,2.31],"32":[4.17,3.15,3.31,2.48],"33":[4.5,3.39,3.57,2.68],"34":[4.86,3.66,3.86,2.89],"35":[5.26,3.95,4.17,3.13],"36":[5.71,4.29,4.53,3.4],"37":[6.2,4.66,4.9,3.68],"38":[6.73,5.05,5.3,3.98],"39":[7.3,5.49,5.73,4.3],"40":[7.92,5.94,6.17,4.63],"41":[8.6,6.44,6.62,4.98],"42":[9.32,6.99,7.1,5.33],"43":[10.12,7.59,7.6,5.71],"44":[10.98,8.24,8.13,6.11],"45":[11.93,8.95,8.7,6.53],"46":[12.96,9.73,9.31,6.99],"47":[14.09,10.59,9.96,7.49],"48":[15.34,11.53,10.66,8.01],"49":[16.73,12.56,11.4,8.56],"50":[18.25,13.69,12.21,9.15],"51":[19.92,14.95,13.07,9.79],"52":[21.77,16.32,13.99,10.48],"53":[23.79,17.84,14.98,11.23],"54":[25.99,19.49,16.05,12.03],"55":[28.4,21.29,17.22,12.92],"56":[31.03,23.27,18.5,13.88],"57":[33.91,25.41,19.94,14.95],"58":[37.04,27.76,21.51,16.15],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"11":{"18":[2.7,2.0,2.1,1.6],"19":[2.71,2.01,2.11,1.6],"20":[2.71,2.01,2.11,1.61],"21":[2.72,2.02,2.12,1.61],"22":[2.74,2.04,2.14,1.62],"23":[2.77,2.06,2.16,1.64],"24":[2.81,2.09,2.19,1.66],"25":[2.86,2.14,2.24,1.69],"26":[2.94,2.2,2.3,1.73],"27":[3.04,2.28,2.39,1.79],"28":[3.17,2.38,2.5,1.87],"29":[3.34,2.51,2.63,1.97],"30":[3.54,2.67,2.8,2.09],"31":[3.78,2.85,3.0,2.24],"32":[4.05,3.06,3.22,2.41],"33":[4.37,3.29,3.47,2.6],"34":[4.72,3.55,3.76,2.81],"35":[5.11,3.84,4.06,3.05],"36":[5.55,4.16,4.41,3.31],"37":[6.02,4.52,4.77,3.58],"38":[6.54,4.9,5.17,3.88],"39":[7.09,5.33,5.59,4.2],"40":[7.69,5.77,6.02,4.52],"41":[8.34,6.25,6.46,4.86],"42":[9.04,6.78,6.93,5.21],"43":[9.81,7.36,7.42,5.58],"44":[10.64,7.99,7.94,5.97],"45":[11.56,8.67,8.49,6.38],"46":[12.55,9.42,9.09,6.84],"47":[13.65,10.26,9.74,7.32],"48":[14.85,11.17,10.43,7.83],"49":[16.2,12.16,11.15,8.37],"50":[17.66,13.26,11.94,8.94],"51":[19.28,14.47,12.76,9.56],"52":[21.06,15.79,13.64,10.22],"53":[23.01,17.26,14.58,10.93],"54":[25.13,18.85,15.6,11.7],"55":[27.46,20.59,16.72,12.54],"56":[30.01,22.5,17.95,13.47],"57":[32.79,24.58,19.33,14.5],"58":[35.83,26.85,20.86,15.65],"59":[39.15,29.35,22.58,16.95],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"10":{"18":[2.7,2.0,2.1,1.6],"19":[2.7,2.0,2.1,1.6],"20":[2.7,2.0,2.1,1.6],"21":[2.71,2.01,2.11,1.6],"22":[2.72,2.02,2.12,1.61],"23":[2.74,2.04,2.14,1.62],"24":[2.77,2.06,2.16,1.64],"25":[2.82,2.11,2.21,1.66],"26":[2.88,2.16,2.26,1.7],"27":[2.97,2.23,2.33,1.75],"28":[3.09,2.32,2.43,1.82],"29":[3.25,2.44,2.56,1.91],"30":[3.44,2.6,2.72,2.03],"31":[3.67,2.77,2.91,2.18],"32":[3.93,2.97,3.12,2.34],"33":[4.24,3.19,3.37,2.53],"34":[4.58,3.44,3.65,2.73],"35":[4.96,3.72,3.95,2.96],"36":[5.38,4.04,4.3,3.22],"37":[5.84,4.39,4.65,3.49],"38":[6.35,4.76,5.04,3.78],"39":[6.88,5.17,5.45,4.09],"40":[7.46,5.6,5.87,4.41],"41":[8.09,6.06,6.3,4.74],"42":[8.76,6.57,6.76,5.08],"43":[9.5,7.12,7.24,5.44],"44":[10.29,7.73,7.74,5.82],"45":[11.18,8.38,8.29,6.23],"46":[12.14,9.11,8.88,6.68],"47":[13.2,9.92,9.52,7.16],"48":[14.37,10.8,10.2,7.66],"49":[15.66,11.76,10.91,8.18],"50":[17.08,12.82,11.66,8.74],"51":[18.63,13.99,12.46,9.33],"52":[20.35,15.26,13.29,9.96],"53":[22.23,16.68,14.18,10.63],"54":[24.28,18.21,15.15,11.36],"55":[26.52,19.89,16.22,12.17],"56":[28.99,21.73,17.4,13.05],"57":[31.67,23.74,18.73,14.05],"58":[34.61,25.94,20.2,15.16],"59":[37.83,28.36,21.86,16.41],"60":[41.38,31.03,23.72,17.8],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"9":{"18":[2.7,2.0,2.1,1.6],"19":[2.7,2.0,2.1,1.6],"20":[2.7,2.0,2.1,1.6],"21":[2.7,2.0,2.1,1.6],"22":[2.71,2.01,2.11,1.6],"23":[2.73,2.03,2.13,1.61],"24":[2.76,2.05,2.15,1.63],"25":[2.79,2.08,2.18,1.65],"26":[2.85,2.13,2.23,1.68],"27":[2.93,2.19,2.3,1.73],"28":[3.03,2.28,2.39,1.79],"29":[3.18,2.39,2.5,1.87],"30":[3.36,2.54,2.65,1.98],"31":[3.57,2.7,2.83,2.12],"32":[3.82,2.88,3.03,2.27],"33":[4.11,3.1,3.26,2.45],"34":[4.44,3.34,3.53,2.64],"35":[4.8,3.61,3.82,2.87],"36":[5.21,3.91,4.16,3.12],"37":[5.66,4.25,4.51,3.38],"38":[6.15,4.61,4.89,3.67],"39":[6.67,5.01,5.3,3.98],"40":[7.23,5.43,5.72,4.3],"41":[7.85,5.88,6.15,4.62],"42":[8.5,6.38,6.59,4.95],"43":[9.22,6.91,7.05,5.3],"44":[9.98,7.5,7.55,5.67],"45":[10.84,8.13,8.07,6.07],"46":[11.76,8.83,8.65,6.5],"47":[12.77,9.6,9.27,6.97],"48":[13.89,10.45,9.92,7.46],"49":[15.14,11.37,10.62,7.97],"50":[16.5,12.39,11.37,8.52],"51":[18.01,13.52,12.16,9.11],"52":[19.67,14.76,12.98,9.72],"53":[21.5,16.13,13.86,10.39],"54":[23.48,17.61,14.8,11.1],"55":[25.65,19.23,15.83,11.87],"56":[28.02,21.01,16.94,12.71],"57":[30.6,22.93,18.18,13.64],"58":[33.42,25.04,19.56,14.68],"59":[36.52,27.38,21.13,15.87],"60":[39.94,29.95,22.92,17.2],"61":[43.72,32.78,24.98,18.74],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"8":{"18":[2.7,2.0,2.1,1.6],"19":[2.7,2.0,2.1,1.6],"20":[2.7,2.0,2.1,1.6],"21":[2.7,2.0,2.1,1.6],"22":[2.71,2.01,2.11,1.6],"23":[2.72,2.02,2.12,1.61],"24":[2.74,2.04,2.14,1.62],"25":[2.77,2.06,2.16,1.64],"26":[2.82,2.1,2.2,1.66],"27":[2.88,2.16,2.26,1.7],"28":[2.98,2.24,2.34,1.75],"29":[3.11,2.34,2.44,1.83],"30":[3.28,2.48,2.59,1.93],"31":[3.47,2.63,2.75,2.06],"32":[3.71,2.8,2.94,2.2],"33":[3.99,3.0,3.16,2.37],"34":[4.3,3.23,3.41,2.55],"35":[4.65,3.49,3.69,2.77],"36":[5.04,3.79,4.02,3.01],"37":[5.48,4.12,4.36,3.28],"38":[5.95,4.46,4.75,3.56],"39":[6.46,4.85,5.15,3.87],"40":[7.01,5.26,5.57,4.18],"41":[7.6,5.69,5.99,4.5],"42":[8.24,6.18,6.42,4.82],"43":[8.94,6.69,6.87,5.16],"44":[9.67,7.26,7.35,5.53],"45":[10.5,7.87,7.86,5.91],"46":[11.38,8.54,8.41,6.33],"47":[12.34,9.29,9.01,6.78],"48":[13.41,10.09,9.65,7.26],"49":[14.61,10.97,10.34,7.76],"50":[15.92,11.96,11.07,8.3],"51":[17.38,13.05,11.86,8.88],"52":[19.0,14.25,12.67,9.49],"53":[20.77,15.59,13.54,10.15],"54":[22.69,17.02,14.46,10.83],"55":[24.78,18.58,15.44,11.57],"56":[27.05,20.28,16.48,12.36],"57":[29.53,22.13,17.63,13.23],"58":[32.23,24.15,18.92,14.2],"59":[35.21,26.4,20.4,15.32],"60":[38.51,28.88,22.11,16.6],"61":[42.16,31.61,24.11,18.09],"62":[46.16,34.6,26.35,19.76],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"7":{"18":[2.7,2.0,2.1,1.6],"19":[2.7,2.0,2.1,1.6],"20":[2.7,2.0,2.1,1.6],"21":[2.7,2.0,2.1,1.6],"22":[2.71,2.01,2.11,1.6],"23":[2.71,2.01,2.11,1.61],"24":[2.73,2.03,2.13,1.61],"25":[2.75,2.04,2.14,1.63],"26":[2.78,2.07,2.17,1.64],"27":[2.84,2.12,2.22,1.67],"28":[2.92,2.19,2.29,1.72],"29":[3.04,2.28,2.39,1.79],"30":[3.19,2.42,2.52,1.88],"31":[3.38,2.56,2.67,2.0],"32":[3.6,2.71,2.85,2.13],"33":[3.86,2.91,3.05,2.29],"34":[4.16,3.13,3.29,2.46],"35":[4.49,3.37,3.56,2.67],"36":[4.87,3.66,3.88,2.91],"37":[5.29,3.98,4.22,3.17],"38":[5.75,4.32,4.6,3.45],"39":[6.25,4.7,5.01,3.76],"40":[6.78,5.09,5.41,4.06],"41":[7.36,5.51,5.83,4.38],"42":[7.98,5.98,6.25,4.69],"43":[8.65,6.48,6.69,5.02],"44":[9.36,7.03,7.15,5.38],"45":[10.16,7.61,7.64,5.75],"46":[11.0,8.25,8.17,6.16],"47":[11.92,8.97,8.76,6.6],"48":[12.93,9.73,9.38,7.06],"49":[14.08,10.58,10.05,7.55],"50":[15.35,11.53,10.78,8.08],"51":[16.75,12.58,11.56,8.66],"52":[18.32,13.74,12.37,9.26],"53":[20.04,15.04,13.23,9.9],"54":[21.9,16.42,14.11,10.57],"55":[23.91,17.92,15.04,11.28],"56":[26.09,19.56,16.02,12.01],"57":[28.46,21.33,17.09,12.82],"58":[31.04,23.26,18.27,13.73],"59":[33.89,25.41,19.67,14.78],"60":[37.07,27.8,21.31,16.0],"61":[40.61,30.44,23.23,17.43],"62":[44.48,33.34,25.42,19.06],"63":[48.71,36.51,27.81,20.84],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"6":{"18":[2.7,2.0,2.1,1.6],"19":[2.7,2.0,2.1,1.6],"20":[2.7,2.0,2.1,1.6],"21":[2.7,2.0,2.1,1.6],"22":[2.7,2.0,2.1,1.6],"23":[2.71,2.01,2.11,1.6],"24":[2.71,2.01,2.11,1.61],"25":[2.72,2.02,2.12,1.61],"26":[2.75,2.04,2.14,1.62],"27":[2.79,2.09,2.19,1.64],"28":[2.86,2.15,2.25,1.68],"29":[2.96,2.23,2.33,1.74],"30":[3.11,2.35,2.46,1.83],"31":[3.28,2.48,2.59,1.94],"32":[3.48,2.63,2.75,2.06],"33":[3.73,2.81,2.94,2.21],"34":[4.01,3.02,3.17,2.37],"35":[4.34,3.26,3.43,2.57],"36":[4.7,3.54,3.74,2.81],"37":[5.11,3.85,4.08,3.06],"38":[5.56,4.17,4.46,3.34],"39":[6.04,4.54,4.86,3.64],"40":[6.55,4.92,5.26,3.95],"41":[7.12,5.33,5.67,4.25],"42":[7.72,5.78,6.08,4.56],"43":[8.37,6.26,6.51,4.89],"44":[9.05,6.8,6.96,5.23],"45":[9.82,7.35,7.43,5.59],"46":[10.62,7.97,7.94,5.98],"47":[11.49,8.65,8.51,6.41],"48":[12.46,9.37,9.11,6.86],"49":[13.56,10.19,9.77,7.34],"50":[14.77,11.1,10.49,7.86],"51":[16.13,12.11,11.26,8.43],"52":[17.64,13.24,12.06,9.03],"53":[19.31,14.5,12.91,9.66],"54":[21.1,15.83,13.76,10.3],"55":[23.03,17.27,14.65,10.98],"56":[25.12,18.84,15.55,11.66],"57":[27.38,20.52,16.54,12.41],"58":[29.85,22.37,17.63,13.25],"59":[32.58,24.43,18.94,14.24],"60":[35.64,26.72,20.5,15.4],"61":[39.06,29.27,22.36,16.78],"62":[42.8,32.08,24.48,18.36],"63":[46.91,35.16,26.83,20.11],"64":[51.34,38.49,29.32,21.97],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]},"5":{"18":[2.7,2.0,2.1,1.6],"19":[2.7,2.0,2.1,1.6],"20":[2.7,2.0,2.1,1.6],"21":[2.7,2.0,2.1,1.6],"22":[2.7,2.0,2.1,1.6],"23":[2.7,2.0,2.1,1.6],"24":[2.7,2.0,2.1,1.6],"25":[2.7,2.0,2.1,1.6],"26":[2.72,2.02,2.12,1.6],"27":[2.75,2.05,2.15,1.62],"28":[2.8,2.1,2.2,1.65],"29":[2.89,2.18,2.28,1.7],"30":[3.03,2.29,2.39,1.78],"31":[3.18,2.41,2.51,1.88],"32":[3.37,2.55,2.66,1.99],"33":[3.6,2.72,2.84,2.13],"34":[3.87,2.91,3.05,2.28],"35":[4.18,3.14,3.3,2.47],"36":[4.53,3.41,3.61,2.7],"37":[4.93,3.71,3.93,2.96],"38":[5.36,4.02,4.31,3.23],"39":[5.83,4.38,4.71,3.53],"40":[6.32,4.75,5.11,3.83],"41":[6.87,5.14,5.51,4.13],"42":[7.46,5.58,5.91,4.43],"43":[8.09,6.05,6.33,4.75],"44":[8.74,6.56,6.76,5.08],"45":[9.47,7.09,7.21,5.43],"46":[10.24,7.68,7.7,5.81],"47":[11.06,8.33,8.25,6.23],"48":[11.98,9.02,8.84,6.66],"49":[13.03,9.79,9.48,7.13],"50":[14.19,10.67,10.19,7.64],"51":[15.5,11.64,10.96,8.21],"52":[16.97,12.73,11.75,8.8],"53":[18.58,13.95,12.59,9.42],"54":[20.31,15.23,13.41,10.04],"55":[22.16,16.62,14.26,10.68],"56":[24.15,18.11,15.09,11.31],"57":[26.31,19.72,15.99,12.0],"58":[28.66,21.47,16.99,12.77],"59":[31.27,23.44,18.21,13.69],"60":[34.2,25.65,19.7,14.8],"61":[37.5,28.11,21.48,16.12],"62":[41.12,30.82,23.55,17.66],"63":[45.11,33.81,25.85,19.37],"64":[49.41,37.04,28.29,21.2],"65":[54.02,40.51,30.82,23.1],"66":[56.72,42.55,32.31,24.22],"67":[59.48,44.61,33.77,25.32],"68":[62.25,46.69,35.17,26.39],"69":[65.1,48.8,36.6,27.5]}}};
+
+// Tab Navigation
+(function(){
+var tabs = document.querySelectorAll('.tabs li');
+var contents = document.querySelectorAll('.tab-content');
+tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        contents.forEach(function(c){ c.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+    });
+});
+})();
+
+// FAQ Accordion
+(function(){
+var questions = document.querySelectorAll('.faq-question');
+questions.forEach(function(q){
+    q.addEventListener('click', function(){
+        var item = q.parentElement;
+        item.classList.toggle('open');
+        q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+    });
+});
+})();
+
+// ============ KALKULATOR PREMI ============
+
+function formatNumber(n) {
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function ceilHundred(n) {
+    return Math.ceil(n / 100) * 100;
+}
+
+function parseFormattedNumber(str) {
+    return parseInt(str.replace(/\./g, '').replace(/[^0-9]/g, ''), 10) || 0;
+}
+
+function formatSA(input) {
+    var val = input.value.replace(/\./g, '').replace(/[^0-9]/g, '');
+    if (val) {
+        input.value = formatNumber(parseInt(val, 10));
+    }
+}
+
+function setSA(amount, btn) {
+    document.getElementById('sumAssured').value = formatNumber(amount);
+    // Update quick amount buttons
+    var btns = document.querySelectorAll('.quick-amt');
+    btns.forEach(function(b){ b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    calculate();
+}
+
+function onPPPChange() {
+    var ppp = parseInt(document.getElementById('ppp').value, 10);
+    var maxAge = 70 - ppp;
+    if (maxAge > 65) maxAge = 65; // practical limit
+    var ageSelect = document.getElementById('age');
+    var currentAge = parseInt(ageSelect.value, 10) || 30;
+    
+    ageSelect.innerHTML = '';
+    for (var i = 18; i <= maxAge; i++) {
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = i + ' tahun';
+        if (i === currentAge || (currentAge > maxAge && i === maxAge)) {
+            opt.selected = true;
+        }
+        ageSelect.appendChild(opt);
+    }
+    
+    // If current age exceeds max, select max
+    if (currentAge > maxAge) {
+        ageSelect.value = maxAge;
+    }
+    
+    calculate();
+}
+
+function calculate() {
+    var gender = document.getElementById('gender').value;
+    var smoking = document.getElementById('smoking').value;
+    var age = parseInt(document.getElementById('age').value, 10);
+    var ppp = document.getElementById('ppp').value;
+    var saStr = document.getElementById('sumAssured').value;
+    var sa = parseFormattedNumber(saStr);
+    
+    var resultsDiv = document.getElementById('calcResults');
+    
+    // Validation
+    if (!age || isNaN(age)) {
+        resultsDiv.innerHTML = '<div class="calc-error">Silakan pilih usia terlebih dahulu.</div>';
+        return;
+    }
+    
+    if (sa < 100000000) {
+        resultsDiv.innerHTML = '<div class="calc-error">Uang Pertanggungan minimum adalah Rp 100.000.000 (100 juta).</div>';
+        return;
+    }
+    
+    var maxAge = 70 - parseInt(ppp, 10);
+    if (age > maxAge) {
+        resultsDiv.innerHTML = '<div class="calc-error">Untuk PPP ' + ppp + ' tahun, usia masuk maksimal adalah ' + maxAge + ' tahun. Usia Anda (' + age + ' tahun) melebihi batas.</div>';
+        return;
+    }
+    
+    if (age > 69) {
+        resultsDiv.innerHTML = '<div class="calc-error">Data rate tidak tersedia untuk usia di atas 69 tahun.</div>';
+        return;
+    }
+    
+    // Determine rate index: [male_smoker, male_nonsmoker, female_smoker, female_nonsmoker]
+    var rateIndex;
+    if (gender === 'pria' && smoking === 'yes') rateIndex = 0;
+    else if (gender === 'pria' && smoking === 'no') rateIndex = 1;
+    else if (gender === 'wanita' && smoking === 'yes') rateIndex = 2;
+    else rateIndex = 3; // wanita, no
+    
+    // Determine which table to use
+    var rateTable = (sa >= 1000000000) ? RATES.ge1m : RATES.lt1m;
+    
+    // Lookup rate
+    var ageStr = age.toString();
+    if (!rateTable[ppp] || !rateTable[ppp][ageStr]) {
+        resultsDiv.innerHTML = '<div class="calc-error">Data rate tidak tersedia untuk kombinasi PPP ' + ppp + ' tahun dan usia ' + age + ' tahun.</div>';
+        return;
+    }
+    
+    var rateArr = rateTable[ppp][ageStr];
+    var rate = rateArr[rateIndex];
+    
+    // Calculate annual premium
+    // Rate is in "ribu Rupiah per juta UP per tahun" (thousands per million per year)
+    var annualPremium = rate * (sa / 1000000) * 1000;
+    
+    // Payment mode multipliers (rounded up to nearest 100)
+    var semester = ceilHundred(annualPremium * 0.525);
+    var quarterly = ceilHundred(annualPremium * 0.275);
+    var monthly = ceilHundred(annualPremium * 0.095);
+    
+    // Category label
+    var catLabel = '';
+    if (rateIndex === 0) catLabel = 'Pria Merokok';
+    else if (rateIndex === 1) catLabel = 'Pria Tidak Merokok';
+    else if (rateIndex === 2) catLabel = 'Wanita Merokok';
+    else catLabel = 'Wanita Tidak Merokok';
+    
+    var tableUsed = (sa >= 1000000000) ? 'UP \u2265 1 Miliar' : 'UP < 1 Miliar';
+    
+    var html = '';
+    html += '<div class="section-title">Hasil Perhitungan Premi</div>';
+    html += '<div class="cards-grid">';
+    
+    // Annual card
+    html += '<div class="plan-card"><div class="card-header">Tahunan</div><div class="card-body">';
+    html += '<div class="premi-row"><span class="premi-label">Premi per Tahun</span><span class="premi-value">Rp ' + formatNumber(annualPremium) + '</span></div>';
+    html += '<div class="premi-row"><span class="premi-label">Total ' + ppp + ' Tahun</span><span class="premi-value monthly">Rp ' + formatNumber(annualPremium * parseInt(ppp,10)) + '</span></div>';
+    html += '</div></div>';
+    
+    // Semester card
+    html += '<div class="plan-card"><div class="card-header">Semesteran</div><div class="card-body">';
+    html += '<div class="premi-row"><span class="premi-label">Premi per 6 Bulan</span><span class="premi-value">Rp ' + formatNumber(semester) + '</span></div>';
+    html += '<div class="premi-row"><span class="premi-label">Total per Tahun (2x)</span><span class="premi-value monthly">Rp ' + formatNumber(semester * 2) + '</span></div>';
+    html += '</div></div>';
+    
+    // Quarterly card
+    html += '<div class="plan-card"><div class="card-header">Kuartalan</div><div class="card-body">';
+    html += '<div class="premi-row"><span class="premi-label">Premi per 3 Bulan</span><span class="premi-value">Rp ' + formatNumber(quarterly) + '</span></div>';
+    html += '<div class="premi-row"><span class="premi-label">Total per Tahun (4x)</span><span class="premi-value monthly">Rp ' + formatNumber(quarterly * 4) + '</span></div>';
+    html += '</div></div>';
+    
+    // Monthly card
+    html += '<div class="plan-card"><div class="card-header">Bulanan</div><div class="card-body">';
+    html += '<div class="premi-row"><span class="premi-label">Premi per Bulan</span><span class="premi-value">Rp ' + formatNumber(monthly) + '</span></div>';
+    html += '<div class="premi-row"><span class="premi-label">Total per Tahun (12x)</span><span class="premi-value monthly">Rp ' + formatNumber(monthly * 12) + '</span></div>';
+    html += '</div></div>';
+    
+    html += '</div>';
+    
+    // Detail info
+    html += '<div class="calc-info-box">';
+    html += '<h4>Detail Perhitungan</h4>';
+    html += '<p><strong>Kategori:</strong> ' + catLabel + '</p>';
+    html += '<p><strong>Tabel Rate:</strong> ' + tableUsed + '</p>';
+    html += '<p><strong>Rate:</strong> ' + rate + ' per mil per tahun</p>';
+    html += '<p><strong>Uang Pertanggungan:</strong> Rp ' + formatNumber(sa) + '</p>';
+    html += '<p><strong>Rumus:</strong> ' + rate + ' x (' + formatNumber(sa) + ' / 1.000.000) x 1.000 = Rp ' + formatNumber(annualPremium) + ' per tahun</p>';
+    html += '</div>';
+    
+    // Minimum premium warning
+    if (annualPremium < 4000000) {
+        html += '<div style="background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px 16px;margin-top:16px;color:#856404;font-size:.9rem;">';
+        html += '<strong>\u26A0 Catatan:</strong> Premi minimum tahunan ProActive Plus adalah Rp 4.000.000. ';
+        html += 'Silakan tingkatkan Uang Pertanggungan untuk memenuhi syarat minimum premi.';
+        html += '</div>';
+    }
+    
+    resultsDiv.innerHTML = html;
+}
+
+// Initialize calculator on load
+window.addEventListener('DOMContentLoaded', function() {
+    onPPPChange();
+});
+</script>
+</body>
+</html>

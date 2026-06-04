@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSP - Manulife Saving Protector | Manulife Indonesia</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;background:#f5f5f5;padding-top:48px;padding-bottom:80px}
+a{color:#00a758}
+.wa-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#25D366;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;text-decoration:none;color:#fff;font-weight:700;font-size:clamp(0.85rem,2.5vw,1rem);box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer;transition:background .2s}
+.wa-banner:hover{background:#1DA851}
+.wa-banner svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+.wa-banner span{white-space:nowrap}
+.floating-wa{position:fixed;bottom:25px;right:25px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:9999;transition:transform .2s,box-shadow .2s}
+.floating-wa:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.6)}
+.floating-wa svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:fixed;bottom:90px;right:25px;background:#fff;color:#333;padding:8px 14px;border-radius:8px;font-size:.75rem;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.15);z-index:9999;white-space:nowrap;opacity:0;transform:translateY(5px);transition:all .3s;pointer-events:none}
+.floating-wa:hover+.wa-tooltip{opacity:1;transform:translateY(0)}
+.header{background:linear-gradient(135deg,#00a758 0%,#006838 100%);color:#fff;padding:30px 20px;text-align:center}
+.header h1{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:5px}
+.header p{font-size:1rem;opacity:.9}
+.tabs-container{background:#fff;border-bottom:2px solid #00a758;position:sticky;top:48px;z-index:998;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,0.1);-webkit-overflow-scrolling:touch}
+.tabs{display:flex;padding:0;list-style:none;min-width:max-content}
+.tabs li{padding:12px 16px;cursor:pointer;font-size:.85rem;font-weight:500;color:#555;border-bottom:3px solid transparent;transition:all .2s;user-select:none}
+.tabs li:hover{background:#e8f5e9;color:#00a758}
+.tabs li.active{color:#00a758;border-bottom-color:#00a758;background:#e8f5e9;font-weight:700}
+.tab-content{display:none;padding:30px 20px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+.card{background:#fff;border-radius:12px;padding:25px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card h2{color:#00a758;margin-bottom:15px;font-size:1.4rem}
+.card h3{color:#006838;margin:18px 0 10px;font-size:1.1rem}
+.card p,.card li{line-height:1.7;margin-bottom:8px}
+.card ul,.card ol{padding-left:20px}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:8px;margin-bottom:5px}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.badge-orange{background:#fff3e0;color:#e65100}
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.85rem;overflow-x:auto;display:block}
+th{background:#00a758;color:#fff;padding:10px 8px;text-align:center;font-weight:600;white-space:nowrap}
+td{padding:8px;text-align:center;border-bottom:1px solid #e0e0e0;white-space:nowrap}
+tr:nth-child(even){background:#f8fdf9}
+tr:hover{background:#e8f5e9}
+.info-box{background:#e8f5e9;border-left:4px solid #00a758;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.highlight-box{background:#fff8e1;border-left:4px solid #ffc107;padding:15px;margin:15px 0;border-radius:0 8px 8px 0}
+.calc-controls{background:#fff;border-radius:12px;padding:20px 25px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:25px;display:flex;flex-wrap:wrap;gap:15px;align-items:flex-end}
+.calc-control-group{display:flex;flex-direction:column;gap:5px}
+.calc-control-group label{font-size:.8rem;font-weight:600;color:#00a758;text-transform:uppercase;letter-spacing:.5px}
+.calc-control-group select,.calc-control-group input{padding:10px 12px;border:2px solid #e0e0e0;border-radius:8px;font-size:.95rem;font-family:inherit;background:#fff;transition:all .3s}
+.calc-control-group select{padding-right:35px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300a758' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.calc-control-group select:focus,.calc-control-group input:focus{outline:none;border-color:#00a758;box-shadow:0 0 0 3px rgba(0,167,88,0.15)}
+.calc-control-group input{width:180px}
+.calc-error{color:#d32f2f;font-size:.78rem;margin-top:4px;min-height:16px}
+.calc-btn{padding:10px 24px;background:#00a758;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s;font-family:inherit}
+.calc-btn:hover{background:#006838}
+.result-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:15px;margin:20px 0}
+.result-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-top:3px solid #00a758}
+.result-card.highlight{border-top-color:#ffc107;background:#fffde7}
+.result-card .rc-label{font-size:.78rem;color:#777;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}
+.result-card .rc-value{font-size:1.1rem;font-weight:700;color:#006838}
+.result-card .rc-value.big{font-size:1.3rem;color:#00a758}
+.section-title{font-size:clamp(1rem,3vw,1.3rem);font-weight:700;color:#00a758;margin:25px 0 15px;padding-left:12px;border-left:4px solid #2ECC71}
+.faq-item{background:#fff;border-radius:8px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.faq-question{padding:16px 20px;cursor:pointer;font-weight:600;color:#333;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-question:hover{background:#e8f5e9}
+.faq-question::after{content:'+';font-size:1.4rem;color:#00a758;font-weight:700;transition:transform .3s}
+.faq-item.open .faq-question::after{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px}
+.faq-item.open .faq-answer{max-height:600px;padding:0 20px 16px}
+.faq-answer p{line-height:1.7;color:#555;font-size:.9rem}
+.calc-info-box{background:linear-gradient(135deg,#E8F5EE,#D5F5E3);border-radius:12px;padding:18px 22px;margin:20px 0;border-left:4px solid #2ECC71}
+.calc-info-box h4{color:#00a758;font-size:.9rem;margin-bottom:6px}
+.calc-info-box p{font-size:.82rem;color:#333;margin:4px 0}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+.header{padding:20px 15px}
+.tab-content{padding:20px 12px}
+.card{padding:18px}
+.calc-controls{padding:15px;gap:10px;flex-direction:column;align-items:stretch}
+.calc-control-group input{width:100%}
+.result-cards{grid-template-columns:1fr}
+table{font-size:.75rem}
+}
+@media print{
+.wa-banner,.floating-wa,.wa-tooltip{display:none!important}
+body{padding-top:0}
+.tabs-container{position:static}
+.tab-content{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<!-- WA Banner -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20MSP" target="_blank" class="wa-banner" aria-label="WhatsApp Petrus Jakub">
+<span>Petrus Jakub Partner Bisnis Manulife</span>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<span>087781896087</span>
+</a>
+
+<!-- Header -->
+<div class="header">
+<h1>Manulife Saving Protector (MSP)</h1>
+<p>Asuransi Dwiguna (Tabungan + Proteksi) dari PT Asuransi Jiwa Manulife Indonesia</p>
+</div>
+
+<!-- Tabs Navigation -->
+<div class="tabs-container">
+<ul class="tabs" id="mainTabs" role="tablist">
+<li class="active" data-tab="ringkasan" role="tab">Ringkasan Produk</li>
+<li data-tab="manfaat" role="tab">Manfaat</li>
+<li data-tab="kalkulator" role="tab">Kalkulator</li>
+<li data-tab="ilustrasi" role="tab">Ilustrasi</li>
+<li data-tab="ketentuan" role="tab">Ketentuan</li>
+<li data-tab="faq" role="tab">FAQ</li>
+</ul>
+</div>
+
+<!-- Tab 1: Ringkasan Produk -->
+<div class="tab-content active" id="tab-ringkasan" role="tabpanel">
+<div class="card">
+<h2>Apa itu MSP (Manulife Saving Protector)?</h2>
+<p><strong>MSP</strong> adalah produk asuransi dwiguna (endowment) dari Manulife Indonesia yang menggabungkan <strong>tabungan</strong> dan <strong>proteksi jiwa</strong> dalam satu polis. Ini bukan asuransi kesehatan, melainkan produk yang memberikan manfaat tunai secara berkala sekaligus perlindungan jiwa.</p>
+
+<h3>Cara Kerja MSP</h3>
+<ul>
+<li><strong>Bayar premi hanya 5 tahun</strong> - Setelah itu tidak perlu bayar lagi</li>
+<li><strong>Dilindungi selama 10, 15, atau 20 tahun</strong> - Pilih masa pertanggungan sesuai kebutuhan</li>
+<li><strong>Terima uang tunai setiap tahun</strong> - Mulai akhir tahun ke-5 sampai akhir masa pertanggungan</li>
+<li><strong>Terima uang besar di akhir kontrak</strong> - 500% dari premi tahunan saat polis berakhir</li>
+</ul>
+
+<h3>Mata Uang</h3>
+<p>Tersedia dalam 2 mata uang:</p>
+<ul>
+<li><span class="badge badge-green">IDR</span> Rupiah Indonesia</li>
+<li><span class="badge badge-blue">USD</span> Dolar Amerika</li>
+</ul>
+
+<h3>Guaranteed Issuance Offer (GIO)</h3>
+<div class="info-box">
+<p><strong>Tanpa pemeriksaan kesehatan!</strong> Untuk Uang Pertanggungan hingga Rp 1,5 Milyar (IDR) atau USD 150.000 (USD), Anda tidak perlu medical check-up. Cukup isi formulir dan langsung disetujui.</p>
+</div>
+
+<h3>Siapa yang Bisa Ikut?</h3>
+<ul>
+<li><strong>Usia Tertanggung:</strong> 1 bulan - 80 tahun</li>
+<li><strong>Usia Pemegang Polis:</strong> Minimal 18 tahun</li>
+</ul>
+
+<h3>Cocok untuk Siapa?</h3>
+<div class="highlight-box">
+<p><strong>Dana Pendidikan Anak</strong> - Bayar 5 tahun, terima dana tunai saat anak masuk sekolah/kuliah</p>
+<p><strong>Dana Pensiun</strong> - Siapkan dana pensiun dengan pembayaran tunai berkala</p>
+<p><strong>Dana Warisan</strong> - Pastikan keluarga terlindungi dengan manfaat meninggal dunia</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 2: Manfaat -->
+<div class="tab-content" id="tab-manfaat" role="tabpanel">
+<div class="card">
+<h2>Manfaat MSP</h2>
+<p>MSP memberikan 3 manfaat utama:</p>
+
+<h3>1. Manfaat Pembayaran Tunai Tahunan</h3>
+<p>Anda akan menerima pembayaran tunai setiap tahun, mulai dari <strong>akhir tahun polis ke-5</strong> sampai <strong>akhir masa pertanggungan</strong>. Persentase manfaat berbeda antara mata uang IDR dan USD.</p>
+
+<p><span class="badge badge-green">IDR</span> <strong>Tabel Manfaat Mata Uang Rupiah:</strong></p>
+<table>
+<tr><th>Masa Pertanggungan</th><th>% dari Premi Tahunan</th><th>Jumlah Tahun Terima</th><th>Total Pembayaran Tunai</th></tr>
+<tr><td>10 Tahun</td><td>15%</td><td>6 tahun (tahun 5-10)</td><td>90% dari Premi Tahunan</td></tr>
+<tr><td>15 Tahun</td><td>17,5%</td><td>11 tahun (tahun 5-15)</td><td>192,5% dari Premi Tahunan</td></tr>
+<tr><td>20 Tahun</td><td>20%</td><td>16 tahun (tahun 5-20)</td><td>320% dari Premi Tahunan</td></tr>
+</table>
+
+<p><span class="badge badge-blue">USD</span> <strong>Tabel Manfaat Mata Uang Dolar:</strong></p>
+<table>
+<tr><th>Masa Pertanggungan</th><th>% dari Premi Tahunan</th><th>Jumlah Tahun Terima</th><th>Total Pembayaran Tunai</th></tr>
+<tr><td>10 Tahun</td><td>5%</td><td>6 tahun (tahun 5-10)</td><td>30% dari Premi Tahunan</td></tr>
+<tr><td>15 Tahun</td><td>8%</td><td>11 tahun (tahun 5-15)</td><td>88% dari Premi Tahunan</td></tr>
+<tr><td>20 Tahun</td><td>11%</td><td>16 tahun (tahun 5-20)</td><td>176% dari Premi Tahunan</td></tr>
+</table>
+
+<h3>2. Manfaat Akhir Masa Pertanggungan</h3>
+<div class="info-box">
+<p>Di akhir masa pertanggungan, Anda menerima pembayaran sekaligus sebesar <strong>500% dari Premi Tahunan</strong>. Ini berlaku untuk semua pilihan masa pertanggungan (10, 15, atau 20 tahun).</p>
+</div>
+
+<h3>3. Manfaat Meninggal Dunia</h3>
+<p>Jika Tertanggung meninggal dunia, ahli waris akan menerima manfaat dengan skala bertahap:</p>
+<table>
+<tr><th>Tahun Polis</th><th>% Manfaat yang Dibayarkan</th></tr>
+<tr><td>Tahun ke-1</td><td>20%</td></tr>
+<tr><td>Tahun ke-2</td><td>40%</td></tr>
+<tr><td>Tahun ke-3</td><td>60%</td></tr>
+<tr><td>Tahun ke-4</td><td>80%</td></tr>
+<tr><td>Tahun ke-5 dan seterusnya</td><td>100%</td></tr>
+</table>
+<p>Setelah tahun ke-5, manfaat meninggal dunia = sisa pembayaran tunai tahunan yang belum diterima + manfaat akhir masa pertanggungan.</p>
+<p>Jika meninggal karena <strong>kecelakaan</strong>: tambahan 10% dari premi tahunan per tahun polis yang telah berjalan.</p>
+
+<h3>Ringkasan Perbandingan Manfaat</h3>
+<p><span class="badge badge-green">IDR</span> <strong>Mata Uang Rupiah:</strong></p>
+<table>
+<tr><th>Masa Pertanggungan</th><th>Total Premi (5 thn)</th><th>Total Seluruh Manfaat</th><th>Rasio Manfaat</th></tr>
+<tr><td>10 Tahun</td><td>500%</td><td>590%</td><td>118%</td></tr>
+<tr><td>15 Tahun</td><td>500%</td><td>692,5%</td><td>138,5%</td></tr>
+<tr><td>20 Tahun</td><td>500%</td><td>820%</td><td>164%</td></tr>
+</table>
+
+<p><span class="badge badge-blue">USD</span> <strong>Mata Uang Dolar:</strong></p>
+<table>
+<tr><th>Masa Pertanggungan</th><th>Total Premi (5 thn)</th><th>Total Seluruh Manfaat</th><th>Rasio Manfaat</th></tr>
+<tr><td>10 Tahun</td><td>500%</td><td>530%</td><td>106%</td></tr>
+<tr><td>15 Tahun</td><td>500%</td><td>588%</td><td>117,6%</td></tr>
+<tr><td>20 Tahun</td><td>500%</td><td>676%</td><td>135,2%</td></tr>
+</table>
+<div class="highlight-box">
+<p><strong>Kesimpulan:</strong> Semakin panjang masa pertanggungan, semakin besar total manfaat yang Anda terima. Semua pilihan memberikan pengembalian lebih besar dari total premi yang dibayar! Perhatikan bahwa rasio manfaat IDR lebih tinggi dari USD karena tingkat pembayaran tunai tahunan yang berbeda.</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 3: Kalkulator -->
+<div class="tab-content" id="tab-kalkulator" role="tabpanel">
+<div class="card">
+<h2>Kalkulator Manfaat MSP</h2>
+<p style="margin-bottom:20px">Hitung estimasi manfaat MSP berdasarkan premi yang Anda bayarkan. Masukkan data di bawah ini:</p>
+
+<div class="calc-controls">
+<div class="calc-control-group">
+<label>Mata Uang</label>
+<select id="calcCurrency" onchange="calculateMSP()">
+<option value="IDR">IDR (Rupiah)</option>
+<option value="USD">USD (Dolar)</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Masa Pertanggungan</label>
+<select id="calcTerm" onchange="calculateMSP()">
+<option value="10">10 Tahun</option>
+<option value="15">15 Tahun</option>
+<option value="20">20 Tahun</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label>Mode Pembayaran</label>
+<select id="calcMode" onchange="calculateMSP()">
+<option value="tahunan">Tahunan</option>
+<option value="semesteran">Semesteran</option>
+<option value="kuartalan">Kuartalan</option>
+<option value="bulanan">Bulanan</option>
+</select>
+</div>
+<div class="calc-control-group">
+<label id="premiumLabel">Premi Tahunan</label>
+<input type="text" id="calcPremium" placeholder="Masukkan premi" oninput="calculateMSP()">
+<div class="calc-error" id="calcError"></div>
+</div>
+</div>
+
+<div id="calcResults"></div>
+</div>
+</div>
+
+<!-- Tab 4: Ilustrasi -->
+<div class="tab-content" id="tab-ilustrasi" role="tabpanel">
+<div class="card">
+<h2>Ilustrasi Manfaat MSP</h2>
+<p>Contoh perhitungan dengan <strong>Premi Tahunan Rp 100.000.000</strong> (mata uang IDR):</p>
+<div class="highlight-box">
+<p><strong>Catatan:</strong> Ilustrasi di bawah menggunakan tingkat manfaat IDR (15%/17,5%/20%). Untuk mata uang USD, tingkat manfaat berbeda (5%/8%/11%). Gunakan tab <strong>Kalkulator</strong> untuk menghitung ilustrasi dalam mata uang USD.</p>
+</div>
+
+<h3>Ilustrasi 1: Masa Pertanggungan 10 Tahun</h3>
+<table>
+<tr><th>Tahun</th><th>Premi Dibayar</th><th>Manfaat Tunai</th><th>Kumulatif Manfaat</th></tr>
+<tr><td>1</td><td>Rp 100.000.000</td><td>-</td><td>Rp 0</td></tr>
+<tr><td>2</td><td>Rp 100.000.000</td><td>-</td><td>Rp 0</td></tr>
+<tr><td>3</td><td>Rp 100.000.000</td><td>-</td><td>Rp 0</td></tr>
+<tr><td>4</td><td>Rp 100.000.000</td><td>-</td><td>Rp 0</td></tr>
+<tr><td>5</td><td>Rp 100.000.000</td><td>Rp 15.000.000</td><td>Rp 15.000.000</td></tr>
+<tr><td>6</td><td>-</td><td>Rp 15.000.000</td><td>Rp 30.000.000</td></tr>
+<tr><td>7</td><td>-</td><td>Rp 15.000.000</td><td>Rp 45.000.000</td></tr>
+<tr><td>8</td><td>-</td><td>Rp 15.000.000</td><td>Rp 60.000.000</td></tr>
+<tr><td>9</td><td>-</td><td>Rp 15.000.000</td><td>Rp 75.000.000</td></tr>
+<tr><td>10</td><td>-</td><td>Rp 15.000.000 + Rp 500.000.000</td><td><strong>Rp 590.000.000</strong></td></tr>
+</table>
+<div class="info-box">
+<p><strong>Total Premi:</strong> Rp 500.000.000 | <strong>Total Manfaat:</strong> Rp 590.000.000 | <strong>Rasio:</strong> 118%</p>
+</div>
+
+<h3>Ilustrasi 2: Masa Pertanggungan 15 Tahun</h3>
+<table>
+<tr><th>Tahun</th><th>Premi Dibayar</th><th>Manfaat Tunai</th><th>Kumulatif Manfaat</th></tr>
+<tr><td>1-4</td><td>Rp 100 jt/tahun</td><td>-</td><td>Rp 0</td></tr>
+<tr><td>5</td><td>Rp 100.000.000</td><td>Rp 17.500.000</td><td>Rp 17.500.000</td></tr>
+<tr><td>6-14</td><td>-</td><td>Rp 17,5 jt/tahun</td><td>Rp 175.000.000</td></tr>
+<tr><td>15</td><td>-</td><td>Rp 17.500.000 + Rp 500.000.000</td><td><strong>Rp 692.500.000</strong></td></tr>
+</table>
+<div class="info-box">
+<p><strong>Total Premi:</strong> Rp 500.000.000 | <strong>Total Manfaat:</strong> Rp 692.500.000 | <strong>Rasio:</strong> 138,5%</p>
+</div>
+
+<h3>Ilustrasi 3: Masa Pertanggungan 20 Tahun</h3>
+<table>
+<tr><th>Tahun</th><th>Premi Dibayar</th><th>Manfaat Tunai</th><th>Kumulatif Manfaat</th></tr>
+<tr><td>1-4</td><td>Rp 100 jt/tahun</td><td>-</td><td>Rp 0</td></tr>
+<tr><td>5</td><td>Rp 100.000.000</td><td>Rp 20.000.000</td><td>Rp 20.000.000</td></tr>
+<tr><td>6-19</td><td>-</td><td>Rp 20 jt/tahun</td><td>Rp 300.000.000</td></tr>
+<tr><td>20</td><td>-</td><td>Rp 20.000.000 + Rp 500.000.000</td><td><strong>Rp 820.000.000</strong></td></tr>
+</table>
+<div class="info-box">
+<p><strong>Total Premi:</strong> Rp 500.000.000 | <strong>Total Manfaat:</strong> Rp 820.000.000 | <strong>Rasio:</strong> 164%</p>
+</div>
+
+<h3>Ilustrasi Manfaat Meninggal Dunia (Term 10, Premi Rp 100 jt/thn)</h3>
+<table>
+<tr><th>Skenario</th><th>Perhitungan</th><th>Total Diterima Ahli Waris</th></tr>
+<tr><td>Meninggal Tahun ke-3 (sakit)</td><td>60% x (sisa 4 pembayaran tunai Rp15jt + Rp500jt akhir) = 60% x Rp560jt</td><td>Rp 336.000.000</td></tr>
+<tr><td>Meninggal Tahun ke-6 (sakit)</td><td>Sudah terima Rp15jt (thn 5) + 100% x (sisa 4 tunai Rp15jt + Rp500jt) = Rp15jt + Rp560jt</td><td>Rp 575.000.000</td></tr>
+<tr><td>Meninggal Tahun ke-6 (kecelakaan)</td><td>Sama seperti di atas + tambahan kecelakaan (10% x Rp100jt x 6 thn)</td><td>Rp 635.000.000</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Tab 5: Ketentuan -->
+<div class="tab-content" id="tab-ketentuan" role="tabpanel">
+<div class="card">
+<h2>Ketentuan Polis MSP</h2>
+
+<h3>Ketentuan Umum</h3>
+<table>
+<tr><th>Ketentuan</th><th>Detail</th></tr>
+<tr><td>Masa Pertanggungan</td><td>10, 15, atau 20 tahun</td></tr>
+<tr><td>Masa Pembayaran Premi</td><td>5 tahun</td></tr>
+<tr><td>Usia Masuk Tertanggung</td><td>1 bulan - 80 tahun</td></tr>
+<tr><td>Usia Masuk Pemegang Polis</td><td>Minimal 18 tahun</td></tr>
+<tr><td>Mata Uang</td><td>IDR atau USD</td></tr>
+<tr><td>GIO (Tanpa Medical)</td><td>Maks UP Rp 1,5 Milyar / USD 150.000</td></tr>
+</table>
+
+<h3>Grace Period (Masa Tenggang)</h3>
+<div class="info-box">
+<p><strong>45 hari</strong> setelah tanggal jatuh tempo pembayaran premi. Selama masa tenggang, polis tetap aktif. Jika premi tidak dibayar setelah 45 hari, polis akan lapse (tidak aktif).</p>
+</div>
+
+<h3>Reinstatement (Pemulihan Polis)</h3>
+<p>Jika polis lapse, Anda dapat mengaktifkannya kembali dalam waktu <strong>maksimal 2 tahun</strong> setelah lapse, dengan melunasi seluruh tunggakan premi beserta bunganya.</p>
+
+<h3>Pinjaman Polis (Policy Loan)</h3>
+<p>Tersedia setelah polis memiliki nilai tunai. Anda dapat meminjam dari nilai tunai polis tanpa perlu membatalkan polis.</p>
+
+<h3>APL (Automatic Premium Loan)</h3>
+<p>Jika premi tidak terbayar dan polis memiliki nilai tunai yang cukup, sistem akan otomatis meminjam dari nilai tunai untuk membayar premi. Polis tetap aktif selama nilai tunai masih mencukupi.</p>
+
+<h3>Surrender (Penebusan Polis)</h3>
+<p>Anda bisa menebus polis sebelum masa pertanggungan berakhir, namun ada biaya surrender yang berlaku. Nilai yang diterima mungkin lebih kecil dari total premi yang sudah dibayar.</p>
+
+<h3>Pengecualian (Exclusions)</h3>
+<p>Manfaat meninggal dunia <strong>tidak berlaku</strong> jika disebabkan oleh:</p>
+<ul>
+<li>Bunuh diri dalam 2 tahun pertama polis</li>
+<li>Perang, invasi, atau tindakan militer</li>
+<li>Radiasi nuklir atau kontaminasi radioaktif</li>
+<li>Tindakan kriminal oleh Tertanggung</li>
+<li>Pengaruh alkohol atau narkoba/obat terlarang</li>
+</ul>
+
+<h3>Pengecualian Khusus Kecelakaan</h3>
+<p>Manfaat tambahan kecelakaan <strong>tidak berlaku</strong> jika disebabkan oleh:</p>
+<ul>
+<li>Penerbangan non-komersial (pesawat pribadi, charter, dll)</li>
+<li>Olahraga berbahaya (terjun payung, panjat tebing, balap motor, dll)</li>
+<li>Perang atau kerusuhan sipil</li>
+<li>Tindakan kriminal oleh Tertanggung</li>
+</ul>
+
+<h3>Prosedur Klaim</h3>
+<div class="highlight-box">
+<p><strong>Batas Waktu Pengajuan:</strong> Dalam 60 hari sejak kejadian</p>
+<p><strong>Proses Klaim:</strong> Diproses dalam 30 hari kerja setelah dokumen lengkap diterima</p>
+<p><strong>Dokumen yang Diperlukan:</strong> Formulir klaim, surat keterangan dokter/RS, akta kematian (untuk klaim meninggal), laporan kepolisian (untuk klaim kecelakaan)</p>
+</div>
+</div>
+</div>
+
+<!-- Tab 6: FAQ -->
+<div class="tab-content" id="tab-faq" role="tabpanel">
+<div class="card">
+<h2>Pertanyaan yang Sering Ditanya (FAQ)</h2>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu MSP (Manulife Saving Protector)?</div>
+<div class="faq-answer"><p>MSP adalah produk asuransi dwiguna (endowment) dari Manulife Indonesia yang menggabungkan manfaat tabungan dan perlindungan jiwa. Anda membayar premi selama 5 tahun, lalu menerima pembayaran tunai setiap tahun mulai tahun ke-5 sampai akhir masa pertanggungan, plus bonus besar di akhir kontrak.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa bedanya MSP dengan asuransi unit link?</div>
+<div class="faq-answer"><p>MSP adalah produk <strong>tradisional (non unit link)</strong>. Artinya manfaat yang Anda terima sudah pasti dan dijamin sejak awal, tidak tergantung pada kinerja investasi. Berbeda dengan unit link yang nilainya naik-turun mengikuti pasar, MSP memberikan kepastian: Anda tahu persis berapa yang akan diterima dan kapan.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Berapa premi minimum MSP?</div>
+<div class="faq-answer"><p>Premi minimum tahunan: <strong>Rp 12.000.000</strong> (IDR) atau <strong>USD 2.000</strong> (USD). Untuk pembayaran non-tahunan: Semesteran Rp 6.300.000/USD 1.025, Kuartalan Rp 3.300.000/USD 530, Bulanan Rp 1.140.000/USD 180.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana jika saya telat bayar premi?</div>
+<div class="faq-answer"><p>Ada masa tenggang (grace period) selama <strong>45 hari</strong> setelah tanggal jatuh tempo. Selama masa ini polis tetap aktif. Jika tidak dibayar juga, polis akan lapse. Namun jika polis sudah memiliki nilai tunai, sistem APL (Automatic Premium Loan) akan otomatis meminjam dari nilai tunai untuk membayar premi.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bisakah saya menarik dana sebelum masa pertanggungan berakhir?</div>
+<div class="faq-answer"><p>Bisa, melalui proses <strong>surrender</strong> (penebusan polis). Namun perlu diketahui bahwa nilai surrender biasanya lebih kecil dari total premi yang sudah dibayar, terutama di tahun-tahun awal. Anda juga bisa menggunakan fasilitas <strong>pinjaman polis</strong> (policy loan) tanpa perlu membatalkan polis.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apakah manfaat MSP dijamin (guaranteed)?</div>
+<div class="faq-answer"><p><strong>Ya!</strong> Semua manfaat MSP bersifat guaranteed (dijamin). Pembayaran tunai tahunan dan manfaat akhir masa pertanggungan sudah pasti sejak awal polis diterbitkan. Tidak ada risiko pasar atau fluktuasi investasi.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa yang terjadi jika Tertanggung meninggal dunia?</div>
+<div class="faq-answer"><p>Ahli waris akan menerima Manfaat Meninggal Dunia. Besarnya tergantung tahun polis: 20% di tahun 1, 40% di tahun 2, 60% di tahun 3, 80% di tahun 4, dan 100% mulai tahun 5 dan seterusnya. Manfaat dihitung dari sisa pembayaran tunai + manfaat akhir yang belum diterima. Jika meninggal karena kecelakaan, ada tambahan manfaat.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bagaimana cara mengajukan klaim MSP?</div>
+<div class="faq-answer"><p>Ajukan klaim dalam <strong>60 hari</strong> sejak kejadian. Siapkan dokumen: formulir klaim, surat keterangan dokter/RS, akta kematian (jika klaim meninggal), dan laporan polisi (jika kecelakaan). Klaim akan diproses dalam 30 hari kerja setelah dokumen lengkap diterima Manulife.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Bisakah saya menambahkan rider (manfaat tambahan)?</div>
+<div class="faq-answer"><p>MSP adalah produk standalone yang sudah lengkap dengan manfaat tabungan, pembayaran tunai berkala, dan proteksi jiwa. Untuk kebutuhan perlindungan tambahan seperti asuransi kesehatan atau penyakit kritis, Anda bisa memiliki polis terpisah dari Manulife.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" aria-expanded="false">Apa itu Guaranteed Issuance Offer (GIO)?</div>
+<div class="faq-answer"><p>GIO artinya polis Anda <strong>dijamin diterbitkan tanpa pemeriksaan kesehatan</strong> selama Uang Pertanggungan tidak melebihi Rp 1,5 Milyar (IDR) atau USD 150.000 (USD). Cukup isi formulir aplikasi, tidak perlu medical check-up, dan polis langsung diproses.</p></div>
+</div>
+
+</div>
+</div>
+
+<!-- Floating WA Button -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Asuransi%20MSP" target="_blank" class="floating-wa" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<div class="wa-tooltip">Petrus Jakub - 087781896087</div>
+
+<!-- JavaScript -->
+<script>
+// Tab Navigation
+(function(){
+var tabs = document.querySelectorAll('.tabs li');
+var contents = document.querySelectorAll('.tab-content');
+tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        contents.forEach(function(c){ c.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+    });
+});
+})();
+
+// FAQ Accordion
+(function(){
+var questions = document.querySelectorAll('.faq-question');
+questions.forEach(function(q){
+    q.addEventListener('click', function(){
+        var item = q.parentElement;
+        item.classList.toggle('open');
+        q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+    });
+});
+})();
+
+// ============ KALKULATOR MSP ============
+// Agent contact info - update here if agent assignment changes
+var AGENT_NAME = 'Petrus Jakub';
+var AGENT_PHONE = '087781896087';
+
+var modalFaktor = {
+    IDR: { tahunan: 1.000000, semesteran: 0.525000, kuartalan: 0.275000, bulanan: 0.095000 },
+    USD: { tahunan: 1.000000, semesteran: 0.512500, kuartalan: 0.265000, bulanan: 0.090000 }
+};
+
+var minPremium = {
+    IDR: { tahunan: 12000000, semesteran: 6300000, kuartalan: 3300000, bulanan: 1140000 },
+    USD: { tahunan: 2000, semesteran: 1025, kuartalan: 530, bulanan: 180 }
+};
+
+var benefitRates = {
+    IDR: { 10: 0.15, 15: 0.175, 20: 0.20 },
+    USD: { 10: 0.05, 15: 0.08, 20: 0.11 }
+};
+
+var endBenefitRate = 5.0; // 500%
+
+function formatIDR(num) {
+    return 'Rp ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function formatUSD(num) {
+    return '$ ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function formatCurrency(num, currency) {
+    if (currency === 'IDR') return formatIDR(num);
+    return formatUSD(num);
+}
+
+function parseNumber(str) {
+    // SAFETY: This function strips all non-digit characters, which prevents XSS
+    // when the output is later inserted via innerHTML through formatCurrency.
+    // If this sanitization is ever changed, the innerHTML usage in calculateMSP
+    // must be reviewed for injection risks.
+    if (!str) return 0;
+    return parseFloat(str.replace(/[^\d]/g, '')) || 0;
+}
+
+function calculateMSP() {
+    var currency = document.getElementById('calcCurrency').value;
+    var term = parseInt(document.getElementById('calcTerm').value);
+    var mode = document.getElementById('calcMode').value;
+    var premiumRaw = parseNumber(document.getElementById('calcPremium').value);
+    var errorEl = document.getElementById('calcError');
+    var resultsEl = document.getElementById('calcResults');
+    var labelEl = document.getElementById('premiumLabel');
+
+    // Update label
+    var modeLabels = { tahunan: 'Premi Tahunan', semesteran: 'Premi Semesteran', kuartalan: 'Premi Kuartalan', bulanan: 'Premi Bulanan' };
+    labelEl.textContent = modeLabels[mode];
+
+    if (premiumRaw <= 0) {
+        errorEl.textContent = '';
+        resultsEl.innerHTML = '';
+        return;
+    }
+
+    // Validate minimum
+    var minVal = minPremium[currency][mode];
+    if (premiumRaw < minVal) {
+        errorEl.textContent = 'Minimum ' + modeLabels[mode].toLowerCase() + ': ' + formatCurrency(minVal, currency);
+        resultsEl.innerHTML = '';
+        return;
+    }
+    errorEl.textContent = '';
+
+    // Calculate annual equivalent
+    var faktor = modalFaktor[currency][mode];
+    var annualPremium = premiumRaw / faktor;
+
+    // Benefit calculations
+    var rate = benefitRates[currency][term];
+    var annualCash = rate * annualPremium;
+    var numPayments = term - 5 + 1; // 6 for term10, 11 for term15, 16 for term20
+    var totalCash = annualCash * numPayments;
+    var endBenefit = endBenefitRate * annualPremium;
+    var totalBenefits = totalCash + endBenefit;
+    var totalPremiumPaid = annualPremium * 5;
+    var ratio = (totalBenefits / totalPremiumPaid * 100);
+
+    // Build results HTML
+    var html = '<div class="section-title">Hasil Perhitungan</div>';
+    html += '<div class="result-cards">';
+
+    if (mode !== 'tahunan') {
+        html += '<div class="result-card"><div class="rc-label">Premi Tahunan Setara</div><div class="rc-value">' + formatCurrency(annualPremium, currency) + '</div></div>';
+    }
+
+    html += '<div class="result-card"><div class="rc-label">Total Premi Dibayar (5 tahun)</div><div class="rc-value">' + formatCurrency(totalPremiumPaid, currency) + '</div></div>';
+    html += '<div class="result-card"><div class="rc-label">Manfaat Tunai per Tahun (' + (rate*100) + '%)</div><div class="rc-value">' + formatCurrency(annualCash, currency) + '</div></div>';
+    html += '<div class="result-card"><div class="rc-label">Jumlah Tahun Penerimaan</div><div class="rc-value">' + numPayments + ' tahun</div></div>';
+    html += '<div class="result-card"><div class="rc-label">Total Manfaat Tunai</div><div class="rc-value">' + formatCurrency(totalCash, currency) + '</div></div>';
+    html += '<div class="result-card"><div class="rc-label">Manfaat Akhir Kontrak (500%)</div><div class="rc-value">' + formatCurrency(endBenefit, currency) + '</div></div>';
+    html += '<div class="result-card highlight"><div class="rc-label">Total Seluruh Manfaat</div><div class="rc-value big">' + formatCurrency(totalBenefits, currency) + '</div></div>';
+    html += '<div class="result-card highlight"><div class="rc-label">Rasio Manfaat vs Premi</div><div class="rc-value big">' + ratio.toFixed(1) + '%</div></div>';
+    html += '</div>';
+
+    // Year-by-year table
+    html += '<div class="section-title">Tabel Tahun per Tahun</div>';
+    html += '<table><tr><th>Tahun</th><th>Premi Dibayar</th><th>Manfaat Tunai</th><th>Kumulatif Manfaat</th></tr>';
+
+    var cumulative = 0;
+    for (var y = 1; y <= term; y++) {
+        var premiThisYear = (y <= 5) ? annualPremium : 0;
+        var cashThisYear = 0;
+        if (y >= 5) {
+            cashThisYear = annualCash;
+        }
+        var endThisYear = 0;
+        if (y === term) {
+            endThisYear = endBenefit;
+        }
+        cumulative += cashThisYear + endThisYear;
+
+        var premiStr = (y <= 5) ? formatCurrency(annualPremium, currency) : '-';
+        var cashStr = '';
+        if (y < 5) {
+            cashStr = '-';
+        } else if (y === term) {
+            cashStr = formatCurrency(annualCash, currency) + ' + ' + formatCurrency(endBenefit, currency);
+        } else {
+            cashStr = formatCurrency(annualCash, currency);
+        }
+        var cumStr = formatCurrency(cumulative, currency);
+        if (y === term) cumStr = '<strong>' + cumStr + '</strong>';
+
+        html += '<tr><td>' + y + '</td><td>' + premiStr + '</td><td>' + cashStr + '</td><td>' + cumStr + '</td></tr>';
+    }
+    html += '</table>';
+
+    // Info box
+    html += '<div class="calc-info-box">';
+    html += '<h4>Ringkasan</h4>';
+    html += '<p>Bayar ' + formatCurrency(totalPremiumPaid, currency) + ' selama 5 tahun, terima total ' + formatCurrency(totalBenefits, currency) + ' selama ' + term + ' tahun.</p>';
+    html += '<p>Keuntungan bersih: ' + formatCurrency(totalBenefits - totalPremiumPaid, currency) + ' (' + (ratio - 100).toFixed(1) + '% lebih dari yang dibayar)</p>';
+    html += '</div>';
+
+    resultsEl.innerHTML = html;
+}
+
+// Initialize calculator on load
+document.addEventListener('DOMContentLoaded', function() {
+    calculateMSP();
+});
+</script>
+
+</body>
+</html>
