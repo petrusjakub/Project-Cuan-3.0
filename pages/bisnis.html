@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluang Bisnis — Bangun Income Tanpa Batas | PROJECTCUAN</title>
+  <meta name="description" content="Bisnis asuransi dengan leverage nyata. Income dari Rp 15jt hingga 1 Miliar+/bulan. Dari mana saja, kapan saja. Bergabung bersama BMI Agency × Manulife.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── BISNIS PAGE EXTRAS ── */
+    .stat-shock {
+      background: linear-gradient(135deg, #0D1B2A, #162638);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all var(--ease);
+    }
+    .stat-shock:hover { border-color: var(--jade-20); transform: translateY(-3px); }
+    .stat-shock-num {
+      font-family: var(--ff-head);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--jade);
+      line-height: 1;
+      margin-bottom: var(--sp-3);
+    }
+    .stat-shock-txt { color: rgba(255,255,255,0.7); font-size: var(--fs-sm); line-height: 1.6; }
+    .stat-shock-src { color: rgba(255,255,255,0.35); font-size: var(--fs-xs); margin-top: var(--sp-2); }
+
+    .quadrant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); }
+    .quadrant-card {
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      border: 2px solid;
+      transition: all var(--ease);
+    }
+    .quadrant-card--bad { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.25); }
+    .quadrant-card--good { background: var(--jade-10); border-color: var(--jade-20); }
+    .quadrant-card:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
+    .q-label { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--sp-3); }
+    .q-label--bad { color: #ef4444; }
+    .q-label--good { color: var(--jade); }
+    .q-title { font-family: var(--ff-head); font-size: var(--fs-lg); font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-3); }
+    .q-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.65; }
+
+    .income-table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+    .income-table th {
+      background: var(--jade);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: center;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      letter-spacing: 0.04em;
+    }
+    .income-table td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+    }
+    .income-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .income-table tr:last-child td { background: var(--jade-10); font-weight: 700; color: var(--jade); }
+    .income-table .income-highlight { color: var(--tangerine); font-weight: 700; font-family: var(--ff-head); }
+    html.dark .income-table td { background: var(--bg-card); }
+    html.dark .income-table tr:nth-child(even) td { background: var(--bg-alt); }
+
+    .step-card {
+      display: flex;
+      gap: var(--sp-5);
+      align-items: flex-start;
+      padding: var(--sp-6);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: all var(--ease);
+    }
+    .step-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-sm); }
+    .step-num {
+      width: 44px; height: 44px;
+      background: var(--jade);
+      color: #fff;
+      border-radius: var(--r-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-head);
+      font-weight: 900;
+      font-size: var(--fs-lg);
+      flex-shrink: 0;
+    }
+    .step-title { font-family: var(--ff-head); font-size: var(--fs-md); color: var(--txt-head); margin-bottom: var(--sp-2); }
+    .step-desc { font-size: var(--fs-sm); color: var(--txt-sub); }
+
+    .achiever-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .achiever-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .achiever-amount { font-family: var(--ff-head); font-size: var(--fs-xl); font-weight: 900; color: var(--jade); }
+    .achiever-name { font-weight: 700; color: var(--txt-head); font-size: var(--fs-sm); margin-top: var(--sp-2); }
+    .achiever-role { font-size: var(--fs-xs); color: var(--txt-muted); }
+
+    .reward-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all var(--ease);
+    }
+    .reward-card:hover { transform: translateY(-3px); box-shadow: var(--sh-md); }
+    .reward-card-header {
+      background: linear-gradient(135deg, var(--jade-dark), var(--jade));
+      padding: var(--sp-5);
+      text-align: center;
+      color: #fff;
+    }
+    .reward-card-body { padding: var(--sp-5); }
+
+    /* QUIZ */
+    .quiz-outer {
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+    }
+    .quiz-head {
+      background: var(--jade);
+      padding: var(--sp-8);
+      text-align: center;
+    }
+    .quiz-head h2 { color: #fff; margin-bottom: var(--sp-2); }
+    .quiz-head p { color: rgba(255,255,255,0.85); font-size: var(--fs-sm); }
+
+    .quiz-inner { padding: var(--sp-8); }
+    .quiz-q { font-family: var(--ff-head); font-size: var(--fs-xl); color: #fff; margin-bottom: var(--sp-5); line-height: 1.4; }
+    .quiz-opt {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      padding: var(--sp-4) var(--sp-5);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--r-lg);
+      cursor: pointer;
+      transition: all var(--ease);
+      margin-bottom: var(--sp-3);
+      color: rgba(255,255,255,0.8);
+      font-size: var(--fs-sm);
+    }
+    .quiz-opt:hover, .quiz-opt.selected {
+      border-color: var(--jade);
+      background: rgba(0,172,91,0.15);
+      color: #fff;
+    }
+    .quiz-opt input { accent-color: var(--jade); width: 16px; height: 16px; flex-shrink: 0; }
+
+    .quiz-result-box {
+      background: var(--bg-card);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      text-align: center;
+    }
+    .quiz-result-emoji { font-size: 56px; margin-bottom: var(--sp-4); }
+    .quiz-result-title { font-family: var(--ff-head); font-size: var(--fs-2xl); color: var(--txt-head); margin-bottom: var(--sp-3); }
+    .quiz-result-sub { color: var(--txt-sub); font-size: var(--fs-sm); margin-bottom: var(--sp-8); }
+    .quiz-result-msg {
+      background: var(--jade-10);
+      border: 1px solid var(--jade-20);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      margin-bottom: var(--sp-6);
+      font-size: var(--fs-sm);
+      color: var(--txt);
+      line-height: 1.7;
+      text-align: left;
+    }
+    @media (max-width: 768px) {
+      .quadrant-grid { grid-template-columns: 1fr; }
+      .income-table { font-size: var(--fs-xs); }
+      .income-table th, .income-table td { padding: 8px 8px; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     HERO — DARK, BOLD, PROVOCATIVE
+═══════════════════════════════════════════ -->
+<section class="bisnis-hero" aria-labelledby="bisnis-title">
+  <div class="container" style="position:relative;z-index:1">
+
+    <nav class="breadcrumb" style="margin-bottom:var(--sp-8)">
+      <a href="/index.html" style="color:rgba(255,255,255,0.5)">Beranda</a>
+      <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">›</span>
+      <span class="breadcrumb-current">Peluang Bisnis</span>
+    </nav>
+
+    <div style="max-width:800px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,172,91,0.15);border:1px solid rgba(0,172,91,0.3);color:var(--jade);font-size:var(--fs-xs);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:var(--r-full);margin-bottom:var(--sp-6)" class="fade-up">
+        💼 BMI Agency × Manulife Indonesia
+      </div>
+
+      <h1 id="bisnis-title" class="bisnis-hero-title fade-up stagger-1">
+        Gajimu Naik Setiap Tahun?<br>
+        <span style="color:var(--jade)">Atau Biaya Hidupmu<br>yang Naik Lebih Cepat?</span>
+      </h1>
+
+      <p style="color:rgba(255,255,255,0.7);font-size:var(--fs-md);max-width:620px;line-height:1.75;margin-bottom:var(--sp-8)" class="fade-up stagger-2">
+        Dunia berubah cepat. AI menggerus pekerjaan, inflasi menggerus tabungan.
+        Sementara kamu masih kerja keras menukar waktu dengan uang —
+        ada orang di sebelahmu yang sudah membangun <strong style="color:#fff">income tanpa batas</strong>.
+        Apa bedanya?
+      </p>
+
+      <div style="display:flex;gap:var(--sp-4);flex-wrap:wrap" class="fade-up stagger-3">
+        <a href="#quiz" class="btn btn--jade btn--lg">Cek Potensi Penghasilanku →</a>
+        <a href="#kenapa-ini" class="btn btn--ghost btn--lg">Pelajari Dulu</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     REALITA FINANSIAL INDONESIA
+═══════════════════════════════════════════ -->
+<section class="section" style="background:#0A1628" aria-labelledby="realita-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-12)">
+      <span class="section-tag" style="background:rgba(241,90,34,0.15);color:var(--tangerine)">Fakta yang Mungkin Belum Kamu Sadari</span>
+      <h2 id="realita-heading" style="color:#fff;font-size:clamp(1.6rem,3vw,2.3rem);margin-bottom:var(--sp-3)" class="fade-up">
+        Kondisi Finansial Indonesia Hari Ini<br>
+        <span style="color:var(--tangerine)">Lebih Parah dari yang Kamu Kira</span>
+      </h2>
+      <p style="color:rgba(255,255,255,0.6);max-width:560px;margin:0 auto" class="fade-up stagger-1">
+        Ini bukan opini. Ini data. Dan ini berlaku untukmu, tetanggamu, rekan kerjamu.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-5)">
+
+      <div class="stat-shock fade-up">
+        <div class="stat-shock-num" data-count="60.8" data-suffix="%" data-dec="1">60.8%</div>
+        <div class="stat-shock-txt">orang Indonesia <strong style="color:#fff">tidak siap</strong> menghadapi kondisi keuangan saat ini. Mayoritas belum punya tabungan darurat yang cukup.</div>
+        <div class="stat-shock-src">Survei Kepemimpinan Nasional Kompas, Jan 2025</div>
+      </div>
+
+      <div class="stat-shock fade-up stagger-1">
+        <div class="stat-shock-num">Habis</div>
+        <div class="stat-shock-txt">Waktu, tenaga, dan uang — itulah yang terjadi saat kamu pilih <strong style="color:#fff">side hustle yang salah</strong>. Dropshipping, affiliate, konten kreator — kebanyakan berakhir di sini.</div>
+        <div class="stat-shock-src">Realita yang dialami jutaan orang Indonesia</div>
+      </div>
+
+      <div class="stat-shock fade-up stagger-2">
+        <div class="stat-shock-num">→ 0</div>
+        <div class="stat-shock-txt">Itulah penghasilan <strong style="color:#fff">Employee dan Self-Employed</strong> ketika mereka berhenti bekerja. Kamu menukar waktu dengan uang — tanpa leverage, tanpa sistem.</div>
+        <div class="stat-shock-src">Cashflow Quadrant — Robert Kiyosaki</div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:var(--sp-12)" class="fade-up stagger-3">
+      <p style="color:rgba(255,255,255,0.65);font-size:var(--fs-md);margin-bottom:var(--sp-5)">
+        Pertanyaannya bukan <em>"Aku butuh penghasilan tambahan ga?"</em><br>
+        tapi: <strong style="color:#fff;font-size:var(--fs-lg)">"Mana yang punya leverage — bisa jalan tanpa aku?"</strong>
+      </p>
+      <a href="#cashflow" class="btn btn--jade btn--lg">Lihat Jawabannya ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CASHFLOW QUADRANT
+═══════════════════════════════════════════ -->
+<section class="section" id="cashflow" aria-labelledby="cq-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Cashflow Quadrant</span>
+      <h2 id="cq-heading" class="section-title fade-up">Kamu Mau di Sisi Mana?</h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto var(--sp-8)">
+        Semua orang ada di salah satu dari 4 posisi ini. Dua di kiri <strong>tidak punya leverage</strong>. Dua di kanan <strong>uang bekerja untuk mereka</strong>.
+      </p>
+    </div>
+
+    <div class="quadrant-grid fade-up stagger-2">
+      <div class="quadrant-card quadrant-card--bad">
+        <div class="q-label q-label--bad">❌ E — Employee (Tanpa Leverage)</div>
+        <div class="q-title">Kamu menukar waktu dengan uang</div>
+        <div class="q-desc">Berhenti kerja? Income langsung berhenti. Naik gaji? Paling 5–10% setahun. Sementara harga kebutuhan naik 15% per tahun.</div>
+      </div>
+      <div class="quadrant-card quadrant-card--good">
+        <div class="q-label q-label--good">✅ B — Business Owner (Ada Leverage)</div>
+        <div class="q-title">Sistem bekerja untuk kamu</div>
+        <div class="q-desc">Kamu membangun tim dan sistem. Income tetap berjalan <strong>meski kamu tidak aktif</strong>. Makin besar sistem, makin besar income.</div>
+      </div>
+      <div class="quadrant-card quadrant-card--bad">
+        <div class="q-label q-label--bad">❌ S — Self-Employed (Tanpa Leverage)</div>
+        <div class="q-title">Lebih besar, tapi masih sama</div>
+        <div class="q-desc">Dokter, freelancer, konsultan — penghasilan lebih besar dari karyawan, tapi kalau berhenti? Income juga langsung berhenti.</div>
+      </div>
+      <div class="quadrant-card quadrant-card--good">
+        <div class="q-label q-label--good">✅ I — Investor (Ada Leverage)</div>
+        <div class="q-title">Uang bekerja untuk kamu</div>
+        <div class="q-desc">Aset menghasilkan cashflow. Kamu fokus pada keputusan besar, bukan pekerjaan harian. Waktu kamu lebih berharga.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:var(--sp-10)" class="fade-up stagger-3">
+      <div style="background:var(--jade-10);border:1px solid var(--jade-20);border-radius:var(--r-xl);padding:var(--sp-8);max-width:680px;margin:0 auto">
+        <div style="font-size:32px;margin-bottom:var(--sp-3)">🎯</div>
+        <h3 style="font-size:var(--fs-xl);color:var(--txt-head);margin-bottom:var(--sp-3)">Bisnis Asuransi = Quadrant B dengan Biaya Nol</h3>
+        <p style="color:var(--txt-sub);font-size:var(--fs-sm);line-height:1.7">
+          Kamu membangun sistem, punya tim yang bekerja, dan mendapat <strong>Life Time Commission + Life Time Royalty</strong> seumur hidup.
+          Tidak butuh modal besar. Tidak butuh pengalaman. Yang kamu butuhkan cuma <strong style="color:var(--jade)">kemauan untuk memulai</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KENAPA BMI × MANULIFE
+═══════════════════════════════════════════ -->
+<section class="section section--lavender" id="kenapa-ini" aria-labelledby="kenapa-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Kenapa Bisnis Ini?</span>
+      <h2 id="kenapa-heading" class="section-title fade-up">
+        Bukan Sembarang Bisnis —<br>Ini Bisnis di Belakang <span class="kw">Perusahaan Terbesar</span>
+      </h2>
+    </div>
+
+    <!-- Manulife Stats -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-5);margin-bottom:var(--sp-10)">
+      <div class="why-card fade-up" style="text-align:center">
+        <div class="why-icon">#1</div>
+        <div class="why-title">Asuransi Jiwa Terbesar</div>
+        <p style="font-size:var(--fs-sm)">Manulife Indonesia adalah perusahaan asuransi jiwa <strong>No. 1 berdasarkan aset</strong> di seluruh Indonesia per Desember 2025.</p>
+      </div>
+      <div class="why-card fade-up stagger-1" style="text-align:center">
+        <div class="why-icon">67T</div>
+        <div class="why-title">Rp 67,49 Triliun Aset</div>
+        <p style="font-size:var(--fs-sm)">Total aset Manulife Indonesia — jauh di atas pesaing. Ini adalah perusahaan yang <strong>tidak mungkin kabur</strong> membawa uang nasabah.</p>
+      </div>
+      <div class="why-card fade-up stagger-2" style="text-align:center">
+        <div class="why-icon">1887</div>
+        <div class="why-title">Berdiri Sejak 1887</div>
+        <p style="font-size:var(--fs-sm)">Lebih dari <strong>138 tahun</strong> melayani nasabah di seluruh dunia. Manulife Indonesia hadir di Indonesia sejak 1985 — sudah teruji 40 tahun.</p>
+      </div>
+      <div class="why-card fade-up stagger-3" style="text-align:center">
+        <div class="why-icon">OJK</div>
+        <div class="why-title">Diawasi OJK & AAJI</div>
+        <p style="font-size:var(--fs-sm)">Resmi terdaftar dan diawasi Otoritas Jasa Keuangan, Asosiasi Asuransi Jiwa Indonesia, dan Asosiasi Asuransi Syariah Indonesia.</p>
+      </div>
+    </div>
+
+    <!-- 5 Alasan BMI -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp-8)">
+      <div style="text-align:center;margin-bottom:var(--sp-8)">
+        <span class="section-tag">BMI Agency</span>
+        <h3 style="font-size:var(--fs-2xl);color:var(--txt-head)">5 Alasan Bergabung dengan<br>Agency <strong>#1 di Manulife Indonesia</strong></h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-5)">
+        <div class="fade-up" style="text-align:center;padding:var(--sp-5)">
+          <div style="font-size:36px;margin-bottom:var(--sp-3)">🏆</div>
+          <div style="font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-2);font-size:var(--fs-sm)">Agency #1 di Manulife</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Bergabung dengan tim terbesar dan terkuat di Manulife Indonesia</div>
+        </div>
+        <div class="fade-up stagger-1" style="text-align:center;padding:var(--sp-5)">
+          <div style="font-size:36px;margin-bottom:var(--sp-3)">🎁</div>
+          <div style="font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-2);font-size:var(--fs-sm)">Reward & Bonus Terbanyak</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Tiket ke Austria, China, bonus cash, dan profit sharing ratusan juta</div>
+        </div>
+        <div class="fade-up stagger-2" style="text-align:center;padding:var(--sp-5)">
+          <div style="font-size:36px;margin-bottom:var(--sp-3)">🎓</div>
+          <div style="font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-2);font-size:var(--fs-sm)">Support Sistem Terlengkap</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Sistem, tools, dan mentor sudah disiapkan — kamu tidak mulai dari nol</div>
+        </div>
+        <div class="fade-up stagger-3" style="text-align:center;padding:var(--sp-5)">
+          <div style="font-size:36px;margin-bottom:var(--sp-3)">👥</div>
+          <div style="font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-2);font-size:var(--fs-sm)">Komunitas Terlengkap</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Belajar, tumbuh, dan berkembang bersama ribuan partner aktif</div>
+        </div>
+        <div class="fade-up stagger-4" style="text-align:center;padding:var(--sp-5)">
+          <div style="font-size:36px;margin-bottom:var(--sp-3)">💰</div>
+          <div style="font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-2);font-size:var(--fs-sm)">Profit Sharing Terbesar</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Satu-satunya agency yang bagi hasil profit hingga ratusan juta per tahun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CAREER PATH
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="career-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Jenjang Karir</span>
+      <h2 id="career-heading" class="section-title fade-up">
+        3 Langkah Menuju <span class="kw">Income Tanpa Batas</span>
+      </h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">
+        Jelas. Terstruktur. Dari belajar hingga membangun organisasi yang menghasilkan.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--sp-6)">
+      <div class="step-card fade-up">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Life Planner (LP)</div>
+          <p class="step-desc">Mulai dengan mengelola keuangan keluargamu sendiri secara mandiri. Nilai produksi pribadi Rp 50 juta. <strong>Ini titik startmu.</strong></p>
+          <div style="margin-top:var(--sp-3)"><span class="chip">🎯 Produksi Pribadi Rp 50jt</span></div>
+        </div>
+      </div>
+      <div class="step-card fade-up stagger-1">
+        <div class="step-num" style="background:var(--tangerine)">2</div>
+        <div>
+          <div class="step-title">Business Partner (BP)</div>
+          <p class="step-desc">Ajak 5 orang teman dan bantu mereka kelola keuangan keluarga secara mandiri. Kamu mulai <strong>membangun sistem</strong> yang bekerja untuk kamu.</p>
+          <div style="margin-top:var(--sp-3)"><span class="chip" style="background:rgba(241,90,34,0.1);color:var(--tangerine)">👥 Rekrut &amp; Duplikasi</span></div>
+        </div>
+      </div>
+      <div class="step-card fade-up stagger-2">
+        <div class="step-num" style="background:var(--txt-head)">3</div>
+        <div>
+          <div class="step-title">Senior Business Partner (SBP)</div>
+          <p class="step-desc">Bantu 5 partner-mu melakukan duplikasi. Organisasimu berkembang sendiri. <strong>Income terus mengalir</strong> meski kamu tidak aktif setiap hari.</p>
+          <div style="margin-top:var(--sp-3)"><span class="chip" style="background:rgba(0,64,128,0.1);color:var(--txt-head)">🚀 Leadership &amp; Leverage</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BUSINESS MAP — INCOME TABLE
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="map-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Business Map</span>
+      <h2 id="map-heading" class="section-title fade-up">
+        Angka Nyata — Bukan Janji Kosong
+      </h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">
+        Ini bukan proyeksi asal-asalan. Ini <strong>business map resmi</strong> dengan perhitungan yang bisa kamu verifikasi.
+      </p>
+    </div>
+
+    <div style="overflow-x:auto" class="fade-up stagger-2">
+      <table class="income-table">
+        <thead>
+          <tr>
+            <th>Tahap</th>
+            <th>Produksi Pribadi</th>
+            <th>Promosikan</th>
+            <th>Income / Bulan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>Rp 330 Juta<br><small>(+ Tiket Austria)</small></td>
+            <td>3 BP</td>
+            <td class="income-highlight">Rp 15 Juta</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>—</td>
+            <td>3 BP</td>
+            <td class="income-highlight">Rp 51 Juta</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>—</td>
+            <td>3 BP</td>
+            <td class="income-highlight">Rp 111 Juta</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td>—</td>
+            <td>3 BP</td>
+            <td class="income-highlight">Rp 309 Juta</td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td>—</td>
+            <td>3 BP</td>
+            <td class="income-highlight">Rp 1,042 Miliar</td>
+          </tr>
+          <tr>
+            <td><strong>TOTAL</strong></td>
+            <td>Rp 330 Juta</td>
+            <td>15 BP</td>
+            <td class="income-highlight" style="font-size:var(--fs-lg)">Rp 1,042 MILIAR</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-top:var(--sp-5)" class="fade-up stagger-3">
+      <div style="background:var(--jade-10);border:1px solid var(--jade-20);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:var(--sp-1)">Extra Income</div>
+        <div style="font-family:var(--ff-head);font-weight:700;color:var(--jade)">Life Time Commission</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">+ Life Time Royalty (dari produk Health & Life)</div>
+      </div>
+      <div style="background:rgba(241,90,34,0.08);border:1px solid rgba(241,90,34,0.2);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:var(--sp-1)">Bonus Tambahan</div>
+        <div style="font-family:var(--ff-head);font-weight:700;color:var(--tangerine)">BMI Profit Sharing</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Ratusan juta dibagikan tiap tahun</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-4)">
+      * Income bervariasi sesuai usaha dan konsistensi. Angka di atas adalah potensi berdasarkan Business Map resmi BMI Agency.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BUKTI NYATA — TOP ACHIEVERS
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="achiever-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag">Bukti Nyata</span>
+      <h2 id="achiever-heading" class="section-title fade-up">
+        Mereka Bukan Orang Khusus —<br>Mereka Cuma <span class="kw">Mulai Lebih Awal</span>
+      </h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--sp-4)">
+      <div class="achiever-card fade-up">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">🏆</div>
+        <div class="achiever-amount">3,4 Miliar</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">APE – Top Breaker Producer 2026</div>
+        <div class="achiever-name">Fenty Sitompul</div>
+        <div class="achiever-role">Life Planner · CEO Creates CEO</div>
+      </div>
+      <div class="achiever-card fade-up stagger-1">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">✈️</div>
+        <div class="achiever-amount">Double Tiket</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Austria – BMI Premier Club 2026</div>
+        <div class="achiever-name">Dra. Rusiati Sawung</div>
+        <div class="achiever-role">YBC · Producer</div>
+      </div>
+      <div class="achiever-card fade-up stagger-2">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">💰</div>
+        <div class="achiever-amount">USD 200.000</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">FYP – Produksi Pribadi</div>
+        <div class="achiever-name">Fenty Sitompul</div>
+        <div class="achiever-role">4 Cases MDWA</div>
+      </div>
+      <div class="achiever-card fade-up stagger-3">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">💵</div>
+        <div class="achiever-amount">Rp 900jt+</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Transfer BCA – Manulife</div>
+        <div class="achiever-name">BMI Agency Member</div>
+        <div class="achiever-role">Verified Transfer May 2026</div>
+      </div>
+      <div class="achiever-card fade-up stagger-4">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">🚀</div>
+        <div class="achiever-amount">Rp 300jt</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">FYP IDR – 2 Cases MDLA</div>
+        <div class="achiever-name">Handi</div>
+        <div class="achiever-role">Life Planner</div>
+      </div>
+      <div class="achiever-card fade-up stagger-5">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">🌟</div>
+        <div class="achiever-amount">Rp 194jt</div>
+        <div style="font-size:var(--fs-xs);color:var(--txt-muted)">FYP IDR – 1 Case MDLA</div>
+        <div class="achiever-name">Thomas Gozali</div>
+        <div class="achiever-role">Senior Business Partner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     REWARDS & BONUS
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="reward-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag">Reward & Bonus 2026</span>
+      <h2 id="reward-heading" class="section-title fade-up">Kerja Keras? Ada Hadiahnya</h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">Bukan sekadar gaji — ada tiket ke luar negeri, bonus cash, dan profit sharing yang dibagikan nyata.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-5)">
+      <div class="reward-card fade-up">
+        <div class="reward-card-header" style="background:linear-gradient(135deg,#c43e0f,var(--tangerine))">
+          <div style="font-size:32px">🎁</div>
+          <div style="font-weight:700;font-size:var(--fs-md)">Fresh Promotion</div>
+        </div>
+        <div class="reward-card-body">
+          <div style="font-family:var(--ff-head);font-size:var(--fs-xl);color:var(--tangerine);font-weight:900">Rp 5 Juta</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Bonus langsung untuk Business Partner baru yang memenuhi syarat</div>
+        </div>
+      </div>
+      <div class="reward-card fade-up stagger-1">
+        <div class="reward-card-header">
+          <div style="font-size:32px">🏆</div>
+          <div style="font-weight:700;font-size:var(--fs-md)">Bonus Promotor 3BP</div>
+        </div>
+        <div class="reward-card-body">
+          <div style="font-family:var(--ff-head);font-size:var(--fs-xl);color:var(--jade);font-weight:900">Rp 10 Juta</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Rekrut dan promosikan 3 Business Partner — langsung dapat bonus</div>
+        </div>
+      </div>
+      <div class="reward-card fade-up stagger-2">
+        <div class="reward-card-header" style="background:linear-gradient(135deg,#C8A000,#F0C420)">
+          <div style="font-size:32px">🇨🇳</div>
+          <div style="font-weight:700;font-size:var(--fs-md)">BMI Champion Club</div>
+        </div>
+        <div class="reward-card-body">
+          <div style="font-family:var(--ff-head);font-size:var(--fs-xl);color:var(--txt-head);font-weight:900">China</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Chong Qing – Zhangjiajie · 200jt APE · Jan–Okt 2026</div>
+        </div>
+      </div>
+      <div class="reward-card fade-up stagger-3">
+        <div class="reward-card-header" style="background:linear-gradient(135deg,#2d4a8a,#4a7dd4)">
+          <div style="font-size:32px">🇦🇹</div>
+          <div style="font-weight:700;font-size:var(--fs-md)">BMI Premier Club</div>
+        </div>
+        <div class="reward-card-body">
+          <div style="font-family:var(--ff-head);font-size:var(--fs-xl);color:var(--txt-head);font-weight:900">Austria</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">330jt APE (Fresh Producer) · Jan–Okt 2026</div>
+        </div>
+      </div>
+      <div class="reward-card fade-up stagger-4">
+        <div class="reward-card-header" style="background:linear-gradient(135deg,#6B21A8,#9333EA)">
+          <div style="font-size:32px">💎</div>
+          <div style="font-weight:700;font-size:var(--fs-md)">BMI Profit Sharing</div>
+        </div>
+        <div class="reward-card-body">
+          <div style="font-family:var(--ff-head);font-size:var(--fs-xl);color:var(--txt-head);font-weight:900">Ratusan Juta</div>
+          <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Dibagikan setiap tahun kepada Co-Founder agency</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INTERACTIVE QUIZ — CARI TAHU POTENSIMU
+═══════════════════════════════════════════ -->
+<section class="section" id="quiz" aria-labelledby="quiz-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Langkah Pertamamu</span>
+      <h2 id="quiz-heading" class="section-title fade-up">Cari Tahu Potensi <span class="kw">Penghasilanmu</span></h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">
+        Jawab 4 pertanyaan singkat. Agen kami siap membantu kamu menghitung langkah realistis pertamamu.
+      </p>
+    </div>
+
+    <div style="max-width:680px;margin:0 auto" class="fade-up stagger-2">
+      <div class="quiz-outer">
+        <div class="quiz-head">
+          <h2>🎯 Cek Potensi Bisnis Kamu</h2>
+          <p>Tidak ada jawaban benar atau salah — kami hanya ingin memahami situasimu</p>
+        </div>
+
+        <div class="quiz-inner" id="quizInner">
+          <!-- Progress -->
+          <div style="margin-bottom:var(--sp-6)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-2)">
+              <span style="color:rgba(255,255,255,0.5);font-size:var(--fs-xs)" id="bQuizCounter">Pertanyaan 1 / 4</span>
+              <span style="color:var(--jade);font-size:var(--fs-xs);font-weight:600" id="bQuizPct">0%</span>
+            </div>
+            <div style="height:4px;background:rgba(255,255,255,0.1);border-radius:var(--r-full);overflow:hidden">
+              <div style="height:100%;background:var(--jade);transition:width 0.4s ease;border-radius:var(--r-full)" id="bQuizBar"></div>
+            </div>
+          </div>
+
+          <!-- Step 1: Profesi -->
+          <div class="quiz-step active" id="bStep0">
+            <div class="quiz-q">Apa profesimu sekarang?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q0" value="karyawan"> <span>👔 Karyawan / Pegawai</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="wirausaha"> <span>🏪 Wirausaha / Pebisnis</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="freelance"> <span>💻 Freelancer / Self-Employed</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="ibu-rumah-tangga"> <span>🏠 Ibu Rumah Tangga</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="mahasiswa"> <span>🎓 Mahasiswa / Fresh Graduate</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="lainnya"> <span>✨ Profesi Lainnya</span></label>
+            </div>
+            <div style="display:flex;justify-content:flex-end">
+              <button class="btn btn--jade" onclick="bNext(0)">Lanjut →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Penghasilan -->
+          <div class="quiz-step" id="bStep1">
+            <div class="quiz-q">Berapa penghasilan bulananmu saat ini?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q1" value="dibawah-3jt"> <span>Di bawah Rp 3 juta</span></label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="3-8jt"> <span>Rp 3 – 8 juta</span></label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="8-15jt"> <span>Rp 8 – 15 juta</span></label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="15-30jt"> <span>Rp 15 – 30 juta</span></label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="diatas-30jt"> <span>Di atas Rp 30 juta</span></label>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <button class="btn btn--outline btn--sm" onclick="bBack(1)">← Kembali</button>
+              <button class="btn btn--jade" onclick="bNext(1)">Lanjut →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Tujuan -->
+          <div class="quiz-step" id="bStep2">
+            <div class="quiz-q">Apa yang paling kamu cari dari bisnis ini?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q2" value="tambahan-income"> <span>💰 Tambahan penghasilan sambil kerja utama</span></label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="ganti-pekerjaan"> <span>🔄 Pengganti pekerjaan dengan penghasilan lebih besar</span></label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="passive-income"> <span>🌙 Passive income jangka panjang</span></label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="bebas-finansial"> <span>🏖️ Kebebasan finansial dan waktu</span></label>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <button class="btn btn--outline btn--sm" onclick="bBack(2)">← Kembali</button>
+              <button class="btn btn--jade" onclick="bNext(2)">Lanjut →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Waktu -->
+          <div class="quiz-step" id="bStep3">
+            <div class="quiz-q">Berapa jam per minggu yang bisa kamu luangkan?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q3" value="1-5jam"> <span>⏱️ 1–5 jam (sambil kerja utama)</span></label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="5-10jam"> <span>⏰ 5–10 jam (serius tapi part-time)</span></label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="10-20jam"> <span>🕐 10–20 jam (hampir full focus)</span></label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="fulltime"> <span>💪 Full time — ini prioritasku</span></label>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <button class="btn btn--outline btn--sm" onclick="bBack(3)">← Kembali</button>
+              <button class="btn btn--cta btn--lg" onclick="bFinish()">Lihat Hasil Analisisku 🎯</button>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="quiz-step" id="bResult">
+            <div class="quiz-result-box" id="bResultBox">
+              <!-- filled by JS -->
+            </div>
+          </div>
+
+        </div><!-- /quiz-inner -->
+      </div><!-- /quiz-outer -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="biz-cta-heading">
+  <div class="container" style="position:relative;z-index:1;text-align:center">
+    <h2 id="biz-cta-heading" class="cta-title fade-up">Semua Orang Bisa Mulai<br>dari Mana Saja, Kapan Saja</h2>
+    <p class="cta-sub fade-up stagger-1">
+      Karyawan, wirausaha, ibu rumah tangga, mahasiswa — semua bisa.<br>
+      Yang kamu butuhkan hanya <strong>satu langkah pertama</strong>: ngobrol dengan agen.
+    </p>
+    <div class="cta-btns fade-up stagger-2">
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tahu%20lebih%20lanjut%20tentang%20peluang%20bisnis%20di%20BMI%20Manulife%20—%20dari%20website%20Project%20Cuan"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn--cta btn--lg"
+         data-track="bisnis-cta-bottom">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat Agen Sekarang — Gratis!
+      </a>
+      <a href="mailto:petrusjakub.asn@gmail.com?subject=Mau%20Tahu%20Peluang%20Bisnis%20Asuransi&body=Halo%20Kak%2C%20aku%20mau%20tahu%20lebih%20lanjut%20tentang%20peluang%20bisnis%20di%20BMI%20Manulife."
+         class="btn btn--ghost btn--lg" data-track="bisnis-email-bottom">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Kirim Email
+      </a>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:var(--fs-xs);margin-top:var(--sp-5)">
+      Tidak ada biaya pendaftaran · Tidak ada tekanan · Konsultasi 100% gratis
+    </p>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<!-- ═══ QUIZ + TRACKING LOGIC ═══ -->
+<script>
+/* ── State ── */
+const bAnswers = { q0:'', q1:'', q2:'', q3:'' };
+let bCurrent = 0;
+const bTotal = 4;
+
+/* ── Label maps ── */
+const bLabels = {
+  q0: { karyawan:'Karyawan', wirausaha:'Wirausaha', freelance:'Freelancer', 'ibu-rumah-tangga':'Ibu Rumah Tangga', mahasiswa:'Mahasiswa/Fresh Grad', lainnya:'Profesi Lainnya' },
+  q1: { 'dibawah-3jt':'< Rp 3jt', '3-8jt':'Rp 3–8jt', '8-15jt':'Rp 8–15jt', '15-30jt':'Rp 15–30jt', 'diatas-30jt':'> Rp 30jt' },
+  q2: { 'tambahan-income':'Tambahan income', 'ganti-pekerjaan':'Ganti pekerjaan', 'passive-income':'Passive income', 'bebas-finansial':'Kebebasan finansial' },
+  q3: { '1-5jam':'1–5 jam/minggu', '5-10jam':'5–10 jam/minggu', '10-20jam':'10–20 jam/minggu', fulltime:'Full time' }
+};
+
+function bUpdateProgress(step) {
+  const pct = Math.round((step / bTotal) * 100);
+  document.getElementById('bQuizBar').style.width = pct + '%';
+  document.getElementById('bQuizPct').textContent = pct + '%';
+  document.getElementById('bQuizCounter').textContent =
+    step < bTotal ? `Pertanyaan ${step + 1} / ${bTotal}` : 'Selesai!';
+}
+
+function bShowStep(idx) {
+  document.querySelectorAll('.quiz-step').forEach((s,i) => s.classList.toggle('active', i === idx));
+  bUpdateProgress(idx);
+}
+
+function bGetSelected(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : null;
+}
+
+function bNext(stepIdx) {
+  const val = bGetSelected('q' + stepIdx);
+  if (!val) { alert('Pilih salah satu jawaban dulu ya 😊'); return; }
+  bAnswers['q' + stepIdx] = val;
+  bCurrent++;
+  bShowStep(bCurrent);
+}
+
+function bBack(stepIdx) {
+  bCurrent = stepIdx - 1;
+  bShowStep(bCurrent);
+}
+
+function bFinish() {
+  const val = bGetSelected('q3');
+  if (!val) { alert('Pilih salah satu jawaban dulu ya 😊'); return; }
+  bAnswers.q3 = val;
+  bCurrent = 4;
+  bShowStep(bCurrent);
+  bRenderResult();
+
+  /* ── TRACKING: log to localStorage ── */
+  const log = {
+    ts: new Date().toISOString(),
+    profesi: bAnswers.q0,
+    penghasilan: bAnswers.q1,
+    tujuan: bAnswers.q2,
+    waktu: bAnswers.q3,
+    src: window.location.href
+  };
+  const prev = JSON.parse(localStorage.getItem('pc_bisnis_leads') || '[]');
+  prev.push(log);
+  localStorage.setItem('pc_bisnis_leads', JSON.stringify(prev.slice(-50)));
+}
+
+function bBuildWaMsg() {
+  const p  = bLabels.q0[bAnswers.q0] || bAnswers.q0;
+  const ph = bLabels.q1[bAnswers.q1] || bAnswers.q1;
+  const t  = bLabels.q2[bAnswers.q2] || bAnswers.q2;
+  const w  = bLabels.q3[bAnswers.q3] || bAnswers.q3;
+  return encodeURIComponent(
+    `Halo Kak, aku tertarik dengan peluang bisnis asuransi 🙌\n\n` +
+    `• Profesi: ${p}\n` +
+    `• Penghasilan saat ini: ${ph}\n` +
+    `• Yang aku cari: ${t}\n` +
+    `• Waktu yang bisa aku luangkan: ${w}\n\n` +
+    `Bisa bantu aku mulai langkah pertama? Terima kasih!`
+  );
+}
+
+function bBuildEmailBody() {
+  const p  = bLabels.q0[bAnswers.q0] || bAnswers.q0;
+  const ph = bLabels.q1[bAnswers.q1] || bAnswers.q1;
+  const t  = bLabels.q2[bAnswers.q2] || bAnswers.q2;
+  const w  = bLabels.q3[bAnswers.q3] || bAnswers.q3;
+  return encodeURIComponent(
+    `Halo Kak,\n\nAku tertarik dengan peluang bisnis asuransi dan sudah mengisi kuis di website Project Cuan.\n\n` +
+    `Profesi: ${p}\nPenghasilan: ${ph}\nTujuan: ${t}\nWaktu: ${w}\n\n` +
+    `Bisa minta informasi lebih lanjut? Terima kasih!`
+  );
+}
+
+function bRenderResult() {
+  const waMsg   = bBuildWaMsg();
+  const emailBd = bBuildEmailBody();
+  const p  = bLabels.q0[bAnswers.q0] || '';
+  const t  = bLabels.q2[bAnswers.q2] || '';
+  const w  = bLabels.q3[bAnswers.q3] || '';
+
+  /* Personalized message */
+  const msgs = {
+    'tambahan-income': 'Kamu bisa mulai 1–2 jam per hari sambil tetap kerja utama. Banyak partner kami yang mulai dengan cara ini dan sekarang sudah punya income tambahan Rp 5–15 juta per bulan.',
+    'ganti-pekerjaan': 'Dengan fokus penuh, rata-rata partner kami bisa mencapai income setara gaji dalam 3–6 bulan pertama. Sistem dan mentor sudah siap mendampingi kamu.',
+    'passive-income':  'Passive income dimulai saat kamu membangun tim. Rata-rata 12–18 bulan pertama untuk membangun fondasi yang kuat. Tapi hasilnya — income terus berjalan meski kamu sedang libur.',
+    'bebas-finansial': 'Kebebasan finansial nyata bisa dicapai ketika tim dan sistemmu berjalan sendiri. Itu yang sedang dilakukan ribuan partner BMI Agency saat ini.'
+  };
+
+  const personalMsg = msgs[bAnswers.q2] || 'Langkah terbaik adalah ngobrol langsung dengan agen untuk mendapat gambaran yang sesuai dengan situasimu.';
+
+  document.getElementById('bResultBox').innerHTML = `
+    <div class="quiz-result-emoji">🎉</div>
+    <div class="quiz-result-title">Kamu Punya Potensi Nyata!</div>
+    <div class="quiz-result-sub">
+      Sebagai <strong>${p}</strong> dengan tujuan <strong>${t.toLowerCase()}</strong> dan waktu <strong>${w}</strong> —
+      ini sangat realistis untuk dimulai.
+    </div>
+    <div class="quiz-result-msg">
+      💡 <strong>Analisis singkat untuk kamu:</strong><br><br>
+      ${personalMsg}
+      <br><br>
+      <strong>Langkah selanjutnya:</strong> Chat agen sekarang — gratis, tanpa tekanan, tanpa komitmen apapun.
+      Agen kami akan bantu kamu hitung potensi dan langkah realistis pertamamu.
+    </div>
+    <div class="result-contact-options">
+      <a href="https://wa.me/6287781896087?text=${waMsg}"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn--wa btn--lg"
+         onclick="bTrackClick('wa-quiz-result')"
+         style="justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat Agen via WhatsApp
+      </a>
+      <a href="mailto:petrusjakub.asn@gmail.com?subject=Mau%20Tahu%20Peluang%20Bisnis%20Asuransi&body=${emailBd}"
+         class="btn btn--outline btn--lg"
+         onclick="bTrackClick('email-quiz-result')"
+         style="justify-content:center">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Kirim via Email
+      </a>
+    </div>
+    <p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-4)">
+      Pesan WA sudah otomatis terisi dengan jawaban kuismu — agen langsung tahu konteksmu 💬
+    </p>
+  `;
+}
+
+function bTrackClick(type) {
+  const prev = JSON.parse(localStorage.getItem('pc_bisnis_clicks') || '[]');
+  prev.push({ ts: new Date().toISOString(), type, answers: {...bAnswers} });
+  localStorage.setItem('pc_bisnis_clicks', JSON.stringify(prev.slice(-50)));
+}
+
+/* Track all data-track buttons */
+document.querySelectorAll('[data-track]').forEach(btn => {
+  btn.addEventListener('click', () => bTrackClick(btn.dataset.track));
+});
+
+/* Label click on quiz option */
+document.querySelectorAll('.quiz-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const inp = opt.querySelector('input');
+    if (inp) {
+      inp.checked = true;
+      opt.closest('.quiz-opts')?.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    }
+  });
+});
+
+/* Init progress */
+bUpdateProgress(0);
+</script>
+
+<script src="/assets/main.js"></script>
+</body>
+</html>
