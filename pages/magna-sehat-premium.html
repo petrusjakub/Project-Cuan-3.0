@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magna Sehat Premium — Proteksi Keluarga Lengkap | PROJECTCUAN</title>
-  <meta name="description" content="Asuransi kesehatan keluarga untuk maksimal 5 anggota. Premi mulai Rp 4 juta per tahun. Perlindungan komprehensif, harga terjangkau.">
+  <title>Magna Sehat Premium - Asuransi Rawat Inap & Rawat Jalan Individu & Keluarga | PROJECTCUAN</title>
+  <meta name="description" content="Magna Sehat Premium dari Asuransi MAG: proteksi Rawat Inap & Rawat Jalan untuk individu hingga keluarga (pasangan + maks 3 anak). Cashless, tanpa MCU, premi mulai Rp 1,2 juta/tahun.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/style.css">
@@ -57,6 +57,35 @@
     .member-icon { font-size: 32px; margin-bottom: var(--sp-3); }
     .member-name { font-size: var(--fs-sm); font-weight: 600; color: var(--txt-head); }
     .member-note { font-size: var(--fs-xs); color: var(--txt-muted); margin-top: 2px; }
+
+    /* Calculator Styles */
+    .calc-select-group { margin-bottom: var(--sp-4); }
+    .calc-select-group label { display:block; font-weight:600; margin-bottom:6px; font-size:var(--fs-sm); color:var(--txt-head); }
+    .calc-option-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(130px,1fr)); gap:8px; }
+    .calc-option {
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:10px 12px; border:2px solid var(--border); border-radius:var(--r-md);
+      cursor:pointer; font-size:var(--fs-sm); font-weight:500; color:var(--txt-sub);
+      transition: all 0.2s ease; background:var(--bg-card); line-height:1.3;
+    }
+    .calc-option:hover { border-color:var(--tangerine); color:var(--tangerine); }
+    .calc-option.active { border-color:var(--tangerine); background:rgba(241,90,34,0.08); color:var(--tangerine); font-weight:700; }
+    .calc-option input { display:none; }
+    .calc-breakdown { margin-top:var(--sp-4); padding:var(--sp-4); background:rgba(241,90,34,0.04); border-radius:var(--r-md); border:1px solid rgba(241,90,34,0.12); }
+    .calc-breakdown-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; font-size:var(--fs-sm); }
+    .calc-breakdown-row.total { border-top:2px solid rgba(241,90,34,0.2); margin-top:8px; padding-top:12px; font-weight:700; font-size:var(--fs-md); color:var(--tangerine); }
+    .calc-plan-detail { font-size:var(--fs-xs); color:var(--txt-muted); margin-top:4px; }
+
+    /* Eligibility Section */
+    .eligibility-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--sp-5); }
+    .eligibility-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg);
+      padding:var(--sp-5); transition: all var(--ease);
+    }
+    .eligibility-card:hover { box-shadow:var(--sh-md); transform:translateY(-2px); }
+    .eligibility-card-icon { font-size:28px; margin-bottom:var(--sp-3); }
+    .eligibility-card-title { font-weight:700; color:var(--txt-head); margin-bottom:var(--sp-2); font-size:var(--fs-sm); }
+    .eligibility-card-desc { font-size:var(--fs-sm); color:var(--txt-sub); line-height:1.6; }
   </style>
 </head>
 <body>
@@ -67,44 +96,44 @@
   <div class="container">
     <nav class="breadcrumb">
       <a href="/index.html">Beranda</a>
-      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-sep">&#8250;</span>
       <a href="/index.html#produk">Produk</a>
-      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-sep">&#8250;</span>
       <span class="breadcrumb-current" style="color:var(--tangerine)">Magna Sehat Premium</span>
     </nav>
 
     <div class="page-hero-inner">
       <div>
         <div style="display:inline-flex;align-items:center;gap:var(--sp-2);background:rgba(241,90,34,0.1);border:1px solid rgba(241,90,34,0.2);color:var(--tangerine);font-size:var(--fs-xs);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:var(--sp-4)">
-          ⭐ Spesial · Asuransi Keluarga
+          &#11088; Asuransi MAG (A Fairfax Company)
         </div>
 
         <h1 id="magna-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
-          Siapa Bilang <span style="color:var(--tangerine)">Proteksi Keluarga Lengkap</span><br>itu Harus Mahal?
+          <span style="color:var(--tangerine)">Magna Sehat Premium</span><br>Rawat Inap & Rawat Jalan untuk Individu & Keluarga
         </h1>
 
         <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
-          5 anggota keluarga, 1 polis, 1 premi terjangkau.<br>
-          Cukup dengan <strong>Rp 4 juta setahun</strong> — seluruh keluargamu terlindungi dari risiko biaya kesehatan yang tidak terduga.
+          Penggantian biaya Rawat Inap &amp; Rawat Jalan di Rumah Sakit untuk individu, yang dapat diperluas hingga keluarga inti (Pasangan + Maks. 3 Anak).<br>
+          <strong>Cashless</strong> di RS Rekanan MAG, <strong>Tanpa Medical Check Up</strong>, dan <strong>Refund premi prorata</strong> jika tidak ada klaim.
         </p>
 
         <div style="display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap;margin-bottom:var(--sp-8)" class="fade-up stagger-2">
           <div class="price-tag">
-            <span class="price-tag-num">Rp 4jt</span>
+            <span class="price-tag-num">Rp 1,2jt</span>
             <span class="price-tag-unit">/tahun</span>
           </div>
           <div>
-            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Artinya...</div>
-            <div style="font-family:var(--ff-head);font-weight:700;color:var(--jade);font-size:var(--fs-xl)">Rp 11rb/hari</div>
-            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">per orang — lebih murah dari segelas kopi!</div>
+            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Individu mulai dari</div>
+            <div style="font-family:var(--ff-head);font-weight:700;color:var(--jade);font-size:var(--fs-xl)">Rp 3.522/hari</div>
+            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Keluarga mulai Rp 4,6jt/tahun (Plan A)</div>
           </div>
         </div>
 
         <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap" class="fade-up stagger-3">
-          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20Magna%20Sehat%20Premium%20untuk%20keluargaku"
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20Magna%20Sehat%20Premium"
              target="_blank" rel="noopener" class="btn btn--lg" style="background:var(--tangerine);color:#fff;box-shadow:var(--sh-cta)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Tanya Harga untuk Keluargaku
+            Tanya Harga &amp; Daftar
           </a>
           <a href="#kalkulator" class="btn btn--outline btn--lg" style="border-color:var(--tangerine);color:var(--tangerine)">Hitung Premi</a>
         </div>
@@ -118,33 +147,33 @@
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3)">
             <div class="member-card">
-              <div class="member-icon">👨</div>
-              <div class="member-name">Ayah</div>
-              <div class="member-note">Peserta 1</div>
+              <div class="member-icon">&#128100;</div>
+              <div class="member-name">Peserta Utama</div>
+              <div class="member-note">Usia 21-55 thn</div>
             </div>
             <div class="member-card">
-              <div class="member-icon">👩</div>
-              <div class="member-name">Ibu</div>
-              <div class="member-note">Peserta 2</div>
+              <div class="member-icon">&#128105;</div>
+              <div class="member-name">Pasangan</div>
+              <div class="member-note">Suami/Istri</div>
             </div>
             <div class="member-card">
-              <div class="member-icon">👦</div>
+              <div class="member-icon">&#128102;</div>
               <div class="member-name">Anak 1</div>
-              <div class="member-note">Peserta 3</div>
+              <div class="member-note">15 hari - 25 thn</div>
             </div>
             <div class="member-card">
-              <div class="member-icon">👧</div>
+              <div class="member-icon">&#128103;</div>
               <div class="member-name">Anak 2</div>
-              <div class="member-note">Peserta 4</div>
+              <div class="member-note">15 hari - 25 thn</div>
             </div>
             <div class="member-card">
-              <div class="member-icon">👶</div>
+              <div class="member-icon">&#128118;</div>
               <div class="member-name">Anak 3</div>
-              <div class="member-note">Peserta 5</div>
+              <div class="member-note">15 hari - 25 thn</div>
             </div>
             <div class="member-card" style="background:var(--tangerine);border-color:var(--tangerine)">
-              <div class="member-icon">✅</div>
-              <div class="member-name" style="color:#fff">Semua</div>
+              <div class="member-icon">&#9989;</div>
+              <div class="member-name" style="color:#fff">1 Polis</div>
               <div class="member-note" style="color:rgba(255,255,255,0.8)">1 Premi</div>
             </div>
           </div>
@@ -159,65 +188,199 @@
 <section class="section" aria-labelledby="benefit-heading">
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-10)">
-      <span class="section-tag" style="background:rgba(241,90,34,0.1);color:var(--tangerine)">Manfaat</span>
-      <h2 id="benefit-heading" class="section-title fade-up">Apa Saja yang Didapat?</h2>
+      <span class="section-tag" style="background:rgba(241,90,34,0.1);color:var(--tangerine)">Keunggulan</span>
+      <h2 id="benefit-heading" class="section-title fade-up">Mengapa Magna Sehat Premium?</h2>
     </div>
     <div class="benefit-grid">
-      <div class="benefit-item fade-up"><div class="benefit-icon">🏥</div><div><div class="benefit-title">Rawat Inap & Bedah</div><p class="benefit-desc">Biaya kamar, tindakan bedah, dokter spesialis — semua di-cover sesuai plan yang dipilih.</p></div></div>
-      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">🚨</div><div><div class="benefit-title">Perawatan Darurat</div><p class="benefit-desc">Kecelakaan dan kondisi darurat medis langsung ditangani tanpa menunggu prosedur panjang.</p></div></div>
-      <div class="benefit-item fade-up stagger-2"><div class="benefit-icon">👨‍👩‍👧‍👦</div><div><div class="benefit-title">Maks 5 Anggota Keluarga</div><p class="benefit-desc">Satu polis untuk satu keluarga. Suami, istri, dan hingga 3 anak — semua masuk dalam 1 premi.</p></div></div>
-      <div class="benefit-item fade-up stagger-3"><div class="benefit-icon">💸</div><div><div class="benefit-title">Premi Terjangkau</div><p class="benefit-desc">Mulai dari Rp 4 juta per tahun — harga paling kompetitif untuk perlindungan keluarga lengkap.</p></div></div>
+      <div class="benefit-item fade-up"><div class="benefit-icon">&#127975;</div><div><div class="benefit-title">Fasilitas Cashless</div><p class="benefit-desc">Berobat langsung tanpa bayar di muka di Rumah Sakit Rekanan MAG. Cukup tunjukkan kartu peserta.</p></div></div>
+      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#128203;</div><div><div class="benefit-title">Tanpa Medical Check Up</div><p class="benefit-desc">Tidak perlu cek kesehatan saat pendaftaran. Proses cepat dan mudah hanya dengan formulir dan KTP.</p></div></div>
+      <div class="benefit-item fade-up stagger-2"><div class="benefit-icon">&#9200;</div><div><div class="benefit-title">Pemulihan Manfaat 14 Hari</div><p class="benefit-desc">Masa pemulihan manfaat hanya 14 hari untuk diagnosa yang sama atau berhubungan. Lebih cepat dari standar industri.</p></div></div>
+      <div class="benefit-item fade-up stagger-3"><div class="benefit-icon">&#128137;</div><div><div class="benefit-title">Kemoterapi &amp; Hemodialisa</div><p class="benefit-desc">Termasuk manfaat Kemoterapi dan Hemodialisa per tahun dalam paket perlindungan.</p></div></div>
+      <div class="benefit-item fade-up"><div class="benefit-icon">&#128176;</div><div><div class="benefit-title">Refund Premi Prorata</div><p class="benefit-desc">Pengembalian premi secara prorata di tengah periode polis jika tidak ada klaim. Uang Anda tetap aman.</p></div></div>
+      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#129328;</div><div><div class="benefit-title">Komplikasi Kehamilan</div><p class="benefit-desc">Sudah termasuk perlindungan untuk komplikasi kehamilan tanpa biaya tambahan.</p></div></div>
+      <div class="benefit-item fade-up stagger-2"><div class="benefit-icon">&#128336;</div><div><div class="benefit-title">Reimbursement 10 Hari Kerja</div><p class="benefit-desc">Pembayaran klaim reimbursement diproses dalam 10 hari kerja. Cepat dan transparan.</p></div></div>
+      <div class="benefit-item fade-up stagger-3"><div class="benefit-icon">&#128298;</div><div><div class="benefit-title">Opsi Rawat Jalan</div><p class="benefit-desc">Tambahkan manfaat Rawat Jalan (rider) untuk perlindungan yang lebih komprehensif sesuai kebutuhan.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- KETENTUAN & ELIGIBILITAS -->
+<section class="section section--alt" aria-labelledby="eligibility-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag" style="background:rgba(241,90,34,0.1);color:var(--tangerine)">Ketentuan</span>
+      <h2 id="eligibility-heading" class="section-title fade-up">Syarat &amp; Ketentuan Kepesertaan</h2>
+    </div>
+    <div class="eligibility-grid">
+      <div class="eligibility-card fade-up">
+        <div class="eligibility-card-icon">&#128100;</div>
+        <div class="eligibility-card-title">Usia Peserta Dewasa</div>
+        <div class="eligibility-card-desc">21 - 55 tahun (dapat diperpanjang/renewal sampai usia 70 tahun)</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-1">
+        <div class="eligibility-card-icon">&#128118;</div>
+        <div class="eligibility-card-title">Usia Anak</div>
+        <div class="eligibility-card-desc">15 hari - 25 tahun (selama masih sekolah, belum bekerja, dan belum berkeluarga)</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-2">
+        <div class="eligibility-card-icon">&#9203;</div>
+        <div class="eligibility-card-title">Masa Tunggu</div>
+        <div class="eligibility-card-desc">30 hari khusus untuk penyakit. Kecelakaan langsung dijamin sejak hari pertama.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-3">
+        <div class="eligibility-card-icon">&#128220;</div>
+        <div class="eligibility-card-title">Pre-Existing Conditions</div>
+        <div class="eligibility-card-desc">Penyakit yang sudah ada sebelumnya tidak dijamin selamanya.</div>
+      </div>
+      <div class="eligibility-card fade-up">
+        <div class="eligibility-card-icon">&#128116;</div>
+        <div class="eligibility-card-title">Klausul Degeneratif</div>
+        <div class="eligibility-card-desc">Untuk usia di atas 55 tahun, penggantian hanya sebesar 50% dengan sistem reimbursement.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-1">
+        <div class="eligibility-card-icon">&#127968;</div>
+        <div class="eligibility-card-title">Toleransi Kamar</div>
+        <div class="eligibility-card-desc">Jika kamar penuh, boleh naik 1 tingkat selama 2x24 jam. Atas permintaan sendiri naik kelas, berlaku reimbursement.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-2">
+        <div class="eligibility-card-icon">&#129309;</div>
+        <div class="eligibility-card-title">Koordinasi Manfaat (COB)</div>
+        <div class="eligibility-card-desc">Dapat dikoordinasikan dengan BPJS Kesehatan atau asuransi komersial lainnya. Ada santunan harian jika sudah dijamin 100% BPJS.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-3">
+        <div class="eligibility-card-icon">&#128196;</div>
+        <div class="eligibility-card-title">Dokumen Pendaftaran</div>
+        <div class="eligibility-card-desc">Formulir aplikasi, laporan kesehatan pribadi, softcopy KTP, dan softcopy Kartu Keluarga.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- KALKULATOR -->
-<section class="section section--alt" id="kalkulator" aria-labelledby="calc-heading">
-  <div class="container"><div style="max-width:680px;margin:0 auto">
+<section class="section" id="kalkulator" aria-labelledby="calc-heading">
+  <div class="container"><div style="max-width:720px;margin:0 auto">
     <div style="text-align:center;margin-bottom:var(--sp-8)">
-      <span class="section-tag" style="background:rgba(241,90,34,0.1);color:var(--tangerine)">Estimasi Premi</span>
-      <h2 id="calc-heading" class="section-title fade-up">Hitung Premi untuk Keluargamu</h2>
+      <span class="section-tag" style="background:rgba(241,90,34,0.1);color:var(--tangerine)">Kalkulator Premi</span>
+      <h2 id="calc-heading" class="section-title fade-up">Hitung Premi Magna Sehat Premium</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Premi dibayarkan 1 tahun sekaligus di muka untuk periode polis 1 tahun kalender.</p>
     </div>
     <div class="calculator-wrap fade-up stagger-1">
       <div class="calc-header" style="background:linear-gradient(135deg,#c43e0f,var(--tangerine))">
-        <h3>⭐ Kalkulator Magna Sehat Premium</h3>
-        <p>Estimasi premi berdasarkan jumlah anggota dan plan</p>
+        <h3>&#11088; Kalkulator Magna Sehat Premium</h3>
+        <p>Hitung premi berdasarkan usia, kepesertaan, dan plan pilihan Anda</p>
       </div>
       <div class="calc-body">
-        <div class="calc-grid">
-          <div class="form-group">
-            <label class="form-label" for="mgJumlah">Jumlah Peserta</label>
-            <select class="form-select" id="mgJumlah" onchange="hitungMagna()">
-              <option value="1">1 Orang</option>
-              <option value="2">2 Orang</option>
-              <option value="3">3 Orang</option>
-              <option value="4">4 Orang</option>
-              <option value="5" selected>5 Orang (Maks)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="mgPlan">Plan Perlindungan</label>
-            <select class="form-select" id="mgPlan" onchange="hitungMagna()">
-              <option value="basic" selected>Basic (Rawat Inap)</option>
-              <option value="plus">Plus (+ Rawat Jalan)</option>
-              <option value="premium">Premium (Komprehensif)</option>
-            </select>
+
+        <!-- Kategori Usia -->
+        <div class="calc-select-group">
+          <label>Kategori Usia</label>
+          <div class="calc-option-grid" id="mgUsia">
+            <div class="calc-option active" onclick="selectOption('mgUsia', 0)">
+              <input type="radio" name="usia" checked> s/d 40 Tahun
+            </div>
+            <div class="calc-option" onclick="selectOption('mgUsia', 1)">
+              <input type="radio" name="usia"> 41 - 55 Tahun
+            </div>
+            <div class="calc-option" onclick="selectOption('mgUsia', 2)">
+              <input type="radio" name="usia"> 56 - 70 Tahun (Renewal)
+            </div>
           </div>
         </div>
-        <div class="calc-result">
-          <div>
-            <div class="calc-result-label">Estimasi Premi Tahunan</div>
-            <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:2px" id="mgPerOrang">—</div>
+
+        <!-- Tipe Kepesertaan -->
+        <div class="calc-select-group">
+          <label>Tipe Kepesertaan</label>
+          <div class="calc-option-grid" id="mgTipe">
+            <div class="calc-option active" onclick="selectOption('mgTipe', 0)">
+              <input type="radio" name="tipe" checked> Peserta Dewasa
+            </div>
+            <div class="calc-option" onclick="selectOption('mgTipe', 1)">
+              <input type="radio" name="tipe"> + Pasangan/Anak (maks. 3)
+            </div>
+            <div class="calc-option" onclick="selectOption('mgTipe', 2)">
+              <input type="radio" name="tipe"> + Keluarga (maks. 3 anak)
+            </div>
           </div>
-          <div class="calc-result-amount" id="mgAmount">—</div>
         </div>
-        <p class="calc-note">Estimasi awal. Premi final dikonfirmasi oleh agen sesuai kondisi aktual.
-          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20mau%20tanya%20premi%20Magna%20Sehat%20Premium" target="_blank" style="color:var(--tangerine);font-weight:600">Chat agen</a> untuk angka tepat.
+
+        <!-- Plan Rawat Inap -->
+        <div class="calc-select-group">
+          <label>Plan Rawat Inap (Wajib)</label>
+          <div class="calc-option-grid" id="mgPlanIP">
+            <div class="calc-option active" onclick="selectOption('mgPlanIP', 0)">
+              <input type="radio" name="planip" checked> Plan A<br><small>IP350</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanIP', 1)">
+              <input type="radio" name="planip"> Plan B<br><small>IP500</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanIP', 2)">
+              <input type="radio" name="planip"> Plan C<br><small>IP800</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanIP', 3)">
+              <input type="radio" name="planip"> Plan D<br><small>IP1200</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanIP', 4)">
+              <input type="radio" name="planip"> Plan E<br><small>IP1600</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanIP', 5)">
+              <input type="radio" name="planip"> Plan F<br><small>IP2000</small>
+            </div>
+          </div>
+          <div class="calc-plan-detail" id="mgPlanIPDetail">Plan A - Kamar Rp 350rb/hari</div>
+        </div>
+
+        <!-- Plan Rawat Jalan (Opsional) -->
+        <div class="calc-select-group">
+          <label>Plan Rawat Jalan (Opsional)</label>
+          <div class="calc-option-grid" id="mgPlanOP">
+            <div class="calc-option active" onclick="selectOption('mgPlanOP', 0)">
+              <input type="radio" name="planop" checked> Tanpa OP
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanOP', 1)">
+              <input type="radio" name="planop"> Plan A<br><small>OP80</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanOP', 2)">
+              <input type="radio" name="planop"> Plan B<br><small>OP100</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanOP', 3)">
+              <input type="radio" name="planop"> Plan C<br><small>OP150</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanOP', 4)">
+              <input type="radio" name="planop"> Plan D<br><small>OP200</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanOP', 5)">
+              <input type="radio" name="planop"> Plan E<br><small>OP250</small>
+            </div>
+            <div class="calc-option" onclick="selectOption('mgPlanOP', 6)">
+              <input type="radio" name="planop"> Plan F<br><small>OP300</small>
+            </div>
+          </div>
+          <div class="calc-plan-detail" id="mgPlanOPDetail">Tidak ada Rawat Jalan</div>
+        </div>
+
+        <!-- Result -->
+        <div class="calc-breakdown" id="mgBreakdown">
+          <div class="calc-breakdown-row">
+            <span>Rawat Inap (Plan A - IP350)</span>
+            <span id="mgIPAmount">Rp 1.286.000</span>
+          </div>
+          <div class="calc-breakdown-row" id="mgOPRow" style="display:none">
+            <span id="mgOPLabel">Rawat Jalan</span>
+            <span id="mgOPAmount">-</span>
+          </div>
+          <div class="calc-breakdown-row total">
+            <span>Total Premi / Tahun</span>
+            <span id="mgTotalAmount">Rp 1.286.000</span>
+          </div>
+        </div>
+
+        <p class="calc-note" style="margin-top:var(--sp-4)">Premi di atas sesuai tabel resmi Asuransi MAG. Hubungi agen untuk proses pendaftaran dan konfirmasi.
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20mau%20tanya%20premi%20Magna%20Sehat%20Premium" target="_blank" style="color:var(--tangerine);font-weight:600">Chat agen</a>
         </p>
         <div style="margin-top:var(--sp-5)">
-          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20tertarik%20dengan%20Magna%20Sehat%20Premium%20untuk%20keluargaku"
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20tertarik%20dengan%20Magna%20Sehat%20Premium"
              target="_blank" class="btn btn--block btn--lg" style="background:var(--tangerine);color:#fff;box-shadow:var(--sh-cta)">
-            Chat Agen — Minta Penawaran Terbaik
+            Chat Agen - Daftar Sekarang
           </a>
         </div>
       </div>
@@ -228,12 +391,12 @@
 <!-- CTA -->
 <section class="cta-section" style="background:linear-gradient(135deg,#c43e0f,var(--tangerine),#ff8c6f)">
   <div class="container" style="position:relative;z-index:1;text-align:center">
-    <h2 class="cta-title fade-up">Proteksi Keluarga Lengkap Mulai Hari Ini</h2>
-    <p class="cta-sub fade-up stagger-1">Cukup Rp 11rb per hari per orang — keluargamu terlindungi dari kejutan biaya medis yang bisa menguras tabungan.</p>
+    <h2 class="cta-title fade-up">Lindungi Keluarga dengan Magna Sehat Premium</h2>
+    <p class="cta-sub fade-up stagger-1">Cashless di RS Rekanan, tanpa MCU, refund premi jika tidak klaim. Premi individu mulai Rp 1,2jt/tahun, keluarga mulai Rp 4,6jt/tahun.</p>
     <div class="cta-btns fade-up stagger-2">
-      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20daftar%20Magna%20Sehat%20Premium%20untuk%20keluargaku"
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20daftar%20Magna%20Sehat%20Premium"
          target="_blank" class="btn btn--lg" style="background:#fff;color:var(--tangerine);box-shadow:0 4px 20px rgba(0,0,0,0.15)">
-        Daftar Sekarang — Mulai Rp 4jt/tahun
+        Daftar Sekarang - Premi Mulai Rp 1,2jt/tahun
       </a>
     </div>
   </div>
@@ -242,17 +405,116 @@
 <div id="site-footer"></div>
 
 <script>
-function hitungMagna() {
-  const jumlah = parseInt(document.getElementById('mgJumlah').value);
-  const plan   = document.getElementById('mgPlan').value;
-  const base   = { basic: 800000, plus: 1300000, premium: 1900000 }; // per orang/tahun
-  const diskon = [0, 0, 0.05, 0.08, 0.10, 0.12]; // diskon makin banyak peserta
-  const total  = Math.round(base[plan] * jumlah * (1 - diskon[jumlah]) / 12000) * 12000;
-  const perOrang = Math.round(total / jumlah / 12000) * 12000;
+// === PREMIUM DATA (from official Asuransi MAG tables) ===
+const PREMI_IP = [
+  // [usia_idx][tipe_idx][plan_idx] - Rawat Inap
+  // usia: 0=s/d40, 1=41-55, 2=56-70
+  // tipe: 0=individu, 1=+pasangan/anak, 2=+keluarga
+  // plan: 0=A(IP350), 1=B(IP500), 2=C(IP800), 3=D(IP1200), 4=E(IP1600), 5=F(IP2000)
+  [
+    [1286000, 1718000, 2781000, 3875000, 4958000, 6039000],
+    [2075000, 2771000, 4487000, 6250000, 7998000, 9742000],
+    [4629000, 6185000, 10011000, 13949000, 17848000, 21740000]
+  ],
+  [
+    [1478900, 1975700, 3198200, 4456300, 5701700, 6944900],
+    [3697250, 4939250, 7995500, 11140750, 14254250, 17362250],
+    [5545875, 7408875, 11993250, 16711125, 21381375, 26043375]
+  ],
+  [
+    [1608000, 2148000, 3477000, 4844000, 6198000, 7549000],
+    [4020000, 5370000, 8692500, 12110000, 15495000, 18872500],
+    [6030000, 8055000, 13038750, 18165000, 23242500, 28308750]
+  ]
+];
 
-  document.getElementById('mgAmount').textContent    = 'Rp\u00A0' + total.toLocaleString('id-ID');
-  document.getElementById('mgPerOrang').textContent  = '≈ Rp\u00A0' + perOrang.toLocaleString('id-ID') + ' per orang/tahun';
+const PREMI_OP = [
+  // Same structure - Rawat Jalan
+  // plan: 0=A(OP80), 1=B(OP100), 2=C(OP150), 3=D(OP200), 4=E(OP250), 5=F(OP300)
+  [
+    [2054000, 2583000, 3870000, 4992000, 6113000, 7235000],
+    [3465000, 4359000, 6531000, 8424000, 10316000, 12208000],
+    [9885000, 12431000, 18625000, 24025000, 29419000, 34819000]
+  ],
+  [
+    [2362100, 2970500, 4450500, 5740800, 7030000, 8320300],
+    [5905250, 7426250, 11126250, 14352000, 17575000, 20800750],
+    [8857875, 11139375, 16689375, 21528000, 26362500, 31201125]
+  ],
+  [
+    [2568000, 3229000, 4838000, 6240000, 7642000, 9044000],
+    [6420000, 8072500, 12095000, 15600000, 19105000, 22610000],
+    [9630000, 12108750, 18142500, 23400000, 28657500, 33915000]
+  ]
+];
+
+const IP_LABELS = ['Plan A - IP350 (Kamar Rp 350rb/hari)', 'Plan B - IP500 (Kamar Rp 500rb/hari)', 'Plan C - IP800 (Kamar Rp 800rb/hari)', 'Plan D - IP1200 (Kamar Rp 1,2jt/hari)', 'Plan E - IP1600 (Kamar Rp 1,6jt/hari)', 'Plan F - IP2000 (Kamar Rp 2jt/hari)'];
+const OP_LABELS = ['Tanpa Rawat Jalan', 'Plan A - OP80 (Limit Rp 80rb/visit)', 'Plan B - OP100 (Limit Rp 100rb/visit)', 'Plan C - OP150 (Limit Rp 150rb/visit)', 'Plan D - OP200 (Limit Rp 200rb/visit)', 'Plan E - OP250 (Limit Rp 250rb/visit)', 'Plan F - OP300 (Limit Rp 300rb/visit)'];
+const IP_SHORT = ['Plan A - Kamar Rp 350rb/hari', 'Plan B - Kamar Rp 500rb/hari', 'Plan C - Kamar Rp 800rb/hari', 'Plan D - Kamar Rp 1,2jt/hari', 'Plan E - Kamar Rp 1,6jt/hari', 'Plan F - Kamar Rp 2jt/hari'];
+const OP_SHORT = ['Tidak ada Rawat Jalan', 'Plan A - Limit OP Rp 80rb', 'Plan B - Limit OP Rp 100rb', 'Plan C - Limit OP Rp 150rb', 'Plan D - Limit OP Rp 200rb', 'Plan E - Limit OP Rp 250rb', 'Plan F - Limit OP Rp 300rb'];
+
+// State
+let state = { usia: 0, tipe: 0, planIP: 0, planOP: 0 };
+
+function selectOption(groupId, idx) {
+  const group = document.getElementById(groupId);
+  const options = group.querySelectorAll('.calc-option');
+  options.forEach(function(el, i) {
+    if (i === idx) { el.classList.add('active'); }
+    else { el.classList.remove('active'); }
+  });
+
+  if (groupId === 'mgUsia') state.usia = idx;
+  else if (groupId === 'mgTipe') state.tipe = idx;
+  else if (groupId === 'mgPlanIP') state.planIP = idx;
+  else if (groupId === 'mgPlanOP') state.planOP = idx;
+
+  hitungMagna();
 }
+
+function formatRupiah(num) {
+  return 'Rp\u00A0' + num.toLocaleString('id-ID');
+}
+
+function hitungMagna() {
+  var ipPlan = state.planIP;
+  var opPlan = state.planOP;
+  var usia = state.usia;
+  var tipe = state.tipe;
+
+  // Get IP premium
+  var ipAmount = PREMI_IP[usia][tipe][ipPlan];
+
+  // Get OP premium (0 = no OP)
+  var opAmount = 0;
+  if (opPlan > 0) {
+    opAmount = PREMI_OP[usia][tipe][opPlan - 1];
+  }
+
+  var total = ipAmount + opAmount;
+
+  // Update plan detail text
+  document.getElementById('mgPlanIPDetail').textContent = IP_SHORT[ipPlan];
+  document.getElementById('mgPlanOPDetail').textContent = OP_SHORT[opPlan];
+
+  // Update breakdown
+  document.getElementById('mgIPAmount').textContent = formatRupiah(ipAmount);
+  var ipLabel = 'Rawat Inap (' + IP_LABELS[ipPlan].split(' - ')[0] + ' - ' + IP_LABELS[ipPlan].split('(')[1];
+  document.querySelector('#mgBreakdown .calc-breakdown-row:first-child span:first-child').textContent = 'Rawat Inap (' + IP_LABELS[ipPlan].split(' - ')[0] + ')';
+
+  var opRow = document.getElementById('mgOPRow');
+  if (opPlan > 0) {
+    opRow.style.display = 'flex';
+    document.getElementById('mgOPLabel').textContent = 'Rawat Jalan (' + OP_LABELS[opPlan].split(' - ')[0] + ')';
+    document.getElementById('mgOPAmount').textContent = formatRupiah(opAmount);
+  } else {
+    opRow.style.display = 'none';
+  }
+
+  document.getElementById('mgTotalAmount').textContent = formatRupiah(total);
+}
+
+// Initialize
 hitungMagna();
 </script>
 <script src="/assets/main.js"></script>
