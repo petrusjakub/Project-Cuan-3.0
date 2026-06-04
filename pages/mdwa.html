@@ -599,6 +599,7 @@
               <span>Total</span>
               <span id="mdwaTotal">-</span>
             </div>
+            <div id="mdwaRiderNote" style="font-size:var(--fs-xs);color:var(--txt-muted);font-style:italic;margin-top:8px;display:none">* Rider ALP+ hanya tersedia untuk Besar Manfaat 50 Juta</div>
           </div>
         </div>
 
@@ -710,10 +711,14 @@ function calcMdwa() {
     baseEl.textContent = 'Data tidak tersedia';
   }
 
+  var riderNote = document.getElementById('mdwaRiderNote');
+
   if (riderPremi !== null) {
     riderEl.textContent = formatRupiah(riderPremi);
+    riderNote.style.display = 'none';
   } else {
-    riderEl.textContent = 'Data tidak tersedia';
+    riderEl.textContent = 'Tidak tersedia untuk manfaat ' + manfaat + ' Juta';
+    riderNote.style.display = (basePremi !== null) ? 'block' : 'none';
   }
 
   if (basePremi !== null && riderPremi !== null) {
