@@ -498,9 +498,9 @@
         <div class="calc-select-group">
           <label>Pilih Plan</label>
           <div class="calc-option-grid" id="mdlaPlan">
-            <div class="calc-option active" onclick="selectMdla('mdlaPlan','A')">Plan A<br><small>Proteksi Jiwa</small></div>
-            <div class="calc-option" onclick="selectMdla('mdlaPlan','B')">Plan B<br><small>+ Return Premi</small></div>
-            <div class="calc-option" onclick="selectMdla('mdlaPlan','C')">Plan C<br><small>+ 100% UP</small></div>
+            <div class="calc-option active" onclick="selectMdla('mdlaPlan','A',this)">Plan A<br><small>Proteksi Jiwa</small></div>
+            <div class="calc-option" onclick="selectMdla('mdlaPlan','B',this)">Plan B<br><small>+ Return Premi</small></div>
+            <div class="calc-option" onclick="selectMdla('mdlaPlan','C',this)">Plan C<br><small>+ 100% UP</small></div>
           </div>
         </div>
 
@@ -508,8 +508,8 @@
         <div class="calc-select-group">
           <label>Jenis Kelamin</label>
           <div class="calc-option-grid" id="mdlaGender">
-            <div class="calc-option active" onclick="selectMdla('mdlaGender','pria')">&#128104; Pria</div>
-            <div class="calc-option" onclick="selectMdla('mdlaGender','wanita')">&#128105; Wanita</div>
+            <div class="calc-option active" onclick="selectMdla('mdlaGender','pria',this)">&#128104; Pria</div>
+            <div class="calc-option" onclick="selectMdla('mdlaGender','wanita',this)">&#128105; Wanita</div>
           </div>
         </div>
 
@@ -595,8 +595,8 @@
         <div class="calc-select-group">
           <label>Masa Pertanggungan (Tahun)</label>
           <div class="calc-option-grid" id="mdlaTerm">
-            <div class="calc-option active" onclick="selectMdla('mdlaTerm','20')">20 Tahun</div>
-            <div class="calc-option" onclick="selectMdla('mdlaTerm','30')">30 Tahun</div>
+            <div class="calc-option active" onclick="selectMdla('mdlaTerm','20',this)">20 Tahun</div>
+            <div class="calc-option" onclick="selectMdla('mdlaTerm','30',this)">30 Tahun</div>
           </div>
         </div>
 
@@ -604,10 +604,10 @@
         <div class="calc-select-group">
           <label>Masa Pembayaran Premi (Tahun)</label>
           <div class="calc-option-grid" id="mdlaMpp">
-            <div class="calc-option active" onclick="selectMdla('mdlaMpp','5')">5 Tahun</div>
-            <div class="calc-option" onclick="selectMdla('mdlaMpp','10')">10 Tahun</div>
-            <div class="calc-option" onclick="selectMdla('mdlaMpp','15')">15 Tahun</div>
-            <div class="calc-option" onclick="selectMdla('mdlaMpp','20')">20 Tahun</div>
+            <div class="calc-option active" onclick="selectMdla('mdlaMpp','5',this)">5 Tahun</div>
+            <div class="calc-option" onclick="selectMdla('mdlaMpp','10',this)">10 Tahun</div>
+            <div class="calc-option" onclick="selectMdla('mdlaMpp','15',this)">15 Tahun</div>
+            <div class="calc-option" onclick="selectMdla('mdlaMpp','20',this)">20 Tahun</div>
           </div>
         </div>
 
@@ -647,6 +647,7 @@
               <span>Bulanan (x0,095)</span>
               <span id="mdlaMonthly">-</span>
             </div>
+            <p id="mdlaNote" style="margin-top:var(--sp-2);font-size:var(--fs-xs);color:var(--txt-muted);font-style:italic"></p>
           </div>
         </div>
 
@@ -688,7 +689,7 @@ const masterPremi = {"pria": {"0": {"A": {"20": {"5": ["-", "5.2", "7.0", "8.7",
 // === CALCULATOR STATE ===
 var mdlaState = { plan: 'A', gender: 'pria', term: '20', mpp: '5' };
 
-function selectMdla(groupId, value) {
+function selectMdla(groupId, value, el) {
   if (groupId === 'mdlaPlan') {
     mdlaState.plan = value;
     updateTermOptions();
@@ -703,8 +704,8 @@ function selectMdla(groupId, value) {
   // Update UI active states
   var group = document.getElementById(groupId);
   var options = group.querySelectorAll('.calc-option');
-  options.forEach(function(el) { el.classList.remove('active'); });
-  event.currentTarget.classList.add('active');
+  options.forEach(function(opt) { opt.classList.remove('active'); });
+  el.classList.add('active');
 
   calcMdla();
 }
@@ -717,7 +718,7 @@ function updateTermOptions() {
   var html = '';
   terms.forEach(function(t) {
     var active = (t === mdlaState.term) ? ' active' : '';
-    html += '<div class="calc-option' + active + '" onclick="selectMdla('mdlaTerm','' + t + '')">' + t + ' Tahun</div>';
+    html += '<div class="calc-option' + active + '" onclick="selectMdla(\'mdlaTerm\',\'' + t + '\',this)">' + t + ' Tahun</div>';
   });
   termGroup.innerHTML = html;
 
@@ -759,6 +760,8 @@ function calcMdla() {
     semesterEl.textContent = '-';
     quarterEl.textContent = '-';
     monthlyEl.textContent = '-';
+    var noteEl = document.getElementById('mdlaNote');
+    if (noteEl) noteEl.textContent = 'Usia + Masa Pertanggungan melebihi batas yang tersedia untuk kombinasi ini.';
   } else {
     var annual = parseFloat(result) * 1000000;
     annualEl.textContent = formatRp(annual);
@@ -766,6 +769,8 @@ function calcMdla() {
     semesterEl.textContent = formatRp(Math.round(annual * 0.525));
     quarterEl.textContent = formatRp(Math.round(annual * 0.275));
     monthlyEl.textContent = formatRp(Math.round(annual * 0.095));
+    var noteEl = document.getElementById('mdlaNote');
+    if (noteEl) noteEl.textContent = '';
   }
 }
 
