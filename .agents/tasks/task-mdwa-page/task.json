@@ -1,7 +1,14 @@
 {
   "task_id": "task-mdwa-page",
   "task_description": "Create /pages/mdwa.html - a full product information page for MDWA (Manulife Dynamic Wealth Assurance) with question-style content, premium table, and error-free data lookup calculator",
-  "status": "in_progress",
+  "status": "completed",
   "feature_order": ["FEAT-001"],
-  "blocked_reason": null
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "File exists, contains all required elements (site-header, site-footer, main.js, embedded JSON data, calculator inputs, toLocaleString formatting, Data tidak tersedia fallback). All verification grep checks pass."
+  }
 }
