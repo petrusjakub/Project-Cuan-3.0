@@ -292,7 +292,7 @@
     <div style="overflow-x:auto" class="fade-up stagger-1">
       <table class="premi-table">
         <tr><th>Usia</th><th>Amanah (MB 5 Thn)</th><th>Berkah (MB 10 Thn)</th><th>Cermat (MB 5 Thn, ML 15 Thn)</th></tr>
-        <tr><td>30</td><td>Rp 4.500.000</td><td>Rp 19.100.000</td><td>Rp 141.600.000</td></tr>
+        <tr><td>30</td><td style="color:var(--txt-muted);font-style:italic">Hubungi agen*</td><td>Rp 19.100.000</td><td>Rp 141.600.000</td></tr>
         <tr><td>40</td><td>Rp 7.400.000</td><td>Rp 26.500.000</td><td>Rp 144.100.000</td></tr>
         <tr><td>50</td><td>Rp 16.200.000</td><td>Rp 46.200.000</td><td>Rp 152.700.000</td></tr>
       </table>
@@ -301,12 +301,12 @@
     <div style="overflow-x:auto" class="fade-up stagger-1">
       <table class="premi-table">
         <tr><th>Usia</th><th>Amanah (MB 5 Thn)</th><th>Berkah (MB 10 Thn)</th><th>Cermat (MB 5 Thn, ML 15 Thn)</th></tr>
-        <tr><td>30</td><td>Rp 4.300.000</td><td>Rp 16.300.000</td><td>Rp 134.000.000</td></tr>
+        <tr><td>30</td><td style="color:var(--txt-muted);font-style:italic">Hubungi agen*</td><td>Rp 16.300.000</td><td>Rp 134.000.000</td></tr>
         <tr><td>40</td><td>Rp 6.300.000</td><td>Rp 21.000.000</td><td>Rp 136.200.000</td></tr>
         <tr><td>50</td><td>Rp 11.400.000</td><td>Rp 35.500.000</td><td>Rp 143.400.000</td></tr>
       </table>
     </div>
-    <p style="color:var(--txt-muted);font-size:var(--fs-xs);margin-top:var(--sp-4);text-align:center" class="fade-up">* Untuk simulasi lebih detail, gunakan <a href="#kalkulator" style="color:#00a758;font-weight:600">Kalkulator Premi</a> di bawah.</p>
+    <p style="color:var(--txt-muted);font-size:var(--fs-xs);margin-top:var(--sp-4);text-align:center" class="fade-up">* Rate Plan A (Amanah) untuk usia di bawah 40 tahun bersifat terbatas. Hubungi <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20mau%20tanya%20rate%20MPS%20Flexi%20Plan%20A" target="_blank" style="color:#00a758;font-weight:600">Financial Buddy</a> untuk ilustrasi resmi. Untuk simulasi lebih detail, gunakan <a href="#kalkulator" style="color:#00a758;font-weight:600">Kalkulator Premi</a> di bawah.</p>
   </div>
 </section>
 
@@ -343,6 +343,7 @@
           <div class="calc-select-group">
             <label>Usia Masuk</label>
             <select id="calc-age" onchange="calculate()"></select>
+            <small id="age-range-info" style="color:var(--txt-muted);font-size:var(--fs-xs);margin-top:4px;display:block">Usia masuk Plan A: 18-70 tahun | Plan B/C: 0-70 tahun</small>
           </div>
           <div class="calc-select-group">
             <label>Mata Uang</label>
@@ -579,9 +580,13 @@ function calculate() {
 
     if (ratePerMiliar === null) {
         document.getElementById('result-label').innerText = 'Kontribusi/Premi';
-        document.getElementById('calc-premium').innerHTML = '<span style="color:#e53935;font-size:var(--fs-sm)">Kombinasi tidak tersedia / di bawah minimum kontribusi</span>';
-        document.getElementById('calc-detail').innerHTML = '';
-        document.getElementById('calc-note').innerHTML = '';
+        if (plan === 'A') {
+            document.getElementById('calc-premium').innerHTML = '<span style="color:#e53935;font-size:var(--fs-sm)">Data rate untuk usia ini dengan masa bayar ' + mb + ' tahun belum tersedia. Hubungi agen untuk ilustrasi resmi.</span>';
+        } else {
+            document.getElementById('calc-premium').innerHTML = '<span style="color:#e53935;font-size:var(--fs-sm)">Kombinasi tidak tersedia / di bawah minimum kontribusi</span>';
+        }
+        document.getElementById('calc-detail').textContent = '';
+        document.getElementById('calc-note').textContent = '';
         return;
     }
     
@@ -614,10 +619,10 @@ function calculate() {
     let currSymbol = currency === 'IDR' ? 'Rp ' : 'USD ';
     if (method === 'UP') {
         document.getElementById('result-label').innerText = 'Kontribusi/Premi';
-        document.getElementById('calc-premium').innerHTML = currSymbol + finalPremi.toLocaleString('id-ID');
+        document.getElementById('calc-premium').textContent = currSymbol + finalPremi.toLocaleString('id-ID');
     } else {
         document.getElementById('result-label').innerText = 'Uang Pertanggungan (UP)';
-        document.getElementById('calc-premium').innerHTML = currSymbol + resultUP.toLocaleString('id-ID');
+        document.getElementById('calc-premium').textContent = currSymbol + resultUP.toLocaleString('id-ID');
     }
     
     let modeText = 'Tahunan';
@@ -664,6 +669,7 @@ function updateCalcUI() {
     var mb = document.getElementById('calc-masabayar');
     var ml = document.getElementById('calc-masalindung');
     var methodContainer = document.getElementById('calc-method-container');
+    var ageRangeInfo = document.getElementById('age-range-info');
     var currMb = mb.value;
     
     if (plan === 'A') {
@@ -700,6 +706,16 @@ function updateCalcUI() {
     for (var j = 0; j < mbOpts.length; j++) {
         if (mbOpts[j].value === currMb) { mb.value = currMb; break; }
     }
+    
+    // Update age range info based on plan
+    if (plan === 'A') {
+        ageRangeInfo.textContent = 'Usia masuk Plan A: 18-70 tahun. Data tabel tersedia mulai usia 37 (pria) / 40 (wanita).';
+        ageRangeInfo.style.color = '#e65100';
+    } else {
+        ageRangeInfo.textContent = 'Usia masuk Plan B/C: 0-70 tahun';
+        ageRangeInfo.style.color = '';
+    }
+    
     updateMinInfo();
 }
 
