@@ -469,10 +469,14 @@
     <p style="text-align:center;color:var(--txt-sub);font-size:var(--fs-sm);margin-bottom:var(--sp-4)">Dibayarkan otomatis sesuai jadwal pendidikan anak (1 tahun sebelum masuk sekolah):</p>
     <div style="overflow-x:auto" class="fade-up stagger-1">
       <table class="benefits-table">
+        <thead>
         <tr><th>Usia Anak</th><th>Jenjang Pendidikan</th><th>Manfaat</th><th>Keterangan</th></tr>
+        </thead>
+        <tbody>
         <tr><td><span class="kw-orange">11 tahun</span></td><td>Masuk SMP</td><td><strong>10%</strong> Santunan Asuransi</td><td>Persiapan biaya SMP</td></tr>
         <tr><td><span class="kw-orange">14 tahun</span></td><td>Masuk SMA</td><td><strong>10%</strong> Santunan Asuransi</td><td>Persiapan biaya SMA</td></tr>
         <tr><td><span class="kw-orange">17 tahun</span></td><td>Masuk Kuliah</td><td><strong>80%</strong> Santunan Asuransi</td><td>Dana kuliah terbesar</td></tr>
+        </tbody>
       </table>
     </div>
     <p style="margin-top:var(--sp-3);font-size:var(--fs-xs);color:var(--txt-muted);text-align:center">
@@ -535,7 +539,10 @@
     <h3 style="color:var(--mpps-green);margin-bottom:var(--sp-3)" class="fade-up">Usia Peserta 18 Tahun - Plan Jiwa Pria IDR</h3>
     <div style="overflow-x:auto" class="fade-up stagger-1">
       <table class="premi-table">
+        <thead>
         <tr><th>Usia Anak</th><th>SA 2,5 M</th><th>SA 3 M</th><th>SA 5 M</th><th>SA 10 M</th><th>SA 50 M</th></tr>
+        </thead>
+        <tbody>
         <tr><td>0</td><td>6.10</td><td>7.32</td><td>11.00</td><td>19.50</td><td>97.50</td></tr>
         <tr><td>1</td><td>6.23</td><td>7.47</td><td>11.20</td><td>19.90</td><td>99.50</td></tr>
         <tr><td>2</td><td>6.28</td><td>7.53</td><td>11.30</td><td>20.10</td><td>100.50</td></tr>
@@ -548,13 +555,17 @@
         <tr><td>9</td><td>7.08</td><td>8.49</td><td>12.75</td><td>22.60</td><td>113.00</td></tr>
         <tr><td>10</td><td>7.85</td><td>9.42</td><td>14.15</td><td>25.10</td><td>125.50</td></tr>
         <tr><td>11</td><td>8.50</td><td>10.20</td><td>15.30</td><td>27.20</td><td>136.00</td></tr>
+        </tbody>
       </table>
     </div>
 
     <h3 style="color:var(--mpps-green);margin-bottom:var(--sp-3);margin-top:var(--sp-8)" class="fade-up">Usia Peserta 19 Tahun - Plan Jiwa Pria IDR</h3>
     <div style="overflow-x:auto" class="fade-up stagger-1">
       <table class="premi-table">
+        <thead>
         <tr><th>Usia Anak</th><th>SA 2,5 M</th><th>SA 3 M</th><th>SA 5 M</th><th>SA 10 M</th><th>SA 50 M</th></tr>
+        </thead>
+        <tbody>
         <tr><td>0</td><td>6.40</td><td>7.68</td><td>11.50</td><td>20.50</td><td>102.50</td></tr>
         <tr><td>1</td><td>6.55</td><td>7.86</td><td>11.80</td><td>21.00</td><td>105.00</td></tr>
         <tr><td>2</td><td>6.60</td><td>7.92</td><td>11.90</td><td>21.10</td><td>105.50</td></tr>
@@ -567,6 +578,7 @@
         <tr><td>9</td><td>7.45</td><td>8.94</td><td>13.40</td><td>23.80</td><td>119.00</td></tr>
         <tr><td>10</td><td>7.85</td><td>9.42</td><td>14.15</td><td>25.10</td><td>125.50</td></tr>
         <tr><td>11</td><td>8.93</td><td>10.71</td><td>16.05</td><td>28.60</td><td>143.00</td></tr>
+        </tbody>
       </table>
     </div>
 
@@ -595,8 +607,8 @@
         <div class="calc-select-group">
           <label>Jenis Kelamin</label>
           <div class="calc-option-grid" id="mppsGender">
-            <div class="calc-option active" onclick="selectMpps('mppsGender','PRIA',this)">&#128104; Pria</div>
-            <div class="calc-option" onclick="selectMpps('mppsGender','WANITA',this)">&#128105; Wanita</div>
+            <div class="calc-option active" tabindex="0" role="button" onclick="selectMpps('mppsGender','PRIA',this)">&#128104; Pria</div>
+            <div class="calc-option" tabindex="0" role="button" onclick="selectMpps('mppsGender','WANITA',this)">&#128105; Wanita</div>
           </div>
         </div>
 
@@ -618,8 +630,8 @@
         <div class="calc-select-group">
           <label>Plan</label>
           <div class="calc-option-grid" id="mppsPlan">
-            <div class="calc-option active" onclick="selectMpps('mppsPlan','jiwa',this)">&#128737; Plan Jiwa</div>
-            <div class="calc-option" onclick="selectMpps('mppsPlan','kritis',this)">&#127973; Plan Sakit Kritis</div>
+            <div class="calc-option active" tabindex="0" role="button" onclick="selectMpps('mppsPlan','jiwa',this)">&#128737; Plan Jiwa</div>
+            <div class="calc-option" tabindex="0" role="button" onclick="selectMpps('mppsPlan','kritis',this)">&#127973; Plan Sakit Kritis</div>
           </div>
         </div>
 
@@ -627,8 +639,8 @@
         <div class="calc-select-group">
           <label>Mata Uang</label>
           <div class="calc-option-grid" id="mppsCurrency">
-            <div class="calc-option active" onclick="selectMpps('mppsCurrency','IDR',this)">IDR (Rupiah)</div>
-            <div class="calc-option" onclick="selectMpps('mppsCurrency','USD',this)">USD (Dollar)</div>
+            <div class="calc-option active" tabindex="0" role="button" onclick="selectMpps('mppsCurrency','IDR',this)">IDR (Rupiah)</div>
+            <div class="calc-option" tabindex="0" role="button" onclick="selectMpps('mppsCurrency','USD',this)">USD (Dollar)</div>
           </div>
         </div>
 
@@ -906,6 +918,14 @@ function calcMpps() {
 
 // Initial calculation
 calcMpps();
+
+// Keyboard accessibility for calc-option buttons
+document.addEventListener('keydown', function(e) {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('calc-option')) {
+    e.preventDefault();
+    e.target.click();
+  }
+});
 </script>
 <script src="/assets/main.js"></script>
 </body>
