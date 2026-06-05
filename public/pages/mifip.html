@@ -735,23 +735,6 @@
 
 <script>
 (function() {
-  // ═══ FAQ ACCORDION ═══
-  var faqTriggers = document.querySelectorAll('.faq-trigger');
-  faqTriggers.forEach(function(trigger) {
-    trigger.addEventListener('click', function() {
-      var item = trigger.closest('.faq-item');
-      var wasOpen = item.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.faq-item').forEach(function(fi) {
-        fi.classList.remove('open');
-      });
-      // Toggle current
-      if (!wasOpen) {
-        item.classList.add('open');
-      }
-    });
-  });
-
   // ═══ CALCULATOR ═══
   var currencyEl = document.getElementById('mifipCurrency');
   var danaMapanEl = document.getElementById('mifipDanaMapan');
