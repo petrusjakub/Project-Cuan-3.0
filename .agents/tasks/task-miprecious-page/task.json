@@ -1,7 +1,14 @@
 {
   "task_id": "task-miprecious-page",
   "task_description": "Create miprecious.html product page in public/pages/ with question-style content, colored keywords, premi table, and error-free premium calculator following the project design system.",
-  "status": "in_progress",
+  "status": "completed",
   "feature_order": ["FEAT-001"],
-  "blocked_reason": null
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "All verification checks passed: 34 keyword color usages, 33 question marks for question-style content, 21 dark mode rules, all modal factors present, DMD/1.70 ratio correct, all plan categories present, benefit totals calculate correctly to 550% (50yr) and 320% (30yr), mode selector properly disabled for Sekaligus payment."
+  }
 }
