@@ -1,0 +1,23 @@
+{
+  "project_type": "Static HTML/CSS/JS website (Cloudflare Pages via wrangler)",
+  "language": "HTML, CSS, JavaScript (vanilla)",
+  "build_system": "None - static files served directly. Cloudflare Pages deployment via wrangler.jsonc",
+  "test_framework": "None - manual browser testing. Validation via HTML structure inspection",
+  "build_command": "No build step needed - static HTML",
+  "test_command": "No automated tests - validate HTML structure manually",
+  "verification_instructions": "Open mpds.html in browser, verify all sections render, calculator produces correct results for all input combinations",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML files",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external package installs possible. All code must be inline or reference existing /assets/ files",
+  "contribution_requirements": "Follow existing page patterns: use /assets/style.css design system, include dark mode script at top, use #site-header and #site-footer component loading via /assets/main.js, use .kw-blue .kw-gold .kw-green classes for keyword highlighting",
+  "key_patterns": "1. Pages use /assets/style.css for shared design system with CSS variables. 2. Page-specific styles go in inline <style> block. 3. Dark mode via html.dark class + localStorage script at top. 4. Header/footer loaded dynamically via #site-header/#site-footer divs + /assets/main.js. 5. Product pages use sections with .section, .container, .page-hero patterns. 6. Keyword highlighting: .kw-blue (Manulife blue), .kw-gold (accent gold), .kw-green (Manulife green). 7. FAQ uses .faq-list > .faq-item > .faq-trigger + .faq-body pattern. 8. Breadcrumb navigation at top. 9. WhatsApp CTA buttons throughout. 10. Calculator uses inline JavaScript with card-based result display.",
+  "relevant_files": [
+    "/projects/sandbox/Project-Cuan-3.0/pages/mdla.html (primary template - similar product page with calculator)",
+    "/projects/sandbox/Project-Cuan-3.0/Sample/Mpds.html (content source + calculator logic reference)",
+    "/projects/sandbox/Project-Cuan-3.0/assets/style.css (design system)",
+    "/projects/sandbox/Project-Cuan-3.0/assets/main.js (component loader, FAQ, dark mode)",
+    "/projects/sandbox/Project-Cuan-3.0/components/header.html (site header)",
+    "/projects/sandbox/Project-Cuan-3.0/components/footer.html (site footer)"
+  ],
+  "directory_structure": "/pages/ - product HTML pages | /assets/ - CSS and JS | /components/ - header.html, footer.html | /Sample/ - reference/prototype pages | /Source/ - PDF source materials"
+}

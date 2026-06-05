@@ -1,0 +1,7 @@
+{
+  "task_id": "task-mpds-page",
+  "task_description": "Create /pages/mpds.html - complete MPDS (Manulife Perlindungan Diri Syariah) product page with color-coded keywords, question-style content, premium table, and error-free premium calculator following the design patterns of existing pages like mdla.html",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

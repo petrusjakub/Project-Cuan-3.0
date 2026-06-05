@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPDS - Manulife Perlindungan Diri Syariah | PROJECTCUAN</title>
+  <meta name="description" content="MPDS Manulife Perlindungan Diri Syariah: Asuransi jiwa syariah dengan proteksi jiwa dan pengembalian kontribusi 100%. Mulai Rp 250.000/bulan, usia masuk 30 hari - 50 tahun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    :root {
+      --mpds-green: #00875A;
+      --mpds-dark: #006838;
+      --mpds-light: #00C978;
+      --mpds-accent: #00875A;
+    }
+    .kw-blue { color: #00539B; font-weight: 700; }
+    .kw-gold { color: #E5A100; font-weight: 700; }
+    .kw-green { color: var(--mpds-green); font-weight: 700; }
+    html.dark .kw-blue { color: #0073CF; }
+    html.dark .kw-gold { color: #FFB800; }
+    html.dark .kw-green { color: var(--mpds-light); }
+
+    .mpds-hero {
+      background: linear-gradient(135deg, #E8F5EE 0%, #D5F5E3 50%, #F0FFF7 100%);
+      padding: var(--sp-16) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    html.dark .mpds-hero {
+      background: linear-gradient(135deg, #0A1E14 0%, #0D2B1A 100%);
+    }
+    .mpds-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,135,90,0.08) 0%, transparent 70%);
+    }
+    .mpds-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: rgba(0,135,90,0.1);
+      border: 1px solid rgba(0,135,90,0.2);
+      color: var(--mpds-green);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--r-full);
+      margin-bottom: var(--sp-4);
+    }
+    html.dark .mpds-badge {
+      background: rgba(0,201,120,0.15);
+      border-color: rgba(0,201,120,0.3);
+      color: var(--mpds-light);
+    }
+    .mpds-hero h1 span { color: var(--mpds-green); }
+    html.dark .mpds-hero h1 span { color: var(--mpds-light); }
+    .mpds-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-8);
+    }
+    .mpds-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-3) var(--sp-4);
+      text-align: center;
+    }
+    .mpds-stat-value {
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: var(--fs-lg);
+      color: var(--mpds-green);
+    }
+    html.dark .mpds-stat-value { color: var(--mpds-light); }
+    .mpds-stat-label {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      margin-top: 2px;
+    }
+
+    /* Advantage Grid */
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .advantage-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      transition: all var(--ease);
+    }
+    .advantage-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .advantage-icon { font-size: 28px; margin-bottom: var(--sp-3); }
+    .advantage-title { font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
+    .advantage-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+
+    /* Benefit Cards */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--sp-5);
+    }
+    .benefit-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-card:hover { border-color: var(--mpds-green); box-shadow: var(--sh-md); transform: translateY(-2px); }
+    html.dark .benefit-card:hover { border-color: var(--mpds-light); }
+    .benefit-card-icon { font-size: 32px; margin-bottom: var(--sp-3); }
+    .benefit-card-title { font-size: var(--fs-md); font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-3); }
+    .benefit-card-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.7; }
+    .benefit-card-highlight {
+      background: rgba(0,135,90,0.06);
+      border-radius: var(--r-md);
+      padding: var(--sp-3);
+      margin-top: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+    }
+    html.dark .benefit-card-highlight { background: rgba(0,201,120,0.08); }
+
+    /* Eligibility */
+    .eligibility-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-5); }
+    .eligibility-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: var(--sp-5); transition: all var(--ease);
+    }
+    .eligibility-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .eligibility-card-icon { font-size: 28px; margin-bottom: var(--sp-3); }
+    .eligibility-card-title { font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
+    .eligibility-card-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+
+    /* Premium Table */
+    .premi-table-wrap {
+      overflow-x: auto;
+      margin-top: var(--sp-4);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+    }
+    .premi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+    }
+    .premi-table th {
+      background: var(--mpds-green);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: center;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    html.dark .premi-table th { background: var(--mpds-dark); }
+    .premi-table td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+    }
+    .premi-table tr:last-child td { border-bottom: none; }
+    .premi-table tr:hover td { background: rgba(0,135,90,0.04); }
+    html.dark .premi-table tr:hover td { background: rgba(0,201,120,0.06); }
+
+    /* Calculator */
+    .calc-select-group { margin-bottom: var(--sp-4); }
+    .calc-select-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: var(--fs-sm); color: var(--txt-head); }
+    .calc-option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+    .calc-option {
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 10px 12px; border: 2px solid var(--border); border-radius: var(--r-md);
+      cursor: pointer; font-size: var(--fs-sm); font-weight: 500; color: var(--txt-sub);
+      transition: all 0.2s ease; background: var(--bg-card); line-height: 1.3;
+    }
+    .calc-option:hover { border-color: var(--mpds-green); color: var(--mpds-green); }
+    .calc-option.active { border-color: var(--mpds-green); background: rgba(0,135,90,0.08); color: var(--mpds-green); font-weight: 700; }
+    html.dark .calc-option:hover { border-color: var(--mpds-light); color: var(--mpds-light); }
+    html.dark .calc-option.active { border-color: var(--mpds-light); background: rgba(0,201,120,0.12); color: var(--mpds-light); }
+    .calc-select-group select, .calc-select-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--r-md);
+      font-size: var(--fs-sm);
+      color: var(--txt-head);
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .calc-select-group select:focus, .calc-select-group input:focus {
+      outline: none;
+      border-color: var(--mpds-green);
+    }
+    html.dark .calc-select-group select:focus, html.dark .calc-select-group input:focus { border-color: var(--mpds-light); }
+    .calc-result-box {
+      margin-top: var(--sp-5);
+      padding: var(--sp-5);
+      background: rgba(0,135,90,0.04);
+      border-radius: var(--r-md);
+      border: 1px solid rgba(0,135,90,0.12);
+    }
+    html.dark .calc-result-box {
+      background: rgba(0,201,120,0.08);
+      border-color: rgba(0,201,120,0.2);
+    }
+    .calc-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      border-bottom: 1px solid var(--border);
+    }
+    .calc-result-row:last-child { border-bottom: none; }
+    .calc-result-row .result-label { font-weight: 500; }
+    .calc-result-row .result-value { font-weight: 700; color: var(--mpds-green); }
+    html.dark .calc-result-row .result-value { color: var(--mpds-light); }
+    .calc-result-row.highlight { background: rgba(0,135,90,0.06); border-radius: var(--r-md); padding: 12px; margin: 4px -12px; }
+    html.dark .calc-result-row.highlight { background: rgba(0,201,120,0.08); }
+    .calc-custom-group { display: none; margin-top: var(--sp-2); }
+    .calc-custom-group.show { display: block; }
+
+    /* CTA */
+    .mpds-cta {
+      background: linear-gradient(135deg, var(--mpds-dark), var(--mpds-green), var(--mpds-light));
+    }
+
+    /* Section tag override */
+    .mpds-section-tag {
+      background: rgba(0,135,90,0.1) !important;
+      color: var(--mpds-green) !important;
+    }
+    html.dark .mpds-section-tag {
+      background: rgba(0,201,120,0.15) !important;
+      color: var(--mpds-light) !important;
+    }
+
+    /* Button overrides */
+    .mpds-btn-primary {
+      background: var(--mpds-green) !important;
+      color: #fff !important;
+      box-shadow: 0 4px 14px rgba(0,135,90,0.3);
+    }
+    .mpds-btn-primary:hover { background: var(--mpds-dark) !important; }
+    .mpds-btn-outline {
+      border-color: var(--mpds-green) !important;
+      color: var(--mpds-green) !important;
+    }
+    html.dark .mpds-btn-outline {
+      border-color: var(--mpds-light) !important;
+      color: var(--mpds-light) !important;
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="mpds-hero" aria-labelledby="mpds-title">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/index.html">Beranda</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="/index.html#produk">Produk</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span class="breadcrumb-current" style="color:var(--mpds-green)">MPDS</span>
+    </nav>
+
+    <div class="page-hero-inner">
+      <div>
+        <div class="mpds-badge">
+          &#9770; MPDS - Asuransi Jiwa Syariah
+        </div>
+
+        <h1 id="mpds-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
+          Bagaimana Jika Ada Asuransi yang Memberikan <span class="kw-blue">Perlindungan Jiwa</span> <span class="kw-gold">SEKALIGUS</span> <span class="kw-green">Mengembalikan Seluruh Kontribusi</span>?
+        </h1>
+
+        <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
+          <strong>MPDS (Manulife Perlindungan Diri Syariah)</strong> adalah produk asuransi jiwa syariah individu pertama dari Manulife Indonesia. Berdasarkan prinsip <span class="kw-green">tolong-menolong</span>, MPDS memberikan <span class="kw-blue">perlindungan jiwa</span> selama 12 tahun sekaligus <span class="kw-gold">pengembalian kontribusi</span> di akhir masa asuransi.
+        </p>
+
+        <div class="mpds-stat-grid fade-up stagger-2">
+          <div class="mpds-stat">
+            <div class="mpds-stat-value">Rp 250rb/bln</div>
+            <div class="mpds-stat-label">Kontribusi Minimum</div>
+          </div>
+          <div class="mpds-stat">
+            <div class="mpds-stat-value">30 hr - 50 th</div>
+            <div class="mpds-stat-label">Usia Masuk</div>
+          </div>
+          <div class="mpds-stat">
+            <div class="mpds-stat-value">12 Tahun</div>
+            <div class="mpds-stat-label">Masa Proteksi</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap" class="fade-up stagger-3">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MPDS%20Manulife"
+             target="_blank" rel="noopener" class="btn btn--lg mpds-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Tanya Produk MPDS
+          </a>
+          <a href="#kalkulator" class="btn btn--outline btn--lg mpds-btn-outline">Hitung Manfaat</a>
+        </div>
+      </div>
+
+      <!-- Visual: Product Summary -->
+      <div class="fade-up stagger-2">
+        <div style="background:var(--bg-card);border:2px dashed rgba(0,135,90,0.3);border-radius:var(--r-xl);padding:var(--sp-6)">
+          <div style="text-align:center;margin-bottom:var(--sp-5)">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--mpds-green);letter-spacing:0.1em;text-transform:uppercase">3 Manfaat Utama</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3)">
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#128737;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Proteksi Jiwa</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Hingga 450x Kontribusi</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#9888;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Kecelakaan</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">+50% Santunan</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#128176;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Pengembalian</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Hingga 100%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section class="section section--alt" aria-labelledby="keunggulan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mpds-section-tag">Keunggulan</span>
+      <h2 id="keunggulan-heading" class="section-title fade-up">Mengapa <span class="kw-gold">Ribuan Keluarga</span> Memilih <span class="kw-green">MPDS</span> Sebagai Perlindungan Jiwa Syariah Mereka?</h2>
+    </div>
+    <div class="advantage-grid">
+      <div class="advantage-card fade-up">
+        <div class="advantage-icon">&#128178;</div>
+        <div class="advantage-title">Kontribusi Flat Selama Masa Pembayaran</div>
+        <div class="advantage-desc">Pernahkah Anda khawatir premi naik setiap tahun? Dengan MPDS, <span class="kw-green">kontribusi tidak berubah</span> selama masa pembayaran. Bayar Rp 500.000/bulan hari ini, tetap segitu sampai selesai.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-1">
+        <div class="advantage-icon">&#128176;</div>
+        <div class="advantage-title">Pengembalian Kontribusi Hingga 100%</div>
+        <div class="advantage-desc">Tahukah Anda bahwa di akhir masa asuransi, kontribusi Anda <span class="kw-gold">dikembalikan</span>? Usia masuk 0-40 tahun mendapat <span class="kw-green">100%</span>, dan usia 41-50 tahun mendapat <span class="kw-green">70%</span> pengembalian.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-2">
+        <div class="advantage-icon">&#128737;</div>
+        <div class="advantage-title">Proteksi Ganda: Jiwa + Kecelakaan</div>
+        <div class="advantage-desc">Bagaimana jika satu produk bisa memberikan <span class="kw-blue">santunan meninggal dunia</span> sekaligus <span class="kw-blue">tambahan manfaat kecelakaan</span> hingga 50% dari santunan? MPDS mewujudkannya.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-3">
+        <div class="advantage-icon">&#128181;</div>
+        <div class="advantage-title">Terjangkau Mulai Rp 250.000/Bulan</div>
+        <div class="advantage-desc">Apakah proteksi jiwa harus mahal? Dengan kontribusi mulai <span class="kw-green">Rp 250.000/bulan</span>, Anda sudah mendapat perlindungan jiwa syariah dengan santunan ratusan juta rupiah.</div>
+      </div>
+      <div class="advantage-card fade-up">
+        <div class="advantage-icon">&#129309;</div>
+        <div class="advantage-title">Prinsip Syariah Tolong-Menolong</div>
+        <div class="advantage-desc">MPDS dikelola berdasarkan prinsip syariah dengan akad <span class="kw-green">tolong-menolong</span> melalui Dana Tabarru'. Jika ada surplus, dibagikan kembali kepada peserta.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-1">
+        <div class="advantage-icon">&#9989;</div>
+        <div class="advantage-title">Tarif Unisex: Sama untuk Semua</div>
+        <div class="advantage-desc">Tidak ada perbedaan biaya berdasarkan jenis kelamin. Tarif kontribusi MPDS bersifat <span class="kw-gold">unisex</span> dan <span class="kw-gold">flat</span> selama masa pembayaran kontribusi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANFAAT -->
+<section class="section" aria-labelledby="manfaat-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mpds-section-tag">Manfaat</span>
+      <h2 id="manfaat-heading" class="section-title fade-up">Apa Saja <span class="kw-blue">Manfaat</span> yang Akan Anda Dapatkan dari <span class="kw-green">MPDS</span>?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:700px;margin-left:auto;margin-right:auto">MPDS memberikan 3 manfaat utama yang menjadikannya pilihan cerdas untuk perlindungan jiwa keluarga Anda.</p>
+    </div>
+    <div class="benefit-grid">
+      <!-- Santunan Meninggal -->
+      <div class="benefit-card fade-up">
+        <div class="benefit-card-icon">&#128737;</div>
+        <div class="benefit-card-title">Santunan Meninggal Dunia</div>
+        <div class="benefit-card-desc">
+          Bagaimana jika keluarga Anda tetap terlindungi secara finansial meskipun Anda tidak ada? Ahli waris menerima <span class="kw-blue">santunan asuransi</span> berdasarkan masa pembayaran kontribusi:
+        </div>
+        <div class="benefit-card-highlight">
+          <strong>MPK 5 Tahun:</strong> <span class="kw-green">250</span> x Kontribusi Bulanan<br>
+          <strong>MPK 12 Tahun:</strong> <span class="kw-green">450</span> x Kontribusi Bulanan<br><br>
+          <em>Contoh: 500rb/bln x 450 = <span class="kw-gold">Rp 225.000.000</span></em>
+        </div>
+      </div>
+      <!-- Tambahan Kecelakaan -->
+      <div class="benefit-card fade-up stagger-1">
+        <div class="benefit-card-icon">&#9888;</div>
+        <div class="benefit-card-title">Tambahan Manfaat Kecelakaan</div>
+        <div class="benefit-card-desc">
+          Pernahkah Anda berpikir, bagaimana jika proteksi kecelakaan sudah <span class="kw-gold">termasuk</span> dalam asuransi jiwa Anda? MPDS memberikan tambahan manfaat jika meninggal karena kecelakaan.
+        </div>
+        <div class="benefit-card-highlight">
+          <strong>Tambahan:</strong> <span class="kw-green">50%</span> dari Santunan Asuransi<br>
+          <strong>Maksimum:</strong> <span class="kw-blue">Rp 1.200.000.000</span><br><br>
+          <em>Contoh: 50% x 225jt = <span class="kw-gold">Rp 112.500.000</span></em>
+        </div>
+      </div>
+      <!-- Pengembalian Kontribusi -->
+      <div class="benefit-card fade-up stagger-2">
+        <div class="benefit-card-icon">&#128176;</div>
+        <div class="benefit-card-title">Pengembalian Kontribusi</div>
+        <div class="benefit-card-desc">
+          Tahukah Anda bahwa di akhir tahun ke-12, jika tidak ada klaim, <span class="kw-green">kontribusi Anda dikembalikan</span>? Ini bukan asuransi yang "hangus" di akhir.
+        </div>
+        <div class="benefit-card-highlight">
+          <strong>Usia 0-40 tahun:</strong> Pengembalian <span class="kw-green">100%</span> total kontribusi<br>
+          <strong>Usia 41-50 tahun:</strong> Pengembalian <span class="kw-gold">70%</span> total kontribusi<br><br>
+          <em>Contoh: 500rb x 12bln x 12thn = 72jt, kembali <span class="kw-green">Rp 72.000.000</span></em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KETENTUAN -->
+<section class="section section--alt" aria-labelledby="ketentuan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mpds-section-tag">Ketentuan</span>
+      <h2 id="ketentuan-heading" class="section-title fade-up">Apa Saja Syarat untuk Memiliki <span class="kw-green">Perlindungan MPDS</span>?</h2>
+    </div>
+    <div class="eligibility-grid">
+      <div class="eligibility-card fade-up">
+        <div class="eligibility-card-icon">&#128197;</div>
+        <div class="eligibility-card-title">Masa Asuransi</div>
+        <div class="eligibility-card-desc"><span class="kw-green">12 tahun</span> masa perlindungan penuh, berapapun masa pembayaran kontribusi yang Anda pilih.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-1">
+        <div class="eligibility-card-icon">&#128178;</div>
+        <div class="eligibility-card-title">Masa Pembayaran Kontribusi</div>
+        <div class="eligibility-card-desc">Pilih <span class="kw-blue">5 tahun</span> atau <span class="kw-blue">12 tahun</span>. Semakin singkat masa bayar, semakin cepat Anda bebas kontribusi.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-2">
+        <div class="eligibility-card-icon">&#128100;</div>
+        <div class="eligibility-card-title">Usia Masuk Peserta</div>
+        <div class="eligibility-card-desc"><span class="kw-green">30 hari - 50 tahun</span>. Orang tua (min 18 thn) bisa mendaftarkan anaknya sejak usia 30 hari.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-3">
+        <div class="eligibility-card-icon">&#128181;</div>
+        <div class="eligibility-card-title">Minimum Kontribusi</div>
+        <div class="eligibility-card-desc">Mulai dari <span class="kw-green">Rp 250.000/bulan</span> atau Rp 3.000.000/tahun. Terjangkau untuk semua kalangan.</div>
+      </div>
+      <div class="eligibility-card fade-up">
+        <div class="eligibility-card-icon">&#128179;</div>
+        <div class="eligibility-card-title">Mata Uang &amp; Pembayaran</div>
+        <div class="eligibility-card-desc">Polis dalam <span class="kw-blue">Rupiah (IDR)</span>. Metode: Bulanan, Kuartalan, Semesteran, atau Tahunan.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-1">
+        <div class="eligibility-card-icon">&#128196;</div>
+        <div class="eligibility-card-title">Full Underwriting</div>
+        <div class="eligibility-card-desc">Proses seleksi risiko yang adil. Diperlukan KTP, formulir aplikasi, dan laporan kesehatan.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABEL PREMI -->
+<section class="section" aria-labelledby="tabel-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mpds-section-tag">Tabel Premi</span>
+      <h2 id="tabel-heading" class="section-title fade-up">Berapa <span class="kw-blue">Santunan</span> yang Bisa Anda Dapatkan dengan <span class="kw-green">Kontribusi</span> Tertentu?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:700px;margin-left:auto;margin-right:auto">Tabel berikut menunjukkan ilustrasi manfaat berdasarkan MPK 12 Tahun (multiplier 450x kontribusi bulanan).</p>
+    </div>
+
+    <div class="premi-table-wrap fade-up">
+      <table class="premi-table">
+        <thead>
+          <tr>
+            <th>Usia Masuk</th>
+            <th>Kontribusi Tahunan</th>
+            <th>Total Kontribusi (12 thn)</th>
+            <th>UP Jiwa (Santunan)</th>
+            <th>UP Kecelakaan (+50%)</th>
+            <th>Pengembalian Maturity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0 - 40 tahun</td>
+            <td>Rp 3.000.000</td>
+            <td>Rp 36.000.000</td>
+            <td>Rp 112.500.000</td>
+            <td>Rp 56.250.000</td>
+            <td>Rp 36.000.000 (100%)</td>
+          </tr>
+          <tr>
+            <td>0 - 40 tahun</td>
+            <td>Rp 5.000.000</td>
+            <td>Rp 60.000.000</td>
+            <td>Rp 187.500.000</td>
+            <td>Rp 93.750.000</td>
+            <td>Rp 60.000.000 (100%)</td>
+          </tr>
+          <tr>
+            <td>0 - 40 tahun</td>
+            <td>Rp 12.000.000</td>
+            <td>Rp 144.000.000</td>
+            <td>Rp 450.000.000</td>
+            <td>Rp 225.000.000</td>
+            <td>Rp 144.000.000 (100%)</td>
+          </tr>
+          <tr>
+            <td>41 - 50 tahun</td>
+            <td>Rp 3.000.000</td>
+            <td>Rp 36.000.000</td>
+            <td>Rp 112.500.000</td>
+            <td>Rp 56.250.000</td>
+            <td>Rp 25.200.000 (70%)</td>
+          </tr>
+          <tr>
+            <td>41 - 50 tahun</td>
+            <td>Rp 5.000.000</td>
+            <td>Rp 60.000.000</td>
+            <td>Rp 187.500.000</td>
+            <td>Rp 93.750.000</td>
+            <td>Rp 42.000.000 (70%)</td>
+          </tr>
+          <tr>
+            <td>41 - 50 tahun</td>
+            <td>Rp 12.000.000</td>
+            <td>Rp 144.000.000</td>
+            <td>Rp 450.000.000</td>
+            <td>Rp 225.000.000</td>
+            <td>Rp 100.800.000 (70%)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:var(--sp-3);font-size:var(--fs-xs);color:var(--txt-muted);text-align:center">
+      * Tabel di atas menggunakan MPK 12 tahun (multiplier 450x). Untuk MPK 5 tahun, gunakan multiplier 250x.<br>
+      * UP Jiwa = (Kontribusi Tahunan / 12) x 450. UP Kecelakaan = 50% x UP Jiwa (maks Rp 1,2 Miliar).
+    </p>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section class="section section--alt" id="kalkulator" aria-labelledby="calc-heading">
+  <div class="container"><div style="max-width:720px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag mpds-section-tag">Kalkulator Manfaat</span>
+      <h2 id="calc-heading" class="section-title fade-up">Berapa <span class="kw-green">Manfaat</span> yang Akan Anda Dapatkan dari <span class="kw-blue">MPDS</span>?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Hitung estimasi manfaat MPDS berdasarkan kontribusi, masa pembayaran, dan usia masuk Anda.</p>
+    </div>
+    <div class="calculator-wrap fade-up stagger-1">
+      <div class="calc-header" style="background:linear-gradient(135deg,var(--mpds-dark),var(--mpds-green))">
+        <h3>&#128202; Kalkulator Manfaat MPDS</h3>
+        <p>Hitung santunan, manfaat kecelakaan, dan pengembalian kontribusi Anda</p>
+      </div>
+      <div class="calc-body">
+
+        <!-- MPK -->
+        <div class="calc-select-group">
+          <label>Masa Pembayaran Kontribusi (MPK)</label>
+          <div class="calc-option-grid" id="mpdsmpk">
+            <div class="calc-option" onclick="selectMpds('mpdsmpk','5',this)">5 Tahun<br><small>Multiplier 250x</small></div>
+            <div class="calc-option active" onclick="selectMpds('mpdsmpk','12',this)">12 Tahun<br><small>Multiplier 450x</small></div>
+          </div>
+        </div>
+
+        <!-- Mode Pembayaran -->
+        <div class="calc-select-group">
+          <label>Mode Pembayaran</label>
+          <div class="calc-option-grid" id="mpdsmode">
+            <div class="calc-option active" onclick="selectMpds('mpdsmode','bulanan',this)">Bulanan</div>
+            <div class="calc-option" onclick="selectMpds('mpdsmode','tahunan',this)">Tahunan</div>
+          </div>
+        </div>
+
+        <!-- Usia Masuk -->
+        <div class="calc-select-group">
+          <label>Usia Masuk Peserta (0 - 50 tahun)</label>
+          <select id="mpdsUsia" onchange="calcMpds()">
+            <option value="0">0 tahun (30 hari)</option>
+            <option value="1">1 tahun</option>
+            <option value="2">2 tahun</option>
+            <option value="3">3 tahun</option>
+            <option value="4">4 tahun</option>
+            <option value="5">5 tahun</option>
+            <option value="6">6 tahun</option>
+            <option value="7">7 tahun</option>
+            <option value="8">8 tahun</option>
+            <option value="9">9 tahun</option>
+            <option value="10">10 tahun</option>
+            <option value="11">11 tahun</option>
+            <option value="12">12 tahun</option>
+            <option value="13">13 tahun</option>
+            <option value="14">14 tahun</option>
+            <option value="15">15 tahun</option>
+            <option value="16">16 tahun</option>
+            <option value="17">17 tahun</option>
+            <option value="18">18 tahun</option>
+            <option value="19">19 tahun</option>
+            <option value="20">20 tahun</option>
+            <option value="21">21 tahun</option>
+            <option value="22">22 tahun</option>
+            <option value="23">23 tahun</option>
+            <option value="24">24 tahun</option>
+            <option value="25">25 tahun</option>
+            <option value="26">26 tahun</option>
+            <option value="27">27 tahun</option>
+            <option value="28">28 tahun</option>
+            <option value="29">29 tahun</option>
+            <option value="30" selected>30 tahun</option>
+            <option value="31">31 tahun</option>
+            <option value="32">32 tahun</option>
+            <option value="33">33 tahun</option>
+            <option value="34">34 tahun</option>
+            <option value="35">35 tahun</option>
+            <option value="36">36 tahun</option>
+            <option value="37">37 tahun</option>
+            <option value="38">38 tahun</option>
+            <option value="39">39 tahun</option>
+            <option value="40">40 tahun</option>
+            <option value="41">41 tahun</option>
+            <option value="42">42 tahun</option>
+            <option value="43">43 tahun</option>
+            <option value="44">44 tahun</option>
+            <option value="45">45 tahun</option>
+            <option value="46">46 tahun</option>
+            <option value="47">47 tahun</option>
+            <option value="48">48 tahun</option>
+            <option value="49">49 tahun</option>
+            <option value="50">50 tahun</option>
+          </select>
+        </div>
+
+        <!-- Nominal Kontribusi -->
+        <div class="calc-select-group">
+          <label id="mpdsKontribusiLabel">Nominal Kontribusi Bulanan</label>
+          <select id="mpdsKontribusi" onchange="handleMpdsKontribusiChange()">
+            <option value="250000">Rp 250.000</option>
+            <option value="300000">Rp 300.000</option>
+            <option value="500000" selected>Rp 500.000</option>
+            <option value="750000">Rp 750.000</option>
+            <option value="1000000">Rp 1.000.000</option>
+            <option value="1500000">Rp 1.500.000</option>
+            <option value="2000000">Rp 2.000.000</option>
+            <option value="2500000">Rp 2.500.000</option>
+            <option value="3000000">Rp 3.000.000</option>
+            <option value="5000000">Rp 5.000.000</option>
+            <option value="custom">Lainnya (Input Manual)</option>
+          </select>
+        </div>
+
+        <!-- Custom Input -->
+        <div class="calc-select-group calc-custom-group" id="mpdsCustomGroup">
+          <label id="mpdsCustomLabel">Jumlah (min Rp 250.000)</label>
+          <input type="text" id="mpdsCustomInput" inputmode="numeric" placeholder="250.000" value="250.000">
+        </div>
+
+        <!-- Results -->
+        <div id="mpdsResult"></div>
+
+        <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--txt-muted)">
+          * Perhitungan di atas bersifat ilustrasi. Hubungi agen untuk konfirmasi manfaat resmi.
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20mau%20tanya%20manfaat%20MPDS%20Manulife" target="_blank" style="color:var(--mpds-green);font-weight:600">Chat agen</a>
+        </p>
+        <div style="margin-top:var(--sp-5)">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MPDS%20Manulife"
+             target="_blank" class="btn btn--block btn--lg mpds-btn-primary">
+            Chat Agen - Konsultasi Gratis
+          </a>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- FAQ -->
+<section class="section" aria-labelledby="faq-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mpds-section-tag">FAQ</span>
+      <h2 id="faq-heading" class="section-title fade-up">Pertanyaan yang Sering Ditanyakan tentang <span class="kw-green">MPDS</span></h2>
+    </div>
+    <div class="faq-list" style="max-width:720px;margin:0 auto">
+      <div class="faq-item">
+        <button class="faq-trigger">Apa itu MPDS dan siapa yang cocok memilikinya?</button>
+        <div class="faq-body">
+          <p><strong>MPDS (Manulife Perlindungan Diri Syariah)</strong> adalah produk asuransi jiwa tradisional syariah individu pertama dari Manulife Indonesia. Produk ini cocok untuk keluarga muda (18-40 tahun) yang menginginkan <span class="kw-blue">proteksi jiwa</span> dengan <span class="kw-green">pengembalian kontribusi 100%</span>, maupun keluarga dewasa (41-50 tahun) yang ingin perencanaan keuangan dengan pengembalian 70%.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Berapa besar Manfaat Meninggal Dunia yang diterima ahli waris?</button>
+        <div class="faq-body">
+          <p>Manfaat meninggal dunia tergantung pada Masa Pembayaran Kontribusi (MPK) yang dipilih:<br><br><strong>MPK 5 tahun:</strong> <span class="kw-green">250</span> x Kontribusi Bulanan<br><strong>MPK 12 tahun:</strong> <span class="kw-green">450</span> x Kontribusi Bulanan<br><br>Contoh: Kontribusi Rp 500.000/bulan dengan MPK 12 tahun = 450 x 500.000 = <span class="kw-gold">Rp 225.000.000</span></p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Bagaimana cara kerja Tambahan Manfaat Kecelakaan?</button>
+        <div class="faq-body">
+          <p>Jika peserta meninggal dunia karena kecelakaan, ahli waris menerima tambahan sebesar <span class="kw-green">50% dari Santunan Asuransi</span>, dengan maksimum <span class="kw-blue">Rp 1.200.000.000</span> (1,2 Miliar). Total yang diterima ahli waris = Santunan Asuransi + 50% Tambahan Kecelakaan.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Berapa pengembalian kontribusi di akhir masa asuransi?</button>
+        <div class="faq-body">
+          <p>Jika peserta masih hidup di akhir masa asuransi (12 tahun) dan tidak ada klaim:<br><br><strong>Usia masuk 30 hari - 40 tahun:</strong> Dikembalikan <span class="kw-green">100%</span> dari total kontribusi<br><strong>Usia masuk 41 - 50 tahun:</strong> Dikembalikan <span class="kw-gold">70%</span> dari total kontribusi<br><br>Contoh: 500rb/bln x 12 bln x 12 thn = Rp 72.000.000, dikembalikan penuh jika usia masuk di bawah 40 tahun.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Apa perbedaan MPK 5 tahun dan 12 tahun?</button>
+        <div class="faq-body">
+          <p><strong>MPK 5 tahun:</strong> Bayar kontribusi hanya 5 tahun, proteksi tetap 12 tahun. Santunan = <span class="kw-blue">250x</span> kontribusi bulanan. Total kontribusi lebih kecil.<br><br><strong>MPK 12 tahun:</strong> Bayar kontribusi 12 tahun penuh. Santunan = <span class="kw-blue">450x</span> kontribusi bulanan (lebih besar). Total kontribusi lebih besar namun santunan jauh lebih tinggi.<br><br>Keduanya memberikan masa asuransi (perlindungan) 12 tahun penuh.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Apa itu Surplus Underwriting dan bagaimana cara mendapatkannya?</button>
+        <div class="faq-body">
+          <p><span class="kw-green">Surplus Underwriting</span> adalah kelebihan dari Dana Tabarru' setelah dikurangi biaya klaim dan pengelolaan. Jika Dana Tabarru' menghasilkan surplus, maka surplus tersebut dibagikan kepada peserta sesuai ketentuan yang berlaku. Pembagian dilakukan per produk secara keseluruhan (product level).</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Apa yang terjadi jika kontribusi menunggak?</button>
+        <div class="faq-body">
+          <p>Jika kontribusi menunggak lebih dari <span class="kw-gold">45 hari</span>, sistem akan melakukan Pemotongan Nilai Tunai Otomatis untuk membayar kontribusi tertunggak. Jika Dana Nilai Tunai tidak mencukupi, polis akan menjadi lapse (tidak aktif). Pastikan kontribusi selalu dibayar tepat waktu.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Bisakah polis yang lapse dipulihkan kembali?</button>
+        <div class="faq-body">
+          <p>Ya, polis yang lapse bisa dipulihkan (reinstatement) dalam waktu <span class="kw-green">24 bulan</span> setelah tanggal lapse. Peserta harus melunasi semua kontribusi yang tertunggak dan memenuhi persyaratan kesehatan yang ditentukan oleh Manulife.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Metode pembayaran apa saja yang tersedia?</button>
+        <div class="faq-body">
+          <p>Kontribusi MPDS bisa dibayar dengan frekuensi:<br><br><strong>Bulanan</strong> - setiap bulan<br><strong>Kuartalan</strong> - setiap 3 bulan<br><strong>Semesteran</strong> - setiap 6 bulan<br><strong>Tahunan</strong> - setiap tahun<br><br>Minimum kontribusi: <span class="kw-green">Rp 250.000/bulan</span> atau ekuivalennya.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Siapa yang paling cocok memiliki MPDS?</button>
+        <div class="faq-body">
+          <p>MPDS sangat cocok untuk:<br><br>&#10003; <span class="kw-blue">Keluarga muda (18-40 thn)</span> yang butuh proteksi jiwa terjangkau dengan pengembalian 100%<br>&#10003; <span class="kw-blue">Orang tua</span> yang ingin memberikan proteksi jiwa untuk anaknya sejak dini (mulai 30 hari)<br>&#10003; <span class="kw-blue">Muslim</span> yang menginginkan produk asuransi berdasarkan prinsip syariah<br>&#10003; Siapapun yang ingin <span class="kw-green">kontribusi flat</span> dan tidak mau dananya "hangus" di akhir masa asuransi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section mpds-cta">
+  <div class="container" style="position:relative;z-index:1;text-align:center">
+    <h2 class="cta-title fade-up">Sudahkah Anda Menyiapkan <span style="color:#FFB800">Perlindungan Terbaik</span> untuk Keluarga Tercinta?</h2>
+    <p class="cta-sub fade-up stagger-1">MPDS memberikan proteksi jiwa syariah sekaligus pengembalian kontribusi hingga 100%. Mulai dari Rp 250.000/bulan, keluarga Anda terlindungi selama 12 tahun penuh. Konsultasi gratis sekarang.</p>
+    <div class="cta-btns fade-up stagger-2">
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MPDS%20Manulife"
+         target="_blank" class="btn btn--lg" style="background:#fff;color:var(--mpds-green);box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+        Konsultasi Gratis via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+// === MPDS Calculator Logic ===
+var mpdsState = {
+  mpk: 12,
+  mode: 'bulanan',
+  presetsBulanan: [250000, 300000, 500000, 750000, 1000000, 1500000, 2000000, 2500000, 3000000, 5000000],
+  presetsTahunan: [3000000, 3600000, 6000000, 9000000, 12000000, 18000000, 24000000, 30000000, 36000000, 60000000]
+};
+
+function selectMpds(groupId, value, el) {
+  var group = document.getElementById(groupId);
+  var options = group.querySelectorAll('.calc-option');
+  for (var i = 0; i < options.length; i++) { options[i].classList.remove('active'); }
+  el.classList.add('active');
+
+  if (groupId === 'mpdsmpk') {
+    mpdsState.mpk = parseInt(value);
+  } else if (groupId === 'mpdsmode') {
+    mpdsState.mode = value;
+    rebuildMpdsPresets();
+  }
+  calcMpds();
+}
+
+function rebuildMpdsPresets() {
+  var sel = document.getElementById('mpdsKontribusi');
+  var presets = (mpdsState.mode === 'bulanan') ? mpdsState.presetsBulanan : mpdsState.presetsTahunan;
+  var minLabel = (mpdsState.mode === 'bulanan') ? 'Rp 250.000' : 'Rp 3.000.000';
+  var modeLabel = (mpdsState.mode === 'bulanan') ? 'Bulanan' : 'Tahunan';
+
+  document.getElementById('mpdsKontribusiLabel').textContent = 'Nominal Kontribusi ' + modeLabel;
+  document.getElementById('mpdsCustomLabel').textContent = 'Jumlah (min ' + minLabel + ')';
+
+  var html = '';
+  for (var i = 0; i < presets.length; i++) {
+    var selected = (i === 2) ? ' selected' : '';
+    html += '<option value="' + presets[i] + '"' + selected + '>Rp ' + presets[i].toLocaleString('id-ID') + '</option>';
+  }
+  html += '<option value="custom">Lainnya (Input Manual)</option>';
+  sel.innerHTML = html;
+
+  document.getElementById('mpdsCustomGroup').classList.remove('show');
+  var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+  document.getElementById('mpdsCustomInput').value = formatMpdsNum(minVal);
+}
+
+function handleMpdsKontribusiChange() {
+  var sel = document.getElementById('mpdsKontribusi');
+  var customGroup = document.getElementById('mpdsCustomGroup');
+  if (sel.value === 'custom') {
+    customGroup.classList.add('show');
+  } else {
+    customGroup.classList.remove('show');
+  }
+  calcMpds();
+}
+
+function formatMpdsNum(num) {
+  if (isNaN(num) || num === 0) return '';
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function parseMpdsNum(str) {
+  return parseInt(str.replace(/\./g, ''), 10) || 0;
+}
+
+function formatRp(num) {
+  return 'Rp ' + num.toLocaleString('id-ID');
+}
+
+function getMpdsKontribusiInput() {
+  var sel = document.getElementById('mpdsKontribusi');
+  var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+
+  if (sel.value === 'custom') {
+    var input = document.getElementById('mpdsCustomInput');
+    var val = parseMpdsNum(input.value);
+    if (val < minVal) {
+      val = minVal;
+      input.value = formatMpdsNum(minVal);
+    }
+    return val;
+  }
+  return parseInt(sel.value);
+}
+
+function calcMpds() {
+  var mpk = mpdsState.mpk;
+  var mode = mpdsState.mode;
+  var kontribusiInput = getMpdsKontribusiInput();
+  var usia = parseInt(document.getElementById('mpdsUsia').value);
+
+  // Convert to monthly equivalent
+  var kontribusiBulanan;
+  if (mode === 'bulanan') {
+    kontribusiBulanan = kontribusiInput;
+  } else {
+    kontribusiBulanan = kontribusiInput / 12;
+  }
+
+  // Calculate benefits
+  var multiplier = (mpk === 5) ? 250 : 450;
+  var santunan = kontribusiBulanan * multiplier;
+  var kecelakaan = Math.min(santunan * 0.5, 1200000000);
+  var totalKontribusi = kontribusiBulanan * 12 * mpk;
+  var pengembalianPct = (usia <= 40) ? 1.0 : 0.7;
+  var pengembalian = totalKontribusi * pengembalianPct;
+
+  // Build results
+  var html = '<div class="calc-result-box">';
+  html += '<div class="calc-result-row"><span class="result-label">Santunan Meninggal Dunia</span><span class="result-value">' + formatRp(santunan) + '</span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Tambahan Manfaat Kecelakaan (+50%)</span><span class="result-value">' + formatRp(kecelakaan) + '</span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Total Jika Meninggal Karena Kecelakaan</span><span class="result-value">' + formatRp(santunan + kecelakaan) + '</span></div>';
+  html += '<div class="calc-result-row highlight"><span class="result-label">Total Kontribusi Dibayar (' + mpk + ' tahun)</span><span class="result-value">' + formatRp(totalKontribusi) + '</span></div>';
+  html += '<div class="calc-result-row highlight"><span class="result-label">Pengembalian Akhir Masa Asuransi (' + (pengembalianPct * 100) + '%)</span><span class="result-value">' + formatRp(pengembalian) + '</span></div>';
+  html += '</div>';
+
+  // Info note
+  html += '<div style="margin-top:var(--sp-3);padding:var(--sp-3);background:rgba(0,135,90,0.04);border-radius:var(--r-md);border-left:3px solid var(--mpds-green)">';
+  html += '<p style="font-size:var(--fs-xs);color:var(--txt-sub);margin:0"><strong>Formula:</strong> Santunan = ' + multiplier + ' x Rp ' + kontribusiBulanan.toLocaleString('id-ID') + '/bulan. ';
+  html += 'Pengembalian = ' + (pengembalianPct * 100) + '% x Rp ' + totalKontribusi.toLocaleString('id-ID') + ' (total kontribusi). ';
+  html += 'Usia masuk: ' + usia + ' tahun' + (usia <= 40 ? ' (kelompok 0-40 thn)' : ' (kelompok 41-50 thn)') + '.</p>';
+  html += '</div>';
+
+  document.getElementById('mpdsResult').innerHTML = html;
+}
+
+// Custom input event handlers
+(function() {
+  var customInput = document.getElementById('mpdsCustomInput');
+
+  customInput.addEventListener('input', function() {
+    var digits = this.value.replace(/[^\d]/g, '');
+    digits = digits.replace(/^0+/, '');
+    this.value = digits ? formatMpdsNum(parseInt(digits, 10)) : '';
+  });
+
+  customInput.addEventListener('blur', function() {
+    var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+    var val = parseMpdsNum(this.value);
+    if (!val || val < minVal) {
+      val = minVal;
+      this.value = formatMpdsNum(minVal);
+    }
+    calcMpds();
+  });
+
+  customInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+      var val = parseMpdsNum(this.value);
+      if (!val || val < minVal) {
+        val = minVal;
+        this.value = formatMpdsNum(minVal);
+      }
+      calcMpds();
+    }
+  });
+})();
+
+// Initial calculation
+calcMpds();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>

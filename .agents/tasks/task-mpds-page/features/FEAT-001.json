@@ -1,0 +1,48 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create /pages/mpds.html - complete MPDS product page with color-coded keywords, question-style content, premium table, and error-free premium calculator",
+  "status": "in_progress",
+  "steps": [
+    "Create /projects/sandbox/Project-Cuan-3.0/pages/mpds.html following the structure of /pages/mdla.html as a template",
+    "Include: DOCTYPE, html lang=id, head with meta charset, viewport, title 'MPDS - Manulife Perlindungan Diri Syariah | PROJECTCUAN', meta description, preconnect fonts, link to /assets/style.css, dark mode script, and inline <style> block",
+    "Define CSS variables for MPDS green theme (--mpds-green: #00875A, --mpds-dark: #006838, --mpds-light: #00C978) and .kw-blue, .kw-gold, .kw-green classes with dark mode variants matching mdla.html pattern",
+    "Add page-specific styles for calculator (calc-option-grid, calc-result-box patterns from mdla.html), premium tables, and section layouts",
+    "Add <div id='site-header'></div> and body opening",
+    "HERO SECTION: Use .page-hero pattern with breadcrumb (Beranda > Produk > MPDS), product-code-badge '☪️ MPDS - Asuransi Jiwa Syariah', question-style title using .kw-blue/.kw-gold/.kw-green classes (e.g. 'Bagaimana Jika Ada Asuransi yang Memberikan <span class=kw-blue>Perlindungan Jiwa</span> <span class=kw-gold>SEKALIGUS</span> <span class=kw-green>Mengembalikan Seluruh Kontribusi</span>?'), product stats (Rp 250rb/bln minimum, 30hr-50thn usia masuk, 12 Tahun proteksi), WhatsApp CTA button + anchor to #kalkulator",
+    "KEUNGGULAN SECTION: Use .section with advantage-grid cards. Content in question style highlighting product benefits: Kontribusi Flat, Pengembalian Kontribusi (100%/70%), Proteksi Ganda (jiwa + kecelakaan), Terjangkau mulai 250rb/bln, Prinsip Syariah (tolong-menolong), Unisex tarif. Use .kw-blue/.kw-gold/.kw-green on key terms",
+    "MANFAAT SECTION: 3 main benefits with detail cards - (1) Santunan Meninggal Dunia (MPK 5th: 250x bulanan, MPK 12th: 450x bulanan), (2) Tambahan Manfaat Kecelakaan (50% santunan, maks 1.2M), (3) Pengembalian Kontribusi akhir tahun 12 (usia 0-40: 100%, usia 41-50: 70%). Write in question style",
+    "SPESIFIKASI/KETENTUAN SECTION: Table or cards showing - Masa Asuransi 12 tahun, MPK 5 atau 12 tahun, Usia Masuk 30 hari-50 tahun, Usia Pemegang Polis min 18 tahun, Min Kontribusi 250rb/bulan, Mata Uang IDR, Metode Pembayaran (Bulanan/Kuartalan/Semesteran/Tahunan), Full Underwriting",
+    "TABEL PREMI SECTION: Create premium lookup tables. MPK 12 Tahun table with rows for Usia 0-40 and 41-50, showing Kontribusi Tahunan (3jt & 5jt), Total Kontribusi, UP Jiwa, UP Kecelakaan, Pengembalian Maturity. Style with design system table patterns. Include note that MPK 5 tahun uses different multiplier (250x vs 450x)",
+    "KALKULATOR PREMI SECTION (id='kalkulator'): Build using calc-option-grid pattern from mdla.html. Inputs: (1) Masa Pembayaran Kontribusi - 5 Tahun / 12 Tahun toggle options, (2) Mode Pembayaran - Bulanan / Tahunan toggle options, (3) Usia Masuk Peserta - select dropdown 0-50, (4) Nominal Kontribusi - preset options (250rb, 300rb, 500rb, 750rb, 1jt, 1.5jt, 2jt, 2.5jt, 3jt, 5jt for bulanan; convert for tahunan using 8.333% factor) plus 'Lainnya' custom input",
+    "CALCULATOR JAVASCRIPT: Implement error-free calculator logic. Rules: (a) Convert input to monthly equivalent - if tahunan, monthly = input * 8.333/100 (i.e. yearly/12). (b) Santunan Asuransi Dasar = multiplier x kontribusi_bulanan (multiplier 250 for MPK 5, 450 for MPK 12). (c) Tambahan Kecelakaan = 50% x Santunan (cap at Rp 1,200,000,000). (d) Total Kontribusi = kontribusi_bulanan x 12 x MPK. (e) Pengembalian: usia<=40 -> 100% total, usia 41-50 -> 70% total. Display results in card-based layout similar to Sample/Mpds.html pattern",
+    "CALCULATOR VALIDATION: Ensure input validation - minimum kontribusi 250rb/bulan (or 3jt/tahun), usia must be 0-50, handle custom input with thousand-separator formatting (use dot separator for Indonesian locale), prevent NaN/undefined results",
+    "CALCULATOR PRESETS: For Bulanan mode use values [250000, 300000, 500000, 750000, 1000000, 1500000, 2000000, 2500000, 3000000, 5000000]. For Tahunan mode use values [3000000, 3600000, 6000000, 9000000, 12000000, 18000000, 24000000, 30000000, 36000000, 60000000]. When switching modes, rebuild the select options and recalculate",
+    "FAQ SECTION: Use .faq-list > .faq-item pattern (from main.js initFAQ). Include 8-10 questions covering: Apa itu MPDS, Berapa besar manfaat meninggal dunia, Bagaimana tambahan manfaat kecelakaan, Berapa pengembalian kontribusi, Perbedaan MPK 5 vs 12 tahun, Apa itu surplus underwriting, Apa yang terjadi jika menunggak, Bisakah polis lapse dipulihkan, Metode pembayaran tersedia, Siapa yang cocok",
+    "CTA SECTION: Use .cta-section with green gradient background, question-style heading (e.g. 'Sudahkah Anda Menyiapkan Perlindungan Terbaik untuk Keluarga Tercinta?'), WhatsApp CTA button",
+    "Add <div id='site-footer'></div> and <script src='/assets/main.js'></script> before closing body tag",
+    "Ensure all keyword terms throughout the page use .kw-blue (product name, proteksi), .kw-gold (emphasis words like SEKALIGUS, GRATIS), .kw-green (money/benefit terms like pengembalian, 100%) for colorful visual appeal",
+    "Verify calculator correctness: Test case 1: MPK=12, Bulanan=500000, Usia=30 -> Santunan=225jt, Kecelakaan=112.5jt, Total Kontribusi=72jt, Pengembalian=72jt (100%). Test case 2: MPK=5, Bulanan=1000000, Usia=45 -> Santunan=250jt, Kecelakaan=125jt, Total Kontribusi=60jt, Pengembalian=42jt (70%). Test case 3: MPK=12, Tahunan=60000000, Usia=35 -> Monthly=5000000, Santunan=2.25B, Kecelakaan=1.125B (capped at 1.2B so 1.125B OK), Total=720jt, Pengembalian=720jt"
+  ],
+  "acceptance_criteria": [
+    "File exists at /projects/sandbox/Project-Cuan-3.0/pages/mpds.html",
+    "Page follows same HTML structure pattern as mdla.html (style.css link, dark mode script, #site-header, sections, #site-footer, main.js script)",
+    "Keywords throughout the page use .kw-blue, .kw-gold, .kw-green CSS classes for color-coding",
+    "Content is written in question/persuasive style (pertanyaan) to make users think about product benefits",
+    "Complete product information from MPDS sources is present (manfaat, ketentuan, FAQ)",
+    "Premium table section shows lookup data for MPK 12 tahun (usia 0-40 and 41-50, kontribusi 3jt and 5jt)",
+    "Calculator handles all inputs: MPK (5/12), Mode Bayar (Bulanan/Tahunan), Usia (0-50), Nominal Kontribusi (presets + custom)",
+    "Calculator produces correct results: Santunan = multiplier x monthly, Kecelakaan = 50% santunan (max 1.2B), Total = monthly x 12 x MPK, Pengembalian = total x (100% or 70%)",
+    "Calculator handles tahunan mode correctly: monthly = yearly * 8.333% (i.e. yearly/12)",
+    "Calculator validates minimum contribution (250rb/bulan or 3jt/tahun)",
+    "No JavaScript errors - calculator works without console errors",
+    "Dark mode support via html.dark class and CSS variable overrides"
+  ],
+  "verification": [
+    "Run: grep -c 'kw-blue\\|kw-gold\\|kw-green' /projects/sandbox/Project-Cuan-3.0/pages/mpds.html to confirm keyword classes are used (should be >10)",
+    "Run: grep -c 'site-header\\|site-footer\\|main.js\\|style.css' /projects/sandbox/Project-Cuan-3.0/pages/mpds.html to confirm proper structure (should be 4+)",
+    "Run: node -e to validate calculator logic inline - test key formulas produce expected outputs"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
