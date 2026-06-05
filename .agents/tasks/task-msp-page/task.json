@@ -4,5 +4,12 @@
   "status": "completed",
   "feature_order": ["FEAT-001"],
   "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "Static HTML site - no build system. File exists (1016 lines), all key elements verified: calculator with lookup data (MSP_DATA object), dark mode support (21 html.dark rules), header/footer component loading, main.js integration, FAQ accordion (10 items), ADB cap enforcement, minimum premi validation, keyword highlighting with multiple colors. Review feedback addressed."
+  },
   "review_feedback_applied": "2025-01-20: Added innerHTML safety comment and Year 5 tunai/death-benefit footnote per review. Death benefit formula and mode-change UX left unchanged per task spec."
 }
