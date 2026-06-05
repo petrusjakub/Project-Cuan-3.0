@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asuransi Properti | Proteksi Rumah & Bangunan | PROJECTCUAN</title>
+  <meta name="description" content="Asuransi Properti: perlindungan rumah, ruko, apartemen, gudang dari kebakaran, banjir, gempa bumi, pencurian. Premi mulai Rp 300.000/tahun. Kalkulator premi properti online gratis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    .prop-hero {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #e8f5e9 100%);
+      padding: var(--sp-16) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    html.dark .prop-hero {
+      background: linear-gradient(135deg, #0d1b2a 0%, #102027 100%);
+    }
+    .prop-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(21,101,192,0.08) 0%, transparent 70%);
+    }
+    .price-tag {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      background: #1565C0;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: var(--r-xl);
+      box-shadow: var(--sh-cta);
+    }
+    .price-tag-num { font-family: var(--ff-head); font-size: var(--fs-3xl); font-weight: 900; line-height: 1; }
+    .price-tag-unit { font-size: var(--fs-sm); opacity: 0.9; }
+
+    .spec-table, .premi-table { width: 100%; border-collapse: collapse; margin: var(--sp-4) 0; font-size: var(--fs-sm); }
+    .spec-table th, .premi-table th { background: #1565C0; color: #fff; padding: 11px 10px; text-align: left; font-weight: 600; }
+    .premi-table th { text-align: center; }
+    .spec-table td, .premi-table td { padding: 10px; border-bottom: 1px solid var(--border); color: var(--txt-sub); }
+    .premi-table td { text-align: center; }
+    .spec-table tr:nth-child(even), .premi-table tr:nth-child(even) { background: rgba(21,101,192,0.03); }
+    html.dark .spec-table tr:nth-child(even), html.dark .premi-table tr:nth-child(even) { background: rgba(21,101,192,0.05); }
+    .spec-table td:first-child { font-weight: 600; color: var(--txt-head); }
+    .premi-table td:first-child { text-align: left; font-weight: 600; color: var(--txt-head); }
+
+    /* Calculator */
+    .calc-select-group { margin-bottom: var(--sp-4); }
+    .calc-select-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: var(--fs-sm); color: var(--txt-head); }
+    .calc-select-group select, .calc-select-group input[type="text"], .calc-select-group input[type="number"] {
+      width: 100%; padding: 10px 12px; border: 2px solid var(--border); border-radius: var(--r-md);
+      font-size: var(--fs-sm); background: var(--bg-card); color: var(--txt-head); transition: border-color 0.2s;
+    }
+    .calc-select-group select:focus, .calc-select-group input:focus { border-color: #1565C0; outline: none; }
+    .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-4); }
+    .quick-amounts { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 var(--sp-4); }
+    .quick-amt {
+      padding: 6px 14px; border: 2px solid #1565C0; border-radius: var(--r-full); background: transparent;
+      color: #1565C0; font-size: var(--fs-xs); font-weight: 600; font-family: inherit; cursor: pointer; transition: all .2s;
+    }
+    .quick-amt:hover, .quick-amt.active { background: #1565C0; color: #fff; }
+
+    .calc-result-box {
+      margin-top: var(--sp-5); padding: var(--sp-5); background: rgba(21,101,192,0.04);
+      border-radius: var(--r-lg); border: 1px solid rgba(21,101,192,0.15);
+    }
+    html.dark .calc-result-box { background: rgba(21,101,192,0.08); border-color: rgba(21,101,192,0.25); }
+    .premi-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--sp-3); }
+    .premi-mode-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+    .premi-mode-card .pmc-head { background: linear-gradient(135deg,#0D47A1,#1565C0); color: #fff; padding: 8px 12px; font-weight: 700; font-size: var(--fs-sm); }
+    .premi-mode-card .pmc-body { padding: 12px; }
+    .premi-mode-card .pmc-main { font-family: var(--ff-head); font-size: var(--fs-lg); font-weight: 900; color: #1565C0; }
+    .premi-mode-card .pmc-sub { font-size: var(--fs-xs); color: var(--txt-muted); margin-top: 2px; }
+    .calc-detail-line { font-size: var(--fs-sm); color: var(--txt-sub); margin-top: var(--sp-3); line-height: 1.8; }
+    .calc-detail-line strong { color: var(--txt-head); }
+    .calc-warning { color: #e53935; font-size: var(--fs-sm); font-weight: 600; margin-top: var(--sp-3); padding: 10px 14px; background: rgba(229,57,53,0.07); border-radius: var(--r-md); border-left: 4px solid #e53935; }
+    .calc-note-box { color: #856404; font-size: var(--fs-sm); margin-top: var(--sp-3); padding: 10px 14px; background: rgba(255,193,7,0.12); border-radius: var(--r-md); border-left: 4px solid #ffc107; }
+
+    .info-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--sp-4); }
+    .info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--sp-5); transition: all var(--ease); }
+    .info-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); border-color: rgba(21,101,192,0.4); }
+    .info-card h4 { color: #1565C0; margin-bottom: var(--sp-2); font-size: var(--fs-md); }
+    .info-card p, .info-card li { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+    .info-card ul { padding-left: var(--sp-4); margin-top: 6px; }
+
+    .prop-infobox { background: rgba(21,101,192,0.06); border-left: 4px solid #1565C0; padding: var(--sp-4); margin: var(--sp-4) 0; border-radius: 0 var(--r-md) var(--r-md) 0; }
+    .prop-infobox p { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.7; margin: 4px 0; }
+
+    /* Checkbox group */
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: 8px; }
+    .checkbox-group label { display: flex; align-items: center; gap: 6px; font-size: var(--fs-sm); color: var(--txt-sub); cursor: pointer; }
+    .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: #1565C0; cursor: pointer; }
+
+    /* Keyword color highlights */
+    span[class^="kw-"] { font-weight: 700; }
+    .kw-green { color: #00a758 !important; }
+    .kw-blue { color: #1565C0 !important; }
+    .kw-orange { color: #E65100 !important; }
+    .kw-purple { color: #7B1FA2 !important; }
+    .kw-red { color: #C62828 !important; }
+    html.dark .kw-green { color: #4cdf9a !important; }
+    html.dark .kw-blue { color: #64b5f6 !important; }
+    html.dark .kw-orange { color: #ffab40 !important; }
+    html.dark .kw-purple { color: #ce93d8 !important; }
+    html.dark .kw-red { color: #ef5350 !important; }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="prop-hero" aria-labelledby="prop-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Navigasi">
+      <a href="/index.html">Beranda</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="/index.html#produk">Produk</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span class="breadcrumb-current" style="color:#1565C0">Asuransi Properti</span>
+    </nav>
+
+    <div class="page-hero-inner">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:var(--sp-2);background:rgba(21,101,192,0.1);border:1px solid rgba(21,101,192,0.2);color:#1565C0;font-size:var(--fs-xs);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:var(--sp-4)">
+          &#127968; PROJECTCUAN &middot; Asuransi Properti
+        </div>
+
+        <h1 id="prop-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
+          Sudahkah <span class="kw-blue">Properti Anda</span> Terlindungi dari <span class="kw-red">Risiko Tak Terduga</span>?
+        </h1>
+
+        <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
+          Pernahkah Anda membayangkan, jika <span class="kw-purple">kebakaran</span>, <span class="kw-purple">banjir</span>, atau <span class="kw-purple">gempa bumi</span> melanda <span class="kw-blue">rumah</span> Anda hari ini &mdash; siapa yang menanggung <span class="kw-red">kerugian</span> miliaran rupiah? Dengan <span class="kw-green">Asuransi Properti</span>, seluruh aset bangunan dan isinya <span class="kw-green">terlindungi</span> dengan <span class="kw-orange">premi</span> yang sangat terjangkau.
+        </p>
+
+        <div style="display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap;margin-bottom:var(--sp-8)" class="fade-up stagger-2">
+          <div class="price-tag">
+            <span class="price-tag-num">Rp 300rb</span>
+            <span class="price-tag-unit">/tahun</span>
+          </div>
+          <div>
+            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Premi mulai dari</div>
+            <div style="font-family:var(--ff-head);font-weight:700;color:#1565C0;font-size:var(--fs-xl)">Rp 825/hari</div>
+            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Proteksi properti hingga miliaran rupiah</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap" class="fade-up stagger-3">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20saya%20mau%20tanya%20soal%20Asuransi%20Properti"
+             target="_blank" rel="noopener" class="btn btn--lg" style="background:#E65100;color:#fff;box-shadow:var(--sh-cta)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Konsultasi via WhatsApp
+          </a>
+          <a href="#kalkulator" class="btn btn--outline btn--lg" style="border-color:#1565C0;color:#1565C0">Hitung Premi Saya</a>
+        </div>
+      </div>
+
+      <div class="fade-up stagger-2">
+        <div style="background:var(--bg-card);border:2px dashed rgba(21,101,192,0.3);border-radius:var(--r-xl);padding:var(--sp-6)">
+          <div style="text-align:center;margin-bottom:var(--sp-5)">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:#1565C0;letter-spacing:0.1em;text-transform:uppercase">Mengapa Asuransi Properti?</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr;gap:var(--sp-3)">
+            <div style="background:rgba(21,101,192,0.05);border:1px solid rgba(21,101,192,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
+              <div style="font-size:20px;margin-bottom:4px">&#128293;</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)"><span class="kw-blue">Perlindungan</span> dari Kebakaran</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Termasuk petir, ledakan, dan dampak asap</div>
+            </div>
+            <div style="background:rgba(21,101,192,0.05);border:1px solid rgba(21,101,192,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
+              <div style="font-size:20px;margin-bottom:4px">&#127754;</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)"><span class="kw-purple">Bencana Alam</span> Tercover</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Banjir, gempa, tsunami, tanah longsor</div>
+            </div>
+            <div style="background:rgba(21,101,192,0.05);border:1px solid rgba(21,101,192,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
+              <div style="font-size:20px;margin-bottom:4px">&#128176;</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)"><span class="kw-orange">Premi</span> Sangat Terjangkau</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Mulai <span class="kw-orange">0,08%</span> dari nilai properti per tahun</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RINGKASAN PRODUK -->
+<section class="section" aria-labelledby="ringkasan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag" style="background:rgba(21,101,192,0.1);color:#1565C0">Ringkasan Produk</span>
+      <h2 id="ringkasan-heading" class="section-title fade-up">Tahukah Anda Apa Saja yang Dilindungi <span class="kw-blue">Asuransi Properti</span>?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:760px;margin-left:auto;margin-right:auto">
+        <span class="kw-blue">Asuransi Properti</span> adalah produk <span class="kw-green">perlindungan</span> untuk bangunan tempat tinggal maupun komersial beserta isinya dari berbagai <span class="kw-red">risiko</span> kerusakan dan kehilangan. Sudahkah Anda mengetahui cakupan lengkapnya?
+      </p>
+    </div>
+
+    <h3 style="color:#0D47A1;margin-bottom:var(--sp-3)" class="fade-up">Cakupan Perlindungan</h3>
+    <div style="overflow-x:auto" class="fade-up stagger-1">
+      <table class="spec-table">
+        <tr><th>Jenis Risiko</th><th>Keterangan</th></tr>
+        <tr><td>&#128293; Kebakaran, Petir, Ledakan</td><td>Kerusakan akibat api, sambaran petir, ledakan gas/bahan kimia, serta dampak jatuhnya pesawat terbang</td></tr>
+        <tr><td>&#127754; Bencana Alam</td><td><span class="kw-purple">Banjir</span>, <span class="kw-purple">gempa bumi</span>, <span class="kw-purple">tsunami</span>, tanah longsor, dan angin topan/badai</td></tr>
+        <tr><td>&#128167; Kerusakan Air</td><td>Kerusakan akibat pipa pecah, kebocoran tangki air, atau luapan air dalam bangunan</td></tr>
+        <tr><td>&#128270; Pencurian &amp; Perampokan</td><td>Kehilangan harta benda akibat pencurian dengan pemaksaan masuk (<em>burglary</em>)</td></tr>
+        <tr><td>&#9888;&#65039; Huru-hara &amp; Kerusuhan</td><td>Kerusakan properti akibat kerusuhan massa, pemogokan, dan perbuatan jahat orang lain</td></tr>
+        <tr><td>&#128663; Tertabrak Kendaraan</td><td>Kerusakan bangunan akibat benturan kendaraan bermotor pihak ketiga</td></tr>
+        <tr><td>&#127959;&#65039; Keruntuhan Bangunan</td><td>Kerusakan struktural akibat keruntuhan sebagian atau seluruh bangunan</td></tr>
+        <tr><td>&#9878;&#65039; Tanggung Jawab Hukum</td><td>Kewajiban hukum kepada pihak ketiga atas kerusakan yang timbul dari properti Anda</td></tr>
+        <tr><td>&#128168; Asap</td><td>Kerusakan akibat asap yang berasal dari peralatan memasak atau pemanas dalam bangunan</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- MANFAAT -->
+<section class="section section--alt" aria-labelledby="manfaat-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag" style="background:rgba(0,105,92,0.1);color:#00695C">Manfaat</span>
+      <h2 id="manfaat-heading" class="section-title fade-up">Pernahkah Anda Bertanya, <span class="kw-green">Manfaat Apa Saja</span> yang Bisa Anda Dapatkan?</h2>
+    </div>
+    <div class="info-card-grid fade-up">
+      <div class="info-card">
+        <h4>&#127968; Perlindungan Rumah Tinggal &amp; Isinya</h4>
+        <p>Tahukah Anda bahwa <span class="kw-blue">rumah</span> beserta seluruh isinya bisa <span class="kw-green">dilindungi</span> dalam satu polis? Perabotan, elektronik, pakaian, hingga perhiasan &mdash; semuanya <span class="kw-green">aman</span> dari <span class="kw-red">risiko</span> <span class="kw-purple">kebakaran</span> dan <span class="kw-purple">bencana alam</span>.</p>
+      </div>
+      <div class="info-card">
+        <h4>&#127970; Perlindungan Rumah Sewaan / Kontrakan</h4>
+        <p>Apakah Anda menyewakan <span class="kw-blue">properti</span>? Sudahkah Anda memikirkan siapa yang menanggung <span class="kw-red">kerugian</span> jika terjadi kerusakan? Asuransi ini melindungi pemilik rumah sewaan dari potensi <span class="kw-red">kerugian</span> besar.</p>
+      </div>
+      <div class="info-card">
+        <h4>&#127963;&#65039; Perlindungan Properti Komersial</h4>
+        <p>Bagaimana jika <span class="kw-blue">ruko</span>, kantor, atau gudang Anda mengalami <span class="kw-purple">kebakaran</span>? Bisakah bisnis tetap berjalan? <span class="kw-green">Perlindungan</span> properti komersial menjamin kelangsungan usaha Anda.</p>
+      </div>
+      <div class="info-card">
+        <h4>&#127960;&#65039; Biaya Tempat Tinggal Sementara</h4>
+        <p>Pernahkah terpikir, di mana keluarga akan tinggal jika <span class="kw-blue">rumah</span> rusak parah? Asuransi ini menanggung biaya <span class="kw-green">tempat tinggal sementara</span> selama <span class="kw-blue">properti</span> Anda diperbaiki.</p>
+      </div>
+      <div class="info-card">
+        <h4>&#9878;&#65039; Tanggung Jawab Hukum Pihak Ketiga</h4>
+        <p>Sadarkah Anda bahwa pohon tumbang dari halaman bisa merusak <span class="kw-blue">properti</span> tetangga? Jaminan tanggung jawab hukum melindungi Anda dari tuntutan ganti rugi pihak ketiga.</p>
+      </div>
+      <div class="info-card">
+        <h4>&#128187; Perlindungan Barang Elektronik &amp; Berharga</h4>
+        <p>Tahukah Anda bahwa laptop, TV, kulkas, hingga perhiasan bisa <span class="kw-green">dijamin</span> terpisah dengan <span class="kw-orange">nilai</span> aktualnya? Tidak perlu lagi khawatir kehilangan barang berharga akibat <span class="kw-red">bencana</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABEL PREMI -->
+<section class="section" aria-labelledby="premi-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(230,81,0,0.1);color:#E65100">Tabel Premi</span>
+      <h2 id="premi-heading" class="section-title fade-up">Berapa <span class="kw-orange">Premi</span> untuk Melindungi <span class="kw-blue">Properti</span> Senilai Ratusan Juta?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Tahukah Anda bahwa <span class="kw-orange">premi</span> asuransi properti jauh lebih murah dari yang Anda bayangkan? Lihat estimasi berikut:</p>
+    </div>
+    <div style="overflow-x:auto" class="fade-up stagger-1">
+      <table class="premi-table">
+        <tr><th style="text-align:left">Nilai Properti</th><th>Premi/Tahun (Basic Fire)</th><th>Premi/Tahun (All Risk)</th></tr>
+        <tr><td>Rp 300 Juta</td><td><span class="kw-orange">Rp 300.000</span></td><td><span class="kw-orange">Rp 750.000</span></td></tr>
+        <tr><td>Rp 500 Juta</td><td><span class="kw-orange">Rp 500.000</span></td><td><span class="kw-orange">Rp 1.250.000</span></td></tr>
+        <tr><td>Rp 750 Juta</td><td><span class="kw-orange">Rp 750.000</span></td><td><span class="kw-orange">Rp 1.875.000</span></td></tr>
+        <tr><td>Rp 1 Miliar</td><td><span class="kw-orange">Rp 1.000.000</span></td><td><span class="kw-orange">Rp 2.500.000</span></td></tr>
+        <tr><td>Rp 2 Miliar</td><td><span class="kw-orange">Rp 2.000.000</span></td><td><span class="kw-orange">Rp 5.000.000</span></td></tr>
+        <tr><td>Rp 5 Miliar</td><td><span class="kw-orange">Rp 5.000.000</span></td><td><span class="kw-orange">Rp 12.500.000</span></td></tr>
+      </table>
+    </div>
+    <p style="color:var(--txt-muted);font-size:var(--fs-xs);margin-top:var(--sp-4);text-align:center" class="fade-up">
+      * Estimasi berdasarkan rate Basic Fire ~0,1% dan All Risk ~0,25% dari nilai properti per tahun (Konstruksi Kelas 1). Rate aktual bervariasi sesuai jenis konstruksi dan lokasi. Gunakan <a href="#kalkulator" style="color:#1565C0;font-weight:600">Kalkulator Premi</a> di bawah untuk perhitungan yang lebih akurat.
+    </p>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section class="section section--alt" id="kalkulator" aria-labelledby="calc-heading">
+  <div class="container"><div style="max-width:860px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(21,101,192,0.1);color:#1565C0">Kalkulator Premi</span>
+      <h2 id="calc-heading" class="section-title fade-up">Sudahkah Anda Menghitung Berapa <span class="kw-orange">Premi</span> <span class="kw-blue">Properti</span> Anda?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)"><span class="kw-green">Akurat &amp; bebas galat</span> &mdash; masukkan detail <span class="kw-blue">properti</span> Anda dan dapatkan estimasi <span class="kw-orange">premi</span> secara instan.</p>
+    </div>
+    <div class="calculator-wrap fade-up stagger-1">
+      <div class="calc-header" style="background:linear-gradient(135deg,#0D47A1,#1565C0)">
+        <h3>&#127968; Kalkulator Premi Asuransi Properti</h3>
+        <p>Rumah &middot; Ruko &middot; Apartemen &middot; Gudang &middot; Kantor</p>
+      </div>
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="calc-select-group">
+            <label>Jenis Properti</label>
+            <select id="prop-type" onchange="propCalculate()">
+              <option value="rumah">Rumah Tinggal</option>
+              <option value="ruko">Ruko</option>
+              <option value="apartemen">Apartemen</option>
+              <option value="gudang">Gudang</option>
+              <option value="kantor">Kantor</option>
+            </select>
+          </div>
+          <div class="calc-select-group">
+            <label>Konstruksi Bangunan</label>
+            <select id="prop-konstruksi" onchange="propCalculate()">
+              <option value="1">Kelas 1 - Beton / Baja</option>
+              <option value="2">Kelas 2 - Semi Permanen</option>
+              <option value="3">Kelas 3 - Kayu / Bambu</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-select-group">
+            <label>Jenis Paket</label>
+            <select id="prop-paket" onchange="propCalculate()">
+              <option value="basic">Basic Fire (Kebakaran)</option>
+              <option value="allrisk">All Risk / Comprehensive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-select-group">
+          <label>Nilai Bangunan (Rp)</label>
+          <input type="text" id="prop-building" value="500.000.000" oninput="propFormatInput(this); propCalculate();" inputmode="numeric">
+        </div>
+        <div class="quick-amounts">
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-building', 300000000, this)">300 Jt</button>
+          <button type="button" class="quick-amt active" onclick="propSetAmount('prop-building', 500000000, this)">500 Jt</button>
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-building', 750000000, this)">750 Jt</button>
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-building', 1000000000, this)">1 M</button>
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-building', 2000000000, this)">2 M</button>
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-building', 5000000000, this)">5 M</button>
+        </div>
+
+        <div class="calc-select-group">
+          <label>Nilai Isi Bangunan (Rp)</label>
+          <input type="text" id="prop-contents" value="100.000.000" oninput="propFormatInput(this); propCalculate();" inputmode="numeric">
+        </div>
+        <div class="quick-amounts">
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-contents', 50000000, this)">50 Jt</button>
+          <button type="button" class="quick-amt active" onclick="propSetAmount('prop-contents', 100000000, this)">100 Jt</button>
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-contents', 200000000, this)">200 Jt</button>
+          <button type="button" class="quick-amt" onclick="propSetAmount('prop-contents', 500000000, this)">500 Jt</button>
+        </div>
+
+        <div class="calc-select-group">
+          <label>Perluasan Jaminan (opsional)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" id="prop-ext-gempa" onchange="propCalculate()"> Gempa Bumi &amp; Tsunami</label>
+            <label><input type="checkbox" id="prop-ext-banjir" onchange="propCalculate()"> Banjir &amp; Badai</label>
+            <label><input type="checkbox" id="prop-ext-tjh" onchange="propCalculate()"> Tanggung Jawab Hukum</label>
+          </div>
+        </div>
+
+        <div class="calc-result-box" id="prop-result-box">
+          <div style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:var(--sp-3);font-weight:600">Hasil Perhitungan Premi</div>
+          <div class="premi-cards" id="prop-premi-cards"></div>
+          <div class="calc-detail-line" id="prop-detail"></div>
+          <div id="prop-message"></div>
+          <div style="margin-top:var(--sp-5)">
+            <a id="prop-wa-btn" href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20saya%20mau%20tanya%20soal%20Asuransi%20Properti" target="_blank" rel="noopener" class="btn btn--block" style="background:#E65100;color:#fff;box-shadow:var(--sh-cta)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Konsultasi &amp; Daftar via WhatsApp
+            </a>
+          </div>
+        </div>
+        <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--txt-muted);text-align:center">* Estimasi premi berdasarkan rate standar industri asuransi properti di Indonesia. Angka final akan dikonfirmasi oleh <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20mau%20konfirmasi%20premi%20Asuransi%20Properti" target="_blank" style="color:#1565C0;font-weight:600">konsultan kami</a> sesuai survei lokasi dan kondisi bangunan.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- FAQ -->
+<section class="section" aria-labelledby="faq-heading">
+  <div class="container"><div style="max-width:780px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(21,101,192,0.1);color:#1565C0">FAQ</span>
+      <h2 id="faq-heading" class="section-title fade-up">Masih Ada Pertanyaan Tentang <span class="kw-blue">Asuransi Properti</span>?</h2>
+    </div>
+    <div class="faq-list fade-up stagger-1">
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Apa itu Asuransi Properti dan apa bedanya dengan asuransi kebakaran biasa?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Asuransi Properti adalah perlindungan menyeluruh untuk bangunan dan isinya dari berbagai risiko. Asuransi kebakaran (basic fire) hanya melindungi dari kebakaran, petir, ledakan, dan dampak pesawat jatuh. Sedangkan paket All Risk / Comprehensive mencakup semua risiko termasuk bencana alam, pencurian, kerusakan air, dan lainnya. Jadi asuransi properti all risk jauh lebih lengkap dari sekedar asuransi kebakaran.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Properti apa saja yang bisa diasuransikan?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Hampir semua jenis properti bisa diasuransikan: rumah tinggal, apartemen, ruko, kantor, gudang, pabrik, hingga bangunan komersial lainnya. Yang diasuransikan meliputi struktur bangunan itu sendiri beserta isi di dalamnya (perabotan, elektronik, stok barang dagangan, mesin, dan barang berharga lainnya).</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Bagaimana cara menentukan nilai pertanggungan properti?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Nilai pertanggungan sebaiknya dihitung berdasarkan biaya pembangunan kembali (replacement cost), bukan harga pasar tanah. Misalnya, jika rumah Anda memiliki luas bangunan 200 m2 dengan biaya bangun Rp 5 juta/m2, maka nilai bangunan = Rp 1 Miliar. Untuk isi bangunan, jumlahkan estimasi nilai seluruh perabotan, elektronik, dan barang berharga di dalamnya.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Apakah gempa bumi dan banjir otomatis tercover?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Tidak. Gempa bumi, tsunami, banjir, dan badai merupakan perluasan jaminan (extension) yang harus ditambahkan secara terpisah dengan premi tambahan. Pada paket Basic Fire, risiko ini tidak termasuk. Pada paket All Risk, biasanya banjir termasuk, namun gempa bumi tetap memerlukan perluasan khusus. Kami sangat merekomendasikan menambahkan perluasan ini, terutama jika properti Anda berada di daerah rawan.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Berapa lama masa pertanggungan asuransi properti?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Masa pertanggungan standar adalah 1 tahun dan dapat diperpanjang setiap tahunnya. Beberapa polis juga menawarkan opsi jangka panjang (2-5 tahun) dengan diskon premi. Perpanjangan bisa dilakukan secara otomatis selama premi dibayarkan tepat waktu.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Apa yang dimaksud dengan under-insurance dan mengapa harus dihindari?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Under-insurance terjadi ketika nilai pertanggungan yang Anda ambil lebih rendah dari nilai sebenarnya properti. Jika terjadi klaim, perusahaan asuransi akan menerapkan prinsip proporsional. Misalnya, jika Anda mengasuransikan rumah senilai Rp 1 Miliar hanya untuk Rp 500 Juta (50%), maka klaim yang dibayarkan juga hanya 50% dari kerugian. Pastikan nilai pertanggungan sesuai dengan nilai riil properti Anda.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Bagaimana proses klaim asuransi properti?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Proses klaim umumnya: (1) Laporkan kejadian dalam 3x24 jam, (2) Dokumentasikan kerusakan dengan foto/video, (3) Isi formulir klaim dan lampirkan dokumen pendukung (polis, KTP, laporan kepolisian jika ada pencurian/kerusuhan), (4) Tim surveyor akan melakukan pemeriksaan, (5) Setelah klaim disetujui, pembayaran dilakukan dalam 14-30 hari kerja. Hubungi kami untuk pendampingan klaim dari awal hingga selesai.</div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- CTA -->
+<section class="section section--alt" aria-labelledby="cta-heading">
+  <div class="container">
+    <div style="background:linear-gradient(135deg,#0D47A1,#1565C0);border-radius:var(--r-xl);padding:var(--sp-10) var(--sp-8);text-align:center;color:#fff;position:relative;overflow:hidden" class="fade-up">
+      <h2 id="cta-heading" style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:var(--sp-3)">Apakah Anda Siap Melindungi <span style="color:#ffe082">Aset Terbesar</span> Anda?</h2>
+      <p style="color:rgba(255,255,255,0.9);font-size:var(--fs-md);max-width:640px;margin:0 auto var(--sp-6);line-height:1.7">
+        Jangan tunggu sampai <span style="color:#ffab40">bencana</span> datang. Satu langkah kecil hari ini bisa menyelamatkan aset bernilai miliaran rupiah. Konsultasikan kebutuhan asuransi properti Anda sekarang &mdash; gratis, tanpa kewajiban.
+      </p>
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20saya%20mau%20tanya%20soal%20Asuransi%20Properti" target="_blank" rel="noopener" class="btn btn--lg" style="background:#fff;color:#0D47A1;font-weight:700">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Mulai Konsultasi Gratis
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="/assets/main.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ===== UTILITY FUNCTIONS ===== */
+  function formatRp(n) {
+    if (n == null || isNaN(n)) return 'Rp 0';
+    return 'Rp ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  function formatDots(n) {
+    if (n == null || isNaN(n)) return '0';
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  function parseNum(str) {
+    if (!str) return 0;
+    var cleaned = String(str).replace(/\./g, '').replace(/[^0-9]/g, '');
+    var val = parseInt(cleaned, 10);
+    return isNaN(val) ? 0 : (val < 0 ? 0 : val);
+  }
+
+  /* ===== FORMAT INPUT ===== */
+  window.propFormatInput = function(input) {
+    var raw = input.value.replace(/\./g, '').replace(/[^0-9]/g, '');
+    if (raw) {
+      input.value = formatDots(parseInt(raw, 10));
+    } else {
+      input.value = '';
+    }
+  };
+
+  /* ===== SET AMOUNT FROM QUICK BUTTONS ===== */
+  window.propSetAmount = function(inputId, amount, btn) {
+    var input = document.getElementById(inputId);
+    input.value = formatDots(amount);
+    // Clear active state for sibling buttons only
+    var parent = btn.parentElement;
+    parent.querySelectorAll('.quick-amt').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    propCalculate();
+  };
+
+  /* ===== MAIN CALCULATION ===== */
+  window.propCalculate = function() {
+    var cards = document.getElementById('prop-premi-cards');
+    var detail = document.getElementById('prop-detail');
+    var message = document.getElementById('prop-message');
+    if (!cards) return;
+
+    // Get input values
+    var propertyType = document.getElementById('prop-type').value;
+    var konstruksi = parseInt(document.getElementById('prop-konstruksi').value, 10);
+    var paket = document.getElementById('prop-paket').value;
+    var buildingValue = parseNum(document.getElementById('prop-building').value);
+    var contentsValue = parseNum(document.getElementById('prop-contents').value);
+    var extGempa = document.getElementById('prop-ext-gempa').checked;
+    var extBanjir = document.getElementById('prop-ext-banjir').checked;
+    var extTJH = document.getElementById('prop-ext-tjh').checked;
+
+    // Total Sum Insured
+    var totalSI = buildingValue + contentsValue;
+
+    if (totalSI <= 0) {
+      cards.innerHTML = '';
+      detail.innerHTML = '';
+      message.innerHTML = '<div class="calc-warning">Masukkan nilai bangunan atau isi bangunan untuk menghitung premi.</div>';
+      return;
+    }
+
+    // Rate logic by construction class (Basic Fire)
+    // Kelas 1 (Beton/Baja) = 0.08%, Kelas 2 (Semi Permanen) = 0.12%, Kelas 3 (Kayu/Bambu) = 0.18%
+    var basicRates = { 1: 0.0008, 2: 0.0012, 3: 0.0018 };
+    var basicRate = basicRates[konstruksi] || 0.0008;
+
+    // All Risk multiplier: 2.5x basic rate
+    var allRiskMultiplier = 2.5;
+
+    var effectiveRate;
+    if (paket === 'allrisk') {
+      effectiveRate = basicRate * allRiskMultiplier;
+    } else {
+      effectiveRate = basicRate;
+    }
+
+    // Calculate basic premium
+    var premBasic = totalSI * effectiveRate;
+
+    // Extension premiums
+    var premGempa = 0;
+    var premBanjir = 0;
+    var premTJH = 0;
+
+    if (extGempa) {
+      premGempa = totalSI * 0.0012; // 0.12%
+    }
+    if (extBanjir) {
+      premBanjir = totalSI * 0.00075; // 0.075%
+    }
+    if (extTJH) {
+      premTJH = totalSI * 0.0005; // 0.05%
+    }
+
+    var premExtension = premGempa + premBanjir + premTJH;
+    var totalAnnual = premBasic + premExtension;
+    var monthlyEquiv = totalAnnual / 12;
+
+    // Property type label
+    var typeLabels = {
+      'rumah': 'Rumah Tinggal',
+      'ruko': 'Ruko',
+      'apartemen': 'Apartemen',
+      'gudang': 'Gudang',
+      'kantor': 'Kantor'
+    };
+    var konstruksiLabels = {
+      1: 'Kelas 1 (Beton/Baja)',
+      2: 'Kelas 2 (Semi Permanen)',
+      3: 'Kelas 3 (Kayu/Bambu)'
+    };
+    var paketLabel = paket === 'allrisk' ? 'All Risk / Comprehensive' : 'Basic Fire (Kebakaran)';
+    var ratePercent = (effectiveRate * 100).toFixed(3);
+
+    // Render result cards
+    cards.innerHTML =
+      modeCard('Total Nilai Pertanggungan', totalSI, 'bangunan + isi') +
+      modeCard('Premi Dasar / Tahun', premBasic, paketLabel) +
+      modeCard('Premi Perluasan / Tahun', premExtension, 'extension') +
+      modeCard('Total Premi / Tahun', totalAnnual, 'keseluruhan') +
+      modeCard('Premi / Bulan', monthlyEquiv, 'ekuivalen bulanan');
+
+    // Detail breakdown
+    var detailHtml = '<strong>Jenis Properti:</strong> ' + typeLabels[propertyType] +
+      ' &middot; <strong>Konstruksi:</strong> ' + konstruksiLabels[konstruksi] +
+      ' &middot; <strong>Paket:</strong> ' + paketLabel + '<br>' +
+      '<strong>Nilai Bangunan:</strong> ' + formatRp(buildingValue) +
+      ' &middot; <strong>Nilai Isi:</strong> ' + formatRp(contentsValue) + '<br>' +
+      '<strong>Total Nilai Pertanggungan:</strong> ' + formatRp(totalSI) + '<br>' +
+      '<strong>Rate Dasar:</strong> ' + ratePercent + '% per tahun' +
+      ' &rarr; <strong>Premi Dasar:</strong> ' + formatRp(premBasic) + '/tahun';
+
+    if (premExtension > 0) {
+      detailHtml += '<br><strong>Perluasan Jaminan:</strong>';
+      if (extGempa) detailHtml += ' Gempa Bumi (0,12% = ' + formatRp(premGempa) + ')';
+      if (extBanjir) detailHtml += ' Banjir (0,075% = ' + formatRp(premBanjir) + ')';
+      if (extTJH) detailHtml += ' Tanggung Jawab Hukum (0,05% = ' + formatRp(premTJH) + ')';
+      detailHtml += '<br><strong>Total Premi Perluasan:</strong> ' + formatRp(premExtension) + '/tahun';
+    }
+
+    detailHtml += '<br><strong>TOTAL PREMI:</strong> ' + formatRp(totalAnnual) + '/tahun (' + formatRp(monthlyEquiv) + '/bulan)';
+
+    detail.innerHTML = detailHtml;
+    message.innerHTML = '';
+
+    // Update WhatsApp button
+    var waBtn = document.getElementById('prop-wa-btn');
+    if (waBtn) {
+      var msg = 'Halo Kak, saya mau tanya Asuransi Properti. Detail: ' +
+        typeLabels[propertyType] + ', Konstruksi ' + konstruksiLabels[konstruksi] +
+        ', Paket ' + paketLabel +
+        ', Nilai Bangunan ' + formatRp(buildingValue) +
+        ', Nilai Isi ' + formatRp(contentsValue) +
+        ', Total Pertanggungan ' + formatRp(totalSI) +
+        '. Estimasi premi ' + formatRp(totalAnnual) + '/tahun.';
+      waBtn.href = 'https://wa.me/6287781896087?text=' + encodeURIComponent(msg);
+    }
+  };
+
+  function modeCard(title, value, sub) {
+    return '<div class="premi-mode-card"><div class="pmc-head">' + title + '</div>' +
+      '<div class="pmc-body"><div class="pmc-main">' + formatRp(value) + '</div>' +
+      '<div class="pmc-sub">' + sub + '</div></div></div>';
+  }
+
+  /* ===== INITIALIZE ===== */
+  function initPropCalc() {
+    propCalculate();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPropCalc);
+  } else {
+    initPropCalc();
+  }
+})();
+</script>
+</body>
+</html>
