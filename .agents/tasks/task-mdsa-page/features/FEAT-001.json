@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "feat",
   "description": "Create the complete public/pages/mdsa.html page for Manulife Dynamic Smart Assurance (MDSA) product following the mccp.html page pattern, with question-based content, keyword color highlighting, premium tables, and an error-free JSON-lookup premium calculator.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "Create public/pages/mdsa.html following the exact pattern from public/pages/mccp.html: DOCTYPE, imports /assets/style.css, has dark-mode init script, page-specific <style> block, <div id='site-header'></div>, content sections, <div id='site-footer'></div>, and loads /assets/main.js at the end.",
     "Define MDSA-specific CSS custom properties (e.g., --mdsa-green, --mdsa-dark, --mdsa-light) and page-specific styles in the inline <style> block. Include keyword highlight styles with 3-4 different non-clashing colors for highlighting keywords (e.g., jade green for protection keywords, gold/amber for financial benefit keywords, coral/orange for CTA keywords, blue for feature keywords).",
@@ -37,5 +37,5 @@
     "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/mdsa.html','utf8'); const scriptMatch=html.match(/<script>([\\s\\S]*?)<\\/script>/g); if(scriptMatch){scriptMatch.forEach((s,i)=>{try{new Function(s.replace(/<\\/?script>/g,''));console.log('Script block',i,': OK')}catch(e){console.error('Script block',i,': ERROR -',e.message)}})}\" to validate JavaScript has no syntax errors"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "Page created successfully at 144KB. Removed unused showTab/toggleFaq/checkKomisiPassword functions from the sample file since the new page uses the mccp.html FAQ accordion pattern (faq-trigger buttons) instead. All 142 PREMIUM_DATA entries and MIUHC_DATA (86 age entries per gender x 15 plans) are embedded. JavaScript validates without syntax errors."
 }
