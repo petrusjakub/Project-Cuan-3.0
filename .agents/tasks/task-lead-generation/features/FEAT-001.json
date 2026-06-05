@@ -1,0 +1,34 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create a global lead generation JavaScript module (lead-gen.js) that implements: (1) Pop-up CTA modal appearing after 10 seconds collecting Nama and WhatsApp number, with 7-day localStorage suppression; (2) Exit-intent popup detecting mouse leaving viewport (desktop) or rapid scroll-up (mobile), with 3-day suppression and awareness of CTA popup state; (3) Floating mobile CTA bar at bottom of screen with contextual WhatsApp link; (4) Enhanced contextual WhatsApp pre-filled messages based on current page URL. Also add corresponding CSS styles for all popup/bar UI elements.",
+  "status": "in_progress",
+  "steps": [
+    "Create public/assets/lead-gen.js with all lead generation logic",
+    "Implement the timed popup CTA (10 second delay): Modal with form fields for 'Nama' and 'Nomor WhatsApp', submit redirects to wa.me/6287781896087 with pre-filled message containing user data, close button, localStorage check with key 'pc_popup_cta_shown' storing timestamp, 7-day expiry logic",
+    "Implement exit-intent popup: Desktop detection via mouseout event on document (clientY < 0), Mobile detection via scroll direction change (rapid upward scroll), different compelling copy ('Tunggu! Konsultasi GRATIS sebelum Anda pergi'), same form fields (Nama, WhatsApp), localStorage key 'pc_exit_intent_shown' with 3-day expiry, skip if popup CTA was already shown/submitted in this session",
+    "Implement floating mobile CTA bar: Fixed position bottom bar visible only on mobile (max-width: 768px), WhatsApp icon + text 'Chat Sekarang - Konsultasi Gratis', contextual pre-filled message based on current page path using a mapping object",
+    "Implement contextual WhatsApp message enhancement: Create a PAGE_MESSAGES mapping object that maps page URLs to specific Indonesian messages (e.g., /pages/pap.html -> 'Halo, saya tertarik dengan produk PAP (Proteksi Asuransi Prima). Bisa dibantu?', /pages/mdsa.html -> 'Halo, saya tertarik dengan produk MDSA. Bisa konsultasi?', etc. for all pages). On page load, update all existing wa.me links on the page to use contextual messages",
+    "Add CSS styles either inline in lead-gen.js or as a dedicated section: Style the modal overlay (dark backdrop), modal box (centered, max-width 420px, white bg with dark mode support), form inputs (matching existing .calc-select-group style), submit button (btn--cta style), floating bar (fixed bottom, z-index high, jade/green background, white text), close buttons, animations (fadeIn/slideUp)",
+    "Include the script in the page load flow: Add lead-gen.js loading in public/assets/main.js init() function after components are loaded, OR add a script tag reference. The script should self-initialize when DOM is ready."
+  ],
+  "acceptance_criteria": [
+    "public/assets/lead-gen.js exists and contains all popup, exit-intent, floating bar, and contextual message logic",
+    "Pop-up CTA stores timestamp in localStorage under 'pc_popup_cta_shown' and respects 7-day cooldown",
+    "Exit-intent popup stores timestamp under 'pc_exit_intent_shown' and respects 3-day cooldown",
+    "Exit-intent does not show if pop-up CTA was already triggered in the same session",
+    "Floating CTA bar only shows on viewports <= 768px",
+    "WhatsApp links on product pages get updated with contextual messages based on page URL",
+    "All form submissions redirect to https://wa.me/6287781896087 with properly URL-encoded message containing user name and number",
+    "All UI elements support dark mode (html.dark class)",
+    "The script is referenced/loaded from index.html and all pages (via the main.js init or a new script tag in component footer)"
+  ],
+  "verification": [
+    "Read public/assets/lead-gen.js and confirm it contains popup logic, exit-intent logic, floating bar logic, and contextual message mapping",
+    "Confirm the script is loaded via main.js or referenced in footer.html component",
+    "Verify localStorage key names and expiry logic are correct",
+    "Check that the WhatsApp URL format uses 6287781896087 as the number"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

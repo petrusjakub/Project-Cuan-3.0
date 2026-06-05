@@ -470,6 +470,11 @@
 
     // Page-specific
     if (document.getElementById('quizStep0')) window.PC.initQuiz();
+
+    // Load lead generation module
+    const lgScript = document.createElement('script');
+    lgScript.src = '/assets/lead-gen.js';
+    document.body.appendChild(lgScript);
   }
 
   if (document.readyState === 'loading') {
