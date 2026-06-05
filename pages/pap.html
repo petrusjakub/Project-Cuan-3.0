@@ -104,17 +104,18 @@
     .info-card p, .info-card li { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
     .info-card ul { padding-left: var(--sp-4); margin-top: 6px; }
 
-    /* Keyword color highlights */
-    .kw-green { color: #00a758; font-weight: 700; }
-    .kw-blue { color: #1565c0; font-weight: 600; }
-    .kw-orange { color: #e65100; font-weight: 700; }
-    .kw-purple { color: #7b1fa2; font-weight: 600; }
-    .kw-red { color: #c62828; font-weight: 700; }
-    html.dark .kw-green { color: #4cdf9a; }
-    html.dark .kw-blue { color: #64b5f6; }
-    html.dark .kw-orange { color: #ffab40; }
-    html.dark .kw-purple { color: #ce93d8; }
-    html.dark .kw-red { color: #ef5350; }
+    /* Keyword color highlights - !important ensures override regardless of cascade */
+    span[class^="kw-"] { font-weight: 700; }
+    .kw-green { color: #00a758 !important; }
+    .kw-blue { color: #1565c0 !important; }
+    .kw-orange { color: #e65100 !important; }
+    .kw-purple { color: #7b1fa2 !important; }
+    .kw-red { color: #c62828 !important; }
+    html.dark .kw-green { color: #4cdf9a !important; }
+    html.dark .kw-blue { color: #64b5f6 !important; }
+    html.dark .kw-orange { color: #ffab40 !important; }
+    html.dark .kw-purple { color: #ce93d8 !important; }
+    html.dark .kw-red { color: #ef5350 !important; }
   </style>
 </head>
 <body>
@@ -147,7 +148,7 @@
 
         <div style="display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap;margin-bottom:var(--sp-8)" class="fade-up stagger-2">
           <div class="price-tag">
-            <span class="price-tag-num"><span class="kw-orange" style="color:inherit">Rp 380rb</span></span>
+            <span class="price-tag-num">Rp 380rb</span>
             <span class="price-tag-unit">/bulan</span>
           </div>
           <div>
