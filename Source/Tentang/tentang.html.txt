@@ -1,0 +1,218 @@
+<!-- 
+  FILE 3: pages/tentang.html (FIX BMI/YBC & TAHUN 1985)
+  Perubahan:
+  - Hapus "(BMI)" dari Manulife Indonesia
+  - BMI & YBC = Agency tempat bernaung (bukan Manulife)
+  - Manulife berdiri 1985 (bukan 1999)
+-->
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami | Project Cuan</title>
+  <meta name="description" content="Kenalan dengan Project Cuan, Manulife Indonesia, dan agency tempat kami bernaung.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-page="tentang">
+
+  <div id="navbar-container"></div>
+
+  <main>
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="container">
+        <div class="page-header-content">
+          <a href="../index.html" class="back-link">
+            <i data-lucide="arrow-left"></i> Kembali
+          </a>
+          <span class="badge badge-emerald">💚 Tentang Kami</span>
+          <h1>Project Cuan x <span class="gradient-text">Manulife Indonesia</span></h1>
+          <p>Partner terpercaya untuk perjalanan finansialmu. Kami percaya proteksi cerdas = masa depan tenang.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANULIFE INDONESIA -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Manulife Indonesia 🏢</h2>
+          <p>Perusahaan asuransi jiwa terkemuka yang berdiri sejak <strong>1985</strong></p>
+        </div>
+        
+        <div class="grid grid-4">          <div class="card card-hover card-emerald" style="text-align:center;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--emerald);">79.1T</div>
+            <p style="font-size:0.85rem;margin:0;">Aset Kelolaan</p>
+          </div>
+          <div class="card card-hover card-emerald" style="text-align:center;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--emerald);">10.5T</div>
+            <p style="font-size:0.85rem;margin:0;">Total Premi 2024</p>
+          </div>
+          <div class="card card-hover card-emerald" style="text-align:center;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--emerald);">8.3T</div>
+            <p style="font-size:0.85rem;margin:0;">Klaim Dibayar</p>
+          </div>
+          <div class="card card-hover card-emerald" style="text-align:center;">
+            <div style="font-size:2.5rem;font-weight:900;color:var(--emerald);">584%</div>
+            <p style="font-size:0.85rem;margin:0;">RBC Ratio</p>
+          </div>
+        </div>
+        
+        <div style="margin-top:2rem;">
+          <p>PT Asuransi Jiwa Manulife Indonesia adalah perusahaan asuransi jiwa yang telah melayani masyarakat Indonesia sejak <strong>1985</strong>. Sebagai bagian dari Manulife Financial Corporation yang berbasis di Kanada, Manulife Indonesia menawarkan berbagai produk asuransi jiwa, kesehatan, dan investasi yang inovatif.</p>
+          <p>Dengan jaringan yang luas dan komitmen terhadap nasabah, Manulife Indonesia telah membayar klaim senilai <strong>Rp 8.3 Trilyun</strong> di tahun 2024 saja, membuktikan kepercayaan nasabah dan kekuatan finansial perusahaan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDIT RATINGS -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Rating Kredit Internasional 🏆</h2>
+          <p>Investment Grade dari lembaga rating global</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Manulife Global</h3>
+            <ul class="check-list">
+              <li><strong>S&P:</strong> AA- (Stable)</li>
+              <li><strong>Moody's:</strong> A1 (Very Strong, Stable)</li>
+              <li><strong>Fitch:</strong> AA- (Stable)</li>
+              <li><strong>DBRS:</strong> AA- (Stable)</li>
+              <li><strong>AM Best:</strong> A+ (Superior, Stable)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Manulife Indonesia</h3>
+            <ul class="check-list">
+              <li><strong>S&P:</strong> BBB (Stable)</li>
+              <li><strong>Fitch:</strong> BBB (Stable)</li>
+              <li><strong>Moody's:</strong> Baa2 (Stable)</li>
+              <li><strong>JCR:</strong> BBB+ (Stable)</li>              <li><strong>RBC Ratio:</strong> 584% (well above regulation)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENCY: BMI & YBC -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-purple">🤝 Agency Kami</span>
+          <h2>Tempat Kami Bernaung</h2>
+          <p>Project Cuan bernaung di bawah 2 agency terbaik Manulife Indonesia</p>
+        </div>
+        
+        <div class="grid grid-2">
+          <div class="card card-hover card-emerald">
+            <div class="card-icon">🎯</div>
+            <h3>BMI - Bersatu Menggapai Impian</h3>
+            <p><strong>BMI</strong> adalah agency Manulife Indonesia yang berfokus pada kolaborasi dan pencapaian impian bersama. Dengan sistem mentorship yang terstruktur, BMI membantu setiap agen berkembang menjadi financial planner profesional.</p>
+            <ul class="check-list" style="margin-top:1rem;">
+              <li>Training & mentorship intensif</li>
+              <li>Komunitas agen yang solid</li>
+              <li>Incentive trip luar negeri</li>
+              <li>Sistem bisnis yang terbukti</li>
+            </ul>
+          </div>
+          
+          <div class="card card-hover card-purple">
+            <div class="card-icon">🌉</div>
+            <h3>YBC - Your Bridge Community</h3>
+            <p><strong>YBC</strong> (Your Bridge Community) adalah agency yang berfungsi sebagai "jembatan" bagi siapa saja yang ingin upgrade hidup melalui bisnis asuransi. YBC fokus pada pengembangan diri, skill, dan network premium.</p>
+            <ul class="check-list" style="margin-top:1rem;">
+              <li>Public speaking & leadership training</li>
+              <li>Digital marketing skill</li>
+              <li>Network entrepreneur & profesional</li>
+              <li>Passive income system</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PETRUS JAKUB -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Siapa Petrus Jakub? 👋</h2>
+        </div>        <div style="max-width:700px;margin:0 auto;text-align:center;">
+          <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--purple));color:white;display:inline-flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:900;margin-bottom:1.5rem;">PJ</div>
+          <p style="font-size:1rem;line-height:1.8;">
+            Aku <strong>Petrus Jakub</strong>, financial planner & business mentor yang percaya bahwa proteksi cerdas bukan soal "takut", tapi soal <strong>"siap"</strong>. Aku bantu ratusan klien dari berbagai background - karyawan, pengusaha, profesional, ibu rumah tangga - untuk menemukan solusi proteksi & investasi yang sesuai dengan kondisi & mimpi mereka.
+          </p>
+          <p style="font-size:1rem;line-height:1.8;">
+            Bernaung di bawah <strong>BMI (Bersatu Menggapai Impian)</strong> dan <strong>YBC (Your Bridge Community)</strong>, aku berkomitmen memberikan konsultasi yang santai, transparan, dan no pressure. Karena keputusan finansial yang baik datang dari pemahaman, bukan paksaan. 💚
+          </p>
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%20Petrus%2C%20aku%20mau%20kenalan" class="btn btn-primary btn-lg" target="_blank" style="margin-top:1rem;">💬 Kenalan Langsung</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUKTI KLAIM -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-emerald">✅ Bukti Klaim</span>
+          <h2>Manulife Selalu Bayar Klaim</h2>
+          <p>Bukti nyata nasabah percaya pada Manulife Indonesia</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card card-hover">
+            <span class="badge badge-emerald">✅ Klaim Cair</span>
+            <h4>Klaim Rawat Inap Rp 1.5 Milyar</h4>
+            <p>Diagnosis: Spindle Cell Sarcoma. Klaim cair 100% tanpa potongan.</p>
+          </div>
+          <div class="card card-hover">
+            <span class="badge badge-emerald">✅ Testimoni</span>
+            <h4>Transfer Klaim Cepat</h4>
+            <p>Nasabah terima transfer klaim dalam hitungan hari. Proses transparan.</p>
+          </div>
+          <div class="card card-hover">
+            <span class="badge badge-emerald">📊 Data 2024</span>
+            <h4>Total Klaim Rp 8.3 Trilyun</h4>
+            <p>Manulife Indonesia telah membayar klaim & manfaat senilai 8.3T di 2024.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="cta-final">
+          <h2>Yuk Ngobrol Santai!</h2>
+          <p>Aku bantu kamu pilih proteksi & investasi yang pas. No pressure, just value.</p>
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%20Petrus%2C%20aku%20mau%20konsultasi" class="btn btn-lg" style="background:white;color:var(--emerald-dark);" target="_blank">💬 Chat Petrus</a>
+        </div>
+      </div>    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <a href="https://wa.me/6287781896087" class="floating-wa" target="_blank" aria-label="Chat WhatsApp">
+    <i data-lucide="message-circle"></i>
+  </a>
+
+  <div class="scroll-nav">
+    <button class="scroll-btn" id="scroll-top" aria-label="Ke atas"><i data-lucide="chevron-up"></i></button>
+    <button class="scroll-btn" id="scroll-bottom" aria-label="Ke bawah"><i data-lucide="chevron-down"></i></button>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
