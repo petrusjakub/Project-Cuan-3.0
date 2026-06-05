@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAP - ProActive Plus | Asuransi Jiwa Berjangka Manulife | PROJECTCUAN</title>
+  <meta name="description" content="ProActive Plus (PAP): asuransi jiwa berjangka murni dari Manulife Indonesia. Proteksi 100% Uang Pertanggungan, premi tetap mulai Rp 380.000/bulan. Lengkap dengan kalkulator premi akurat berbasis tabel resmi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    .pap-hero {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #f1f8e9 100%);
+      padding: var(--sp-16) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    html.dark .pap-hero {
+      background: linear-gradient(135deg, #0a1f0f 0%, #0d2818 100%);
+    }
+    .pap-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,167,88,0.08) 0%, transparent 70%);
+    }
+    .price-tag {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      background: #00a758;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: var(--r-xl);
+      box-shadow: var(--sh-cta);
+    }
+    .price-tag-num { font-family: var(--ff-head); font-size: var(--fs-3xl); font-weight: 900; line-height: 1; }
+    .price-tag-unit { font-size: var(--fs-sm); opacity: 0.9; }
+
+    .spec-table, .premi-table, .comparison-table { width: 100%; border-collapse: collapse; margin: var(--sp-4) 0; font-size: var(--fs-sm); }
+    .spec-table th, .premi-table th, .comparison-table th { background: #006838; color: #fff; padding: 11px 10px; text-align: left; font-weight: 600; }
+    .premi-table th, .comparison-table th { text-align: center; }
+    .spec-table td, .premi-table td, .comparison-table td { padding: 10px; border-bottom: 1px solid var(--border); color: var(--txt-sub); }
+    .premi-table td, .comparison-table td { text-align: center; }
+    .spec-table tr:nth-child(even), .premi-table tr:nth-child(even), .comparison-table tr:nth-child(even) { background: rgba(0,167,88,0.03); }
+    html.dark .spec-table tr:nth-child(even), html.dark .premi-table tr:nth-child(even), html.dark .comparison-table tr:nth-child(even) { background: rgba(0,167,88,0.05); }
+    .spec-table td:first-child { font-weight: 600; color: var(--txt-head); }
+    .premi-table td:first-child, .comparison-table td:first-child { text-align: left; font-weight: 600; color: var(--txt-head); }
+
+    /* Calculator */
+    .calc-select-group { margin-bottom: var(--sp-4); }
+    .calc-select-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: var(--fs-sm); color: var(--txt-head); }
+    .calc-select-group select, .calc-select-group input[type="text"] {
+      width: 100%; padding: 10px 12px; border: 2px solid var(--border); border-radius: var(--r-md);
+      font-size: var(--fs-sm); background: var(--bg-card); color: var(--txt-head); transition: border-color 0.2s;
+    }
+    .calc-select-group select:focus, .calc-select-group input[type="text"]:focus { border-color: #00a758; outline: none; }
+    .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-4); }
+    .quick-amounts { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 var(--sp-4); }
+    .quick-amt {
+      padding: 6px 14px; border: 2px solid #00a758; border-radius: var(--r-full); background: transparent;
+      color: #00a758; font-size: var(--fs-xs); font-weight: 600; font-family: inherit; cursor: pointer; transition: all .2s;
+    }
+    .quick-amt:hover, .quick-amt.active { background: #00a758; color: #fff; }
+
+    .calc-result-box {
+      margin-top: var(--sp-5); padding: var(--sp-5); background: rgba(0,167,88,0.04);
+      border-radius: var(--r-lg); border: 1px solid rgba(0,167,88,0.15);
+    }
+    html.dark .calc-result-box { background: rgba(0,167,88,0.08); border-color: rgba(0,167,88,0.25); }
+    .premi-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--sp-3); }
+    .premi-mode-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+    .premi-mode-card .pmc-head { background: linear-gradient(135deg,#006838,#00a758); color: #fff; padding: 8px 12px; font-weight: 700; font-size: var(--fs-sm); }
+    .premi-mode-card .pmc-body { padding: 12px; }
+    .premi-mode-card .pmc-main { font-family: var(--ff-head); font-size: var(--fs-lg); font-weight: 900; color: #00a758; }
+    .premi-mode-card .pmc-sub { font-size: var(--fs-xs); color: var(--txt-muted); margin-top: 2px; }
+    .calc-detail-line { font-size: var(--fs-sm); color: var(--txt-sub); margin-top: var(--sp-3); line-height: 1.8; }
+    .calc-detail-line strong { color: var(--txt-head); }
+    .calc-warning { color: #e53935; font-size: var(--fs-sm); font-weight: 600; margin-top: var(--sp-3); padding: 10px 14px; background: rgba(229,57,53,0.07); border-radius: var(--r-md); border-left: 4px solid #e53935; }
+    .calc-note-box { color: #856404; font-size: var(--fs-sm); margin-top: var(--sp-3); padding: 10px 14px; background: rgba(255,193,7,0.12); border-radius: var(--r-md); border-left: 4px solid #ffc107; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 30px; margin: var(--sp-4) 0; }
+    .timeline::before { content: ''; position: absolute; left: 9px; top: 4px; bottom: 4px; width: 3px; background: rgba(0,167,88,0.2); border-radius: 3px; }
+    .timeline-item { position: relative; margin-bottom: var(--sp-5); padding-left: var(--sp-4); }
+    .timeline-item::before { content: ''; position: absolute; left: -25px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: #00a758; border: 3px solid var(--bg-card); box-shadow: 0 0 0 2px rgba(0,167,88,0.3); }
+    .timeline-item h4 { color: #006838; font-size: var(--fs-md); margin-bottom: 4px; }
+    .timeline-item p { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+
+    .pap-infobox { background: rgba(0,167,88,0.06); border-left: 4px solid #00a758; padding: var(--sp-4); margin: var(--sp-4) 0; border-radius: 0 var(--r-md) var(--r-md) 0; }
+    .pap-infobox p { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.7; margin: 4px 0; }
+    .pap-warnbox { background: rgba(255,193,7,0.12); border-left: 4px solid #ffc107; padding: var(--sp-4); margin: var(--sp-4) 0; border-radius: 0 var(--r-md) var(--r-md) 0; }
+    .pap-warnbox ul { margin: 8px 0 0 0; padding-left: var(--sp-4); }
+    .pap-warnbox li, .pap-warnbox p { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.7; }
+
+    .info-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--sp-4); }
+    .info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--sp-5); transition: all var(--ease); }
+    .info-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); border-color: rgba(0,167,88,0.4); }
+    .info-card h4 { color: #00a758; margin-bottom: var(--sp-2); font-size: var(--fs-md); }
+    .info-card p, .info-card li { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+    .info-card ul { padding-left: var(--sp-4); margin-top: 6px; }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="pap-hero" aria-labelledby="pap-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Navigasi">
+      <a href="/index.html">Beranda</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="/index.html#produk">Produk</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span class="breadcrumb-current" style="color:#00a758">PAP - ProActive Plus</span>
+    </nav>
+
+    <div class="page-hero-inner">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:var(--sp-2);background:rgba(0,167,88,0.1);border:1px solid rgba(0,167,88,0.2);color:#00a758;font-size:var(--fs-xs);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-full);margin-bottom:var(--sp-4)">
+          &#128737;&#65039; Manulife Indonesia &middot; Asuransi Jiwa Berjangka
+        </div>
+
+        <h1 id="pap-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
+          <span style="color:#00a758">ProActive Plus (PAP)</span><br>Sudahkah Keluarga Anda Benar-Benar Terlindungi?
+        </h1>
+
+        <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
+          Pernahkah Anda membayangkan, jika hari ini tiba-tiba Anda tiada &mdash; apakah keluarga tetap bisa hidup layak? <strong>ProActive Plus</strong> memberikan 100% Uang Pertanggungan kepada orang yang Anda cintai, dengan premi yang tetap dan terjangkau.
+        </p>
+
+        <div style="display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap;margin-bottom:var(--sp-8)" class="fade-up stagger-2">
+          <div class="price-tag">
+            <span class="price-tag-num">Rp 380rb</span>
+            <span class="price-tag-unit">/bulan</span>
+          </div>
+          <div>
+            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Premi terjangkau mulai dari</div>
+            <div style="font-family:var(--ff-head);font-weight:700;color:#00a758;font-size:var(--fs-xl)">Rp 12.500/hari</div>
+            <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Proteksi jiwa hingga miliaran rupiah</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap" class="fade-up stagger-3">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20ProActive%20Plus%20(PAP)"
+             target="_blank" rel="noopener" class="btn btn--lg" style="background:#00a758;color:#fff;box-shadow:var(--sh-cta)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Tanya &amp; Daftar via WhatsApp
+          </a>
+          <a href="#kalkulator" class="btn btn--outline btn--lg" style="border-color:#00a758;color:#00a758">Hitung Premi Saya</a>
+        </div>
+      </div>
+
+      <div class="fade-up stagger-2">
+        <div style="background:var(--bg-card);border:2px dashed rgba(0,167,88,0.3);border-radius:var(--r-xl);padding:var(--sp-6)">
+          <div style="text-align:center;margin-bottom:var(--sp-5)">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:#00a758;letter-spacing:0.1em;text-transform:uppercase">Mengapa Term Life?</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr;gap:var(--sp-3)">
+            <div style="background:rgba(0,167,88,0.05);border:1px solid rgba(0,167,88,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
+              <div style="font-size:20px;margin-bottom:4px">&#128176;</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)">Proteksi Maksimal, Premi Minimal</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">100% premi untuk proteksi, bukan investasi</div>
+            </div>
+            <div style="background:rgba(0,167,88,0.05);border:1px solid rgba(0,167,88,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
+              <div style="font-size:20px;margin-bottom:4px">&#128274;</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)">Premi Dijamin Tetap</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Tidak naik selama masa pembayaran</div>
+            </div>
+            <div style="background:rgba(0,167,88,0.05);border:1px solid rgba(0,167,88,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
+              <div style="font-size:20px;margin-bottom:4px">&#128257;</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)">Diperpanjang Tanpa Tes Ulang</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Sampai usia 70 tahun</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RINGKASAN PRODUK -->
+<section class="section" aria-labelledby="ringkasan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Ringkasan Produk</span>
+      <h2 id="ringkasan-heading" class="section-title fade-up">Apa Itu ProActive Plus, dan Mengapa Anda Membutuhkannya?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:760px;margin-left:auto;margin-right:auto">
+        ProActive Plus (PAP) adalah asuransi jiwa berjangka <em>(term life)</em> murni dari PT Asuransi Jiwa Manulife Indonesia. Tanpa investasi, tanpa unit-link &mdash; hanya proteksi murni yang membuat preminya begitu terjangkau. Tapi, sudahkah Anda tahu apa saja keunggulannya?
+      </p>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-item fade-up"><div class="benefit-icon">&#128737;&#65039;</div><div><div class="benefit-title">Proteksi Optimal 100% UP</div><p class="benefit-desc">Bayangkan, jika Anda tiada, apakah keluarga akan kesulitan? Dengan PAP, ahli waris menerima 100% Uang Pertanggungan secara tunai (lump sum). Bukankah ini bentuk cinta yang paling nyata?</p></div></div>
+      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#128176;</div><div><div class="benefit-title">Premi Sangat Terjangkau</div><p class="benefit-desc">Tahukah Anda bahwa proteksi jiwa bisa dimulai hanya dari Rp 380.000/bulan? Bisa dibayar tahunan, semesteran, kuartalan, atau bulanan &mdash; mana yang paling pas untuk Anda?</p></div></div>
+      <div class="benefit-item fade-up stagger-2"><div class="benefit-icon">&#128197;</div><div><div class="benefit-title">Masa Pertanggungan Fleksibel</div><p class="benefit-desc">Berapa lama Anda ingin terlindungi? Pilih sendiri masa pertanggungan dari 5 hingga 20 tahun, menyesuaikan tahap hidup dan tanggungan Anda.</p></div></div>
+      <div class="benefit-item fade-up stagger-3"><div class="benefit-icon">&#128274;</div><div><div class="benefit-title">Jaminan Premi Tetap</div><p class="benefit-desc">Pernah khawatir premi naik seiring usia? Di PAP, premi Anda dikunci tetap selama masa pembayaran. Yang Anda bayar di awal sama persis dengan di akhir.</p></div></div>
+      <div class="benefit-item fade-up"><div class="benefit-icon">&#128257;</div><div><div class="benefit-title">Perpanjangan Tanpa Seleksi Ulang</div><p class="benefit-desc">Bagaimana jika kondisi kesehatan berubah? Tenang &mdash; polis dapat diperpanjang otomatis sampai usia 70 tahun tanpa perlu tes kesehatan ulang.</p></div></div>
+      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#127757;</div><div><div class="benefit-title">Pilihan Mata Uang IDR &amp; USD</div><p class="benefit-desc">Ingin proteksi dalam Dolar untuk menjaga nilai aset? PAP tersedia dalam Rupiah (IDR) maupun Dolar Amerika (USD) sesuai preferensi Anda.</p></div></div>
+    </div>
+
+    <div style="margin-top:var(--sp-8)">
+      <h3 style="color:#006838;margin-bottom:var(--sp-3)" class="fade-up">Spesifikasi Produk Secara Ringkas</h3>
+      <div style="overflow-x:auto" class="fade-up stagger-1">
+        <table class="spec-table">
+          <tr><th>Keterangan</th><th>Detail</th></tr>
+          <tr><td>Usia Masuk</td><td>18 s/d (70 &minus; Masa Pembayaran Premi) tahun</td></tr>
+          <tr><td>Masa Pertanggungan / Pembayaran</td><td>5 - 20 tahun</td></tr>
+          <tr><td>Uang Pertanggungan Minimum</td><td>Rp 100.000.000 / USD 10.000</td></tr>
+          <tr><td>Premi Minimum Tahunan</td><td>Rp 4.000.000</td></tr>
+          <tr><td>Premi Minimum Semesteran</td><td>Rp 2.100.000</td></tr>
+          <tr><td>Premi Minimum Kuartalan</td><td>Rp 1.100.000</td></tr>
+          <tr><td>Premi Minimum Bulanan</td><td>Rp 380.000</td></tr>
+          <tr><td>Mata Uang</td><td>IDR dan USD</td></tr>
+          <tr><td>Underwriting</td><td>Full Underwriting (pemeriksaan kesehatan)</td></tr>
+          <tr><td>Perpanjangan</td><td>Sampai usia 70 tahun tanpa seleksi ulang</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANFAAT -->
+<section class="section section--alt" aria-labelledby="manfaat-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Manfaat</span>
+      <h2 id="manfaat-heading" class="section-title fade-up">Manfaat Apa yang Akan Diterima Keluarga Anda?</h2>
+    </div>
+    <div class="info-card-grid fade-up">
+      <div class="info-card">
+        <h4>&#128081; Manfaat Meninggal Dunia</h4>
+        <p>100% Uang Pertanggungan dibayarkan tunai kepada ahli waris jika Tertanggung meninggal dunia selama masa pertanggungan. Pembayaran maksimal 30 hari setelah klaim disetujui. Apakah ada warisan yang lebih pasti dari ini?</p>
+      </div>
+      <div class="info-card">
+        <h4>&#128274; Jaminan Premi Tetap</h4>
+        <p>Premi tidak pernah naik selama masa pembayaran, meski usia Anda bertambah. Bukankah kepastian seperti ini yang Anda cari?</p>
+      </div>
+      <div class="info-card">
+        <h4>&#128257; Perpanjangan Otomatis</h4>
+        <p>Setelah masa pertanggungan berakhir, polis dapat diperpanjang sampai usia 70 tahun tanpa tes kesehatan ulang. Premi perpanjangan disesuaikan dengan usia saat itu.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:var(--sp-8)">
+      <h3 style="color:#006838;margin-bottom:var(--sp-3)" class="fade-up">Pilihan Mode Pembayaran &amp; Premi Minimum</h3>
+      <div style="overflow-x:auto" class="fade-up stagger-1">
+        <table class="premi-table">
+          <tr><th>Mode Pembayaran</th><th>Minimum Premi (IDR)</th><th>Frekuensi</th></tr>
+          <tr><td>Tahunan</td><td>Rp 4.000.000</td><td>1x setahun</td></tr>
+          <tr><td>Semesteran</td><td>Rp 2.100.000</td><td>2x setahun</td></tr>
+          <tr><td>Kuartalan</td><td>Rp 1.100.000</td><td>4x setahun</td></tr>
+          <tr><td>Bulanan</td><td>Rp 380.000</td><td>12x setahun</td></tr>
+        </table>
+      </div>
+
+      <h3 style="color:#006838;margin:var(--sp-6) 0 var(--sp-3)" class="fade-up">4 Kategori Penentu Premi</h3>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-bottom:var(--sp-3)">Tahukah Anda bahwa gaya hidup memengaruhi premi? Premi PAP ditentukan oleh 4 kategori risiko berikut:</p>
+      <div style="overflow-x:auto" class="fade-up stagger-1">
+        <table class="premi-table">
+          <tr><th>Kategori</th><th>Keterangan</th></tr>
+          <tr><td style="text-align:left">Pria Merokok</td><td style="text-align:left">Laki-laki yang merokok atau pernah merokok dalam 12 bulan terakhir</td></tr>
+          <tr><td style="text-align:left">Pria Tidak Merokok</td><td style="text-align:left">Laki-laki yang tidak merokok selama minimal 12 bulan</td></tr>
+          <tr><td style="text-align:left">Wanita Merokok</td><td style="text-align:left">Perempuan yang merokok atau pernah merokok dalam 12 bulan terakhir</td></tr>
+          <tr><td style="text-align:left">Wanita Tidak Merokok</td><td style="text-align:left">Perempuan yang tidak merokok selama minimal 12 bulan</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABEL PREMI -->
+<section class="section" aria-labelledby="premi-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Tabel Premi</span>
+      <h2 id="premi-heading" class="section-title fade-up">Berapa Sebenarnya Premi untuk Proteksi Rp 1 Miliar?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Contoh premi tahunan untuk Uang Pertanggungan Rp 1 Miliar, Masa Pembayaran Premi (PPP) 20 tahun. Mengejutkan betapa terjangkaunya, bukan?</p>
+    </div>
+    <h3 style="color:#006838;margin-bottom:var(--sp-3)" class="fade-up">Premi Tahunan &mdash; UP Rp 1 Miliar, PPP 20 Tahun (IDR)</h3>
+    <div style="overflow-x:auto" class="fade-up stagger-1">
+      <table class="premi-table">
+        <tr><th>Usia Masuk</th><th>Pria Tidak Merokok</th><th>Pria Merokok</th><th>Wanita Tidak Merokok</th><th>Wanita Merokok</th></tr>
+        <tr><td>25</td><td>Rp 2.250.000</td><td>Rp 2.990.000</td><td>Rp 1.770.000</td><td>Rp 2.380.000</td></tr>
+        <tr><td>30</td><td>Rp 3.000.000</td><td>Rp 3.990.000</td><td>Rp 2.350.000</td><td>Rp 3.160.000</td></tr>
+        <tr><td>35</td><td>Rp 4.370.000</td><td>Rp 5.840.000</td><td>Rp 3.370.000</td><td>Rp 4.520.000</td></tr>
+        <tr><td>40</td><td>Rp 6.630.000</td><td>Rp 8.840.000</td><td>Rp 4.900.000</td><td>Rp 6.540.000</td></tr>
+        <tr><td>45</td><td>Rp 10.070.000</td><td>Rp 13.430.000</td><td>Rp 6.900.000</td><td>Rp 9.210.000</td></tr>
+        <tr><td>50</td><td>Rp 15.530.000</td><td>Rp 20.700.000</td><td>Rp 9.850.000</td><td>Rp 13.130.000</td></tr>
+      </table>
+    </div>
+    <p style="color:var(--txt-muted);font-size:var(--fs-xs);margin-top:var(--sp-4);text-align:center" class="fade-up">
+      * Rate untuk UP Rp 1 Miliar ke atas lebih murah dibanding UP di bawahnya. Ingin angka pasti sesuai profil Anda? Gunakan <a href="#kalkulator" style="color:#00a758;font-weight:600">Kalkulator Premi</a> di bawah &mdash; 100% akurat berbasis tabel resmi Manulife.
+    </p>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section class="section section--alt" id="kalkulator" aria-labelledby="calc-heading">
+  <div class="container"><div style="max-width:820px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Kalkulator Premi</span>
+      <h2 id="calc-heading" class="section-title fade-up">Hitung Premi ProActive Plus Anda</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Akurat &amp; bebas galat &mdash; menggunakan metode <em>lookup</em> langsung dari tabel rate resmi Manulife, bukan estimasi rumus.</p>
+    </div>
+    <div class="calculator-wrap fade-up stagger-1">
+      <div class="calc-header" style="background:linear-gradient(135deg,#006838,#00a758)">
+        <h3>&#128737;&#65039; Kalkulator Premi PAP</h3>
+        <p>Term Life &middot; Usia 18-65 &middot; PPP 5-20 Tahun &middot; IDR</p>
+      </div>
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="calc-select-group">
+            <label>Jenis Kelamin</label>
+            <select id="pap-gender" onchange="papOnPPPChange()">
+              <option value="pria">Pria</option>
+              <option value="wanita">Wanita</option>
+            </select>
+          </div>
+          <div class="calc-select-group">
+            <label>Status Merokok</label>
+            <select id="pap-smoking" onchange="papCalculate()">
+              <option value="no">Tidak Merokok</option>
+              <option value="yes">Merokok</option>
+            </select>
+          </div>
+          <div class="calc-select-group">
+            <label>Masa Pembayaran Premi (PPP)</label>
+            <select id="pap-ppp" onchange="papOnPPPChange()">
+              <option value="5">5 tahun</option>
+              <option value="6">6 tahun</option>
+              <option value="7">7 tahun</option>
+              <option value="8">8 tahun</option>
+              <option value="9">9 tahun</option>
+              <option value="10">10 tahun</option>
+              <option value="11">11 tahun</option>
+              <option value="12">12 tahun</option>
+              <option value="13">13 tahun</option>
+              <option value="14">14 tahun</option>
+              <option value="15">15 tahun</option>
+              <option value="16">16 tahun</option>
+              <option value="17">17 tahun</option>
+              <option value="18">18 tahun</option>
+              <option value="19">19 tahun</option>
+              <option value="20" selected>20 tahun</option>
+            </select>
+          </div>
+          <div class="calc-select-group">
+            <label>Usia Masuk</label>
+            <select id="pap-age" onchange="papCalculate()"></select>
+            <small id="pap-age-info" style="color:var(--txt-muted);font-size:var(--fs-xs);margin-top:4px;display:block">Usia masuk maksimal = 70 &minus; PPP</small>
+          </div>
+        </div>
+        <div class="calc-select-group">
+          <label>Uang Pertanggungan (Rp)</label>
+          <input type="text" id="pap-sa" value="1.000.000.000" oninput="papFormatSA(this)" inputmode="numeric">
+          <small style="color:var(--txt-muted);font-size:var(--fs-xs);margin-top:4px;display:block">Minimum UP Rp 100.000.000</small>
+        </div>
+        <div class="quick-amounts">
+          <button type="button" class="quick-amt" onclick="papSetSA(100000000,this)">100 Juta</button>
+          <button type="button" class="quick-amt" onclick="papSetSA(250000000,this)">250 Juta</button>
+          <button type="button" class="quick-amt" onclick="papSetSA(500000000,this)">500 Juta</button>
+          <button type="button" class="quick-amt active" onclick="papSetSA(1000000000,this)">1 Miliar</button>
+          <button type="button" class="quick-amt" onclick="papSetSA(2000000000,this)">2 Miliar</button>
+          <button type="button" class="quick-amt" onclick="papSetSA(3000000000,this)">3 Miliar</button>
+          <button type="button" class="quick-amt" onclick="papSetSA(5000000000,this)">5 Miliar</button>
+        </div>
+
+        <div class="calc-result-box" id="pap-result-box">
+          <div style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:var(--sp-3);font-weight:600">Estimasi Premi per Mode Pembayaran</div>
+          <div class="premi-cards" id="pap-premi-cards"></div>
+          <div class="calc-detail-line" id="pap-detail"></div>
+          <div id="pap-message"></div>
+          <div style="margin-top:var(--sp-5)">
+            <a id="pap-wa-btn" href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20premi%20ProActive%20Plus" target="_blank" rel="noopener" class="btn btn--block" style="background:#00a758;color:#fff;box-shadow:var(--sh-cta)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Konsultasi &amp; Daftar via WhatsApp
+            </a>
+          </div>
+        </div>
+        <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--txt-muted);text-align:center">* Estimasi berbasis tabel rate resmi ProActive Plus. Angka final dikonfirmasi oleh <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20mau%20konfirmasi%20premi%20ProActive%20Plus" target="_blank" style="color:#00a758;font-weight:600">Financial Buddy Anda</a> sesuai hasil underwriting.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- KETENTUAN POLIS -->
+<section class="section" aria-labelledby="ketentuan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Ketentuan Polis</span>
+      <h2 id="ketentuan-heading" class="section-title fade-up">Apa Saja yang Perlu Anda Ketahui Sebelum Memutuskan?</h2>
+    </div>
+    <div class="info-card-grid fade-up">
+      <div class="info-card">
+        <h4>&#9203; Masa Percobaan (Cooling Off)</h4>
+        <p>14 hari kalender sejak polis diterima. Berubah pikiran? Anda bisa membatalkan dan menerima pengembalian premi penuh (dikurangi biaya pemeriksaan kesehatan jika ada).</p>
+      </div>
+      <div class="info-card">
+        <h4>&#128340; Masa Tenggang (Grace Period)</h4>
+        <p>45 hari kalender setelah jatuh tempo premi. Selama masa ini, polis tetap aktif dan Anda tetap terlindungi. Lewat dari itu tanpa pembayaran, polis berakhir.</p>
+      </div>
+      <div class="info-card">
+        <h4>&#128257; Perpanjangan (Renewal)</h4>
+        <ul>
+          <li>Dapat diperpanjang sampai usia 70 tahun</li>
+          <li>Tanpa seleksi risiko / tes kesehatan ulang</li>
+          <li>Premi disesuaikan dengan usia saat perpanjangan</li>
+          <li>Otomatis, kecuali Anda ajukan pembatalan</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>&#128260; Pemulihan Polis (Reinstatement)</h4>
+        <ul>
+          <li>Polis lapse dapat dipulihkan maksimal 2 tahun</li>
+          <li>Melunasi premi tertunggak beserta bunga</li>
+          <li>Menyerahkan pernyataan/pemeriksaan kesehatan</li>
+          <li>Tergantung hasil penilaian risiko Manulife</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pap-warnbox fade-up stagger-1" style="margin-top:var(--sp-6)">
+      <p><strong>&#9888; Pengecualian:</strong> Manfaat meninggal dunia <strong>tidak dibayarkan</strong> jika disebabkan oleh:</p>
+      <ul>
+        <li>Bunuh diri dalam 2 tahun pertama sejak polis berlaku atau dipulihkan</li>
+        <li>Tindakan melawan hukum yang dilakukan oleh Tertanggung</li>
+        <li>Perang, pemberontakan, atau kerusuhan</li>
+        <li>Senjata nuklir, kimia, atau biologi</li>
+      </ul>
+    </div>
+
+    <div class="pap-infobox fade-up stagger-2">
+      <p><strong>Pertanggungan berakhir</strong> pada saat paling awal terjadinya: Tertanggung meninggal dunia &middot; masa pertanggungan berakhir dan tidak diperpanjang &middot; polis dibatalkan &middot; premi tidak dibayar melewati masa tenggang 45 hari &middot; Tertanggung mencapai usia 70 tahun.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CARA KLAIM -->
+<section class="section section--alt" aria-labelledby="klaim-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Cara Klaim</span>
+      <h2 id="klaim-heading" class="section-title fade-up">Bagaimana Proses Klaim yang Sesungguhnya?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Lebih sederhana dari yang Anda kira. Hanya 5 langkah, dengan pendampingan penuh dari agen Anda.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-8);align-items:start" class="fade-up">
+      <div>
+        <div class="timeline">
+          <div class="timeline-item"><h4>1. Lapor Klaim</h4><p>Ajukan klaim tertulis kepada Manulife dalam 90 hari sejak Tertanggung meninggal dunia.</p></div>
+          <div class="timeline-item"><h4>2. Siapkan Dokumen</h4><p>Kumpulkan seluruh dokumen yang dibutuhkan (lihat daftar di samping).</p></div>
+          <div class="timeline-item"><h4>3. Kirim Dokumen</h4><p>Serahkan dokumen lengkap ke kantor Manulife atau melalui agen/partner bisnis Anda.</p></div>
+          <div class="timeline-item"><h4>4. Verifikasi</h4><p>Manulife memproses dan memverifikasi klaim Anda.</p></div>
+          <div class="timeline-item"><h4>5. Pembayaran</h4><p>Manfaat dibayarkan maksimal 30 hari setelah klaim disetujui dan dokumen lengkap.</p></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:#006838;margin-bottom:var(--sp-3)">Dokumen yang Dibutuhkan</h3>
+        <div style="overflow-x:auto">
+          <table class="premi-table">
+            <tr><th>No</th><th>Dokumen</th></tr>
+            <tr><td>1</td><td style="text-align:left">Polis asli</td></tr>
+            <tr><td>2</td><td style="text-align:left">Formulir klaim (diisi &amp; ditandatangani)</td></tr>
+            <tr><td>3</td><td style="text-align:left">Akta kematian dari instansi berwenang</td></tr>
+            <tr><td>4</td><td style="text-align:left">Fotokopi KTP Tertanggung</td></tr>
+            <tr><td>5</td><td style="text-align:left">Fotokopi KTP ahli waris</td></tr>
+            <tr><td>6</td><td style="text-align:left">Surat keterangan dokter/RS (penyebab kematian)</td></tr>
+            <tr><td>7</td><td style="text-align:left">Surat keterangan kepolisian (jika kecelakaan)</td></tr>
+          </table>
+        </div>
+        <div class="pap-infobox" style="margin-top:var(--sp-4)">
+          <p><strong>Kontak Klaim Manulife:</strong> Customer Contact Center 021-2555-7777 &middot; customer_id@manulife.com &middot; Senin-Jumat 08:00-17:00 WIB.</p>
+          <p><strong>Tips:</strong> Hubungi partner bisnis Anda (Petrus Jakub - 087781896087) untuk pendampingan dari awal hingga manfaat cair.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ILUSTRASI -->
+<section class="section" aria-labelledby="ilustrasi-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Ilustrasi</span>
+      <h2 id="ilustrasi-heading" class="section-title fade-up">Seberapa Besar Perlindungan yang Anda Dapat?</h2>
+    </div>
+    <div class="pap-infobox fade-up">
+      <p><strong>Profil:</strong> Pria, 45 tahun, Tidak Merokok</p>
+      <p><strong>Uang Pertanggungan:</strong> Rp 1.000.000.000 (1 Miliar)</p>
+      <p><strong>Masa Pembayaran Premi (PPP):</strong> 5 tahun</p>
+      <p><strong>Rate (tabel UP &ge; 1M, PPP 5, usia 45, Pria Non-Merokok):</strong> 6,39 per juta UP per tahun</p>
+      <p><strong>Premi Tahunan:</strong> 6,39 &times; (1.000.000.000 / 1.000.000) = <strong>Rp 6.390.000 / tahun</strong></p>
+    </div>
+    <div style="overflow-x:auto" class="fade-up stagger-1">
+      <table class="premi-table">
+        <tr><th>Tahun ke-</th><th>Usia</th><th>Premi Tahunan</th><th>Status Polis</th><th>Manfaat Jika Meninggal</th></tr>
+        <tr><td>1</td><td>45</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+        <tr><td>2</td><td>46</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+        <tr><td>3</td><td>47</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+        <tr><td>4</td><td>48</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+        <tr><td>5</td><td>49</td><td>Rp 6.390.000</td><td>Aktif</td><td>Rp 1.000.000.000</td></tr>
+      </table>
+    </div>
+    <div class="pap-warnbox fade-up stagger-2">
+      <p><strong>&#128161; Sadarkah Anda?</strong> Dengan total premi 5 tahun hanya <strong>Rp 31.950.000</strong>, keluarga Anda terlindungi senilai <strong>Rp 1 Miliar</strong> &mdash; perlindungan <strong>lebih dari 31x lipat</strong> dari total premi yang dibayar. Adakah instrumen lain yang menawarkan rasio sebesar ini?</p>
+    </div>
+    <div class="pap-infobox fade-up stagger-3">
+      <p><strong>Catatan:</strong> ProActive Plus adalah asuransi jiwa berjangka murni <em>(pure term life)</em>. Tidak ada nilai tunai atau investasi &mdash; seluruh premi digunakan untuk proteksi jiwa, itulah mengapa preminya jauh lebih terjangkau dibanding asuransi seumur hidup atau unit-link.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt" aria-labelledby="faq-heading">
+  <div class="container"><div style="max-width:780px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">FAQ</span>
+      <h2 id="faq-heading" class="section-title fade-up">Masih Ada Pertanyaan di Benak Anda?</h2>
+    </div>
+    <div class="faq-list fade-up stagger-1">
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Apa itu ProActive Plus (PAP)?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">ProActive Plus adalah asuransi jiwa berjangka <em>(term life)</em> dari Manulife Indonesia. Produk ini membayarkan 100% Uang Pertanggungan kepada ahli waris jika Tertanggung meninggal dunia selama masa pertanggungan. Ini asuransi murni tanpa investasi, sehingga preminya sangat terjangkau.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Siapa yang bisa membeli ProActive Plus?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Siapa saja berusia 18 tahun sampai maksimal (70 &minus; masa pembayaran premi). Contoh: PPP 20 tahun &rarr; usia masuk maksimal 50 tahun; PPP 5 tahun &rarr; maksimal 65 tahun. Pembelian melalui Full Underwriting (pemeriksaan kesehatan).</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Bagaimana cara menghitung premi PAP?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Premi ditentukan oleh: (1) usia masuk, (2) jenis kelamin, (3) status merokok, (4) masa pembayaran premi (PPP), dan (5) Uang Pertanggungan. Gunakan <a href="#kalkulator" style="color:#00a758;font-weight:600">Kalkulator Premi</a> di atas untuk hasil langsung. Rate lebih murah untuk UP Rp 1 Miliar ke atas.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Apa yang terjadi jika saya telat bayar premi?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Ada masa tenggang 45 hari setelah jatuh tempo. Selama itu polis tetap aktif dan Anda tetap terlindungi. Jika setelah 45 hari premi tetap belum dibayar, polis berakhir (lapse). Polis lapse masih bisa dipulihkan dalam 2 tahun dengan membayar tunggakan plus bunga dan pemeriksaan kesehatan ulang.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Bagaimana cara memperpanjang polis?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Setelah masa pertanggungan berakhir, polis otomatis diperpanjang tanpa tes kesehatan ulang sampai usia 70 tahun. Premi perpanjangan disesuaikan dengan usia Anda saat itu dan tabel premi yang berlaku. Jika tidak ingin perpanjang, Anda bisa mengajukan pembatalan.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Apa saja yang tidak ditanggung (pengecualian)?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Manfaat tidak dibayarkan jika kematian disebabkan oleh: (1) bunuh diri dalam 2 tahun pertama polis, (2) tindakan melawan hukum oleh Tertanggung, (3) perang/pemberontakan/kerusuhan, (4) senjata nuklir/kimia/biologi. Di luar itu, semua penyebab kematian ditanggung termasuk sakit dan kecelakaan.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger"><span class="faq-question">Bagaimana cara mengajukan klaim?</span><span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-body"><div class="faq-answer">Ajukan klaim tertulis dalam 90 hari sejak Tertanggung meninggal. Siapkan dokumen: polis asli, formulir klaim, akta kematian, KTP, dan surat keterangan dokter/RS. Pembayaran dilakukan maksimal 30 hari setelah klaim disetujui. Hubungi Customer Contact Center 021-2555-7777 atau partner bisnis Anda untuk bantuan.</div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- CTA -->
+<section class="section" aria-labelledby="cta-heading">
+  <div class="container">
+    <div style="background:linear-gradient(135deg,#006838,#00a758);border-radius:var(--r-xl);padding:var(--sp-10) var(--sp-8);text-align:center;color:#fff;position:relative;overflow:hidden" class="fade-up">
+      <h2 id="cta-heading" style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:var(--sp-3)">Apakah Anda Siap Memberi Kepastian untuk Keluarga?</h2>
+      <p style="color:rgba(255,255,255,0.9);font-size:var(--fs-md);max-width:640px;margin:0 auto var(--sp-6);line-height:1.7">
+        Jangan tunggu sampai terlambat. Satu langkah kecil hari ini bisa menjadi penyelamat besar bagi orang-orang tercinta. Konsultasikan ProActive Plus sekarang &mdash; gratis, tanpa kewajiban.
+      </p>
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20konsultasi%20ProActive%20Plus%20(PAP)" target="_blank" rel="noopener" class="btn btn--lg" style="background:#fff;color:#006838;font-weight:700">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Mulai Konsultasi Gratis
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<!-- Premium rate lookup data -->
+<script src="/assets/pap-premi.js"></script>
+<!-- Calculator logic (lookup-based, error-free) -->
+<script>
+(function(){
+  'use strict';
+
+  function fmt(n){ return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function ceilHundred(n){ return Math.ceil(n / 100) * 100; }
+  function parseNum(str){ return parseInt(String(str).replace(/\./g,'').replace(/[^0-9]/g,''),10) || 0; }
+
+  window.papFormatSA = function(input){
+    var raw = input.value.replace(/\./g,'').replace(/[^0-9]/g,'');
+    var pos = input.selectionStart;
+    var before = input.value.length;
+    if (raw){ input.value = fmt(parseInt(raw,10)); }
+    else { input.value = ''; }
+    // best-effort caret keep
+    var after = input.value.length;
+    if (typeof pos === 'number') { try { input.setSelectionRange(pos + (after-before), pos + (after-before)); } catch(e){} }
+    // clear active quick-amount highlight when typing custom value
+    document.querySelectorAll('#kalkulator .quick-amt').forEach(function(b){ b.classList.remove('active'); });
+    papCalculate();
+  };
+
+  window.papSetSA = function(amount, btn){
+    document.getElementById('pap-sa').value = fmt(amount);
+    document.querySelectorAll('#kalkulator .quick-amt').forEach(function(b){ b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    papCalculate();
+  };
+
+  window.papOnPPPChange = function(){
+    var ppp = parseInt(document.getElementById('pap-ppp').value, 10);
+    var maxAge = 70 - ppp;
+    if (maxAge > 65) maxAge = 65; // practical limit (data covers 18-69; entry capped)
+    var ageSelect = document.getElementById('pap-age');
+    var currentAge = parseInt(ageSelect.value, 10) || 30;
+    ageSelect.innerHTML = '';
+    for (var i = 18; i <= maxAge; i++){
+      var opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = i + ' tahun';
+      ageSelect.appendChild(opt);
+    }
+    if (currentAge > maxAge) currentAge = maxAge;
+    if (currentAge < 18) currentAge = 18;
+    ageSelect.value = currentAge;
+    var info = document.getElementById('pap-age-info');
+    if (info) info.textContent = 'Untuk PPP ' + ppp + ' tahun, usia masuk: 18 - ' + maxAge + ' tahun';
+    papCalculate();
+  };
+
+  function renderError(msg){
+    document.getElementById('pap-premi-cards').innerHTML = '';
+    document.getElementById('pap-detail').innerHTML = '';
+    document.getElementById('pap-message').innerHTML = '<div class="calc-warning">' + msg + '</div>';
+  }
+
+  window.papCalculate = function(){
+    var RATES = window.PAP_RATES;
+    var cards = document.getElementById('pap-premi-cards');
+    var detail = document.getElementById('pap-detail');
+    var message = document.getElementById('pap-message');
+    if (!RATES || !cards) return;
+
+    var gender = document.getElementById('pap-gender').value;
+    var smoking = document.getElementById('pap-smoking').value;
+    var age = parseInt(document.getElementById('pap-age').value, 10);
+    var ppp = document.getElementById('pap-ppp').value;
+    var sa = parseNum(document.getElementById('pap-sa').value);
+
+    if (!age || isNaN(age)) { renderError('Silakan pilih usia terlebih dahulu.'); return; }
+    if (sa < 100000000) { renderError('Uang Pertanggungan minimum adalah Rp 100.000.000 (100 juta).'); return; }
+
+    var maxAge = 70 - parseInt(ppp, 10);
+    if (age > maxAge) { renderError('Untuk PPP ' + ppp + ' tahun, usia masuk maksimal ' + maxAge + ' tahun. Usia ' + age + ' tahun melebihi batas.'); return; }
+
+    // rate index: [Pria Merokok, Pria Tidak Merokok, Wanita Merokok, Wanita Tidak Merokok]
+    var rateIndex;
+    if (gender === 'pria' && smoking === 'yes') rateIndex = 0;
+    else if (gender === 'pria' && smoking === 'no') rateIndex = 1;
+    else if (gender === 'wanita' && smoking === 'yes') rateIndex = 2;
+    else rateIndex = 3;
+
+    var rateTable = (sa >= 1000000000) ? RATES.ge1m : RATES.lt1m;
+    var ageStr = String(age);
+    if (!rateTable[ppp] || !rateTable[ppp][ageStr]) {
+      renderError('Data rate tidak tersedia untuk kombinasi PPP ' + ppp + ' tahun dan usia ' + age + ' tahun.');
+      return;
+    }
+    var rate = rateTable[ppp][ageStr][rateIndex];
+    if (rate == null) { renderError('Kombinasi tidak tersedia pada tabel rate.'); return; }
+
+    // annual premium = rate per juta UP * (UP / 1.000.000) * 1.000
+    var annual = rate * (sa / 1000000) * 1000;
+    var semester = ceilHundred(annual * 0.525);
+    var quarterly = ceilHundred(annual * 0.275);
+    var monthly = ceilHundred(annual * 0.095);
+
+    var catLabel = ['Pria Merokok','Pria Tidak Merokok','Wanita Merokok','Wanita Tidak Merokok'][rateIndex];
+    var tableUsed = (sa >= 1000000000) ? 'UP \u2265 1 Miliar' : 'UP < 1 Miliar';
+
+    cards.innerHTML =
+      modeCard('Tahunan', annual, 'per tahun (1x)') +
+      modeCard('Semesteran', semester, 'per 6 bulan (2x)') +
+      modeCard('Kuartalan', quarterly, 'per 3 bulan (4x)') +
+      modeCard('Bulanan', monthly, 'per bulan (12x)');
+
+    detail.innerHTML =
+      '<strong>Kategori:</strong> ' + catLabel + '<br>' +
+      '<strong>Tabel Rate:</strong> ' + tableUsed + ' &middot; <strong>Rate:</strong> ' + rate + ' per juta UP/tahun<br>' +
+      '<strong>Uang Pertanggungan:</strong> Rp ' + fmt(sa) + '<br>' +
+      '<strong>Rumus:</strong> ' + rate + ' &times; (' + fmt(sa) + ' / 1.000.000) = <strong>Rp ' + fmt(annual) + '</strong> / tahun';
+
+    if (annual < 4000000) {
+      message.innerHTML = '<div class="calc-note-box"><strong>&#9888; Catatan:</strong> Premi tahunan (Rp ' + fmt(annual) + ') di bawah minimum Rp 4.000.000. Tingkatkan Uang Pertanggungan atau perpendek masa pembayaran agar memenuhi syarat minimum premi PAP.</div>';
+    } else {
+      message.innerHTML = '';
+    }
+
+    // update WA link with prefilled details
+    var waBtn = document.getElementById('pap-wa-btn');
+    if (waBtn) {
+      var msg = 'Halo Kak, saya mau tanya ProActive Plus. Profil: ' + catLabel + ', usia ' + age + ', PPP ' + ppp + ' thn, UP Rp ' + fmt(sa) + '. Estimasi premi tahunan Rp ' + fmt(annual) + '.';
+      waBtn.href = 'https://wa.me/6287781896087?text=' + encodeURIComponent(msg);
+    }
+  };
+
+  function modeCard(title, value, sub){
+    return '<div class="premi-mode-card"><div class="pmc-head">' + title + '</div>' +
+           '<div class="pmc-body"><div class="pmc-main">Rp ' + fmt(value) + '</div>' +
+           '<div class="pmc-sub">' + sub + '</div></div></div>';
+  }
+
+  function initPap(){
+    if (!document.getElementById('pap-age')) return;
+    if (!window.PAP_RATES) { setTimeout(initPap, 60); return; }
+    papOnPPPChange();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPap);
+  } else {
+    initPap();
+  }
+})();
+</script>
+
+<script src="/assets/main.js"></script>
+</body>
+</html>
