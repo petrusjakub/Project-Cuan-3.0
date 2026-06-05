@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami — Manulife x BMI Agency | PROJECTCUAN</title>
+  <meta name="description" content="Kenali sinergi Manulife Indonesia dan BMI Agency. Kekuatan finansial berskala raksasa, bukti klaim nyata, dan solusi perlindungan inovatif untuk keluarga Anda.">
+  <meta property="og:title" content="Tentang Kami — Manulife x BMI Agency | PROJECTCUAN">
+  <meta property="og:description" content="Kenali sinergi Manulife Indonesia dan BMI Agency. Kekuatan finansial berskala raksasa, bukti klaim nyata, dan solusi perlindungan inovatif untuk keluarga Anda.">
+  <meta name="theme-color" content="#00AC5B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── TENTANG PAGE EXTRAS ── */
+    .tentang-hero {
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
+      padding: var(--sp-12) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .tentang-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,172,91,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .tentang-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,172,91,0.15);
+      color: var(--jade);
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      margin-bottom: var(--sp-5);
+    }
+    .tentang-hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: var(--sp-5);
+    }
+    .tentang-hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: var(--fs-md);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: var(--sp-5);
+    }
+    .tentang-hero-intro {
+      color: rgba(255,255,255,0.6);
+      font-size: var(--fs-sm);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    .finance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-5);
+    }
+    .finance-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .finance-card:hover { border-color: var(--jade-20); transform: translateY(-2px); box-shadow: var(--sh-md); }
+    .finance-card-num {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 900;
+      color: var(--jade);
+      margin-bottom: var(--sp-2);
+    }
+    .finance-card-lbl {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+    }
+
+    .bukti-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+    }
+    .bukti-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-md); }
+
+    .solusi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .solusi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+    }
+    .solusi-card:hover { border-color: var(--jade-20); transform: translateY(-3px); box-shadow: var(--sh-md); }
+    .solusi-icon {
+      width: 48px; height: 48px;
+      background: var(--jade-10);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: var(--sp-4);
+    }
+    .solusi-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .solusi-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.65;
+    }
+    .solusi-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-3) 0 0;
+    }
+    .solusi-list li {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .solusi-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--jade);
+      font-weight: 700;
+    }
+
+    .rating-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+    }
+    .rating-table th {
+      background: var(--jade);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: center;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      letter-spacing: 0.04em;
+    }
+    .rating-table td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+    }
+    .rating-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .rating-highlight { color: var(--jade); font-weight: 700; font-family: var(--ff-head); }
+
+    .agency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--sp-5);
+    }
+    .agency-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+    }
+    .agency-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-md); transform: translateY(-3px); }
+    .agency-card-icon {
+      width: 56px; height: 56px;
+      background: var(--jade-10);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: var(--sp-4);
+    }
+    .agency-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .agency-card-sub {
+      font-size: var(--fs-sm);
+      color: var(--txt-muted);
+      margin-bottom: var(--sp-4);
+    }
+    .agency-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .agency-list li {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      padding: 6px 0;
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .agency-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--jade);
+      font-weight: 700;
+    }
+
+    .petrus-section {
+      background: linear-gradient(135deg, var(--jade-10), var(--bg-alt));
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      border: 1px solid var(--jade-20);
+    }
+    .petrus-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-4);
+    }
+    .petrus-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--sp-5);
+    }
+    .petrus-list li {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      padding: 6px 0;
+      padding-left: 22px;
+      position: relative;
+    }
+    .petrus-list li::before {
+      content: '💚';
+      position: absolute;
+      left: 0;
+    }
+
+    .komitmen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--sp-5);
+    }
+    .komitmen-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .komitmen-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-md); }
+    .komitmen-icon { font-size: 32px; margin-bottom: var(--sp-3); }
+    .komitmen-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .komitmen-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .finance-grid { grid-template-columns: repeat(2, 1fr); }
+      .agency-grid { grid-template-columns: 1fr; }
+      .rating-table { font-size: var(--fs-xs); }
+      .rating-table th, .rating-table td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="tentang-hero" aria-labelledby="tentang-heading">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="tentang-hero-tag fade-up">💚 Tentang Kami</div>
+    <h1 id="tentang-heading" class="tentang-hero-title fade-up stagger-1">
+      Tentang Kami: Manulife x BMI Agency
+    </h1>
+    <p class="tentang-hero-sub fade-up stagger-2">
+      Selamat datang di halaman resmi sinergi Manulife Indonesia dan BMI Agency. Kami hadir sebagai mitra terpercaya untuk menemani setiap langkah perjalanan finansial Anda, memberikan kepastian di tengah ketidakpastian dunia, dan membantu Anda mewarisi ketenangan dari generasi ke generasi.
+    </p>
+    <p class="tentang-hero-intro fade-up stagger-3">
+      Sinergi ini menggabungkan kekuatan berskala global dari Manulife, raksasa asuransi dengan rekam jejak finansial yang kokoh, serta BMI Agency, tim keagenan profesional yang berkomitmen memberikan pelayanan terbaik, transparan, dan berorientasi pada kebutuhan nasabah.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TRUST STRIP
+═══════════════════════════════════════════ -->
+<div class="trust-strip" aria-label="Kekuatan finansial Manulife">
+  <div class="container">
+    <div class="trust-grid">
+      <div>
+        <div class="trust-num">Rp79,1 T</div>
+        <div class="trust-lbl">Aset Kelolaan</div>
+      </div>
+      <div>
+        <div class="trust-num">Rp10,5 T</div>
+        <div class="trust-lbl">Total Premi</div>
+      </div>
+      <div>
+        <div class="trust-num">Rp41,9 T</div>
+        <div class="trust-lbl">Cadangan Teknis</div>
+      </div>
+      <div>
+        <div class="trust-num">584%</div>
+        <div class="trust-lbl">RBC</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MENGAPA MEMILIH KAMI
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="mengapa-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Keunggulan Kami</span>
+      <h2 id="mengapa-heading" class="section-title fade-up">
+        Mengapa Memilih <span class="kw">Kami</span>?
+      </h2>
+    </div>
+
+    <!-- Kekuatan Finansial -->
+    <div style="margin-bottom:var(--sp-10)">
+      <h3 class="fade-up" style="font-family:var(--ff-head);font-size:var(--fs-lg);color:var(--txt-head);margin-bottom:var(--sp-3)">
+        💰 Kekuatan Finansial Berskala Raksasa
+      </h3>
+      <p class="fade-up stagger-1" style="font-size:var(--fs-sm);color:var(--txt-sub);margin-bottom:var(--sp-6)">
+        Manulife Indonesia didukung oleh fondasi keuangan yang sangat kuat (data April 2024):
+      </p>
+      <div class="finance-grid fade-up stagger-2">
+        <div class="finance-card">
+          <div class="finance-card-num">Rp79,1 T</div>
+          <div class="finance-card-lbl">Aset Kelolaan (AUM)</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-num">Rp10,5 T</div>
+          <div class="finance-card-lbl">Total Pendapatan Premi</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-num">Rp41,9 T</div>
+          <div class="finance-card-lbl">Cadangan Teknis</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-num">584%</div>
+          <div class="finance-card-lbl">Modal Berbasis Risiko (RBC)</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-num">Rp8,3 T</div>
+          <div class="finance-card-lbl">Klaim & Manfaat Terbayar/Tahun</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-num">AA-</div>
+          <div class="finance-card-lbl">Rating Kredit (Fitch)</div>
+        </div>
+      </div>
+      <p class="fade-up stagger-3" style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-4);text-align:center">
+        RBC 584% jauh di atas ketentuan minimum regulasi OJK. Rating Kredit: AM Best (A+), Fitch (AA-), Moody's (A1), S&P (AA-)
+      </p>
+    </div>
+
+    <!-- Bukti Nyata Kepedulian -->
+    <div>
+      <h3 class="fade-up" style="font-family:var(--ff-head);font-size:var(--fs-lg);color:var(--txt-head);margin-bottom:var(--sp-3)">
+        ❤️ Bukti Nyata Kepedulian
+      </h3>
+      <p class="fade-up stagger-1" style="font-size:var(--fs-sm);color:var(--txt-sub);margin-bottom:var(--sp-5)">
+        Bukan sekadar janji, tapi bukti nyata pembayaran klaim:
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-5)">
+        <div class="bukti-card fade-up stagger-2">
+          <div style="font-size:28px;margin-bottom:var(--sp-3)">🏆</div>
+          <div style="font-family:var(--ff-head);font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-2)">Total Klaim Disetujui & Cair</div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-sub)">Fantastis di 2025 - bukti bahwa Manulife hadir saat nasabah paling membutuhkan.</p>
+        </div>
+        <div class="bukti-card fade-up stagger-3">
+          <div style="font-size:28px;margin-bottom:var(--sp-3)">💰</div>
+          <div style="font-family:var(--ff-head);font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-2)">Klaim Jiwa Rp5 Miliar</div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-sub)">100% cair tanpa potongan, langsung diterima ahli waris.</p>
+        </div>
+        <div class="bukti-card fade-up stagger-3">
+          <div style="font-size:28px;margin-bottom:var(--sp-3)">🏥</div>
+          <div style="font-family:var(--ff-head);font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-2)">Klaim Medis Penyakit Kritis</div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-sub)">Pengurusan klaim medis penuh untuk penyakit kritis, diproses cepat dan transparan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SOLUSI PERLINDUNGAN INOVATIF
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="solusi-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Produk Unggulan</span>
+      <h2 id="solusi-heading" class="section-title fade-up">
+        Solusi Perlindungan <span class="kw">Inovatif</span> Kami
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Empat pilar solusi yang dirancang untuk melindungi dan menyejahterakan keluarga Anda.
+      </p>
+    </div>
+
+    <div class="solusi-grid">
+      <!-- MiUHC -->
+      <div class="solusi-card fade-up">
+        <div class="solusi-icon">🏥</div>
+        <div class="solusi-title">Solusi Kesehatan (MiUHC)</div>
+        <div class="solusi-desc">Perlindungan medis komprehensif untuk keluarga Anda.</div>
+        <ul class="solusi-list">
+          <li>Manfaat hingga Rp20 Miliar/tahun</li>
+          <li>Opsi perlindungan seluruh dunia</li>
+          <li>Kamar 1 orang (private room)</li>
+          <li>Diskon premi untuk keluarga</li>
+          <li>Cashless di Manulife Preferred Hospitals</li>
+        </ul>
+      </div>
+
+      <!-- MDLA -->
+      <div class="solusi-card fade-up stagger-1">
+        <div class="solusi-icon">🛡️</div>
+        <div class="solusi-title">Solusi Warisan & Jiwa (MDLA)</div>
+        <div class="solusi-desc">Paper asset miliaran rupiah sebagai warisan modern.</div>
+        <ul class="solusi-list">
+          <li>Alternatif warisan selain properti</li>
+          <li>Likuid dan mudah dicairkan</li>
+          <li>Bebas sengketa waris</li>
+          <li>Opsi pengembalian premi 100%</li>
+        </ul>
+      </div>
+
+      <!-- FLEXI Syariah -->
+      <div class="solusi-card fade-up stagger-2">
+        <div class="solusi-icon">☪️</div>
+        <div class="solusi-title">Solusi Syariah (FLEXI Syariah)</div>
+        <div class="solusi-desc">Perlindungan jiwa sesuai prinsip syariah Islam.</div>
+        <ul class="solusi-list">
+          <li>Sesuai prinsip syariah</li>
+          <li>Surplus underwriting untuk peserta</li>
+          <li>Pilihan mata uang IDR/USD</li>
+        </ul>
+      </div>
+
+      <!-- MDWA -->
+      <div class="solusi-card fade-up stagger-3">
+        <div class="solusi-icon">🌅</div>
+        <div class="solusi-title">Solusi Perencanaan Masa Depan (MDWA)</div>
+        <div class="solusi-desc">Rangkaian plan untuk berbagai kebutuhan jangka panjang.</div>
+        <ul class="solusi-list">
+          <li>Plan Anuitas - penghasilan pasif</li>
+          <li>Plan Beasiswa - pendidikan anak</li>
+          <li>Plan Combo - proteksi + investasi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     RATING KREDIT INTERNASIONAL
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="rating-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Kredibilitas Global</span>
+      <h2 id="rating-heading" class="section-title fade-up">
+        Rating Kredit <span class="kw">Internasional</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Diakui oleh lembaga pemeringkat terkemuka dunia.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-6)">
+      <!-- Global Ratings -->
+      <div class="fade-up stagger-2">
+        <h3 style="font-family:var(--ff-head);font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-4);text-align:center">
+          🌍 Manulife Financial (Global)
+        </h3>
+        <div style="border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border)">
+          <table class="rating-table">
+            <thead>
+              <tr>
+                <th>Lembaga</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>AM Best</td><td class="rating-highlight">A+</td></tr>
+              <tr><td>Fitch</td><td class="rating-highlight">AA-</td></tr>
+              <tr><td>Moody's</td><td class="rating-highlight">A1</td></tr>
+              <tr><td>S&P</td><td class="rating-highlight">AA-</td></tr>
+              <tr><td>DBRS</td><td class="rating-highlight">AA-</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Indonesia Ratings -->
+      <div class="fade-up stagger-3">
+        <h3 style="font-family:var(--ff-head);font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-4);text-align:center">
+          🇮🇩 Manulife Indonesia
+        </h3>
+        <div style="border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border)">
+          <table class="rating-table">
+            <thead>
+              <tr>
+                <th>Lembaga</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>S&P</td><td class="rating-highlight">BBB</td></tr>
+              <tr><td>Fitch</td><td class="rating-highlight">BBB</td></tr>
+              <tr><td>Moody's</td><td class="rating-highlight">Baa2</td></tr>
+              <tr><td>JCR</td><td class="rating-highlight">BBB+</td></tr>
+              <tr><td>RBC</td><td class="rating-highlight">584%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     AGENCY KAMI
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="agency-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Tim Kami</span>
+      <h2 id="agency-heading" class="section-title fade-up">
+        Agency <span class="kw">Kami</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Dua pilar komunitas yang saling melengkapi untuk pertumbuhan bisnis dan personal.
+      </p>
+    </div>
+
+    <div class="agency-grid">
+      <!-- BMI -->
+      <div class="agency-card fade-up stagger-2">
+        <div class="agency-card-icon">🤝</div>
+        <div class="agency-card-title">BMI (Bersatu Menggapai Impian)</div>
+        <div class="agency-card-sub">Agency fokus kolaborasi dan mentorship terstruktur</div>
+        <ul class="agency-list">
+          <li>Mentorship terstruktur dari leader berpengalaman</li>
+          <li>Training intensif dan berkelanjutan</li>
+          <li>Komunitas solid yang saling mendukung</li>
+          <li>Incentive trip ke dalam dan luar negeri</li>
+          <li>Sistem bisnis terbukti menghasilkan</li>
+        </ul>
+      </div>
+
+      <!-- YBC -->
+      <div class="agency-card fade-up stagger-3">
+        <div class="agency-card-icon">🌉</div>
+        <div class="agency-card-title">YBC (Your Bridge Community)</div>
+        <div class="agency-card-sub">Jembatan upgrade hidup ke level berikutnya</div>
+        <ul class="agency-list">
+          <li>Public speaking & leadership development</li>
+          <li>Digital marketing & personal branding</li>
+          <li>Network premium dan berkualitas</li>
+          <li>Passive income system yang terstruktur</li>
+          <li>Komunitas bertumbuh bersama</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SIAPA PETRUS JAKUB?
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="petrus-heading">
+  <div class="container">
+    <div class="petrus-section fade-up">
+      <div style="text-align:center;margin-bottom:var(--sp-6)">
+        <span class="section-tag">Kenalan Yuk!</span>
+        <h2 id="petrus-heading" class="petrus-title" style="margin-top:var(--sp-3)">
+          Siapa Petrus Jakub?
+        </h2>
+      </div>
+      <div style="max-width:600px;margin:0 auto">
+        <p style="font-size:var(--fs-sm);color:var(--txt-sub);margin-bottom:var(--sp-5);line-height:1.7;text-align:center">
+          Financial planner & business mentor yang siap membantu Anda merencanakan masa depan finansial dengan lebih baik.
+        </p>
+        <ul class="petrus-list">
+          <li>Financial planner & business mentor berpengalaman</li>
+          <li>Bernaung di BMI Agency dan YBC Community</li>
+          <li>Konsultasi santai, transparan, tanpa tekanan</li>
+          <li>Fokus pada kebutuhan dan kenyamanan nasabah</li>
+        </ul>
+        <div style="text-align:center;margin-top:var(--sp-6)">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%20Petrus%2C%20aku%20mau%20konsultasi"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn--cta btn--lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat Petrus via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KOMITMEN PELAYANAN
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="komitmen-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Janji Kami</span>
+      <h2 id="komitmen-heading" class="section-title fade-up">
+        Komitmen Pelayanan <span class="kw">BMI Agency</span>
+      </h2>
+    </div>
+
+    <div class="komitmen-grid">
+      <div class="komitmen-card fade-up">
+        <div class="komitmen-icon">📋</div>
+        <div class="komitmen-title">Transparan</div>
+        <div class="komitmen-desc">Pengajuan proteksi dipandu dengan jelas dan transparan, tanpa informasi yang disembunyikan.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-1">
+        <div class="komitmen-icon">⚖️</div>
+        <div class="komitmen-title">Sesuai Regulasi</div>
+        <div class="komitmen-desc">Seluruh proses sesuai regulasi OJK. Anda terlindungi secara hukum dan etika.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-2">
+        <div class="komitmen-icon">💚</div>
+        <div class="komitmen-title">Tanda Cinta</div>
+        <div class="komitmen-desc">Asuransi adalah tanda cinta terdalam untuk orang-orang yang paling Anda sayangi.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-3">
+        <div class="komitmen-icon">🌱</div>
+        <div class="komitmen-title">Bertumbuh Bersama</div>
+        <div class="komitmen-desc">Mari berbagi, bertumbuh, dan berdampak bersama kami.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="container" style="text-align:center;position:relative;z-index:1">
+    <h2 id="cta-heading" class="cta-title fade-up">Yuk Ngobrol Santai!</h2>
+    <p class="cta-sub fade-up stagger-1">Kami bantu kamu pilih proteksi & investasi yang pas. No pressure, just value.</p>
+    <div class="fade-up stagger-2">
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%20Petrus%2C%20aku%20mau%20konsultasi"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn--cta btn--lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer loaded by JS -->
+<div id="site-footer"></div>
+
+<script src="/assets/main.js"></script>
+</body>
+</html>
