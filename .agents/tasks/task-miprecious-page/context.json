@@ -1,0 +1,23 @@
+{
+  "project_type": "Static HTML website for insurance product showcase (Project Cuan 3.0)",
+  "language": "HTML/CSS/JavaScript",
+  "build_system": "None - static files served directly. No build step needed.",
+  "test_framework": "Manual validation - open HTML file in browser. No automated test framework.",
+  "build_command": "N/A - static HTML files",
+  "test_command": "N/A - validate HTML structure manually",
+  "verification_instructions": "1. Check that miprecious.html exists in public/pages/ 2. Validate HTML structure is well-formed 3. Verify calculator JavaScript produces correct outputs based on specs",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - project is plain HTML/CSS/JS static files",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external package installs possible. All work is plain HTML/CSS/JS.",
+  "contribution_requirements": "Pages follow the design system in /assets/style.css and use component loader from /assets/main.js to load header.html and footer.html dynamically.",
+  "key_patterns": "1. Each page uses <link rel='stylesheet' href='/assets/style.css'> and <script src='/assets/main.js'></script> at end of body. 2. Pages have a <div id='site-header'></div> placeholder that gets filled by main.js loading /components/header.html. 3. Pages use question-style headings with colored keyword spans (.kw, .kw-cta, .kw-blue, .kw-purple, .kw-gold). 4. Dark mode support via html.dark class. 5. Product-specific CSS variables defined in page-level <style> block. 6. Sections use .section and .container classes. 7. Calculator uses click-based option selection (.calc-option.active) pattern.",
+  "relevant_files": [
+    "public/pages/msp.html (reference for page structure, design patterns, calculator UI)",
+    "public/assets/style.css (design system with CSS variables, utilities, components)",
+    "public/assets/main.js (component loader, dark mode, search, scroll)",
+    "public/components/header.html (site navigation header)",
+    "public/components/footer.html (site footer)",
+    "Sample/Miprecious.html (source content and original calculator logic)"
+  ],
+  "directory_structure": "public/ - served static files; public/pages/ - product pages; public/assets/ - CSS and JS; public/components/ - reusable header/footer; Sample/ - reference content files; Source/ - PDF source documents"
+}

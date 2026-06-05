@@ -223,6 +223,14 @@
     html.dark .calc-result-row .result-value { color: var(--mip-light); }
     .calc-result-row.highlight { background: rgba(0,135,90,0.06); border-radius: var(--r-md); padding: 12px; margin: 4px -12px; }
     html.dark .calc-result-row.highlight { background: rgba(0,201,120,0.08); }
+    .calc-select-group.disabled .calc-option {
+      opacity: 0.4;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    .calc-select-group.disabled label {
+      opacity: 0.5;
+    }
     .calc-error-msg {
       color: #d32f2f;
       font-size: var(--fs-xs);
@@ -421,12 +429,12 @@
         <div class="benefit-card-icon">&#128176;</div>
         <div class="benefit-card-title">Manfaat Tunai Sepuluh Tahunan</div>
         <div class="benefit-card-desc">
-          Tahukah Anda bahwa setiap 10 tahun Anda akan menerima <span class="kw-gold">25% dari Dana Masa Depan</span> secara pasti? Dibayarkan di tahun ke-10, 20, 30, 40, dan 50.
+          Tahukah Anda bahwa setiap 10 tahun Anda akan menerima <span class="kw-gold">25% dari Dana Masa Depan</span> secara pasti? Dibayarkan di tahun ke-11, 21, 31, dan 41.
         </div>
         <div class="benefit-card-highlight">
           <strong>Persentase:</strong> <span class="kw">25%</span> x DMD per pembayaran<br>
-          <strong>30 tahun:</strong> 3 kali pembayaran = 75% DMD<br>
-          <strong>50 tahun:</strong> 5 kali pembayaran = 125% DMD
+          <strong>30 tahun:</strong> 2 kali pembayaran = 50% DMD<br>
+          <strong>50 tahun:</strong> 4 kali pembayaran = 100% DMD
         </div>
       </div>
       <!-- Manfaat Tunai Tahunan -->
@@ -434,12 +442,12 @@
         <div class="benefit-card-icon">&#128181;</div>
         <div class="benefit-card-title">Manfaat Tunai Tahunan</div>
         <div class="benefit-card-desc">
-          Pernahkah Anda membayangkan menerima <span class="kw-gold">uang tunai setiap tahun</span> tanpa bekerja ekstra? Mulai tahun ke-11, Anda menerima <span class="kw">10% DMD</span> setiap tahun (di luar tahun kelipatan 10).
+          Pernahkah Anda membayangkan menerima <span class="kw-gold">uang tunai setiap tahun</span> tanpa bekerja ekstra? Mulai tahun ke-12, Anda menerima <span class="kw">10% DMD</span> setiap tahun (di luar tahun kelipatan 10 tahunan).
         </div>
         <div class="benefit-card-highlight">
           <strong>Persentase:</strong> <span class="kw">10%</span> x DMD per tahun<br>
-          <strong>30 tahun:</strong> 18 kali pembayaran = 180% DMD<br>
-          <strong>50 tahun:</strong> 36 kali pembayaran = 360% DMD
+          <strong>30 tahun:</strong> 17 kali pembayaran = 170% DMD<br>
+          <strong>50 tahun:</strong> 35 kali pembayaran = 350% DMD
         </div>
       </div>
       <!-- Manfaat Akhir Masa -->
@@ -707,7 +715,7 @@
       <div class="faq-item">
         <button class="faq-trigger">Apa itu Manfaat Tunai Pasti?</button>
         <div class="faq-body">
-          <p>Manfaat Tunai Pasti adalah pembayaran tunai yang <span class="kw-cta">DIJAMIN</span> akan Anda terima selama polis aktif. Terdiri dari:<br>- <strong>10% Dana Masa Depan</strong> setiap tahun mulai tahun ke-11 (di luar tahun kelipatan 10)<br>- <strong>25% Dana Masa Depan</strong> setiap 10 tahun (tahun ke-10, 20, 30, dst)<br>- <strong>100% Dana Masa Depan</strong> di akhir masa pertanggungan<br><br>Semua pembayaran ini pasti diterima selama polis aktif, tidak tergantung kondisi pasar.</p>
+          <p>Manfaat Tunai Pasti adalah pembayaran tunai yang <span class="kw-cta">DIJAMIN</span> akan Anda terima selama polis aktif. Terdiri dari:<br>- <strong>10% Dana Masa Depan</strong> setiap tahun mulai tahun ke-12 (di luar tahun pembayaran 10 tahunan)<br>- <strong>25% Dana Masa Depan</strong> setiap 10 tahun (tahun ke-11, 21, 31, dst)<br>- <strong>100% Dana Masa Depan</strong> di akhir masa pertanggungan<br><br>Semua pembayaran ini pasti diterima selama polis aktif, tidak tergantung kondisi pasar.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -789,11 +797,30 @@ function selectMip(groupId, value, el) {
     mipState.term = value;
   } else if (groupId === 'mipPayment') {
     mipState.payment = value;
+    updateModeSelector();
   } else if (groupId === 'mipMode') {
     mipState.mode = value;
   }
   updateMipLabel();
   calculateMIP();
+}
+
+function updateModeSelector() {
+  var modeGroup = document.getElementById('mipMode').closest('.calc-select-group');
+  if (mipState.payment === 'Sekaligus') {
+    modeGroup.classList.add('disabled');
+    // Force mode to Tahunan
+    mipState.mode = 'Tahunan';
+    var modeOptions = document.getElementById('mipMode').querySelectorAll('.calc-option');
+    for (var i = 0; i < modeOptions.length; i++) {
+      modeOptions[i].classList.remove('active');
+      if (modeOptions[i].textContent.trim() === 'Tahunan') {
+        modeOptions[i].classList.add('active');
+      }
+    }
+  } else {
+    modeGroup.classList.remove('disabled');
+  }
 }
 
 function updateMipLabel() {
@@ -905,9 +932,8 @@ function calculateMIP() {
 
   if (payment === 'Sekaligus') {
     masaBayarTahun = 1;
-    var modalFactor = MIP_MODAL_FACTORS[cur][mode];
-    premiPerPeriod = premiSekaligus * modalFactor;
-    premiLabel = 'Premi Sekaligus (' + mode + ')';
+    premiPerPeriod = premiSekaligus;
+    premiLabel = 'Premi Sekaligus';
   } else {
     masaBayarTahun = parseInt(payment);
     var modalFactor = MIP_MODAL_FACTORS[cur][mode];
@@ -918,12 +944,17 @@ function calculateMIP() {
   var totalPremi = premiSekaligus;
 
   // Guaranteed Benefits
-  var numDecadal = Math.floor(term / 10);
+  // Decadal payments (25% DMD) at years 11, 21, 31, 41 (yr % 10 === 1, yr > 1, yr < term)
+  var numDecadal = 0;
+  for (var yr = 11; yr < term; yr += 10) {
+    numDecadal++;
+  }
   var decadalTotal = numDecadal * 0.25 * dmd;
 
+  // Annual payments (10% DMD) at years 12 to term-1, excluding decadal years (yr % 10 === 1)
   var numAnnual = 0;
-  for (var yr = 11; yr <= term - 1; yr++) {
-    if (yr % 10 !== 0) {
+  for (var yr = 12; yr <= term - 1; yr++) {
+    if (yr % 10 !== 1) {
       numAnnual++;
     }
   }
@@ -994,6 +1025,7 @@ function calculateMIP() {
 
 // Initialize
 updateMipLabel();
+updateModeSelector();
 </script>
 <script src="/assets/main.js"></script>
 </body>

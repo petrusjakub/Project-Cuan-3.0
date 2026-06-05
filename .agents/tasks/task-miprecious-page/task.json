@@ -1,0 +1,7 @@
+{
+  "task_id": "task-miprecious-page",
+  "task_description": "Create miprecious.html product page in public/pages/ with question-style content, colored keywords, premi table, and error-free premium calculator following the project design system.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}
