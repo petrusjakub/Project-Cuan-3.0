@@ -1,0 +1,21 @@
+{
+  "project_type": "Static HTML marketing site for insurance products (Manulife)",
+  "language": "HTML/CSS/JavaScript",
+  "build_system": "None - static files served directly. No build step needed.",
+  "test_framework": "None - static HTML pages. Validation done by checking HTML syntax and opening in browser.",
+  "build_command": "N/A - no build step",
+  "test_command": "N/A - static site, validate HTML structure manually",
+  "verification_instructions": "1. Verify file exists at public/pages/mdsa.html. 2. Verify it loads /assets/style.css and /assets/main.js. 3. Verify the premium calculator JavaScript runs without errors (no syntax errors). 4. Verify the page follows the mccp.html pattern with sections, hero, premium tables, calculator, FAQ.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - the project is a collection of static HTML/CSS/JS files.",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external dependencies can be downloaded. All resources must be self-contained or reference local paths. Google Fonts referenced in style.css won't load in sandbox but that's OK for production.",
+  "contribution_requirements": "Follow existing page patterns. Pages use /assets/style.css as base, /assets/main.js for component loading (header/footer), and have page-specific inline styles in a <style> block.",
+  "key_patterns": "1. Each product page follows the pattern in public/pages/mccp.html: imports /assets/style.css, has inline page-specific CSS, uses <div id='site-header'></div> and <div id='site-footer'></div> placeholders, includes sections with .container class, uses CSS variables from the design system (--jade, --bg-card, --txt-head, etc.), uses keyword highlight classes (kw, kw-cta, kw-gold), and loads /assets/main.js at the end. 2. Premium data is embedded as a JavaScript object/constant. 3. Calculator uses pure JSON lookup approach, NOT mathematical formulas. 4. Content should use question-based language to engage users. 5. Keywords highlighted with different colors.",
+  "relevant_files": [
+    "public/pages/mccp.html (pattern to follow for page structure/styling)",
+    "public/assets/style.css (base design system with CSS variables)",
+    "public/assets/main.js (loads header/footer components)",
+    "Sample/Mdsa.html (COMPLETE data source - premium data, calculator logic, product details, riders, FAQ)"
+  ],
+  "directory_structure": "public/pages/ - product pages; public/assets/ - shared CSS/JS; public/components/ - header.html/footer.html; Sample/ - reference HTML files with full product data"
+}

@@ -1,0 +1,14 @@
+{
+  "task_id": "task-mdsa-page",
+  "task_description": "Create public/pages/mdsa.html - a new product page for Manulife Dynamic Smart Assurance (MDSA) following the mccp.html pattern with question-based content, keyword color highlighting, premium tables, and an error-free JSON-lookup premium calculator.",
+  "status": "completed",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "File created (145KB). JavaScript syntax validation passes for both script blocks. PREMIUM_DATA contains 142 keys (71 pria + 71 wanita, ages 0-70). MIUHC_DATA contains 86 ages per gender with 15 plan options each. Calculator logic verified: Limited Pay correctly divides UP by 10, Regular Pay correctly looks up rates from data arrays, MiSHC rider lookup works, MiSCCP lookup works. All keyword highlights present (36 kw, 8 kw-cta, 10 kw-gold, 8 kw-blue). All section headings use question-based language. 12 FAQ items included. WhatsApp CTA link correct."
+  }
+}
