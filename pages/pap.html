@@ -103,6 +103,18 @@
     .info-card h4 { color: #00a758; margin-bottom: var(--sp-2); font-size: var(--fs-md); }
     .info-card p, .info-card li { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
     .info-card ul { padding-left: var(--sp-4); margin-top: 6px; }
+
+    /* Keyword color highlights */
+    .kw-green { color: #00a758; font-weight: 700; }
+    .kw-blue { color: #1565c0; font-weight: 600; }
+    .kw-orange { color: #e65100; font-weight: 700; }
+    .kw-purple { color: #7b1fa2; font-weight: 600; }
+    .kw-red { color: #c62828; font-weight: 700; }
+    html.dark .kw-green { color: #4cdf9a; }
+    html.dark .kw-blue { color: #64b5f6; }
+    html.dark .kw-orange { color: #ffab40; }
+    html.dark .kw-purple { color: #ce93d8; }
+    html.dark .kw-red { color: #ef5350; }
   </style>
 </head>
 <body>
@@ -126,16 +138,16 @@
         </div>
 
         <h1 id="pap-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
-          <span style="color:#00a758">ProActive Plus (PAP)</span><br>Sudahkah Keluarga Anda Benar-Benar Terlindungi?
+          <span class="kw-green">ProActive Plus (PAP)</span><br>Sudahkah Keluarga Anda <span class="kw-blue">Benar-Benar Terlindungi</span>?
         </h1>
 
         <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
-          Pernahkah Anda membayangkan, jika hari ini tiba-tiba Anda tiada &mdash; apakah keluarga tetap bisa hidup layak? <strong>ProActive Plus</strong> memberikan 100% Uang Pertanggungan kepada orang yang Anda cintai, dengan premi yang tetap dan terjangkau.
+          Pernahkah Anda membayangkan, jika hari ini tiba-tiba Anda tiada &mdash; apakah keluarga tetap bisa hidup layak? <span class="kw-green">ProActive Plus</span> memberikan <span class="kw-orange">100% Uang Pertanggungan</span> kepada orang yang Anda cintai, dengan <span class="kw-blue">premi yang tetap</span> dan terjangkau.
         </p>
 
         <div style="display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap;margin-bottom:var(--sp-8)" class="fade-up stagger-2">
           <div class="price-tag">
-            <span class="price-tag-num">Rp 380rb</span>
+            <span class="price-tag-num"><span class="kw-orange" style="color:inherit">Rp 380rb</span></span>
             <span class="price-tag-unit">/bulan</span>
           </div>
           <div>
@@ -163,18 +175,18 @@
           <div style="display:grid;grid-template-columns:1fr;gap:var(--sp-3)">
             <div style="background:rgba(0,167,88,0.05);border:1px solid rgba(0,167,88,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
               <div style="font-size:20px;margin-bottom:4px">&#128176;</div>
-              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)">Proteksi Maksimal, Premi Minimal</div>
-              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">100% premi untuk proteksi, bukan investasi</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)"><span class="kw-blue">Proteksi Maksimal</span>, Premi Minimal</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)"><span class="kw-orange">100%</span> premi untuk proteksi, bukan investasi</div>
             </div>
             <div style="background:rgba(0,167,88,0.05);border:1px solid rgba(0,167,88,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
               <div style="font-size:20px;margin-bottom:4px">&#128274;</div>
-              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)">Premi Dijamin Tetap</div>
-              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Tidak naik selama masa pembayaran</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)"><span class="kw-blue">Premi Dijamin Tetap</span></div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Tidak naik selama <span class="kw-purple">masa pembayaran</span></div>
             </div>
             <div style="background:rgba(0,167,88,0.05);border:1px solid rgba(0,167,88,0.2);border-radius:var(--r-md);padding:var(--sp-4);text-align:center">
               <div style="font-size:20px;margin-bottom:4px">&#128257;</div>
-              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)">Diperpanjang Tanpa Tes Ulang</div>
-              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Sampai usia 70 tahun</div>
+              <div style="font-weight:700;color:var(--txt-head);font-size:var(--fs-sm)">Diperpanjang <span class="kw-purple">Tanpa Tes Ulang</span></div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted)">Sampai usia <span class="kw-purple">70 tahun</span></div>
             </div>
           </div>
         </div>
@@ -188,18 +200,18 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-10)">
       <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Ringkasan Produk</span>
-      <h2 id="ringkasan-heading" class="section-title fade-up">Apa Itu ProActive Plus, dan Mengapa Anda Membutuhkannya?</h2>
+      <h2 id="ringkasan-heading" class="section-title fade-up">Apa Itu <span class="kw-green">ProActive Plus</span>, dan Mengapa Anda Membutuhkannya?</h2>
       <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:760px;margin-left:auto;margin-right:auto">
-        ProActive Plus (PAP) adalah asuransi jiwa berjangka <em>(term life)</em> murni dari PT Asuransi Jiwa Manulife Indonesia. Tanpa investasi, tanpa unit-link &mdash; hanya proteksi murni yang membuat preminya begitu terjangkau. Tapi, sudahkah Anda tahu apa saja keunggulannya?
+        <span class="kw-green">ProActive Plus (PAP)</span> adalah asuransi jiwa berjangka <em>(term life)</em> murni dari <span class="kw-green">PT Asuransi Jiwa Manulife Indonesia</span>. Tanpa investasi, tanpa unit-link &mdash; hanya <span class="kw-blue">proteksi murni</span> yang membuat preminya begitu terjangkau. Tapi, sudahkah Anda tahu apa saja keunggulannya?
       </p>
     </div>
     <div class="benefit-grid">
-      <div class="benefit-item fade-up"><div class="benefit-icon">&#128737;&#65039;</div><div><div class="benefit-title">Proteksi Optimal 100% UP</div><p class="benefit-desc">Bayangkan, jika Anda tiada, apakah keluarga akan kesulitan? Dengan PAP, ahli waris menerima 100% Uang Pertanggungan secara tunai (lump sum). Bukankah ini bentuk cinta yang paling nyata?</p></div></div>
-      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#128176;</div><div><div class="benefit-title">Premi Sangat Terjangkau</div><p class="benefit-desc">Tahukah Anda bahwa proteksi jiwa bisa dimulai hanya dari Rp 380.000/bulan? Bisa dibayar tahunan, semesteran, kuartalan, atau bulanan &mdash; mana yang paling pas untuk Anda?</p></div></div>
-      <div class="benefit-item fade-up stagger-2"><div class="benefit-icon">&#128197;</div><div><div class="benefit-title">Masa Pertanggungan Fleksibel</div><p class="benefit-desc">Berapa lama Anda ingin terlindungi? Pilih sendiri masa pertanggungan dari 5 hingga 20 tahun, menyesuaikan tahap hidup dan tanggungan Anda.</p></div></div>
-      <div class="benefit-item fade-up stagger-3"><div class="benefit-icon">&#128274;</div><div><div class="benefit-title">Jaminan Premi Tetap</div><p class="benefit-desc">Pernah khawatir premi naik seiring usia? Di PAP, premi Anda dikunci tetap selama masa pembayaran. Yang Anda bayar di awal sama persis dengan di akhir.</p></div></div>
-      <div class="benefit-item fade-up"><div class="benefit-icon">&#128257;</div><div><div class="benefit-title">Perpanjangan Tanpa Seleksi Ulang</div><p class="benefit-desc">Bagaimana jika kondisi kesehatan berubah? Tenang &mdash; polis dapat diperpanjang otomatis sampai usia 70 tahun tanpa perlu tes kesehatan ulang.</p></div></div>
-      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#127757;</div><div><div class="benefit-title">Pilihan Mata Uang IDR &amp; USD</div><p class="benefit-desc">Ingin proteksi dalam Dolar untuk menjaga nilai aset? PAP tersedia dalam Rupiah (IDR) maupun Dolar Amerika (USD) sesuai preferensi Anda.</p></div></div>
+      <div class="benefit-item fade-up"><div class="benefit-icon">&#128737;&#65039;</div><div><div class="benefit-title">Proteksi Optimal <span class="kw-orange">100% UP</span></div><p class="benefit-desc">Bayangkan, jika Anda tiada, apakah keluarga akan kesulitan? Dengan <span class="kw-green">PAP</span>, ahli waris menerima <span class="kw-orange">100% Uang Pertanggungan</span> secara tunai (lump sum). Bukankah ini bentuk cinta yang paling nyata?</p></div></div>
+      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#128176;</div><div><div class="benefit-title"><span class="kw-blue">Premi</span> Sangat Terjangkau</div><p class="benefit-desc">Tahukah Anda bahwa proteksi jiwa bisa dimulai hanya dari <span class="kw-orange">Rp 380.000/bulan</span>? Bisa dibayar tahunan, semesteran, kuartalan, atau bulanan &mdash; mana yang paling pas untuk Anda?</p></div></div>
+      <div class="benefit-item fade-up stagger-2"><div class="benefit-icon">&#128197;</div><div><div class="benefit-title">Masa Pertanggungan <span class="kw-purple">Fleksibel</span></div><p class="benefit-desc">Berapa lama Anda ingin terlindungi? Pilih sendiri masa pertanggungan dari <span class="kw-purple">5 hingga 20 tahun</span>, menyesuaikan tahap hidup dan tanggungan Anda.</p></div></div>
+      <div class="benefit-item fade-up stagger-3"><div class="benefit-icon">&#128274;</div><div><div class="benefit-title">Jaminan <span class="kw-blue">Premi Tetap</span></div><p class="benefit-desc">Pernah khawatir premi naik seiring usia? Di <span class="kw-green">PAP</span>, premi Anda <span class="kw-blue">dikunci tetap</span> selama masa pembayaran. Yang Anda bayar di awal sama persis dengan di akhir.</p></div></div>
+      <div class="benefit-item fade-up"><div class="benefit-icon">&#128257;</div><div><div class="benefit-title">Perpanjangan <span class="kw-purple">Tanpa Seleksi Ulang</span></div><p class="benefit-desc">Bagaimana jika kondisi kesehatan berubah? Tenang &mdash; polis dapat diperpanjang otomatis sampai usia <span class="kw-purple">70 tahun</span> tanpa perlu tes kesehatan ulang.</p></div></div>
+      <div class="benefit-item fade-up stagger-1"><div class="benefit-icon">&#127757;</div><div><div class="benefit-title">Pilihan Mata Uang <span class="kw-blue">IDR &amp; USD</span></div><p class="benefit-desc">Ingin proteksi dalam Dolar untuk menjaga nilai aset? <span class="kw-green">PAP</span> tersedia dalam <span class="kw-blue">Rupiah (IDR)</span> maupun <span class="kw-blue">Dolar Amerika (USD)</span> sesuai preferensi Anda.</p></div></div>
     </div>
 
     <div style="margin-top:var(--sp-8)">
@@ -228,20 +240,20 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-10)">
       <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Manfaat</span>
-      <h2 id="manfaat-heading" class="section-title fade-up">Manfaat Apa yang Akan Diterima Keluarga Anda?</h2>
+      <h2 id="manfaat-heading" class="section-title fade-up">Manfaat Apa yang Akan Diterima <span class="kw-blue">Keluarga Anda</span>?</h2>
     </div>
     <div class="info-card-grid fade-up">
       <div class="info-card">
         <h4>&#128081; Manfaat Meninggal Dunia</h4>
-        <p>100% Uang Pertanggungan dibayarkan tunai kepada ahli waris jika Tertanggung meninggal dunia selama masa pertanggungan. Pembayaran maksimal 30 hari setelah klaim disetujui. Apakah ada warisan yang lebih pasti dari ini?</p>
+        <p><span class="kw-orange">100% Uang Pertanggungan</span> dibayarkan tunai kepada ahli waris jika Tertanggung meninggal dunia selama masa pertanggungan. Pembayaran maksimal <span class="kw-purple">30 hari</span> setelah klaim disetujui. Apakah ada warisan yang lebih pasti dari ini?</p>
       </div>
       <div class="info-card">
-        <h4>&#128274; Jaminan Premi Tetap</h4>
-        <p>Premi tidak pernah naik selama masa pembayaran, meski usia Anda bertambah. Bukankah kepastian seperti ini yang Anda cari?</p>
+        <h4>&#128274; Jaminan <span class="kw-blue">Premi Tetap</span></h4>
+        <p>Premi <span class="kw-blue">tidak pernah naik</span> selama masa pembayaran, meski usia Anda bertambah. Bukankah kepastian seperti ini yang Anda cari?</p>
       </div>
       <div class="info-card">
         <h4>&#128257; Perpanjangan Otomatis</h4>
-        <p>Setelah masa pertanggungan berakhir, polis dapat diperpanjang sampai usia 70 tahun tanpa tes kesehatan ulang. Premi perpanjangan disesuaikan dengan usia saat itu.</p>
+        <p>Setelah masa pertanggungan berakhir, polis dapat diperpanjang sampai usia <span class="kw-purple">70 tahun</span> <span class="kw-green">tanpa tes kesehatan ulang</span>. Premi perpanjangan disesuaikan dengan usia saat itu.</p>
       </div>
     </div>
 
@@ -277,7 +289,7 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-8)">
       <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Tabel Premi</span>
-      <h2 id="premi-heading" class="section-title fade-up">Berapa Sebenarnya Premi untuk Proteksi Rp 1 Miliar?</h2>
+      <h2 id="premi-heading" class="section-title fade-up">Berapa Sebenarnya <span class="kw-blue">Premi</span> untuk Proteksi <span class="kw-orange">Rp 1 Miliar</span>?</h2>
       <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Contoh premi tahunan untuk Uang Pertanggungan Rp 1 Miliar, Masa Pembayaran Premi (PPP) 20 tahun. Mengejutkan betapa terjangkaunya, bukan?</p>
     </div>
     <h3 style="color:#006838;margin-bottom:var(--sp-3)" class="fade-up">Premi Tahunan &mdash; UP Rp 1 Miliar, PPP 20 Tahun (IDR)</h3>
@@ -303,8 +315,8 @@
   <div class="container"><div style="max-width:820px;margin:0 auto">
     <div style="text-align:center;margin-bottom:var(--sp-8)">
       <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Kalkulator Premi</span>
-      <h2 id="calc-heading" class="section-title fade-up">Hitung Premi ProActive Plus Anda</h2>
-      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Akurat &amp; bebas galat &mdash; menggunakan metode <em>lookup</em> langsung dari tabel rate resmi Manulife, bukan estimasi rumus.</p>
+      <h2 id="calc-heading" class="section-title fade-up">Hitung <span class="kw-blue">Premi</span> <span class="kw-green">ProActive Plus</span> Anda</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)"><span class="kw-green">Akurat &amp; bebas galat</span> &mdash; menggunakan metode <em>lookup</em> langsung dari tabel rate resmi <span class="kw-green">Manulife</span>, bukan estimasi rumus.</p>
     </div>
     <div class="calculator-wrap fade-up stagger-1">
       <div class="calc-header" style="background:linear-gradient(135deg,#006838,#00a758)">
@@ -396,40 +408,40 @@
     </div>
     <div class="info-card-grid fade-up">
       <div class="info-card">
-        <h4>&#9203; Masa Percobaan (Cooling Off)</h4>
-        <p>14 hari kalender sejak polis diterima. Berubah pikiran? Anda bisa membatalkan dan menerima pengembalian premi penuh (dikurangi biaya pemeriksaan kesehatan jika ada).</p>
+        <h4>&#9203; Masa Percobaan (<span class="kw-purple">Cooling Off</span>)</h4>
+        <p><span class="kw-purple">14 hari kalender</span> sejak polis diterima. Berubah pikiran? Anda bisa membatalkan dan menerima <span class="kw-blue">pengembalian premi penuh</span> (dikurangi biaya pemeriksaan kesehatan jika ada).</p>
       </div>
       <div class="info-card">
-        <h4>&#128340; Masa Tenggang (Grace Period)</h4>
-        <p>45 hari kalender setelah jatuh tempo premi. Selama masa ini, polis tetap aktif dan Anda tetap terlindungi. Lewat dari itu tanpa pembayaran, polis berakhir.</p>
+        <h4>&#128340; Masa Tenggang (<span class="kw-purple">Grace Period</span>)</h4>
+        <p><span class="kw-purple">45 hari kalender</span> setelah jatuh tempo premi. Selama masa ini, polis <span class="kw-green">tetap aktif</span> dan Anda tetap terlindungi. Lewat dari itu tanpa pembayaran, polis <span class="kw-red">berakhir</span>.</p>
       </div>
       <div class="info-card">
-        <h4>&#128257; Perpanjangan (Renewal)</h4>
+        <h4>&#128257; Perpanjangan (<span class="kw-green">Renewal</span>)</h4>
         <ul>
-          <li>Dapat diperpanjang sampai usia 70 tahun</li>
-          <li>Tanpa seleksi risiko / tes kesehatan ulang</li>
+          <li>Dapat diperpanjang sampai usia <span class="kw-purple">70 tahun</span></li>
+          <li><span class="kw-green">Tanpa seleksi risiko</span> / tes kesehatan ulang</li>
           <li>Premi disesuaikan dengan usia saat perpanjangan</li>
           <li>Otomatis, kecuali Anda ajukan pembatalan</li>
         </ul>
       </div>
       <div class="info-card">
-        <h4>&#128260; Pemulihan Polis (Reinstatement)</h4>
+        <h4>&#128260; Pemulihan Polis (<span class="kw-blue">Reinstatement</span>)</h4>
         <ul>
-          <li>Polis lapse dapat dipulihkan maksimal 2 tahun</li>
+          <li>Polis lapse dapat dipulihkan maksimal <span class="kw-purple">2 tahun</span></li>
           <li>Melunasi premi tertunggak beserta bunga</li>
           <li>Menyerahkan pernyataan/pemeriksaan kesehatan</li>
-          <li>Tergantung hasil penilaian risiko Manulife</li>
+          <li>Tergantung hasil penilaian risiko <span class="kw-green">Manulife</span></li>
         </ul>
       </div>
     </div>
 
     <div class="pap-warnbox fade-up stagger-1" style="margin-top:var(--sp-6)">
-      <p><strong>&#9888; Pengecualian:</strong> Manfaat meninggal dunia <strong>tidak dibayarkan</strong> jika disebabkan oleh:</p>
+      <p><strong>&#9888; Pengecualian:</strong> Manfaat meninggal dunia <span class="kw-red">tidak dibayarkan</span> jika disebabkan oleh:</p>
       <ul>
-        <li>Bunuh diri dalam 2 tahun pertama sejak polis berlaku atau dipulihkan</li>
-        <li>Tindakan melawan hukum yang dilakukan oleh Tertanggung</li>
-        <li>Perang, pemberontakan, atau kerusuhan</li>
-        <li>Senjata nuklir, kimia, atau biologi</li>
+        <li><span class="kw-red">Bunuh diri</span> dalam <span class="kw-purple">2 tahun pertama</span> sejak polis berlaku atau dipulihkan</li>
+        <li>Tindakan <span class="kw-red">melawan hukum</span> yang dilakukan oleh Tertanggung</li>
+        <li><span class="kw-red">Perang</span>, pemberontakan, atau kerusuhan</li>
+        <li>Senjata <span class="kw-red">nuklir, kimia, atau biologi</span></li>
       </ul>
     </div>
 
@@ -444,17 +456,17 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-8)">
       <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Cara Klaim</span>
-      <h2 id="klaim-heading" class="section-title fade-up">Bagaimana Proses Klaim yang Sesungguhnya?</h2>
-      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Lebih sederhana dari yang Anda kira. Hanya 5 langkah, dengan pendampingan penuh dari agen Anda.</p>
+      <h2 id="klaim-heading" class="section-title fade-up">Bagaimana Proses <span class="kw-blue">Klaim</span> yang Sesungguhnya?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Lebih sederhana dari yang Anda kira. Hanya <span class="kw-orange">5 langkah</span>, dengan pendampingan penuh dari agen Anda.</p>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-8);align-items:start" class="fade-up">
       <div>
         <div class="timeline">
-          <div class="timeline-item"><h4>1. Lapor Klaim</h4><p>Ajukan klaim tertulis kepada Manulife dalam 90 hari sejak Tertanggung meninggal dunia.</p></div>
+          <div class="timeline-item"><h4>1. Lapor Klaim</h4><p>Ajukan klaim tertulis kepada <span class="kw-green">Manulife</span> dalam <span class="kw-purple">90 hari</span> sejak Tertanggung meninggal dunia.</p></div>
           <div class="timeline-item"><h4>2. Siapkan Dokumen</h4><p>Kumpulkan seluruh dokumen yang dibutuhkan (lihat daftar di samping).</p></div>
-          <div class="timeline-item"><h4>3. Kirim Dokumen</h4><p>Serahkan dokumen lengkap ke kantor Manulife atau melalui agen/partner bisnis Anda.</p></div>
-          <div class="timeline-item"><h4>4. Verifikasi</h4><p>Manulife memproses dan memverifikasi klaim Anda.</p></div>
-          <div class="timeline-item"><h4>5. Pembayaran</h4><p>Manfaat dibayarkan maksimal 30 hari setelah klaim disetujui dan dokumen lengkap.</p></div>
+          <div class="timeline-item"><h4>3. Kirim Dokumen</h4><p>Serahkan dokumen lengkap ke kantor <span class="kw-green">Manulife</span> atau melalui agen/partner bisnis Anda.</p></div>
+          <div class="timeline-item"><h4>4. Verifikasi</h4><p><span class="kw-green">Manulife</span> memproses dan memverifikasi klaim Anda.</p></div>
+          <div class="timeline-item"><h4>5. Pembayaran</h4><p>Manfaat dibayarkan maksimal <span class="kw-purple">30 hari</span> setelah klaim disetujui dan dokumen lengkap.</p></div>
         </div>
       </div>
       <div>
@@ -485,7 +497,7 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--sp-8)">
       <span class="section-tag" style="background:rgba(0,167,88,0.1);color:#00a758">Ilustrasi</span>
-      <h2 id="ilustrasi-heading" class="section-title fade-up">Seberapa Besar Perlindungan yang Anda Dapat?</h2>
+      <h2 id="ilustrasi-heading" class="section-title fade-up">Seberapa Besar <span class="kw-blue">Perlindungan</span> yang Anda Dapat?</h2>
     </div>
     <div class="pap-infobox fade-up">
       <p><strong>Profil:</strong> Pria, 45 tahun, Tidak Merokok</p>
@@ -505,10 +517,10 @@
       </table>
     </div>
     <div class="pap-warnbox fade-up stagger-2">
-      <p><strong>&#128161; Sadarkah Anda?</strong> Dengan total premi 5 tahun hanya <strong>Rp 31.950.000</strong>, keluarga Anda terlindungi senilai <strong>Rp 1 Miliar</strong> &mdash; perlindungan <strong>lebih dari 31x lipat</strong> dari total premi yang dibayar. Adakah instrumen lain yang menawarkan rasio sebesar ini?</p>
+      <p><strong>&#128161; Sadarkah Anda?</strong> Dengan total premi <span class="kw-purple">5 tahun</span> hanya <span class="kw-orange">Rp 31.950.000</span>, keluarga Anda terlindungi senilai <span class="kw-orange">Rp 1 Miliar</span> &mdash; perlindungan <span class="kw-orange">lebih dari 31x lipat</span> dari total premi yang dibayar. Adakah instrumen lain yang menawarkan rasio sebesar ini?</p>
     </div>
     <div class="pap-infobox fade-up stagger-3">
-      <p><strong>Catatan:</strong> ProActive Plus adalah asuransi jiwa berjangka murni <em>(pure term life)</em>. Tidak ada nilai tunai atau investasi &mdash; seluruh premi digunakan untuk proteksi jiwa, itulah mengapa preminya jauh lebih terjangkau dibanding asuransi seumur hidup atau unit-link.</p>
+      <p><strong>Catatan:</strong> <span class="kw-green">ProActive Plus</span> adalah asuransi jiwa berjangka murni <em>(pure term life)</em>. Tidak ada nilai tunai atau investasi &mdash; seluruh premi digunakan untuk <span class="kw-blue">proteksi jiwa</span>, itulah mengapa preminya jauh lebih terjangkau dibanding asuransi seumur hidup atau unit-link.</p>
     </div>
   </div>
 </section>
@@ -557,7 +569,7 @@
 <section class="section" aria-labelledby="cta-heading">
   <div class="container">
     <div style="background:linear-gradient(135deg,#006838,#00a758);border-radius:var(--r-xl);padding:var(--sp-10) var(--sp-8);text-align:center;color:#fff;position:relative;overflow:hidden" class="fade-up">
-      <h2 id="cta-heading" style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:var(--sp-3)">Apakah Anda Siap Memberi Kepastian untuk Keluarga?</h2>
+      <h2 id="cta-heading" style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:var(--sp-3)">Apakah Anda Siap Memberi <span style="color:#ffe082">Kepastian</span> untuk Keluarga?</h2>
       <p style="color:rgba(255,255,255,0.9);font-size:var(--fs-md);max-width:640px;margin:0 auto var(--sp-6);line-height:1.7">
         Jangan tunggu sampai terlambat. Satu langkah kecil hari ini bisa menjadi penyelamat besar bagi orang-orang tercinta. Konsultasikan ProActive Plus sekarang &mdash; gratis, tanpa kewajiban.
       </p>
