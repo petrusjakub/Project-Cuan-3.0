@@ -54,8 +54,8 @@
       border-color: rgba(0,115,207,0.3);
       color: var(--manulife-light);
     }
-    .mdwa-hero h1 span { color: var(--manulife-blue); }
-    html.dark .mdwa-hero h1 span { color: var(--manulife-light); }
+    .mdwa-hero h1 > span { color: var(--manulife-blue); }
+    html.dark .mdwa-hero h1 > span { color: var(--manulife-light); }
     .mdwa-stat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -271,8 +271,8 @@
     }
 
     /* Keyword highlights */
-    .kw-blue { color: var(--manulife-blue); font-weight: 600; }
-    html.dark .kw-blue { color: var(--manulife-light); }
+    .kw-blue { color: var(--manulife-blue) !important; font-weight: 600; }
+    html.dark .kw-blue { color: var(--manulife-light) !important; }
   </style>
 </head>
 <body>
