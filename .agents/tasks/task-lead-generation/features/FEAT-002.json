@@ -1,0 +1,38 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Create a new Halaman Rekrutmen Agen page (public/pages/rekrutmen-agen.html) with hero section, benefits, income potential teaser, registration form (Nama, WhatsApp, Kota, Pengalaman dropdown), and an interactive Income Calculator that estimates FYC, renewal, and override income based on commission data. Also create a password-protected Halaman Komisi Agen page with detailed commission structure.",
+  "status": "completed",
+  "steps": [
+    "Create public/pages/rekrutmen-agen.html following the same HTML structure as bisnis.html (DOCTYPE, head with style.css, dark mode script, page-specific inline styles, header/footer component divs, main.js script at bottom)",
+    "Build the Hero section: Headline about joining as a Manulife agent (e.g., 'Bergabung Menjadi Agen Manulife - Bangun Karir Tanpa Batas'), subtext about the opportunity, CTA button linking to the form section below",
+    "Build the Benefits section: Grid of 4-6 benefit cards (Komisi tinggi hingga 25% FYC, Passive income dari renewal, Override income dari rekrutmen, Training profesional gratis, Waktu kerja fleksibel, Potensi penghasilan tak terbatas)",
+    "Build the Income Potential teaser: Visual cards showing income ranges at different career levels (New Agent -> BP -> SBP -> BCO Leader) with approximate monthly income ranges",
+    "Build the Registration Form section: Form with fields - Nama (text input), Nomor WhatsApp (tel input), Kota (text input), Pengalaman (select dropdown: 'Belum pernah', 'Pernah di asuransi lain', 'Sudah agen aktif'). On submit, construct WhatsApp URL with pre-filled message containing all form data and redirect to wa.me/6287781896087",
+    "Build the Income Calculator section on the same page: Input fields - Jumlah polis per bulan (number), Rata-rata premi per polis (number with Rp format), Jenis produk (dropdown: MDWA 5P, MDWA 10P, MDLA MPP5, MDLA MPP10, MDLA MPP15, MDLA MPP20, MiUHC, Flexi Amanah, MDSA, MISSION Syariah), Masa pembayaran premi (auto-set based on product). Calculator output shows: Estimated monthly FYC income, Renewal income year 2+, Potential override income if recruiting (25% of FYC from recruits). Use commission rates from the data provided.",
+    "Implement calculator JavaScript inline or in a separate script block: Commission data object with FYC rates per product, renewal rates per year, override calculation (25% FYC agent referral bonus). Calculate APE (monthly premium * 12 for regular premium = 100% APE), then FYC = APE * commission_rate * number_of_policies",
+    "Create public/pages/komisi-agen.html - password-protected commission page: Show a password form first (simple input + button), password is 'petrusjakub', on correct password store in sessionStorage('pc_komisi_auth') and reveal the content. Content includes full commission tables: FYC by product table, Renewal commission table, Override & Recruitment Bonus table, Persistency Factor (PPR) table, APE Calculation reference",
+    "Add links to rekrutmen-agen.html in navigation: Add to footer.html under 'Info' section, add to header.html mobile menu under 'Info' section, add to the PRODUCTS array in main.js for search"
+  ],
+  "acceptance_criteria": [
+    "public/pages/rekrutmen-agen.html exists with hero, benefits, income potential, form, and calculator sections",
+    "Registration form redirects to WhatsApp with all form data encoded in the message",
+    "Income calculator correctly computes FYC based on product commission rates, number of policies, and premium",
+    "Income calculator shows renewal income estimate for year 2+",
+    "Income calculator shows override income potential (25% of FYC from recruits)",
+    "public/pages/komisi-agen.html exists with password protection using 'petrusjakub'",
+    "Commission page stores auth in sessionStorage so re-entry not needed in same session",
+    "Commission page shows all commission tables (FYC, Renewal, Override, PPR, APE)",
+    "Links to rekrutmen-agen.html added in footer.html and header.html mobile menu",
+    "Both pages support dark mode via html.dark class"
+  ],
+  "verification": [
+    "Read public/pages/rekrutmen-agen.html and verify all sections exist with proper structure",
+    "Read public/pages/komisi-agen.html and verify password protection logic and commission tables",
+    "Read public/components/footer.html and confirm link to rekrutmen-agen.html exists",
+    "Read public/components/header.html and confirm link in mobile menu",
+    "Verify calculator JavaScript logic matches the commission data provided"
+  ],
+  "blocked_reason": null,
+  "findings": "Implementation complete. Both pages created following existing page structure (bisnis.html pattern). Calculator uses inline script with auto-calculate on input changes. Commission page uses sessionStorage for auth persistence within session. All JS validated with node --check / new Function(). Desktop nav link uses shortened text 'Rekrutmen' to fit nav layout."
+}

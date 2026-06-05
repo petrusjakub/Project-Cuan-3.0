@@ -41,6 +41,8 @@
     /* Info */
     { name: 'Tentang', full: 'Tentang Project Cuan & Agen', cat: 'Info', icon: 'ℹ️', url: '/pages/tentang.html' },
     { name: 'Bisnis',  full: 'Peluang Bisnis Asuransi',     cat: 'Info', icon: '💼', url: '/pages/bisnis.html' },
+    { name: 'Rekrutmen Agen', full: 'Bergabung Menjadi Agen Manulife', cat: 'Info', icon: '🤝', url: '/pages/rekrutmen-agen.html' },
+    { name: 'Komisi Agen', full: 'Tabel Komisi & Income Agen', cat: 'Info', icon: '💰', url: '/pages/komisi-agen.html' },
   ];
 
 
@@ -470,6 +472,11 @@
 
     // Page-specific
     if (document.getElementById('quizStep0')) window.PC.initQuiz();
+
+    // Load lead generation module
+    const lgScript = document.createElement('script');
+    lgScript.src = '/assets/lead-gen.js';
+    document.body.appendChild(lgScript);
   }
 
   if (document.readyState === 'loading') {
