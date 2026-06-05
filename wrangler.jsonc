@@ -6,8 +6,7 @@
     "enabled": true
   },
   "assets": {
-    "directory": ".",
-    "exclude": [".git", "node_modules", ".wrangler", "Source", "Sample", ".agents", ".tasks"]
+    "directory": "./public"
   },
   "compatibility_flags": [
     "nodejs_compat"
