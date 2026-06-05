@@ -992,7 +992,9 @@ function calculateMSP() {
   html += '<td colspan="2">Manfaat Akhir: ' + formatCurrency(manfaatAkhir, cur) + '</td>';
   html += '<td colspan="2">Total Manfaat Hidup: ' + formatCurrency(totalManfaatHidup, cur) + '</td>';
   html += '</tr>';
-  html += '</table></div></div>';
+  html += '</table></div>';
+  html += '<p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-2);font-style:italic">Catatan: Manfaat Tunai Tahunan dibayarkan di akhir tahun polis. Jika meninggal dunia terjadi sebelum akhir tahun, manfaat tunai tahun tersebut menjadi bagian dari Manfaat Meninggal Dunia.</p>';
+  html += '</div>';
 
   // Ratio info
   var ratio = ((totalManfaatHidup / totalPremiTerbayar) * 100).toFixed(1);
@@ -1000,6 +1002,9 @@ function calculateMSP() {
   html += '<p style="font-size:var(--fs-xs);color:var(--txt-sub);margin:0"><strong>Rasio Manfaat:</strong> Total manfaat hidup ' + formatCurrency(totalManfaatHidup, cur) + ' vs total premi ' + formatCurrency(totalPremiTerbayar, cur) + ' = <strong>' + ratio + '%</strong> dari total premi yang dibayarkan.</p>';
   html += '</div>';
 
+  // SAFETY: All values inserted into innerHTML pass through numeric conversion
+  // (formatCurrency -> Math.round -> toLocaleString, ratio -> toFixed) which strips
+  // all non-numeric chars, making XSS injection impossible.
   resultEl.innerHTML = html;
 }
 
