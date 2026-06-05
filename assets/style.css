@@ -148,6 +148,11 @@ p { color: var(--txt-sub); line-height: 1.75; }
 /* Keyword highlight */
 .kw { color: var(--jade); font-weight: 600; }
 .kw-cta { color: var(--tangerine); font-weight: 600; }
+.kw-gold { color: #B8860B; font-weight: 600; }
+
+html.dark .kw { color: var(--jade-light); }
+html.dark .kw-cta { color: #FF7F45; }
+html.dark .kw-gold { color: #F0C040; }
 
 /* ── 5. LAYOUT ── */
 .container {
