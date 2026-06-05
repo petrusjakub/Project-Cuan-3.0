@@ -1,7 +1,8 @@
 {
   "task_id": "task-msp-page",
   "task_description": "Create msp.html page for Manulife Saving Protector product in /pages/ directory with comprehensive product content in question format, premium tables, error-free calculator using lookup table approach, and keyword color highlighting.",
-  "status": "in_progress",
+  "status": "completed",
   "feature_order": ["FEAT-001"],
-  "blocked_reason": null
+  "blocked_reason": null,
+  "review_feedback_applied": "2025-01-20: Added innerHTML safety comment and Year 5 tunai/death-benefit footnote per review. Death benefit formula and mode-change UX left unchanged per task spec."
 }
