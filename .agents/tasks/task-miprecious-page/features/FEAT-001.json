@@ -1,0 +1,42 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create public/pages/miprecious.html - a complete product page for MiPrecious (MiPreparation Legacy for Our Assurance) using the project's design system, question-style content, colored keywords, premi table, and an error-free premium calculator.",
+  "status": "in_progress",
+  "steps": [
+    "Create /projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html following the exact same page structure as public/pages/msp.html (head with style.css link, dark mode init script, page-specific <style>, <div id='site-header'></div>, sections, <script src='/assets/main.js'></script> at end of body).",
+    "Define page-specific CSS variables in <style> block: --mip-green: #00875A, --mip-dark: #005C3D, --mip-light: #00C978, plus keyword color classes .kw-blue (color:#1565C0), .kw-purple (color:#7B1FA2), .kw-gold (color:#F57F17) with html.dark variants. The existing .kw and .kw-cta classes come from style.css.",
+    "Add a breadcrumb navigation (Beranda > Produk > MiPrecious) at the top of the hero section, following the exact pattern from msp.html.",
+    "Create HERO section with question-style headline (e.g. 'Pernahkah Anda Membayangkan Investasi yang Memberikan Total Manfaat Hingga 550% dari Modal Anda?'), product description paragraph, stats grid (550% Total Manfaat, 50 Tahun Perlindungan, Guaranteed/Dijamin, Multi Generasi), and CTA buttons (WhatsApp link to wa.me/6287781896087 and 'Hitung Manfaat' anchor to #kalkulator).",
+    "Create KEUNGGULAN section presenting the 3 key advantages (KUAT - GIO tanpa medis, BERKILAU - Tambahan Manfaat 342%, BERHARGA - Multi Generasi) as advantage cards. Use question-style content with colored keywords. Add 3 more cards covering: masa pertanggungan flexibility (30/50 tahun), mata uang flexibility (IDR/USD), and guaranteed issuance (tanpa medical check-up).",
+    "Create MANFAAT section with benefit cards: (A) Manfaat Tunai Sepuluh Tahunan (25% DMD), (B) Manfaat Tunai Tahunan (10% DMD dari tahun ke-11), (C) Manfaat Akhir Masa (100% DMD), (D) Manfaat Meninggal Dunia. Use question-style headings. Include the total benefit summary: 320% for 30yr, 550% for 50yr.",
+    "Create TABEL PREMI section showing plan classification table (Bronze: <100jt IDR / <USD 10,000; Silver: 100-199jt / USD 10,000-19,999; Gold: 200-499jt / USD 20,000-49,999; Platinum: >=500jt / >=USD 50,000). Include product specification table (masa pertanggungan, masa bayar, usia masuk, mata uang, min DMD, underwriting).",
+    "Create KALKULATOR section (id='kalkulator') implementing the premium calculator with these EXACT specifications: (a) User inputs: Mata Uang (IDR/USD), Masa Pertanggungan (30/50 Tahun), Masa Pembayaran Premi (Sekaligus/2 Tahun/5 Tahun), Mode Pembayaran (Tahunan/Semesteran/Kuartalan/Bulanan), Dana Masa Depan input field with minimum validation (Rp50,000,000 for IDR / USD 5,000 for USD). (b) Modal Factor lookup: IDR - Tahunan(1), Semesteran(0.525), Kuartalan(0.275), Bulanan(0.095); USD - Tahunan(1), Semesteran(0.5125), Kuartalan(0.265), Bulanan(0.09). (c) DMD to Premi ratio: DMD = 1.70 * Premi Sekaligus. So Premi Sekaligus = DMD / 1.70. (d) Plan classification based on Premi Sekaligus value: Bronze(<100jt/<USD10k), Silver(100-199jt/USD10k-19.9k), Gold(200-499jt/USD20k-49.9k), Platinum(>=500jt/>=USD50k). (e) For regular payments (2yr/5yr): Premi per period = (Premi Sekaligus / masa_bayar_tahun) * modal_factor. (f) Output display: Manfaat Pembayaran Tunai Tahunan (10% DMD), Manfaat Pembayaran Tunai 10 Tahunan (25% DMD), Manfaat Akhir Masa Pertanggungan (100% DMD), plus Estimasi Tambahan Manfaat (projected) using: 30yr IDR - Tahunan 5%, 10Tahunan 12%, Akhir 30%; 50yr IDR - Tahunan 6%, 10Tahunan 18%, Akhir 60%. (g) Use the .calc-option click-based selection pattern from msp.html for inputs, not the <select> dropdown pattern from Sample/Miprecious.html.",
+    "Create FAQ section with accordion-style items covering: Apa itu MiPrecious?, Siapa yang bisa mendaftar?, Berapa minimum premi?, Perbedaan 30 vs 50 tahun, Apa itu Manfaat Tunai Pasti?, Apa itu Multi Generasi?, Bagaimana jika Tertanggung meninggal?, Apa itu GIO?. Use content from Sample/Miprecious.html FAQ section.",
+    "Create CTA section at the bottom with gradient background and WhatsApp contact button.",
+    "Ensure all content uses QUESTION-STYLE language (bahasa pertanyaan) - sentences should provoke thought, e.g. 'Pernahkah Anda membayangkan...?', 'Tahukah Anda bahwa...?', 'Bagaimana jika...?', 'Apa jadinya jika...?'",
+    "Apply keyword color styling throughout: use .kw and .kw-cta for green-themed keywords (from style.css), .kw-blue for financial terms, .kw-purple for time/duration values, .kw-gold for monetary amounts and guarantees. Colors must not clash."
+  ],
+  "acceptance_criteria": [
+    "File exists at /projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html",
+    "Page structure matches project conventions: style.css link, dark mode script, page-specific <style>, site-header div, sections with .container, main.js at end",
+    "All product content is presented in question-style (bahasa pertanyaan) language",
+    "Keywords are highlighted with distinct, non-clashing color classes (.kw, .kw-cta, .kw-blue, .kw-purple, .kw-gold)",
+    "Premi table shows Bronze/Silver/Gold/Platinum plan categories with correct IDR and USD ranges",
+    "Calculator implements all specified logic: DMD input with min validation, modal factors, plan classification, benefit calculations (10% annual, 25% decadal, 100% maturity), and projected additional benefits",
+    "Calculator is error-free: handles edge cases (invalid input, below minimum), displays formatted currency correctly",
+    "Dark mode is supported via html.dark CSS rules",
+    "Page is mobile-responsive"
+  ],
+  "verification": [
+    "Run: cat /projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html | head -20 to confirm file exists with correct DOCTYPE and structure",
+    "Run: grep -c 'kw-blue\\|kw-purple\\|kw-gold\\|kw-cta\\|class=\"kw\"' /projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html to confirm keyword color classes are used (should be > 20)",
+    "Run: grep -c '?' /projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html to confirm question-style content (should be > 15 question marks)",
+    "Run: grep 'site-header\\|style.css\\|main.js' /projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html to confirm proper project integration",
+    "Run: grep -c 'html.dark' /projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html to confirm dark mode support (should be > 5)",
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html','utf8'); const hasCalc=html.includes('0.525')&&html.includes('0.275')&&html.includes('0.095')&&html.includes('0.5125')&&html.includes('0.265')&&html.includes('0.09'); console.log('Calculator modal factors:', hasCalc ? 'PASS' : 'FAIL');\" to verify calculator has correct modal factor values",
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/miprecious.html','utf8'); const has170=html.includes('1.70')||html.includes('1.7'); const hasPlan=html.includes('Bronze')&&html.includes('Silver')&&html.includes('Gold')&&html.includes('Platinum'); console.log('DMD ratio:', has170?'PASS':'FAIL', 'Plans:', hasPlan?'PASS':'FAIL');\" to verify DMD-to-Premi ratio and plan classification"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
