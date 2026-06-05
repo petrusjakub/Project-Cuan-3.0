@@ -638,15 +638,15 @@
           <th>Greater Asia</th>
           <th>Schengen Basic</th>
         </tr>
-        <tr><td>1-3 hari</td><td>290.000</td><td>261.000</td><td>217.000</td><td>167.000</td><td>117.000</td></tr>
-        <tr><td>4-5 hari</td><td>481.000</td><td>435.000</td><td>362.000</td><td>277.000</td><td>190.000</td></tr>
-        <tr><td>6-8 hari</td><td>634.000</td><td>575.000</td><td>478.000</td><td>365.000</td><td>246.000</td></tr>
-        <tr><td>9-11 hari</td><td>774.000</td><td>702.000</td><td>582.000</td><td>445.000</td><td>297.000</td></tr>
-        <tr><td>12-15 hari</td><td>948.000</td><td>862.000</td><td>717.000</td><td>548.000</td><td>363.000</td></tr>
-        <tr><td>16-20 hari</td><td>1.167.000</td><td>1.060.000</td><td>882.000</td><td>675.000</td><td>444.000</td></tr>
-        <tr><td>21-25 hari</td><td>1.386.000</td><td>1.258.000</td><td>1.047.000</td><td>800.000</td><td>524.000</td></tr>
-        <tr><td>26-31 hari</td><td>1.605.000</td><td>1.456.000</td><td>1.213.000</td><td>927.000</td><td>605.000</td></tr>
-        <tr><td>Per Minggu (&gt;31 hari)</td><td>365.000</td><td>331.000</td><td>275.000</td><td>210.000</td><td>138.000</td></tr>
+        <tr><td>1-4 hari</td><td>342.000</td><td>296.000</td><td>254.000</td><td>100.000</td><td>66.000</td></tr>
+        <tr><td>5-6 hari</td><td>481.000</td><td>444.000</td><td>344.000</td><td>138.000</td><td>92.000</td></tr>
+        <tr><td>7-8 hari</td><td>621.000</td><td>573.000</td><td>452.000</td><td>276.000</td><td>183.000</td></tr>
+        <tr><td>9-10 hari</td><td>781.000</td><td>720.000</td><td>579.000</td><td>356.000</td><td>235.000</td></tr>
+        <tr><td>11-15 hari</td><td>922.000</td><td>850.000</td><td>722.000</td><td>395.000</td><td>260.000</td></tr>
+        <tr><td>16-20 hari</td><td>1.362.000</td><td>1.217.000</td><td>957.000</td><td>512.000</td><td>339.000</td></tr>
+        <tr><td>21-25 hari</td><td>1.461.000</td><td>1.347.000</td><td>1.047.000</td><td>591.000</td><td>390.000</td></tr>
+        <tr><td>26-31 hari</td><td>1.842.000</td><td>1.531.000</td><td>1.209.000</td><td>650.000</td><td>429.000</td></tr>
+        <tr><td>Per Minggu (&gt;31 hari)</td><td>242.000</td><td>205.000</td><td>165.000</td><td>61.000</td><td>40.000</td></tr>
       </table>
     </div>
 
@@ -676,9 +676,9 @@
           <div class="form-group">
             <label class="form-label" for="travel-age">Kelompok Usia</label>
             <select class="form-select" id="travel-age">
-              <option value="14d_59y">14 hari - 59 tahun</option>
-              <option value="60_69y">60 - 69 tahun</option>
-              <option value="70_84y">70 - 84 tahun</option>
+              <option value="14d-59y">14 hari - 59 tahun</option>
+              <option value="60y-69y">60 - 69 tahun</option>
+              <option value="70y-84y">70 - 84 tahun</option>
             </select>
           </div>
           <div class="form-group">
@@ -694,7 +694,7 @@
             <select class="form-select" id="travel-region">
               <option value="worldwide_inc">Worldwide Including Americas</option>
               <option value="worldwide_exc">Worldwide Excluding Americas</option>
-              <option value="asia_pacific">Asia Pacific &amp; Schengen</option>
+              <option value="pacific_schengen">Asia Pacific &amp; Schengen</option>
               <option value="greater_asia">Greater Asia</option>
               <option value="schengen_basic">Schengen Basic</option>
             </select>
@@ -721,7 +721,7 @@
         <div class="calc-error" id="travel-error"></div>
 
         <p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-3);font-style:italic;text-align:center">
-          * Premi sudah termasuk biaya polis dan materai. Belum termasuk PPN 11%.
+          * Premi sudah termasuk biaya administrasi dan akuisisi. Belum termasuk biaya cetak polis dan meterai.
         </p>
       </div>
     </div>
@@ -814,90 +814,139 @@ function toggleFaq(el) {
 
 // Premium Calculator
 (function() {
-  // Source: Tabel Premi Asuransi Perjalanan (Travel Insurance Rate Table) - PDF brosur produk
-  var premiumData = {
-    "14d_59y": {
-      "individual": {
-        "worldwide_inc": { "superior": { rates: [290000,481000,634000,774000,948000,1167000,1386000,1605000], per_week: 365000 }, "deluxe": { rates: [217000,362000,478000,582000,717000,882000,1047000,1213000], per_week: 275000 } },
-        "worldwide_exc": { "superior": { rates: [261000,435000,575000,702000,862000,1060000,1258000,1456000], per_week: 331000 }, "deluxe": { rates: [196000,326000,431000,526000,645000,795000,943000,1092000], per_week: 248000 } },
-        "asia_pacific": { "superior": { rates: [217000,362000,478000,582000,717000,882000,1047000,1213000], per_week: 275000 }, "deluxe": { rates: [163000,272000,358000,437000,536000,661000,784000,909000], per_week: 206000 } },
-        "greater_asia": { "superior": { rates: [167000,277000,365000,445000,548000,675000,800000,927000], per_week: 210000 }, "deluxe": { rates: [125000,208000,274000,334000,411000,506000,600000,695000], per_week: 158000 } },
-        "schengen_basic": { "superior": { rates: [117000,190000,246000,297000,363000,444000,524000,605000], per_week: 138000 }, "deluxe": null }
-      },
-      "couple": {
-        "worldwide_inc": { "superior": { rates: [522000,866000,1141000,1393000,1706000,2101000,2495000,2889000], per_week: 657000 }, "deluxe": { rates: [391000,652000,860000,1048000,1291000,1588000,1885000,2183000], per_week: 495000 } },
-        "worldwide_exc": { "superior": { rates: [470000,783000,1035000,1264000,1552000,1908000,2264000,2621000], per_week: 596000 }, "deluxe": { rates: [353000,587000,776000,947000,1162000,1431000,1697000,1966000], per_week: 446000 } },
-        "asia_pacific": { "superior": { rates: [391000,652000,860000,1048000,1291000,1588000,1885000,2183000], per_week: 495000 }, "deluxe": { rates: [293000,490000,644000,787000,965000,1190000,1411000,1636000], per_week: 371000 } },
-        "greater_asia": { "superior": { rates: [301000,499000,657000,801000,986000,1215000,1440000,1669000], per_week: 378000 }, "deluxe": { rates: [225000,374000,493000,601000,740000,911000,1080000,1251000], per_week: 284000 } },
-        "schengen_basic": { "superior": { rates: [211000,342000,443000,535000,653000,799000,943000,1089000], per_week: 248000 }, "deluxe": null }
-      },
-      "family": {
-        "worldwide_inc": { "superior": { rates: [696000,1154000,1522000,1857000,2275000,2801000,3326000,3852000], per_week: 876000 }, "deluxe": { rates: [521000,869000,1147000,1397000,1721000,2117000,2513000,2910000], per_week: 660000 } },
-        "worldwide_exc": { "superior": { rates: [627000,1044000,1380000,1685000,2069000,2544000,3019000,3494000], per_week: 794000 }, "deluxe": { rates: [470000,783000,1035000,1263000,1548000,1908000,2263000,2621000], per_week: 595000 } },
-        "asia_pacific": { "superior": { rates: [521000,869000,1147000,1397000,1721000,2117000,2513000,2910000], per_week: 660000 }, "deluxe": { rates: [391000,653000,859000,1049000,1287000,1587000,1882000,2181000], per_week: 494000 } },
-        "greater_asia": { "superior": { rates: [401000,665000,876000,1068000,1314000,1620000,1920000,2225000], per_week: 504000 }, "deluxe": { rates: [300000,499000,657000,801000,986000,1215000,1440000,1668000], per_week: 378000 } },
-        "schengen_basic": { "superior": { rates: [281000,456000,590000,713000,871000,1065000,1258000,1452000], per_week: 331000 }, "deluxe": null }
-      }
+  const premiumData = {
+    "14d-59y": {
+      individual: [
+        { duration: "1-4", worldwide_inc: { superior: 342, deluxe: 321 }, worldwide_exc: { superior: 296, deluxe: 297 }, pacific_schengen: { superior: 254, deluxe: 256 }, greater_asia: { superior: 100, deluxe: 152 }, schengen_basic: 66 },
+        { duration: "5-6", worldwide_inc: { superior: 481, deluxe: 523 }, worldwide_exc: { superior: 444, deluxe: 454 }, pacific_schengen: { superior: 344, deluxe: 358 }, greater_asia: { superior: 138, deluxe: 203 }, schengen_basic: 92 },
+        { duration: "7-8", worldwide_inc: { superior: 621, deluxe: 741 }, worldwide_exc: { superior: 573, deluxe: 644 }, pacific_schengen: { superior: 452, deluxe: 477 }, greater_asia: { superior: 276, deluxe: 377 }, schengen_basic: 183 },
+        { duration: "9-10", worldwide_inc: { superior: 781, deluxe: 981 }, worldwide_exc: { superior: 720, deluxe: 853 }, pacific_schengen: { superior: 579, deluxe: 647 }, greater_asia: { superior: 356, deluxe: 503 }, schengen_basic: 235 },
+        { duration: "11-15", worldwide_inc: { superior: 922, deluxe: 1062 }, worldwide_exc: { superior: 850, deluxe: 923 }, pacific_schengen: { superior: 722, deluxe: 800 }, greater_asia: { superior: 395, deluxe: 553 }, schengen_basic: 260 },
+        { duration: "16-20", worldwide_inc: { superior: 1362, deluxe: 1321 }, worldwide_exc: { superior: 1217, deluxe: 1234 }, pacific_schengen: { superior: 957, deluxe: 987 }, greater_asia: { superior: 512, deluxe: 728 }, schengen_basic: 339 },
+        { duration: "21-25", worldwide_inc: { superior: 1461, deluxe: 1601 }, worldwide_exc: { superior: 1347, deluxe: 1392 }, pacific_schengen: { superior: 1047, deluxe: 1090 }, greater_asia: { superior: 591, deluxe: 828 }, schengen_basic: 390 },
+        { duration: "26-31", worldwide_inc: { superior: 1842, deluxe: 1661 }, worldwide_exc: { superior: 1531, deluxe: 1601 }, pacific_schengen: { superior: 1209, deluxe: 1242 }, greater_asia: { superior: 650, deluxe: 928 }, schengen_basic: 429 },
+        { duration: "per_week", worldwide_inc: { superior: 242, deluxe: 222 }, worldwide_exc: { superior: 205, deluxe: 210 }, pacific_schengen: { superior: 165, deluxe: 171 }, greater_asia: { superior: 61, deluxe: 86 }, schengen_basic: 40 }
+      ],
+      couple: [
+        { duration: "1-4", worldwide_inc: { superior: 610, deluxe: 650 }, worldwide_exc: { superior: 563, deluxe: 565 }, pacific_schengen: { superior: 483, deluxe: 487 }, greater_asia: { superior: 190, deluxe: 289 }, schengen_basic: 126 },
+        { duration: "5-6", worldwide_inc: { superior: 914, deluxe: 994 }, worldwide_exc: { superior: 844, deluxe: 863 }, pacific_schengen: { superior: 654, deluxe: 681 }, greater_asia: { superior: 263, deluxe: 386 }, schengen_basic: 175 },
+        { duration: "7-8", worldwide_inc: { superior: 1180, deluxe: 1408 }, worldwide_exc: { superior: 1089, deluxe: 1224 }, pacific_schengen: { superior: 859, deluxe: 907 }, greater_asia: { superior: 525, deluxe: 717 }, schengen_basic: 348 },
+        { duration: "9-10", worldwide_inc: { superior: 1484, deluxe: 1864 }, worldwide_exc: { superior: 1368, deluxe: 1621 }, pacific_schengen: { superior: 1101, deluxe: 1230 }, greater_asia: { superior: 677, deluxe: 956 }, schengen_basic: 447 },
+        { duration: "11-15", worldwide_inc: { superior: 1752, deluxe: 2018 }, worldwide_exc: { superior: 1754, deluxe: 1615 }, pacific_schengen: { superior: 1372, deluxe: 1520 }, greater_asia: { superior: 751, deluxe: 1051 }, schengen_basic: 494 },
+        { duration: "16-20", worldwide_inc: { superior: 2510, deluxe: 2588 }, worldwide_exc: { superior: 2313, deluxe: 2345 }, pacific_schengen: { superior: 1819, deluxe: 1876 }, greater_asia: { superior: 973, deluxe: 1384 }, schengen_basic: 645 },
+        { duration: "21-25", worldwide_inc: { superior: 2776, deluxe: 3042 }, worldwide_exc: { superior: 2645, deluxe: 2560 }, pacific_schengen: { superior: 1990, deluxe: 2071 }, greater_asia: { superior: 1123, deluxe: 1574 }, schengen_basic: 741 },
+        { duration: "26-31", worldwide_inc: { superior: 3156, deluxe: 3500 }, worldwide_exc: { superior: 3042, deluxe: 2909 }, pacific_schengen: { superior: 2298, deluxe: 2360 }, greater_asia: { superior: 1235, deluxe: 1764 }, schengen_basic: 816 },
+        { duration: "per_week", worldwide_inc: { superior: 422, deluxe: 460 }, worldwide_exc: { superior: 390, deluxe: 399 }, pacific_schengen: { superior: 314, deluxe: 325 }, greater_asia: { superior: 116, deluxe: 164 }, schengen_basic: 76 }
+      ],
+      family: [
+        { duration: "1-4", worldwide_inc: { superior: 1061, deluxe: 1129 }, worldwide_exc: { superior: 977, deluxe: 982 }, pacific_schengen: { superior: 839, deluxe: 845 }, greater_asia: { superior: 330, deluxe: 502 }, schengen_basic: 218 },
+        { duration: "5-6", worldwide_inc: { superior: 1589, deluxe: 1727 }, worldwide_exc: { superior: 1466, deluxe: 1499 }, pacific_schengen: { superior: 1136, deluxe: 1182 }, greater_asia: { superior: 456, deluxe: 671 }, schengen_basic: 304 },
+        { duration: "7-8", worldwide_inc: { superior: 2051, deluxe: 2447 }, worldwide_exc: { superior: 1892, deluxe: 2126 }, pacific_schengen: { superior: 1492, deluxe: 1576 }, greater_asia: { superior: 911, deluxe: 1246 }, schengen_basic: 605 },
+        { duration: "9-10", worldwide_inc: { superior: 2579, deluxe: 3239 }, worldwide_exc: { superior: 2376, deluxe: 2816 }, pacific_schengen: { superior: 1912, deluxe: 2137 }, greater_asia: { superior: 1175, deluxe: 1661 }, schengen_basic: 777 },
+        { duration: "11-15", worldwide_inc: { superior: 3043, deluxe: 3505 }, worldwide_exc: { superior: 2805, deluxe: 3047 }, pacific_schengen: { superior: 2383, deluxe: 2640 }, greater_asia: { superior: 1305, deluxe: 1826 }, schengen_basic: 858 },
+        { duration: "16-20", worldwide_inc: { superior: 4361, deluxe: 4495 }, worldwide_exc: { superior: 4018, deluxe: 4073 }, pacific_schengen: { superior: 3160, deluxe: 3259 }, greater_asia: { superior: 1690, deluxe: 2403 }, schengen_basic: 1120 },
+        { duration: "21-25", worldwide_inc: { superior: 4823, deluxe: 5285 }, worldwide_exc: { superior: 4447, deluxe: 4594 }, pacific_schengen: { superior: 3457, deluxe: 3597 }, greater_asia: { superior: 1952, deluxe: 2733 }, schengen_basic: 1287 },
+        { duration: "26-31", worldwide_inc: { superior: 5483, deluxe: 6079 }, worldwide_exc: { superior: 5054, deluxe: 5285 }, pacific_schengen: { superior: 3991, deluxe: 4099 }, greater_asia: { superior: 2145, deluxe: 3063 }, schengen_basic: 1417 },
+        { duration: "per_week", worldwide_inc: { superior: 733, deluxe: 799 }, worldwide_exc: { superior: 678, deluxe: 693 }, pacific_schengen: { superior: 546, deluxe: 566 }, greater_asia: { superior: 203, deluxe: 284 }, schengen_basic: 132 }
+      ]
     },
-    "60_69y": {
-      "individual": {
-        "worldwide_inc": { "superior": { rates: [580000,962000,1268000,1548000,1896000,2334000,2772000,3210000], per_week: 730000 }, "deluxe": { rates: [434000,724000,956000,1164000,1434000,1764000,2094000,2426000], per_week: 550000 } },
-        "worldwide_exc": { "superior": { rates: [522000,870000,1150000,1404000,1724000,2120000,2516000,2912000], per_week: 662000 }, "deluxe": { rates: [392000,652000,862000,1052000,1290000,1590000,1886000,2184000], per_week: 496000 } },
-        "asia_pacific": { "superior": { rates: [434000,724000,956000,1164000,1434000,1764000,2094000,2426000], per_week: 550000 }, "deluxe": { rates: [326000,544000,716000,874000,1072000,1322000,1568000,1818000], per_week: 412000 } },
-        "greater_asia": { "superior": { rates: [334000,554000,730000,890000,1096000,1350000,1600000,1854000], per_week: 420000 }, "deluxe": { rates: [250000,416000,548000,668000,822000,1012000,1200000,1390000], per_week: 316000 } },
-        "schengen_basic": { "superior": { rates: [234000,380000,492000,594000,726000,888000,1048000,1210000], per_week: 276000 }, "deluxe": null }
-      },
-      "couple": {
-        "worldwide_inc": { "superior": { rates: [1044000,1732000,2282000,2786000,3413000,4201000,4990000,5778000], per_week: 1314000 }, "deluxe": { rates: [781000,1303000,1721000,2095000,2581000,3175000,3769000,4367000], per_week: 990000 } },
-        "worldwide_exc": { "superior": { rates: [940000,1566000,2070000,2527000,3103000,3816000,4529000,5242000], per_week: 1192000 }, "deluxe": { rates: [706000,1174000,1552000,1894000,2322000,2862000,3395000,3931000], per_week: 893000 } },
-        "asia_pacific": { "superior": { rates: [781000,1303000,1721000,2095000,2581000,3175000,3769000,4367000], per_week: 990000 }, "deluxe": { rates: [587000,979000,1289000,1573000,1930000,2380000,2822000,3272000], per_week: 742000 } },
-        "greater_asia": { "superior": { rates: [601000,997000,1314000,1602000,1973000,2430000,2880000,3337000], per_week: 756000 }, "deluxe": { rates: [450000,749000,986000,1202000,1480000,1822000,2160000,2502000], per_week: 569000 } },
-        "schengen_basic": { "superior": { rates: [421000,684000,886000,1069000,1307000,1598000,1886000,2178000], per_week: 497000 }, "deluxe": null }
-      },
-      "family": {
-        "worldwide_inc": { "superior": { rates: [1392000,2308000,3042000,3714000,4550000,5602000,6652000,7704000], per_week: 1752000 }, "deluxe": { rates: [1042000,1738000,2294000,2794000,3441000,4234000,5025000,5822000], per_week: 1320000 } },
-        "worldwide_exc": { "superior": { rates: [1253000,2088000,2760000,3370000,4138000,5088000,6038000,6990000], per_week: 1588000 }, "deluxe": { rates: [940000,1566000,2070000,2525000,3096000,3816000,4527000,5242000], per_week: 1190000 } },
-        "asia_pacific": { "superior": { rates: [1042000,1738000,2294000,2794000,3441000,4234000,5025000,5822000], per_week: 1320000 }, "deluxe": { rates: [782000,1306000,1718000,2098000,2574000,3174000,3762000,4362000], per_week: 988000 } },
-        "greater_asia": { "superior": { rates: [802000,1330000,1752000,2136000,2630000,3240000,3840000,4450000], per_week: 1008000 }, "deluxe": { rates: [600000,998000,1314000,1602000,1973000,2430000,2880000,3337000], per_week: 758000 } },
-        "schengen_basic": { "superior": { rates: [562000,912000,1180000,1426000,1742000,2131000,2514000,2904000], per_week: 662000 }, "deluxe": null }
-      }
+    "60y-69y": {
+      individual: [
+        { duration: "1-4", worldwide_inc: { superior: 482, deluxe: 513 }, worldwide_exc: { superior: 444, deluxe: 446 }, pacific_schengen: { superior: 381, deluxe: 384 }, greater_asia: { superior: 150, deluxe: 228 }, schengen_basic: 99 },
+        { duration: "5-6", worldwide_inc: { superior: 722, deluxe: 785 }, worldwide_exc: { superior: 666, deluxe: 681 }, pacific_schengen: { superior: 537, deluxe: 516 }, greater_asia: { superior: 207, deluxe: 305 }, schengen_basic: 138 },
+        { duration: "7-8", worldwide_inc: { superior: 932, deluxe: 1112 }, worldwide_exc: { superior: 860, deluxe: 966 }, pacific_schengen: { superior: 678, deluxe: 716 }, greater_asia: { superior: 414, deluxe: 566 }, schengen_basic: 275 },
+        { duration: "9-10", worldwide_inc: { superior: 1172, deluxe: 1472 }, worldwide_exc: { superior: 1080, deluxe: 1280 }, pacific_schengen: { superior: 971, deluxe: 869 }, greater_asia: { superior: 534, deluxe: 755 }, schengen_basic: 353 },
+        { duration: "11-15", worldwide_inc: { superior: 1383, deluxe: 1593 }, worldwide_exc: { superior: 1275, deluxe: 1385 }, pacific_schengen: { superior: 1200, deluxe: 1083 }, greater_asia: { superior: 593, deluxe: 830 }, schengen_basic: 390 },
+        { duration: "16-20", worldwide_inc: { superior: 1982, deluxe: 2043 }, worldwide_exc: { superior: 1826, deluxe: 1851 }, pacific_schengen: { superior: 1436, deluxe: 1481 }, greater_asia: { superior: 768, deluxe: 1092 }, schengen_basic: 509 },
+        { duration: "21-25", worldwide_inc: { superior: 2192, deluxe: 2402 }, worldwide_exc: { superior: 2021, deluxe: 2088 }, pacific_schengen: { superior: 1635, deluxe: 1571 }, greater_asia: { superior: 887, deluxe: 1242 }, schengen_basic: 585 },
+        { duration: "26-31", worldwide_inc: { superior: 2492, deluxe: 2763 }, worldwide_exc: { superior: 2297, deluxe: 2402 }, pacific_schengen: { superior: 1814, deluxe: 1863 }, greater_asia: { superior: 975, deluxe: 1392 }, schengen_basic: 644 },
+        { duration: "per_week", worldwide_inc: { superior: 333, deluxe: 363 }, worldwide_exc: { superior: 308, deluxe: 315 }, pacific_schengen: { superior: 257, deluxe: 248 }, greater_asia: { superior: 92, deluxe: 129 }, schengen_basic: 60 }
+      ],
+      couple: [
+        { duration: "1-4", worldwide_inc: { superior: 916, deluxe: 975 }, worldwide_exc: { superior: 844, deluxe: 848 }, pacific_schengen: { superior: 724, deluxe: 730 }, greater_asia: { superior: 285, deluxe: 434 }, schengen_basic: 189 },
+        { duration: "5-6", worldwide_inc: { superior: 1372, deluxe: 1492 }, worldwide_exc: { superior: 1266, deluxe: 1294 }, pacific_schengen: { superior: 1021, deluxe: 981 }, greater_asia: { superior: 394, deluxe: 580 }, schengen_basic: 263 },
+        { duration: "7-8", worldwide_inc: { superior: 1771, deluxe: 2113 }, worldwide_exc: { superior: 1634, deluxe: 1836 }, pacific_schengen: { superior: 1361, deluxe: 1289 }, greater_asia: { superior: 787, deluxe: 1076 }, schengen_basic: 523 },
+        { duration: "9-10", worldwide_inc: { superior: 2227, deluxe: 2797 }, worldwide_exc: { superior: 2052, deluxe: 2432 }, pacific_schengen: { superior: 1845, deluxe: 1652 }, greater_asia: { superior: 1015, deluxe: 1435 }, schengen_basic: 671 },
+        { duration: "11-15", worldwide_inc: { superior: 2628, deluxe: 3027 }, worldwide_exc: { superior: 2423, deluxe: 2632 }, pacific_schengen: { superior: 2058, deluxe: 2280 }, greater_asia: { superior: 1127, deluxe: 1577 }, schengen_basic: 741 },
+        { duration: "16-20", worldwide_inc: { superior: 3766, deluxe: 3882 }, worldwide_exc: { superior: 3470, deluxe: 3517 }, pacific_schengen: { superior: 2814, deluxe: 2729 }, greater_asia: { superior: 1460, deluxe: 2075 }, schengen_basic: 968 },
+        { duration: "21-25", worldwide_inc: { superior: 4165, deluxe: 4564 }, worldwide_exc: { superior: 3840, deluxe: 3968 }, pacific_schengen: { superior: 3107, deluxe: 2985 }, greater_asia: { superior: 1686, deluxe: 2360 }, schengen_basic: 1112 },
+        { duration: "26-31", worldwide_inc: { superior: 4735, deluxe: 5250 }, worldwide_exc: { superior: 4365, deluxe: 4564 }, pacific_schengen: { superior: 3447, deluxe: 3540 }, greater_asia: { superior: 1853, deluxe: 2645 }, schengen_basic: 1224 },
+        { duration: "per_week", worldwide_inc: { superior: 633, deluxe: 690 }, worldwide_exc: { superior: 586, deluxe: 599 }, pacific_schengen: { superior: 489, deluxe: 472 }, greater_asia: { superior: 175, deluxe: 246 }, schengen_basic: 114 }
+      ],
+      family: [
+        { duration: "1-4", worldwide_inc: { superior: 707, deluxe: 753 }, worldwide_exc: { superior: 654, deluxe: 652 }, pacific_schengen: { superior: 559, deluxe: 564 }, greater_asia: { superior: 220, deluxe: 335 }, schengen_basic: 146 },
+        { duration: "5-6", worldwide_inc: { superior: 1059, deluxe: 1151 }, worldwide_exc: { superior: 999, deluxe: 977 }, pacific_schengen: { superior: 788, deluxe: 757 }, greater_asia: { superior: 304, deluxe: 447 }, schengen_basic: 203 },
+        { duration: "7-8", worldwide_inc: { superior: 1367, deluxe: 1631 }, worldwide_exc: { superior: 1417, deluxe: 1261 }, pacific_schengen: { superior: 1050, deluxe: 995 }, greater_asia: { superior: 608, deluxe: 830 }, schengen_basic: 403 },
+        { duration: "9-10", worldwide_inc: { superior: 1719, deluxe: 2159 }, worldwide_exc: { superior: 1584, deluxe: 1877 }, pacific_schengen: { superior: 1424, deluxe: 1274 }, greater_asia: { superior: 784, deluxe: 1107 }, schengen_basic: 517 },
+        { duration: "11-15", worldwide_inc: { superior: 2029, deluxe: 2337 }, worldwide_exc: { superior: 1870, deluxe: 2031 }, pacific_schengen: { superior: 1589, deluxe: 1760 }, greater_asia: { superior: 869, deluxe: 1217 }, schengen_basic: 572 },
+        { duration: "16-20", worldwide_inc: { superior: 2907, deluxe: 2997 }, worldwide_exc: { superior: 2678, deluxe: 2715 }, pacific_schengen: { superior: 2106, deluxe: 2172 }, greater_asia: { superior: 1127, deluxe: 1602 }, schengen_basic: 746 },
+        { duration: "21-25", worldwide_inc: { superior: 3215, deluxe: 3523 }, worldwide_exc: { superior: 2964, deluxe: 3063 }, pacific_schengen: { superior: 2304, deluxe: 2398 }, greater_asia: { superior: 1301, deluxe: 1822 }, schengen_basic: 858 },
+        { duration: "26-31", worldwide_inc: { superior: 3655, deluxe: 4053 }, worldwide_exc: { superior: 3369, deluxe: 3523 }, pacific_schengen: { superior: 2733, deluxe: 2660 }, greater_asia: { superior: 1430, deluxe: 2042 }, schengen_basic: 944 },
+        { duration: "per_week", worldwide_inc: { superior: 489, deluxe: 533 }, worldwide_exc: { superior: 462, deluxe: 451 }, pacific_schengen: { superior: 363, deluxe: 377 }, greater_asia: { superior: 135, deluxe: 190 }, schengen_basic: 88 }
+      ]
     },
-    "70_84y": {
-      "individual": {
-        "worldwide_inc": { "superior": { rates: [870000,1443000,1902000,2322000,2844000,3501000,4158000,4815000], per_week: 1095000 }, "deluxe": null },
-        "worldwide_exc": { "superior": { rates: [783000,1305000,1725000,2106000,2586000,3180000,3774000,4368000], per_week: 993000 }, "deluxe": null },
-        "asia_pacific": { "superior": { rates: [651000,1086000,1434000,1746000,2151000,2646000,3141000,3639000], per_week: 825000 }, "deluxe": null },
-        "greater_asia": { "superior": { rates: [501000,831000,1095000,1335000,1644000,2025000,2400000,2781000], per_week: 630000 }, "deluxe": null },
-        "schengen_basic": null
-      },
-      "couple": {
-        "worldwide_inc": { "superior": { rates: [1566000,2597000,3424000,4180000,5119000,6302000,7484000,8667000], per_week: 1971000 }, "deluxe": null },
-        "worldwide_exc": { "superior": { rates: [1409000,2349000,3105000,3791000,4655000,5724000,6793000,7862000], per_week: 1787000 }, "deluxe": null },
-        "asia_pacific": { "superior": { rates: [1172000,1955000,2581000,3143000,3872000,4763000,5654000,6550000], per_week: 1485000 }, "deluxe": null },
-        "greater_asia": { "superior": { rates: [902000,1496000,1971000,2403000,2959000,3645000,4320000,5006000], per_week: 1134000 }, "deluxe": null },
-        "schengen_basic": null
-      },
-      "family": {
-        "worldwide_inc": { "superior": { rates: [2088000,3462000,4566000,5574000,6826000,8403000,9978000,11556000], per_week: 2628000 }, "deluxe": null },
-        "worldwide_exc": { "superior": { rates: [1879000,3132000,4140000,5054000,6206000,7632000,9058000,10483000], per_week: 2383000 }, "deluxe": null },
-        "asia_pacific": { "superior": { rates: [1563000,2607000,3441000,4191000,5163000,6351000,7539000,8733000], per_week: 1980000 }, "deluxe": null },
-        "greater_asia": { "superior": { rates: [1203000,1994000,2628000,3204000,3946000,4860000,5760000,6675000], per_week: 1512000 }, "deluxe": null },
-        "schengen_basic": null
-      }
+    "70y-84y": {
+      individual: [
+        { duration: "1-4", worldwide_inc: { superior: 642, deluxe: 684 }, worldwide_exc: { superior: 592, deluxe: 594 }, pacific_schengen: { superior: 512, deluxe: 508 }, greater_asia: { superior: 200, deluxe: 0 }, schengen_basic: 0 },
+        { duration: "5-6", worldwide_inc: { superior: 962, deluxe: 1046 }, worldwide_exc: { superior: 888, deluxe: 908 }, pacific_schengen: { superior: 688, deluxe: 716 }, greater_asia: { superior: 276, deluxe: 406 }, schengen_basic: 0 },
+        { duration: "7-8", worldwide_inc: { superior: 1242, deluxe: 1482 }, worldwide_exc: { superior: 1146, deluxe: 1288 }, pacific_schengen: { superior: 904, deluxe: 954 }, greater_asia: { superior: 552, deluxe: 754 }, schengen_basic: 0 },
+        { duration: "9-10", worldwide_inc: { superior: 1562, deluxe: 1962 }, worldwide_exc: { superior: 1440, deluxe: 1706 }, pacific_schengen: { superior: 1158, deluxe: 1294 }, greater_asia: { superior: 712, deluxe: 1006 }, schengen_basic: 0 },
+        { duration: "11-15", worldwide_inc: { superior: 1844, deluxe: 2124 }, worldwide_exc: { superior: 1700, deluxe: 1846 }, pacific_schengen: { superior: 1444, deluxe: 1600 }, greater_asia: { superior: 790, deluxe: 1106 }, schengen_basic: 0 },
+        { duration: "16-20", worldwide_inc: { superior: 2642, deluxe: 2724 }, worldwide_exc: { superior: 2434, deluxe: 2468 }, pacific_schengen: { superior: 1974, deluxe: 1914 }, greater_asia: { superior: 1024, deluxe: 1456 }, schengen_basic: 0 },
+        { duration: "21-25", worldwide_inc: { superior: 2922, deluxe: 3202 }, worldwide_exc: { superior: 2694, deluxe: 2784 }, pacific_schengen: { superior: 2094, deluxe: 2180 }, greater_asia: { superior: 1182, deluxe: 1656 }, schengen_basic: 0 },
+        { duration: "26-31", worldwide_inc: { superior: 3322, deluxe: 3684 }, worldwide_exc: { superior: 3062, deluxe: 3202 }, pacific_schengen: { superior: 2484, deluxe: 2418 }, greater_asia: { superior: 1300, deluxe: 1856 }, schengen_basic: 0 },
+        { duration: "per_week", worldwide_inc: { superior: 413, deluxe: 423 }, worldwide_exc: { superior: 410, deluxe: 420 }, pacific_schengen: { superior: 330, deluxe: 342 }, greater_asia: { superior: 122, deluxe: 172 }, schengen_basic: 0 }
+      ],
+      couple: [
+        { duration: "1-4", worldwide_inc: { superior: 1300, deluxe: 1220 }, worldwide_exc: { superior: 1125, deluxe: 1129 }, pacific_schengen: { superior: 966, deluxe: 973 }, greater_asia: { superior: 380, deluxe: 578 }, schengen_basic: 0 },
+        { duration: "5-6", worldwide_inc: { superior: 1988, deluxe: 1828 }, worldwide_exc: { superior: 1688, deluxe: 1726 }, pacific_schengen: { superior: 1308, deluxe: 1361 }, greater_asia: { superior: 525, deluxe: 772 }, schengen_basic: 0 },
+        { duration: "7-8", worldwide_inc: { superior: 2360, deluxe: 2816 }, worldwide_exc: { superior: 2178, deluxe: 2448 }, pacific_schengen: { superior: 1718, deluxe: 1813 }, greater_asia: { superior: 1049, deluxe: 1433 }, schengen_basic: 0 },
+        { duration: "9-10", worldwide_inc: { superior: 2968, deluxe: 3728 }, worldwide_exc: { superior: 2736, deluxe: 3242 }, pacific_schengen: { superior: 2201, deluxe: 2459 }, greater_asia: { superior: 1353, deluxe: 1912 }, schengen_basic: 0 },
+        { duration: "11-15", worldwide_inc: { superior: 3504, deluxe: 4036 }, worldwide_exc: { superior: 3230, deluxe: 3508 }, pacific_schengen: { superior: 2744, deluxe: 3040 }, greater_asia: { superior: 1501, deluxe: 2102 }, schengen_basic: 0 },
+        { duration: "16-20", worldwide_inc: { superior: 5176, deluxe: 5020 }, worldwide_exc: { superior: 4625, deluxe: 4690 }, pacific_schengen: { superior: 3637, deluxe: 3751 }, greater_asia: { superior: 1946, deluxe: 2767 }, schengen_basic: 0 },
+        { duration: "21-25", worldwide_inc: { superior: 6084, deluxe: 5552 }, worldwide_exc: { superior: 5119, deluxe: 5290 }, pacific_schengen: { superior: 3979, deluxe: 4142 }, greater_asia: { superior: 2246, deluxe: 3147 }, schengen_basic: 0 },
+        { duration: "26-31", worldwide_inc: { superior: 6312, deluxe: 7000 }, worldwide_exc: { superior: 5818, deluxe: 6084 }, pacific_schengen: { superior: 4595, deluxe: 4720 }, greater_asia: { superior: 2470, deluxe: 3527 }, schengen_basic: 0 },
+        { duration: "per_week", worldwide_inc: { superior: 920, deluxe: 844 }, worldwide_exc: { superior: 779, deluxe: 798 }, pacific_schengen: { superior: 627, deluxe: 650 }, greater_asia: { superior: 232, deluxe: 327 }, schengen_basic: 0 }
+      ],
+      family: [
+        { duration: "1-4", worldwide_inc: { superior: 1505, deluxe: 1413 }, worldwide_exc: { superior: 1307, deluxe: 1303 }, pacific_schengen: { superior: 1118, deluxe: 1127 }, greater_asia: { superior: 440, deluxe: 669 }, schengen_basic: 0 },
+        { duration: "5-6", worldwide_inc: { superior: 2302, deluxe: 2117 }, worldwide_exc: { superior: 1954, deluxe: 1998 }, pacific_schengen: { superior: 1514, deluxe: 1576 }, greater_asia: { superior: 608, deluxe: 894 }, schengen_basic: 0 },
+        { duration: "7-8", worldwide_inc: { superior: 3261, deluxe: 2733 }, worldwide_exc: { superior: 2834, deluxe: 2522 }, pacific_schengen: { superior: 1989, deluxe: 2099 }, greater_asia: { superior: 1215, deluxe: 1659 }, schengen_basic: 0 },
+        { duration: "9-10", worldwide_inc: { superior: 4317, deluxe: 3437 }, worldwide_exc: { superior: 3168, deluxe: 3754 }, pacific_schengen: { superior: 2548, deluxe: 2847 }, greater_asia: { superior: 1567, deluxe: 2214 }, schengen_basic: 0 },
+        { duration: "11-15", worldwide_inc: { superior: 4057, deluxe: 4673 }, worldwide_exc: { superior: 4062, deluxe: 3740 }, pacific_schengen: { superior: 3177, deluxe: 3520 }, greater_asia: { superior: 1738, deluxe: 2434 }, schengen_basic: 0 },
+        { duration: "16-20", worldwide_inc: { superior: 5813, deluxe: 5993 }, worldwide_exc: { superior: 5355, deluxe: 5430 }, pacific_schengen: { superior: 4211, deluxe: 4343 }, greater_asia: { superior: 2253, deluxe: 3204 }, schengen_basic: 0 },
+        { duration: "21-25", worldwide_inc: { superior: 6429, deluxe: 7045 }, worldwide_exc: { superior: 6125, deluxe: 5927 }, pacific_schengen: { superior: 4607, deluxe: 4796 }, greater_asia: { superior: 2601, deluxe: 3644 }, schengen_basic: 0 },
+        { duration: "26-31", worldwide_inc: { superior: 8105, deluxe: 7309 }, worldwide_exc: { superior: 6737, deluxe: 7045 }, pacific_schengen: { superior: 5320, deluxe: 5465 }, greater_asia: { superior: 2860, deluxe: 4084 }, schengen_basic: 0 },
+        { duration: "per_week", worldwide_inc: { superior: 977, deluxe: 1065 }, worldwide_exc: { superior: 902, deluxe: 1024 }, pacific_schengen: { superior: 726, deluxe: 753 }, greater_asia: { superior: 269, deluxe: 379 }, schengen_basic: 0 }
+      ]
     }
   };
 
-  // Duration brackets: [1-3, 4-5, 6-8, 9-11, 12-15, 16-20, 21-25, 26-31]
-  function getDurationIndex(days) {
-    if (days >= 1 && days <= 3) return 0;
-    if (days >= 4 && days <= 5) return 1;
-    if (days >= 6 && days <= 8) return 2;
-    if (days >= 9 && days <= 11) return 3;
-    if (days >= 12 && days <= 15) return 4;
-    if (days >= 16 && days <= 20) return 5;
-    if (days >= 21 && days <= 25) return 6;
-    if (days >= 26 && days <= 31) return 7;
-    return -1; // > 31 days
+  function calculatePremium(ageGroup, type, region, plan, totalDays) {
+    if (totalDays < 1 || totalDays > 183) return "Durasi tidak valid (1-183 hari).";
+    const group = premiumData[ageGroup]?.[type];
+    if (!group) return "Kombinasi usia/tipe tidak ditemukan.";
+    let basePremium = 0;
+    if (totalDays <= 31) {
+      const row = group.find(item => {
+        if (item.duration === "per_week") return false;
+        const [start, end] = item.duration.split("-").map(Number);
+        return totalDays >= start && totalDays <= end;
+      });
+      if (row) {
+        basePremium = (region === "schengen_basic") ? row[region] : row[region]?.[plan];
+      }
+    } else {
+      const row31 = group.find(item => item.duration === "26-31");
+      const rowWeek = group.find(item => item.duration === "per_week");
+      const premium31 = (region === "schengen_basic") ? row31[region] : row31[region]?.[plan];
+      const premiumWeek = (region === "schengen_basic") ? rowWeek[region] : rowWeek[region]?.[plan];
+      const extraDays = totalDays - 31;
+      const extraWeeks = Math.ceil(extraDays / 7);
+      basePremium = premium31 + (extraWeeks * premiumWeek);
+    }
+    if (!basePremium || basePremium === 0) return "Opsi tidak ditanggung (Plan tidak tersedia).";
+    return basePremium * 1000;
   }
 
   function formatRupiah(num) {
@@ -916,7 +965,7 @@ function toggleFaq(el) {
     return 'Rp ' + result;
   }
 
-  function calculatePremium() {
+  function handleCalculate() {
     var resultEl = document.getElementById('travel-result');
     var resultValueEl = document.getElementById('travel-result-value');
     var resultDetailEl = document.getElementById('travel-result-detail');
@@ -958,73 +1007,31 @@ function toggleFaq(el) {
       plan = 'superior';
     }
 
-    // Get data
-    var ageData = premiumData[ageGroup];
-    if (!ageData) {
-      errorEl.textContent = 'Data tidak ditemukan untuk kelompok usia ini.';
-      errorEl.style.display = 'block';
-      return;
-    }
+    var result = calculatePremium(ageGroup, coverage, region, plan, days);
 
-    var coverageData = ageData[coverage];
-    if (!coverageData) {
-      errorEl.textContent = 'Data tidak ditemukan untuk tipe coverage ini.';
-      errorEl.style.display = 'block';
-      return;
-    }
-
-    var regionData = coverageData[region];
-    if (!regionData) {
-      errorEl.textContent = 'Opsi tidak ditanggung untuk kombinasi ini. Wilayah ini tidak tersedia untuk kelompok usia yang dipilih.';
-      errorEl.style.display = 'block';
-      return;
-    }
-
-    var planData = regionData[plan];
-    if (!planData) {
-      errorEl.textContent = 'Opsi tidak ditanggung untuk kombinasi ini. Plan ini tidak tersedia untuk wilayah/usia yang dipilih.';
-      errorEl.style.display = 'block';
-      return;
-    }
-
-    // Calculate premium
-    var premium = 0;
-    var durationIndex = getDurationIndex(days);
-
-    if (durationIndex >= 0) {
-      // Within 1-31 days bracket
-      premium = planData.rates[durationIndex];
-    } else {
-      // > 31 days: rate for 26-31 + ceil((days-31)/7) * per_week
-      var baseRate = planData.rates[7]; // 26-31 days rate
-      var extraWeeks = Math.ceil((days - 31) / 7);
-      premium = baseRate + extraWeeks * planData.per_week;
-    }
-
-    if (!premium || premium === 0) {
-      errorEl.textContent = 'Opsi tidak ditanggung untuk kombinasi ini.';
+    if (typeof result === 'string') {
+      errorEl.textContent = result;
       errorEl.style.display = 'block';
       return;
     }
 
     // Format labels
-    var ageLabels = { "14d_59y": "14 hari - 59 tahun", "60_69y": "60 - 69 tahun", "70_84y": "70 - 84 tahun" };
+    var ageLabels = { "14d-59y": "14 hari - 59 tahun", "60y-69y": "60 - 69 tahun", "70y-84y": "70 - 84 tahun" };
     var coverageLabels = { "individual": "Individual", "couple": "Couple", "family": "Family" };
-    var regionLabels = { "worldwide_inc": "Worldwide Including Americas", "worldwide_exc": "Worldwide Excluding Americas", "asia_pacific": "Asia Pacific & Schengen", "greater_asia": "Greater Asia", "schengen_basic": "Schengen Basic" };
+    var regionLabels = { "worldwide_inc": "Worldwide Including Americas", "worldwide_exc": "Worldwide Excluding Americas", "pacific_schengen": "Asia Pacific & Schengen", "greater_asia": "Greater Asia", "schengen_basic": "Schengen Basic" };
     var planLabels = { "superior": "Superior", "deluxe": "Deluxe" };
 
-    resultValueEl.textContent = formatRupiah(premium);
+    resultValueEl.textContent = formatRupiah(result);
     resultDetailEl.innerHTML = '<strong>' + planLabels[plan] + ' Plan</strong> | ' + coverageLabels[coverage] + ' | ' + regionLabels[region] + '<br>Usia: ' + ageLabels[ageGroup] + ' | Durasi: ' + days + ' hari';
     resultEl.style.display = 'block';
   }
 
-  // Determine whether the plan dropdown should be disabled based on age and region
   function updatePlanState() {
     var age = document.getElementById('travel-age').value;
     var region = document.getElementById('travel-region').value;
     var planSelect = document.getElementById('travel-plan');
 
-    if (age === '70_84y' || region === 'schengen_basic') {
+    if (region === 'schengen_basic') {
       planSelect.value = 'superior';
       planSelect.disabled = true;
     } else {
@@ -1032,29 +1039,21 @@ function toggleFaq(el) {
     }
   }
 
-  function handleRegionChange() {
-    updatePlanState();
-  }
-
-  function handleAgeChange() {
-    updatePlanState();
-  }
-
   // Attach event listeners
   document.addEventListener('DOMContentLoaded', function() {
     var btn = document.getElementById('travel-calc-btn');
     if (btn) {
-      btn.addEventListener('click', calculatePremium);
+      btn.addEventListener('click', handleCalculate);
     }
 
     var regionSelect = document.getElementById('travel-region');
     if (regionSelect) {
-      regionSelect.addEventListener('change', handleRegionChange);
+      regionSelect.addEventListener('change', updatePlanState);
     }
 
     var ageSelect = document.getElementById('travel-age');
     if (ageSelect) {
-      ageSelect.addEventListener('change', handleAgeChange);
+      ageSelect.addEventListener('change', updatePlanState);
     }
 
     // Allow Enter key on duration input
@@ -1063,7 +1062,7 @@ function toggleFaq(el) {
       durationInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
           e.preventDefault();
-          calculatePremium();
+          handleCalculate();
         }
       });
     }
