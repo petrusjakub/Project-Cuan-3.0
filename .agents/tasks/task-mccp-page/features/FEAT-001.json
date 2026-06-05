@@ -1,0 +1,47 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the full mccp.html page at /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html following the project design system, including hero section, product info with question-based content, premium tables, error-free JSON lookup premium calculator, medical requirements, FAQ, and CTA sections.",
+  "status": "in_progress",
+  "steps": [
+    "Create /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html with the standard page structure: DOCTYPE, head with meta, title, link to /assets/style.css, dark mode init script, and page-specific <style> block",
+    "Add <div id='site-header'></div> at start of body for component loader",
+    "Add breadcrumb navigation (Beranda > Produk > MCCP) following the pattern in msp.html",
+    "Create a hero section with MCCP branding (product badge, h1 using question-based language with .kw, .kw-cta, .kw-gold keyword highlights, stat grid showing key numbers like 150 penyakit, usia 85 tahun, tanpa survival period), CTA buttons for WhatsApp and calculator anchor",
+    "Add page-specific CSS variables (--mccp-green, --mccp-dark, --mccp-light) and custom styles for hero, stats, cards, tables, and calculator following the pattern in msp.html",
+    "Create product info section using question-based language (bahasa pertanyaan) to make users think about the value of MCCP. Include: what is MCCP, 2 plan options comparison, key benefits (150 diseases, no survival period, end of term benefit at age 85). Use .kw, .kw-cta, .kw-gold classes for keyword coloring.",
+    "Create a Plan comparison section with grid cards comparing Plan 1 (Basic - 85 diseases) vs Plan 2 (Complete - 150 diseases) with their respective benefits",
+    "Create premium table section showing sample premium rates for Plan 1 and Plan 2, male and female, for common ages (25-50) with all 4 MPP options (10, 15, 20, RP), using the data from Sample/Mccp.html tables",
+    "Create the premium calculator section using .calculator-wrap, .calc-header, .calc-body, .calc-grid, .form-group, .form-label, .form-select pattern. Include select inputs for: Plan (1/2), Gender (Pria/Wanita), Usia (0-60), MPP (10/15/20/RP), UP (0.5M/1M/1.5M/2M/2.5M/5M/10M)",
+    "Embed the COMPLETE premium data JSON from Sample/Mccp.html into the page as a JavaScript object (the PREMIUM_DATA variable). This JSON has keys in format 'plan|gender|age|mpp' mapping to UP values. Extract ALL entries from the Sample file for ages 0-60.",
+    "Implement the calculator lookup function: given plan, gender, age, mpp selections, look up the key in PREMIUM_DATA, get the premium for selected UP. Display result in Juta Rupiah format. Show payment modes (tahunan, semesteran x0.52, kuartalan x0.27, bulanan x0.09). Handle '-' (not available) cases with an appropriate message. Validate minimum premium Rp 5 juta. The calculator must be error-free using pure JSON lookup, NO mathematical formulas.",
+    "Add medical requirements checker logic: based on age groups and UP amounts, show whether medical examination is required or not (standard Manulife underwriting rules)",
+    "Create FAQ section using the design system's .faq-list, .faq-item, .faq-trigger, .faq-question, .faq-icon, .faq-body, .faq-answer classes. Include 10-12 FAQs about MCCP (from Sample/Mccp.html content) written in question format",
+    "Add CTA section with gradient background encouraging users to contact the agent via WhatsApp",
+    "Add <div id='site-footer'></div> for footer component loading",
+    "Add <script src='/assets/main.js'></script> at the end of body",
+    "Ensure dark mode compatibility by using CSS variables and html.dark overrides for custom colors"
+  ],
+  "acceptance_criteria": [
+    "File exists at /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html",
+    "Page links to /assets/style.css and loads /assets/main.js",
+    "Page contains div#site-header and div#site-footer for component loading",
+    "Hero section uses question-based (bahasa pertanyaan) language with keyword coloring via .kw, .kw-cta, .kw-gold classes",
+    "Premium calculator uses embedded JSON data lookup (PREMIUM_DATA object) with keys in format 'plan|gender|age|mpp' for all ages 0-60, both genders, both plans, all MPP options",
+    "Calculator displays result in Juta Rupiah with payment mode breakdown (tahunan, semesteran, kuartalan, bulanan)",
+    "Calculator handles 'not available' combinations showing appropriate error message",
+    "Premium table section shows rate tables for Plan 1 and Plan 2",
+    "FAQ section uses design system .faq-list/.faq-item/.faq-trigger pattern",
+    "Page has proper dark mode support with html.dark CSS overrides",
+    "HTML is well-formed with no syntax errors"
+  ],
+  "verification": [
+    "Run: test -f /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html && echo 'File exists'",
+    "Run: grep -c 'PREMIUM_DATA' /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html to confirm JSON data is embedded",
+    "Run: grep -c 'site-header' /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html to confirm component loading divs",
+    "Run: grep -c 'style.css' /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html to confirm CSS link",
+    "Run: grep -c 'main.js' /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html to confirm JS loading"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
