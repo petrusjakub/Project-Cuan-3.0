@@ -180,6 +180,7 @@
       '}',
       '@media (max-width: 768px) {',
       '  .pc-floating-bar { display: flex; }',
+      '  body { padding-bottom: 56px; }',
       '}'
     ].join('\n');
 
@@ -237,6 +238,8 @@
     inputWA.name = 'nomor';
     inputWA.placeholder = 'Nomor WhatsApp (cth: 08123456789)';
     inputWA.required = true;
+    inputWA.pattern = '08[0-9]{8,12}';
+    inputWA.title = 'Masukkan nomor HP Indonesia yang valid (dimulai dengan 08, 10-14 digit)';
 
     var submitBtn = document.createElement('button');
     submitBtn.className = 'pc-modal-submit';
@@ -328,11 +331,16 @@
       var diff     = lastScrollY - currentY;
       var timeDiff = now - lastTimestamp;
 
+      // Only arm exit-intent after user has scrolled past 50% of page depth
+      var pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var scrollPercent = pageHeight > 0 ? (currentY / pageHeight) : 0;
+      var pastHalf = scrollPercent >= 0.5 || (lastScrollY / pageHeight) >= 0.5;
+
       // Detect if user was scrolling down then rapidly scrolls up
       if (diff < 0) {
         scrollingDown = true;
-      } else if (scrollingDown && diff > 100 && timeDiff < 300) {
-        // Rapid upward scroll after scrolling down
+      } else if (scrollingDown && pastHalf && diff > 200 && timeDiff < 300) {
+        // Rapid upward scroll after scrolling down past 50% depth
         showExitPopup();
       }
 
@@ -360,6 +368,11 @@
       '<span>Chat Sekarang - Konsultasi Gratis</span>';
 
     document.body.appendChild(bar);
+
+    // Add body padding on mobile to prevent floating bar from occluding content
+    if (window.innerWidth <= 768) {
+      document.body.style.paddingBottom = '56px';
+    }
   }
 
   /* ── 4. UPDATE CONTEXTUAL MESSAGES ── */
@@ -368,7 +381,8 @@
     var url = WA_BASE + encodeURIComponent(msg);
 
     // Update existing wa.me links on the page to use contextual messages
-    var links = document.querySelectorAll('a[href*="wa.me/' + WA_NUMBER + '"]');
+    // Skip links with data-no-override attribute to allow opt-out
+    var links = document.querySelectorAll('a[href*="wa.me/' + WA_NUMBER + '"]:not([data-no-override])');
     links.forEach(function (link) {
       link.href = url;
     });

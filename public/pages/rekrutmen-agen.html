@@ -422,7 +422,7 @@
 
       <div class="calc-results" id="calcResults">
         <div class="calc-result-card">
-          <div class="calc-result-label">Estimasi FYC per Bulan</div>
+          <div class="calc-result-label">Estimasi FYC (dari polis bulan ini)</div>
           <div class="calc-result-value" id="resFYC">Rp 0</div>
         </div>
         <div class="calc-result-card">
@@ -434,6 +434,10 @@
           <div class="calc-result-value" id="resOverride">Rp 0</div>
         </div>
       </div>
+      <p style="font-size:var(--fs-xs);color:var(--txt-muted);text-align:center;margin-top:var(--sp-4);line-height:1.6">
+        *FYC (First Year Commission) adalah komisi satu kali dari polis yang dijual, bukan penghasilan tetap bulanan.
+        Angka di atas menunjukkan total komisi tahun pertama dari polis yang berhasil dijual bulan ini.
+      </p>
 
       <div style="text-align:center;margin-top:var(--sp-8)">
         <a href="#form" class="btn btn--jade btn--lg">Tertarik? Daftar Sekarang &darr;</a>
@@ -463,7 +467,7 @@
         </div>
         <div class="form-group">
           <label for="regWA">Nomor WhatsApp *</label>
-          <input type="tel" id="regWA" placeholder="Contoh: 08123456789" required>
+          <input type="tel" id="regWA" placeholder="Contoh: 08123456789" required pattern="08[0-9]{8,12}" title="Masukkan nomor HP Indonesia yang valid (dimulai dengan 08, 10-14 digit)">
         </div>
         <div class="form-group">
           <label for="regKota">Kota *</label>
