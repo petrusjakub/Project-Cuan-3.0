@@ -765,20 +765,7 @@
 
 <script>
 (function() {
-  // FAQ ACCORDION
-  var faqTriggers = document.querySelectorAll('.faq-trigger');
-  faqTriggers.forEach(function(trigger) {
-    trigger.addEventListener('click', function() {
-      var item = trigger.closest('.faq-item');
-      var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(function(fi) {
-        fi.classList.remove('open');
-      });
-      if (!wasOpen) {
-        item.classList.add('open');
-      }
-    });
-  });
+  // FAQ ACCORDION is handled by main.js (initFAQ)
 
   // CALCULATOR
   var modeEl = document.getElementById('missionMode');
