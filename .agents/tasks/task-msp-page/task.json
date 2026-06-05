@@ -1,0 +1,7 @@
+{
+  "task_id": "task-msp-page",
+  "task_description": "Create msp.html page for Manulife Saving Protector product in /pages/ directory with comprehensive product content in question format, premium tables, error-free calculator using lookup table approach, and keyword color highlighting.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

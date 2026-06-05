@@ -1,0 +1,25 @@
+{
+  "project_type": "Static HTML/CSS/JS website for insurance products (Project Cuan 3.0)",
+  "language": "HTML, CSS, vanilla JavaScript",
+  "build_system": "None - static files served directly",
+  "test_framework": "None - manual verification by opening HTML files",
+  "build_command": "N/A - static site",
+  "test_command": "N/A - validate by opening in browser",
+  "verification_instructions": "1. Verify msp.html exists in /pages/ directory. 2. Check HTML is well-formed. 3. Verify calculator logic computes correctly per lookup data.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML files",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external package installs. All code is vanilla HTML/CSS/JS.",
+  "contribution_requirements": "Follow existing page patterns: use /assets/style.css, load header/footer via main.js component loader, use page-specific <style> blocks, use .kw class for keyword highlighting.",
+  "key_patterns": "1. Pages load header.html and footer.html via main.js component loader (div#site-header, div#site-footer). 2. Dark mode support via html.dark class. 3. CSS variables defined in style.css. 4. Keyword highlighting uses .kw (jade), .kw-cta (tangerine), .kw-gold classes. 5. Pages use page-specific custom CSS variables and styles in <style> block. 6. FAQ accordion uses .faq-item/.faq-trigger/.faq-body pattern handled by main.js. 7. Calculator logic is inline JavaScript. 8. Breadcrumb navigation at top of page-hero section.",
+  "relevant_files": [
+    "/projects/sandbox/Project-Cuan-3.0/pages/miuhc.html",
+    "/projects/sandbox/Project-Cuan-3.0/pages/mpds.html",
+    "/projects/sandbox/Project-Cuan-3.0/pages/mdwa.html",
+    "/projects/sandbox/Project-Cuan-3.0/Sample/Msp.html",
+    "/projects/sandbox/Project-Cuan-3.0/assets/style.css",
+    "/projects/sandbox/Project-Cuan-3.0/assets/main.js",
+    "/projects/sandbox/Project-Cuan-3.0/components/header.html",
+    "/projects/sandbox/Project-Cuan-3.0/components/footer.html"
+  ],
+  "directory_structure": "Root: index.html, /pages/ (product pages), /assets/ (style.css, main.js), /components/ (header.html, footer.html), /Sample/ (older standalone pages), /Source/ (PDF source materials)"
+}

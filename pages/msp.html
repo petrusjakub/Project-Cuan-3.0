@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSP - Manulife Saving Protector | PROJECTCUAN</title>
+  <meta name="description" content="MSP Manulife Saving Protector: Asuransi dwiguna dengan pengembalian premi 500% dan pembayaran tunai tahunan. Bayar hanya 5 tahun, dilindungi hingga 20 tahun. GIO tanpa medical check-up.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    :root {
+      --msp-green: #00875A;
+      --msp-dark: #005C3D;
+      --msp-light: #00C978;
+      --msp-accent: #00875A;
+    }
+    .kw-blue { color: #1565C0; font-weight: 700; }
+    .kw-purple { color: #7B1FA2; font-weight: 700; }
+    html.dark .kw-blue { color: #42A5F5; }
+    html.dark .kw-purple { color: #CE93D8; }
+
+    .msp-hero {
+      background: linear-gradient(135deg, #E8F5EE 0%, #D5F5E3 50%, #F0FFF7 100%);
+      padding: var(--sp-16) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    html.dark .msp-hero {
+      background: linear-gradient(135deg, #0A1E14 0%, #0D2B1A 100%);
+    }
+    .msp-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,135,90,0.08) 0%, transparent 70%);
+    }
+    .msp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: rgba(0,135,90,0.1);
+      border: 1px solid rgba(0,135,90,0.2);
+      color: var(--msp-green);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--r-full);
+      margin-bottom: var(--sp-4);
+    }
+    html.dark .msp-badge {
+      background: rgba(0,201,120,0.15);
+      border-color: rgba(0,201,120,0.3);
+      color: var(--msp-light);
+    }
+    .msp-hero h1 span { color: var(--msp-green); }
+    html.dark .msp-hero h1 span { color: var(--msp-light); }
+    .msp-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-8);
+    }
+    .msp-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-3) var(--sp-4);
+      text-align: center;
+    }
+    .msp-stat-value {
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: var(--fs-lg);
+      color: var(--msp-green);
+    }
+    html.dark .msp-stat-value { color: var(--msp-light); }
+    .msp-stat-label {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      margin-top: 2px;
+    }
+
+    /* Advantage Grid */
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .advantage-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      transition: all var(--ease);
+    }
+    .advantage-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .advantage-icon { font-size: 28px; margin-bottom: var(--sp-3); }
+    .advantage-title { font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
+    .advantage-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+
+    /* Benefit Cards */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--sp-5);
+    }
+    .benefit-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-card:hover { border-color: var(--msp-green); box-shadow: var(--sh-md); transform: translateY(-2px); }
+    html.dark .benefit-card:hover { border-color: var(--msp-light); }
+    .benefit-card-icon { font-size: 32px; margin-bottom: var(--sp-3); }
+    .benefit-card-title { font-size: var(--fs-md); font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-3); }
+    .benefit-card-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.7; }
+    .benefit-card-highlight {
+      background: rgba(0,135,90,0.06);
+      border-radius: var(--r-md);
+      padding: var(--sp-3);
+      margin-top: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+    }
+    html.dark .benefit-card-highlight { background: rgba(0,201,120,0.08); }
+
+    /* Premium Table */
+    .premi-table-wrap {
+      overflow-x: auto;
+      margin-top: var(--sp-4);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+    }
+    .premi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+    }
+    .premi-table th {
+      background: var(--msp-green);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: center;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    html.dark .premi-table th { background: var(--msp-dark); }
+    .premi-table td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+    }
+    .premi-table tr:last-child td { border-bottom: none; }
+    .premi-table tr:hover td { background: rgba(0,135,90,0.04); }
+    html.dark .premi-table tr:hover td { background: rgba(0,201,120,0.06); }
+
+    /* Calculator */
+    .calc-select-group { margin-bottom: var(--sp-4); }
+    .calc-select-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: var(--fs-sm); color: var(--txt-head); }
+    .calc-option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+    .calc-option {
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 10px 12px; border: 2px solid var(--border); border-radius: var(--r-md);
+      cursor: pointer; font-size: var(--fs-sm); font-weight: 500; color: var(--txt-sub);
+      transition: all 0.2s ease; background: var(--bg-card); line-height: 1.3;
+    }
+    .calc-option:hover { border-color: var(--msp-green); color: var(--msp-green); }
+    .calc-option.active { border-color: var(--msp-green); background: rgba(0,135,90,0.08); color: var(--msp-green); font-weight: 700; }
+    html.dark .calc-option:hover { border-color: var(--msp-light); color: var(--msp-light); }
+    html.dark .calc-option.active { border-color: var(--msp-light); background: rgba(0,201,120,0.12); color: var(--msp-light); }
+    .calc-select-group select, .calc-select-group input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--r-md);
+      font-size: var(--fs-sm);
+      color: var(--txt-head);
+      background: var(--bg-card);
+      transition: border-color 0.2s ease;
+    }
+    .calc-select-group select:focus, .calc-select-group input[type="text"]:focus {
+      outline: none;
+      border-color: var(--msp-green);
+    }
+    html.dark .calc-select-group select:focus, html.dark .calc-select-group input[type="text"]:focus { border-color: var(--msp-light); }
+    .calc-result-box {
+      margin-top: var(--sp-5);
+      padding: var(--sp-5);
+      background: rgba(0,135,90,0.04);
+      border-radius: var(--r-md);
+      border: 1px solid rgba(0,135,90,0.12);
+    }
+    html.dark .calc-result-box {
+      background: rgba(0,201,120,0.08);
+      border-color: rgba(0,201,120,0.2);
+    }
+    .calc-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      border-bottom: 1px solid var(--border);
+    }
+    .calc-result-row:last-child { border-bottom: none; }
+    .calc-result-row .result-label { font-weight: 500; }
+    .calc-result-row .result-value { font-weight: 700; color: var(--msp-green); }
+    html.dark .calc-result-row .result-value { color: var(--msp-light); }
+    .calc-result-row.highlight { background: rgba(0,135,90,0.06); border-radius: var(--r-md); padding: 12px; margin: 4px -12px; }
+    html.dark .calc-result-row.highlight { background: rgba(0,201,120,0.08); }
+    .calc-error-msg {
+      color: #d32f2f;
+      font-size: var(--fs-xs);
+      margin-top: 4px;
+      min-height: 18px;
+    }
+    html.dark .calc-error-msg { color: #ef5350; }
+    .calc-year-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-xs);
+      margin-top: var(--sp-4);
+    }
+    .calc-year-table th {
+      background: var(--msp-green);
+      color: #fff;
+      padding: 8px 6px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    html.dark .calc-year-table th { background: var(--msp-dark); }
+    .calc-year-table td {
+      padding: 6px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+      font-size: 11px;
+    }
+    .calc-year-table tr:hover td { background: rgba(0,135,90,0.04); }
+    html.dark .calc-year-table tr:hover td { background: rgba(0,201,120,0.06); }
+
+    /* CTA */
+    .msp-cta {
+      background: linear-gradient(135deg, var(--msp-dark), var(--msp-green), var(--msp-light));
+    }
+
+    /* Section tag override */
+    .msp-section-tag {
+      background: rgba(0,135,90,0.1) !important;
+      color: var(--msp-green) !important;
+    }
+    html.dark .msp-section-tag {
+      background: rgba(0,201,120,0.15) !important;
+      color: var(--msp-light) !important;
+    }
+
+    /* Button overrides */
+    .msp-btn-primary {
+      background: var(--msp-green) !important;
+      color: #fff !important;
+      box-shadow: 0 4px 14px rgba(0,135,90,0.3);
+    }
+    .msp-btn-primary:hover { background: var(--msp-dark) !important; }
+    .msp-btn-outline {
+      border-color: var(--msp-green) !important;
+      color: var(--msp-green) !important;
+    }
+    html.dark .msp-btn-outline {
+      border-color: var(--msp-light) !important;
+      color: var(--msp-light) !important;
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="msp-hero" aria-labelledby="msp-title">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/index.html">Beranda</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="/index.html#produk">Produk</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span class="breadcrumb-current" style="color:var(--msp-green)">MSP</span>
+    </nav>
+
+    <div class="page-hero-inner">
+      <div>
+        <div class="msp-badge">
+          &#128176; Manulife Saving Protector
+        </div>
+
+        <h1 id="msp-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
+          Bagaimana Jika Ada Produk yang Memberikan <span class="kw-cta">Proteksi</span> Sekaligus Pengembalian Premi <span class="kw">500%</span>?
+        </h1>
+
+        <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
+          <strong>MSP (Manulife Saving Protector)</strong> adalah produk asuransi dwiguna yang menggabungkan <span class="kw-cta">tabungan</span> dan <span class="kw-blue">proteksi jiwa</span> dalam satu polis. Bayar hanya <span class="kw-purple">5 tahun</span>, terima manfaat tunai tahunan, dan dapatkan pengembalian <span class="kw">500%</span> di akhir masa pertanggungan.
+        </p>
+
+        <div class="msp-stat-grid fade-up stagger-2">
+          <div class="msp-stat">
+            <div class="msp-stat-value">500%</div>
+            <div class="msp-stat-label">Pengembalian Premi</div>
+          </div>
+          <div class="msp-stat">
+            <div class="msp-stat-value">5 Tahun</div>
+            <div class="msp-stat-label">Masa Bayar Premi</div>
+          </div>
+          <div class="msp-stat">
+            <div class="msp-stat-value">Guaranteed</div>
+            <div class="msp-stat-label">Manfaat Dijamin</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap" class="fade-up stagger-3">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MSP%20Manulife"
+             target="_blank" rel="noopener" class="btn btn--lg msp-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Tanya Produk MSP
+          </a>
+          <a href="#kalkulator" class="btn btn--outline btn--lg msp-btn-outline">Hitung Manfaat</a>
+        </div>
+      </div>
+
+      <!-- Visual: Product Summary -->
+      <div class="fade-up stagger-2">
+        <div style="background:var(--bg-card);border:2px dashed rgba(0,135,90,0.3);border-radius:var(--r-xl);padding:var(--sp-6)">
+          <div style="text-align:center;margin-bottom:var(--sp-5)">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--msp-green);letter-spacing:0.1em;text-transform:uppercase">Cara Kerja MSP</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3)">
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#128181;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Bayar 5 Tahun</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Premi tetap, tanpa kenaikan</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#128176;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Terima Tunai</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Setiap tahun mulai tahun ke-5</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#127942;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">500% Kembali</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Di akhir masa pertanggungan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section class="section section--alt" aria-labelledby="keunggulan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag msp-section-tag">Keunggulan</span>
+      <h2 id="keunggulan-heading" class="section-title fade-up">Tahukah Anda Bahwa Hanya dengan Membayar <span class="kw-purple">5 Tahun</span>, Anda Bisa Menerima Manfaat Hingga <span class="kw-purple">20 Tahun</span>?</h2>
+    </div>
+    <div class="advantage-grid">
+      <div class="advantage-card fade-up">
+        <div class="advantage-icon">&#128176;</div>
+        <div class="advantage-title">Pengembalian 500% Premi Tahunan</div>
+        <div class="advantage-desc">Apa jadinya jika uang yang Anda sisihkan bisa berlipat ganda <span class="kw-cta">tanpa risiko investasi</span>? Di akhir masa pertanggungan, Anda menerima <span class="kw">500%</span> dari premi tahunan. Semua <span class="kw-gold">DIJAMIN</span>.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-1">
+        <div class="advantage-icon">&#128181;</div>
+        <div class="advantage-title">Pembayaran Tunai Tahunan</div>
+        <div class="advantage-desc">Pernahkah Anda membayangkan menerima <span class="kw-gold">uang tunai setiap tahun</span> tanpa harus bekerja ekstra? Mulai akhir tahun ke-5, MSP memberikan pembayaran tunai rutin hingga akhir masa pertanggungan.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-2">
+        <div class="advantage-icon">&#128274;</div>
+        <div class="advantage-title">Manfaat 100% Dijamin</div>
+        <div class="advantage-desc">Mengapa harus mengambil risiko investasi jika ada produk yang memberikan <span class="kw">kepastian penuh</span>? Semua manfaat MSP dijamin dan tertulis di polis. Tidak ada fluktuasi pasar.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-3">
+        <div class="advantage-icon">&#128737;</div>
+        <div class="advantage-title">GIO - Tanpa Medical Check Up</div>
+        <div class="advantage-desc">Pernah ditolak asuransi karena riwayat kesehatan? Dengan <span class="kw-blue">Guaranteed Issuance Offer</span>, Anda langsung diterima <span class="kw-cta">tanpa pemeriksaan medis</span> untuk UP hingga Rp 1,5 Miliar.</div>
+      </div>
+      <div class="advantage-card fade-up">
+        <div class="advantage-icon">&#128200;</div>
+        <div class="advantage-title">Proteksi Jiwa Lengkap</div>
+        <div class="advantage-desc">Bagaimana jika satu produk bisa memberikan <span class="kw-blue">tabungan</span> sekaligus <span class="kw-blue">proteksi jiwa</span>? MSP melindungi keluarga Anda dengan manfaat meninggal dunia yang komprehensif, termasuk kecelakaan.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-1">
+        <div class="advantage-icon">&#128179;</div>
+        <div class="advantage-title">IDR dan USD Tersedia</div>
+        <div class="advantage-desc">Ingin diversifikasi mata uang? MSP tersedia dalam <span class="kw-gold">Rupiah (IDR)</span> maupun <span class="kw-gold">Dollar AS (USD)</span>. Pilih sesuai kebutuhan perencanaan keuangan Anda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANFAAT -->
+<section class="section" aria-labelledby="manfaat-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag msp-section-tag">Manfaat</span>
+      <h2 id="manfaat-heading" class="section-title fade-up">Apa Saja <span class="kw-blue">Manfaat</span> yang Akan Anda Terima dari <span class="kw">MSP</span>?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:700px;margin-left:auto;margin-right:auto">MSP memberikan 3 manfaat utama: pembayaran tunai tahunan, pengembalian 500%, dan proteksi jiwa.</p>
+    </div>
+    <div class="benefit-grid">
+      <!-- Manfaat Tunai Tahunan -->
+      <div class="benefit-card fade-up">
+        <div class="benefit-card-icon">&#128181;</div>
+        <div class="benefit-card-title">Manfaat Pembayaran Tunai Tahunan</div>
+        <div class="benefit-card-desc">
+          Tahukah Anda bahwa Anda akan menerima <span class="kw-gold">uang tunai setiap tahun</span> mulai akhir tahun polis ke-5 hingga akhir masa pertanggungan? Persentase berbeda untuk IDR dan USD.
+        </div>
+        <div class="benefit-card-highlight">
+          <strong>IDR:</strong> 15% (10 thn) | 17,5% (15 thn) | <span class="kw">20%</span> (20 thn)<br>
+          <strong>USD:</strong> 5% (10 thn) | 8% (15 thn) | <span class="kw">11%</span> (20 thn)<br><br>
+          <em>dari Premi Tahunan, dibayarkan setiap tahun</em>
+        </div>
+      </div>
+      <!-- Manfaat Akhir -->
+      <div class="benefit-card fade-up stagger-1">
+        <div class="benefit-card-icon">&#127942;</div>
+        <div class="benefit-card-title">Manfaat Akhir Masa Pertanggungan</div>
+        <div class="benefit-card-desc">
+          Bagaimana rasanya menerima <span class="kw">500% dari premi tahunan</span> di akhir kontrak? Ini setara dengan seluruh total premi yang Anda bayarkan selama 5 tahun, dikembalikan <span class="kw-cta">100% utuh</span>.
+        </div>
+        <div class="benefit-card-highlight">
+          <strong>Manfaat Akhir:</strong> <span class="kw">500%</span> x Premi Tahunan<br>
+          <strong>Setara:</strong> 5 x Premi Tahunan = Total Premi Terbayar<br><br>
+          <em>Contoh: Premi 12jt/thn x 5 = <span class="kw-gold">Rp 60.000.000</span></em>
+        </div>
+      </div>
+      <!-- Manfaat Meninggal -->
+      <div class="benefit-card fade-up stagger-2">
+        <div class="benefit-card-icon">&#128737;</div>
+        <div class="benefit-card-title">Manfaat Meninggal Dunia</div>
+        <div class="benefit-card-desc">
+          Pernahkah Anda berpikir, bagaimana jika keluarga tetap terlindungi secara finansial? MSP memberikan <span class="kw-blue">manfaat meninggal dunia</span> yang bertahap dan komprehensif.
+        </div>
+        <div class="benefit-card-highlight">
+          <strong>Tahun 1-5 (Masa Premi):</strong> Proporsional 20%-100%<br>
+          <strong>Tahun 6+:</strong> Sisa tunai tahunan + Manfaat Akhir<br>
+          <strong>Kecelakaan:</strong> Tambahan manfaat ekstra<br><br>
+          <em>ADB Cap: <span class="kw-gold">Rp 600 Juta</span> (IDR) / USD 60.000</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABEL MANFAAT -->
+<section class="section section--alt" aria-labelledby="tabel-manfaat-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag msp-section-tag">Tabel Manfaat</span>
+      <h2 id="tabel-manfaat-heading" class="section-title fade-up">Berapa <span class="kw-gold">Total Manfaat</span> yang Bisa Anda Terima Dibanding <span class="kw-cta">Total Premi</span> yang Dibayar?</h2>
+    </div>
+
+    <h3 style="color:var(--msp-green);margin-bottom:var(--sp-3)" class="fade-up">Manfaat Pembayaran Tunai Tahunan</h3>
+    <div class="premi-table-wrap fade-up stagger-1">
+      <table class="premi-table">
+        <thead>
+          <tr>
+            <th>Mata Uang</th>
+            <th>Masa Pertanggungan</th>
+            <th>% Tunai/Tahun</th>
+            <th>Frekuensi Terima</th>
+            <th>Total Tunai Tahunan</th>
+            <th>+ Manfaat Akhir (500%)</th>
+            <th>Total Manfaat Hidup</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IDR</td>
+            <td>10 Tahun</td>
+            <td>15%</td>
+            <td>6 tahun</td>
+            <td>90% Premi Tahunan</td>
+            <td>500% Premi Tahunan</td>
+            <td><strong>590%</strong></td>
+          </tr>
+          <tr>
+            <td>IDR</td>
+            <td>15 Tahun</td>
+            <td>17,5%</td>
+            <td>11 tahun</td>
+            <td>192,5% Premi Tahunan</td>
+            <td>500% Premi Tahunan</td>
+            <td><strong>692,5%</strong></td>
+          </tr>
+          <tr>
+            <td>IDR</td>
+            <td>20 Tahun</td>
+            <td>20%</td>
+            <td>16 tahun</td>
+            <td>320% Premi Tahunan</td>
+            <td>500% Premi Tahunan</td>
+            <td><strong>820%</strong></td>
+          </tr>
+          <tr>
+            <td>USD</td>
+            <td>10 Tahun</td>
+            <td>5%</td>
+            <td>6 tahun</td>
+            <td>30% Premi Tahunan</td>
+            <td>500% Premi Tahunan</td>
+            <td><strong>530%</strong></td>
+          </tr>
+          <tr>
+            <td>USD</td>
+            <td>15 Tahun</td>
+            <td>8%</td>
+            <td>11 tahun</td>
+            <td>88% Premi Tahunan</td>
+            <td>500% Premi Tahunan</td>
+            <td><strong>588%</strong></td>
+          </tr>
+          <tr>
+            <td>USD</td>
+            <td>20 Tahun</td>
+            <td>11%</td>
+            <td>16 tahun</td>
+            <td>176% Premi Tahunan</td>
+            <td>500% Premi Tahunan</td>
+            <td><strong>676%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="color:var(--msp-green);margin-bottom:var(--sp-3);margin-top:var(--sp-8)" class="fade-up">Minimum Premi per Mode Pembayaran</h3>
+    <div class="premi-table-wrap fade-up stagger-1">
+      <table class="premi-table">
+        <thead>
+          <tr>
+            <th>Mode Pembayaran</th>
+            <th>Minimum IDR</th>
+            <th>Modal Faktor IDR</th>
+            <th>Minimum USD</th>
+            <th>Modal Faktor USD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tahunan</td>
+            <td>Rp 12.000.000</td>
+            <td>1,000</td>
+            <td>$2.000</td>
+            <td>1,000</td>
+          </tr>
+          <tr>
+            <td>Semesteran</td>
+            <td>Rp 6.300.000</td>
+            <td>0,525</td>
+            <td>$1.025</td>
+            <td>0,5125</td>
+          </tr>
+          <tr>
+            <td>Kuartalan</td>
+            <td>Rp 3.300.000</td>
+            <td>0,275</td>
+            <td>$530</td>
+            <td>0,265</td>
+          </tr>
+          <tr>
+            <td>Bulanan</td>
+            <td>Rp 1.140.000</td>
+            <td>0,095</td>
+            <td>$180</td>
+            <td>0,090</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--txt-muted);text-align:center">
+      * Premi Tahunan = Premi Input / Modal Faktor. Total Premi Terbayar = Premi Tahunan x 5 tahun. Manfaat Akhir = 500% x Premi Tahunan.<br>
+      * Masa Pertanggungan: 10, 15, atau 20 tahun. Masa pembayaran premi selalu 5 tahun.
+    </p>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section class="section" id="kalkulator" aria-labelledby="calc-heading">
+  <div class="container"><div style="max-width:780px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag msp-section-tag">Kalkulator Manfaat</span>
+      <h2 id="calc-heading" class="section-title fade-up">Berapa <span class="kw-gold">Total Manfaat</span> yang Akan Anda Terima dari <span class="kw">MSP</span>?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Masukkan premi Anda dan lihat kalkulasi manfaat hidup, manfaat meninggal, dan tabel tahun per tahun. Kalkulasi <span class="kw">100% akurat</span> dari data resmi.</p>
+    </div>
+    <div class="calculator-wrap fade-up stagger-1">
+      <div class="calc-header" style="background:linear-gradient(135deg,var(--msp-dark),var(--msp-green))">
+        <h3>&#128202; Kalkulator MSP - Manulife Saving Protector</h3>
+        <p>Hitung manfaat tunai tahunan, manfaat akhir 500%, dan manfaat meninggal dunia</p>
+      </div>
+      <div class="calc-body">
+
+        <!-- Mata Uang -->
+        <div class="calc-select-group">
+          <label>Mata Uang</label>
+          <div class="calc-option-grid" id="mspCurrency">
+            <div class="calc-option active" onclick="selectMsp('mspCurrency','IDR',this)">&#127470;&#127465; IDR (Rupiah)</div>
+            <div class="calc-option" onclick="selectMsp('mspCurrency','USD',this)">&#127482;&#127480; USD (Dollar)</div>
+          </div>
+        </div>
+
+        <!-- Masa Pertanggungan -->
+        <div class="calc-select-group">
+          <label>Masa Pertanggungan</label>
+          <div class="calc-option-grid" id="mspTerm">
+            <div class="calc-option active" onclick="selectMsp('mspTerm','10',this)">10 Tahun</div>
+            <div class="calc-option" onclick="selectMsp('mspTerm','15',this)">15 Tahun</div>
+            <div class="calc-option" onclick="selectMsp('mspTerm','20',this)">20 Tahun</div>
+          </div>
+        </div>
+
+        <!-- Mode Pembayaran -->
+        <div class="calc-select-group">
+          <label>Mode Pembayaran</label>
+          <div class="calc-option-grid" id="mspMode">
+            <div class="calc-option active" onclick="selectMsp('mspMode','Tahunan',this)">Tahunan</div>
+            <div class="calc-option" onclick="selectMsp('mspMode','Semesteran',this)">Semesteran</div>
+            <div class="calc-option" onclick="selectMsp('mspMode','Kuartalan',this)">Kuartalan</div>
+            <div class="calc-option" onclick="selectMsp('mspMode','Bulanan',this)">Bulanan</div>
+          </div>
+        </div>
+
+        <!-- Premi Input -->
+        <div class="calc-select-group">
+          <label id="mspPremiLabel">Premi Tahunan (min Rp 12.000.000)</label>
+          <input type="text" id="mspPremiInput" placeholder="12.000.000" oninput="handleMspInput()" onblur="handleMspBlur()">
+          <div class="calc-error-msg" id="mspError"></div>
+        </div>
+
+        <!-- Result Area -->
+        <div id="mspResult"></div>
+
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt" aria-labelledby="faq-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag msp-section-tag">FAQ</span>
+      <h2 id="faq-heading" class="section-title fade-up">Pertanyaan yang Sering Ditanyakan tentang <span class="kw">MSP</span></h2>
+    </div>
+    <div class="faq-list" style="max-width:720px;margin:0 auto">
+      <div class="faq-item">
+        <button class="faq-trigger">Apa itu MSP (Manulife Saving Protector)?</button>
+        <div class="faq-body">
+          <p><strong>MSP (Manulife Saving Protector)</strong> adalah produk asuransi dwiguna (endowment) dari Manulife Indonesia yang menggabungkan <span class="kw-blue">tabungan</span> dan <span class="kw-blue">proteksi jiwa</span> dalam satu polis. Anda membayar premi hanya <span class="kw-purple">5 tahun</span>, kemudian menerima manfaat pembayaran tunai tahunan dan pengembalian <span class="kw">500%</span> di akhir masa pertanggungan. Semua manfaat dijamin dan tertulis di polis.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Apa bedanya MSP dengan produk unit link?</button>
+        <div class="faq-body">
+          <p>Perbedaan utamanya: MSP adalah produk <span class="kw">tradisional (dwiguna)</span> dengan manfaat <span class="kw-cta">DIJAMIN</span>, sedangkan unit link bergantung pada performa investasi pasar. Di MSP, semua manfaat sudah pasti sejak hari pertama - tidak ada risiko penurunan nilai. Cocok untuk Anda yang menginginkan <span class="kw-gold">kepastian finansial</span> tanpa harus memantau pasar.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Berapa minimum premi MSP?</button>
+        <div class="faq-body">
+          <p>Minimum premi berbeda per mata uang dan mode pembayaran:<br><br><strong>IDR:</strong> Rp 12.000.000/tahun | Rp 6.300.000/semester | Rp 3.300.000/kuartal | <span class="kw-gold">Rp 1.140.000/bulan</span><br><strong>USD:</strong> $2.000/tahun | $1.025/semester | $530/kuartal | <span class="kw-gold">$180/bulan</span><br><br>Semakin besar premi, semakin besar manfaat yang diterima.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Bagaimana cara kerja Guaranteed Issuance Offer (GIO)?</button>
+        <div class="faq-body">
+          <p><span class="kw-blue">GIO (Guaranteed Issuance Offer)</span> memungkinkan Anda memiliki MSP <span class="kw-cta">tanpa pemeriksaan medis</span> untuk Uang Pertanggungan hingga Rp 1,5 Miliar (IDR) atau USD 150.000. Cukup isi formulir aplikasi dan polis langsung disetujui. Sangat memudahkan bagi nasabah yang memiliki riwayat kesehatan tertentu.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Apa yang terjadi jika premi menunggak (grace period)?</button>
+        <div class="faq-body">
+          <p>MSP memberikan <span class="kw-purple">masa leluasa (grace period)</span> selama 45 hari sejak tanggal jatuh tempo premi. Selama grace period, polis tetap aktif dan manfaat tetap berlaku. Jika premi tidak dibayar setelah grace period berakhir, polis akan menjadi lapse (tidak aktif). Disarankan untuk selalu membayar premi tepat waktu.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Bisakah polis MSP di-surrender (dicairkan) sebelum jatuh tempo?</button>
+        <div class="faq-body">
+          <p>Ya, polis MSP bisa di-surrender sebelum masa pertanggungan berakhir. Namun, nilai tunai yang diterima akan lebih kecil dari total premi yang sudah dibayarkan. <span class="kw-cta">Sangat disarankan</span> untuk mempertahankan polis hingga akhir masa pertanggungan agar mendapatkan manfaat optimal termasuk pengembalian <span class="kw">500%</span>.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Bagaimana manfaat meninggal dunia dihitung di MSP?</button>
+        <div class="faq-body">
+          <p>Manfaat meninggal dunia MSP dibagi 2 periode:<br><br><strong>Tahun 1-5 (Masa Premi):</strong> Proporsional - Tahun 1: 20%, Tahun 2: 40%, Tahun 3: 60%, Tahun 4: 80%, Tahun 5: 100% dari total manfaat hidup.<br><br><strong>Tahun 6+ (Pasca Premi):</strong><br>- <span class="kw-blue">Sebab Alami:</span> Persentase x Premi Tahunan x Sisa Tahun + Manfaat Akhir<br>- <span class="kw-cta">Kecelakaan:</span> Persentase lebih tinggi x Premi Tahunan x Sisa Tahun + Manfaat Akhir<br><br>Selisih manfaat kecelakaan dan alami dibatasi maks <span class="kw-gold">Rp 600 Juta</span> (IDR) / USD 60.000.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Bagaimana cara mengajukan klaim MSP?</button>
+        <div class="faq-body">
+          <p>Klaim MSP bisa diajukan melalui:<br><br>1. Hubungi agen Manulife Anda atau kantor cabang terdekat<br>2. Siapkan dokumen: formulir klaim, polis asli, KTP, akta kematian (jika klaim meninggal), surat keterangan dokter/rumah sakit<br>3. Serahkan dokumen lengkap ke Manulife<br>4. Proses verifikasi oleh Manulife (umumnya 14 hari kerja)<br>5. Pembayaran manfaat ke rekening ahli waris/pemegang polis</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Apakah manfaat MSP benar-benar dijamin 100%?</button>
+        <div class="faq-body">
+          <p><span class="kw-cta">Ya, 100% dijamin.</span> MSP adalah produk asuransi tradisional (dwiguna/endowment), bukan unit link. Semua manfaat - pembayaran tunai tahunan, manfaat akhir 500%, dan manfaat meninggal dunia - <span class="kw">tertulis dan dijamin dalam polis</span>. Tidak ada risiko fluktuasi pasar atau penurunan nilai. Yang tertulis di polis, itulah yang Anda terima.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Siapa saja yang bisa memiliki MSP?</button>
+        <div class="faq-body">
+          <p>MSP terbuka untuk:<br><br>&#10003; <span class="kw-blue">Usia Tertanggung:</span> 1 bulan - 80 tahun<br>&#10003; <span class="kw-blue">Usia Pemegang Polis:</span> Minimal 18 tahun<br>&#10003; Tersedia dalam mata uang IDR dan USD<br>&#10003; Cocok untuk: <span class="kw-gold">dana pendidikan anak</span>, <span class="kw-gold">dana pensiun</span>, <span class="kw-gold">dana warisan</span>, atau tabungan jangka panjang dengan proteksi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section msp-cta">
+  <div class="container" style="position:relative;z-index:1;text-align:center">
+    <h2 class="cta-title fade-up">Sudahkah Anda Menyiapkan <span style="color:#FFB800">Tabungan Masa Depan</span> yang Memberikan Pengembalian 500%?</h2>
+    <p class="cta-sub fade-up stagger-1">MSP memberikan kepastian finansial: bayar 5 tahun, terima manfaat tunai tahunan, dan dapatkan 500% di akhir. Tanpa risiko investasi, semua dijamin. Konsultasi gratis sekarang.</p>
+    <div class="cta-btns fade-up stagger-2">
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MSP%20Manulife%20Saving%20Protector"
+         target="_blank" class="btn btn--lg" style="background:#fff;color:var(--msp-green);box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Konsultasi Gratis via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+// === MSP Calculator Logic ===
+// Single Source of Truth - Lookup Data
+var MSP_DATA = {
+  IDR: {
+    minimum_premi: { Tahunan: 12000000, Semesteran: 6300000, Kuartalan: 3300000, Bulanan: 1140000 },
+    modal_faktor: { Tahunan: 1.0, Semesteran: 0.525, Kuartalan: 0.275, Bulanan: 0.095 },
+    masa_pertanggungan_options: {
+      "10": { frekuensi_tunai_tahunan: 6, persen_tunai_tahunan: 0.15, persen_meninggal_alami_pasca_premi: 0.25, persen_meninggal_kecelakaan_pasca_premi: 0.35 },
+      "15": { frekuensi_tunai_tahunan: 11, persen_tunai_tahunan: 0.175, persen_meninggal_alami_pasca_premi: 0.275, persen_meninggal_kecelakaan_pasca_premi: 0.375 },
+      "20": { frekuensi_tunai_tahunan: 16, persen_tunai_tahunan: 0.20, persen_meninggal_alami_pasca_premi: 0.30, persen_meninggal_kecelakaan_pasca_premi: 0.40 }
+    }
+  },
+  USD: {
+    minimum_premi: { Tahunan: 2000, Semesteran: 1025, Kuartalan: 530, Bulanan: 180 },
+    modal_faktor: { Tahunan: 1.0, Semesteran: 0.5125, Kuartalan: 0.265, Bulanan: 0.09 },
+    masa_pertanggungan_options: {
+      "10": { frekuensi_tunai_tahunan: 6, persen_tunai_tahunan: 0.05, persen_meninggal_alami_pasca_premi: 0.10, persen_meninggal_kecelakaan_pasca_premi: 0.15 },
+      "15": { frekuensi_tunai_tahunan: 11, persen_tunai_tahunan: 0.08, persen_meninggal_alami_pasca_premi: 0.13, persen_meninggal_kecelakaan_pasca_premi: 0.18 },
+      "20": { frekuensi_tunai_tahunan: 16, persen_tunai_tahunan: 0.11, persen_meninggal_alami_pasca_premi: 0.16, persen_meninggal_kecelakaan_pasca_premi: 0.21 }
+    }
+  },
+  maksimum_selisih_kecelakaan_per_nasabah: { IDR: 600000000, USD: 60000 }
+};
+
+var mspState = {
+  currency: 'IDR',
+  term: '10',
+  mode: 'Tahunan'
+};
+
+function selectMsp(groupId, value, el) {
+  var group = document.getElementById(groupId);
+  var options = group.querySelectorAll('.calc-option');
+  for (var i = 0; i < options.length; i++) { options[i].classList.remove('active'); }
+  el.classList.add('active');
+
+  if (groupId === 'mspCurrency') {
+    mspState.currency = value;
+  } else if (groupId === 'mspTerm') {
+    mspState.term = value;
+  } else if (groupId === 'mspMode') {
+    mspState.mode = value;
+  }
+  updateMspLabel();
+  calculateMSP();
+}
+
+function updateMspLabel() {
+  var cur = mspState.currency;
+  var mode = mspState.mode;
+  var minPremi = MSP_DATA[cur].minimum_premi[mode];
+  var prefix = (cur === 'IDR') ? 'Rp ' : '$';
+  var formatted = (cur === 'IDR') ? formatMspNum(minPremi) : minPremi.toLocaleString('en-US');
+  document.getElementById('mspPremiLabel').textContent = 'Premi ' + mode + ' (min ' + prefix + formatted + ')';
+}
+
+function formatMspNum(num) {
+  if (isNaN(num) || num === 0) return '';
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function parseMspNum(str) {
+  return parseInt(str.replace(/\./g, '').replace(/,/g, ''), 10) || 0;
+}
+
+function formatCurrency(num, cur) {
+  if (cur === 'IDR') {
+    return 'Rp ' + Math.round(num).toLocaleString('id-ID');
+  } else {
+    return '$' + Math.round(num).toLocaleString('en-US');
+  }
+}
+
+function handleMspInput() {
+  var input = document.getElementById('mspPremiInput');
+  var digits = input.value.replace(/[^\d]/g, '');
+  digits = digits.replace(/^0+/, '');
+  if (mspState.currency === 'IDR') {
+    input.value = digits ? formatMspNum(parseInt(digits, 10)) : '';
+  } else {
+    input.value = digits ? parseInt(digits, 10).toLocaleString('en-US') : '';
+  }
+  calculateMSP();
+}
+
+function handleMspBlur() {
+  var input = document.getElementById('mspPremiInput');
+  var cur = mspState.currency;
+  var mode = mspState.mode;
+  var minPremi = MSP_DATA[cur].minimum_premi[mode];
+  var val = parseMspNum(input.value);
+
+  if (val > 0 && val < minPremi) {
+    val = minPremi;
+    if (cur === 'IDR') {
+      input.value = formatMspNum(val);
+    } else {
+      input.value = val.toLocaleString('en-US');
+    }
+  }
+  calculateMSP();
+}
+
+function calculateMSP() {
+  var cur = mspState.currency;
+  var term = mspState.term;
+  var mode = mspState.mode;
+  var input = document.getElementById('mspPremiInput');
+  var errorEl = document.getElementById('mspError');
+  var resultEl = document.getElementById('mspResult');
+
+  var premiInput = parseMspNum(input.value);
+
+  // Validate minimum
+  var minPremi = MSP_DATA[cur].minimum_premi[mode];
+  if (!premiInput || premiInput <= 0) {
+    errorEl.textContent = '';
+    resultEl.innerHTML = '';
+    return;
+  }
+
+  if (premiInput < minPremi) {
+    var prefix = (cur === 'IDR') ? 'Rp ' : '$';
+    var minFormatted = (cur === 'IDR') ? formatMspNum(minPremi) : minPremi.toLocaleString('en-US');
+    errorEl.textContent = 'Minimum premi ' + mode + ' adalah ' + prefix + minFormatted;
+    resultEl.innerHTML = '';
+    return;
+  }
+
+  errorEl.textContent = '';
+
+  // Calculate annual equivalent
+  var modalFaktor = MSP_DATA[cur].modal_faktor[mode];
+  var premiTahunan = premiInput / modalFaktor;
+
+  // Lookup data for selected term
+  var termData = MSP_DATA[cur].masa_pertanggungan_options[term];
+  var frekuensiTunai = termData.frekuensi_tunai_tahunan;
+  var persenTunai = termData.persen_tunai_tahunan;
+  var persenMeninggalAlami = termData.persen_meninggal_alami_pasca_premi;
+  var persenMeninggalKecelakaan = termData.persen_meninggal_kecelakaan_pasca_premi;
+
+  // Core calculations
+  var totalPremiTerbayar = premiTahunan * 5;
+  var manfaatAkhir = 5 * premiTahunan; // 500% = 5x
+  var manfaatTunaiPerTahun = persenTunai * premiTahunan;
+  var totalManfaatTunai = manfaatTunaiPerTahun * frekuensiTunai;
+  var totalManfaatHidup = totalManfaatTunai + manfaatAkhir;
+
+  // Death benefit after premium period (Year 6+)
+  // Sisa tahun belum dibayarkan = frekuensi tunai (same as years remaining of tunai payments)
+  // At year 6 (first year after premium), sisa tahun = frekuensi_tunai_tahunan
+  var sisaTahunMax = frekuensiTunai; // at start of post-premium period
+  var manfaatMeninggalAlami = (persenMeninggalAlami * premiTahunan * sisaTahunMax) + manfaatAkhir;
+  var manfaatMeninggalKecelakaan = (persenMeninggalKecelakaan * premiTahunan * sisaTahunMax) + manfaatAkhir;
+
+  // ADB Cap enforcement
+  var selisih = manfaatMeninggalKecelakaan - manfaatMeninggalAlami;
+  var adbCap = MSP_DATA.maksimum_selisih_kecelakaan_per_nasabah[cur];
+  if (selisih > adbCap) {
+    manfaatMeninggalKecelakaan = manfaatMeninggalAlami + adbCap;
+  }
+
+  // Build results HTML
+  var html = '<div class="calc-result-box">';
+  html += '<h4 style="font-size:var(--fs-sm);font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-3)">Ringkasan Manfaat MSP</h4>';
+  html += '<div class="calc-result-row"><span class="result-label">Premi Tahunan (Ekuivalen)</span><span class="result-value">' + formatCurrency(premiTahunan, cur) + '</span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Total Premi Terbayar (5 tahun)</span><span class="result-value">' + formatCurrency(totalPremiTerbayar, cur) + '</span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Manfaat Tunai/Tahun (' + (persenTunai * 100) + '%)</span><span class="result-value">' + formatCurrency(manfaatTunaiPerTahun, cur) + '</span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Total Tunai Tahunan (' + frekuensiTunai + ' tahun)</span><span class="result-value">' + formatCurrency(totalManfaatTunai, cur) + '</span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Manfaat Akhir (500%)</span><span class="result-value">' + formatCurrency(manfaatAkhir, cur) + '</span></div>';
+  html += '<div class="calc-result-row highlight"><span class="result-label"><strong>Total Manfaat Hidup</strong></span><span class="result-value" style="font-size:var(--fs-md)"><strong>' + formatCurrency(totalManfaatHidup, cur) + '</strong></span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Manfaat Meninggal (Alami, Tahun 6)</span><span class="result-value">' + formatCurrency(manfaatMeninggalAlami, cur) + '</span></div>';
+  html += '<div class="calc-result-row"><span class="result-label">Manfaat Meninggal (Kecelakaan, Tahun 6)</span><span class="result-value">' + formatCurrency(manfaatMeninggalKecelakaan, cur) + '</span></div>';
+  html += '</div>';
+
+  // Year-by-year table
+  html += '<div style="margin-top:var(--sp-5)">';
+  html += '<h4 style="font-size:var(--fs-sm);font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-3)">Tabel Manfaat Per Tahun</h4>';
+  html += '<div style="overflow-x:auto"><table class="calc-year-table">';
+  html += '<tr><th>Tahun</th><th>Status</th><th>Tunai Tahunan</th><th>Kumulatif Tunai</th><th>Meninggal (Alami)</th><th>Meninggal (Kecelakaan)</th></tr>';
+
+  var kumulatifTunai = 0;
+  var termNum = parseInt(term);
+
+  for (var yr = 1; yr <= termNum; yr++) {
+    var tunaiYr = 0;
+    var statusYr = '';
+    var meninggalAlamiYr = 0;
+    var meninggalKecelakaanYr = 0;
+
+    if (yr <= 4) {
+      // During premium payment period (Year 1-4): no tunai yet
+      statusYr = 'Masa Premi';
+      tunaiYr = 0;
+      // Death benefit proportional: Year 1=20%, Year 2=40%, Year 3=60%, Year 4=80%
+      var proporsional = yr * 0.20;
+      meninggalAlamiYr = proporsional * totalManfaatHidup;
+      meninggalKecelakaanYr = proporsional * totalManfaatHidup;
+    } else if (yr === 5) {
+      // Year 5: last premium year, first tunai payment at end of year 5
+      statusYr = 'Masa Premi';
+      tunaiYr = manfaatTunaiPerTahun;
+      kumulatifTunai += tunaiYr;
+      // Death benefit at year 5 = 100% proportional
+      meninggalAlamiYr = 1.0 * totalManfaatHidup;
+      meninggalKecelakaanYr = 1.0 * totalManfaatHidup;
+    } else {
+      // Post premium period (Year 6+)
+      statusYr = 'Pasca Premi';
+      tunaiYr = manfaatTunaiPerTahun;
+      kumulatifTunai += tunaiYr;
+
+      // Sisa tahun belum dibayarkan tunai
+      // Tunai paid at end of: year 5 (1st), year 6 (2nd), ..., year termNum (frekuensi-th)
+      // Death during year yr (yr >= 6): received tunai at end of year 5 through yr-1
+      // Received = yr - 5 payments. Remaining = frekuensi - (yr - 5)
+      var sisaTahun = frekuensiTunai - (yr - 5);
+      if (sisaTahun < 0) sisaTahun = 0;
+
+      meninggalAlamiYr = (persenMeninggalAlami * premiTahunan * sisaTahun) + manfaatAkhir;
+      meninggalKecelakaanYr = (persenMeninggalKecelakaan * premiTahunan * sisaTahun) + manfaatAkhir;
+
+      // ADB cap enforcement
+      var selisihYr = meninggalKecelakaanYr - meninggalAlamiYr;
+      if (selisihYr > adbCap) {
+        meninggalKecelakaanYr = meninggalAlamiYr + adbCap;
+      }
+    }
+
+    html += '<tr>';
+    html += '<td><strong>' + yr + '</strong></td>';
+    html += '<td>' + statusYr + '</td>';
+    html += '<td>' + (tunaiYr > 0 ? formatCurrency(tunaiYr, cur) : '-') + '</td>';
+    html += '<td>' + (kumulatifTunai > 0 ? formatCurrency(kumulatifTunai, cur) : '-') + '</td>';
+    html += '<td>' + formatCurrency(meninggalAlamiYr, cur) + '</td>';
+    html += '<td>' + formatCurrency(meninggalKecelakaanYr, cur) + '</td>';
+    html += '</tr>';
+  }
+
+  // Maturity row
+  html += '<tr style="background:rgba(0,135,90,0.08);font-weight:700">';
+  html += '<td>Akhir</td>';
+  html += '<td>Maturity</td>';
+  html += '<td colspan="2">Manfaat Akhir: ' + formatCurrency(manfaatAkhir, cur) + '</td>';
+  html += '<td colspan="2">Total Manfaat Hidup: ' + formatCurrency(totalManfaatHidup, cur) + '</td>';
+  html += '</tr>';
+  html += '</table></div></div>';
+
+  // Ratio info
+  var ratio = ((totalManfaatHidup / totalPremiTerbayar) * 100).toFixed(1);
+  html += '<div style="margin-top:var(--sp-3);padding:var(--sp-3);background:rgba(0,135,90,0.04);border-radius:var(--r-md);border-left:3px solid var(--msp-green)">';
+  html += '<p style="font-size:var(--fs-xs);color:var(--txt-sub);margin:0"><strong>Rasio Manfaat:</strong> Total manfaat hidup ' + formatCurrency(totalManfaatHidup, cur) + ' vs total premi ' + formatCurrency(totalPremiTerbayar, cur) + ' = <strong>' + ratio + '%</strong> dari total premi yang dibayarkan.</p>';
+  html += '</div>';
+
+  resultEl.innerHTML = html;
+}
+
+// Initialize
+updateMspLabel();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>

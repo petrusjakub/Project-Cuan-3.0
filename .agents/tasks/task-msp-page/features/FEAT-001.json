@@ -1,0 +1,48 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete msp.html page in /pages/ with MSP product content in question format, premium tables, error-free premium calculator using lookup table approach, keyword highlighting, and full styling following existing page patterns (mpds.html, mdwa.html, miuhc.html).",
+  "status": "in_progress",
+  "steps": [
+    "Create /projects/sandbox/Project-Cuan-3.0/pages/msp.html following the same HTML structure as pages like mpds.html and mdwa.html: DOCTYPE, head with meta/title/description, link to /assets/style.css, dark mode init script, page-specific <style> block.",
+    "Add page-specific CSS variables (--msp-green, --msp-dark, --msp-light) and custom styles for .msp-hero, .msp-badge, .msp-stat-grid, .msp-stat, advantage cards, calculator, tables, FAQ, and keyword highlighting classes (.kw-blue, .kw-gold, .kw-green, .kw-orange). Colors must NOT clash with each other - use harmonious palette.",
+    "Add div#site-header and div#site-footer containers that are populated by main.js component loader. Add breadcrumb navigation.",
+    "Create the HERO section with question-format headline (e.g., 'Bagaimana jika ada produk yang memberikan proteksi sekaligus pengembalian premi 500%?') using .page-hero pattern. Include stats grid (500% return, 5 tahun bayar, Guaranteed).",
+    "Create product introduction section with content in bahasa pertanyaan format describing MSP product. Use keyword highlighting (.kw, .kw-cta, .kw-gold, custom classes) to make important terms stand out. Content covers: what MSP is, how it works, GIO, eligibility, use cases (dana pendidikan, pensiun, warisan).",
+    "Create benefits/manfaat section describing: (1) Manfaat Pembayaran Tunai Tahunan with IDR and USD rates tables, (2) Manfaat Akhir Masa Pertanggungan (500%), (3) Manfaat Meninggal Dunia with proportional scale. Include comparison tables showing total benefits vs premiums for each term.",
+    "Create PREMIUM TABLES section with well-formatted responsive tables showing: minimum premi per mode (Tahunan/Semesteran/Kuartalan/Bulanan) for IDR and USD, modal faktor, and benefit comparison by masa pertanggungan (10/15/20 tahun).",
+    "Create the PREMIUM CALCULATOR section using lookup table approach (NOT mathematical formulas). Inputs: Mata Uang (IDR/USD), Masa Pertanggungan (10/15/20), Mode Pembayaran (Tahunan/Semesteran/Kuartalan/Bulanan), Premi amount. The calculator must: (a) validate minimum premi per mode and currency, (b) convert to annual equivalent using modal_faktor, (c) compute Total Premi Terbayar = Premi Tahunan * 5, (d) compute Manfaat Akhir = 500% * Premi Tahunan, (e) compute Manfaat Tunai Tahunan using lookup rates, (f) compute Total Manfaat Hidup, (g) compute Manfaat Meninggal (sebab alami + kecelakaan) with ADB cap of Rp600jt/USD60k, (h) show year-by-year table. Use the exact lookup data provided in the task spec JSON.",
+    "Implement Death During Premium Payment Period (Year 1-5) proportional logic in calculator: Year 1=20%, Year 2=40%, Year 3=60%, Year 4=80%, Year 5=100% of benefits (for annual mode).",
+    "Create FAQ section using the .faq-list/.faq-item/.faq-trigger/.faq-body pattern from main.js. Include questions covering: what is MSP, difference from unit link, minimum premi, late payment/grace period, surrender, guaranteed benefits, death benefit, claims procedure, GIO.",
+    "Create CTA section encouraging users to contact agent via WhatsApp.",
+    "Add script tag loading /assets/main.js at end of body to enable component loading, dark mode, FAQ accordion, scroll buttons, and search functionality.",
+    "Ensure all content is in Bahasa Indonesia and uses question-format (bahasa pertanyaan) to make users think about how valuable the product is."
+  ],
+  "acceptance_criteria": [
+    "File /projects/sandbox/Project-Cuan-3.0/pages/msp.html exists and is valid HTML",
+    "Page loads header and footer via div#site-header and div#site-footer with main.js",
+    "Page has page-specific <style> block with non-clashing color palette for keyword highlighting",
+    "Content is written in question format (bahasa pertanyaan) in Bahasa Indonesia",
+    "Premium tables for IDR and USD are present and accurate",
+    "Calculator uses lookup table data matching the provided JSON spec exactly",
+    "Calculator validates minimum premium per mode/currency",
+    "Calculator correctly computes: annual equivalent, total premi, manfaat tunai tahunan, manfaat akhir (500%), total manfaat hidup, manfaat meninggal (alami + kecelakaan), ADB cap enforcement",
+    "Calculator handles Year 1-5 death benefit proportional scale (20/40/60/80/100%)",
+    "FAQ accordion section present with relevant MSP questions",
+    "Dark mode support via html.dark CSS overrides",
+    "Responsive design working on mobile"
+  ],
+  "verification": [
+    "Run: cat /projects/sandbox/Project-Cuan-3.0/pages/msp.html | head -5 to confirm file exists",
+    "Run: grep -c 'site-header' /projects/sandbox/Project-Cuan-3.0/pages/msp.html to confirm header container exists",
+    "Run: grep -c 'site-footer' /projects/sandbox/Project-Cuan-3.0/pages/msp.html to confirm footer container exists",
+    "Run: grep -c 'main.js' /projects/sandbox/Project-Cuan-3.0/pages/msp.html to confirm main.js is loaded",
+    "Run: grep -c 'kw' /projects/sandbox/Project-Cuan-3.0/pages/msp.html to confirm keyword highlighting is used",
+    "Run: grep -c '12000000\\|12.000.000' /projects/sandbox/Project-Cuan-3.0/pages/msp.html to confirm IDR minimum premi data is present",
+    "Run: grep -c '600000000\\|600.000.000' /projects/sandbox/Project-Cuan-3.0/pages/msp.html to confirm ADB cap is present",
+    "Run: grep -c 'faq-item' /projects/sandbox/Project-Cuan-3.0/pages/msp.html to confirm FAQ section exists",
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/pages/msp.html','utf8'); console.log('Lines:', html.split('\\n').length); console.log('Has calculator:', html.includes('calculateMSP')); console.log('Has dark mode:', html.includes('html.dark'));\" to validate key elements"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
