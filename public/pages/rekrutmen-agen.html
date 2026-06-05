@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekrutmen Agen — Bergabung Menjadi Agen Manulife | PROJECTCUAN</title>
+  <meta name="description" content="Bergabung menjadi agen Manulife. Komisi tinggi hingga 25% FYC, passive income, override income, dan waktu fleksibel. Daftar sekarang.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── REKRUTMEN PAGE EXTRAS ── */
+    .rekrut-hero {
+      background: linear-gradient(135deg, #003d1f 0%, #00693e 40%, #00AC5B 100%);
+      padding: clamp(80px, 12vw, 140px) 0 clamp(60px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .rekrut-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .rekrut-hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: var(--sp-4);
+    }
+    .rekrut-hero-sub {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--fs-md);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: var(--sp-8);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-5);
+    }
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .benefit-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+      transform: translateY(-3px);
+    }
+    .benefit-icon {
+      font-size: 36px;
+      margin-bottom: var(--sp-3);
+    }
+    .benefit-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .benefit-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .level-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-5);
+    }
+    .level-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .level-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+      transform: translateY(-3px);
+    }
+    .level-label {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--jade);
+      margin-bottom: var(--sp-2);
+    }
+    .level-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .level-income {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 900;
+      color: var(--jade);
+      line-height: 1.2;
+    }
+    .level-income small {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      font-weight: 400;
+      display: block;
+      margin-top: var(--sp-1);
+    }
+
+    /* Calculator */
+    .calc-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+    }
+    .calc-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-5);
+      margin-bottom: var(--sp-6);
+    }
+    .calc-group label {
+      display: block;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+      letter-spacing: 0.03em;
+    }
+    .calc-group input,
+    .calc-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg);
+      color: var(--txt);
+      font-size: var(--fs-sm);
+      font-family: var(--ff-body);
+      transition: border-color var(--ease);
+    }
+    .calc-group input:focus,
+    .calc-group select:focus {
+      outline: none;
+      border-color: var(--jade);
+    }
+    .calc-input-wrap {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      background: var(--bg);
+      transition: border-color var(--ease);
+    }
+    .calc-input-wrap:focus-within {
+      border-color: var(--jade);
+    }
+    .calc-input-wrap .prefix {
+      padding: 10px 12px;
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-muted);
+      background: var(--bg-alt);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .calc-input-wrap input {
+      border: none;
+      padding: 10px 14px;
+      flex: 1;
+      background: transparent;
+      color: var(--txt);
+      font-size: var(--fs-sm);
+      font-family: var(--ff-body);
+    }
+    .calc-input-wrap input:focus {
+      outline: none;
+    }
+
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-5);
+    }
+    .calc-result-card {
+      background: var(--jade-10);
+      border: 1px solid var(--jade-20);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+    }
+    .calc-result-label {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--txt-muted);
+      margin-bottom: var(--sp-2);
+      letter-spacing: 0.04em;
+    }
+    .calc-result-value {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 900;
+      color: var(--jade);
+    }
+
+    /* Form */
+    .reg-form {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: var(--sp-5);
+    }
+    .form-group label {
+      display: block;
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg);
+      color: var(--txt);
+      font-size: var(--fs-sm);
+      font-family: var(--ff-body);
+      transition: border-color var(--ease);
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--jade);
+    }
+
+    @media (max-width: 768px) {
+      .calc-form { grid-template-columns: 1fr; }
+      .level-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .level-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="rekrut-hero" aria-labelledby="rekrut-title">
+  <div class="container" style="position:relative;z-index:1">
+    <nav class="breadcrumb" style="margin-bottom:var(--sp-8)">
+      <a href="/index.html" style="color:rgba(255,255,255,0.5)">Beranda</a>
+      <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">&rsaquo;</span>
+      <span class="breadcrumb-current">Rekrutmen Agen</span>
+    </nav>
+
+    <div style="max-width:700px">
+      <h1 id="rekrut-title" class="rekrut-hero-title fade-up">
+        Bergabung Menjadi<br><span style="color:#fff">Agen Manulife</span>
+      </h1>
+      <p class="rekrut-hero-sub fade-up stagger-1">
+        Bangun karir tanpa batas. Komisi tinggi, passive income, waktu fleksibel.
+      </p>
+      <a href="#form" class="btn btn--jade btn--lg fade-up stagger-2" style="background:#fff;color:var(--jade)">Daftar Sekarang &darr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BENEFITS
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="benefit-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Keuntungan</span>
+      <h2 id="benefit-heading" class="section-title fade-up">Kenapa Jadi Agen Manulife?</h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">
+        6 alasan kenapa ribuan orang memilih karir di Manulife Indonesia.
+      </p>
+    </div>
+
+    <div class="benefit-grid">
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">💰</div>
+        <div class="benefit-title">Komisi Tinggi</div>
+        <div class="benefit-desc">Hingga 25% FYC dari setiap polis yang berhasil</div>
+      </div>
+      <div class="benefit-card fade-up stagger-1">
+        <div class="benefit-icon">🔄</div>
+        <div class="benefit-title">Passive Income</div>
+        <div class="benefit-desc">Renewal income terus mengalir setiap tahun</div>
+      </div>
+      <div class="benefit-card fade-up stagger-2">
+        <div class="benefit-icon">👥</div>
+        <div class="benefit-title">Override Income</div>
+        <div class="benefit-desc">25% dari FYC agen yang Anda rekrut</div>
+      </div>
+      <div class="benefit-card fade-up stagger-3">
+        <div class="benefit-icon">🎓</div>
+        <div class="benefit-title">Training Gratis</div>
+        <div class="benefit-desc">Pelatihan profesional dari Manulife Indonesia</div>
+      </div>
+      <div class="benefit-card fade-up stagger-4">
+        <div class="benefit-icon">⏰</div>
+        <div class="benefit-title">Waktu Fleksibel</div>
+        <div class="benefit-desc">Bisa full-time atau sambil kerja</div>
+      </div>
+      <div class="benefit-card fade-up stagger-5">
+        <div class="benefit-icon">🚀</div>
+        <div class="benefit-title">Tanpa Batas</div>
+        <div class="benefit-desc">Tidak ada cap/batas maksimal penghasilan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INCOME POTENTIAL (Career Levels)
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="level-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Potensi Penghasilan</span>
+      <h2 id="level-heading" class="section-title fade-up">Jenjang Karir &amp; Income</h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">
+        Semakin tinggi level, semakin besar potensi penghasilan Anda.
+      </p>
+    </div>
+
+    <div class="level-grid">
+      <div class="level-card fade-up">
+        <div class="level-label">Level 1</div>
+        <div class="level-title">New Agent</div>
+        <div class="level-income">Rp 5-15 jt<small>/bulan</small></div>
+      </div>
+      <div class="level-card fade-up stagger-1">
+        <div class="level-label">Level 2</div>
+        <div class="level-title">Business Partner (BP)</div>
+        <div class="level-income">Rp 15-50 jt<small>/bulan</small></div>
+      </div>
+      <div class="level-card fade-up stagger-2">
+        <div class="level-label">Level 3</div>
+        <div class="level-title">Senior BP (SBP)</div>
+        <div class="level-income">Rp 50-150 jt<small>/bulan</small></div>
+      </div>
+      <div class="level-card fade-up stagger-3">
+        <div class="level-label">Level 4</div>
+        <div class="level-title">BCO Leader</div>
+        <div class="level-income">Rp 150 jt - 1 M+<small>/bulan</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INCOME CALCULATOR
+═══════════════════════════════════════════ -->
+<section class="section" id="kalkulator" aria-labelledby="calc-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Kalkulator Income</span>
+      <h2 id="calc-heading" class="section-title fade-up">Hitung Potensi Penghasilan Anda</h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">
+        Masukkan data di bawah untuk melihat estimasi income sebagai agen.
+      </p>
+    </div>
+
+    <div class="calc-section fade-up stagger-2">
+      <div class="calc-form">
+        <div class="calc-group">
+          <label for="calcPolis">Jumlah polis per bulan</label>
+          <input type="number" id="calcPolis" value="3" min="1" max="100">
+        </div>
+        <div class="calc-group">
+          <label for="calcPremi">Rata-rata premi per polis (per bulan)</label>
+          <div class="calc-input-wrap">
+            <span class="prefix">Rp</span>
+            <input type="number" id="calcPremi" value="500000" min="100000" step="50000">
+          </div>
+        </div>
+        <div class="calc-group">
+          <label for="calcProduk">Jenis produk</label>
+          <select id="calcProduk">
+            <option value="mdwa5">MDWA (5 Tahun Bayar)</option>
+            <option value="mdwa10">MDWA (10 Tahun Bayar)</option>
+            <option value="mdla5">MDLA (MPP 5)</option>
+            <option value="mdla10">MDLA (MPP 10)</option>
+            <option value="mdla15">MDLA (MPP 15)</option>
+            <option value="mdla20" selected>MDLA (MPP 20)</option>
+            <option value="miuhc">MiUHC</option>
+            <option value="flexi">Flexi Amanah</option>
+            <option value="mdsa">MDSA (Unit Link)</option>
+            <option value="mission">MISSION Syariah</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-results" id="calcResults">
+        <div class="calc-result-card">
+          <div class="calc-result-label">Estimasi FYC per Bulan</div>
+          <div class="calc-result-value" id="resFYC">Rp 0</div>
+        </div>
+        <div class="calc-result-card">
+          <div class="calc-result-label">Renewal Income Tahun 2+</div>
+          <div class="calc-result-value" id="resRenewal">Rp 0</div>
+        </div>
+        <div class="calc-result-card">
+          <div class="calc-result-label">Override Income (jika rekrut)</div>
+          <div class="calc-result-value" id="resOverride">Rp 0</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:var(--sp-8)">
+        <a href="#form" class="btn btn--jade btn--lg">Tertarik? Daftar Sekarang &darr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     REGISTRATION FORM
+═══════════════════════════════════════════ -->
+<section class="section section--alt" id="form" aria-labelledby="form-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Daftar</span>
+      <h2 id="form-heading" class="section-title fade-up">Formulir Pendaftaran Agen</h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">
+        Isi data di bawah dan kami akan menghubungi Anda via WhatsApp.
+      </p>
+    </div>
+
+    <div class="reg-form fade-up stagger-2">
+      <form id="regForm" onsubmit="return false;">
+        <div class="form-group">
+          <label for="regNama">Nama Lengkap *</label>
+          <input type="text" id="regNama" placeholder="Masukkan nama lengkap" required>
+        </div>
+        <div class="form-group">
+          <label for="regWA">Nomor WhatsApp *</label>
+          <input type="tel" id="regWA" placeholder="Contoh: 08123456789" required>
+        </div>
+        <div class="form-group">
+          <label for="regKota">Kota *</label>
+          <input type="text" id="regKota" placeholder="Kota domisili Anda" required>
+        </div>
+        <div class="form-group">
+          <label for="regExp">Pengalaman</label>
+          <select id="regExp">
+            <option value="Belum pernah di asuransi">Belum pernah di asuransi</option>
+            <option value="Pernah di asuransi lain">Pernah di asuransi lain</option>
+            <option value="Sudah agen aktif">Sudah agen aktif</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--jade btn--lg btn--block" id="regSubmit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:8px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Kirim via WhatsApp
+        </button>
+      </form>
+    </div>
+
+    <div style="text-align:center;margin-top:var(--sp-8)">
+      <a href="/pages/komisi-agen.html" style="color:var(--jade);font-weight:700;font-size:var(--fs-sm)">Lihat detail komisi lengkap &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+(function() {
+  // Commission data
+  var COMMISSION = {
+    mdwa5:  { fyc: 0.05, renewal: 0.05 },
+    mdwa10: { fyc: 0.15, renewal: 0.10 },
+    mdla5:  { fyc: 0.10, renewal: 0.10 },
+    mdla10: { fyc: 0.20, renewal: 0.20 },
+    mdla15: { fyc: 0.225, renewal: 0.225 },
+    mdla20: { fyc: 0.25, renewal: 0.25 },
+    miuhc:  { fyc: 0.15, renewal: 0.15 },
+    flexi:  { fyc: 0.20, renewal: 0.20 },
+    mdsa:   { fyc: 0.25, renewal: 0.20 },
+    mission:{ fyc: 0.25, renewal: 0.20 }
+  };
+
+  function formatRupiah(num) {
+    var rounded = Math.round(num);
+    return 'Rp ' + rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  function calculate() {
+    var polis = parseInt(document.getElementById('calcPolis').value) || 0;
+    var premi = parseInt(document.getElementById('calcPremi').value) || 0;
+    var produk = document.getElementById('calcProduk').value;
+    var data = COMMISSION[produk];
+    if (!data) return;
+
+    // APE = premi per bulan * 12 (monthly regular premium = 100% APE)
+    var APE = premi * 12;
+    // FYC per polis = APE * commission_rate
+    var fycPerPolis = APE * data.fyc;
+    // Total monthly FYC = FYC_per_polis * jumlah_polis
+    var totalFYC = fycPerPolis * polis;
+    // Renewal Year 2 = renewal_rate * APE * jumlah_polis
+    var renewal = data.renewal * APE * polis;
+    // Override = 25% of Total FYC (if recruiting 1 agent doing same volume)
+    var override = 0.25 * totalFYC;
+
+    document.getElementById('resFYC').textContent = formatRupiah(totalFYC);
+    document.getElementById('resRenewal').textContent = formatRupiah(renewal);
+    document.getElementById('resOverride').textContent = formatRupiah(override);
+  }
+
+  // Auto-calculate on input change
+  document.getElementById('calcPolis').addEventListener('input', calculate);
+  document.getElementById('calcPremi').addEventListener('input', calculate);
+  document.getElementById('calcProduk').addEventListener('change', calculate);
+
+  // Initial calculation
+  calculate();
+
+  // Registration form handler
+  document.getElementById('regForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var nama = document.getElementById('regNama').value.trim();
+    var nomor = document.getElementById('regWA').value.trim();
+    var kota = document.getElementById('regKota').value.trim();
+    var pengalaman = document.getElementById('regExp').value;
+
+    if (!nama || !nomor || !kota) {
+      alert('Mohon lengkapi semua field yang wajib diisi.');
+      return;
+    }
+
+    var msg = "Halo, saya ingin bergabung sebagai agen Manulife.\n\nNama: " + nama + "\nWhatsApp: " + nomor + "\nKota: " + kota + "\nPengalaman: " + pengalaman;
+    window.open("https://wa.me/6287781896087?text=" + encodeURIComponent(msg), '_blank');
+  });
+})();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>
