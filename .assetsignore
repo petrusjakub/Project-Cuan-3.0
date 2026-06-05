@@ -1,0 +1,15 @@
+.git
+.gitignore
+.assetsignore
+node_modules
+.wrangler
+.dev.vars*
+.env*
+wrangler.jsonc
+Source
+Sample
+.agents
+.tasks
+package.json
+package-lock.json
+README.md
