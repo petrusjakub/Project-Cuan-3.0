@@ -1,0 +1,21 @@
+{
+  "project_type": "Static HTML product pages site with shared CSS design system",
+  "language": "HTML/CSS/JavaScript",
+  "build_system": "None - static files served directly",
+  "test_framework": "None - manual validation",
+  "build_command": "N/A - static HTML",
+  "test_command": "N/A - validate HTML renders correctly",
+  "verification_instructions": "Open the HTML file in a browser and verify all sections render, calculator works, number formatting is correct",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML project",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external packages can be installed. All work is static HTML/CSS/JS.",
+  "contribution_requirements": "Product pages use shared style.css from /assets/style.css. Pages include <div id='site-header'></div> and <div id='site-footer'></div> placeholders. Pages include <script src='/assets/main.js'></script> at the end. Page-specific styles go in inline <style> blocks.",
+  "key_patterns": "1. Product pages link to /assets/style.css (absolute path). 2. Use CSS variables from style.css (--jade, --tangerine, --txt-head, etc). 3. Keyword highlighting uses .kw (jade green), .kw-cta (tangerine), .kw-gold (gold) classes. 4. Pages have <div id='site-header'></div> at top of body and <div id='site-footer'></div> before scripts. 5. Calculator JS is inline in the page. 6. Dark mode support via html.dark class.",
+  "relevant_files": [
+    "public/pages/mccp.html - existing product page pattern (structure, header/footer placeholders, calculator pattern)",
+    "public/assets/style.css - shared design system with CSS variables, layout classes, component styles",
+    "Sample/Mifip.html - reference content and calculator logic (787 lines) with full working calculator",
+    "Source/MiFiP/ - source materials (PDFs/Excel for content reference)"
+  ],
+  "directory_structure": "public/pages/ - product HTML pages, public/assets/ - shared CSS and JS, Sample/ - reference HTML pages, Source/ - source PDFs and Excel files"
+}

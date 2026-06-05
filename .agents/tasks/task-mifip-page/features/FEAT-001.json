@@ -1,0 +1,40 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete MiFIP product page at public/pages/mifip.html with question-based persuasive content, premium banding table, error-free calculator, and proper styling using the shared design system",
+  "status": "in_progress",
+  "steps": [
+    "Create public/pages/mifip.html following the structure pattern from public/pages/mccp.html (DOCTYPE, meta tags, link to /assets/style.css, site-header placeholder, main content, site-footer placeholder, inline scripts, main.js script)",
+    "Add page-specific inline <style> block with MiFIP-themed custom CSS variables and component styles (hero gradient, benefit cards, calculator styling, timeline, FAQ accordion) - similar to how mccp.html defines its own styles. Use jade green gradient theming.",
+    "Build Hero section with product name 'MiFuture Income Protector (MiFIP)', tagline, and key stats (800% total benefit, IDR & USD, 20 years income). Use question-based hook like 'Bagaimana jika Anda bisa menerima penghasilan tetap selama 20 tahun tanpa bekerja?'",
+    "Build product overview section using QUESTION-BASED persuasive language throughout (e.g., 'Pernahkah Anda membayangkan memiliki gaji yang terus mengalir meski sudah pensiun?'). Highlight key terms using .kw (jade - for product features/benefits), .kw-cta (tangerine - for action-oriented keywords/amounts), .kw-gold (gold - for premium/financial terms). Include complete product specs table (currency, min Dana Mapan, Usia Mapan options, payment modes, underwriting SIO).",
+    "Build Benefits section showing the 800% breakdown: 100% Manfaat Usia Mapan, 400% Manfaat Tunai Tahunan (20% x 20 years), 200% Manfaat Akhir Pertanggungan, 100% perlindungan jiwa. Use benefit cards with percentage highlights. Include total manfaat summary.",
+    "Build Premium Banding table section showing all 4 bands with IDR and USD ranges and characteristics (Band 1: Rp50jt-99.9jt / $5k-$9,999 Standard; Band 2: Rp100jt-199.9jt / $10k-$19,999 Start discount; Band 3: Rp200jt-499.9jt / $20k-$49,999 Medium discount; Band 4: >=Rp500jt / >=$50k Maximum discount). Include estimated premium ratios (70%, 66%, 62%, 59.6%).",
+    "Build the interactive calculator section with these inputs: Currency (IDR/USD), Dana Mapan amount, Payment mode (Single/Regular 5 years). Implement EXACT band determination logic: IDR bands at 50M/100M/200M/500M thresholds, USD bands at 5k/10k/20k/50k thresholds. Error validation for minimum amounts (Rp50.000.000 / USD 5.000). Real-time output showing: band category, benefit breakdown (100% + 400% + 200%), total benefit amount, estimated premium based on band ratios. Format numbers with thousand separators (dots for IDR, commas for USD). The calculator must be ERROR-FREE - test all edge cases.",
+    "Build FAQ section with accordion-style Q&A covering: what is MiFIP, what is Dana Mapan, total benefits, payment options, minimum amounts, age requirements, death benefit, premium waiver, currency options, registration process.",
+    "Build CTA section with WhatsApp link to wa.me/6287781896087 with pre-filled message about MiFIP inquiry. Include floating WA button.",
+    "Ensure dark mode compatibility by adding html.dark overrides for custom styles where needed. Test that .kw, .kw-cta, .kw-gold classes work in both modes (they already have dark mode styles in style.css)."
+  ],
+  "acceptance_criteria": [
+    "File exists at public/pages/mifip.html",
+    "Page links to ../assets/style.css (relative path for file access) or /assets/style.css (for served access)",
+    "Page includes <div id='site-header'></div> and <div id='site-footer'></div> placeholders",
+    "Page includes <script src='/assets/main.js'></script> before </body>",
+    "Keywords are highlighted with .kw (green), .kw-cta (orange), .kw-gold (gold) classes - colors do not clash",
+    "Content uses persuasive question-based language in Indonesian",
+    "Premium banding table shows all 4 bands with IDR/USD ranges",
+    "Calculator correctly determines band based on Dana Mapan input and currency",
+    "Calculator shows error for amounts below minimum (Rp50.000.000 / USD 5.000)",
+    "Calculator displays benefit breakdown: 100% Usia Mapan, 20% x 20 = 400% Tunai Tahunan, 200% Akhir, total up to 800%",
+    "Calculator formats numbers with proper thousand separators",
+    "Calculator has no JavaScript errors - all functions work correctly",
+    "FAQ accordion opens/closes on click",
+    "WhatsApp CTA links work with correct phone number and pre-filled message"
+  ],
+  "verification": [
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/mifip.html','utf8'); console.log('File exists:', html.length > 0); console.log('Has style.css link:', html.includes('style.css')); console.log('Has site-header:', html.includes('site-header')); console.log('Has site-footer:', html.includes('site-footer')); console.log('Has main.js:', html.includes('main.js')); console.log('Has .kw class:', html.includes('class=\\\"kw\\\"') || html.includes(\\\"class='kw'\\\")); console.log('Has calculator:', html.includes('function') && html.includes('Dana Mapan')); console.log('Has WA link:', html.includes('wa.me'));\"",
+    "Validate the JavaScript in the page has no syntax errors by extracting and running it through Node.js eval or a basic syntax check"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

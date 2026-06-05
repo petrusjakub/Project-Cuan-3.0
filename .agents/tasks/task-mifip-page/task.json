@@ -1,0 +1,7 @@
+{
+  "task_id": "task-mifip-page",
+  "task_description": "Create a new HTML page public/pages/mifip.html for the MiFuture Income Protector (MiFIP) product. The page must use the shared CSS design system, contain question-based persuasive content, premium banding table, error-free calculator with band determination logic, FAQ, and WhatsApp CTA.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}
