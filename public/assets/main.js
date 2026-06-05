@@ -15,7 +15,6 @@
   const PRODUCTS = [
     /* Kesehatan & Penyakit Kritis */
     { name: 'MiUHC',      full: 'MiUltimate HealthCare',                   cat: 'Kesehatan', icon: '🏥', url: '/pages/miuhc.html' },
-    { name: 'MIUCC',      full: 'MiUltimate Critical Care',                cat: 'Kesehatan', icon: '🩺', url: '/pages/miucc.html' },
     { name: 'MCCP',       full: 'Manulife Critical Care Protection',        cat: 'Kesehatan', icon: '💊', url: '/pages/mccp.html' },
     /* Jiwa & Perlindungan */
     { name: 'PAP',        full: 'ProActive Plus',                           cat: 'Jiwa',      icon: '🛡️', url: '/pages/pap.html' },
