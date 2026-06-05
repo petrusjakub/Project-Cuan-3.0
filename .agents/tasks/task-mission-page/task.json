@@ -1,7 +1,14 @@
 {
   "task_id": "task-mission-page",
   "task_description": "Create mission.html page for MiSmart Insurance Solution Syariah (MiSSION Syariah) product at public/pages/mission.html. The page must use question-based language, include premium tables, an error-free calculator using lookup method, and follow the existing design system.",
-  "status": "in_progress",
+  "status": "completed",
   "feature_order": ["FEAT-001"],
-  "blocked_reason": null
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "File created (951 lines). 2 inline scripts pass JS syntax validation. 28 keyword class usages found. All 4 structural elements present. UX review fixes applied: loyalty bonus labels clarified, COI card moved outside dynamic results, monthly multiplier note added."
+  }
 }
