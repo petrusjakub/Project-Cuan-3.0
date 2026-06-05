@@ -43,5 +43,5 @@
     "Run: grep -c 'main.js' /projects/sandbox/Project-Cuan-3.0/public/pages/mccp.html to confirm JS loading"
   ],
   "blocked_reason": null,
-  "findings": "Page created successfully. PREMIUM_DATA JSON embedded inline from Sample/Mccp.html (121KB). Calculator uses pure JSON lookup with key format plan|gender|age|mpp. Payment mode factors used: 0.52 (semesteran), 0.27 (kuartalan), 0.09 (bulanan). All 12 FAQ items use design system faq-trigger/faq-body pattern. No build or test commands needed (static HTML project)."
+  "findings": "Page created successfully. PREMIUM_DATA JSON extracted to /assets/mccp-premi.js (121KB), loaded via script tag before calculator. Calculator uses pure JSON lookup with key format plan|gender|age|mpp. Payment mode factors used: 0.52 (semesteran), 0.27 (kuartalan), 0.09 (bulanan). All 12 FAQ items use design system faq-trigger/faq-body pattern. Review fixes applied: static table values regenerated from JSON source of truth, JSON extracted to separate cacheable file, for attributes added to all 5 calculator labels."
 }
