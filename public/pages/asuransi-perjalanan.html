@@ -708,7 +708,7 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="travel-duration">Durasi Perjalanan (hari)</label>
-            <input type="number" class="form-input" id="travel-duration" placeholder="Contoh: 7" min="1" max="183" inputmode="numeric">
+            <input type="number" class="form-input" id="travel-duration" placeholder="Contoh: 7" min="1" max="183" step="1" inputmode="numeric">
           </div>
         </div>
         <button class="calc-btn" id="travel-calc-btn" type="button">Hitung Premi</button>
@@ -814,6 +814,7 @@ function toggleFaq(el) {
 
 // Premium Calculator
 (function() {
+  // Source: Tabel Premi Asuransi Perjalanan (Travel Insurance Rate Table) - PDF brosur produk
   var premiumData = {
     "14d_59y": {
       "individual": {
@@ -1017,17 +1018,26 @@ function toggleFaq(el) {
     resultEl.style.display = 'block';
   }
 
-  // Handle Schengen Basic selection - disable Deluxe
-  function handleRegionChange() {
+  // Determine whether the plan dropdown should be disabled based on age and region
+  function updatePlanState() {
+    var age = document.getElementById('travel-age').value;
     var region = document.getElementById('travel-region').value;
     var planSelect = document.getElementById('travel-plan');
 
-    if (region === 'schengen_basic') {
+    if (age === '70_84y' || region === 'schengen_basic') {
       planSelect.value = 'superior';
       planSelect.disabled = true;
     } else {
       planSelect.disabled = false;
     }
+  }
+
+  function handleRegionChange() {
+    updatePlanState();
+  }
+
+  function handleAgeChange() {
+    updatePlanState();
   }
 
   // Attach event listeners
@@ -1040,6 +1050,11 @@ function toggleFaq(el) {
     var regionSelect = document.getElementById('travel-region');
     if (regionSelect) {
       regionSelect.addEventListener('change', handleRegionChange);
+    }
+
+    var ageSelect = document.getElementById('travel-age');
+    if (ageSelect) {
+      ageSelect.addEventListener('change', handleAgeChange);
     }
 
     // Allow Enter key on duration input
