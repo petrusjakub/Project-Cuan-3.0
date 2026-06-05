@@ -1,0 +1,47 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete pages/mpps.html page for Manulife Perlindungan Pendidikan Syariah (MPPS) following the design patterns from pages/mdwa.html, with content written in question format, colored keyword highlights, premium tables, and an error-free lookup-based premium calculator. The premium database should be taken from Sample/Mpps.html which contains the complete data for both Pria and Wanita ages 18-60 in both IDR and USD.",
+  "status": "completed",
+  "steps": [
+    "Create a new git branch 'feat/mpps-product-page' from current 'feat/mdwa-product-page' branch",
+    "Create pages/mpps.html following the structure and design pattern of pages/mdwa.html. The page must: (a) use the same HTML boilerplate with <link rel='stylesheet' href='/assets/style.css'>, dark mode script, inline <style> for MPPS-specific styles; (b) include div#site-header and div#site-footer for component loading; (c) reference /assets/main.js at the end of body",
+    "Design MPPS-specific CSS variables (use a green/Islamic theme - e.g., --mpps-green: #2E7D32 or similar Islamic green, --mpps-dark, --mpps-light) similar to how mdwa.html uses --manulife-blue. Create matching .mpps-hero, .mpps-badge, .mpps-section-tag, .mpps-btn-primary, .mpps-btn-outline classes following the same pattern as mdwa.html's .mdwa-* classes",
+    "Create keyword highlight CSS classes: .kw-green (for Syariah/benefits keywords), .kw-blue (for Manulife brand), .kw-orange (for important numbers/money), .kw (inherited from style.css jade green). Apply these throughout content for visual emphasis.",
+    "Build the HERO section with: breadcrumb navigation (Beranda > Produk > MPPS), badge 'Manulife Syariah Indonesia', h1 in question format asking about securing children's education, stat grid showing key numbers (Usia Masuk 18-60, Usia Anak 0-11, 2 Plan tersedia), CTA buttons (WhatsApp + Hitung Kontribusi anchor), and a visual sidebar showing the 2 Plans (Plan Jiwa, Plan Sakit Kritis)",
+    "Build the PRODUCT INFO section explaining MPPS using question-format headings. Cover: what is MPPS, Sharia principles (Akad Tabarru, Tanahud, Wakalah bil Ujrah), key benefits (dana pendidikan terjamin, pembebasan kontribusi, 100% kontribusi kembali, surplus underwriting). Use advantage-card grid layout similar to mdwa.html",
+    "Build the MANFAAT (Benefits) section with cards explaining: Manfaat Meninggal Dunia/Sakit Kritis, Manfaat Tahapan Terjadwal (table showing ages 11/14/17 with 10%/10%/80% of SA), Manfaat Akhir Masa Asuransi (100% return), Plan Sakit Kritis coverage (84 penyakit kritis). Use question-format section headings.",
+    "Build the KETENTUAN (Eligibility) section with eligibility cards: Usia Masuk Peserta (18-60 Plan Jiwa, 18-50 Plan Sakit Kritis), Usia Anak (0-11 tahun), Masa Bayar (10 tahun), Masa Asuransi (hingga anak 30 tahun), Minimum Kontribusi (Rp 5 juta/tahun), Mata Uang (IDR & USD). Use eligibility-grid layout from mdwa.html.",
+    "Build the TABEL PREMI section showing a premium reference table. Display a representative table for Plan Jiwa Pria IDR ages 18-19 with all child ages (0-11) and SA columns (500 Juta through 10 Miliar). Use the .premi-table class styling from mdwa.html. Include a note that full data is available in the calculator.",
+    "Build the KALKULATOR (Calculator) section with id='kalkulator'. Create the calculator UI using the calc-option-grid pattern from mdwa.html with these inputs: (1) Gender - Pria/Wanita option grid, (2) Usia Peserta - select dropdown 18-60, (3) Usia Anak - select dropdown 0-11, (4) Plan - Plan Jiwa / Plan Sakit Kritis option grid, (5) Mata Uang - IDR / USD option grid. Display results as cards showing available SA options with their annual contribution amounts.",
+    "Implement the PREMIUM DATABASE in JavaScript. Copy the complete PREMIUM_DATA object from Sample/Mpps.html (which contains data for Pria ages 18-60 and Wanita ages 18-60, with keys 'ji' for Plan Jiwa IDR, 'ki' for Plan Sakit Kritis IDR, 'ju' for Plan Jiwa USD, 'ku' for Plan Sakit Kritis USD). The SA labels are SA_IDR = ['500 Juta','1 Milyar','1,5 Milyar','2 Milyar','2,5 Milyar','3 Milyar','5 Milyar','10 Milyar','50 Milyar'] and SA_USD = ['USD 30.000','USD 50.000','USD 100.000','USD 150.000','USD 200.000','USD 300.000','USD 400.000','USD 500.000','USD 1.000.000'].",
+    "Implement the calculator JavaScript logic following the exact same pattern as Sample/Mpps.html: lookup PREMIUM_DATA[gender][parentAge][childAge][planKey] where planKey is 'ji'/'ki'/'ju'/'ku'. Display results as cards with SA label and contribution amount. Show 'Tidak tersedia' for empty values. Show 'Data tidak tersedia untuk kombinasi ini' when lookup fails. Include payment mode calculations (semesteran 0.52x, kuartalan 0.27x, bulanan 0.09x). Include age restriction warning for Plan Sakit Kritis (max 50 years). Include Contribution Banding discount info.",
+    "Build the FAQ section using the .faq-item/.faq-trigger/.faq-body pattern from the design system (which main.js handles accordion behavior for). Include 8-10 relevant FAQs about MPPS covering: what is MPPS, Plan Jiwa vs Plan Sakit Kritis, when benefits are paid, what happens if parent dies, is contribution returned, entry ages, Surplus Underwriting, Contribution Banding.",
+    "Build the CTA section at the bottom with a gradient background, compelling question-format heading, and WhatsApp CTA button. Follow the mdwa-cta pattern.",
+    "Ensure all sections use .fade-up and .stagger-N classes for scroll animations (handled by main.js IntersectionObserver)",
+    "Commit the new file with message 'feat: add MPPS product page with premium calculator'"
+  ],
+  "acceptance_criteria": [
+    "pages/mpps.html exists and is a complete, valid HTML file",
+    "Page follows the same structural pattern as pages/mdwa.html (shared CSS, shared JS, component loader divs, inline product-specific styles)",
+    "Content is written in question format (bahasa pertanyaan) to provoke user awareness",
+    "Keywords are highlighted with distinct color classes (green for Syariah, blue for Manulife, orange for numbers)",
+    "Premium calculator uses exact LOOKUP from PREMIUM_DATA (no formulas for premium values)",
+    "Calculator handles missing data gracefully (shows 'Data tidak tersedia' or 'Tidak tersedia')",
+    "Calculator includes age restriction for Plan Sakit Kritis (18-50 only)",
+    "Premium table section displays readable reference data",
+    "Page supports dark mode via html.dark class",
+    "All sections have fade-up animation classes",
+    "FAQ accordion items use the correct class structure for main.js to handle",
+    "The file is committed on a new branch 'feat/mpps-product-page'"
+  ],
+  "verification": [
+    "Check that pages/mpps.html exists and has valid HTML structure",
+    "Verify the file references /assets/style.css and /assets/main.js",
+    "Verify the premium database object contains data for both Pria and Wanita",
+    "Verify the calculator function performs lookup (not mathematical calculation)",
+    "Verify git log shows the new commit on feat/mpps-product-page branch"
+  ],
+  "blocked_reason": null,
+  "findings": "MPPS page created successfully on branch feat/mpps-product-page. The premium data (290KB) was extracted from Sample/Mpps.html line 393 using Python due to shell argument limits. All sections implemented: Hero, Advantages, Benefits with table, Eligibility, Premium reference table, Calculator with lookup logic, FAQ (10 items), and CTA. Calculator uses exact PREMIUM_DATA lookup with age restriction for Plan Sakit Kritis (max 50). No build/test commands needed as this is a static HTML site."
+}

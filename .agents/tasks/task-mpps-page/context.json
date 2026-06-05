@@ -1,0 +1,23 @@
+{
+  "project_type": "Static HTML website (insurance product pages) deployed to Cloudflare Workers",
+  "language": "HTML/CSS/JavaScript",
+  "build_system": "None - static HTML files served directly. Cloudflare Workers deployment via wrangler.",
+  "test_framework": "None - no automated tests. Verification is visual/manual.",
+  "build_command": "N/A - static site, no build step",
+  "test_command": "N/A - no automated tests",
+  "verification_instructions": "Open the HTML file in a browser and verify: (1) page renders correctly, (2) calculator works with lookup data, (3) dark mode toggle works, (4) responsive layout, (5) no JavaScript console errors",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML files",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external package installs needed. Static HTML files only.",
+  "contribution_requirements": "Follow the design patterns in existing pages (mdwa.html). Use shared style.css and main.js. Product-specific CSS goes in inline <style> tag. Premium calculator must use exact LOOKUP method (no formulas).",
+  "key_patterns": "Each product page: standalone HTML with inline <style> for product-specific CSS, references /assets/style.css and /assets/main.js, loads header/footer via component loader (div#site-header, div#site-footer), uses CSS variables from design system, supports dark mode via html.dark class, uses .fade-up class for scroll animations, calculator uses exact data lookup from JSON object. Content written in question format (bahasa pertanyaan). Keywords highlighted with colored CSS classes.",
+  "relevant_files": [
+    "pages/mdwa.html (reference page - same design pattern to follow)",
+    "Sample/Mpps.html (sample MPPS page with premium data for Pria ages 18-60 and Wanita ages 18-60, including IDR and USD)",
+    "assets/style.css (shared design system)",
+    "assets/main.js (shared JS - component loader, dark mode, FAQ accordion, fade-up animations)",
+    "components/header.html (shared header component)",
+    "components/footer.html (shared footer component)"
+  ],
+  "directory_structure": "/ - root with index.html, /pages/ - product pages, /assets/ - shared CSS/JS, /components/ - header/footer, /Sample/ - reference sample pages, /Source/ - PDF source materials"
+}
