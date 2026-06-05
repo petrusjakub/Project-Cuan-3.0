@@ -505,7 +505,7 @@
             <th>Kontribusi Tahunan</th>
             <th>Total Kontribusi (12 thn)</th>
             <th>UP Jiwa (Santunan)</th>
-            <th>UP Kecelakaan (+50%)</th>
+            <th>Total Santunan Kecelakaan</th>
             <th>Pengembalian Maturity</th>
           </tr>
         </thead>
@@ -515,7 +515,7 @@
             <td>Rp 3.000.000</td>
             <td>Rp 36.000.000</td>
             <td>Rp 112.500.000</td>
-            <td>Rp 56.250.000</td>
+            <td>Rp 168.750.000</td>
             <td>Rp 36.000.000 (100%)</td>
           </tr>
           <tr>
@@ -523,7 +523,7 @@
             <td>Rp 5.000.000</td>
             <td>Rp 60.000.000</td>
             <td>Rp 187.500.000</td>
-            <td>Rp 93.750.000</td>
+            <td>Rp 281.250.000</td>
             <td>Rp 60.000.000 (100%)</td>
           </tr>
           <tr>
@@ -531,7 +531,7 @@
             <td>Rp 12.000.000</td>
             <td>Rp 144.000.000</td>
             <td>Rp 450.000.000</td>
-            <td>Rp 225.000.000</td>
+            <td>Rp 675.000.000</td>
             <td>Rp 144.000.000 (100%)</td>
           </tr>
           <tr>
@@ -539,7 +539,7 @@
             <td>Rp 3.000.000</td>
             <td>Rp 36.000.000</td>
             <td>Rp 112.500.000</td>
-            <td>Rp 56.250.000</td>
+            <td>Rp 168.750.000</td>
             <td>Rp 25.200.000 (70%)</td>
           </tr>
           <tr>
@@ -547,7 +547,7 @@
             <td>Rp 5.000.000</td>
             <td>Rp 60.000.000</td>
             <td>Rp 187.500.000</td>
-            <td>Rp 93.750.000</td>
+            <td>Rp 281.250.000</td>
             <td>Rp 42.000.000 (70%)</td>
           </tr>
           <tr>
@@ -555,7 +555,7 @@
             <td>Rp 12.000.000</td>
             <td>Rp 144.000.000</td>
             <td>Rp 450.000.000</td>
-            <td>Rp 225.000.000</td>
+            <td>Rp 675.000.000</td>
             <td>Rp 100.800.000 (70%)</td>
           </tr>
         </tbody>
@@ -563,7 +563,7 @@
     </div>
     <p style="margin-top:var(--sp-3);font-size:var(--fs-xs);color:var(--txt-muted);text-align:center">
       * Tabel di atas menggunakan MPK 12 tahun (multiplier 450x). Untuk MPK 5 tahun, gunakan multiplier 250x.<br>
-      * UP Jiwa = (Kontribusi Tahunan / 12) x 450. UP Kecelakaan = 50% x UP Jiwa (maks Rp 1,2 Miliar).
+      * UP Jiwa = (Kontribusi Tahunan / 12) x 450. Total Santunan Kecelakaan = UP Jiwa + Tambahan 50% Kecelakaan (maks Rp 1,2 Miliar untuk tambahan kecelakaan).
     </p>
   </div>
 </section>
@@ -597,6 +597,8 @@
           <label>Mode Pembayaran</label>
           <div class="calc-option-grid" id="mpdsmode">
             <div class="calc-option active" onclick="selectMpds('mpdsmode','bulanan',this)">Bulanan</div>
+            <div class="calc-option" onclick="selectMpds('mpdsmode','kuartalan',this)">Kuartalan</div>
+            <div class="calc-option" onclick="selectMpds('mpdsmode','semesteran',this)">Semesteran</div>
             <div class="calc-option" onclick="selectMpds('mpdsmode','tahunan',this)">Tahunan</div>
           </div>
         </div>
@@ -795,6 +797,8 @@ var mpdsState = {
   mpk: 12,
   mode: 'bulanan',
   presetsBulanan: [250000, 300000, 500000, 750000, 1000000, 1500000, 2000000, 2500000, 3000000, 5000000],
+  presetsKuartalan: [750000, 900000, 1500000, 2250000, 3000000, 4500000, 6000000, 7500000, 9000000, 15000000],
+  presetsSemesteran: [1500000, 1800000, 3000000, 4500000, 6000000, 9000000, 12000000, 15000000, 18000000, 30000000],
   presetsTahunan: [3000000, 3600000, 6000000, 9000000, 12000000, 18000000, 24000000, 30000000, 36000000, 60000000]
 };
 
@@ -815,9 +819,25 @@ function selectMpds(groupId, value, el) {
 
 function rebuildMpdsPresets() {
   var sel = document.getElementById('mpdsKontribusi');
-  var presets = (mpdsState.mode === 'bulanan') ? mpdsState.presetsBulanan : mpdsState.presetsTahunan;
-  var minLabel = (mpdsState.mode === 'bulanan') ? 'Rp 250.000' : 'Rp 3.000.000';
-  var modeLabel = (mpdsState.mode === 'bulanan') ? 'Bulanan' : 'Tahunan';
+  var presets, minLabel, modeLabel;
+
+  if (mpdsState.mode === 'bulanan') {
+    presets = mpdsState.presetsBulanan;
+    minLabel = 'Rp 250.000';
+    modeLabel = 'Bulanan';
+  } else if (mpdsState.mode === 'kuartalan') {
+    presets = mpdsState.presetsKuartalan;
+    minLabel = 'Rp 750.000';
+    modeLabel = 'Kuartalan';
+  } else if (mpdsState.mode === 'semesteran') {
+    presets = mpdsState.presetsSemesteran;
+    minLabel = 'Rp 1.500.000';
+    modeLabel = 'Semesteran';
+  } else {
+    presets = mpdsState.presetsTahunan;
+    minLabel = 'Rp 3.000.000';
+    modeLabel = 'Tahunan';
+  }
 
   document.getElementById('mpdsKontribusiLabel').textContent = 'Nominal Kontribusi ' + modeLabel;
   document.getElementById('mpdsCustomLabel').textContent = 'Jumlah (min ' + minLabel + ')';
@@ -831,7 +851,11 @@ function rebuildMpdsPresets() {
   sel.innerHTML = html;
 
   document.getElementById('mpdsCustomGroup').classList.remove('show');
-  var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+  var minVal;
+  if (mpdsState.mode === 'bulanan') minVal = 250000;
+  else if (mpdsState.mode === 'kuartalan') minVal = 750000;
+  else if (mpdsState.mode === 'semesteran') minVal = 1500000;
+  else minVal = 3000000;
   document.getElementById('mpdsCustomInput').value = formatMpdsNum(minVal);
 }
 
@@ -861,7 +885,11 @@ function formatRp(num) {
 
 function getMpdsKontribusiInput() {
   var sel = document.getElementById('mpdsKontribusi');
-  var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+  var minVal;
+  if (mpdsState.mode === 'bulanan') minVal = 250000;
+  else if (mpdsState.mode === 'kuartalan') minVal = 750000;
+  else if (mpdsState.mode === 'semesteran') minVal = 1500000;
+  else minVal = 3000000;
 
   if (sel.value === 'custom') {
     var input = document.getElementById('mpdsCustomInput');
@@ -885,8 +913,12 @@ function calcMpds() {
   var kontribusiBulanan;
   if (mode === 'bulanan') {
     kontribusiBulanan = kontribusiInput;
+  } else if (mode === 'kuartalan') {
+    kontribusiBulanan = Math.round(kontribusiInput / 3);
+  } else if (mode === 'semesteran') {
+    kontribusiBulanan = Math.round(kontribusiInput / 6);
   } else {
-    kontribusiBulanan = kontribusiInput / 12;
+    kontribusiBulanan = Math.round(kontribusiInput / 12);
   }
 
   // Calculate benefits
@@ -927,7 +959,11 @@ function calcMpds() {
   });
 
   customInput.addEventListener('blur', function() {
-    var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+    var minVal;
+    if (mpdsState.mode === 'bulanan') minVal = 250000;
+    else if (mpdsState.mode === 'kuartalan') minVal = 750000;
+    else if (mpdsState.mode === 'semesteran') minVal = 1500000;
+    else minVal = 3000000;
     var val = parseMpdsNum(this.value);
     if (!val || val < minVal) {
       val = minVal;
@@ -939,7 +975,11 @@ function calcMpds() {
   customInput.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      var minVal = (mpdsState.mode === 'bulanan') ? 250000 : 3000000;
+      var minVal;
+      if (mpdsState.mode === 'bulanan') minVal = 250000;
+      else if (mpdsState.mode === 'kuartalan') minVal = 750000;
+      else if (mpdsState.mode === 'semesteran') minVal = 1500000;
+      else minVal = 3000000;
       var val = parseMpdsNum(this.value);
       if (!val || val < minVal) {
         val = minVal;
