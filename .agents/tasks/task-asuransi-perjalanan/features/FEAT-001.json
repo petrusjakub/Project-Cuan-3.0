@@ -1,0 +1,43 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete asuransi-perjalanan.html page with all sections: hero, benefits/coverage, premium table, premium calculator, FAQ, and CTA. The page follows the exact structure of asuransi-mobil.html but adapted for travel insurance content.",
+  "status": "in_progress",
+  "steps": [
+    "Create /projects/sandbox/Project-Cuan-3.0/public/pages/asuransi-perjalanan.html following the structure of asuransi-mobil.html",
+    "Add page-specific <style> block with travel-themed color variables (e.g., --travel-teal, --travel-dark, --travel-light) and keyword highlight classes (.kw-travel, .kw-coverage, .kw-destination) with non-clashing colors and dark mode support",
+    "Add hero section with breadcrumb, travel badge, question-style headline, stat grid (183 days max, 5 regions, 2 plans, 3 age groups), and CTA buttons",
+    "Add 'Mengapa Butuh Asuransi Perjalanan' section with advantage cards covering: medical expenses abroad, trip cancellation, baggage loss/delay, flight delay, personal accident, personal liability - all in question-style language",
+    "Add coverage regions section explaining the 5 regions: Worldwide Including Americas, Worldwide Excluding Americas, Asia Pacific & Schengen, Greater Asia, Schengen Basic",
+    "Add plans comparison section showing Superior vs Deluxe plans with coverage types (Individual, Couple, Family) and age groups",
+    "Add premium table section with responsive scrollable tables showing premium data for at least the main age group (14d-59y Individual) with all durations and regions",
+    "Add premium calculator section with form inputs: Age Group dropdown, Coverage Type dropdown, Destination Region dropdown, Plan dropdown (disabled when Schengen Basic selected), Trip Duration number input (1-183 days). Include the full premiumData lookup table and calculatePremium function in JavaScript. Display result formatted as Rupiah. Show 'Not Covered' message for 0 values. Include disclaimer text.",
+    "Add FAQ section with question-style items about travel insurance",
+    "Add CTA section with WhatsApp link",
+    "Add footer div and load main.js at end of body",
+    "Ensure all content uses question-style language throughout (Pernahkah kamu..., Tahukah kamu..., Bagaimana jika...)",
+    "Ensure NO insurance brand names appear in the displayed text",
+    "Ensure calculator handles all edge cases: duration > 31 days uses 26-31 rate + per_week rate, 0 values show 'Opsi tidak ditanggung', invalid input shows error messages"
+  ],
+  "acceptance_criteria": [
+    "File exists at /projects/sandbox/Project-Cuan-3.0/public/pages/asuransi-perjalanan.html",
+    "Page has valid HTML5 structure with proper meta tags, dark mode script, and link to /assets/style.css",
+    "Page includes #site-header and #site-footer divs and loads /assets/main.js",
+    "Page has page-specific CSS with travel-themed colors and keyword highlight classes that support dark mode",
+    "Page uses question-style language throughout all sections",
+    "No insurance brand names appear in displayed text",
+    "Premium calculator handles all 3 age groups, 3 coverage types, 5 regions, 2 plans, and durations 1-183 days",
+    "Calculator correctly computes premiums for trips > 31 days using the formula: premium_31 + ceil((days-31)/7) * per_week_rate",
+    "Calculator shows 'Not Covered' for 0 values (e.g., Schengen Basic for 70-84 age group)",
+    "Calculator disables Plan dropdown when Schengen Basic is selected",
+    "Calculator displays result in Rupiah format (e.g., Rp 1.500.000)",
+    "Calculator shows disclaimer text about included/excluded fees",
+    "Premium table displays data in responsive scrollable format"
+  ],
+  "verification": [
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/asuransi-perjalanan.html','utf8'); console.log('File exists:', html.length > 0); console.log('Has DOCTYPE:', html.includes('<!DOCTYPE html>')); console.log('Has style.css:', html.includes('/assets/style.css')); console.log('Has main.js:', html.includes('/assets/main.js')); console.log('Has site-header:', html.includes('site-header')); console.log('Has site-footer:', html.includes('site-footer')); console.log('Has calculator:', html.includes('calculatePremium') || html.includes('premiumData')); console.log('No brand names:', !html.includes('Manulife') && !html.includes('AIG') && !html.includes('Allianz'));\"",
+    "Run: node -e to extract and execute the calculator function, verify it returns correct values for known inputs (e.g., 14d-59y, individual, worldwide_inc, superior, 5 days should return 481000)"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

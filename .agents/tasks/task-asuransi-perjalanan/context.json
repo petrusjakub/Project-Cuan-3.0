@@ -1,0 +1,22 @@
+{
+  "project_type": "Static HTML website with CSS design system and vanilla JS",
+  "language": "HTML/CSS/JavaScript",
+  "build_system": "None - static files served directly",
+  "test_framework": "None - manual HTML validation",
+  "build_command": "N/A - static site",
+  "test_command": "N/A - validate HTML structure manually",
+  "verification_instructions": "Open the HTML file in a browser; verify calculator logic via node execution of the JS",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML project",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external package installs possible. Only pre-installed runtimes available. No Docker.",
+  "contribution_requirements": "Follow existing page patterns (asuransi-mobil.html as reference). Use shared CSS from /assets/style.css. Load header/footer via JS. Support dark mode. Use keyword highlight classes with different colors.",
+  "key_patterns": "1) Pages use inline <style> for page-specific CSS with custom color variables. 2) Header loaded into #site-header, footer into #site-footer. 3) main.js loaded at end of body handles components, dark mode, search, scroll. 4) Question-style copywriting with keyword highlights (.kw-finance, .kw-protect, .kw-risk). 5) Calculator wrapped in .calc-wrap with .calc-header and .calc-body. 6) Premium tables use .premi-table-wrap and .premi-table classes. 7) Dark mode via html.dark class with CSS overrides. 8) Breadcrumb navigation at top. 9) FAQ accordion with toggleFaq function. 10) CTA section at bottom linking to WhatsApp.",
+  "relevant_files": [
+    "public/pages/asuransi-mobil.html",
+    "public/assets/style.css",
+    "public/assets/main.js",
+    "public/components/header.html",
+    "public/components/footer.html"
+  ],
+  "directory_structure": "public/pages/ - product HTML pages; public/assets/ - shared CSS and JS; public/components/ - header.html and footer.html loaded via JS; Source/ - PDF source documents; Sample/ - sample HTML files"
+}

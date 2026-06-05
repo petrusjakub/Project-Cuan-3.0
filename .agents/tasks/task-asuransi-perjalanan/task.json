@@ -1,0 +1,7 @@
+{
+  "task_id": "task-asuransi-perjalanan",
+  "task_description": "Create a new HTML page at /projects/sandbox/Project-Cuan-3.0/public/pages/asuransi-perjalanan.html for the Travel Insurance product with premium table, premium calculator, question-style language, keyword highlights in different colors, and dark mode support.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

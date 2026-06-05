@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asuransi Perjalanan - Perlindungan Lengkap Saat Bepergian | PROJECTCUAN</title>
+  <meta name="description" content="Asuransi Perjalanan dengan coverage 5 wilayah destinasi. Perlindungan medical expenses, trip cancellation, baggage loss, flight delay. Plan Superior & Deluxe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    :root {
+      --travel-teal: #00796B;
+      --travel-dark: #004D40;
+      --travel-light: #26A69A;
+    }
+
+    /* Keyword highlight classes */
+    .kw-travel { color: #00796B; font-weight: 700; }
+    html.dark .kw-travel { color: #4DB6AC; }
+    .kw-coverage { color: #1565C0; font-weight: 700; }
+    html.dark .kw-coverage { color: #64B5F6; }
+    .kw-destination { color: #E65100; font-weight: 700; }
+    html.dark .kw-destination { color: #FFB74D; }
+
+    .travel-hero {
+      background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 50%, #F5FFFE 100%);
+      padding: var(--sp-16) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    html.dark .travel-hero {
+      background: linear-gradient(135deg, #0A1F1C 0%, #0D2B26 100%);
+    }
+    .travel-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,121,107,0.08) 0%, transparent 70%);
+    }
+    .travel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: rgba(0,121,107,0.1);
+      border: 1px solid rgba(0,121,107,0.2);
+      color: var(--travel-teal);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--r-full);
+      margin-bottom: var(--sp-4);
+    }
+    html.dark .travel-badge {
+      background: rgba(38,166,154,0.15);
+      border-color: rgba(38,166,154,0.3);
+      color: var(--travel-light);
+    }
+    .travel-hero h1 span { color: var(--travel-teal); }
+    html.dark .travel-hero h1 span { color: var(--travel-light); }
+    .travel-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-8);
+    }
+    .travel-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-3) var(--sp-4);
+      text-align: center;
+    }
+    .travel-stat-value {
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: var(--fs-lg);
+      color: var(--travel-teal);
+    }
+    html.dark .travel-stat-value { color: var(--travel-light); }
+    .travel-stat-label {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      margin-top: 2px;
+    }
+
+    /* Advantage Grid */
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .advantage-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      transition: all var(--ease);
+    }
+    .advantage-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .advantage-icon { font-size: 28px; margin-bottom: var(--sp-3); }
+    .advantage-title { font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
+    .advantage-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+
+    /* Region Cards */
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-4);
+    }
+    .region-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-4);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3);
+      transition: all var(--ease);
+    }
+    .region-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .region-icon { font-size: 24px; flex-shrink: 0; }
+    .region-title { font-weight: 700; color: var(--txt-head); font-size: var(--fs-sm); margin-bottom: 4px; }
+    .region-desc { font-size: var(--fs-xs); color: var(--txt-sub); line-height: 1.5; }
+
+    /* Plan Comparison Cards */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--sp-5);
+    }
+    .plan-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .plan-card:hover { border-color: var(--travel-teal); box-shadow: var(--sh-md); transform: translateY(-2px); }
+    html.dark .plan-card:hover { border-color: var(--travel-light); }
+    .plan-card-header {
+      text-align: center;
+      padding-bottom: var(--sp-4);
+      margin-bottom: var(--sp-4);
+      border-bottom: 2px solid var(--border);
+    }
+    .plan-card-title {
+      font-size: var(--fs-lg);
+      font-weight: 800;
+      color: var(--travel-teal);
+      margin-bottom: var(--sp-1);
+    }
+    html.dark .plan-card-title { color: var(--travel-light); }
+    .plan-card-subtitle {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+    }
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .plan-card ul li {
+      padding: var(--sp-2) 0;
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-2);
+    }
+    .plan-card ul li:last-child { border-bottom: none; }
+    .plan-card ul li::before {
+      content: '\2713';
+      color: var(--travel-teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    html.dark .plan-card ul li::before { color: var(--travel-light); }
+
+    /* Premium Table */
+    .premi-table-wrap {
+      overflow-x: auto;
+      margin-top: var(--sp-4);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+    }
+    .premi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+    }
+    .premi-table th {
+      background: var(--travel-teal);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: center;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    html.dark .premi-table th { background: var(--travel-dark); }
+    .premi-table td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+    }
+    .premi-table tr:last-child td { border-bottom: none; }
+    .premi-table tr:hover td { background: rgba(0,121,107,0.04); }
+    html.dark .premi-table tr:hover td { background: rgba(38,166,154,0.06); }
+
+    /* Calculator */
+    .calc-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .calc-header {
+      background: linear-gradient(135deg, var(--travel-teal), var(--travel-dark));
+      padding: var(--sp-4) var(--sp-5);
+    }
+    .calc-header-title { color: #fff; font-weight: 700; font-size: var(--fs-md); }
+    .calc-body { padding: var(--sp-5); }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-4);
+    }
+    .form-group { margin-bottom: var(--sp-3); }
+    .form-label {
+      display: block;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-1);
+    }
+    .form-select, .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid var(--border);
+      border-radius: var(--r-md);
+      font-size: var(--fs-sm);
+      background: var(--bg-card);
+      color: var(--txt-head);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .form-select:focus, .form-input:focus {
+      border-color: var(--travel-teal);
+      outline: none;
+    }
+    html.dark .form-select:focus, html.dark .form-input:focus {
+      border-color: var(--travel-light);
+    }
+    .calc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-2);
+      background: var(--travel-teal);
+      color: #fff;
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      padding: 12px 28px;
+      border: none;
+      border-radius: var(--r-md);
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: var(--sp-3);
+    }
+    .calc-btn:hover { background: var(--travel-dark); }
+    .calc-result {
+      margin-top: var(--sp-5);
+      padding: var(--sp-5);
+      background: rgba(0,121,107,0.04);
+      border-radius: var(--r-md);
+      border: 1px solid rgba(0,121,107,0.12);
+      display: none;
+    }
+    html.dark .calc-result {
+      background: rgba(38,166,154,0.08);
+      border-color: rgba(38,166,154,0.2);
+    }
+    .calc-result-title {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      text-align: center;
+      margin-bottom: var(--sp-2);
+    }
+    .calc-result-value {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--travel-teal);
+      text-align: center;
+    }
+    html.dark .calc-result-value { color: var(--travel-light); }
+    .calc-result-detail {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      text-align: center;
+      margin-top: var(--sp-2);
+    }
+    .calc-error {
+      margin-top: var(--sp-4);
+      padding: var(--sp-3);
+      background: rgba(211, 47, 47, 0.06);
+      border: 1px solid rgba(211, 47, 47, 0.2);
+      border-radius: var(--r-md);
+      text-align: center;
+      color: #d32f2f;
+      font-weight: 600;
+      font-size: var(--fs-sm);
+      display: none;
+    }
+    html.dark .calc-error {
+      background: rgba(239, 83, 80, 0.1);
+      border-color: rgba(239, 83, 80, 0.3);
+      color: #ef5350;
+    }
+
+    /* FAQ */
+    .faq-list { max-width: 800px; }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-4) var(--sp-5);
+      margin-bottom: var(--sp-3);
+      transition: all var(--ease);
+    }
+    .faq-item:hover { box-shadow: var(--sh-sm); }
+    .faq-q {
+      font-weight: 700;
+      color: var(--travel-teal);
+      font-size: var(--fs-sm);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    html.dark .faq-q { color: var(--travel-light); }
+    .faq-arrow { transition: transform 0.2s; font-size: 1.2rem; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding-top: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* CTA */
+    .travel-cta {
+      background: linear-gradient(135deg, var(--travel-dark), var(--travel-teal), var(--travel-light));
+      padding: var(--sp-12) 0;
+      text-align: center;
+    }
+    .travel-cta h2 { color: #fff; font-size: var(--fs-xl); margin-bottom: var(--sp-3); }
+    .travel-cta p { color: rgba(255,255,255,0.9); font-size: var(--fs-md); margin-bottom: var(--sp-6); max-width: 600px; margin-left: auto; margin-right: auto; }
+    .travel-cta .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: #fff;
+      color: var(--travel-dark);
+      font-weight: 700;
+      font-size: var(--fs-md);
+      padding: 14px 32px;
+      border-radius: var(--r-md);
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .travel-cta .btn-cta:hover { transform: translateY(-2px); }
+
+    /* Section tag */
+    .travel-section-tag {
+      background: rgba(0,121,107,0.1) !important;
+      color: var(--travel-teal) !important;
+    }
+    html.dark .travel-section-tag {
+      background: rgba(38,166,154,0.15) !important;
+      color: var(--travel-light) !important;
+    }
+
+    /* Button overrides */
+    .travel-btn-primary {
+      background: var(--travel-teal) !important;
+      color: #fff !important;
+      box-shadow: 0 4px 14px rgba(0,121,107,0.3);
+    }
+    .travel-btn-primary:hover { background: var(--travel-dark) !important; }
+    .travel-btn-outline {
+      border-color: var(--travel-teal) !important;
+      color: var(--travel-teal) !important;
+    }
+    html.dark .travel-btn-outline {
+      border-color: var(--travel-light) !important;
+      color: var(--travel-light) !important;
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="travel-hero" aria-labelledby="travel-title">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/index.html">Beranda</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="/index.html#produk">Produk</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span class="breadcrumb-current" style="color:var(--travel-teal)">Asuransi Perjalanan</span>
+    </nav>
+
+    <div class="page-hero-inner">
+      <div>
+        <div class="travel-badge">
+          &#9992; Asuransi Perjalanan
+        </div>
+
+        <h1 id="travel-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
+          Pernahkah Anda Membayangkan <span class="kw-destination">Risiko</span> di Perjalanan Luar Negeri?
+        </h1>
+
+        <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
+          Tahukah Anda berapa <span class="kw-coverage">biaya</span> rawat inap di rumah sakit luar negeri? Bagaimana jika penerbangan Anda dibatalkan mendadak atau bagasi hilang di <span class="kw-destination">destinasi</span> asing? Dengan <span class="kw-travel">asuransi perjalanan</span> yang tepat, Anda bisa menikmati liburan tanpa khawatir.
+        </p>
+
+        <div class="travel-stat-grid fade-up stagger-2">
+          <div class="travel-stat">
+            <div class="travel-stat-value">183 Hari</div>
+            <div class="travel-stat-label">Max Durasi</div>
+          </div>
+          <div class="travel-stat">
+            <div class="travel-stat-value">5 Wilayah</div>
+            <div class="travel-stat-label">Coverage</div>
+          </div>
+          <div class="travel-stat">
+            <div class="travel-stat-value">2 Plan</div>
+            <div class="travel-stat-label">Superior &amp; Deluxe</div>
+          </div>
+          <div class="travel-stat">
+            <div class="travel-stat-value">3 Kelompok</div>
+            <div class="travel-stat-label">Usia</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap" class="fade-up stagger-3">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20saya%20tertarik%20dengan%20Asuransi%20Perjalanan"
+             target="_blank" rel="noopener" class="btn btn--lg travel-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Konsultasi Gratis
+          </a>
+          <a href="#kalkulator" class="btn btn--outline btn--lg travel-btn-outline">Hitung Premi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENGAPA BUTUH ASURANSI PERJALANAN -->
+<section class="section">
+  <div class="container">
+    <span class="travel-section-tag" style="display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:var(--fs-xs);font-weight:700;margin-bottom:var(--sp-3)">Mengapa Penting</span>
+    <h2 style="font-size:var(--fs-xl);color:var(--txt-head);margin-bottom:var(--sp-3)" class="fade-up">
+      Mengapa Anda Butuh <span class="kw-travel">Asuransi Perjalanan</span>?
+    </h2>
+    <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7;max-width:800px" class="fade-up stagger-1">
+      Bagaimana jika Anda jatuh sakit di <span class="kw-destination">luar negeri</span> tanpa jaminan kesehatan? Tahukah Anda bahwa biaya rawat inap di Eropa bisa mencapai puluhan juta per hari? Berikut risiko yang perlu Anda <span class="kw-coverage">antisipasi</span>:
+    </p>
+
+    <div class="advantage-grid fade-up stagger-2">
+      <div class="advantage-card">
+        <div class="advantage-icon">&#127973;</div>
+        <div class="advantage-title">Medical Expenses Abroad</div>
+        <div class="advantage-desc">Pernahkah Anda membayangkan harus membayar <span class="kw-coverage">biaya</span> rumah sakit di luar negeri yang bisa mencapai <strong>ratusan juta Rupiah</strong>? Dengan <span class="kw-travel">asuransi perjalanan</span>, biaya medis darurat Anda ditanggung sepenuhnya.</div>
+      </div>
+      <div class="advantage-card">
+        <div class="advantage-icon">&#10060;</div>
+        <div class="advantage-title">Trip Cancellation</div>
+        <div class="advantage-desc">Bagaimana jika perjalanan yang sudah Anda rencanakan berbulan-bulan harus <span class="kw-destination">dibatalkan</span> mendadak? Tiket pesawat, hotel, dan deposit tour yang hangus bisa mencapai puluhan juta. <span class="kw-coverage">Proteksi</span> pembatalan menjaga investasi liburan Anda.</div>
+      </div>
+      <div class="advantage-card">
+        <div class="advantage-icon">&#128188;</div>
+        <div class="advantage-title">Baggage Loss / Delay</div>
+        <div class="advantage-desc">Tahukah Anda bahwa jutaan koper hilang atau terlambat setiap tahun di bandara seluruh dunia? Bagaimana jika barang berharga Anda tidak pernah ditemukan? <span class="kw-travel">Asuransi perjalanan</span> memberikan <span class="kw-coverage">kompensasi</span> untuk kehilangan dan keterlambatan bagasi.</div>
+      </div>
+      <div class="advantage-card">
+        <div class="advantage-icon">&#9992;</div>
+        <div class="advantage-title">Flight Delay</div>
+        <div class="advantage-desc">Pernahkah penerbangan Anda <span class="kw-destination">delay</span> berjam-jam tanpa kejelasan? Biaya makan, akomodasi tambahan, dan connecting flight yang terlewat bisa membuat liburan jadi berantakan. Dapatkan <span class="kw-coverage">kompensasi</span> keterlambatan penerbangan.</div>
+      </div>
+      <div class="advantage-card">
+        <div class="advantage-icon">&#128657;</div>
+        <div class="advantage-title">Personal Accident</div>
+        <div class="advantage-desc">Bagaimana jika terjadi <span class="kw-destination">kecelakaan</span> saat Anda berada jauh dari rumah? Santunan kecelakaan diri memberikan <span class="kw-coverage">perlindungan</span> finansial untuk Anda dan keluarga, termasuk biaya evakuasi medis darurat.</div>
+      </div>
+      <div class="advantage-card">
+        <div class="advantage-icon">&#128737;</div>
+        <div class="advantage-title">Personal Liability</div>
+        <div class="advantage-desc">Tahukah Anda bahwa di banyak negara, tuntutan hukum atas <span class="kw-destination">kerugian</span> pihak ketiga bisa sangat besar? Jika Anda secara tidak sengaja menyebabkan kerusakan properti atau cedera orang lain, <span class="kw-travel">asuransi perjalanan</span> menanggung tanggung jawab hukum Anda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WILAYAH COVERAGE -->
+<section class="section section--alt">
+  <div class="container">
+    <span class="travel-section-tag" style="display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:var(--fs-xs);font-weight:700;margin-bottom:var(--sp-3)">Wilayah Destinasi</span>
+    <h2 style="font-size:var(--fs-xl);color:var(--txt-head);margin-bottom:var(--sp-3)" class="fade-up">
+      Ke Mana <span class="kw-destination">Destinasi</span> Perjalanan Anda?
+    </h2>
+    <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7;max-width:800px" class="fade-up stagger-1">
+      Tahukah Anda bahwa <span class="kw-coverage">premi</span> asuransi perjalanan berbeda tergantung wilayah tujuan? Semakin tinggi biaya medis di negara tujuan, semakin penting <span class="kw-travel">perlindungan</span> yang memadai.
+    </p>
+
+    <div class="region-grid fade-up stagger-2">
+      <div class="region-card">
+        <div class="region-icon">&#127758;</div>
+        <div>
+          <div class="region-title">Worldwide Including Americas</div>
+          <div class="region-desc">Cakupan terluas mencakup seluruh dunia termasuk Amerika Serikat dan Kanada yang memiliki <span class="kw-coverage">biaya</span> medis tertinggi di dunia.</div>
+        </div>
+      </div>
+      <div class="region-card">
+        <div class="region-icon">&#127757;</div>
+        <div>
+          <div class="region-title">Worldwide Excluding Americas</div>
+          <div class="region-desc">Seluruh dunia kecuali Amerika Serikat dan Kanada. Cocok untuk perjalanan ke Eropa, Timur Tengah, Afrika, dan Australia.</div>
+        </div>
+      </div>
+      <div class="region-card">
+        <div class="region-icon">&#127759;</div>
+        <div>
+          <div class="region-title">Asia Pacific &amp; Schengen</div>
+          <div class="region-desc">Mencakup negara-negara Asia Pasifik dan seluruh zona Schengen Eropa. Ideal untuk wisata Asia dan Eropa dengan <span class="kw-coverage">perlindungan</span> visa Schengen.</div>
+        </div>
+      </div>
+      <div class="region-card">
+        <div class="region-icon">&#127470;&#127465;</div>
+        <div>
+          <div class="region-title">Greater Asia</div>
+          <div class="region-desc">Mencakup negara-negara ASEAN, Asia Timur, dan Asia Selatan. Pilihan hemat untuk <span class="kw-destination">destinasi</span> populer seperti Jepang, Korea, Thailand, dan Singapura.</div>
+        </div>
+      </div>
+      <div class="region-card">
+        <div class="region-icon">&#127466;&#127482;</div>
+        <div>
+          <div class="region-title">Schengen Basic</div>
+          <div class="region-desc">Coverage dasar khusus memenuhi syarat visa Schengen. Hanya tersedia plan Superior dan tidak mencakup kelompok usia 70-84 tahun.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS COMPARISON -->
+<section class="section">
+  <div class="container">
+    <span class="travel-section-tag" style="display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:var(--fs-xs);font-weight:700;margin-bottom:var(--sp-3)">Pilihan Plan</span>
+    <h2 style="font-size:var(--fs-xl);color:var(--txt-head);margin-bottom:var(--sp-3)" class="fade-up">
+      Mana yang Lebih Cocok: <span>Superior</span> atau <span>Deluxe</span>?
+    </h2>
+    <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7;max-width:800px" class="fade-up stagger-1">
+      Apakah Anda membutuhkan <span class="kw-coverage">perlindungan</span> maksimal dengan limit tertinggi, atau coverage yang lebih terjangkau tetapi tetap komprehensif? Pilih plan yang sesuai kebutuhan dan budget Anda.
+    </p>
+
+    <div class="plan-grid fade-up stagger-2">
+      <div class="plan-card" style="border-color:var(--travel-teal)">
+        <div class="plan-card-header">
+          <div class="plan-card-title">Superior Plan</div>
+          <div class="plan-card-subtitle">Perlindungan Maksimal dengan Limit Tertinggi</div>
+        </div>
+        <ul>
+          <li>Tersedia untuk semua 5 wilayah <span class="kw-destination">destinasi</span></li>
+          <li>Coverage tipe: Individual, Couple, Family</li>
+          <li>Kelompok usia: 14 hari - 59 tahun, 60-69 tahun, 70-84 tahun</li>
+          <li>Limit <span class="kw-coverage">medical expenses</span> tertinggi</li>
+          <li>Satu-satunya plan untuk wilayah Schengen Basic</li>
+          <li>Santunan kecelakaan diri maksimal</li>
+          <li>Coverage bagasi dan flight delay premium</li>
+          <li>Personal liability limit tertinggi</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-card-header">
+          <div class="plan-card-title">Deluxe Plan</div>
+          <div class="plan-card-subtitle">Coverage Komprehensif dengan Premi Lebih Terjangkau</div>
+        </div>
+        <ul>
+          <li>Tersedia untuk 4 wilayah (tidak termasuk Schengen Basic)</li>
+          <li>Coverage tipe: Individual, Couple, Family</li>
+          <li>Kelompok usia: 14 hari - 59 tahun, 60-69 tahun</li>
+          <li><span class="kw-coverage">Premi</span> lebih terjangkau dari Superior</li>
+          <li>Tidak tersedia untuk usia 70-84 tahun</li>
+          <li>Medical expenses dengan limit memadai</li>
+          <li>Trip cancellation dan baggage coverage</li>
+          <li>Pilihan hemat untuk <span class="kw-travel">perlindungan</span> lengkap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABEL PREMI -->
+<section class="section section--alt">
+  <div class="container">
+    <span class="travel-section-tag" style="display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:var(--fs-xs);font-weight:700;margin-bottom:var(--sp-3)">Tabel Premi</span>
+    <h2 style="font-size:var(--fs-xl);color:var(--txt-head);margin-bottom:var(--sp-3)" class="fade-up">
+      Berapa <span class="kw-coverage">Premi</span> Asuransi Perjalanan?
+    </h2>
+    <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7;max-width:800px" class="fade-up stagger-1">
+      Tahukah Anda bahwa <span class="kw-coverage">premi</span> asuransi perjalanan sangat terjangkau dibanding risiko yang ditanggung? Berikut tabel premi untuk plan Superior, Individual, usia 14 hari - 59 tahun.
+    </p>
+
+    <h3 style="font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-2)">Superior Plan - Individual (14 hari - 59 tahun)</h3>
+    <div class="premi-table-wrap fade-up">
+      <table class="premi-table">
+        <tr>
+          <th>Durasi</th>
+          <th>Worldwide Inc. Americas</th>
+          <th>Worldwide Exc. Americas</th>
+          <th>Asia Pacific &amp; Schengen</th>
+          <th>Greater Asia</th>
+          <th>Schengen Basic</th>
+        </tr>
+        <tr><td>1-3 hari</td><td>290.000</td><td>261.000</td><td>217.000</td><td>167.000</td><td>117.000</td></tr>
+        <tr><td>4-5 hari</td><td>481.000</td><td>435.000</td><td>362.000</td><td>277.000</td><td>190.000</td></tr>
+        <tr><td>6-8 hari</td><td>634.000</td><td>575.000</td><td>478.000</td><td>365.000</td><td>246.000</td></tr>
+        <tr><td>9-11 hari</td><td>774.000</td><td>702.000</td><td>582.000</td><td>445.000</td><td>297.000</td></tr>
+        <tr><td>12-15 hari</td><td>948.000</td><td>862.000</td><td>717.000</td><td>548.000</td><td>363.000</td></tr>
+        <tr><td>16-20 hari</td><td>1.167.000</td><td>1.060.000</td><td>882.000</td><td>675.000</td><td>444.000</td></tr>
+        <tr><td>21-25 hari</td><td>1.386.000</td><td>1.258.000</td><td>1.047.000</td><td>800.000</td><td>524.000</td></tr>
+        <tr><td>26-31 hari</td><td>1.605.000</td><td>1.456.000</td><td>1.213.000</td><td>927.000</td><td>605.000</td></tr>
+        <tr><td>Per Minggu (&gt;31 hari)</td><td>365.000</td><td>331.000</td><td>275.000</td><td>210.000</td><td>138.000</td></tr>
+      </table>
+    </div>
+
+    <p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-4);font-style:italic">
+      * Premi dalam Rupiah. Untuk durasi lebih dari 31 hari, premi dihitung dari tarif 26-31 hari ditambah tarif per minggu untuk setiap minggu tambahan. Gunakan kalkulator di bawah untuk estimasi premi Anda.
+    </p>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section class="section" id="kalkulator">
+  <div class="container">
+    <span class="travel-section-tag" style="display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:var(--fs-xs);font-weight:700;margin-bottom:var(--sp-3)">Kalkulator Premi</span>
+    <h2 style="font-size:var(--fs-xl);color:var(--txt-head);margin-bottom:var(--sp-3)" class="fade-up">
+      Berapa <span class="kw-coverage">Premi</span> Perjalanan Anda?
+    </h2>
+    <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7;max-width:800px" class="fade-up stagger-1">
+      Masukkan detail perjalanan Anda di bawah untuk mendapatkan estimasi <span class="kw-coverage">premi</span> berdasarkan wilayah tujuan, durasi, dan plan yang dipilih.
+    </p>
+
+    <div class="calc-wrap fade-up stagger-2">
+      <div class="calc-header">
+        <h3 class="calc-header-title">Simulasi Premi Asuransi Perjalanan</h3>
+      </div>
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="form-group">
+            <label class="form-label" for="travel-age">Kelompok Usia</label>
+            <select class="form-select" id="travel-age">
+              <option value="14d_59y">14 hari - 59 tahun</option>
+              <option value="60_69y">60 - 69 tahun</option>
+              <option value="70_84y">70 - 84 tahun</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="travel-coverage">Tipe Coverage</label>
+            <select class="form-select" id="travel-coverage">
+              <option value="individual">Individual</option>
+              <option value="couple">Couple</option>
+              <option value="family">Family</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="travel-region">Wilayah Destinasi</label>
+            <select class="form-select" id="travel-region">
+              <option value="worldwide_inc">Worldwide Including Americas</option>
+              <option value="worldwide_exc">Worldwide Excluding Americas</option>
+              <option value="asia_pacific">Asia Pacific &amp; Schengen</option>
+              <option value="greater_asia">Greater Asia</option>
+              <option value="schengen_basic">Schengen Basic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="travel-plan">Plan</label>
+            <select class="form-select" id="travel-plan">
+              <option value="superior">Superior</option>
+              <option value="deluxe">Deluxe</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="travel-duration">Durasi Perjalanan (hari)</label>
+            <input type="number" class="form-input" id="travel-duration" placeholder="Contoh: 7" min="1" max="183" inputmode="numeric">
+          </div>
+        </div>
+        <button class="calc-btn" id="travel-calc-btn" type="button">Hitung Premi</button>
+
+        <div class="calc-result" id="travel-result">
+          <div class="calc-result-title">Estimasi Premi Perjalanan</div>
+          <div class="calc-result-value" id="travel-result-value">-</div>
+          <div class="calc-result-detail" id="travel-result-detail"></div>
+        </div>
+        <div class="calc-error" id="travel-error"></div>
+
+        <p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-3);font-style:italic;text-align:center">
+          * Premi sudah termasuk biaya polis dan materai. Belum termasuk PPN 11%.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt">
+  <div class="container">
+    <span class="travel-section-tag" style="display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:var(--fs-xs);font-weight:700;margin-bottom:var(--sp-3)">FAQ</span>
+    <h2 style="font-size:var(--fs-xl);color:var(--txt-head);margin-bottom:var(--sp-3)" class="fade-up">
+      Pertanyaan Seputar <span class="kw-travel">Asuransi Perjalanan</span>
+    </h2>
+    <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7;max-width:800px" class="fade-up stagger-1">
+      Berikut jawaban atas pertanyaan yang paling sering diajukan tentang <span class="kw-travel">asuransi perjalanan</span>:
+    </p>
+
+    <div class="faq-list fade-up stagger-2">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apa saja yang ditanggung asuransi perjalanan?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-a">
+          <span class="kw-travel">Asuransi perjalanan</span> menanggung berbagai risiko selama perjalanan Anda, termasuk: biaya medis darurat di luar negeri, pembatalan perjalanan, kehilangan atau keterlambatan bagasi, keterlambatan penerbangan, kecelakaan diri, dan tanggung jawab hukum terhadap pihak ketiga. Cakupan spesifik tergantung pada plan yang Anda pilih (Superior atau Deluxe) dan wilayah <span class="kw-destination">destinasi</span>.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Berapa lama maksimal durasi perjalanan yang bisa ditanggung?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-a">
+          Durasi maksimal perjalanan yang dapat ditanggung adalah <strong>183 hari</strong> (sekitar 6 bulan). Untuk perjalanan lebih dari 31 hari, <span class="kw-coverage">premi</span> dihitung berdasarkan tarif 26-31 hari ditambah tarif per minggu untuk setiap minggu tambahan setelah hari ke-31. Ini ideal untuk perjalanan bisnis jangka panjang, studi singkat, atau liburan extended.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apakah ada batasan usia untuk membeli asuransi perjalanan?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-a">
+          Ya, terdapat 3 kelompok usia: <strong>14 hari - 59 tahun</strong> (tarif standar), <strong>60 - 69 tahun</strong> (tarif lebih tinggi), dan <strong>70 - 84 tahun</strong> (hanya tersedia plan Superior, tidak mencakup wilayah Schengen Basic). Semakin tinggi usia, semakin tinggi <span class="kw-coverage">premi</span> karena risiko medis yang lebih besar. Bayi mulai usia 14 hari sudah bisa mendapatkan <span class="kw-travel">perlindungan</span>.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Bagaimana cara klaim jika terjadi masalah selama perjalanan?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-a">
+          Proses klaim cukup mudah: (1) Hubungi hotline 24 jam yang tertera di kartu polis Anda segera setelah kejadian, (2) Kumpulkan dokumen pendukung seperti laporan polisi, kwitansi medis, bukti keterlambatan penerbangan, atau laporan kehilangan bagasi dari maskapai, (3) Isi formulir klaim dan kirimkan bersama dokumen pendukung. Untuk <span class="kw-coverage">medical expenses</span>, tersedia fasilitas cashless di rumah sakit rekanan atau reimbursement setelah Anda kembali.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apakah perjalanan domestik juga ditanggung?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-a">
+          Produk <span class="kw-travel">asuransi perjalanan</span> ini dirancang khusus untuk perjalanan internasional ke luar Indonesia. Untuk perjalanan domestik dalam negeri, tersedia produk perlindungan terpisah. Jika Anda membutuhkan informasi tentang <span class="kw-coverage">perlindungan</span> perjalanan domestik, silakan konsultasikan dengan tim kami melalui WhatsApp.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="travel-cta">
+  <div class="container">
+    <h2 class="fade-up">Siap Bepergian dengan Tenang?</h2>
+    <p class="fade-up stagger-1">Jangan biarkan <span class="kw-destination" style="color:rgba(255,255,255,0.95)">risiko</span> perjalanan menghantui liburan Anda. Konsultasikan kebutuhan asuransi perjalanan Anda sekarang juga, gratis dan tanpa komitmen.</p>
+    <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20saya%20tertarik%20dengan%20Asuransi%20Perjalanan" target="_blank" rel="noopener" class="btn-cta fade-up stagger-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Konsultasi via WhatsApp
+    </a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+// FAQ toggle
+function toggleFaq(el) {
+  var item = el.closest('.faq-item');
+  if (item) {
+    item.classList.toggle('open');
+  }
+}
+
+// Premium Calculator
+(function() {
+  var premiumData = {
+    "14d_59y": {
+      "individual": {
+        "worldwide_inc": { "superior": { rates: [290000,481000,634000,774000,948000,1167000,1386000,1605000], per_week: 365000 }, "deluxe": { rates: [217000,362000,478000,582000,717000,882000,1047000,1213000], per_week: 275000 } },
+        "worldwide_exc": { "superior": { rates: [261000,435000,575000,702000,862000,1060000,1258000,1456000], per_week: 331000 }, "deluxe": { rates: [196000,326000,431000,526000,645000,795000,943000,1092000], per_week: 248000 } },
+        "asia_pacific": { "superior": { rates: [217000,362000,478000,582000,717000,882000,1047000,1213000], per_week: 275000 }, "deluxe": { rates: [163000,272000,358000,437000,536000,661000,784000,909000], per_week: 206000 } },
+        "greater_asia": { "superior": { rates: [167000,277000,365000,445000,548000,675000,800000,927000], per_week: 210000 }, "deluxe": { rates: [125000,208000,274000,334000,411000,506000,600000,695000], per_week: 158000 } },
+        "schengen_basic": { "superior": { rates: [117000,190000,246000,297000,363000,444000,524000,605000], per_week: 138000 }, "deluxe": null }
+      },
+      "couple": {
+        "worldwide_inc": { "superior": { rates: [522000,866000,1141000,1393000,1706000,2101000,2495000,2889000], per_week: 657000 }, "deluxe": { rates: [391000,652000,860000,1048000,1291000,1588000,1885000,2183000], per_week: 495000 } },
+        "worldwide_exc": { "superior": { rates: [470000,783000,1035000,1264000,1552000,1908000,2264000,2621000], per_week: 596000 }, "deluxe": { rates: [353000,587000,776000,947000,1162000,1431000,1697000,1966000], per_week: 446000 } },
+        "asia_pacific": { "superior": { rates: [391000,652000,860000,1048000,1291000,1588000,1885000,2183000], per_week: 495000 }, "deluxe": { rates: [293000,490000,644000,787000,965000,1190000,1411000,1636000], per_week: 371000 } },
+        "greater_asia": { "superior": { rates: [301000,499000,657000,801000,986000,1215000,1440000,1669000], per_week: 378000 }, "deluxe": { rates: [225000,374000,493000,601000,740000,911000,1080000,1251000], per_week: 284000 } },
+        "schengen_basic": { "superior": { rates: [211000,342000,443000,535000,653000,799000,943000,1089000], per_week: 248000 }, "deluxe": null }
+      },
+      "family": {
+        "worldwide_inc": { "superior": { rates: [696000,1154000,1522000,1857000,2275000,2801000,3326000,3852000], per_week: 876000 }, "deluxe": { rates: [521000,869000,1147000,1397000,1721000,2117000,2513000,2910000], per_week: 660000 } },
+        "worldwide_exc": { "superior": { rates: [627000,1044000,1380000,1685000,2069000,2544000,3019000,3494000], per_week: 794000 }, "deluxe": { rates: [470000,783000,1035000,1263000,1548000,1908000,2263000,2621000], per_week: 595000 } },
+        "asia_pacific": { "superior": { rates: [521000,869000,1147000,1397000,1721000,2117000,2513000,2910000], per_week: 660000 }, "deluxe": { rates: [391000,653000,859000,1049000,1287000,1587000,1882000,2181000], per_week: 494000 } },
+        "greater_asia": { "superior": { rates: [401000,665000,876000,1068000,1314000,1620000,1920000,2225000], per_week: 504000 }, "deluxe": { rates: [300000,499000,657000,801000,986000,1215000,1440000,1668000], per_week: 378000 } },
+        "schengen_basic": { "superior": { rates: [281000,456000,590000,713000,871000,1065000,1258000,1452000], per_week: 331000 }, "deluxe": null }
+      }
+    },
+    "60_69y": {
+      "individual": {
+        "worldwide_inc": { "superior": { rates: [580000,962000,1268000,1548000,1896000,2334000,2772000,3210000], per_week: 730000 }, "deluxe": { rates: [434000,724000,956000,1164000,1434000,1764000,2094000,2426000], per_week: 550000 } },
+        "worldwide_exc": { "superior": { rates: [522000,870000,1150000,1404000,1724000,2120000,2516000,2912000], per_week: 662000 }, "deluxe": { rates: [392000,652000,862000,1052000,1290000,1590000,1886000,2184000], per_week: 496000 } },
+        "asia_pacific": { "superior": { rates: [434000,724000,956000,1164000,1434000,1764000,2094000,2426000], per_week: 550000 }, "deluxe": { rates: [326000,544000,716000,874000,1072000,1322000,1568000,1818000], per_week: 412000 } },
+        "greater_asia": { "superior": { rates: [334000,554000,730000,890000,1096000,1350000,1600000,1854000], per_week: 420000 }, "deluxe": { rates: [250000,416000,548000,668000,822000,1012000,1200000,1390000], per_week: 316000 } },
+        "schengen_basic": { "superior": { rates: [234000,380000,492000,594000,726000,888000,1048000,1210000], per_week: 276000 }, "deluxe": null }
+      },
+      "couple": {
+        "worldwide_inc": { "superior": { rates: [1044000,1732000,2282000,2786000,3413000,4201000,4990000,5778000], per_week: 1314000 }, "deluxe": { rates: [781000,1303000,1721000,2095000,2581000,3175000,3769000,4367000], per_week: 990000 } },
+        "worldwide_exc": { "superior": { rates: [940000,1566000,2070000,2527000,3103000,3816000,4529000,5242000], per_week: 1192000 }, "deluxe": { rates: [706000,1174000,1552000,1894000,2322000,2862000,3395000,3931000], per_week: 893000 } },
+        "asia_pacific": { "superior": { rates: [781000,1303000,1721000,2095000,2581000,3175000,3769000,4367000], per_week: 990000 }, "deluxe": { rates: [587000,979000,1289000,1573000,1930000,2380000,2822000,3272000], per_week: 742000 } },
+        "greater_asia": { "superior": { rates: [601000,997000,1314000,1602000,1973000,2430000,2880000,3337000], per_week: 756000 }, "deluxe": { rates: [450000,749000,986000,1202000,1480000,1822000,2160000,2502000], per_week: 569000 } },
+        "schengen_basic": { "superior": { rates: [421000,684000,886000,1069000,1307000,1598000,1886000,2178000], per_week: 497000 }, "deluxe": null }
+      },
+      "family": {
+        "worldwide_inc": { "superior": { rates: [1392000,2308000,3042000,3714000,4550000,5602000,6652000,7704000], per_week: 1752000 }, "deluxe": { rates: [1042000,1738000,2294000,2794000,3441000,4234000,5025000,5822000], per_week: 1320000 } },
+        "worldwide_exc": { "superior": { rates: [1253000,2088000,2760000,3370000,4138000,5088000,6038000,6990000], per_week: 1588000 }, "deluxe": { rates: [940000,1566000,2070000,2525000,3096000,3816000,4527000,5242000], per_week: 1190000 } },
+        "asia_pacific": { "superior": { rates: [1042000,1738000,2294000,2794000,3441000,4234000,5025000,5822000], per_week: 1320000 }, "deluxe": { rates: [782000,1306000,1718000,2098000,2574000,3174000,3762000,4362000], per_week: 988000 } },
+        "greater_asia": { "superior": { rates: [802000,1330000,1752000,2136000,2630000,3240000,3840000,4450000], per_week: 1008000 }, "deluxe": { rates: [600000,998000,1314000,1602000,1973000,2430000,2880000,3337000], per_week: 758000 } },
+        "schengen_basic": { "superior": { rates: [562000,912000,1180000,1426000,1742000,2131000,2514000,2904000], per_week: 662000 }, "deluxe": null }
+      }
+    },
+    "70_84y": {
+      "individual": {
+        "worldwide_inc": { "superior": { rates: [870000,1443000,1902000,2322000,2844000,3501000,4158000,4815000], per_week: 1095000 }, "deluxe": null },
+        "worldwide_exc": { "superior": { rates: [783000,1305000,1725000,2106000,2586000,3180000,3774000,4368000], per_week: 993000 }, "deluxe": null },
+        "asia_pacific": { "superior": { rates: [651000,1086000,1434000,1746000,2151000,2646000,3141000,3639000], per_week: 825000 }, "deluxe": null },
+        "greater_asia": { "superior": { rates: [501000,831000,1095000,1335000,1644000,2025000,2400000,2781000], per_week: 630000 }, "deluxe": null },
+        "schengen_basic": null
+      },
+      "couple": {
+        "worldwide_inc": { "superior": { rates: [1566000,2597000,3424000,4180000,5119000,6302000,7484000,8667000], per_week: 1971000 }, "deluxe": null },
+        "worldwide_exc": { "superior": { rates: [1409000,2349000,3105000,3791000,4655000,5724000,6793000,7862000], per_week: 1787000 }, "deluxe": null },
+        "asia_pacific": { "superior": { rates: [1172000,1955000,2581000,3143000,3872000,4763000,5654000,6550000], per_week: 1485000 }, "deluxe": null },
+        "greater_asia": { "superior": { rates: [902000,1496000,1971000,2403000,2959000,3645000,4320000,5006000], per_week: 1134000 }, "deluxe": null },
+        "schengen_basic": null
+      },
+      "family": {
+        "worldwide_inc": { "superior": { rates: [2088000,3462000,4566000,5574000,6826000,8403000,9978000,11556000], per_week: 2628000 }, "deluxe": null },
+        "worldwide_exc": { "superior": { rates: [1879000,3132000,4140000,5054000,6206000,7632000,9058000,10483000], per_week: 2383000 }, "deluxe": null },
+        "asia_pacific": { "superior": { rates: [1563000,2607000,3441000,4191000,5163000,6351000,7539000,8733000], per_week: 1980000 }, "deluxe": null },
+        "greater_asia": { "superior": { rates: [1203000,1994000,2628000,3204000,3946000,4860000,5760000,6675000], per_week: 1512000 }, "deluxe": null },
+        "schengen_basic": null
+      }
+    }
+  };
+
+  // Duration brackets: [1-3, 4-5, 6-8, 9-11, 12-15, 16-20, 21-25, 26-31]
+  function getDurationIndex(days) {
+    if (days >= 1 && days <= 3) return 0;
+    if (days >= 4 && days <= 5) return 1;
+    if (days >= 6 && days <= 8) return 2;
+    if (days >= 9 && days <= 11) return 3;
+    if (days >= 12 && days <= 15) return 4;
+    if (days >= 16 && days <= 20) return 5;
+    if (days >= 21 && days <= 25) return 6;
+    if (days >= 26 && days <= 31) return 7;
+    return -1; // > 31 days
+  }
+
+  function formatRupiah(num) {
+    if (num === 0) return 'Rp 0';
+    var rounded = Math.round(num);
+    var str = rounded.toString();
+    var result = '';
+    var count = 0;
+    for (var i = str.length - 1; i >= 0; i--) {
+      result = str[i] + result;
+      count++;
+      if (count % 3 === 0 && i !== 0) {
+        result = '.' + result;
+      }
+    }
+    return 'Rp ' + result;
+  }
+
+  function calculatePremium() {
+    var resultEl = document.getElementById('travel-result');
+    var resultValueEl = document.getElementById('travel-result-value');
+    var resultDetailEl = document.getElementById('travel-result-detail');
+    var errorEl = document.getElementById('travel-error');
+
+    // Reset display
+    resultEl.style.display = 'none';
+    errorEl.style.display = 'none';
+
+    var ageGroup = document.getElementById('travel-age').value;
+    var coverage = document.getElementById('travel-coverage').value;
+    var region = document.getElementById('travel-region').value;
+    var plan = document.getElementById('travel-plan').value;
+    var durationInput = document.getElementById('travel-duration').value.trim();
+
+    // Validate duration
+    if (durationInput === '') {
+      errorEl.textContent = 'Silakan masukkan durasi perjalanan terlebih dahulu.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    var days = parseInt(durationInput, 10);
+
+    if (isNaN(days) || days <= 0) {
+      errorEl.textContent = 'Durasi perjalanan tidak valid. Masukkan angka 1-183 hari.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    if (days > 183) {
+      errorEl.textContent = 'Durasi maksimal yang ditanggung adalah 183 hari.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    // Force Superior for Schengen Basic
+    if (region === 'schengen_basic') {
+      plan = 'superior';
+    }
+
+    // Get data
+    var ageData = premiumData[ageGroup];
+    if (!ageData) {
+      errorEl.textContent = 'Data tidak ditemukan untuk kelompok usia ini.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    var coverageData = ageData[coverage];
+    if (!coverageData) {
+      errorEl.textContent = 'Data tidak ditemukan untuk tipe coverage ini.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    var regionData = coverageData[region];
+    if (!regionData) {
+      errorEl.textContent = 'Opsi tidak ditanggung untuk kombinasi ini. Wilayah ini tidak tersedia untuk kelompok usia yang dipilih.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    var planData = regionData[plan];
+    if (!planData) {
+      errorEl.textContent = 'Opsi tidak ditanggung untuk kombinasi ini. Plan ini tidak tersedia untuk wilayah/usia yang dipilih.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    // Calculate premium
+    var premium = 0;
+    var durationIndex = getDurationIndex(days);
+
+    if (durationIndex >= 0) {
+      // Within 1-31 days bracket
+      premium = planData.rates[durationIndex];
+    } else {
+      // > 31 days: rate for 26-31 + ceil((days-31)/7) * per_week
+      var baseRate = planData.rates[7]; // 26-31 days rate
+      var extraWeeks = Math.ceil((days - 31) / 7);
+      premium = baseRate + extraWeeks * planData.per_week;
+    }
+
+    if (!premium || premium === 0) {
+      errorEl.textContent = 'Opsi tidak ditanggung untuk kombinasi ini.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    // Format labels
+    var ageLabels = { "14d_59y": "14 hari - 59 tahun", "60_69y": "60 - 69 tahun", "70_84y": "70 - 84 tahun" };
+    var coverageLabels = { "individual": "Individual", "couple": "Couple", "family": "Family" };
+    var regionLabels = { "worldwide_inc": "Worldwide Including Americas", "worldwide_exc": "Worldwide Excluding Americas", "asia_pacific": "Asia Pacific & Schengen", "greater_asia": "Greater Asia", "schengen_basic": "Schengen Basic" };
+    var planLabels = { "superior": "Superior", "deluxe": "Deluxe" };
+
+    resultValueEl.textContent = formatRupiah(premium);
+    resultDetailEl.innerHTML = '<strong>' + planLabels[plan] + ' Plan</strong> | ' + coverageLabels[coverage] + ' | ' + regionLabels[region] + '<br>Usia: ' + ageLabels[ageGroup] + ' | Durasi: ' + days + ' hari';
+    resultEl.style.display = 'block';
+  }
+
+  // Handle Schengen Basic selection - disable Deluxe
+  function handleRegionChange() {
+    var region = document.getElementById('travel-region').value;
+    var planSelect = document.getElementById('travel-plan');
+
+    if (region === 'schengen_basic') {
+      planSelect.value = 'superior';
+      planSelect.disabled = true;
+    } else {
+      planSelect.disabled = false;
+    }
+  }
+
+  // Attach event listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('travel-calc-btn');
+    if (btn) {
+      btn.addEventListener('click', calculatePremium);
+    }
+
+    var regionSelect = document.getElementById('travel-region');
+    if (regionSelect) {
+      regionSelect.addEventListener('change', handleRegionChange);
+    }
+
+    // Allow Enter key on duration input
+    var durationInput = document.getElementById('travel-duration');
+    if (durationInput) {
+      durationInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          calculatePremium();
+        }
+      });
+    }
+  });
+})();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>
