@@ -1,0 +1,24 @@
+{
+  "project_type": "Static HTML website (multi-page site with component includes)",
+  "language": "HTML/CSS/JavaScript",
+  "build_system": "None - static files served via Cloudflare Workers (wrangler.jsonc)",
+  "test_framework": "None - manual verification via file structure",
+  "build_command": "N/A (static HTML)",
+  "test_command": "N/A (static HTML - verify via checking file exists and has valid HTML structure)",
+  "verification_instructions": "1. Confirm /pages/mdwa.html exists. 2. Check HTML structure is valid. 3. Confirm calculator JSON data is embedded. 4. Verify page uses shared CSS and main.js patterns.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML project",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external packages needed. This is pure static HTML/CSS/JS.",
+  "contribution_requirements": "Follow existing page patterns (mdla.html, mps-flexi.html). Use shared /assets/style.css. Load header/footer via component loader in main.js. Use inline <style> for page-specific styles.",
+  "key_patterns": "1. Each product page is a single HTML file under /pages/. 2. Page-specific CSS goes in an inline <style> block in <head>. 3. Header loaded into <div id='site-header'></div>, footer into <div id='site-footer'></div>. 4. Dark mode: theme script in <head> checks localStorage and applies 'dark' class. 5. Calculator uses JSON data lookup (exact match), not formulas. 6. CSS variables from style.css (--manulife-blue, --bg-card, --txt-head, etc.) are used with product-specific overrides. 7. Content written in question-style language (bahasa pertanyaan). 8. Sections use: section-tag, section-title, fade-up animations. 9. CTA buttons link to WhatsApp with pre-filled text.",
+  "relevant_files": [
+    "/projects/sandbox/Project-Cuan-3.0/pages/mdla.html",
+    "/projects/sandbox/Project-Cuan-3.0/pages/mps-flexi.html",
+    "/projects/sandbox/Project-Cuan-3.0/assets/style.css",
+    "/projects/sandbox/Project-Cuan-3.0/assets/main.js",
+    "/projects/sandbox/Project-Cuan-3.0/components/header.html",
+    "/projects/sandbox/Project-Cuan-3.0/components/footer.html",
+    "/projects/sandbox/Project-Cuan-3.0/Sample/Mdwa.html"
+  ],
+  "directory_structure": "/pages/ - product HTML pages | /assets/ - shared CSS and JS | /components/ - header.html and footer.html loaded via JS | /Source/MDWA/ - source PDFs/Excel (reference only) | /Sample/ - older standalone sample pages"
+}

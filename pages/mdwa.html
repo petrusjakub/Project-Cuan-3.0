@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDWA - Manulife Dynamic Wealth Assurance | PROJECTCUAN</title>
+  <meta name="description" content="MDWA Manulife Dynamic Wealth Assurance: Tabungan terstruktur dengan hasil DIJAMIN tanpa risiko investasi. 3 Plan fleksibel, GIO tanpa medical, usia masuk 30 hari-85 tahun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    :root {
+      --manulife-blue: #00539B;
+      --manulife-dark: #003D73;
+      --manulife-light: #0073CF;
+      --manulife-accent: #00539B;
+    }
+    .mdwa-hero {
+      background: linear-gradient(135deg, #EBF4FF 0%, #E0EFFF 50%, #F0F7FF 100%);
+      padding: var(--sp-16) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    html.dark .mdwa-hero {
+      background: linear-gradient(135deg, #0A1628 0%, #0D1B30 100%);
+    }
+    .mdwa-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,83,155,0.08) 0%, transparent 70%);
+    }
+    .mdwa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: rgba(0,83,155,0.1);
+      border: 1px solid rgba(0,83,155,0.2);
+      color: var(--manulife-blue);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--r-full);
+      margin-bottom: var(--sp-4);
+    }
+    html.dark .mdwa-badge {
+      background: rgba(0,115,207,0.15);
+      border-color: rgba(0,115,207,0.3);
+      color: var(--manulife-light);
+    }
+    .mdwa-hero h1 span { color: var(--manulife-blue); }
+    html.dark .mdwa-hero h1 span { color: var(--manulife-light); }
+    .mdwa-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-8);
+    }
+    .mdwa-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-3) var(--sp-4);
+      text-align: center;
+    }
+    .mdwa-stat-value {
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: var(--fs-lg);
+      color: var(--manulife-blue);
+    }
+    html.dark .mdwa-stat-value { color: var(--manulife-light); }
+    .mdwa-stat-label {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      margin-top: 2px;
+    }
+
+    /* Plan Cards */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .plan-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .plan-card:hover { border-color: var(--manulife-blue); box-shadow: var(--sh-md); transform: translateY(-2px); }
+    html.dark .plan-card:hover { border-color: var(--manulife-light); }
+    .plan-card-badge {
+      display: inline-block;
+      background: var(--manulife-blue);
+      color: #fff;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: var(--r-full);
+      margin-bottom: var(--sp-3);
+    }
+    .plan-card-title {
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .plan-card-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+      margin-bottom: var(--sp-4);
+    }
+    .plan-card-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .plan-card-features li {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .plan-card-features li:last-child { border-bottom: none; }
+
+    /* Advantages Section */
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .advantage-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      transition: all var(--ease);
+    }
+    .advantage-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .advantage-icon { font-size: 28px; margin-bottom: var(--sp-3); }
+    .advantage-title { font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
+    .advantage-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+
+    /* Eligibility */
+    .eligibility-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-5); }
+    .eligibility-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: var(--sp-5); transition: all var(--ease);
+    }
+    .eligibility-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .eligibility-card-icon { font-size: 28px; margin-bottom: var(--sp-3); }
+    .eligibility-card-title { font-weight: 700; color: var(--txt-head); margin-bottom: var(--sp-2); font-size: var(--fs-sm); }
+    .eligibility-card-desc { font-size: var(--fs-sm); color: var(--txt-sub); line-height: 1.6; }
+
+    /* Premium Table */
+    .premi-table { width: 100%; border-collapse: collapse; margin: var(--sp-4) 0; font-size: var(--fs-sm); }
+    .premi-table th { background: var(--manulife-dark); color: #fff; padding: 10px 8px; text-align: center; font-weight: 600; }
+    .premi-table td { padding: 8px; text-align: center; border-bottom: 1px solid var(--border); color: var(--txt-sub); }
+    .premi-table tr:nth-child(even) { background: rgba(0,83,155,0.03); }
+    html.dark .premi-table tr:nth-child(even) { background: rgba(0,83,155,0.05); }
+
+    /* Calculator */
+    .calc-select-group { margin-bottom: var(--sp-4); }
+    .calc-select-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: var(--fs-sm); color: var(--txt-head); }
+    .calc-option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+    .calc-option {
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 10px 12px; border: 2px solid var(--border); border-radius: var(--r-md);
+      cursor: pointer; font-size: var(--fs-sm); font-weight: 500; color: var(--txt-sub);
+      transition: all 0.2s ease; background: var(--bg-card); line-height: 1.3;
+    }
+    .calc-option:hover { border-color: var(--manulife-blue); color: var(--manulife-blue); }
+    .calc-option.active { border-color: var(--manulife-blue); background: rgba(0,83,155,0.08); color: var(--manulife-blue); font-weight: 700; }
+    html.dark .calc-option:hover { border-color: var(--manulife-light); color: var(--manulife-light); }
+    html.dark .calc-option.active { border-color: var(--manulife-light); background: rgba(0,115,207,0.12); color: var(--manulife-light); }
+    .calc-select-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--r-md);
+      font-size: var(--fs-sm);
+      color: var(--txt-head);
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .calc-select-group select:focus {
+      outline: none;
+      border-color: var(--manulife-blue);
+    }
+    html.dark .calc-select-group select:focus { border-color: var(--manulife-light); }
+    .calc-result-box {
+      margin-top: var(--sp-5);
+      padding: var(--sp-5);
+      background: rgba(0,83,155,0.04);
+      border-radius: var(--r-md);
+      border: 1px solid rgba(0,83,155,0.12);
+    }
+    html.dark .calc-result-box {
+      background: rgba(0,115,207,0.08);
+      border-color: rgba(0,115,207,0.2);
+    }
+    .calc-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+    }
+    .calc-result-row.total {
+      border-top: 2px solid rgba(0,83,155,0.2);
+      margin-top: 8px;
+      padding-top: 12px;
+      font-weight: 700;
+      font-size: var(--fs-md);
+      color: var(--manulife-blue);
+    }
+    html.dark .calc-result-row.total { color: var(--manulife-light); }
+    .calc-unavailable {
+      text-align: center;
+      padding: var(--sp-4);
+      color: var(--txt-muted);
+      font-style: italic;
+      font-size: var(--fs-sm);
+    }
+
+    /* CTA Section */
+    .mdwa-cta {
+      background: linear-gradient(135deg, var(--manulife-dark), var(--manulife-blue), var(--manulife-light));
+    }
+
+    /* Section tag override */
+    .mdwa-section-tag {
+      background: rgba(0,83,155,0.1) !important;
+      color: var(--manulife-blue) !important;
+    }
+    html.dark .mdwa-section-tag {
+      background: rgba(0,115,207,0.15) !important;
+      color: var(--manulife-light) !important;
+    }
+
+    /* Button overrides */
+    .mdwa-btn-primary {
+      background: var(--manulife-blue) !important;
+      color: #fff !important;
+      box-shadow: 0 4px 14px rgba(0,83,155,0.3);
+    }
+    .mdwa-btn-primary:hover { background: var(--manulife-dark) !important; }
+    .mdwa-btn-outline {
+      border-color: var(--manulife-blue) !important;
+      color: var(--manulife-blue) !important;
+    }
+    html.dark .mdwa-btn-outline {
+      border-color: var(--manulife-light) !important;
+      color: var(--manulife-light) !important;
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="mdwa-hero" aria-labelledby="mdwa-title">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/index.html">Beranda</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="/index.html#produk">Produk</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span class="breadcrumb-current" style="color:var(--manulife-blue)">MDWA</span>
+    </nav>
+
+    <div class="page-hero-inner">
+      <div>
+        <div class="mdwa-badge">
+          &#11088; Manulife Indonesia
+        </div>
+
+        <h1 id="mdwa-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
+          <span>Bagaimana Jika Ada Produk Tabungan yang Memberikan Hasil DIJAMIN Tanpa Risiko Investasi?</span>
+        </h1>
+
+        <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7" class="fade-up stagger-1">
+          <strong>MDWA (Manulife Dynamic Wealth Assurance)</strong> adalah produk tabungan terstruktur dengan manfaat DIJAMIN sejak hari pertama. Bukan asuransi jiwa tradisional, bukan unit-link. Semua manfaat pasti, tanpa fluktuasi pasar.
+        </p>
+
+        <div class="mdwa-stat-grid fade-up stagger-2">
+          <div class="mdwa-stat">
+            <div class="mdwa-stat-value">Rp 50 Jt</div>
+            <div class="mdwa-stat-label">Min Premi Sekaligus</div>
+          </div>
+          <div class="mdwa-stat">
+            <div class="mdwa-stat-value">30 hr - 85 th</div>
+            <div class="mdwa-stat-label">Usia Masuk</div>
+          </div>
+          <div class="mdwa-stat">
+            <div class="mdwa-stat-value">3 Plan</div>
+            <div class="mdwa-stat-label">Pilihan Fleksibel</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap" class="fade-up stagger-3">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MDWA%20Manulife"
+             target="_blank" rel="noopener" class="btn btn--lg mdwa-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Tanya Produk MDWA
+          </a>
+          <a href="#kalkulator" class="btn btn--outline btn--lg mdwa-btn-outline">Hitung Premi</a>
+        </div>
+      </div>
+
+      <!-- Visual: Plan Summary -->
+      <div class="fade-up stagger-2">
+        <div style="background:var(--bg-card);border:2px dashed rgba(0,83,155,0.3);border-radius:var(--r-xl);padding:var(--sp-6)">
+          <div style="text-align:center;margin-bottom:var(--sp-5)">
+            <span style="font-size:var(--fs-xs);font-weight:700;color:var(--manulife-blue);letter-spacing:0.1em;text-transform:uppercase">3 Plan Tersedia</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3)">
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#128176;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Plan A</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Anuitas Tahunan</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#127891;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Plan B</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Dana Beasiswa</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);text-align:center">
+              <div style="font-size:24px;margin-bottom:var(--sp-2)">&#127942;</div>
+              <div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-head)">Plan C</div>
+              <div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:4px">Combo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS COMPARISON -->
+<section class="section" aria-labelledby="plans-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mdwa-section-tag">Perbandingan Plan</span>
+      <h2 id="plans-heading" class="section-title fade-up">Pernahkah Anda Membayangkan Tabungan yang Memberikan Penghasilan Tahunan DIJAMIN?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:700px;margin-left:auto;margin-right:auto">MDWA hadir dengan 3 Plan berbeda untuk memenuhi kebutuhan finansial yang berbeda pula. Semua manfaat DIJAMIN sejak hari pertama.</p>
+    </div>
+    <div class="plan-grid">
+      <!-- Plan A -->
+      <div class="plan-card fade-up">
+        <div class="plan-card-badge">Plan A</div>
+        <div class="plan-card-title">Anuitas - Penghasilan Tahunan</div>
+        <div class="plan-card-desc">Bagaimana jika Anda bisa menerima penghasilan tahunan yang DIJAMIN selama masa pertanggungan? Plan A memberikan manfaat tunai tahunan secara rutin.</div>
+        <ul class="plan-card-features">
+          <li>&#10003; Manfaat Tunai Tahunan DIJAMIN</li>
+          <li>&#10003; Masa Pertanggungan 20 atau 30 tahun</li>
+          <li>&#10003; Premi Sekaligus, 5 tahun, atau 10 tahun</li>
+          <li>&#10003; Cocok untuk passive income tetap</li>
+        </ul>
+      </div>
+      <!-- Plan B -->
+      <div class="plan-card fade-up stagger-1">
+        <div class="plan-card-badge" style="background:var(--manulife-light)">Plan B</div>
+        <div class="plan-card-title">Beasiswa - Dana Pendidikan</div>
+        <div class="plan-card-desc">Tahukah Anda bahwa biaya pendidikan naik 10-15% per tahun? Plan B memberikan dana lump sum di akhir masa pertanggungan untuk kebutuhan pendidikan anak.</div>
+        <ul class="plan-card-features">
+          <li>&#10003; Manfaat Lump Sum di akhir masa pertanggungan</li>
+          <li>&#10003; Masa Pertanggungan 5-30 tahun</li>
+          <li>&#10003; Premi Sekaligus, 5 tahun, atau 10 tahun</li>
+          <li>&#10003; Cocok untuk dana pendidikan anak</li>
+        </ul>
+      </div>
+      <!-- Plan C -->
+      <div class="plan-card fade-up stagger-2">
+        <div class="plan-card-badge" style="background:var(--manulife-dark)">Plan C</div>
+        <div class="plan-card-title">Combo - Gabungan</div>
+        <div class="plan-card-desc">Mengapa harus memilih satu jika bisa mendapatkan keduanya? Plan C menggabungkan manfaat tunai tahunan dan manfaat lump sum di akhir masa pertanggungan.</div>
+        <ul class="plan-card-features">
+          <li>&#10003; Manfaat Tunai Tahunan + Lump Sum</li>
+          <li>&#10003; Masa Pertanggungan 10, 15, 20, atau 30 tahun</li>
+          <li>&#10003; Premi Sekaligus, 5 tahun, atau 10 tahun</li>
+          <li>&#10003; Cocok untuk kebutuhan ganda</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY ADVANTAGES -->
+<section class="section section--alt" aria-labelledby="advantages-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mdwa-section-tag">Keunggulan</span>
+      <h2 id="advantages-heading" class="section-title fade-up">Mengapa MDWA Menjadi Pilihan Cerdas untuk Tabungan Masa Depan Anda?</h2>
+    </div>
+    <div class="advantage-grid">
+      <div class="advantage-card fade-up">
+        <div class="advantage-icon">&#128737;</div>
+        <div class="advantage-title">GIO - Tanpa Medical Check Up</div>
+        <div class="advantage-desc">Pernahkah Anda ditolak karena riwayat kesehatan? Dengan GIO (Guaranteed Issuance Offering), semua orang bisa memiliki MDWA tanpa pemeriksaan medis.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-1">
+        <div class="advantage-icon">&#128274;</div>
+        <div class="advantage-title">Semua Manfaat DIJAMIN</div>
+        <div class="advantage-desc">Tahukah Anda bahwa semua manfaat MDWA dijamin sejak hari pertama? Tidak ada risiko pasar, tidak ada fluktuasi, semua pasti dan tertulis di polis.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-2">
+        <div class="advantage-icon">&#128200;</div>
+        <div class="advantage-title">Lebih Tinggi dari Deposito</div>
+        <div class="advantage-desc">Bagaimana jika tabungan Anda memberikan hasil lebih tinggi dari deposito bank? MDWA menawarkan return yang lebih kompetitif dengan kepastian penuh.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-3">
+        <div class="advantage-icon">&#128203;</div>
+        <div class="advantage-title">3 Plan Fleksibel</div>
+        <div class="advantage-desc">Apakah Anda butuh penghasilan tahunan, dana pendidikan, atau keduanya? MDWA memberikan 3 pilihan plan yang bisa disesuaikan dengan tujuan finansial Anda.</div>
+      </div>
+      <div class="advantage-card fade-up">
+        <div class="advantage-icon">&#128138;</div>
+        <div class="advantage-title">Riders: ALP Plus, WOP Plus, Payor Benefit Plus</div>
+        <div class="advantage-desc">Perlukah perlindungan tambahan? Tambahkan rider Advanced Life Protector Plus, Waiver of Premium Plus, atau Payor Benefit Plus untuk proteksi lebih lengkap.</div>
+      </div>
+      <div class="advantage-card fade-up stagger-1">
+        <div class="advantage-icon">&#128181;</div>
+        <div class="advantage-title">Mata Uang IDR dan USD</div>
+        <div class="advantage-desc">Ingin diversifikasi mata uang? MDWA tersedia dalam Rupiah (IDR) maupun Dollar AS (USD) sesuai preferensi dan kebutuhan Anda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="section" aria-labelledby="eligibility-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mdwa-section-tag">Ketentuan</span>
+      <h2 id="eligibility-heading" class="section-title fade-up">Apa Saja Syarat untuk Memiliki Tabungan Terstruktur MDWA?</h2>
+    </div>
+    <div class="eligibility-grid">
+      <div class="eligibility-card fade-up">
+        <div class="eligibility-card-icon">&#128100;</div>
+        <div class="eligibility-card-title">Usia Masuk</div>
+        <div class="eligibility-card-desc">30 hari - 85 tahun (premi sekaligus). 30 hari - 70 tahun (premi reguler). Bisa untuk bayi, dewasa, maupun lansia.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-1">
+        <div class="eligibility-card-icon">&#128176;</div>
+        <div class="eligibility-card-title">Minimum Premi</div>
+        <div class="eligibility-card-desc">IDR: Rp 50.000.000 (sekaligus) / Rp 24.000.000/tahun (reguler). USD: $5,000 (sekaligus) / $2,400/tahun (reguler).</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-2">
+        <div class="eligibility-card-icon">&#128197;</div>
+        <div class="eligibility-card-title">Masa Pertanggungan</div>
+        <div class="eligibility-card-desc">Plan A: 20 atau 30 tahun. Plan B: 5-30 tahun. Plan C: 10, 15, 20, atau 30 tahun. Sesuaikan dengan tujuan keuangan.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-3">
+        <div class="eligibility-card-icon">&#128196;</div>
+        <div class="eligibility-card-title">Underwriting GIO</div>
+        <div class="eligibility-card-desc">Guaranteed Issuance Offering - tanpa seleksi medis. Semua nasabah langsung diterima tanpa pemeriksaan kesehatan.</div>
+      </div>
+      <div class="eligibility-card fade-up">
+        <div class="eligibility-card-icon">&#128138;</div>
+        <div class="eligibility-card-title">Riders Tambahan</div>
+        <div class="eligibility-card-desc">Advanced Life Protector Plus (ALP+), Waiver of Premium Plus (WOP+), Payor Benefit Plus. Proteksi tambahan opsional.</div>
+      </div>
+      <div class="eligibility-card fade-up stagger-1">
+        <div class="eligibility-card-icon">&#128181;</div>
+        <div class="eligibility-card-title">Mata Uang</div>
+        <div class="eligibility-card-desc">Tersedia dalam IDR (Rupiah) dan USD (Dollar AS). Pilih sesuai preferensi dan kebutuhan perencanaan keuangan Anda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABEL PREMI -->
+<section class="section section--alt" aria-labelledby="tabel-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag mdwa-section-tag">Tabel Premi</span>
+      <h2 id="tabel-heading" class="section-title fade-up">Berapa Premi yang Dibutuhkan untuk Mendapatkan Penghasilan Tahunan DIJAMIN?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2);max-width:700px;margin-left:auto;margin-right:auto">Plan A IDR - Tabel premi untuk Manfaat Tunai Tahunan Rp 50 Juta dan Rp 100 Juta.</p>
+    </div>
+
+    <h3 style="color:var(--manulife-blue);margin-bottom:var(--sp-3)" class="fade-up">Manfaat Tunai Tahunan Rp 50 Juta</h3>
+    <div style="overflow-x:auto" class="fade-up stagger-1">
+      <table class="premi-table">
+        <tr><th>Masa Pertanggungan</th><th>Masa Pembayaran Premi</th><th>Premi</th><th>Total Manfaat</th></tr>
+        <tr><td>20 Tahun</td><td>Sekaligus</td><td>Rp 527.500.000</td><td>Rp 783.337.500</td></tr>
+        <tr><td>30 Tahun</td><td>Sekaligus</td><td>Rp 725.000.000</td><td>Rp 1.334.000.000</td></tr>
+        <tr><td>20 Tahun</td><td>5 Tahun</td><td>Rp 77.500.000/thn</td><td>Rp 554.125.000</td></tr>
+        <tr><td>30 Tahun</td><td>5 Tahun</td><td>Rp 125.000.000/thn</td><td>Rp 1.106.250.000</td></tr>
+        <tr><td>20 Tahun</td><td>10 Tahun</td><td>Rp 24.000.000/thn</td><td>Rp 338.400.000</td></tr>
+        <tr><td>30 Tahun</td><td>10 Tahun</td><td>Rp 48.000.000/thn</td><td>Rp 806.400.000</td></tr>
+      </table>
+    </div>
+
+    <h3 style="color:var(--manulife-blue);margin-bottom:var(--sp-3);margin-top:var(--sp-8)" class="fade-up">Manfaat Tunai Tahunan Rp 100 Juta</h3>
+    <div style="overflow-x:auto" class="fade-up stagger-1">
+      <table class="premi-table">
+        <tr><th>Masa Pertanggungan</th><th>Masa Pembayaran Premi</th><th>Premi</th><th>Total Manfaat</th></tr>
+        <tr><td>20 Tahun</td><td>Sekaligus</td><td>Rp 1.055.000.000</td><td>Rp 1.566.678.000</td></tr>
+        <tr><td>30 Tahun</td><td>Sekaligus</td><td>Rp 1.440.000.000</td><td>Rp 2.649.600.000</td></tr>
+        <tr><td>20 Tahun</td><td>5 Tahun</td><td>Rp 155.000.000/thn</td><td>Rp 1.154.750.000</td></tr>
+        <tr><td>30 Tahun</td><td>5 Tahun</td><td>Rp 250.000.000/thn</td><td>Rp 2.212.500.000</td></tr>
+        <tr><td>20 Tahun</td><td>10 Tahun</td><td>Rp 42.750.000/thn</td><td>Rp 602.775.000</td></tr>
+        <tr><td>30 Tahun</td><td>10 Tahun</td><td>Rp 95.500.000/thn</td><td>Rp 1.604.400.000</td></tr>
+      </table>
+    </div>
+
+    <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--txt-muted)">
+      * Tabel di atas untuk Plan A IDR dengan pembayaran premi sekaligus dan reguler. Hubungi agen untuk plan dan mata uang lainnya.
+    </p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section" id="kalkulator" aria-labelledby="calc-heading">
+  <div class="container"><div style="max-width:720px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag mdwa-section-tag">Kalkulator Premi</span>
+      <h2 id="calc-heading" class="section-title fade-up">Berapa Total Premi untuk Tabungan Terstruktur MDWA Anda?</h2>
+      <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Hitung premi dasar dan rider ALP+ berdasarkan manfaat, masa pertanggungan, gender, dan usia.</p>
+    </div>
+    <div class="calculator-wrap fade-up stagger-1">
+      <div class="calc-header" style="background:linear-gradient(135deg,var(--manulife-dark),var(--manulife-blue))">
+        <h3>&#128202; Kalkulator Premi MDWA</h3>
+        <p>Plan A IDR - Premi Sekaligus + Rider ALP+</p>
+      </div>
+      <div class="calc-body">
+
+        <!-- Besar Manfaat -->
+        <div class="calc-select-group">
+          <label>Besar Manfaat</label>
+          <div class="calc-option-grid" id="mdwaManfaat">
+            <div class="calc-option active" onclick="selectMdwa('mdwaManfaat','50',this)">50 Juta</div>
+            <div class="calc-option" onclick="selectMdwa('mdwaManfaat','100',this)">100 Juta</div>
+          </div>
+        </div>
+
+        <!-- Masa Pertanggungan -->
+        <div class="calc-select-group">
+          <label>Masa Pertanggungan</label>
+          <div class="calc-option-grid" id="mdwaTerm">
+            <div class="calc-option active" onclick="selectMdwa('mdwaTerm','20',this)">20 Tahun</div>
+            <div class="calc-option" onclick="selectMdwa('mdwaTerm','30',this)">30 Tahun</div>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="calc-select-group">
+          <label>Gender</label>
+          <div class="calc-option-grid" id="mdwaGender">
+            <div class="calc-option active" onclick="selectMdwa('mdwaGender','pria',this)">&#128104; Pria</div>
+            <div class="calc-option" onclick="selectMdwa('mdwaGender','wanita',this)">&#128105; Wanita</div>
+          </div>
+        </div>
+
+        <!-- Usia -->
+        <div class="calc-select-group">
+          <label>Usia</label>
+          <select id="mdwaAge" onchange="calcMdwa()">
+            <option value="25">25 tahun</option>
+            <option value="30">30 tahun</option>
+            <option value="35">35 tahun</option>
+            <option value="40">40 tahun</option>
+            <option value="45">45 tahun</option>
+            <option value="50">50 tahun</option>
+            <option value="55">55 tahun</option>
+            <option value="60">60 tahun</option>
+          </select>
+        </div>
+
+        <!-- Result -->
+        <div id="mdwaResult">
+          <div class="calc-result-box">
+            <div class="calc-result-row">
+              <span>Premi Dasar (Sekaligus)</span>
+              <span id="mdwaBase">-</span>
+            </div>
+            <div class="calc-result-row">
+              <span>Premi Rider ALP+</span>
+              <span id="mdwaRider">-</span>
+            </div>
+            <div class="calc-result-row total">
+              <span>Total</span>
+              <span id="mdwaTotal">-</span>
+            </div>
+            <div id="mdwaRiderNote" style="font-size:var(--fs-xs);color:var(--txt-muted);font-style:italic;margin-top:8px;display:none">* Rider ALP+ hanya tersedia untuk Besar Manfaat 50 Juta</div>
+          </div>
+        </div>
+
+        <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--txt-muted)">
+          * Premi di atas untuk Plan A IDR dengan pembayaran sekaligus. Data rider ALP+ hanya tersedia untuk manfaat 50 Juta. Hubungi agen untuk informasi lengkap.
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20mau%20tanya%20premi%20MDWA%20Manulife" target="_blank" style="color:var(--manulife-blue);font-weight:600">Chat agen</a>
+        </p>
+        <div style="margin-top:var(--sp-5)">
+          <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MDWA%20Manulife"
+             target="_blank" class="btn btn--block btn--lg mdwa-btn-primary">
+            Chat Agen - Konsultasi Gratis
+          </a>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section mdwa-cta">
+  <div class="container" style="position:relative;z-index:1;text-align:center">
+    <h2 class="cta-title fade-up">Sudahkah Anda Merencanakan Tabungan dengan Hasil DIJAMIN untuk Masa Depan?</h2>
+    <p class="cta-sub fade-up stagger-1">MDWA memberikan kepastian hasil tanpa risiko investasi. Manfaat dijamin sejak hari pertama, GIO tanpa medical, 3 plan fleksibel. Konsultasi gratis sekarang.</p>
+    <div class="cta-btns fade-up stagger-2">
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MDWA%20Manulife"
+         target="_blank" class="btn btn--lg" style="background:#fff;color:var(--manulife-blue);box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+        Konsultasi Gratis via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+// === MDWA PREMIUM DATA (exact lookup - no formulas, no interpolation) ===
+var mdwaData = {
+  "base_benefits": {
+    "Manfaat_50_Juta": {
+      "Masa_Pertanggungan_20_Tahun": { "Premi_Sekaligus": 527500000 },
+      "Masa_Pertanggungan_30_Tahun": { "Premi_Sekaligus": 725000000 }
+    },
+    "Manfaat_100_Juta": {
+      "Masa_Pertanggungan_20_Tahun": { "Premi_Sekaligus": 1055000000 },
+      "Masa_Pertanggungan_30_Tahun": { "Premi_Sekaligus": 1440000000 }
+    }
+  },
+  "rider_advanced_life_protector_plus": {
+    "Manfaat_50_Juta_20_Tahun_Sekaligus": {
+      "pria": { "25": 7791200, "30": 9632200, "35": 14305800, "40": 21326800, "45": 36487200, "50": 54084600, "55": 81541000, "60": 133125200 },
+      "wanita": { "25": 6678200, "30": 7717300, "35": 9421200, "40": 14295300, "45": 20118900, "50": 32240800, "55": 47390600, "60": 70616400 }
+    },
+    "Manfaat_50_Juta_30_Tahun_Sekaligus": {
+      "pria": { "25": 14413000, "30": 22250300, "35": 30203500, "40": 50315000, "45": 75784300, "50": 112831800, "55": 179024300, "60": 243679800 },
+      "wanita": { "25": 11672500, "30": 15087300, "35": 20872800, "40": 28949300, "45": 46777000, "50": 67881800, "55": 102906500, "60": 152373300 }
+    }
+  }
+};
+
+var mdwaState = { manfaat: '50', term: '20', gender: 'pria' };
+
+function selectMdwa(groupId, value, el) {
+  if (groupId === 'mdwaManfaat') mdwaState.manfaat = value;
+  else if (groupId === 'mdwaTerm') mdwaState.term = value;
+  else if (groupId === 'mdwaGender') mdwaState.gender = value;
+
+  var group = document.getElementById(groupId);
+  var opts = group.querySelectorAll('.calc-option');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('active');
+  el.classList.add('active');
+  calcMdwa();
+}
+
+function formatRupiah(num) {
+  return 'Rp ' + num.toLocaleString('id-ID');
+}
+
+function calcMdwa() {
+  var manfaat = mdwaState.manfaat;
+  var term = mdwaState.term;
+  var gender = mdwaState.gender;
+  var age = document.getElementById('mdwaAge').value;
+
+  // Lookup base benefit
+  var baseKey = 'Manfaat_' + manfaat + '_Juta';
+  var termKey = 'Masa_Pertanggungan_' + term + '_Tahun';
+  var baseObj = mdwaData.base_benefits[baseKey];
+  var basePremi = null;
+  if (baseObj && baseObj[termKey]) {
+    basePremi = baseObj[termKey].Premi_Sekaligus;
+  }
+
+  // Lookup rider
+  var riderKey = 'Manfaat_' + manfaat + '_Juta_' + term + '_Tahun_Sekaligus';
+  var riderObj = mdwaData.rider_advanced_life_protector_plus[riderKey];
+  var riderPremi = null;
+  if (riderObj && riderObj[gender] && riderObj[gender][age] !== undefined) {
+    riderPremi = riderObj[gender][age];
+  }
+
+  // Display results
+  var baseEl = document.getElementById('mdwaBase');
+  var riderEl = document.getElementById('mdwaRider');
+  var totalEl = document.getElementById('mdwaTotal');
+
+  if (basePremi !== null) {
+    baseEl.textContent = formatRupiah(basePremi);
+  } else {
+    baseEl.textContent = 'Data tidak tersedia';
+  }
+
+  var riderNote = document.getElementById('mdwaRiderNote');
+
+  if (riderPremi !== null) {
+    riderEl.textContent = formatRupiah(riderPremi);
+    riderNote.style.display = 'none';
+  } else {
+    riderEl.textContent = 'Tidak tersedia untuk manfaat ' + manfaat + ' Juta';
+    riderNote.style.display = (basePremi !== null) ? 'block' : 'none';
+  }
+
+  if (basePremi !== null && riderPremi !== null) {
+    totalEl.textContent = formatRupiah(basePremi + riderPremi);
+  } else if (basePremi !== null && riderPremi === null) {
+    totalEl.textContent = formatRupiah(basePremi) + ' (tanpa rider)';
+  } else {
+    totalEl.textContent = 'Data tidak tersedia';
+  }
+}
+
+// Initial calculation
+calcMdwa();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>
