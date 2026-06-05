@@ -1,7 +1,14 @@
 {
   "task_id": "task-asuransi-perjalanan",
   "task_description": "Create a new HTML page at /projects/sandbox/Project-Cuan-3.0/public/pages/asuransi-perjalanan.html for the Travel Insurance product with premium table, premium calculator, question-style language, keyword highlights in different colors, and dark mode support.",
-  "status": "in_progress",
+  "status": "completed",
   "feature_order": ["FEAT-001"],
-  "blocked_reason": null
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "Static HTML page created successfully. All structural checks pass (DOCTYPE, CSS link, main.js, site-header, site-footer, calculator, dark mode, no brand names). Calculator logic verified with 6 test cases: correct bracket lookup, >31 day formula, Schengen Basic + Deluxe null handling, 70-84y restrictions, and 183-day max calculation."
+  }
 }
