@@ -1,0 +1,41 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete public/pages/mdsa.html page for Manulife Dynamic Smart Assurance (MDSA) product following the mccp.html page pattern, with question-based content, keyword color highlighting, premium tables, and an error-free JSON-lookup premium calculator.",
+  "status": "in_progress",
+  "steps": [
+    "Create public/pages/mdsa.html following the exact pattern from public/pages/mccp.html: DOCTYPE, imports /assets/style.css, has dark-mode init script, page-specific <style> block, <div id='site-header'></div>, content sections, <div id='site-footer'></div>, and loads /assets/main.js at the end.",
+    "Define MDSA-specific CSS custom properties (e.g., --mdsa-green, --mdsa-dark, --mdsa-light) and page-specific styles in the inline <style> block. Include keyword highlight styles with 3-4 different non-clashing colors for highlighting keywords (e.g., jade green for protection keywords, gold/amber for financial benefit keywords, coral/orange for CTA keywords, blue for feature keywords).",
+    "Create the HERO section with breadcrumb navigation, product badge, compelling question-based headline (e.g., 'Bagaimana Jika Polis Asuransi Anda Tetap Aktif Meskipun Investasi Turun?'), product description highlighting key features (No Lapse Guarantee, Loyalty Benefit, 5 Paket), stat grid showing key numbers (5 Paket, Usia 110, 100% Premi Loyalty, No Lapse), and CTA buttons (WhatsApp + Hitung Premi).",
+    "Create the PRODUCT INFO section with advantage cards covering: No Lapse Guarantee, Loyalty Benefit (100% at year 25, 50% every 10 years), 5 Paket (Saving/Jiwa/Kritis/Kesehatan/Lengkap), Dual Currency (IDR/USD), Limited Pay (10 tahun), Rider Options (MiSHC/MiSCCP). All headings must use question-based language.",
+    "Create the PLAN COMPARISON section showing Limited Pay vs Regular Pay comparison cards with details from Sample/Mdsa.html (age limits, min premi, rider availability, coverage period).",
+    "Create the LOYALTY BENEFIT section explaining the loyalty benefit mechanism with a calculation example (premi 24jt x 10 tahun = 240jt; year 25 = 240jt; year 35/45/55... = 120jt each).",
+    "Create the PREMIUM TABLE section with tables showing representative premium data for Pria and Wanita Limited Pay IDR (using data from Sample/Mdsa.html tab3 - ages 0,5,10,20,30,40,50,60 with columns Saving UP1M, Jiwa UP1M, Kritis UP1M, Kesehatan UP1M, Lengkap UP1M).",
+    "Create the CALCULATOR section following the exact pattern from Sample/Mdsa.html tab4 (Kalkulator). Must include: dropdown for Jenis Kelamin, dropdown for Usia Masuk (0-60 for Limited, 0-70 for Regular), dropdown for Mata Uang (IDR/USD), dropdown for Masa Pembayaran (Limited Pay 10 Tahun / Regular Pay), dropdown for Mode Pembayaran (Tahunan/Semesteran/Kuartalan/Bulanan), dropdown for Uang Pertanggungan (with manual input option). For Regular Pay: show rider checkboxes for MiSHC (with plan selection dropdown containing all 15 plans) and MiSCCP (with UP and plan type Essential/Complete). Display result showing premium in selected mode plus all modes grid.",
+    "Embed the COMPLETE premium data from Sample/Mdsa.html as JavaScript constants: PREMIUM_DATA object (containing all age entries from 'pria|0' through 'pria|70' and 'wanita|0' through 'wanita|70' with idr and usd arrays) and MIUHC_DATA object (containing PRIA and WANITA age-based arrays for health rider premiums). Copy these EXACTLY from Sample/Mdsa.html lines 703-707.",
+    "Implement the calculator JavaScript following the EXACT logic from Sample/Mdsa.html: showTab(), calculate(), onCurrencyChange(), onPaymentChange(), onUPChange(), onRiderChange(), updateAgeRange(), updateUPOptions(), updateMiSCCPUPOptions(), updateRiderVisibility(), formatIDR(), formatUSD(), getUPValue(), getUPText(), getMiSHCPlanNames(), getMiUHCAnnualPremium(), onMiSHCPlanChange(), onMiSCCPChange(), validateManualUP(), formatManualUP(), formatManualMiSCCPUP(), updateCheckboxVisual(). The calculator must use JSON LOOKUP only (not formulas except for Limited Pay which is simply UP/10 for saving). For Regular Pay, lookup from PREMIUM_DATA using key 'gender|age' then access idr/usd array at specific indices.",
+    "Create the FAQ section with at least 10 questions covering: What is MDSA, Unit-Link explained, No Lapse Guarantee, Limited vs Regular Pay, 5 Packages, Loyalty Benefit, Minimum premi, Age limits, MiSHC/MiSCCP riders, Payment modes, Medical check-up. Use the FAQ accordion pattern from mccp.html (faq-item, faq-trigger, faq-body).",
+    "Create the CTA section at the bottom with WhatsApp consultation link and compelling question-based headline.",
+    "Ensure all content uses QUESTION-BASED language throughout: section headings should be compelling questions that make readers think about the product value (e.g., 'Bagaimana jika ada produk yang menjamin polis tetap aktif?' instead of 'Fitur No Lapse Guarantee')."
+  ],
+  "acceptance_criteria": [
+    "File exists at public/pages/mdsa.html",
+    "Page loads /assets/style.css and /assets/main.js correctly",
+    "Page has <div id='site-header'></div> and <div id='site-footer'></div> for component loading",
+    "All content uses question-based language in section headings",
+    "Keywords are highlighted with at least 3 different non-clashing colors using CSS classes",
+    "Premium tables display data for both Pria and Wanita",
+    "Calculator uses JSON lookup from embedded PREMIUM_DATA constant (not mathematical formulas)",
+    "Calculator handles Limited Pay (UP/10 for saving), Regular Pay (lookup from data array), MiSHC rider (lookup from MIUHC_DATA), and MiSCCP rider (lookup from PREMIUM_DATA indices)",
+    "Calculator displays results in all 4 payment modes (Tahunan, Semesteran, Kuartalan, Bulanan)",
+    "Calculator shows/hides rider options based on payment type selection",
+    "No JavaScript syntax errors in the embedded code",
+    "Page structure follows mccp.html pattern with sections, .container class, CSS variables from design system"
+  ],
+  "verification": [
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/mdsa.html','utf8'); console.log('File size:', html.length, 'bytes'); console.log('Has style.css:', html.includes('/assets/style.css')); console.log('Has main.js:', html.includes('/assets/main.js')); console.log('Has site-header:', html.includes('site-header')); console.log('Has site-footer:', html.includes('site-footer')); console.log('Has PREMIUM_DATA:', html.includes('PREMIUM_DATA')); console.log('Has MIUHC_DATA:', html.includes('MIUHC_DATA')); console.log('Has calculator:', html.includes('calculate'));\"",
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/mdsa.html','utf8'); const scriptMatch=html.match(/<script>([\\s\\S]*?)<\\/script>/g); if(scriptMatch){scriptMatch.forEach((s,i)=>{try{new Function(s.replace(/<\\/?script>/g,''));console.log('Script block',i,': OK')}catch(e){console.error('Script block',i,': ERROR -',e.message)}})}\" to validate JavaScript has no syntax errors"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
