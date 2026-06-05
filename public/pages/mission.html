@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiSSION Syariah - MiSmart Insurance Solution Syariah | PROJECTCUAN</title>
+  <meta name="description" content="MiSSION Syariah: Asuransi Jiwa Unit Link Syariah 3-in-1 dari Manulife Indonesia. Proteksi Jiwa + Investasi + Kesehatan dengan kontribusi mulai Rp 4 juta/tahun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    :root {
+      --mission-green: #00A758;
+      --mission-dark: #006838;
+      --mission-light: #00D171;
+    }
+
+    /* Hero */
+    .mission-hero {
+      background: linear-gradient(135deg, #E8F5EE 0%, #D5F5E3 50%, #F0FFF7 100%);
+      padding: var(--sp-16) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    html.dark .mission-hero {
+      background: linear-gradient(135deg, #0A1E14 0%, #0D2B1A 100%);
+    }
+    .mission-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,167,88,0.08) 0%, transparent 70%);
+    }
+    .mission-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: rgba(0,167,88,0.1);
+      border: 1px solid rgba(0,167,88,0.2);
+      color: var(--mission-green);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--r-full);
+      margin-bottom: var(--sp-4);
+    }
+    html.dark .mission-badge {
+      background: rgba(0,209,113,0.15);
+      border-color: rgba(0,209,113,0.3);
+      color: var(--mission-light);
+    }
+    .mission-hero h1 span { color: var(--mission-green); }
+    html.dark .mission-hero h1 span { color: var(--mission-light); }
+    .mission-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-8);
+    }
+    .mission-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-3) var(--sp-4);
+      text-align: center;
+    }
+    .mission-stat-value {
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: var(--fs-lg);
+      color: var(--mission-green);
+    }
+    html.dark .mission-stat-value { color: var(--mission-light); }
+    .mission-stat-label {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      margin-top: 2px;
+    }
+
+    /* Benefit Cards */
+    .mission-benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .mission-benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .mission-benefit-card:hover {
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+    .mission-benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--mission-green);
+    }
+    .mission-benefit-card.gold::before { background: #B8860B; }
+    .mission-benefit-card.tangerine::before { background: var(--tangerine); }
+    .mission-benefit-percent {
+      font-family: var(--ff-head);
+      font-size: var(--fs-2xl);
+      font-weight: 900;
+      color: var(--mission-green);
+      margin-bottom: var(--sp-2);
+    }
+    .mission-benefit-card.gold .mission-benefit-percent { color: #B8860B; }
+    .mission-benefit-card.tangerine .mission-benefit-percent { color: var(--tangerine); }
+    html.dark .mission-benefit-percent { color: var(--mission-light); }
+    html.dark .mission-benefit-card.gold .mission-benefit-percent { color: #F0C040; }
+    html.dark .mission-benefit-card.tangerine .mission-benefit-percent { color: #FF7F45; }
+    .mission-benefit-title {
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+      font-size: var(--fs-sm);
+    }
+    .mission-benefit-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    /* Table */
+    .mission-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+    }
+    .mission-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+    }
+    .mission-table th {
+      background: var(--mission-green);
+      color: #fff;
+      padding: 12px 14px;
+      text-align: center;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    html.dark .mission-table th { background: var(--mission-dark); }
+    .mission-table td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+    }
+    .mission-table tr:last-child td { border-bottom: none; }
+    .mission-table tr:hover { background: var(--jade-10); }
+
+    /* Calculator error */
+    .mission-error {
+      background: #FFF0F0;
+      border-left: 4px solid #E53935;
+      padding: var(--sp-3) var(--sp-4);
+      border-radius: 0 var(--r-sm) var(--r-sm) 0;
+      color: #C62828;
+      font-size: var(--fs-sm);
+      margin-top: var(--sp-4);
+      display: none;
+    }
+    html.dark .mission-error {
+      background: rgba(229,57,53,0.1);
+      color: #FF6B6B;
+    }
+    .mission-error.show { display: block; }
+
+    /* Result cards */
+    .mission-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-4);
+      margin-top: var(--sp-6);
+    }
+    .mission-result-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all var(--ease);
+    }
+    .mission-result-card:hover { box-shadow: var(--sh-sm); }
+    .mission-result-header {
+      background: linear-gradient(135deg, var(--mission-green), var(--mission-dark));
+      padding: var(--sp-3) var(--sp-4);
+      color: #fff;
+      font-weight: 700;
+      font-size: var(--fs-sm);
+    }
+    .mission-result-header.gold {
+      background: linear-gradient(135deg, #B8860B, #8B6914);
+    }
+    .mission-result-header.tangerine {
+      background: linear-gradient(135deg, var(--tangerine), #d94d18);
+    }
+    .mission-result-body { padding: var(--sp-4); }
+    .mission-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-2) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mission-result-row:last-child { border-bottom: none; }
+    .mission-result-label {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+    }
+    .mission-result-value {
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--mission-green);
+    }
+    html.dark .mission-result-value { color: var(--mission-light); }
+    .mission-result-value.big {
+      font-size: var(--fs-lg);
+      font-family: var(--ff-head);
+    }
+
+    /* Feature grid */
+    .mission-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--sp-4);
+      margin-top: var(--sp-6);
+    }
+    .mission-feature-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-5);
+      transition: all var(--ease);
+    }
+    .mission-feature-item:hover {
+      box-shadow: var(--sh-sm);
+      transform: translateY(-2px);
+    }
+    .mission-feature-item strong {
+      display: block;
+      color: var(--mission-green);
+      margin-bottom: var(--sp-2);
+      font-size: var(--fs-sm);
+    }
+    html.dark .mission-feature-item strong { color: var(--mission-light); }
+    .mission-feature-item p {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    /* Floating WA */
+    .mission-wa-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+      z-index: 9999;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .mission-wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.6);
+    }
+    .mission-wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mission-benefit-grid { grid-template-columns: 1fr; }
+      .mission-stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .mission-results { grid-template-columns: 1fr; }
+      .mission-feature-grid { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="mission-hero">
+  <div class="container">
+    <div class="mission-badge">Asuransi Jiwa Unit Link Syariah</div>
+    <h1>MiSmart Insurance Solution Syariah<br><span>(MiSSION Syariah)</span></h1>
+    <p style="font-size: var(--fs-md); color: var(--txt-sub); max-width: 640px; margin-top: var(--sp-4); line-height: 1.7;">
+      Pernahkah Anda membayangkan memiliki <span class="kw">proteksi jiwa, investasi, dan kesehatan</span> dalam SATU produk?
+      Tahukah Anda bahwa kontribusi mulai dari <span class="kw-cta">Rp 4.000.000/tahun</span> sudah bisa mendapatkan perlindungan hingga <span class="kw-gold">Rp 10 Miliar</span>?
+    </p>
+    <div class="mission-stat-grid">
+      <div class="mission-stat">
+        <div class="mission-stat-value">Rp 4jt/thn</div>
+        <div class="mission-stat-label">Min. Kontribusi</div>
+      </div>
+      <div class="mission-stat">
+        <div class="mission-stat-value">10 Miliar</div>
+        <div class="mission-stat-label">UP Maksimum</div>
+      </div>
+      <div class="mission-stat">
+        <div class="mission-stat-value">700%</div>
+        <div class="mission-stat-label">Bonus Loyalitas</div>
+      </div>
+      <div class="mission-stat">
+        <div class="mission-stat-value">30hr - 70th</div>
+        <div class="mission-stat-label">Usia Masuk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="section-header--center">
+      <span class="section-tag">Tentang Produk</span>
+      <h2 class="section-title">Pernahkah Anda Membayangkan Solusi 3-in-1 yang Sesuai Syariah?</h2>
+      <p class="section-sub">MiSSION Syariah adalah produk <span class="kw">asuransi jiwa unit link syariah</span> dari Manulife Indonesia yang menggabungkan Proteksi Jiwa, Investasi, dan Kesehatan dalam satu polis.</p>
+    </div>
+
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p style="margin-bottom: var(--sp-4);">
+        Tahukah Anda bahwa dengan prinsip <span class="kw">Wakalah bil Ujrah</span>, dana Anda dikelola secara transparan sesuai syariah Islam? Bagaimana jika Anda bisa mendapatkan <span class="kw-cta">perlindungan jiwa sekaligus investasi halal</span> dengan kontribusi yang terjangkau?
+      </p>
+      <p style="margin-bottom: var(--sp-6);">
+        Bayangkan memiliki produk yang memberikan <span class="kw-gold">bonus loyalitas hingga 700%</span> dari kontribusi dasar tahun pertama, dengan <span class="kw">17+ pilihan dana investasi</span> termasuk opsi syariah. Bukankah itu solusi lengkap untuk masa depan keluarga Anda?
+      </p>
+    </div>
+
+    <div class="mission-feature-grid">
+      <div class="mission-feature-item">
+        <strong>Kontribusi Terjangkau</strong>
+        <p>Bagaimana jika hanya dengan <span class="kw-cta">Rp 340.000/bulan</span> Anda sudah bisa memiliki perlindungan jiwa dan investasi syariah sekaligus?</p>
+      </div>
+      <div class="mission-feature-item">
+        <strong>Uang Pertanggungan Optimal</strong>
+        <p>Tahukah Anda bahwa UP minimum adalah <span class="kw">Rp 100 juta atau 5x kontribusi tahunan</span> (mana yang lebih besar), memberikan perlindungan memadai untuk keluarga?</p>
+      </div>
+      <div class="mission-feature-item">
+        <strong>Alokasi Investasi Tinggi</strong>
+        <p>Pernahkah Anda membayangkan <span class="kw">70% kontribusi</span> langsung masuk investasi di tahun 1-3, dan <span class="kw-cta">100%</span> di tahun ke-4 dan seterusnya?</p>
+      </div>
+      <div class="mission-feature-item">
+        <strong>Manfaat Loyalitas Besar</strong>
+        <p>Bagaimana jika investasi Anda mendapat <span class="kw-gold">bonus loyalitas 50% di tahun ke-10</span> dan <span class="kw-gold">700% di tahun ke-25</span> dari kontribusi dasar tahun pertama?</p>
+      </div>
+      <div class="mission-feature-item">
+        <strong>Usia Masuk Luas</strong>
+        <p>Tahukah Anda bahwa pendaftaran bisa dilakukan sejak bayi <span class="kw">30 hari</span> hingga usia <span class="kw">70 tahun</span>? Siapa saja bisa terlindungi!</p>
+      </div>
+      <div class="mission-feature-item">
+        <strong>Masa Pertanggungan Panjang</strong>
+        <p>Bisakah Anda bayangkan perlindungan yang berlaku hingga Tertanggung berusia <span class="kw-gold">110 tahun</span>? Proteksi seumur hidup!</p>
+      </div>
+      <div class="mission-feature-item">
+        <strong>17+ Pilihan Dana Investasi</strong>
+        <p>Pernahkah Anda melihat pilihan investasi selengkap ini? Dari <span class="kw">pasar uang</span> hingga <span class="kw">ekuitas global</span>, termasuk opsi syariah.</p>
+      </div>
+      <div class="mission-feature-item">
+        <strong>Metode Bayar Fleksibel</strong>
+        <p>Tahukah Anda bahwa Anda bisa memilih bayar <span class="kw-cta">Tahunan, Semesteran, Kuartalan, atau Bulanan</span> sesuai kenyamanan?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header--center">
+      <span class="section-tag">Manfaat</span>
+      <h2 class="section-title">Apa Saja Manfaat yang Akan Anda Terima?</h2>
+      <p class="section-sub">Pernahkah Anda mendengar produk asuransi yang memberikan <span class="kw">proteksi jiwa</span>, <span class="kw-cta">hasil investasi</span>, dan <span class="kw-gold">bonus loyalitas</span> sekaligus?</p>
+    </div>
+
+    <div class="mission-benefit-grid">
+      <div class="mission-benefit-card">
+        <div class="mission-benefit-percent">100% UP</div>
+        <div class="mission-benefit-title">Manfaat Meninggal Dunia</div>
+        <p class="mission-benefit-desc">Jika terjadi risiko meninggal dunia, ahli waris menerima <span class="kw">100% Uang Pertanggungan</span> ditambah <span class="kw-cta">Nilai Polis</span> yang terbentuk dari investasi. Bukankah itu perlindungan luar biasa untuk keluarga?</p>
+      </div>
+      <div class="mission-benefit-card tangerine">
+        <div class="mission-benefit-percent">Nilai Polis</div>
+        <div class="mission-benefit-title">Manfaat Akhir Masa Pertanggungan</div>
+        <p class="mission-benefit-desc">Tahukah Anda bahwa jika Tertanggung hidup hingga usia 110 tahun, seluruh <span class="kw-cta">Nilai Polis yang terbentuk</span> dari investasi bertahun-tahun akan dibayarkan?</p>
+      </div>
+      <div class="mission-benefit-card gold">
+        <div class="mission-benefit-percent">50%</div>
+        <div class="mission-benefit-title">Loyalitas Tahun ke-10</div>
+        <p class="mission-benefit-desc">Bagaimana jika di akhir tahun ke-10, Manulife menambahkan unit investasi senilai <span class="kw-gold">50% dari kontribusi dasar tahun pertama</span> ke polis Anda? Reward untuk kesetiaan!</p>
+      </div>
+      <div class="mission-benefit-card gold">
+        <div class="mission-benefit-percent">700%</div>
+        <div class="mission-benefit-title">Loyalitas Tahun ke-25</div>
+        <p class="mission-benefit-desc">Bisakah Anda bayangkan menerima bonus <span class="kw-gold">700% dari kontribusi dasar tahun pertama</span> di akhir tahun ke-25? Jika kontribusi Rp 4 juta/tahun, berarti bonus Rp 28 juta!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIUM TABLE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header--center">
+      <span class="section-tag">Kontribusi</span>
+      <h2 class="section-title">Berapa Kontribusi Minimum yang Diperlukan?</h2>
+      <p class="section-sub">Tahukah Anda bahwa proteksi syariah lengkap bisa dimulai dengan kontribusi yang sangat <span class="kw-cta">terjangkau</span>?</p>
+    </div>
+
+    <div style="max-width: 700px; margin: 0 auto;">
+      <h3 style="font-size: var(--fs-md); margin-bottom: var(--sp-4); color: var(--txt-head);">Minimum Kontribusi Dasar</h3>
+      <div class="mission-table-wrap">
+        <table class="mission-table">
+          <thead>
+            <tr>
+              <th>Mode Pembayaran</th>
+              <th>Minimum Kontribusi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tahunan</strong></td>
+              <td><span class="kw-cta">Rp 4.000.000</span></td>
+            </tr>
+            <tr>
+              <td><strong>Semesteran</strong></td>
+              <td><span class="kw-cta">Rp 2.000.000</span></td>
+            </tr>
+            <tr>
+              <td><strong>Kuartalan</strong></td>
+              <td><span class="kw-cta">Rp 1.000.000</span></td>
+            </tr>
+            <tr>
+              <td><strong>Bulanan</strong></td>
+              <td><span class="kw-cta">Rp 340.000</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size: var(--fs-md); margin-top: var(--sp-8); margin-bottom: var(--sp-4); color: var(--txt-head);">Alokasi Investasi dari Kontribusi</h3>
+      <div class="mission-table-wrap">
+        <table class="mission-table">
+          <thead>
+            <tr>
+              <th>Periode</th>
+              <th>Alokasi ke Investasi</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tahun 1 - 3</strong></td>
+              <td><span class="kw">70%</span></td>
+              <td>30% untuk biaya akuisisi</td>
+            </tr>
+            <tr>
+              <td><strong>Tahun 4+</strong></td>
+              <td><span class="kw-gold">100%</span></td>
+              <td>Seluruh kontribusi masuk investasi</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size: var(--fs-md); margin-top: var(--sp-8); margin-bottom: var(--sp-4); color: var(--txt-head);">Bonus Loyalitas</h3>
+      <div class="mission-table-wrap">
+        <table class="mission-table">
+          <thead>
+            <tr>
+              <th>Waktu</th>
+              <th>Persentase</th>
+              <th>Dasar Perhitungan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Akhir Tahun ke-10</strong></td>
+              <td><span class="kw-gold">50%</span></td>
+              <td>Kontribusi Dasar Tahun Pertama</td>
+            </tr>
+            <tr>
+              <td><strong>Akhir Tahun ke-25</strong></td>
+              <td><span class="kw-gold">700%</span></td>
+              <td>Kontribusi Dasar Tahun Pertama</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header--center">
+      <span class="section-tag">Kalkulator</span>
+      <h2 class="section-title">Berapa Proyeksi Investasi dan Loyalitas Anda?</h2>
+      <p class="section-sub">Masukkan kontribusi dan UP yang Anda inginkan untuk melihat proyeksi manfaat <span class="kw">MiSSION Syariah</span>.</p>
+    </div>
+
+    <div class="calculator-wrap">
+      <div class="calc-header">
+        <h3>Kalkulator Kontribusi MiSSION Syariah</h3>
+        <p>Hitung estimasi alokasi investasi dan bonus loyalitas berdasarkan kontribusi Anda.</p>
+      </div>
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="form-group">
+            <label class="form-label">Mode Pembayaran</label>
+            <select class="form-select" id="missionMode">
+              <option value="Tahunan">Tahunan</option>
+              <option value="Semesteran">Semesteran</option>
+              <option value="Kuartalan">Kuartalan</option>
+              <option value="Bulanan">Bulanan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kontribusi Dasar per Periode</label>
+            <input class="form-input" type="text" id="missionKontribusi" placeholder="Masukkan jumlah" value="4.000.000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Uang Pertanggungan (Santunan)</label>
+            <input class="form-input" type="text" id="missionUP" placeholder="Masukkan jumlah" value="200.000.000">
+          </div>
+        </div>
+
+        <!-- Error message -->
+        <div class="mission-error" id="missionError"></div>
+
+        <!-- Results -->
+        <div id="missionResultsWrap" style="display:none;">
+          <div class="mission-results">
+            <div class="mission-result-card">
+              <div class="mission-result-header">Kontribusi Anda</div>
+              <div class="mission-result-body">
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Kontribusi per Periode</span>
+                  <span class="mission-result-value" id="resKontribusi">-</span>
+                </div>
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Kontribusi Tahunan (Ekuivalen)</span>
+                  <span class="mission-result-value big" id="resAnnual">-</span>
+                </div>
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Uang Pertanggungan</span>
+                  <span class="mission-result-value" id="resUP">-</span>
+                </div>
+              </div>
+            </div>
+            <div class="mission-result-card">
+              <div class="mission-result-header">Alokasi Investasi</div>
+              <div class="mission-result-body">
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Tahun 1-3 (70%)</span>
+                  <span class="mission-result-value" id="resAlloc13">-</span>
+                </div>
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Tahun 4+ (100%)</span>
+                  <span class="mission-result-value" id="resAlloc4">-</span>
+                </div>
+              </div>
+            </div>
+            <div class="mission-result-card">
+              <div class="mission-result-header gold">Bonus Loyalitas</div>
+              <div class="mission-result-body">
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Tahun ke-10 (50%)</span>
+                  <span class="mission-result-value big" id="resLoyal10">-</span>
+                </div>
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Tahun ke-25 (700%)</span>
+                  <span class="mission-result-value big" id="resLoyal25">-</span>
+                </div>
+              </div>
+            </div>
+            <div class="mission-result-card">
+              <div class="mission-result-header tangerine">Referensi COI (Usia 30, per 1M UP)</div>
+              <div class="mission-result-body">
+                <div class="mission-result-row">
+                  <span class="mission-result-label">Asuransi Dasar</span>
+                  <span class="mission-result-value">Rp 128.300/bln</span>
+                </div>
+                <div class="mission-result-row">
+                  <span class="mission-result-label">MiSmart Critical Care</span>
+                  <span class="mission-result-value">Rp 143.300/bln</span>
+                </div>
+                <div class="mission-result-row">
+                  <span class="mission-result-label">MiSmart Waiver</span>
+                  <span class="mission-result-value">Rp 17.700/bln</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="calc-note">*Perhitungan bersifat estimasi. Untuk ilustrasi resmi, silakan hubungi agen. COI (Cost of Insurance) bervariasi sesuai usia dan jenis kelamin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header--center">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Pertanyaan yang Sering Ditanyakan</h2>
+      <p class="section-sub">Temukan jawaban untuk pertanyaan umum tentang MiSSION Syariah.</p>
+    </div>
+
+    <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Apa itu MiSSION Syariah?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">MiSSION Syariah (MiSmart Insurance Solution Syariah) adalah produk asuransi jiwa unit link berbasis syariah dari PT Asuransi Jiwa Manulife Indonesia. Produk ini menggabungkan 3 manfaat dalam 1 polis: Proteksi Jiwa, Investasi Syariah, dan Kesehatan (melalui rider). Menggunakan akad Wakalah bil Ujrah sesuai prinsip Islam.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Berapa kontribusi minimum MiSSION Syariah?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Kontribusi dasar minimum adalah Rp 4.000.000/tahun (setara Rp 340.000/bulan). Tersedia juga mode pembayaran Semesteran (min Rp 2.000.000) dan Kuartalan (min Rp 1.000.000). Kontribusi ini sangat terjangkau untuk mendapatkan proteksi jiwa dan investasi sekaligus.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Apa itu Unit Link Syariah?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Unit Link Syariah adalah produk asuransi yang menggabungkan proteksi (perlindungan jiwa) dengan investasi berbasis syariah. Dana Anda diinvestasikan di instrumen yang halal dan sesuai prinsip Islam. Berbeda dengan unit link konvensional, produk ini menggunakan akad Wakalah bil Ujrah dan dana Tabarru (tolong-menolong).</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Bagaimana Manfaat Loyalitas bekerja?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Manfaat Loyalitas adalah bonus yang diberikan Manulife berupa penambahan unit investasi ke polis Anda. Di akhir tahun ke-10, Anda mendapat 50% dari kontribusi dasar tahun pertama. Di akhir tahun ke-25, Anda mendapat 700% dari kontribusi dasar tahun pertama. Syaratnya: bayar kontribusi tepat waktu selama 7 tahun pertama dan polis masih aktif saat tanggal pemberian.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Apa saja risiko investasi yang perlu dipahami?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Karena ini produk unit link, Nilai Polis tidak dijamin dan bisa naik atau turun mengikuti kinerja dana investasi yang dipilih. Risiko investasi sepenuhnya ditanggung peserta. Namun, tersedia 17+ pilihan dana dari risiko rendah (pasar uang) hingga risiko tinggi (ekuitas), sehingga Anda bisa memilih sesuai profil risiko.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Berapa usia masuk yang diperbolehkan?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Usia masuk MiSSION Syariah sangat luas: mulai dari 30 hari (1 bulan) hingga 70 tahun. Masa pertanggungan berlaku hingga Tertanggung berusia 110 tahun. Jadi, produk ini bisa diambil sejak bayi hingga menjelang pensiun.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Apa itu Cuti Kontribusi (Premium Holiday)?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Setelah polis berjalan minimal 2 tahun dan Nilai Polis mencukupi, Anda bisa mengambil Cuti Kontribusi (berhenti bayar sementara). Selama cuti, biaya asuransi akan dipotong dari Nilai Polis yang ada. Polis tetap aktif selama Nilai Polis masih cukup untuk membayar biaya-biaya. Namun perlu diperhatikan, mengambil cuti di 7 tahun pertama bisa menghilangkan hak Manfaat Loyalitas.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Apa saja Rider (Asuransi Tambahan) yang tersedia?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Rider yang tersedia meliputi: MiSmart Health Care (rawat inap as-charged, 8 plan), MiSmart Critical Care (56 penyakit kritis, hingga 300% UP), MiSmart Waiver Premium (pembebasan kontribusi jika sakit kritis), MiSmart Early Stage Critical Care, MiSmart Medicare Plus, MiSmart Payor Benefit Plus, MiSmart Accidental Death and Disability, dan lainnya.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Bagaimana prinsip syariah diterapkan dalam MiSSION?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">MiSSION Syariah menerapkan prinsip syariah melalui: (1) Akad Wakalah bil Ujrah - Manulife sebagai wakil pengelola dengan ujrah (fee) yang jelas, (2) Kontribusi (bukan premi) - istilah yang sesuai syariah, (3) Tabarru - sebagian kontribusi masuk dana tolong-menolong sesama peserta, (4) Surplus Sharing - jika dana Tabarru surplus, dibagikan ke peserta, (5) Investasi hanya di instrumen halal.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Bagaimana proses klaim MiSSION Syariah?</span>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-answer">Proses klaim dilakukan dengan menghubungi Manulife atau agen Anda, kemudian menyiapkan dokumen yang diperlukan (formulir klaim, identitas, dokumen pendukung sesuai jenis klaim). Untuk rider kesehatan, tersedia fasilitas cashless di rumah sakit rekanan. Klaim akan diproses sesuai ketentuan polis dan disetujui jika memenuhi syarat yang berlaku.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="position: relative; z-index: 1;">
+    <h2 style="color: #fff; margin-bottom: var(--sp-3); font-size: var(--fs-2xl);">Siap Memiliki Proteksi Syariah yang Lengkap?</h2>
+    <p style="color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto var(--sp-6);">Konsultasikan kebutuhan Anda dengan Petrus Jakub, Partner Bisnis Manulife. Gratis, tanpa kewajiban.</p>
+    <a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20tertarik%20dengan%20MiSSION%20Syariah.%20Boleh%20tanya-tanya%3F" target="_blank" class="btn btn--wa btn--lg">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Hubungi via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- Floating WA Button -->
+<a href="https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20tertarik%20dengan%20MiSSION%20Syariah.%20Boleh%20tanya-tanya%3F" target="_blank" class="mission-wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div id="site-footer"></div>
+
+<script>
+(function() {
+  // FAQ ACCORDION
+  var faqTriggers = document.querySelectorAll('.faq-trigger');
+  faqTriggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function() {
+      var item = trigger.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(fi) {
+        fi.classList.remove('open');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+
+  // CALCULATOR
+  var modeEl = document.getElementById('missionMode');
+  var kontribusiEl = document.getElementById('missionKontribusi');
+  var upEl = document.getElementById('missionUP');
+  var errorEl = document.getElementById('missionError');
+  var resultsWrap = document.getElementById('missionResultsWrap');
+
+  var minPremiLookup = {
+    "Tahunan": 4000000,
+    "Semesteran": 2000000,
+    "Kuartalan": 1000000,
+    "Bulanan": 340000
+  };
+
+  var annualMultiplier = {
+    "Tahunan": 1,
+    "Semesteran": 2,
+    "Kuartalan": 4,
+    "Bulanan": 12
+  };
+
+  // Number formatting
+  function formatRp(num) {
+    if (num === 0) return 'Rp 0';
+    var s = Math.round(num).toString();
+    var r = '';
+    var c = 0;
+    for (var i = s.length - 1; i >= 0; i--) {
+      r = s[i] + r;
+      c++;
+      if (c % 3 === 0 && i > 0) r = '.' + r;
+    }
+    return 'Rp ' + r;
+  }
+
+  function formatInputValue(raw) {
+    if (!raw) return '';
+    var r = '';
+    var c = 0;
+    for (var i = raw.length - 1; i >= 0; i--) {
+      r = raw[i] + r;
+      c++;
+      if (c % 3 === 0 && i > 0) r = '.' + r;
+    }
+    return r;
+  }
+
+  function parseInput(val) {
+    return parseInt(val.replace(/[^0-9]/g, '')) || 0;
+  }
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.classList.add('show');
+    resultsWrap.style.display = 'none';
+  }
+
+  function hideError() {
+    errorEl.classList.remove('show');
+  }
+
+  function calculate() {
+    var mode = modeEl.value;
+    var kontribusi = parseInput(kontribusiEl.value);
+    var up = parseInput(upEl.value);
+
+    // Validate minimum kontribusi
+    var minKontribusi = minPremiLookup[mode];
+    if (kontribusi === 0) {
+      showError('Silakan masukkan jumlah Kontribusi Dasar.');
+      return;
+    }
+    if (kontribusi < minKontribusi) {
+      showError('Kontribusi minimum untuk pembayaran ' + mode + ' adalah ' + formatRp(minKontribusi));
+      return;
+    }
+
+    // Calculate annual equivalent
+    var multiplier = annualMultiplier[mode];
+    var annualKontribusi = kontribusi * multiplier;
+
+    // Validate UP
+    var upMin = Math.max(100000000, 5 * annualKontribusi);
+    var upMax = 10000000000;
+
+    if (up === 0) {
+      showError('Silakan masukkan jumlah Uang Pertanggungan.');
+      return;
+    }
+    if (up < upMin) {
+      showError('Uang Pertanggungan minimum adalah ' + formatRp(upMin) + ' (yang lebih besar antara Rp 100.000.000 atau 5x Kontribusi Dasar Tahunan ' + formatRp(5 * annualKontribusi) + ')');
+      return;
+    }
+    if (up > upMax) {
+      showError('Uang Pertanggungan maksimum adalah ' + formatRp(upMax) + '. Untuk UP lebih besar, silakan konsultasi dengan agen.');
+      return;
+    }
+
+    hideError();
+
+    // Calculate results
+    var allocYear13 = annualKontribusi * 0.7;
+    var allocYear4 = annualKontribusi * 1.0;
+    var loyal10 = annualKontribusi * 0.5;
+    var loyal25 = annualKontribusi * 7.0;
+
+    // Display results
+    document.getElementById('resKontribusi').textContent = formatRp(kontribusi) + ' / ' + mode;
+    document.getElementById('resAnnual').textContent = formatRp(annualKontribusi);
+    document.getElementById('resUP').textContent = formatRp(up);
+    document.getElementById('resAlloc13').textContent = formatRp(allocYear13) + ' / tahun';
+    document.getElementById('resAlloc4').textContent = formatRp(allocYear4) + ' / tahun';
+    document.getElementById('resLoyal10').textContent = formatRp(loyal10);
+    document.getElementById('resLoyal25').textContent = formatRp(loyal25);
+
+    resultsWrap.style.display = 'block';
+  }
+
+  // Input formatting handler for kontribusi
+  function handleInputFormat(inputEl) {
+    inputEl.addEventListener('input', function() {
+      var cursorPos = inputEl.selectionStart;
+      var oldVal = inputEl.value;
+      var digitsBeforeCursor = oldVal.substring(0, cursorPos).replace(/[^0-9]/g, '').length;
+
+      var raw = oldVal.replace(/[^0-9]/g, '');
+      inputEl.value = formatInputValue(raw);
+
+      var newVal = inputEl.value;
+      var newPos = 0;
+      var dCount = 0;
+      for (var i = 0; i < newVal.length; i++) {
+        if (/[0-9]/.test(newVal[i])) {
+          dCount++;
+          if (dCount === digitsBeforeCursor) {
+            newPos = i + 1;
+            break;
+          }
+        }
+      }
+      if (digitsBeforeCursor === 0) newPos = 0;
+      if (dCount < digitsBeforeCursor) newPos = newVal.length;
+      inputEl.setSelectionRange(newPos, newPos);
+
+      calculate();
+    });
+  }
+
+  handleInputFormat(kontribusiEl);
+  handleInputFormat(upEl);
+  modeEl.addEventListener('change', calculate);
+
+  // Initial calculation
+  calculate();
+})();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>

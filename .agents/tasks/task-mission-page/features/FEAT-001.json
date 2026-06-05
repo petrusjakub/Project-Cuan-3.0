@@ -1,0 +1,45 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the mission.html page at public/pages/mission.html following the mifip.html page pattern. The page should contain comprehensive product information for MiSSION Syariah presented in question-based language (bahasa pertanyaan), a premium contribution table, an error-free premium calculator using lookup method, and FAQ. Uses the existing design system from /assets/style.css.",
+  "status": "in_progress",
+  "steps": [
+    "Create file public/pages/mission.html following the structure pattern from public/pages/mifip.html: DOCTYPE, head with dark-mode early script, link to /assets/style.css, page-specific inline <style>, body with <div id=\"site-header\"></div>, then sections, then <div id=\"site-footer\"></div>, then page script, then <script src=\"/assets/main.js\"></script>.",
+    "HERO SECTION: Create a hero section using the .mifip-hero style pattern (renamed to .mission-hero). Include badge 'Asuransi Jiwa Unit Link Syariah', title 'MiSmart Insurance Solution Syariah (MiSSION Syariah)', and a description using question-based language with .kw, .kw-cta, .kw-gold keyword highlights. Include stat cards showing key numbers: min premi Rp4jt/thn, UP hingga 10M, Loyalitas 700%, Usia masuk 30 hari - 70 tahun.",
+    "PRODUCT OVERVIEW SECTION: Present product overview with question-based language. Content from Sample/Mission.html tab-ringkasan: explain what MiSSION Syariah is (3-in-1: Proteksi + Investasi + Kesehatan), akad Wakalah bil Ujrah, keunggulan utama (premi terjangkau, UP optimal, alokasi investasi tinggi 70%/100%, manfaat loyalitas 50%/700%, usia masuk luas, masa pertanggungan panjang, 17+ pilihan dana, metode bayar fleksibel). Use a benefit-grid or card layout.",
+    "BENEFITS SECTION: Present manfaat utama with question-based language. Content: Manfaat Meninggal Dunia (100% UP + Nilai Polis), Manfaat Akhir Masa Pertanggungan (Nilai Polis), Manfaat Loyalitas (Tahun ke-10: 50%, Tahun ke-25: 700% of first year premium). Include benefit cards with .kw/.kw-cta/.kw-gold coloring on key numbers.",
+    "PREMIUM TABLE SECTION: Display a table showing the minimum contribution limits. Table headers: Mode Pembayaran, Minimum Kontribusi Dasar. Data: Tahunan Rp 4.000.000, Semesteran Rp 2.000.000, Kuartalan Rp 1.000.000, Bulanan Rp 340.000. Also show investment allocation table: Tahun 1-3: 70%, Tahun 4+: 100%. Also show loyalty bonus table. Use the .mifip-table-wrap and .mifip-table pattern (renamed to .mission-table).",
+    "CALCULATOR SECTION: Implement the premium calculator. Use the calculator pattern from mifip.html (.calculator-wrap, .calc-header, .calc-body, .calc-grid, .form-group, .form-label, .form-select, .form-input). Calculator inputs: Mode Pembayaran (Tahunan/Semesteran/Kuartalan/Bulanan), Kontribusi Dasar (text input with formatting), Uang Pertanggungan / Santunan (text input). Calculator logic uses LOOKUP method with minPremiLookup = {Tahunan:4000000, Semesteran:2000000, Kuartalan:1000000, Bulanan:340000}. Validation: (a) kontribusi >= minimum for selected mode, (b) UP minimum = max(100000000, 5 * annual premium equivalent), (c) UP max default 10000000000. Results display: validated premium per period, annual equivalent, UP, investment allocation breakdown (yr1-3: 70%, yr4+: 100%), loyalty bonus estimates (yr10: 50% of first yr annual premium, yr25: 700%). Also show COI example for age 30: Asuransi Dasar Rp128.300/bln, MiSmart Critical Care Rp143.300/bln, MiSmart Waiver Rp17.700/bln per 1M UP. Error messages shown using .mifip-error pattern (renamed to .mission-error). CRITICAL: Triple-check all JavaScript for syntax errors - no stray characters, all brackets/braces matched, all strings properly closed.",
+    "FAQ SECTION: Add 8-10 FAQ items using the .faq-list/.faq-item/.faq-trigger/.faq-body pattern from mifip.html. Questions should cover: What is MiSSION Syariah, minimum premium, what is unit link, loyalty benefits, investment risks, age limits, premium holiday, riders available, how Syariah principles work, claims process. Use question-based framing where appropriate.",
+    "CTA SECTION: Add a CTA section (like in mifip.html) with WhatsApp link to https://wa.me/6287781896087?text=Pak%20Petrus%2C%20saya%20tertarik%20dengan%20MiSSION%20Syariah.%20Boleh%20tanya-tanya%3F",
+    "FLOATING WA BUTTON: Add floating WA button with same link as CTA.",
+    "PAGE-SPECIFIC STYLES: Add inline <style> block following the mifip.html pattern with CSS custom properties (--mission-green, --mission-dark, --mission-light matching jade green), hero styles, benefit card styles, table styles, calculator error styles, result card styles, responsive media queries. Support dark mode via html.dark selectors.",
+    "FINAL SCRIPT: Add inline <script> at end before main.js that handles: FAQ accordion toggle, calculator logic (with all validation and lookup), number formatting for input fields. Ensure ALL JavaScript is syntactically correct with no errors. The calculator must use pure lookup/validation (not complex formula), testing minimum premium per mode, computing minimum UP as max(100M, 5x annual premium equivalent), showing investment allocation and loyalty projections."
+  ],
+  "acceptance_criteria": [
+    "File exists at /projects/sandbox/Project-Cuan-3.0/public/pages/mission.html",
+    "Page loads the global stylesheet via <link rel=\"stylesheet\" href=\"/assets/style.css\">",
+    "Page includes <div id=\"site-header\"></div> and <div id=\"site-footer\"></div>",
+    "Page includes <script src=\"/assets/main.js\"></script> at end of body",
+    "Page has dark-mode early detection script in <head>",
+    "Content uses question-based language (bahasa pertanyaan) throughout",
+    "Keywords use .kw, .kw-cta, .kw-gold classes for color differentiation",
+    "Premium table shows min contribution amounts for all 4 payment modes",
+    "Calculator validates minimum premium based on selected payment mode",
+    "Calculator validates minimum UP as max(100M, 5x annual premium equivalent)",
+    "Calculator shows investment allocation (70% yr1-3, 100% yr4+) and loyalty bonus projections",
+    "Calculator displays clear error messages when validation fails",
+    "All JavaScript is syntactically valid (no console errors)",
+    "FAQ accordion works with click-to-toggle pattern",
+    "Page is responsive (mobile-friendly)",
+    "Page supports dark mode via html.dark class"
+  ],
+  "verification": [
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/mission.html','utf8'); console.log('File size:', html.length, 'bytes'); if(html.length < 5000) { console.error('File too small'); process.exit(1); } console.log('Size OK');\"",
+    "Run: node -e \"const fs=require('fs'); const html=fs.readFileSync('/projects/sandbox/Project-Cuan-3.0/public/pages/mission.html','utf8'); const scripts=html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/g); if(!scripts){console.log('No inline scripts found');process.exit(1);} scripts.forEach((s,i)=>{const code=s.replace(/<\\\\/?script>/g,''); try{ new Function(code); console.log('Script',i+1,'- syntax OK'); }catch(e){ console.error('Script',i+1,'- ERROR:',e.message); process.exit(1); }}); console.log('All scripts valid');\"",
+    "Run: grep -c 'kw\\|kw-cta\\|kw-gold' /projects/sandbox/Project-Cuan-3.0/public/pages/mission.html to confirm keyword classes are used (should be > 10)",
+    "Run: grep -c 'site-header\\|site-footer\\|style.css\\|main.js' /projects/sandbox/Project-Cuan-3.0/public/pages/mission.html to confirm structural elements (should be 4+)"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

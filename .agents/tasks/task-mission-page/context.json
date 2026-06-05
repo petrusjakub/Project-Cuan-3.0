@@ -1,0 +1,22 @@
+{
+  "project_type": "Static HTML/CSS/JS marketing website for insurance products",
+  "language": "HTML, CSS, JavaScript (vanilla)",
+  "build_system": "None - static files served directly. No build step required.",
+  "test_framework": "None - manual browser testing. Can validate HTML/JS syntax with Node.js.",
+  "build_command": "No build command. Validate JS syntax with: node --check <file> (not applicable for HTML inline scripts)",
+  "test_command": "node -e \"const fs=require('fs');const html=fs.readFileSync('public/pages/mission.html','utf8');const m=html.match(/<script[^>]*>([\\s\\S]*?)<\\/script>/g);if(m)m.forEach((s,i)=>{try{new Function(s.replace(/<\\/?script[^>]*>/g,''))}catch(e){console.error('Script '+i+':',e.message);process.exit(1)}});console.log('All scripts OK')\"",
+  "verification_instructions": "1. Check the file exists at public/pages/mission.html. 2. Validate no JS syntax errors by extracting script blocks. 3. Confirm it references /assets/style.css and /assets/main.js. 4. Confirm it includes #site-header and #site-footer div placeholders.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed. The project is purely static HTML/CSS/JS files.",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external packages can be installed. All work is local file creation. Node.js is available for JS syntax checking.",
+  "contribution_requirements": "Follow existing product page patterns: use /assets/style.css design system, include header/footer component divs, use .kw/.kw-cta/.kw-gold keyword classes, include dark mode script at top of head, include /assets/main.js at end of body.",
+  "key_patterns": "Product pages follow a consistent structure: head with dark-mode early script + stylesheet link + page-specific inline styles, body with #site-header div, hero section, content sections alternating .section and .section--alt, calculator with .calculator-wrap/.calc-header/.calc-body/.calc-grid, FAQ with .faq-list/.faq-item/.faq-trigger/.faq-body, CTA section, floating WA button, #site-footer div, inline page script, then /assets/main.js.",
+  "relevant_files": [
+    "public/pages/mifip.html (reference for page structure, calculator pattern, FAQ pattern)",
+    "public/assets/style.css (global design system with CSS variables)",
+    "public/components/header.html (already links to /pages/mission.html)",
+    "public/components/footer.html (footer structure)",
+    "Sample/Mission.html (source content and calculator logic with rate tables)"
+  ],
+  "directory_structure": "public/pages/ - product HTML pages | public/assets/ - CSS and JS | public/components/ - header.html and footer.html | Sample/ - reference HTML files with full content | Source/ - PDF source materials (not readable)"
+}
