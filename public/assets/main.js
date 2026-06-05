@@ -393,6 +393,59 @@
   };
 
   /* ─────────────────────────────────
+     13.5 CONTENT PROTECTION
+  ───────────────────────────────── */
+  function initContentProtection() {
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable copy, cut, paste
+    document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
+    document.addEventListener('cut', function(e) { e.preventDefault(); return false; });
+
+    // Disable text selection via keyboard (Ctrl+A, Ctrl+C, Ctrl+X, Ctrl+U, Ctrl+S, F12)
+    document.addEventListener('keydown', function(e) {
+      // Ctrl/Cmd + A (select all)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'a') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + C (copy)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + X (cut)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'x') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + U (view source)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'u') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + S (save page)
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + Shift + I (dev tools)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + Shift + J (console)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + Shift + C (inspect element)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') { e.preventDefault(); return false; }
+      // F12 (dev tools)
+      if (e.key === 'F12') { e.preventDefault(); return false; }
+      // Ctrl/Cmd + P (print)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'p') { e.preventDefault(); return false; }
+    });
+
+    // Disable drag on images and links
+    document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
+
+    // Disable print via media query (CSS handles this, but also via JS)
+    // Disable selection on touch devices (long press)
+    document.addEventListener('selectstart', function(e) {
+      // Allow in form inputs
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+        return true;
+      }
+      e.preventDefault();
+      return false;
+    });
+  }
+
+  /* ─────────────────────────────────
      INIT
   ───────────────────────────────── */
   async function init() {
@@ -413,6 +466,7 @@
     initCountUp();
     initFAQ();
     initCatTabs();
+    initContentProtection();
 
     // Page-specific
     if (document.getElementById('quizStep0')) window.PC.initQuiz();
