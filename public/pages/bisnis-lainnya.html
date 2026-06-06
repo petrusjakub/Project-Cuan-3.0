@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bisnis Lainnya — Mitra Affiliate Auto Cuan | PROJECTCUAN</title>
+  <meta name="description" content="Kumpulan peluang bisnis affiliate terpercaya. Gabung sebagai mitra dan raih penghasilan pasif dari QoalaPlus, Fuse Pro, Shopee Affiliate, Lion Parcel, Bank Saqu, Hostinger, dan iClub.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── BISNIS LAINNYA PAGE STYLES ── */
+    .aff-hero {
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 60%, #0D1B2A 100%);
+      padding: clamp(80px, 12vw, 140px) 0 clamp(60px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .aff-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,172,91,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .aff-hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: var(--sp-5);
+    }
+
+    .aff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--sp-6);
+    }
+
+    .aff-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .aff-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-lg);
+      transform: translateY(-4px);
+    }
+
+    .aff-card-header {
+      padding: var(--sp-6) var(--sp-6) var(--sp-4);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+    .aff-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .aff-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-lg);
+      font-weight: 800;
+      color: var(--txt-head);
+      line-height: 1.3;
+    }
+    .aff-card-subtitle {
+      font-size: var(--fs-xs);
+      color: var(--txt-muted);
+      margin-top: 2px;
+    }
+
+    .aff-card-body {
+      padding: 0 var(--sp-6) var(--sp-5);
+      flex: 1;
+    }
+    .aff-card-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.7;
+      margin-bottom: var(--sp-5);
+    }
+
+    .aff-benefits {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .aff-benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+    .aff-benefits li::before {
+      content: '✓';
+      color: var(--jade);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .aff-card-footer {
+      padding: var(--sp-4) var(--sp-6) var(--sp-6);
+      margin-top: auto;
+    }
+    .aff-card-footer .btn {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    /* Card accent colors */
+    .aff-card[data-brand="qoala"] .aff-card-icon { background: rgba(99,52,255,0.1); }
+    .aff-card[data-brand="fuse"] .aff-card-icon { background: rgba(0,122,255,0.1); }
+    .aff-card[data-brand="shopee"] .aff-card-icon { background: rgba(238,77,45,0.1); }
+    .aff-card[data-brand="lion"] .aff-card-icon { background: rgba(255,140,0,0.1); }
+    .aff-card[data-brand="saqu"] .aff-card-icon { background: rgba(0,172,91,0.1); }
+    .aff-card[data-brand="hostinger"] .aff-card-icon { background: rgba(103,58,183,0.1); }
+    .aff-card[data-brand="iclub"] .aff-card-icon { background: rgba(220,38,38,0.1); }
+
+    /* Expandable details */
+    .aff-toggle {
+      background: none;
+      border: none;
+      color: var(--jade);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      cursor: pointer;
+      padding: var(--sp-2) 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .aff-toggle:hover { opacity: 0.8; }
+    .aff-toggle svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s;
+    }
+    .aff-toggle.active svg { transform: rotate(180deg); }
+
+    .aff-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .aff-details.open {
+      max-height: 600px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .aff-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="aff-hero" aria-labelledby="aff-hero-title">
+  <div class="container" style="position:relative;z-index:1">
+    <nav class="breadcrumb" style="margin-bottom:var(--sp-8)">
+      <a href="/index.html" style="color:rgba(255,255,255,0.5)">Beranda</a>
+      <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">›</span>
+      <span class="breadcrumb-current">Bisnis Lainnya</span>
+    </nav>
+
+    <div style="max-width:750px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,172,91,0.15);border:1px solid rgba(0,172,91,0.3);color:var(--jade);font-size:var(--fs-xs);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:var(--r-full);margin-bottom:var(--sp-6)" class="fade-up">
+        🤝 Mitra Affiliate
+      </div>
+
+      <h1 id="aff-hero-title" class="aff-hero-title fade-up stagger-1">
+        Bisnis Auto Cuan<br>
+        <span style="color:var(--jade)">Hanya dengan Jadi Mitra Affiliate</span>
+      </h1>
+
+      <p style="color:rgba(255,255,255,0.7);font-size:var(--fs-md);max-width:620px;line-height:1.75;margin-bottom:var(--sp-6)" class="fade-up stagger-2">
+        Tidak perlu modal besar, tidak perlu stok barang. Cukup bagikan link dan raih komisi dari setiap transaksi. Pilih platform yang sesuai denganmu dan mulai hasilkan cuan hari ini!
+      </p>
+
+      <a href="#affiliate-cards" class="btn btn--jade btn--lg fade-up stagger-3">Lihat Semua Mitra ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     AFFILIATE CARDS
+═══════════════════════════════════════════ -->
+<section class="section" id="affiliate-cards" aria-labelledby="aff-cards-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">7 Platform Terpercaya</span>
+      <h2 id="aff-cards-heading" class="section-title fade-up">Pilih Mitra, Mulai Hasilkan <span class="kw">Cuan</span></h2>
+      <p class="section-sub fade-up stagger-1" style="margin:0 auto">Setiap platform menawarkan keuntungan unik. Gabung di satu atau lebih untuk memaksimalkan penghasilan pasifmu.</p>
+    </div>
+
+    <div class="aff-grid">
+
+      <!-- ══ 1. QoalaPlus ══ -->
+      <article class="aff-card fade-up" data-brand="qoala">
+        <div class="aff-card-header">
+          <div class="aff-card-icon">🛡️</div>
+          <div>
+            <div class="aff-card-title">QoalaPlus</div>
+            <div class="aff-card-subtitle">Platform Bisnis Asuransi Digital</div>
+          </div>
+        </div>
+        <div class="aff-card-body">
+          <p class="aff-card-desc">
+            QoalaPlus bekerjasama dengan PT Mitra Jasa Pratama untuk memberikan solusi bagi semua orang agar bisa memulai bisnis berjualan asuransi dengan mudah dan menguntungkan. Kebebasan sepenuhnya ada di tangan Anda!
+          </p>
+          <button class="aff-toggle" onclick="toggleDetails(this)">
+            Lihat Keuntungan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="aff-details">
+            <ul class="aff-benefits">
+              <li>Komisi Instan & Transparan untuk setiap polis yang berhasil dijual</li>
+              <li>Aplikasi yang mudah digunakan untuk proses penjualan hingga klaim</li>
+              <li>Bebas waktu & fleksibel, atur jadwal kerja sendiri</li>
+              <li>Beragam produk asuransi dari perusahaan terkemuka</li>
+              <li>Pelatihan gratis dari tim ahli</li>
+              <li>Dukungan penuh after sales dari tim profesional</li>
+              <li>Reward menarik: emas, voucher elektronik, hingga voucher travel</li>
+            </ul>
+          </div>
+        </div>
+        <div class="aff-card-footer">
+          <a href="https://www.qoalaplus.com?utm_source=referral&utm_medium=mitra&utm_campaign=MNWRWX7K" target="_blank" rel="noopener noreferrer" class="btn btn--jade btn--md">
+            Gabung Mitra QoalaPlus
+          </a>
+        </div>
+      </article>
+
+      <!-- ══ 2. Fuse Pro ══ -->
+      <article class="aff-card fade-up stagger-1" data-brand="fuse">
+        <div class="aff-card-header">
+          <div class="aff-card-icon">📱</div>
+          <div>
+            <div class="aff-card-title">Fuse Pro</div>
+            <div class="aff-card-subtitle">Platform Insurtech - Agen Asuransi Digital</div>
+          </div>
+        </div>
+        <div class="aff-card-body">
+          <p class="aff-card-desc">
+            Bergabung menjadi Mitra Fuse Pro menawarkan peluang menjadi agen asuransi independen dengan komisi tak terbatas, kemudahan mendaftar tanpa ujian lisensi yang rumit, dan fleksibilitas mengatur bisnis secara digital.
+          </p>
+          <button class="aff-toggle" onclick="toggleDetails(this)">
+            Lihat Keuntungan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="aff-details">
+            <ul class="aff-benefits">
+              <li>Potensi komisi dan penghasilan tanpa batas</li>
+              <li>Bangun tim (downline) untuk passive income tambahan</li>
+              <li>Pendaftaran mudah langsung via aplikasi, tanpa ujian lisensi</li>
+              <li>Pilihan produk asuransi beragam: kendaraan, jiwa, kesehatan, kecelakaan, mikro</li>
+              <li>Sistem All-in-One: perbandingan premi, penawaran, pembelian, hingga klaim</li>
+              <li>Berbagai promo dan rewards tambahan seperti Lucky Box</li>
+            </ul>
+          </div>
+        </div>
+        <div class="aff-card-footer">
+          <a href="https://z.brokerindotekno.co.id/c315c3f7f817" target="_blank" rel="noopener noreferrer" class="btn btn--jade btn--md">
+            Gabung Mitra Fuse Pro
+          </a>
+        </div>
+      </article>
+
+      <!-- ══ 3. Shopee Affiliate ══ -->
+      <article class="aff-card fade-up stagger-2" data-brand="shopee">
+        <div class="aff-card-header">
+          <div class="aff-card-icon">🛒</div>
+          <div>
+            <div class="aff-card-title">Shopee Affiliate</div>
+            <div class="aff-card-subtitle">Program Affiliate E-Commerce #1</div>
+          </div>
+        </div>
+        <div class="aff-card-body">
+          <p class="aff-card-desc">
+            Bergabung dengan program Shopee Affiliate untuk mendapatkan passive income tanpa modal dan tanpa stok barang. Bagikan link, dapatkan komisi dari setiap pembelian!
+          </p>
+          <button class="aff-toggle" onclick="toggleDetails(this)">
+            Lihat Keuntungan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="aff-details">
+            <ul class="aff-benefits">
+              <li>Komisi hingga 4% untuk pesanan dari Shopee Mall, Supermarket, Star+, dan Star</li>
+              <li>Komisi XTRA lebih dari 5% dari penjual untuk produk bertanda khusus</li>
+              <li>Kesempatan mendapatkan sampel produk gratis dan voucher</li>
+              <li>Waktu kerja fleksibel, bagikan link dari platform mana saja</li>
+              <li>Jadi Millionaire Leader dengan ajak member baru, raih bonus komisi 15%</li>
+              <li>Dapatkan 15% dari komisi member selama 3 bulan pertama</li>
+            </ul>
+          </div>
+        </div>
+        <div class="aff-card-footer">
+          <a href="https://s.shopee.co.id/110KkOfMHJ" target="_blank" rel="noopener noreferrer" class="btn btn--jade btn--md">
+            Gabung Shopee Affiliate
+          </a>
+        </div>
+      </article>
+
+      <!-- ══ 4. Lion Parcel ══ -->
+      <article class="aff-card fade-up" data-brand="lion">
+        <div class="aff-card-header">
+          <div class="aff-card-icon">📦</div>
+          <div>
+            <div class="aff-card-title">Lion Parcel</div>
+            <div class="aff-card-subtitle">Program Referral Ekspedisi</div>
+          </div>
+        </div>
+        <div class="aff-card-body">
+          <p class="aff-card-desc">
+            Program referral Lion Parcel memberikan keuntungan ganda: bonus saldo untuk pengirim dan Parcel Poin yang bisa ditukarkan dengan voucher hadiah. Dapatkan bonus 7% setiap bertransaksi!
+          </p>
+          <button class="aff-toggle" onclick="toggleDetails(this)">
+            Lihat Keuntungan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="aff-details">
+            <ul class="aff-benefits">
+              <li>Bonus saldo dari setiap transaksi teman yang diundang</li>
+              <li>Bonus Parcel Poin untuk teman yang diundang, bisa ditukar voucher</li>
+              <li>Saldo fleksibel: bisa untuk ongkir atau dicairkan ke rekening bank</li>
+              <li>Kemudahan akses via aplikasi smartphone</li>
+              <li>Bonus keuntungan 7% setiap bertransaksi</li>
+              <li>Berlaku untuk pick up dan drop paket</li>
+            </ul>
+          </div>
+        </div>
+        <div class="aff-card-footer">
+          <a href="https://bit.ly/LioApps" target="_blank" rel="noopener noreferrer" class="btn btn--jade btn--md">
+            Download & Gabung Lion Parcel
+          </a>
+        </div>
+      </article>
+
+      <!-- ══ 5. Bank Saqu ══ -->
+      <article class="aff-card fade-up stagger-1" data-brand="saqu">
+        <div class="aff-card-header">
+          <div class="aff-card-icon">🏦</div>
+          <div>
+            <div class="aff-card-title">Bank Saqu</div>
+            <div class="aff-card-subtitle">Program Referral Perbankan Digital</div>
+          </div>
+        </div>
+        <div class="aff-card-body">
+          <p class="aff-card-desc">
+            Program referral Bank Saqu memberikan bonus saldo tunai untuk Anda dan teman yang diundang. Potensi hadiah hingga jutaan rupiah hanya dengan mengajak teman bergabung!
+          </p>
+          <button class="aff-toggle" onclick="toggleDetails(this)">
+            Lihat Keuntungan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="aff-details">
+            <ul class="aff-benefits">
+              <li>Bonus saldo tunai untuk setiap teman yang berhasil mendaftar</li>
+              <li>Teman yang diundang juga dapat Rp25.000 setelah aktivasi akun</li>
+              <li>Potensi hadiah besar hingga Rp2.000.000</li>
+              <li>Proses pendaftaran mudah dengan kode referensi: QI22BR</li>
+              <li>Program Warga Get Warga / Star Bank Saqu</li>
+            </ul>
+          </div>
+        </div>
+        <div class="aff-card-footer">
+          <a href="https://banksaqu.onelink.me/5WpY/b2exdc7o" target="_blank" rel="noopener noreferrer" class="btn btn--jade btn--md">
+            Daftar Bank Saqu Sekarang
+          </a>
+        </div>
+      </article>
+
+      <!-- ══ 6. Hostinger ══ -->
+      <article class="aff-card fade-up stagger-2" data-brand="hostinger">
+        <div class="aff-card-header">
+          <div class="aff-card-icon">🌐</div>
+          <div>
+            <div class="aff-card-title">Hostinger</div>
+            <div class="aff-card-subtitle">Program Referral Web Hosting</div>
+          </div>
+        </div>
+        <div class="aff-card-body">
+          <p class="aff-card-desc">
+            Bergabung sebagai mitra referral Hostinger untuk pendapatan pasif tanpa batas. Dapatkan komisi 20% dari setiap pembelian paket hosting, dan teman Anda juga dapat diskon 20%!
+          </p>
+          <button class="aff-toggle" onclick="toggleDetails(this)">
+            Lihat Keuntungan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="aff-details">
+            <ul class="aff-benefits">
+              <li>Komisi langsung 20% untuk setiap penjualan yang memenuhi syarat</li>
+              <li>Teman yang diundang mendapat diskon 20%</li>
+              <li>Potensi penghasilan tanpa batas, tidak ada batasan jumlah undangan</li>
+              <li>Pencairan fleksibel via PayPal, transfer bank, atau saldo akun</li>
+              <li>Program Hostinger Horizons: komisi hingga $150 USD saat teman upgrade</li>
+              <li>Layanan lengkap: web hosting, cloud, VPS, domain</li>
+            </ul>
+          </div>
+        </div>
+        <div class="aff-card-footer">
+          <a href="https://www.hostinger.com/id?REFERRALCODE=Petrus 13" target="_blank" rel="noopener noreferrer" class="btn btn--jade btn--md">
+            Daftar via Hostinger
+          </a>
+        </div>
+      </article>
+
+      <!-- ══ 7. iClub (Imperial Group) ══ -->
+      <article class="aff-card fade-up" data-brand="iclub">
+        <div class="aff-card-header">
+          <div class="aff-card-icon">🍽️</div>
+          <div>
+            <div class="aff-card-title">iClub - Imperial Group</div>
+            <div class="aff-card-subtitle">Loyalty Program F&B Terbesar</div>
+          </div>
+        </div>
+        <div class="aff-card-body">
+          <p class="aff-card-desc">
+            Program iClub (loyalty program Imperial Group) memberikan Welcome Voucher Rp 100.000 untuk pengguna baru dan Voucher Rp 50.000 untuk setiap teman yang berhasil diajak bergabung!
+          </p>
+          <button class="aff-toggle" onclick="toggleDetails(this)">
+            Lihat Keuntungan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="aff-details">
+            <ul class="aff-benefits">
+              <li>Voucher Rp 50.000 untuk setiap teman yang mendaftar dengan kode referral</li>
+              <li>Welcome Voucher Rp 100.000 untuk member baru (min. transaksi Rp 250.000)</li>
+              <li>Diskon, hadiah ulang tahun, dan cashback poin dari setiap transaksi</li>
+              <li>Satu aplikasi untuk dine-in, take-away, delivery, dan reservasi</li>
+              <li>Berlaku di semua brand: Imperial Kitchen & Dimsum, Happy Day, Imperial Cakery</li>
+              <li>Kode referral: SUS237275</li>
+            </ul>
+          </div>
+        </div>
+        <div class="aff-card-footer">
+          <a href="https://iclub-abi.impgroup.co.id/register?ref=SUS237275" target="_blank" rel="noopener noreferrer" class="btn btn--jade btn--md">
+            Gabung iClub Sekarang
+          </a>
+        </div>
+      </article>
+
+    </div><!-- /aff-grid -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="aff-cta-heading">
+  <div class="container" style="position:relative;z-index:1;text-align:center">
+    <span class="section-tag" style="background:rgba(255,255,255,0.15);color:#fff;margin-bottom:var(--sp-5)">
+      Mulai Sekarang
+    </span>
+    <h2 id="aff-cta-heading" class="cta-title fade-up">
+      Gabung di Satu atau Semua Platform<br>dan Mulai Hasilkan Cuan!
+    </h2>
+    <p class="cta-sub fade-up stagger-1">
+      Setiap platform gratis untuk bergabung. Tidak ada risiko, hanya potensi penghasilan tambahan.<br>
+      Semakin banyak platform yang kamu ikuti, semakin besar peluang cuanmu!
+    </p>
+    <div class="cta-btns fade-up stagger-2">
+      <a href="#affiliate-cards" class="btn btn--cta btn--lg">Pilih Platform Favoritmu ↑</a>
+      <a href="/pages/bisnis.html" class="btn btn--ghost btn--lg">Lihat Bisnis Asuransi</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer loaded by JS -->
+<div id="site-footer"></div>
+
+<script src="/assets/main.js"></script>
+<script>
+  // Toggle expandable details
+  function toggleDetails(btn) {
+    const details = btn.nextElementSibling;
+    btn.classList.toggle('active');
+    details.classList.toggle('open');
+    btn.textContent = '';
+    if (details.classList.contains('open')) {
+      btn.innerHTML = 'Sembunyikan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>';
+    } else {
+      btn.innerHTML = 'Lihat Keuntungan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>';
+    }
+  }
+</script>
+</body>
+</html>
