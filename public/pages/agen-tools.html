@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Khusus Agen — Tools & Resources | PROJECTCUAN</title>
+  <meta name="description" content="Halaman khusus agen Manulife: Financing, Keagenan & AAJI, Kompensasi, Manu Pro, Starter Kit, dan Kalkulator Income.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── AGEN TOOLS PAGE EXTRAS ── */
+    .agen-hero {
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
+      padding: clamp(80px, 10vw, 120px) 0 clamp(40px, 6vw, 60px);
+    }
+    .agen-hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: var(--sp-3);
+    }
+
+    /* Auth */
+    .auth-box {
+      max-width: 400px;
+      margin: 60px auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      text-align: center;
+    }
+    .auth-box h2 {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .auth-box p {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      margin-bottom: var(--sp-5);
+    }
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg);
+      color: var(--txt);
+      font-size: var(--fs-sm);
+      font-family: var(--ff-body);
+      margin-bottom: var(--sp-4);
+      text-align: center;
+    }
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--jade);
+    }
+    .auth-error {
+      color: #ef4444;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      margin-bottom: var(--sp-3);
+      display: none;
+    }
+
+    /* Content sections */
+    .tools-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      margin-bottom: var(--sp-6);
+    }
+    .tools-section-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin: 0 0 var(--sp-2) 0;
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .tools-section-title .section-icon {
+      font-size: 1.4em;
+    }
+    .tools-section-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      margin-bottom: var(--sp-5);
+    }
+    .tools-subsection {
+      margin-bottom: var(--sp-5);
+    }
+    .tools-subsection-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .tools-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .tools-list li {
+      border-radius: var(--r-sm);
+      transition: background-color 0.15s ease;
+    }
+    .tools-list li:hover {
+      background: var(--bg-alt);
+    }
+    .tools-list li a {
+      color: var(--txt-sub);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--r-sm);
+      transition: color 0.2s ease;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+    }
+    .tools-list li a:hover {
+      color: var(--jade);
+    }
+    .tools-list .file-icon {
+      font-size: 1em;
+      flex-shrink: 0;
+    }
+    .folder-btn-tools {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--jade);
+      color: #fff !important;
+      padding: 10px 20px;
+      border-radius: var(--r-md);
+      font-weight: 600;
+      font-size: var(--fs-sm);
+      text-decoration: none !important;
+      margin-top: var(--sp-4);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .folder-btn-tools:hover {
+      background: var(--jade-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Tables */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+      margin-bottom: var(--sp-8);
+    }
+    .spec-table th {
+      background: var(--jade);
+      color: #fff;
+      padding: 10px 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .spec-table td {
+      padding: 10px 12px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+      font-size: var(--fs-xs);
+    }
+    .spec-table tr:nth-child(even) td {
+      background: var(--bg-alt);
+    }
+    .spec-table td:first-child {
+      text-align: left;
+      font-weight: 700;
+      color: var(--txt-head);
+      white-space: nowrap;
+    }
+    html.dark .spec-table td { background: var(--bg-card); }
+    html.dark .spec-table tr:nth-child(even) td { background: var(--bg-alt); }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: var(--sp-6);
+    }
+    .table-section-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-4);
+      padding-bottom: var(--sp-2);
+      border-bottom: 2px solid var(--jade);
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .tools-section { padding: var(--sp-5); }
+      .spec-table { font-size: var(--fs-xs); }
+      .spec-table th, .spec-table td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="agen-hero">
+  <div class="container" style="position:relative;z-index:1">
+    <nav class="breadcrumb" style="margin-bottom:var(--sp-6)">
+      <a href="/index.html" style="color:rgba(255,255,255,0.5)">Beranda</a>
+      <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">&rsaquo;</span>
+      <a href="/pages/rekrutmen-agen.html" style="color:rgba(255,255,255,0.5)">Rekrutmen</a>
+      <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">&rsaquo;</span>
+      <span class="breadcrumb-current">Agen Tools</span>
+    </nav>
+    <h1 class="agen-hero-title">Halaman Khusus Agen</h1>
+    <p style="color:rgba(255,255,255,0.7);font-size:var(--fs-md);max-width:600px">
+      Tools, materi, dan resources lengkap untuk agen Manulife Indonesia. Halaman ini dilindungi password.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     AUTH GATE
+═══════════════════════════════════════════ -->
+<div id="authGate">
+  <div class="auth-box">
+    <h2>&#128274; Halaman Terkunci</h2>
+    <p>Masukkan password untuk mengakses halaman khusus agen.</p>
+    <div class="auth-error" id="authError">Password salah</div>
+    <input type="password" class="auth-input" id="authPassword" placeholder="Masukkan password">
+    <button class="btn btn--jade btn--block" id="authBtn">Masuk</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PROTECTED CONTENT
+═══════════════════════════════════════════ -->
+<div id="protectedContent" style="display:none">
+
+<!-- ═══════════════════════════════════════════
+     SECTION II: FINANCING, KEAGENAN & AAJI, KOMPENSASI
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+
+    <!-- 1. FINANCING -->
+    <div class="tools-section">
+      <h3 class="tools-section-title"><span class="section-icon">&#128176;</span> 1. Financing</h3>
+      <p class="tools-section-desc">Materi financing, skema special, dan kalkulator target.</p>
+      <ul class="tools-list">
+        <li><a href="https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing" target="_blank"><span class="file-icon">&#128196;</span> A. Materi Financing - Dukungan Kinerja</a></li>
+        <li><a href="https://youtu.be/YcIinwaXWa0?si=uUc_ONgc8hsndczE" target="_blank"><span class="file-icon">&#128196;</span> B. Materi Next Pro - Dukungan Kinerja</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1vKgC6U8fmVDC8UtkEaGpTcLq4yWsSXMP?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> C. Skema Special Financing</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing" target="_blank"><span class="file-icon">&#128196;</span> D. Form Financing</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1dIKfq1zjXyTNWgcH49EjmcmzZHY0inVt?usp=drive_link" target="_blank"><span class="file-icon">&#128202;</span> E. Kalkulator Target &amp; Perhitungan Financing</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing" target="_blank"><span class="file-icon">&#128196;</span> F. Memo Reguler Financing</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing" target="_blank"><span class="file-icon">&#128196;</span> G. Lain Lain nya</a></li>
+      </ul>
+      <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+    </div>
+
+    <!-- 2. KEAGENAN & AAJI -->
+    <div class="tools-section">
+      <h3 class="tools-section-title"><span class="section-icon">&#128101;</span> 2. Keagenan &amp; AAJI</h3>
+      <p class="tools-section-desc">Alur rekrut, promosi, ujian AAJI, dan panduan keagenan.</p>
+      <ul class="tools-list">
+        <li><a href="https://drive.google.com/drive/folders/1yaeBC3KJN9_PYees_GaBZ1QKEq7qKPtm?usp=drive_link" target="_blank"><span class="file-icon">&#9654;&#65039;</span> A. Video Alur Pengisian Rekrut via Mi Rekrut</a></li>
+        <li><a href="https://drive.google.com/file/d/1A2q_s-HzoMmVe9G0hWvzu-yArP6eoByW/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Alur Isi Mi Rekrut</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128196;</span> C. Panduan NIK Menjadi NPWP</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128196;</span> D. Rekening AAJI dan AASI</a></li>
+        <li><a href="https://drive.google.com/file/d/1N0L1KZjK3ivRSXATxoH9coVFcmgo11YF/view?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> E. Kriteria Promosi &amp; CM (Contract Maintainence)</a></li>
+        <li><a href="https://youtube.com/playlist?list=PLmW8OriV3NFL69t59wJkSqcplSw2rtjQl" target="_blank"><span class="file-icon">&#128221;</span> F. Kisi Kisi AAJI</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128221;</span> G. Kisi Kisi AASI</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFJ6sKrZaICET1SgaHAWNvmD" target="_blank"><span class="file-icon">&#128241;</span> H. Panduan Mobile Exam AAJI</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128218;</span> I. Panduan Manu Academy (E Library Manulife)</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128196;</span> J. Hal Detail &amp; Lain Lain nya</a></li>
+      </ul>
+      <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+    </div>
+
+    <!-- 3. KOMPENSASI -->
+    <div class="tools-section">
+      <h3 class="tools-section-title"><span class="section-icon">&#128176;</span> 3. Kompensasi</h3>
+      <p class="tools-section-desc">Komisi produk, override lifetime, dan Q&amp;A kompensasi.</p>
+      <ul class="tools-list">
+        <li><a href="https://drive.google.com/file/d/1VOKk9RgWC2KbBqmu8TadjCcnHjtU9bz5/view?usp=drive_link" target="_blank"><span class="file-icon">&#128176;</span> A. Komisi Berbagai Produk</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1pHITCjX8ety7BVWAuJKdAHZmT7Jthu7P?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> B. OR Lifetime &amp; Gen OR Lifetime</a></li>
+        <li><a href="https://drive.google.com/file/d/1N0L1KZjK3ivRSXATxoH9coVFcmgo11YF/view?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> C. Kriteria Promosi &amp; CM (Contract Maintanence)</a></li>
+        <li><a href="https://drive.google.com/file/d/1pO0gc_X_dIZmVmWbC8HRTcfqf-FKCn2d/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> D. Hal Detail &amp; Lain Lainnya</a></li>
+        <li><a href="https://drive.google.com/file/d/1pO0gc_X_dIZmVmWbC8HRTcfqf-FKCn2d/view?usp=drive_link" target="_blank"><span class="file-icon">&#10067;</span> E. Q &amp; A Seputar Promosi dan CM</a></li>
+        <li><a href="https://drive.google.com/file/d/1ZI9kmM2qL27MDV58ZqjcMxasSsNcfOeY/view?usp=drive_link" target="_blank"><span class="file-icon">&#10067;</span> F. Q &amp; A Kompensasi, Lifetime OR &amp; Gen OR</a></li>
+      </ul>
+      <a class="folder-btn-tools" href="https://drive.google.com/file/d/1pO0gc_X_dIZmVmWbC8HRTcfqf-FKCn2d/view?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+    </div>
+
+    <!-- 4. MANU PRO, MABC, DAN BILLIONAIRE -->
+    <div class="tools-section">
+      <h3 class="tools-section-title"><span class="section-icon">&#127942;</span> 4. Manu Pro, MABC, dan Billionaire</h3>
+      <p class="tools-section-desc">Knowledge dan Q&amp;A untuk program Manu Pro, MABC, dan Billionaire.</p>
+      <ul class="tools-list">
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128218;</span> A. Manu Pro Knowledge</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128218;</span> B. MABC Knowledge</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128218;</span> C. Billionaire Knowledge</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#128203;</span> D. CM - Contract Maintenence Knowledge</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#10067;</span> E. Q &amp; A Manu Pro</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank"><span class="file-icon">&#10067;</span> F. Q &amp; A MABC</a></li>
+      </ul>
+      <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-" target="_blank">&#128193; Klik Disini Untuk ISI Folder Lengkap</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION III: STARTER KIT & NEW AGENT TOOLS
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+
+    <!-- 1. SELLING TOOLS -->
+    <div class="tools-section">
+      <h3 class="tools-section-title"><span class="section-icon">&#128188;</span> III. Starter Kit &amp; New Agent Tools</h3>
+      <p class="tools-section-desc">Selling &amp; Rekrut Tools, Simple Knowledge, dll.</p>
+
+      <div class="tools-subsection">
+        <h4 class="tools-subsection-title">1. Selling Tools</h4>
+        <p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:0;margin-bottom:var(--sp-3)">Psikologi Selling, Market Research, SPAJ Kilat, Tabel MCU, File Excel Penawaran, dll</p>
+        <ul class="tools-list">
+          <li><a href="https://drive.google.com/file/d/1qjK9bZRocJFet-RWEFY0flXj_3sTjUZX/view?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> A. Persiapan Sebelum Presentasi</a></li>
+          <li><a href="https://drive.google.com/drive/folders/1b2JRWlVqwY2qQkfkKUlGsyjeDHSgQFGT?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Print BC 1 New</a></li>
+          <li><a href="https://drive.google.com/file/d/1CC_bTlQaMLLPV3oG-IG1spG9rQmewvam/view?usp=drive_link" target="_blank"><span class="file-icon">&#9889;</span> C. SPAJ Kilat</a></li>
+          <li><a href="https://drive.google.com/file/d/1b7NcTEreP7qWHOS_aYPukUlBuhB6OQ-e/view?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> D. Tabel MCU Miuhc &amp; UP Jiwa</a></li>
+          <li><a href="https://drive.google.com/file/d/1b7NcTEreP7qWHOS_aYPukUlBuhB6OQ-e/view?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> E. Tabel Tinggi Berat Badan</a></li>
+          <li><a href="https://drive.google.com/file/d/1Kamkq0Ptm6t84p9vEPHxePG5HuYxBJJT/view?usp=drive_link" target="_blank"><span class="file-icon">&#127975;</span> F. RS Preferred Manulife</a></li>
+          <li><a href="https://drive.google.com/file/d/1b7NcTEreP7qWHOS_aYPukUlBuhB6OQ-e/view?usp=drive_link" target="_blank"><span class="file-icon">&#127975;</span> G. List MCU Rekanan</a></li>
+          <li><a href="https://drive.google.com/drive/folders/1b2JRWlVqwY2qQkfkKUlGsyjeDHSgQFGT?usp=drive_link" target="_blank"><span class="file-icon">&#128202;</span> H. File Excel/ G.Sheet Penawaran Asuransi</a></li>
+          <li><a href="https://drive.google.com/drive/folders/1b2JRWlVqwY2qQkfkKUlGsyjeDHSgQFGT?usp=drive_link" target="_blank"><span class="file-icon">&#9654;&#65039;</span> I. Video Simple Presentasi</a></li>
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128196;</span> J. Lain Lain</a></li>
+          <li><a href="https://drive.google.com/drive/folders/1b2JRWlVqwY2qQkfkKUlGsyjeDHSgQFGT?usp=drive_link" target="_blank"><span class="file-icon">&#9654;&#65039;</span> K. Video Sales Skill &amp; Psikologi</a></li>
+          <li><a href="https://drive.google.com/drive/folders/1iW_lxllcdNy9h-NHApdvyi9TcjyHQdqo?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> L. Buku Buku Asuransi &amp; Handling Objection</a></li>
+        </ul>
+      </div>
+
+      <div class="tools-subsection">
+        <h4 class="tools-subsection-title">2. Recruiting Tools</h4>
+        <p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:0;margin-bottom:var(--sp-3)">Survey Penghasilan, File BSS One On One, dll</p>
+        <ul class="tools-list">
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128196;</span> Lihat Folder Recruiting Tools</a></li>
+        </ul>
+      </div>
+
+      <div class="tools-subsection">
+        <h4 class="tools-subsection-title">3. Submit Tools</h4>
+        <p style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:0;margin-bottom:var(--sp-3)">MiPos &amp; MiDocs dll</p>
+        <ul class="tools-list">
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128218;</span> A. Materi Mipos (Man Academy)</a></li>
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128196;</span> B. Cara Buat Ilustrasi File PDF Di Ipad / Hp</a></li>
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128196;</span> C. Cara Auto Debit BCA - ESKPR BCA Online</a></li>
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128196;</span> D. Contoh Submit MIPOS MIUHC</a></li>
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128218;</span> E. Materi MiDocs</a></li>
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#10067;</span> F. FAQ Midocs</a></li>
+          <li><a href="https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/" target="_blank"><span class="file-icon">&#128196;</span> G. Lain Lain</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KALKULATOR INCOME & KOMISI
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="tools-section">
+      <h3 class="tools-section-title"><span class="section-icon">&#128200;</span> Kalkulator Income &amp; Komisi</h3>
+      <p class="tools-section-desc">Tabel komisi lengkap: FYC, Renewal, Override, Persistency Factor, dan APE.</p>
+
+      <!-- TABLE 1: FYC -->
+      <h3 class="table-section-title">Tabel 1: First Year Commission (FYC)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>5P</th>
+              <th>10P</th>
+              <th>SP</th>
+              <th>MPP5</th>
+              <th>MPP10</th>
+              <th>MPP15</th>
+              <th>MPP20</th>
+              <th>Regular</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MDWA Plan A</td>
+              <td>5%</td>
+              <td>15%</td>
+              <td>4%</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDWA Plan B</td>
+              <td>7.5%</td>
+              <td>15%</td>
+              <td>2%/4%</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDWA Plan C</td>
+              <td>5%/7.5%/10%</td>
+              <td>15%</td>
+              <td>2%/4%</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDLA</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>10%</td>
+              <td>20%</td>
+              <td>22.5%</td>
+              <td>25%</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MiUHC/Syariah</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <td>Flexi Amanah</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>20%</td>
+              <td>20%</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDSA</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>MISSION</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>25%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TABLE 2: Renewal -->
+      <h3 class="table-section-title">Tabel 2: Renewal Commission</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>Year 2</th>
+              <th>Year 3</th>
+              <th>Year 4+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MDWA 5P</td>
+              <td>5%</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDWA 10P</td>
+              <td>10%</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDLA MPP5</td>
+              <td>10%</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDLA MPP10</td>
+              <td>20%</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDLA MPP15</td>
+              <td>22.5%</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MDLA MPP20</td>
+              <td>25%</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>MiUHC</td>
+              <td>15%</td>
+              <td>15%</td>
+              <td>10%</td>
+            </tr>
+            <tr>
+              <td>Flexi Amanah</td>
+              <td>20%</td>
+              <td>5%</td>
+              <td>5%</td>
+            </tr>
+            <tr>
+              <td>MDSA</td>
+              <td>20%</td>
+              <td>2%</td>
+              <td>5%</td>
+            </tr>
+            <tr>
+              <td>MISSION</td>
+              <td>20%</td>
+              <td>5%</td>
+              <td>5%</td>
+            </tr>
+            <tr>
+              <td>Top Up</td>
+              <td>1.25%</td>
+              <td>1.25%</td>
+              <td>1.25%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TABLE 3: Override -->
+      <h3 class="table-section-title">Tabel 3: Override &amp; Recruitment Bonus</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>FYC Override</th>
+              <th>SYC Override</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Agent Referral</td>
+              <td>25% FYC</td>
+              <td>-</td>
+              <td>From direct recruit</td>
+            </tr>
+            <tr>
+              <td>BCO Leader BP Unit</td>
+              <td>50% FYC</td>
+              <td>25% SYC</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>BCO Leader SBP Group</td>
+              <td>50% FYC</td>
+              <td>25% SYC</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>BCO Leader SBP Unit</td>
+              <td>100% FYC</td>
+              <td>50% SYC</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>BP to BP Override</td>
+              <td>25% FYC</td>
+              <td>-</td>
+              <td>12 months</td>
+            </tr>
+            <tr>
+              <td>Lifetime Override (BP)</td>
+              <td>5% RYC</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Lifetime Override (SBP Unit)</td>
+              <td>10% RYC</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Lifetime Override (SBP Group)</td>
+              <td>5% RYC</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TABLE 4: PPR -->
+      <h3 class="table-section-title">Tabel 4: Persistency Factor (PPR)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>PPR Range</th>
+              <th>Bonus Factor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&gt;= 80%</td>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <td>70% - 80%</td>
+              <td>80%</td>
+            </tr>
+            <tr>
+              <td>50% - 70%</td>
+              <td>65%</td>
+            </tr>
+            <tr>
+              <td>&lt; 50%</td>
+              <td>0% (forfeited)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TABLE 5: APE -->
+      <h3 class="table-section-title">Tabel 5: APE Calculation</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Payment Mode</th>
+              <th>Factor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly</td>
+              <td>premium x 12</td>
+            </tr>
+            <tr>
+              <td>Quarterly</td>
+              <td>premium x 4</td>
+            </tr>
+            <tr>
+              <td>Semi-annual</td>
+              <td>premium x 2</td>
+            </tr>
+            <tr>
+              <td>Annual</td>
+              <td>premium x 1</td>
+            </tr>
+            <tr>
+              <td>Regular Premium</td>
+              <td>100% APE</td>
+            </tr>
+            <tr>
+              <td>Single Premium non-MDWA</td>
+              <td>10% APE</td>
+            </tr>
+            <tr>
+              <td>Single Premium MDWA</td>
+              <td>20% APE</td>
+            </tr>
+            <tr>
+              <td>Regular/Ad-hoc Top Up</td>
+              <td>10% APE</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:var(--sp-8)">
+      <a href="/pages/rekrutmen-agen.html" class="btn btn--jade btn--lg">Daftar Jadi Agen &rarr;</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /protectedContent -->
+
+<div id="site-footer"></div>
+
+<script>
+(function() {
+  var PASSWORD = 'petrusjakub';
+
+  function checkAuth() {
+    if (sessionStorage.getItem('pc_agen_tools_auth') === 'true') {
+      showContent();
+    }
+  }
+
+  function showContent() {
+    document.getElementById('authGate').style.display = 'none';
+    document.getElementById('protectedContent').style.display = 'block';
+  }
+
+  function handleLogin() {
+    var input = document.getElementById('authPassword').value;
+    if (input === PASSWORD) {
+      sessionStorage.setItem('pc_agen_tools_auth', 'true');
+      showContent();
+    } else {
+      document.getElementById('authError').style.display = 'block';
+    }
+  }
+
+  document.getElementById('authBtn').addEventListener('click', handleLogin);
+  document.getElementById('authPassword').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleLogin();
+  });
+
+  checkAuth();
+})();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>

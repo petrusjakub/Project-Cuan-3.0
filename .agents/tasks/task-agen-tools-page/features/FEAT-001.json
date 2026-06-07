@@ -1,0 +1,42 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create a new password-protected agent tools page at /public/pages/agen-tools.html that contains: (1) Financing section with links, (2) Keagenan & AAJI section with links, (3) Kompensasi section with links, (4) Manu Pro/MABC/Billionaire section, (5) Starter Kit & New Agent Tools (Selling Tools, Recruiting Tools, Submit Tools), and (6) the income calculator tables moved from komisi-agen.html. All text containing 'by PL' must be removed. The page must use the same design system as the main website.",
+  "status": "completed",
+  "steps": [
+    "Create /public/pages/agen-tools.html following the exact pattern from /public/pages/komisi-agen.html for structure: DOCTYPE, head with meta, title, link to /assets/style.css, dark mode inline script, page-specific <style> block, body with div#site-header, hero section, auth gate, protected content, div#site-footer, auth script, and main.js script.",
+    "Implement password protection with password 'petrusjakub', using sessionStorage key 'pc_agen_tools_auth' (different from komisi page to keep sessions separate), same auth gate UI pattern (.auth-box, .auth-input, .auth-error, #authGate, #protectedContent).",
+    "Add hero section styled like komisi-agen.html hero (dark gradient background, breadcrumb navigation: Beranda > Rekrutmen > Agen Tools, title 'Halaman Khusus Agen', subtitle description).",
+    "Inside #protectedContent, create Section 1: Financing - with subsections A through G as listed in user requirements. Include 'Klik Disini Untuk ISI FOLDER Lengkap' link to https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing. Use card-based layout with icons matching the source content links from Linkweb2.html.",
+    "Create Section 2: Keagenan & AAJI - with subsections A through J as listed. Include folder link to https://drive.google.com/drive/folders/1PWI2oTjSmlQgVeqetmKrZCzdZm0cDBK-. Use links from Linkweb2.html source. IMPORTANT: Remove 'by PL' from all link text (e.g., 'Alur Isi Mi Rekrut by PL' becomes 'Alur Isi Mi Rekrut', 'Kisi-kisi AAJI (PL)' becomes 'Kisi-kisi AAJI').",
+    "Create Section 3: Kompensasi - with subsections A through F as listed. Include folder link to https://drive.google.com/file/d/1pO0gc_X_dIZmVmWbC8HRTcfqf-FKCn2d/view?usp=drive_link. Use links from Linkweb2.html source.",
+    "Create Section 4: Manu Pro, MABC, dan Billionaire - with subsections A through F as listed in the user requirements. Include 'Klik Disini Untuk ISI Folder Lengkap' link. This section has content about Manu Pro Knowledge, MABC Knowledge, Billionaire Knowledge, CM - Contract Maintenance Knowledge, Q&A sections.",
+    "Create Section III: Starter Kit & New Agent Tools - with sub-section 1 (Selling Tools with items A through L as listed), sub-section 2 (Recruiting Tools), and sub-section 3 (Submit Tools with items A through G as listed). Use links from Linkweb2.html for selling tools. Reference the GitHub folder https://github.com/petrusjakub/Project-Cuan-3.0/blob/main/Source/Agency/ for 'Lain Lain' items.",
+    "Move the income calculator tables from komisi-agen.html into this new page. Copy all 5 tables: FYC, Renewal, Override & Recruitment Bonus, Persistency Factor (PPR), APE Calculation. Place them in a dedicated 'Kalkulator Income & Komisi' section within #protectedContent. Include the same table styling (.spec-table, .table-section-title, .table-wrap classes) in the page-specific <style> block.",
+    "Style the content sections using CSS variables from style.css. Create card-based layouts for each main section (Financing, Keagenan, etc.) using patterns like .generic-list from the source or product-card patterns from the website. Each section should have: section heading with icon, list of items as clickable links with file-type icons, and a 'Buka Folder' button linking to the Google Drive folder. Support dark mode via html.dark selectors.",
+    "Ensure all text containing 'by PL', '(PL)', '=PL=', or similar PL attribution is removed from the page content. Also remove the 'PENTING - UNTUK KALANGAN SENDIRI SAJA' / signature section that references PL.",
+    "Add responsive styles for mobile (max-width: 768px) following the same patterns used in komisi-agen.html and other pages."
+  ],
+  "acceptance_criteria": [
+    "File /public/pages/agen-tools.html exists and is valid HTML5",
+    "Page loads header and footer via div#site-header and div#site-footer with main.js",
+    "Password protection works with password 'petrusjakub' using sessionStorage",
+    "All 5 content sections are present: Financing, Keagenan & AAJI, Kompensasi, Manu Pro/MABC/Billionaire, Starter Kit & New Agent Tools",
+    "Income calculator tables (FYC, Renewal, Override, PPR, APE) are included in the page",
+    "No text containing 'by PL', '(PL)', or '=PL=' exists anywhere in the page",
+    "Dark mode is supported (inline script + html.dark CSS rules)",
+    "Design uses CSS variables from style.css (--jade, --bg-card, --border, etc.)",
+    "All Google Drive links from the source content are included with correct URLs",
+    "Page is responsive on mobile devices"
+  ],
+  "verification": [
+    "Run: grep -i 'by PL\\|=PL=\\|(PL)' /projects/sandbox/Project-Cuan-3.0/public/pages/agen-tools.html - should return no results",
+    "Run: grep -c 'petrusjakub' /projects/sandbox/Project-Cuan-3.0/public/pages/agen-tools.html - should return at least 1 (the password)",
+    "Run: grep -c 'site-header\\|site-footer\\|main.js' /projects/sandbox/Project-Cuan-3.0/public/pages/agen-tools.html - should return 3+",
+    "Run: grep -c 'spec-table' /projects/sandbox/Project-Cuan-3.0/public/pages/agen-tools.html - should return multiple matches (tables present)",
+    "Run: grep -c 'drive.google.com' /projects/sandbox/Project-Cuan-3.0/public/pages/agen-tools.html - should return many matches (Google Drive links present)",
+    "Run: grep -c 'sessionStorage' /projects/sandbox/Project-Cuan-3.0/public/pages/agen-tools.html - should return at least 1 (auth session)"
+  ],
+  "blocked_reason": null,
+  "findings": "Page created successfully at /public/pages/agen-tools.html. All verification checks pass: no PL attributions, password protection works with pc_agen_tools_auth sessionStorage key, all 5 income tables included, 41 Google Drive links present, dark mode supported. Post-review fix: (1) Removed commission tables from komisi-agen.html and replaced with redirect notice to agen-tools.html page. (2) Fixed Selling Tools item ordering - moved J. Lain Lain to correct position after I and before K."
+}

@@ -1,0 +1,14 @@
+{
+  "task_id": "task-agen-tools-page",
+  "task_description": "Create a new password-protected agent tools page (agen-tools.html) containing Financing, Keagenan & AAJI, Kompensasi, Manu Pro/MABC/Billionaire, Starter Kit & New Agent Tools sections, plus the income calculator moved from komisi-agen.html. Remove all 'by PL' text. Match the main website design.",
+  "status": "completed",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "Static HTML page created successfully. All verification checks pass: 41 Google Drive links present, password protection with 'petrusjakub', sessionStorage auth, site-header/footer/main.js integration, all 5 commission tables included, no 'by PL' text found."
+  }
+}
