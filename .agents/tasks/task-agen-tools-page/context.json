@@ -1,0 +1,23 @@
+{
+  "project_type": "Static HTML website deployed on Cloudflare Pages",
+  "language": "HTML, CSS, JavaScript",
+  "build_system": "Cloudflare Pages (wrangler.jsonc) - no build step needed, static files served from /public",
+  "test_framework": "None - static HTML site, validation is visual/structural",
+  "build_command": "N/A - static HTML site",
+  "test_command": "N/A - validate HTML structure manually",
+  "verification_instructions": "1. Check that the new HTML file exists at /public/pages/agen-tools.html. 2. Verify it uses the same pattern as komisi-agen.html (site-header div, site-footer div, main.js). 3. Verify password protection uses 'petrusjakub' and sessionStorage key. 4. Verify all content sections are present. 5. Verify no 'by PL' text remains.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML site",
+  "environment_constraints": "INTEGRATIONS_ONLY network - no external package installs possible. All work is creating/modifying static HTML files.",
+  "contribution_requirements": "Match existing design patterns from the website (CSS variables from style.css, dark mode support, header/footer component loading pattern)",
+  "key_patterns": "1. Pages use <div id='site-header'></div> and <div id='site-footer'></div> with <script src='/assets/main.js'></script> at end of body. 2. Dark mode: inline script at top checks localStorage 'pcTheme'. 3. Password protection: auth gate with .auth-box, sessionStorage key, PASSWORD variable, shows/hides #protectedContent. 4. Styling uses CSS variables from style.css (--jade, --bg-card, --border, --r-xl, --sp-8, etc). 5. Page-specific styles go in <style> block in head.",
+  "relevant_files": [
+    "public/pages/komisi-agen.html",
+    "public/assets/style.css",
+    "public/assets/main.js",
+    "public/components/header.html",
+    "public/components/footer.html",
+    "Source/Agency/Linkweb2.html"
+  ],
+  "directory_structure": "public/ - served static files. public/pages/ - individual pages. public/assets/ - CSS/JS. public/components/ - shared header.html and footer.html loaded by main.js. Source/Agency/ - source content files."
+}
