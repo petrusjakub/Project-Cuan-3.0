@@ -256,6 +256,51 @@
       border-color: var(--jade);
     }
 
+    /* Auth */
+    .auth-box {
+      max-width: 400px;
+      margin: 60px auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      text-align: center;
+    }
+    .auth-box h2 {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .auth-box p {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      margin-bottom: var(--sp-5);
+    }
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg);
+      color: var(--txt);
+      font-size: var(--fs-sm);
+      font-family: var(--ff-body);
+      margin-bottom: var(--sp-4);
+      text-align: center;
+    }
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--jade);
+    }
+    .auth-error {
+      color: #ef4444;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      margin-bottom: var(--sp-3);
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .calc-form { grid-template-columns: 1fr; }
       .level-grid { grid-template-columns: 1fr 1fr; }
@@ -390,59 +435,73 @@
       </p>
     </div>
 
-    <div class="calc-section fade-up stagger-2">
-      <div class="calc-form">
-        <div class="calc-group">
-          <label for="calcPolis">Jumlah polis per bulan</label>
-          <input type="number" id="calcPolis" value="3" min="1" max="100">
-        </div>
-        <div class="calc-group">
-          <label for="calcPremi">Rata-rata premi per polis (per bulan)</label>
-          <div class="calc-input-wrap">
-            <span class="prefix">Rp</span>
-            <input type="number" id="calcPremi" value="500000" min="100000" step="50000">
-          </div>
-        </div>
-        <div class="calc-group">
-          <label for="calcProduk">Jenis produk</label>
-          <select id="calcProduk">
-            <option value="mdwa5">MDWA (5 Tahun Bayar)</option>
-            <option value="mdwa10">MDWA (10 Tahun Bayar)</option>
-            <option value="mdla5">MDLA (MPP 5)</option>
-            <option value="mdla10">MDLA (MPP 10)</option>
-            <option value="mdla15">MDLA (MPP 15)</option>
-            <option value="mdla20" selected>MDLA (MPP 20)</option>
-            <option value="miuhc">MiUHC</option>
-            <option value="flexi">Flexi Amanah</option>
-            <option value="mdsa">MDSA (Unit Link)</option>
-            <option value="mission">MISSION Syariah</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="calc-results" id="calcResults">
-        <div class="calc-result-card">
-          <div class="calc-result-label">Estimasi FYC (dari polis bulan ini)</div>
-          <div class="calc-result-value" id="resFYC">Rp 0</div>
-        </div>
-        <div class="calc-result-card">
-          <div class="calc-result-label">Renewal Income Tahun 2+</div>
-          <div class="calc-result-value" id="resRenewal">Rp 0</div>
-        </div>
-        <div class="calc-result-card">
-          <div class="calc-result-label">Override Income (jika rekrut)</div>
-          <div class="calc-result-value" id="resOverride">Rp 0</div>
-        </div>
-      </div>
-      <p style="font-size:var(--fs-xs);color:var(--txt-muted);text-align:center;margin-top:var(--sp-4);line-height:1.6">
-        *FYC (First Year Commission) adalah komisi satu kali dari polis yang dijual, bukan penghasilan tetap bulanan.
-        Angka di atas menunjukkan total komisi tahun pertama dari polis yang berhasil dijual bulan ini.
-      </p>
-
-      <div style="text-align:center;margin-top:var(--sp-8)">
-        <a href="#form" class="btn btn--jade btn--lg">Tertarik? Daftar Sekarang &darr;</a>
+    <!-- AUTH GATE for Calculator -->
+    <div id="calcAuthGate">
+      <div class="auth-box">
+        <h2>🔒 Kalkulator Terkunci</h2>
+        <p>Masukkan password untuk mengakses kalkulator income.</p>
+        <div class="auth-error" id="calcAuthError">Password salah</div>
+        <input type="password" class="auth-input" id="calcAuthPassword" placeholder="Masukkan password">
+        <button class="btn btn--jade btn--block" id="calcAuthBtn">Masuk</button>
       </div>
     </div>
+
+    <!-- PROTECTED CALCULATOR CONTENT -->
+    <div id="calcProtected" style="display:none">
+      <div class="calc-section fade-up stagger-2">
+        <div class="calc-form">
+          <div class="calc-group">
+            <label for="calcPolis">Jumlah polis per bulan</label>
+            <input type="number" id="calcPolis" value="3" min="1" max="100">
+          </div>
+          <div class="calc-group">
+            <label for="calcPremi">Rata-rata premi per polis (per bulan)</label>
+            <div class="calc-input-wrap">
+              <span class="prefix">Rp</span>
+              <input type="number" id="calcPremi" value="500000" min="100000" step="50000">
+            </div>
+          </div>
+          <div class="calc-group">
+            <label for="calcProduk">Jenis produk</label>
+            <select id="calcProduk">
+              <option value="mdwa5">MDWA (5 Tahun Bayar)</option>
+              <option value="mdwa10">MDWA (10 Tahun Bayar)</option>
+              <option value="mdla5">MDLA (MPP 5)</option>
+              <option value="mdla10">MDLA (MPP 10)</option>
+              <option value="mdla15">MDLA (MPP 15)</option>
+              <option value="mdla20" selected>MDLA (MPP 20)</option>
+              <option value="miuhc">MiUHC</option>
+              <option value="flexi">Flexi Amanah</option>
+              <option value="mdsa">MDSA (Unit Link)</option>
+              <option value="mission">MISSION Syariah</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-results" id="calcResults">
+          <div class="calc-result-card">
+            <div class="calc-result-label">Estimasi FYC (dari polis bulan ini)</div>
+            <div class="calc-result-value" id="resFYC">Rp 0</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-label">Renewal Income Tahun 2+</div>
+            <div class="calc-result-value" id="resRenewal">Rp 0</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-label">Override Income (jika rekrut)</div>
+            <div class="calc-result-value" id="resOverride">Rp 0</div>
+          </div>
+        </div>
+        <p style="font-size:var(--fs-xs);color:var(--txt-muted);text-align:center;margin-top:var(--sp-4);line-height:1.6">
+          *FYC (First Year Commission) adalah komisi satu kali dari polis yang dijual, bukan penghasilan tetap bulanan.
+          Angka di atas menunjukkan total komisi tahun pertama dari polis yang berhasil dijual bulan ini.
+        </p>
+
+        <div style="text-align:center;margin-top:var(--sp-8)">
+          <a href="#form" class="btn btn--jade btn--lg">Tertarik? Daftar Sekarang &darr;</a>
+        </div>
+      </div>
+    </div><!-- /calcProtected -->
   </div>
 </section>
 
@@ -498,57 +557,88 @@
 
 <script>
 (function() {
-  // Commission data
-  var COMMISSION = {
-    mdwa5:  { fyc: 0.05, renewal: 0.05 },
-    mdwa10: { fyc: 0.15, renewal: 0.10 },
-    mdla5:  { fyc: 0.10, renewal: 0.10 },
-    mdla10: { fyc: 0.20, renewal: 0.20 },
-    mdla15: { fyc: 0.225, renewal: 0.225 },
-    mdla20: { fyc: 0.25, renewal: 0.25 },
-    miuhc:  { fyc: 0.15, renewal: 0.15 },
-    flexi:  { fyc: 0.20, renewal: 0.20 },
-    mdsa:   { fyc: 0.25, renewal: 0.20 },
-    mission:{ fyc: 0.25, renewal: 0.20 }
-  };
+  // ── Calculator Auth ──
+  var CALC_PASSWORD = 'petrusjakub';
 
-  function formatRupiah(num) {
-    var rounded = Math.round(num);
-    return 'Rp ' + rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  function checkCalcAuth() {
+    if (sessionStorage.getItem('pc_rekrut_calc_auth') === 'true') {
+      showCalc();
+    }
   }
 
-  function calculate() {
-    var polis = parseInt(document.getElementById('calcPolis').value) || 0;
-    var premi = parseInt(document.getElementById('calcPremi').value) || 0;
-    var produk = document.getElementById('calcProduk').value;
-    var data = COMMISSION[produk];
-    if (!data) return;
-
-    // APE = premi per bulan * 12 (monthly regular premium = 100% APE)
-    var APE = premi * 12;
-    // FYC per polis = APE * commission_rate
-    var fycPerPolis = APE * data.fyc;
-    // Total monthly FYC = FYC_per_polis * jumlah_polis
-    var totalFYC = fycPerPolis * polis;
-    // Renewal Year 2 = renewal_rate * APE * jumlah_polis
-    var renewal = data.renewal * APE * polis;
-    // Override = 25% of Total FYC (if recruiting 1 agent doing same volume)
-    var override = 0.25 * totalFYC;
-
-    document.getElementById('resFYC').textContent = formatRupiah(totalFYC);
-    document.getElementById('resRenewal').textContent = formatRupiah(renewal);
-    document.getElementById('resOverride').textContent = formatRupiah(override);
+  function showCalc() {
+    document.getElementById('calcAuthGate').style.display = 'none';
+    document.getElementById('calcProtected').style.display = 'block';
+    initCalculator();
   }
 
-  // Auto-calculate on input change
-  document.getElementById('calcPolis').addEventListener('input', calculate);
-  document.getElementById('calcPremi').addEventListener('input', calculate);
-  document.getElementById('calcProduk').addEventListener('change', calculate);
+  function handleCalcLogin() {
+    var input = document.getElementById('calcAuthPassword').value;
+    if (input === CALC_PASSWORD) {
+      sessionStorage.setItem('pc_rekrut_calc_auth', 'true');
+      showCalc();
+    } else {
+      document.getElementById('calcAuthError').style.display = 'block';
+    }
+  }
 
-  // Initial calculation
-  calculate();
+  document.getElementById('calcAuthBtn').addEventListener('click', handleCalcLogin);
+  document.getElementById('calcAuthPassword').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleCalcLogin();
+  });
 
-  // Registration form handler
+  checkCalcAuth();
+
+  // ── Income Calculator ──
+  var calcInitialized = false;
+  function initCalculator() {
+    if (calcInitialized) return;
+    calcInitialized = true;
+
+    var COMMISSION = {
+      mdwa5:  { fyc: 0.05, renewal: 0.05 },
+      mdwa10: { fyc: 0.15, renewal: 0.10 },
+      mdla5:  { fyc: 0.10, renewal: 0.10 },
+      mdla10: { fyc: 0.20, renewal: 0.20 },
+      mdla15: { fyc: 0.225, renewal: 0.225 },
+      mdla20: { fyc: 0.25, renewal: 0.25 },
+      miuhc:  { fyc: 0.15, renewal: 0.15 },
+      flexi:  { fyc: 0.20, renewal: 0.20 },
+      mdsa:   { fyc: 0.25, renewal: 0.20 },
+      mission:{ fyc: 0.25, renewal: 0.20 }
+    };
+
+    function formatRupiah(num) {
+      var rounded = Math.round(num);
+      return 'Rp ' + rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function calculate() {
+      var polis = parseInt(document.getElementById('calcPolis').value) || 0;
+      var premi = parseInt(document.getElementById('calcPremi').value) || 0;
+      var produk = document.getElementById('calcProduk').value;
+      var data = COMMISSION[produk];
+      if (!data) return;
+
+      var APE = premi * 12;
+      var fycPerPolis = APE * data.fyc;
+      var totalFYC = fycPerPolis * polis;
+      var renewal = data.renewal * APE * polis;
+      var override = 0.25 * totalFYC;
+
+      document.getElementById('resFYC').textContent = formatRupiah(totalFYC);
+      document.getElementById('resRenewal').textContent = formatRupiah(renewal);
+      document.getElementById('resOverride').textContent = formatRupiah(override);
+    }
+
+    document.getElementById('calcPolis').addEventListener('input', calculate);
+    document.getElementById('calcPremi').addEventListener('input', calculate);
+    document.getElementById('calcProduk').addEventListener('change', calculate);
+
+    calculate();
+  }
+
+  // ── Registration Form ──
   document.getElementById('regForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var nama = document.getElementById('regNama').value.trim();
