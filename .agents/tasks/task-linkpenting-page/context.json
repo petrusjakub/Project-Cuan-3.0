@@ -1,0 +1,22 @@
+{
+  "project_type": "Static HTML/CSS/JS website (no build system)",
+  "language": "HTML, CSS, JavaScript",
+  "build_system": "None - static files served directly from /public/",
+  "test_framework": "None - manual verification via file structure and HTML validity",
+  "build_command": "N/A - static site, no build step",
+  "test_command": "N/A - verify by checking file existence and HTML structure",
+  "verification_instructions": "1. Verify linkpenting.html exists at /public/pages/linkpenting.html. 2. Verify the file contains password protection with password 'petrusjakub'. 3. Verify accordion sections exist for all source content. 4. Verify quick-nav buttons at top. 5. Verify link added to header.html mobile menu. 6. Verify link added to footer.html. 7. Verify link added to index.html.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML project",
+  "environment_constraints": "No build tools needed. Static HTML files only.",
+  "contribution_requirements": "Follow existing design system patterns from agen-tools.html. Use CSS variables (--jade, --bg-card, --border, etc.). Support dark mode via html.dark class.",
+  "key_patterns": "Password-protected pages use .auth-box pattern with sessionStorage. Content sections use .tools-section cards. Header/footer loaded via JS from /components/. Pages link to /assets/style.css for base styling. Inline <style> blocks for page-specific CSS.",
+  "relevant_files": [
+    "public/pages/agen-tools.html (PATTERN - password auth, styling, structure)",
+    "public/components/header.html (ADD link after Khusus Agen in mobile-menu)",
+    "public/components/footer.html (ADD link after Khusus Agen in Info column)",
+    "public/index.html (ADD link in AGEN TOOLS LINK section around line 573-584)",
+    "Source/Agency/Manulife File Penting - Directory Per 02 Juni 2026 (2)-converted.html (SOURCE DATA)"
+  ],
+  "directory_structure": "public/ contains index.html, assets/ (style.css, main.js), components/ (header.html, footer.html), pages/ (all product pages). Source/ contains raw converted HTML files used as data sources."
+}
