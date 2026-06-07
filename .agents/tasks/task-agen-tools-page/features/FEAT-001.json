@@ -38,5 +38,5 @@
     "Run: grep -c 'sessionStorage' /projects/sandbox/Project-Cuan-3.0/public/pages/agen-tools.html - should return at least 1 (auth session)"
   ],
   "blocked_reason": null,
-  "findings": "Page created successfully at /public/pages/agen-tools.html. All verification checks pass: no PL attributions, password protection works with pc_agen_tools_auth sessionStorage key, all 5 income tables included, 41 Google Drive links present, dark mode supported."
+  "findings": "Page created successfully at /public/pages/agen-tools.html. All verification checks pass: no PL attributions, password protection works with pc_agen_tools_auth sessionStorage key, all 5 income tables included, 41 Google Drive links present, dark mode supported. Post-review fix: (1) Removed commission tables from komisi-agen.html and replaced with redirect notice to agen-tools.html page. (2) Fixed Selling Tools item ordering - moved J. Lain Lain to correct position after I and before K."
 }
