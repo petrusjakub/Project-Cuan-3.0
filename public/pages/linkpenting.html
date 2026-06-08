@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Penting — Perpustakaan Digital BMI Manulife | PROJECTCUAN</title>
+  <meta name="description" content="Perpustakaan Digital BMI Manulife - Khusus untuk Nasabah dan Tim Project Cuan. Kumpulan link penting produk knowledge Manulife.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── LINK PENTING PAGE EXTRAS ── */
+    .agen-hero {
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
+      padding: clamp(80px, 10vw, 120px) 0 clamp(40px, 6vw, 60px);
+    }
+    .agen-hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: var(--sp-3);
+    }
+
+    /* Auth */
+    .auth-box {
+      max-width: 400px;
+      margin: 60px auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8);
+      text-align: center;
+    }
+    .auth-box h2 {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .auth-box p {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      margin-bottom: var(--sp-5);
+    }
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg);
+      color: var(--txt);
+      font-size: var(--fs-sm);
+      font-family: var(--ff-body);
+      margin-bottom: var(--sp-4);
+      text-align: center;
+    }
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--jade);
+    }
+    .auth-error {
+      color: #ef4444;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      margin-bottom: var(--sp-3);
+      display: none;
+    }
+
+    /* Quick Nav */
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: var(--sp-6);
+      padding: var(--sp-5);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+    }
+    .quick-nav-title {
+      width: 100%;
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .quick-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 14px;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--txt-sub);
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .quick-nav a:hover {
+      border-color: var(--jade);
+      color: var(--jade);
+      background: rgba(16,185,129,0.05);
+    }
+
+    /* Accordion */
+    .accordion-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      margin-bottom: var(--sp-4);
+      overflow: hidden;
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-5) var(--sp-6);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s ease;
+    }
+    .accordion-header:hover {
+      background: var(--bg-alt);
+    }
+    .accordion-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .accordion-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--jade);
+      color: #fff;
+      border-radius: 50%;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .accordion-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+    }
+    .accordion-subtitle {
+      font-size: var(--fs-xs);
+      color: var(--txt-sub);
+      margin-top: 2px;
+    }
+    .accordion-chevron {
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      color: var(--txt-sub);
+    }
+    .accordion-card.active .accordion-chevron {
+      transform: rotate(180deg);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .accordion-card.active .accordion-content {
+      max-height: 2000px;
+    }
+    .accordion-body {
+      padding: 0 var(--sp-6) var(--sp-6);
+      border-top: 1px solid var(--border);
+      padding-top: var(--sp-5);
+    }
+
+    /* Links list inside accordion */
+    .tools-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .tools-list li {
+      border-radius: var(--r-sm);
+      transition: background-color 0.15s ease;
+    }
+    .tools-list li:hover {
+      background: var(--bg-alt);
+    }
+    .tools-list li a {
+      color: var(--txt-sub);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--r-sm);
+      transition: color 0.2s ease;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+    }
+    .tools-list li a:hover {
+      color: var(--jade);
+    }
+    .tools-list .file-icon {
+      font-size: 1em;
+      flex-shrink: 0;
+    }
+    .tools-list li span.no-link {
+      color: var(--txt-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      font-style: italic;
+    }
+    .folder-btn-tools {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--jade);
+      color: #fff !important;
+      padding: 10px 20px;
+      border-radius: var(--r-md);
+      font-weight: 600;
+      font-size: var(--fs-sm);
+      text-decoration: none !important;
+      margin-top: var(--sp-4);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .folder-btn-tools:hover {
+      background: var(--jade-dark);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .accordion-header { padding: var(--sp-4); }
+      .accordion-body { padding: 0 var(--sp-4) var(--sp-4); padding-top: var(--sp-4); }
+      .quick-nav { padding: var(--sp-4); }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="agen-hero">
+  <div class="container" style="position:relative;z-index:1">
+    <nav class="breadcrumb" style="margin-bottom:var(--sp-6)">
+      <a href="/index.html" style="color:rgba(255,255,255,0.5)">Beranda</a>
+      <span class="breadcrumb-sep" style="color:rgba(255,255,255,0.3)">&rsaquo;</span>
+      <span class="breadcrumb-current">Link Penting</span>
+    </nav>
+    <h1 class="agen-hero-title">Link Penting</h1>
+    <p style="color:rgba(255,255,255,0.7);font-size:var(--fs-md);max-width:600px">
+      Perpustakaan Digital BMI Manulife - Khusus untuk Nasabah dan Tim Project Cuan. Silahkan klik info yang anda inginkan.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     AUTH GATE
+═══════════════════════════════════════════ -->
+<div id="authGate">
+  <div class="auth-box">
+    <h2>&#128274; Halaman Terkunci</h2>
+    <p>Masukkan password untuk mengakses Link Penting.</p>
+    <div class="auth-error" id="authError">Password salah</div>
+    <input type="password" class="auth-input" id="authPassword" placeholder="Masukkan password">
+    <button class="btn btn--jade btn--block" id="authBtn">Masuk</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PROTECTED CONTENT
+═══════════════════════════════════════════ -->
+<div id="protectedContent" style="display:none">
+
+<section class="section">
+  <div class="container">
+
+    <!-- QUICK NAV -->
+    <div class="quick-nav">
+      <div class="quick-nav-title">&#9889; Navigasi Cepat - Simple Produk Knowledge</div>
+      <a href="#miuhc">MIUHC</a>
+      <a href="#mdla">MDLA</a>
+      <a href="#mps-flexi">MPS Flexi</a>
+      <a href="#mpps">MPPS</a>
+      <a href="#mccp">MCCP</a>
+      <a href="#mdwa">MDWA</a>
+      <a href="#msp">MSP</a>
+      <a href="#mifip">MIFIP</a>
+      <a href="#miprecious">MiPrecious</a>
+      <a href="#mpds">MPDS</a>
+      <a href="#pap">PAP</a>
+      <a href="#mission">Mission Syariah</a>
+      <a href="#mdsa">MDSA</a>
+      <a href="#miaction">MiAction</a>
+    </div>
+
+    <h2 style="font-family:var(--ff-head);font-size:var(--fs-xl);font-weight:700;color:var(--txt-head);margin-bottom:var(--sp-5)">I. Simple Produk Knowledge</h2>
+
+    <!-- 1. MIUHC -->
+    <div class="accordion-card" id="miuhc">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">1</span>
+          <div>
+            <div class="accordion-title">MIUHC</div>
+            <div class="accordion-subtitle">Askes Kesehatan Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/12Tmz6K1OKdt0WHrnB_8jUbzyqwIUt19W/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur - MIUHC</a></li>
+            <li><a href="https://drive.google.com/file/d/1Lm7EOLBcQqRoshnC53W1YKYI92Yn1gHm/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B1. Tabel Premi Miuhc Syariah - Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/1bWGcRGfFOPILKH-rFwMiWIpxDhATWVIj/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B2. Tabel Premi Miuhc Konvensional - Quick PDF</a></li>
+            <li><a href="https://docs.google.com/spreadsheets/d/1peh6QVIOJ-sEl8Yz1pToakNT_ZBXxSw7RQU9mcHjDyw/edit?usp=sharing" target="_blank"><span class="file-icon">&#128202;</span> B3. Tabel Premi MIUHC Versi Excel</a></li>
+            <li><a href="https://drive.google.com/file/d/1Y3ZYXWNuo9c--scuDw7-oZjCoc4zQW_E/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi MIUHC</a></li>
+            <li><a href="https://drive.google.com/file/d/1L6UqwvioLkEwedk-lT73oJmbOVVMsYcw/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> D. Tabel Manfaat Miuhc by PL</a></li>
+            <li><a href="https://drive.google.com/file/d/16sTddzLj27mNB8eUm5m44h0q-fAAXkN-/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> E. Pengecualian &amp; Masa Tunggu 12 Bulan</a></li>
+            <li><a href="https://drive.google.com/file/d/1Ce8SvveXpjdrlAEYcubPW1RpD5RNUNN_/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Panduan Registrasi Halodoc</a></li>
+            <li><a href="https://drive.google.com/file/d/1A2q_s-HzoMmVe9G0hWvzu-yArP6eoByW/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> G. Ringkasan Manfaat &amp; Pengecualian</a></li>
+            <li><a href="https://drive.google.com/file/d/12JCS_UjDbt4DEEY7LwYcEeajfv6blmyE/view?usp=drive_link" target="_blank"><span class="file-icon">&#10067;</span> H. FAQ (Tanya Jawab) Miuhc</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1mJbf_ckEMLiVTY0WbvNIy0FT7OuAwFWT?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> I. Info Pelayanan Medix</a></li>
+            <li><a href="https://drive.google.com/file/d/1LCc46o3G6vmstSEi_2E_9iWukrlEzkj9/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> J. Ecard Via Manulife ID</a></li>
+            <li><a href="https://www.manulife.co.id/id/layanan/rumah-sakit-rekanan.html" target="_blank"><span class="file-icon">&#127975;</span> K. Link RS Prefered Manulife</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1Ij9PqHRreM6xN1NKkpfHqH95XvImlr6v?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> L. Hal Detail &amp; Lainnya MIUHC</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1eOV9uft2xoQPPrVAa7CcXmK-ApFrpJB-?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. MDLA -->
+    <div class="accordion-card" id="mdla">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">2</span>
+          <div>
+            <div class="accordion-title">MDLA</div>
+            <div class="accordion-subtitle">Warisan - Pensiun Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1bqUoc24T-GM28-DE4YaT_7QAcgFOV9h8/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur - MDLA</a></li>
+            <li><a href="https://drive.google.com/file/d/1Q3uS9Cc8lofX1IzR4jpAiYGIIoEAXdku/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi MDLA Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1wJnSrhpmKXXU4hRHWHhJ5bxCVD7UTPJ3?usp=sharing" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi MDLA</a></li>
+            <li><a href="https://drive.google.com/file/d/13QTGrTy0yOPFXcaVX8DlAe9P7HrvYZVT/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training MDLA</a></li>
+            <li><a href="https://youtu.be/YcIinwaXWa0?si=uUc_ONgc8hsndczE" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan MDLA (Lihat Info Pada Menu)</a></li>
+            <li><a href="https://drive.google.com/file/d/1quFRqskbgnYB_6bRWt8dE8O5xYtfTWgm/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Kuesioner Gaspen (Gerakan Sadar Pensiun)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1pHITCjX8ety7BVWAuJKdAHZmT7Jthu7P?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> G. Hal Detail &amp; Lainnya MDLA</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFK2oXxbn-_IgmPls8GxHuXr" target="_blank"><span class="file-icon">&#9654;&#65039;</span> H. Video Youtube MDLA</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1L66SApcAB7pk6Hzlhh0Mvc2py_zxvwCs?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. MPS Flexi -->
+    <div class="accordion-card" id="mps-flexi">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">3</span>
+          <div>
+            <div class="accordion-title">MPS Flexi</div>
+            <div class="accordion-subtitle">Warisan - Pensiun Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/133FDZCIJ-yZTWRoPPacj8axypDQZeVyK/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur - MPS</a></li>
+            <li><a href="https://drive.google.com/file/d/18_7hsSwAywGHrcTjrttG6Xfdxq_DcxyP/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi MPS Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1daMKImkB-vzWpYqVUEWZ2DrJlHOcCBGE?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi MPS Balik Modal 120%</a></li>
+            <li><a href="https://drive.google.com/file/d/18ncIoOGn19GiOXLCFDug3yLTFpfv18u4/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training MPS</a></li>
+            <li><a href="https://www.youtube.com/live/yQeyGcqpdsg?si=rxwr6bpXsy3s5bJs" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan MPS</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1llUxYU1Nkl0hhZKVi0yLWKzvFzyxlfjz?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya MPS</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFJdWqt4BtpbTf3FgGv_yoRi" target="_blank"><span class="file-icon">&#9654;&#65039;</span> G. Video Youtube MPS Flexi</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1GL5ZcaXUwr9Ayt1CLUAiwhdIW_wK5xBf?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. MPPS -->
+    <div class="accordion-card" id="mpps">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">4</span>
+          <div>
+            <div class="accordion-title">MPPS</div>
+            <div class="accordion-subtitle">Asuransi Pendidikan - Critical Illness - Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1b7NcTEreP7qWHOS_aYPukUlBuhB6OQ-e/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur - MPPS</a></li>
+            <li><a href="https://drive.google.com/file/d/13RXeCtmec3SfMXqnt898nyP28eqyspsF/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi MPPS Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/1imdAiOVQD5OavjcruPBxrg3Ylh4YdE__/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi MPPS</a></li>
+            <li><a href="https://drive.google.com/file/d/1ifHF5KfZHv5SDSQTkV62_Yz8ggXIcMIi/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training MPPS</a></li>
+            <li><a href="https://youtu.be/D3uwNjD_gbk?si=WJNeB2tjBYgWA22d" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan MPPS (Lihat Menu Info)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1KkNxJ3Vr948pjxk2F-fmSCQmy2c9_rcr?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya MPPS</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFJTVTWfZ_AgD4FUmJYaCcR5" target="_blank"><span class="file-icon">&#9654;&#65039;</span> G. Video Youtube MPPS</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1iW_lxllcdNy9h-NHApdvyi9TcjyHQdqo?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. MCCP -->
+    <div class="accordion-card" id="mccp">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">5</span>
+          <div>
+            <div class="accordion-title">MCCP</div>
+            <div class="accordion-subtitle">Critical Illness - Jiwa - Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1ueX7u_Hy1QJil7bRKN9Vglp_Z_BGUSdN/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur - MCCP</a></li>
+            <li><a href="https://drive.google.com/file/d/1KOHgLCuXltKw78x9TTu7V1eQ2v7Rp78c/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi MCCP Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/1pnsb4QkkVFkHIm1FFpElzV0PCrEE-LlK/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi MCCP</a></li>
+            <li><a href="https://drive.google.com/file/d/1MZdrp4aODl3_phMKSmLBDY3WiqWeEz-m/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training MCCP</a></li>
+            <li><a href="https://drive.google.com/file/d/1G5mN0Xnv4eydhfiSCuBit-rwS3O273L9/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> E. Penjelasan Berbagai Penyakit Kritis</a></li>
+            <li><a href="https://drive.google.com/file/d/1aI8_S6jq1eDEC9Yc82TJatmZMDLMs26w/view?usp=drive_link" target="_blank"><span class="file-icon">&#128203;</span> F. Cheat Sheet (Unik Selling Poin MCCP)</a></li>
+            <li><a href="https://youtu.be/YcIinwaXWa0?si=HWzIe2M9kn2vS_Vf" target="_blank"><span class="file-icon">&#9654;&#65039;</span> G. Youtube Penjelasan MCCP (Lihat Menu Info)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1c1Paf-mB3lqccJbNoRTOQNYfAOuLCiiW?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> H. Hal Detail &amp; Lainnya MCCP</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1vKgC6U8fmVDC8UtkEaGpTcLq4yWsSXMP?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. MDWA -->
+    <div class="accordion-card" id="mdwa">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">6</span>
+          <div>
+            <div class="accordion-title">MDWA</div>
+            <div class="accordion-subtitle">Pengelolaan Dana - Investasi - Virtual Property - Pensiun - Tradisional - Trust Fund</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1ETPCsGJo3qNjy4Hp675IeRqJziurn0aq/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur - MDWA</a></li>
+            <li><a href="https://drive.google.com/file/d/1-QoU58kWJzvNI0-b1nWu2TyuPnVcxfwW/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi MDWA Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/12Z72Kx4GVPqFyhQp8QjSMCA27wXGW82b/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi MiAction</a></li>
+            <li><a href="https://drive.google.com/file/d/1xikGjj8OosiADInLpKuLDBPsWh--rZA4/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training MDWA</a></li>
+            <li><a href="https://youtube.com/live/_xvcTmVdUtk" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan MDWA</a></li>
+            <li><a href="https://drive.google.com/drive/folders/11uxMj-YC2Y1-kRILlZS1-873SdXvAK1z?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya MDWA</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1bCaZrInl5DIiPKCIcBYO69J-VJ5i8KkJ?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> G. Komik MDWA</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFJ6sKrZaICET1SgaHAWNvmD" target="_blank"><span class="file-icon">&#9654;&#65039;</span> H. Video Youtube MDWA</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. MSP -->
+    <div class="accordion-card" id="msp">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">7</span>
+          <div>
+            <div class="accordion-title">MSP</div>
+            <div class="accordion-subtitle">Pengelolaan Dana - Investasi - Virtual Property - Trust Fund - Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/12nnmm-KNtN8pHiltneSiF46qe5O4D_jt/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur - MSP</a></li>
+            <li><a href="https://drive.google.com/file/d/1QJv7XEB4qfgZ7wcjYAazc_Lfak87vQs-/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi MSP Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/1DEM1RXj9sD2Fq549vD4sAR6BlSS_Ylhf/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi MSP</a></li>
+            <li><a href="https://drive.google.com/file/d/1BYpxMxCvI-fJCDojq8_Rgc_GoXF8ub1Q/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training MSP</a></li>
+            <li><a href="https://drive.google.com/file/d/1Kcvtfi-OSiBVMBT4gzHeUK_dDIr9ZfUc/view?usp=drive_link" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Video Selling Idea MSP - Mengawetkan Uang</a></li>
+            <li><a href="https://drive.google.com/file/d/1hbEB9bZpN0_xY3dTpR3Q7tAC7NnSHQD7/view?usp=drive_link" target="_blank"><span class="file-icon">&#10067;</span> F. FAQ MSP - Tanya Jawab Seputar MSP</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1VRTGTCLT2vgkYgK2Xvn7DhZxFVkogoNT?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> G. Hal Detail &amp; Lainnya MSP</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1xxBPG9Z7ylyPiFQ7jDsvZtqYCLL6BT-u?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. MIFIP -->
+    <div class="accordion-card" id="mifip">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">8</span>
+          <div>
+            <div class="accordion-title">MIFIP</div>
+            <div class="accordion-subtitle">Pensiun - Investasi - Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1M69DJu-dw4hmMKg1TNkdt-gJGiPZOdmU/view?usp=drivesdk" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur MIFIP</a></li>
+            <li><span class="no-link"><span class="file-icon">&#128196;</span> B. Tabel Premi (Belum Ada)</span></li>
+            <li><a href="https://drive.google.com/file/d/1N9AMdKSq6D4aiUX_bXWN3gpwjw4OjgZa/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi</a></li>
+            <li><a href="https://drive.google.com/file/d/1CNnHunTR9kF_BI5zjvtUvTfh3di6Siyb/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFKOhgXi27kzpCAvN9MS03CC" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan (Lihat Menu Info)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1JUtODgBE9RTYny7Fo-eyAMg8-tl182vC?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFKOhgXi27kzpCAvN9MS03CC" target="_blank"><span class="file-icon">&#9654;&#65039;</span> G. Video Youtube MIFIP</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1pbyz35eCbgKMW9eB6kXgb2jihQqiD5Ku" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. MiPrecious -->
+    <div class="accordion-card" id="miprecious">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">9</span>
+          <div>
+            <div class="accordion-title">MiPrecious</div>
+            <div class="accordion-subtitle">Warisan Antar Generasi - Pengelolaan Dana - Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1XIqBGOdag2Ll83VplGFvCUCEL9whGy_u/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur MiPrecious</a></li>
+            <li><span class="no-link"><span class="file-icon">&#128196;</span> B. Tabel Premi Versi Quick PDF (Belum Ada)</span></li>
+            <li><a href="https://drive.google.com/file/d/1Nfyb_G2z4yhrmxpJnhIiaW5erKX1Jist/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi</a></li>
+            <li><a href="https://drive.google.com/file/d/1CN6_H6RuYv6uPRr1Mx9EELQ92xfwPNyZ/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training</a></li>
+            <li><a href="https://youtube.com/playlist?list=PLmW8OriV3NFL69t59wJkSqcplSw2rtjQl&si=TI3pELnIaDaPJK8w" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan (Lihat Menu Info)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1Uxh6by8bkjcsZDihjDGGlNwH-lrG8CgN?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFLyUyCAZ-A0yp-Dqx-9GqaX" target="_blank"><span class="file-icon">&#9654;&#65039;</span> G. Video Youtube MiPrecious</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1gqDVwus1qMIYmZIfmtZc-O2SUCBNUbFj?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. MPDS -->
+    <div class="accordion-card" id="mpds">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">10</span>
+          <div>
+            <div class="accordion-title">MPDS</div>
+            <div class="accordion-subtitle">Jiwa - Critical Illness - Pensiun - Investasi</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1bEQxSI4Vq3VQVwexNlJpHnW1Y_-0Dqkh/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur MPDS</a></li>
+            <li><span class="no-link"><span class="file-icon">&#128196;</span> B. Tabel Premi Versi Quick PDF (Belum Ada)</span></li>
+            <li><a href="https://drive.google.com/file/d/1NKoWkHPyMRPT7BvnWaQjZkTedUJ3Cit7/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi</a></li>
+            <li><a href="https://drive.google.com/file/d/1s2JUz4wgYfGECRJNMvHd0LRTTHMwvVGU/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFKn8h7OcPU9SbE_T_DKXKZW" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan (Lihat Menu Info)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1vqS_2Lfo9EBDofJC3ZSKsKI-gI0bBUmE?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1QMyHEAFqkWGMksw_DII3VxY0ljm9jAMM?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. PAP -->
+    <div class="accordion-card" id="pap">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">11</span>
+          <div>
+            <div class="accordion-title">PAP</div>
+            <div class="accordion-subtitle">Proteksi Asuransi Prima - Jiwa Tradisional</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1clAYa8mvXCnTYxZBjbvCKWtXR4mMGp-h/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur PAP</a></li>
+            <li><a href="https://drive.google.com/file/d/1pjyxKRaSNejnJhRqJ7Zz4_VOcxhx_2C4/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi PAP Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/1co5Vbzp3UcTEqZlFBYNMuobgR-mPpPIN/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi</a></li>
+            <li><a href="https://drive.google.com/file/d/1R-IVp-t_cJF2YtpYaD8m9MYFqSRtxN3u/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFJ8tYCv11pYXJiDEbpFGx04" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan (Lihat Menu Info)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1WkfRCa6M2cXcJ6vwvNNGf8AqxnB-EZw9?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1BzgxvxbG_TknYkYo8hsRWgHEDHHp1uFQ?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. Mission Syariah -->
+    <div class="accordion-card" id="mission">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">12</span>
+          <div>
+            <div class="accordion-title">Mission Syariah</div>
+            <div class="accordion-subtitle">Asuransi Jiwa Syariah - Investasi</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1NMBcSz9X-SKy7OBm5wptQq5sTaGCwHaT/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur Mission Syariah</a></li>
+            <li><a href="https://drive.google.com/file/d/1SjCUfaZm9D5FkLQaEPcG-aMOCcGR3ZXn/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi Mission Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/1uCdvpRiwIJKA_a3VxFRrCVcSmVGnlrQc/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi</a></li>
+            <li><a href="https://drive.google.com/file/d/1WLZZivcq6_Dh1pHHG7sKvXLrGzU2NjIG/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFKbOvGU0W2kF2nsdTbBQwEk" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan (Lihat Menu Info)</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1Hha7LyF1zrhgIU5YnjmNAFU67mahCtEU?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. MDSA -->
+    <div class="accordion-card" id="mdsa">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">13</span>
+          <div>
+            <div class="accordion-title">MDSA</div>
+            <div class="accordion-subtitle">Manulife Dana Sejahtera Amanah - Syariah</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/1QbwrHUGZR0e69BuAyU40DKN0YZw8DqtM/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Brosur MDSA</a></li>
+            <li><a href="https://drive.google.com/file/d/1K-14BuOlcVQvt5wdlx0RhAy8HoFKAtYj/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Tabel Premi MDSA Versi Quick PDF</a></li>
+            <li><a href="https://drive.google.com/file/d/1kF_H4OqmY-sAGsxZOaahqJQA5DnJcqTZ/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> C. Contoh Ilustrasi</a></li>
+            <li><a href="https://drive.google.com/file/d/1sIqG90mBRjaqxJ8yfijQfBivY_5tNIGK/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> D. Materi Training</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFLi4R3WpVwIoGn5HDivRhvR" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Youtube Penjelasan (Lihat Menu Info)</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1oLaTCW-lRU0XlXIE_mJlFcVKGLCqo8C8?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> F. Hal Detail &amp; Lainnya</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1pjLKr29q6PUbp8q0-Iok-kbkVMi2clX4?usp=drive_link" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. MiAction -->
+    <div class="accordion-card" id="miaction">
+      <div class="accordion-header">
+        <div class="accordion-header-left">
+          <span class="accordion-num">14</span>
+          <div>
+            <div class="accordion-title">MiAction</div>
+            <div class="accordion-subtitle">Investasi - Pengelolaan Dana (bagian dari MDWA)</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          <ul class="tools-list">
+            <li><a href="https://drive.google.com/file/d/12Z72Kx4GVPqFyhQp8QjSMCA27wXGW82b/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> A. Contoh Ilustrasi MiAction</a></li>
+            <li><a href="https://drive.google.com/file/d/1ETPCsGJo3qNjy4Hp675IeRqJziurn0aq/view?usp=drive_link" target="_blank"><span class="file-icon">&#128196;</span> B. Brosur MDWA / MiAction</a></li>
+            <li><a href="https://drive.google.com/file/d/1xikGjj8OosiADInLpKuLDBPsWh--rZA4/view?usp=drive_link" target="_blank"><span class="file-icon">&#128218;</span> C. Materi Training MDWA</a></li>
+            <li><a href="https://youtube.com/live/_xvcTmVdUtk" target="_blank"><span class="file-icon">&#9654;&#65039;</span> D. Youtube Penjelasan MDWA</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLmW8OriV3NFJ6sKrZaICET1SgaHAWNvmD" target="_blank"><span class="file-icon">&#9654;&#65039;</span> E. Video Youtube MDWA / MiAction</a></li>
+          </ul>
+          <a class="folder-btn-tools" href="https://drive.google.com/drive/folders/1J7p5f6UzA3ZFfSU1jTxSCJC29FYCPjP6?usp=sharing" target="_blank">&#128193; Klik Disini Untuk ISI FOLDER Lengkap</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /protectedContent -->
+
+<div id="site-footer"></div>
+
+<script>
+(function() {
+  var PASSWORD = 'petrusjakub';
+
+  function checkAuth() {
+    if (sessionStorage.getItem('pc_linkpenting_auth') === 'true') {
+      showContent();
+    }
+  }
+
+  function showContent() {
+    document.getElementById('authGate').style.display = 'none';
+    document.getElementById('protectedContent').style.display = 'block';
+  }
+
+  function handleLogin() {
+    var input = document.getElementById('authPassword').value;
+    if (input === PASSWORD) {
+      sessionStorage.setItem('pc_linkpenting_auth', 'true');
+      showContent();
+    } else {
+      document.getElementById('authError').style.display = 'block';
+    }
+  }
+
+  document.getElementById('authBtn').addEventListener('click', handleLogin);
+  document.getElementById('authPassword').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleLogin();
+  });
+
+  checkAuth();
+
+  // Accordion functionality
+  var headers = document.querySelectorAll('.accordion-header');
+  headers.forEach(function(header) {
+    header.addEventListener('click', function() {
+      var card = this.parentElement;
+      card.classList.toggle('active');
+    });
+  });
+})();
+</script>
+<script src="/assets/main.js"></script>
+</body>
+</html>
