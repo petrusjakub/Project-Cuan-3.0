@@ -183,6 +183,22 @@
       line-height: 1.7;
       text-align: left;
     }
+    /* Carousel */
+    #bisnisCarousel::-webkit-scrollbar { display: none; }
+    .carousel-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.4);
+      background: transparent;
+      cursor: pointer;
+      transition: all var(--ease);
+      padding: 0;
+    }
+    .carousel-dot.active, .carousel-dot:hover {
+      background: var(--jade);
+      border-color: var(--jade);
+    }
+
     @media (max-width: 768px) {
       .quadrant-grid { grid-template-columns: 1fr; }
       .income-table { font-size: var(--fs-xs); }
@@ -215,6 +231,39 @@
         allowfullscreen
         style="display:block;aspect-ratio:16/9;width:100%;height:auto;min-height:300px">
       </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     IMAGE CAROUSEL — RAHASIA MELINDUNGI KELUARGA
+═══════════════════════════════════════════ -->
+<section class="section" style="background:#0D1B2A;padding-top:var(--sp-10);padding-bottom:var(--sp-10)" aria-labelledby="carousel-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <h2 id="carousel-heading" style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:var(--sp-4)" class="fade-up">
+        Rahasia Melindungi Keluarga dan <span style="color:var(--jade)">Menjadi Kaya</span>
+      </h2>
+    </div>
+    <div style="position:relative;max-width:800px;margin:0 auto" class="fade-up stagger-1">
+      <div id="bisnisCarousel" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--sp-4);border-radius:var(--r-xl);scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth">
+        <img src="/Source/Agency/555/01.webp" alt="Slide 1" style="min-width:100%;scroll-snap-align:center;border-radius:var(--r-xl);object-fit:contain" loading="lazy">
+        <img src="/Source/Agency/555/02.webp" alt="Slide 2" style="min-width:100%;scroll-snap-align:center;border-radius:var(--r-xl);object-fit:contain" loading="lazy">
+        <img src="/Source/Agency/555/03.webp" alt="Slide 3" style="min-width:100%;scroll-snap-align:center;border-radius:var(--r-xl);object-fit:contain" loading="lazy">
+        <img src="/Source/Agency/555/04.webp" alt="Slide 4" style="min-width:100%;scroll-snap-align:center;border-radius:var(--r-xl);object-fit:contain" loading="lazy">
+        <img src="/Source/Agency/555/05.webp" alt="Slide 5" style="min-width:100%;scroll-snap-align:center;border-radius:var(--r-xl);object-fit:contain" loading="lazy">
+      </div>
+      <!-- Navigation buttons -->
+      <button onclick="bisnisCarouselNav(-1)" aria-label="Previous slide" style="position:absolute;top:50%;left:-16px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--jade);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-md);transition:all var(--ease)">&#10094;</button>
+      <button onclick="bisnisCarouselNav(1)" aria-label="Next slide" style="position:absolute;top:50%;right:-16px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--jade);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-md);transition:all var(--ease)">&#10095;</button>
+      <!-- Dot indicators -->
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:var(--sp-5)" id="carouselDots">
+        <button onclick="bisnisCarouselGo(0)" class="carousel-dot active" aria-label="Go to slide 1"></button>
+        <button onclick="bisnisCarouselGo(1)" class="carousel-dot" aria-label="Go to slide 2"></button>
+        <button onclick="bisnisCarouselGo(2)" class="carousel-dot" aria-label="Go to slide 3"></button>
+        <button onclick="bisnisCarouselGo(3)" class="carousel-dot" aria-label="Go to slide 4"></button>
+        <button onclick="bisnisCarouselGo(4)" class="carousel-dot" aria-label="Go to slide 5"></button>
+      </div>
     </div>
   </div>
 </section>
@@ -994,6 +1043,49 @@ document.querySelectorAll('.quiz-opt').forEach(opt => {
 
 /* Init progress */
 bUpdateProgress(0);
+</script>
+
+<!-- ═══ CAROUSEL LOGIC ═══ -->
+<script>
+(function() {
+  const carousel = document.getElementById('bisnisCarousel');
+  const dots = document.querySelectorAll('.carousel-dot');
+  let currentSlide = 0;
+  const totalSlides = 5;
+
+  function updateDots(idx) {
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    currentSlide = idx;
+  }
+
+  window.bisnisCarouselNav = function(dir) {
+    currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+    carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
+    updateDots(currentSlide);
+  };
+
+  window.bisnisCarouselGo = function(idx) {
+    currentSlide = idx;
+    carousel.scrollTo({ left: carousel.offsetWidth * idx, behavior: 'smooth' });
+    updateDots(idx);
+  };
+
+  // Update dots on manual scroll
+  carousel.addEventListener('scrollend', function() {
+    const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+    updateDots(idx);
+  });
+
+  // Fallback for browsers without scrollend
+  let scrollTimer;
+  carousel.addEventListener('scroll', function() {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function() {
+      const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+      updateDots(idx);
+    }, 100);
+  });
+})();
 </script>
 
 <script src="/assets/main.js"></script>
