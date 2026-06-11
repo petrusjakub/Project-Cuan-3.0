@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Manulife Syariah — Asuransi Berbasis Tolong-Menolong | PROJECTCUAN</title>
+  <meta name="description" content="Kenali Manulife Syariah: asuransi berbasis prinsip ta'awun (tolong-menolong), sesuai fatwa DSN-MUI. Produk MPS Flexi, surplus underwriting, dan keunggulan asuransi syariah.">
+  <meta property="og:title" content="Tentang Manulife Syariah | PROJECTCUAN">
+  <meta property="og:description" content="Asuransi Manulife Syariah: prinsip tolong-menolong, sesuai fatwa DSN-MUI, dengan surplus underwriting untuk peserta.">
+  <meta name="theme-color" content="#00AC5B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── MANULIFE SYARIAH PAGE EXTRAS ── */
+    .syariah-hero {
+      background: linear-gradient(135deg, #0D1B2A 0%, #1a2e1a 100%);
+      padding: var(--sp-12) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .syariah-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,172,91,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .syariah-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,172,91,0.15);
+      color: var(--jade);
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      margin-bottom: var(--sp-5);
+    }
+    .syariah-hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: var(--sp-5);
+    }
+    .syariah-hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: var(--fs-md);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: var(--sp-5);
+    }
+
+    .video-section {
+      padding: var(--sp-10) 0;
+      background: var(--bg-alt);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--r-xl);
+      box-shadow: var(--sh-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: var(--r-xl);
+    }
+
+    .rezeki-img-section {
+      padding: var(--sp-8) 0;
+      background: var(--bg-alt);
+    }
+    .rezeki-img-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--sh-lg);
+    }
+    .rezeki-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .quote-section {
+      padding: var(--sp-10) 0;
+      background: linear-gradient(135deg, rgba(0,172,91,0.05) 0%, rgba(0,104,56,0.05) 100%);
+    }
+    .quote-card {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      padding: var(--sp-8);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      position: relative;
+      box-shadow: var(--sh-md);
+    }
+    .quote-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 80px;
+      line-height: 1;
+      color: var(--jade);
+      opacity: 0.3;
+      font-family: serif;
+    }
+    .quote-text {
+      font-family: var(--ff-head);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 700;
+      color: var(--txt-head);
+      line-height: 1.7;
+      margin-bottom: var(--sp-4);
+      font-style: italic;
+    }
+    .quote-author {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      font-weight: 600;
+    }
+    .quote-author span {
+      color: var(--jade);
+    }
+
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+    }
+    .principle-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .principle-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--jade), #00d474);
+    }
+    .principle-card:hover {
+      border-color: var(--jade-20);
+      transform: translateY(-3px);
+      box-shadow: var(--sh-md);
+    }
+    .principle-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--jade-10);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: var(--sp-4);
+    }
+    .principle-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .principle-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.7;
+    }
+
+    .akad-section {
+      padding: var(--sp-10) 0;
+    }
+    .akad-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--sp-5);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .akad-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .akad-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+    .akad-num {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 900;
+      color: var(--jade);
+      margin-bottom: var(--sp-2);
+    }
+    .akad-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .akad-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.7;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+      margin-top: var(--sp-6);
+    }
+    .comparison-table th {
+      background: var(--jade);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      letter-spacing: 0.04em;
+    }
+    .comparison-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+    .comparison-table tr:nth-child(even) td {
+      background: var(--bg-alt);
+    }
+    .comparison-table .highlight {
+      color: var(--jade);
+      font-weight: 700;
+    }
+
+    .surplus-section {
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
+      padding: var(--sp-10) 0;
+      color: #fff;
+    }
+    .surplus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-5);
+      text-align: center;
+    }
+    .surplus-card {
+      padding: var(--sp-5);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-lg);
+      background: rgba(255,255,255,0.03);
+    }
+    .surplus-icon {
+      font-size: 36px;
+      margin-bottom: var(--sp-3);
+    }
+    .surplus-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--sp-2);
+    }
+    .surplus-desc {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    .product-highlight {
+      padding: var(--sp-10) 0;
+    }
+    .product-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--sp-5);
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .feature-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: var(--sp-3);
+    }
+    .feature-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .feature-desc {
+      font-size: var(--fs-xs);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-5);
+      counter-reset: step;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      position: relative;
+      text-align: center;
+      transition: all var(--ease);
+      counter-increment: step;
+    }
+    .step-card::before {
+      content: counter(step);
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 28px;
+      background: var(--jade);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-head);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+    }
+    .step-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+    }
+    .step-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-top: var(--sp-3);
+      margin-bottom: var(--sp-2);
+    }
+    .step-desc {
+      font-size: var(--fs-xs);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .link-nav-section {
+      padding: var(--sp-6) 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .link-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-sm);
+      color: var(--jade);
+      text-decoration: none;
+      padding: var(--sp-3) var(--sp-5);
+      border: 1px solid var(--jade-20);
+      border-radius: var(--r-full);
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .link-nav-btn:hover {
+      background: var(--jade);
+      color: #fff;
+      border-color: var(--jade);
+    }
+
+    @media (max-width: 768px) {
+      .principle-grid { grid-template-columns: 1fr; }
+      .akad-grid { grid-template-columns: 1fr; }
+      .surplus-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-features { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .comparison-table { font-size: var(--fs-xs); }
+      .comparison-table th, .comparison-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     VIDEO SECTION (PALING AWAL)
+═══════════════════════════════════════════ -->
+<section class="video-section" aria-label="Video Asuransi Syariah Manulife">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="syariah-hero-tag fade-up">🎬 Video Pengenalan</span>
+      <h2 style="font-family:var(--ff-head);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:800;color:var(--txt-head);margin-top:var(--sp-3)" class="fade-up stagger-1">Mengenal Asuransi Syariah Manulife</h2>
+    </div>
+    <div class="video-wrapper fade-up stagger-2">
+      <iframe 
+        src="https://www.youtube.com/embed/awF7FKlNBr4" 
+        title="Asuransi Syariah Manulife Indonesia" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GAMBAR REZEKI
+═══════════════════════════════════════════ -->
+<section class="rezeki-img-section" aria-label="Rezeki Asuransi Syariah">
+  <div class="container">
+    <div class="rezeki-img-wrap fade-up">
+      <img src="/assets/rezeki-syariah.webp" alt="Rezeki melalui Asuransi Syariah Manulife" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="syariah-hero" aria-labelledby="syariah-heading">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="syariah-hero-tag fade-up">☪️ Asuransi Syariah</div>
+    <h1 id="syariah-heading" class="syariah-hero-title fade-up stagger-1">
+      Manulife Syariah Indonesia
+    </h1>
+    <p class="syariah-hero-sub fade-up stagger-2">
+      Asuransi syariah Manulife dibangun di atas prinsip <strong>ta'awun</strong> (tolong-menolong) dan <strong>tabarru'</strong> (hibah/sumbangan). Setiap peserta saling melindungi melalui Dana Tabarru' yang dikelola secara transparan sesuai prinsip syariah Islam.
+    </p>
+    <p class="syariah-hero-sub fade-up stagger-3" style="color:rgba(255,255,255,0.6);font-size:var(--fs-sm)">
+      Diawasi oleh Dewan Pengawas Syariah (DPS) dan sesuai dengan fatwa Dewan Syariah Nasional - Majelis Ulama Indonesia (DSN-MUI). Memberikan ketenangan lahir dan batin bagi keluarga Muslim Indonesia.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     QUOTE AA GYM
+═══════════════════════════════════════════ -->
+<section class="quote-section" aria-label="Kutipan Aa Gym">
+  <div class="container">
+    <div class="quote-card fade-up">
+      <p class="quote-text">
+        "Asuransi syariah itu bukan sekadar bisnis, tapi ibadah tolong-menolong sesama Muslim. Ketika kita melindungi saudara kita dari musibah, di situlah letak keberkahan yang sesungguhnya."
+      </p>
+      <p class="quote-author">
+        — <span>Aa Gym</span> (Abdullah Gymnastiar), Ulama & Da'i Indonesia
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRINSIP ASURANSI SYARIAH
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="prinsip-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Prinsip Dasar</span>
+      <h2 id="prinsip-heading" class="section-title fade-up">
+        Prinsip <span class="kw">Asuransi Syariah</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:640px;margin:0 auto">
+        Asuransi syariah berbeda dengan konvensional. Dibangun atas landasan Al-Quran dan Hadits tentang tolong-menolong dan saling melindungi.
+      </p>
+    </div>
+
+    <div class="principle-grid">
+      <div class="principle-card fade-up">
+        <div class="principle-icon">🤝</div>
+        <div class="principle-title">Ta'awun (Tolong-Menolong)</div>
+        <div class="principle-desc">
+          Peserta saling menolong dan melindungi satu sama lain melalui Dana Tabarru'. Bukan transfer risiko ke perusahaan, melainkan berbagi risiko sesama peserta (risk sharing).
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-1">
+        <div class="principle-icon">💝</div>
+        <div class="principle-title">Tabarru' (Hibah/Sumbangan)</div>
+        <div class="principle-desc">
+          Setiap peserta menghibahkan sebagian kontribusinya ke Dana Tabarru' dengan niat ikhlas untuk menolong peserta lain yang terkena musibah. Dana ini terpisah dari dana perusahaan.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-2">
+        <div class="principle-icon">⚖️</div>
+        <div class="principle-title">Bebas Riba, Gharar & Maisir</div>
+        <div class="principle-desc">
+          Tidak mengandung unsur riba (bunga), gharar (ketidakjelasan), dan maisir (judi/spekulasi). Semua transaksi jelas, adil, dan sesuai prinsip muamalah Islam.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-3">
+        <div class="principle-icon">📜</div>
+        <div class="principle-title">Sesuai Fatwa DSN-MUI</div>
+        <div class="principle-desc">
+          Seluruh produk dan operasional diawasi oleh Dewan Pengawas Syariah (DPS) dan mengacu pada fatwa Dewan Syariah Nasional - Majelis Ulama Indonesia.
+        </div>
+      </div>
+      <div class="principle-card fade-up">
+        <div class="principle-icon">🔍</div>
+        <div class="principle-title">Transparansi Pengelolaan</div>
+        <div class="principle-desc">
+          Dana Tabarru' dan dana investasi peserta dikelola secara transparan. Peserta mengetahui ke mana kontribusinya dialokasikan dan bagaimana hasilnya.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-1">
+        <div class="principle-icon">🌙</div>
+        <div class="principle-title">Investasi Halal</div>
+        <div class="principle-desc">
+          Seluruh dana diinvestasikan pada instrumen yang sesuai syariah, menghindari sektor yang diharamkan seperti alkohol, rokok, perjudian, dan riba.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     JENIS AKAD
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="akad-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Akad Syariah</span>
+      <h2 id="akad-heading" class="section-title fade-up">
+        Jenis <span class="kw">Akad</span> dalam Asuransi Syariah
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:640px;margin:0 auto">
+        Asuransi syariah Manulife menggunakan akad-akad yang sesuai dengan ketentuan syariah Islam.
+      </p>
+    </div>
+
+    <div class="akad-grid">
+      <div class="akad-card fade-up">
+        <div class="akad-num">01</div>
+        <div class="akad-title">Akad Tabarru'</div>
+        <div class="akad-desc">
+          Akad hibah dari peserta kepada Dana Tabarru' untuk tujuan tolong-menolong. Dana ini digunakan untuk membayar klaim/manfaat peserta yang terkena musibah. Peserta mengikhlaskan dana ini sebagai bentuk sedekah.
+        </div>
+      </div>
+      <div class="akad-card fade-up stagger-1">
+        <div class="akad-num">02</div>
+        <div class="akad-title">Akad Wakalah bil Ujrah</div>
+        <div class="akad-desc">
+          Peserta mewakilkan pengelolaan Dana Tabarru' kepada perusahaan asuransi dengan imbalan (ujrah/fee) yang disepakati di awal. Perusahaan bertindak sebagai wakil (pengelola), bukan pemilik dana.
+        </div>
+      </div>
+      <div class="akad-card fade-up stagger-2">
+        <div class="akad-num">03</div>
+        <div class="akad-title">Akad Mudharabah</div>
+        <div class="akad-desc">
+          Akad bagi hasil antara peserta (shahibul maal/pemilik modal) dan perusahaan (mudharib/pengelola) untuk mengelola investasi Dana Tabarru'. Nisbah bagi hasil disepakati di awal akad.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SURPLUS UNDERWRITING
+═══════════════════════════════════════════ -->
+<section class="surplus-section" aria-labelledby="surplus-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="syariah-hero-tag">💰 Surplus Underwriting</span>
+      <h2 id="surplus-heading" style="font-family:var(--ff-head);font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:900;color:#fff;margin-top:var(--sp-3)" class="fade-up">
+        Keuntungan Dana Tabarru'
+      </h2>
+      <p class="fade-up stagger-1" style="color:rgba(255,255,255,0.7);font-size:var(--fs-sm);max-width:640px;margin:var(--sp-3) auto 0">
+        Jika Dana Tabarru' mengalami surplus (kelebihan), surplus tersebut dibagikan kepada peserta. Inilah yang membedakan asuransi syariah dari konvensional.
+      </p>
+    </div>
+
+    <div class="surplus-grid fade-up stagger-2">
+      <div class="surplus-card">
+        <div class="surplus-icon">📊</div>
+        <div class="surplus-title">Dana Tabarru'</div>
+        <div class="surplus-desc">Kumpulan kontribusi peserta yang dihibahkan untuk saling menolong. Terpisah 100% dari dana perusahaan.</div>
+      </div>
+      <div class="surplus-card">
+        <div class="surplus-icon">📈</div>
+        <div class="surplus-title">Investasi Syariah</div>
+        <div class="surplus-desc">Dana diinvestasikan pada instrumen syariah. Hasil investasi menambah nilai Dana Tabarru'.</div>
+      </div>
+      <div class="surplus-card">
+        <div class="surplus-icon">🎁</div>
+        <div class="surplus-title">Surplus Dibagikan</div>
+        <div class="surplus-desc">Jika surplus, dibagi kepada peserta sesuai ketentuan. Peserta mendapat bagian dari kelebihan dana.</div>
+      </div>
+      <div class="surplus-card">
+        <div class="surplus-icon">🤲</div>
+        <div class="surplus-title">Opsi Sedekah</div>
+        <div class="surplus-desc">Peserta dapat memilih untuk menyedekahkan surplus-nya atau menerimanya sebagai pengembalian.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PERBANDINGAN SYARIAH VS KONVENSIONAL
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="banding-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Perbandingan</span>
+      <h2 id="banding-heading" class="section-title fade-up">
+        <span class="kw">Syariah</span> vs Konvensional
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:640px;margin:0 auto">
+        Pahami perbedaan mendasar antara asuransi syariah dan konvensional.
+      </p>
+    </div>
+
+    <div style="overflow-x:auto;border-radius:var(--r-lg);border:1px solid var(--border)" class="fade-up stagger-2">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Aspek</th>
+            <th>Asuransi Syariah</th>
+            <th>Asuransi Konvensional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Konsep Dasar</strong></td>
+            <td class="highlight">Risk Sharing (berbagi risiko)</td>
+            <td>Risk Transfer (transfer risiko)</td>
+          </tr>
+          <tr>
+            <td><strong>Akad/Kontrak</strong></td>
+            <td class="highlight">Tabarru' + Wakalah bil Ujrah</td>
+            <td>Jual-beli (tadabuli)</td>
+          </tr>
+          <tr>
+            <td><strong>Kepemilikan Dana</strong></td>
+            <td class="highlight">Milik peserta (Dana Tabarru')</td>
+            <td>Milik perusahaan asuransi</td>
+          </tr>
+          <tr>
+            <td><strong>Investasi</strong></td>
+            <td class="highlight">Instrumen syariah (halal)</td>
+            <td>Instrumen apapun termasuk riba</td>
+          </tr>
+          <tr>
+            <td><strong>Surplus/Profit</strong></td>
+            <td class="highlight">Dibagikan ke peserta</td>
+            <td>Seluruhnya milik perusahaan</td>
+          </tr>
+          <tr>
+            <td><strong>Pengawasan</strong></td>
+            <td class="highlight">OJK + Dewan Pengawas Syariah</td>
+            <td>OJK saja</td>
+          </tr>
+          <tr>
+            <td><strong>Dana Hangus</strong></td>
+            <td class="highlight">Tidak ada (menjadi sedekah)</td>
+            <td>Hangus jika tidak klaim</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRODUK UNGGULAN: MPS FLEXI
+═══════════════════════════════════════════ -->
+<section class="section section--alt product-highlight" aria-labelledby="produk-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Produk Unggulan</span>
+      <h2 id="produk-heading" class="section-title fade-up">
+        MPS Flexi — <span class="kw">Manulife Perlindungan Syariah</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:640px;margin:0 auto">
+        Produk asuransi jiwa murni syariah dengan fleksibilitas tinggi. Tanpa unsur investasi (bukan unit link), memberikan manfaat perlindungan yang jelas sejak hari pertama.
+      </p>
+    </div>
+
+    <div class="product-features">
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-title">Proteksi Jiwa Murni</div>
+        <div class="feature-desc">Bukan unit link. Manfaat perlindungan jiwa yang jelas dan pasti tanpa risiko investasi.</div>
+      </div>
+      <div class="feature-card fade-up stagger-1">
+        <div class="feature-icon">☪️</div>
+        <div class="feature-title">100% Syariah</div>
+        <div class="feature-desc">Sesuai fatwa DSN-MUI dengan akad tabarru' dan wakalah bil ujrah. Diawasi DPS.</div>
+      </div>
+      <div class="feature-card fade-up stagger-2">
+        <div class="feature-icon">💰</div>
+        <div class="feature-title">Kontribusi Terjangkau</div>
+        <div class="feature-desc">Mulai dari Rp 4 juta/tahun untuk perlindungan hingga Rp 1 Miliar.</div>
+      </div>
+      <div class="feature-card fade-up stagger-3">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-title">Fleksibel</div>
+        <div class="feature-desc">Pilih masa perlindungan dan masa bayar sesuai kebutuhan. Tersedia Plan A, B, dan C.</div>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🎁</div>
+        <div class="feature-title">Surplus Underwriting</div>
+        <div class="feature-desc">Potensi mendapat bagian surplus Dana Tabarru' jika tidak ada klaim.</div>
+      </div>
+      <div class="feature-card fade-up stagger-1">
+        <div class="feature-icon">📋</div>
+        <div class="feature-title">3 Pilihan Plan</div>
+        <div class="feature-desc">Plan A (Term Life), Plan B (Level Premium), masing-masing dengan keunggulan berbeda.</div>
+      </div>
+      <div class="feature-card fade-up stagger-2">
+        <div class="feature-icon">👨‍👩‍👧‍👦</div>
+        <div class="feature-title">Usia 0-70 Tahun</div>
+        <div class="feature-desc">Bisa dimiliki sejak usia 0 tahun hingga 70 tahun. Perlindungan untuk seluruh keluarga.</div>
+      </div>
+      <div class="feature-card fade-up stagger-3">
+        <div class="feature-icon">💳</div>
+        <div class="feature-title">Bayar Fleksibel</div>
+        <div class="feature-desc">Pilihan pembayaran: tahunan, semesteran, kuartalan, atau bulanan sesuai kemampuan.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:var(--sp-8)" class="fade-up">
+      <a href="/pages/mps-flexi.html" class="btn btn--jade btn--lg">
+        Lihat Detail & Kalkulator MPS Flexi
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KEUNGGULAN MANULIFE SYARIAH
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="keunggulan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Keunggulan</span>
+      <h2 id="keunggulan-heading" class="section-title fade-up">
+        Mengapa <span class="kw">Manulife Syariah</span>?
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:640px;margin:0 auto">
+        Didukung oleh kekuatan finansial Manulife yang telah berpengalaman lebih dari 135 tahun di dunia.
+      </p>
+    </div>
+
+    <div class="principle-grid">
+      <div class="principle-card fade-up">
+        <div class="principle-icon">🏦</div>
+        <div class="principle-title">RBC 584%</div>
+        <div class="principle-desc">
+          Risk Based Capital jauh di atas minimum OJK (120%). Manulife memiliki kemampuan membayar klaim hampir 5x lipat dari kewajiban minimum.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-1">
+        <div class="principle-icon">🌍</div>
+        <div class="principle-title">Backing Global</div>
+        <div class="principle-desc">
+          Didukung Manulife Financial Corporation (Kanada) dengan aset kelolaan global lebih dari CAD $900 Miliar dan rating AA- dari Fitch.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-2">
+        <div class="principle-icon">👨‍⚖️</div>
+        <div class="principle-title">Dewan Pengawas Syariah</div>
+        <div class="principle-desc">
+          Seluruh produk dan operasional diawasi oleh DPS yang terdiri dari ulama terpilih. Menjamin kepatuhan terhadap prinsip syariah.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-3">
+        <div class="principle-icon">📊</div>
+        <div class="principle-title">Pengelolaan Transparan</div>
+        <div class="principle-desc">
+          Laporan keuangan Dana Tabarru' diaudit secara terpisah. Peserta mengetahui status dana dan surplus secara berkala.
+        </div>
+      </div>
+      <div class="principle-card fade-up">
+        <div class="principle-icon">🏆</div>
+        <div class="principle-title">Track Record Klaim</div>
+        <div class="principle-desc">
+          Manulife Indonesia membayar klaim dan manfaat lebih dari Rp 8,3 Triliun per tahun. Bukti nyata komitmen melindungi nasabah.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-1">
+        <div class="principle-icon">📱</div>
+        <div class="principle-title">Layanan Digital</div>
+        <div class="principle-desc">
+          Akses mudah melalui layanan digital untuk pemantauan polis, pengajuan klaim, dan informasi surplus underwriting.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CARA BERGABUNG
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="gabung-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Cara Bergabung</span>
+      <h2 id="gabung-heading" class="section-title fade-up">
+        Langkah Mudah <span class="kw">Menjadi Peserta</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Proses pendaftaran asuransi syariah Manulife sangat mudah dan cepat.
+      </p>
+    </div>
+
+    <div class="steps-grid fade-up stagger-2">
+      <div class="step-card">
+        <div class="step-title">Konsultasi Gratis</div>
+        <div class="step-desc">Hubungi agen kami untuk konsultasi kebutuhan proteksi dan budget Anda. Tanpa biaya dan tanpa komitmen.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-title">Pilih Produk & Plan</div>
+        <div class="step-desc">Pilih produk syariah dan plan yang sesuai (MPS Flexi Plan A, B, atau C) berdasarkan kebutuhan.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-title">Isi SPAJ Online</div>
+        <div class="step-desc">Isi Surat Permohonan Asuransi Jiwa secara digital. Proses cepat dan paperless.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-title">Polis Aktif</div>
+        <div class="step-desc">Setelah disetujui, polis langsung aktif. Perlindungan syariah berlaku sejak hari pertama.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TARGET PESERTA
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="target-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Untuk Siapa?</span>
+      <h2 id="target-heading" class="section-title fade-up">
+        Asuransi Syariah <span class="kw">Cocok Untuk</span>
+      </h2>
+    </div>
+
+    <div class="principle-grid">
+      <div class="principle-card fade-up">
+        <div class="principle-icon">👨‍👩‍👧</div>
+        <div class="principle-title">Keluarga Muslim</div>
+        <div class="principle-desc">
+          Yang ingin proteksi sesuai syariah Islam. Tenang karena dana dikelola secara halal dan bebas dari riba.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-1">
+        <div class="principle-icon">💼</div>
+        <div class="principle-title">Profesional & Pengusaha</div>
+        <div class="principle-desc">
+          Yang membutuhkan perlindungan jiwa besar untuk menjamin kelangsungan bisnis dan kesejahteraan keluarga.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-2">
+        <div class="principle-icon">🎓</div>
+        <div class="principle-title">Generasi Muda</div>
+        <div class="principle-desc">
+          Yang ingin memulai proteksi sejak dini dengan kontribusi terjangkau. Semakin muda, semakin murah kontribusinya.
+        </div>
+      </div>
+      <div class="principle-card fade-up stagger-3">
+        <div class="principle-icon">🧓</div>
+        <div class="principle-title">Orang Tua & Lansia</div>
+        <div class="principle-desc">
+          Menerima peserta hingga usia 70 tahun. Memberikan perlindungan untuk warisan dan biaya akhir hayat.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="faq-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">FAQ</span>
+      <h2 id="faq-heading" class="section-title fade-up">
+        Pertanyaan <span class="kw">Umum</span>
+      </h2>
+    </div>
+
+    <div class="faq-list fade-up stagger-1" style="max-width:800px;margin:0 auto">
+      <details class="faq-item">
+        <summary class="faq-trigger">Apa bedanya asuransi syariah dengan asuransi konvensional?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Asuransi syariah menggunakan konsep risk sharing (berbagi risiko) antar peserta melalui Dana Tabarru', sementara konvensional menggunakan risk transfer (memindahkan risiko ke perusahaan). Di syariah, dana milik peserta dan jika surplus dibagikan kembali. Seluruh investasi juga wajib pada instrumen halal.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Apakah non-Muslim bisa ikut asuransi syariah?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Ya, asuransi syariah terbuka untuk semua orang tanpa memandang agama. Prinsip tolong-menolong dan transparansi bersifat universal. Banyak non-Muslim yang memilih syariah karena konsepnya yang lebih adil dan transparan.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Apa itu surplus underwriting dan bagaimana cara mendapatkannya?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Surplus underwriting adalah kelebihan Dana Tabarru' setelah dikurangi klaim dan biaya. Jika di akhir periode Dana Tabarru' surplus, maka akan dibagikan kepada peserta sesuai ketentuan polis. Peserta bisa memilih menerimanya atau menyedekahkannya.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Berapa minimal kontribusi asuransi syariah Manulife?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Untuk MPS Flexi, minimal kontribusi mulai dari Rp 4 juta per tahun (Plan A) atau Rp 5 juta per tahun (Plan B). Besaran kontribusi tergantung usia, jenis kelamin, uang pertanggungan, dan masa perlindungan yang dipilih.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Siapa yang mengawasi asuransi syariah Manulife?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Asuransi syariah Manulife diawasi oleh dua lembaga: OJK (Otoritas Jasa Keuangan) untuk aspek prudensial/keuangan, dan Dewan Pengawas Syariah (DPS) yang ditunjuk DSN-MUI untuk memastikan kepatuhan terhadap prinsip syariah.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Apakah uang kontribusi hangus jika tidak ada klaim?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Tidak. Dalam asuransi syariah, kontribusi tabarru' Anda adalah sedekah untuk Dana Tabarru'. Jika Dana Tabarru' surplus, Anda berhak mendapat bagian surplus. Berbeda dengan konvensional yang preminya hangus jika tidak klaim.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="container" style="text-align:center;position:relative;z-index:1">
+    <h2 id="cta-heading" class="cta-title fade-up">Siap Beralih ke Asuransi Syariah?</h2>
+    <p class="cta-sub fade-up stagger-1">Konsultasi gratis dengan agen berpengalaman tentang produk Manulife Syariah yang tepat untuk keluarga Anda.</p>
+    <div class="fade-up stagger-2">
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%20Petrus%2C%20aku%20mau%20tanya%20soal%20Manulife%20Syariah"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn--cta btn--lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LINK TO TENTANG MANULIFE
+═══════════════════════════════════════════ -->
+<div class="link-nav-section">
+  <div class="container">
+    <a href="/pages/tentang-manulife.html" class="link-nav-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Tentang Manulife Indonesia
+    </a>
+  </div>
+</div>
+
+<!-- Footer loaded by JS -->
+<div id="site-footer"></div>
+
+<script src="/assets/main.js"></script>
+</body>
+</html>
