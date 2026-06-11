@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Manulife Indonesia — Sejarah, Kekuatan & Produk | PROJECTCUAN</title>
+  <meta name="description" content="Kenali Manulife Indonesia: perusahaan asuransi jiwa global sejak 1887, hadir di Indonesia sejak 1985. Kekuatan finansial, produk unggulan, dan komitmen untuk Indonesia.">
+  <meta property="og:title" content="Tentang Manulife Indonesia | PROJECTCUAN">
+  <meta property="og:description" content="Kenali Manulife Indonesia: perusahaan asuransi jiwa global sejak 1887, hadir di Indonesia sejak 1985. Kekuatan finansial, produk unggulan, dan komitmen untuk Indonesia.">
+  <meta name="theme-color" content="#00AC5B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
+  </script>
+  <style>
+    /* ── TENTANG MANULIFE PAGE EXTRAS ── */
+    .tentang-hero {
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
+      padding: var(--sp-12) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .tentang-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,172,91,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .tentang-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,172,91,0.15);
+      color: var(--jade);
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      margin-bottom: var(--sp-5);
+    }
+    .tentang-hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: var(--sp-5);
+    }
+    .tentang-hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: var(--fs-md);
+      line-height: 1.7;
+      max-width: 720px;
+      margin-bottom: var(--sp-5);
+    }
+
+    .video-section {
+      padding: var(--sp-10) 0;
+      background: var(--bg-alt);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--r-xl);
+      box-shadow: var(--sh-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: var(--r-xl);
+    }
+
+    .finance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-5);
+    }
+    .finance-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .finance-card:hover { border-color: var(--jade-20); transform: translateY(-2px); box-shadow: var(--sh-md); }
+    .finance-card-num {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 900;
+      color: var(--jade);
+      margin-bottom: var(--sp-2);
+    }
+    .finance-card-lbl {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      max-width: 700px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--jade-20);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--sp-6);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      background: var(--jade);
+      border-radius: 50%;
+      border: 3px solid var(--bg-card);
+      box-shadow: 0 0 0 2px var(--jade-20);
+    }
+    .timeline-year {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--jade);
+      margin-bottom: var(--sp-1);
+    }
+    .timeline-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-5);
+    }
+    .produk-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+    }
+    .produk-card:hover { border-color: var(--jade-20); transform: translateY(-3px); box-shadow: var(--sh-md); }
+    .produk-card-icon {
+      width: 48px; height: 48px;
+      background: var(--jade-10);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: var(--sp-4);
+    }
+    .produk-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .produk-card-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.65;
+    }
+
+    .rating-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+    }
+    .rating-table th {
+      background: var(--jade);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: center;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      letter-spacing: 0.04em;
+    }
+    .rating-table td {
+      padding: 10px 14px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+    }
+    .rating-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .rating-highlight { color: var(--jade); font-weight: 700; font-family: var(--ff-head); }
+
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--sp-5);
+    }
+    .award-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .award-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-md); }
+    .award-icon { font-size: 32px; margin-bottom: var(--sp-3); }
+    .award-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .award-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .komitmen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--sp-5);
+    }
+    .komitmen-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .komitmen-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-md); }
+    .komitmen-icon { font-size: 32px; margin-bottom: var(--sp-3); }
+    .komitmen-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .komitmen-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .global-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--sp-5);
+      text-align: center;
+    }
+    .global-stat-num {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 900;
+      color: var(--jade);
+      margin-bottom: var(--sp-2);
+    }
+    .global-stat-lbl {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+    }
+
+    @media (max-width: 768px) {
+      .finance-grid { grid-template-columns: repeat(2, 1fr); }
+      .produk-grid { grid-template-columns: 1fr; }
+      .rating-table { font-size: var(--fs-xs); }
+      .rating-table th, .rating-table td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- ═══════════════════════════════════════════
+     VIDEO SECTION (PALING AWAL)
+═══════════════════════════════════════════ -->
+<section class="video-section" aria-label="Video Profil Manulife Indonesia">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="tentang-hero-tag fade-up">🎬 Video Profil</span>
+      <h2 style="font-family:var(--ff-head);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:800;color:var(--txt-head);margin-top:var(--sp-3)" class="fade-up stagger-1">Kenali Manulife Indonesia Lebih Dekat</h2>
+    </div>
+    <div class="video-wrapper fade-up stagger-2">
+      <iframe 
+        src="https://www.youtube.com/embed/aKTsxDSXFs8" 
+        title="Profil Manulife Indonesia" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="tentang-hero" aria-labelledby="tentang-manulife-heading">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="tentang-hero-tag fade-up">🏢 Tentang Manulife</div>
+    <h1 id="tentang-manulife-heading" class="tentang-hero-title fade-up stagger-1">
+      Manulife Indonesia
+    </h1>
+    <p class="tentang-hero-sub fade-up stagger-2">
+      Manulife Financial Corporation adalah perusahaan layanan keuangan internasional terkemuka yang didirikan pada tahun 1887 di Toronto, Kanada. Dengan pengalaman lebih dari 135 tahun, Manulife menyediakan solusi proteksi finansial, asuransi jiwa, manajemen kekayaan, dan manajemen aset kepada jutaan nasabah di seluruh dunia.
+    </p>
+    <p class="tentang-hero-sub fade-up stagger-3" style="color:rgba(255,255,255,0.6);font-size:var(--fs-sm)">
+      Di Indonesia, Manulife telah hadir sejak tahun 1985 dan menjadi salah satu perusahaan asuransi jiwa terbesar dengan komitmen kuat untuk membantu masyarakat Indonesia membuat keputusan finansial yang lebih mudah dan hidup lebih baik.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TRUST STRIP
+═══════════════════════════════════════════ -->
+<div class="trust-strip" aria-label="Kekuatan finansial Manulife Indonesia">
+  <div class="container">
+    <div class="trust-grid">
+      <div>
+        <div class="trust-num">Rp79,1 T</div>
+        <div class="trust-lbl">Aset Kelolaan</div>
+      </div>
+      <div>
+        <div class="trust-num">584%</div>
+        <div class="trust-lbl">RBC (min. 120%)</div>
+      </div>
+      <div>
+        <div class="trust-num">AA-</div>
+        <div class="trust-lbl">Rating Fitch Global</div>
+      </div>
+      <div>
+        <div class="trust-num">2 Juta+</div>
+        <div class="trust-lbl">Nasabah Indonesia</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SEJARAH & PERJALANAN
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="sejarah-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Sejarah</span>
+      <h2 id="sejarah-heading" class="section-title fade-up">
+        Perjalanan <span class="kw">Manulife</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Dari Kanada hingga Indonesia, perjalanan panjang membangun kepercayaan.
+      </p>
+    </div>
+
+    <div class="timeline fade-up stagger-2">
+      <div class="timeline-item">
+        <div class="timeline-year">1887</div>
+        <div class="timeline-desc">Manulife Financial Corporation didirikan di Toronto, Kanada, dengan nama The Manufacturers Life Insurance Company.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1985</div>
+        <div class="timeline-desc">Manulife resmi memasuki pasar Indonesia, menjadi salah satu perusahaan asuransi jiwa joint venture pertama di Indonesia.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1999</div>
+        <div class="timeline-desc">Manulife Financial go public di Bursa Efek Toronto dan New York, memperkuat posisi sebagai perusahaan asuransi publik terbesar di Kanada.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2009</div>
+        <div class="timeline-desc">Manulife Indonesia meluncurkan layanan bancassurance dan memperluas distribusi ke seluruh nusantara.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-desc">Manulife Indonesia merayakan 30 tahun kehadiran di Indonesia dengan lebih dari 2 juta nasabah terlayani.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-desc">Manulife Indonesia terus bertumbuh dengan total aset kelolaan Rp79,1 Triliun dan RBC 584%, jauh di atas ketentuan minimum OJK.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KEKUATAN FINANSIAL
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="keuangan-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Kekuatan Finansial</span>
+      <h2 id="keuangan-heading" class="section-title fade-up">
+        Fondasi Keuangan yang <span class="kw">Kokoh</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:640px;margin:0 auto">
+        Data keuangan Manulife Indonesia per April 2024 menunjukkan kekuatan finansial yang jauh melampaui standar industri.
+      </p>
+    </div>
+
+    <div class="finance-grid fade-up stagger-2">
+      <div class="finance-card">
+        <div class="finance-card-num">Rp79,1 T</div>
+        <div class="finance-card-lbl">Aset Kelolaan (AUM)</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-num">Rp10,5 T</div>
+        <div class="finance-card-lbl">Total Pendapatan Premi</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-num">Rp41,9 T</div>
+        <div class="finance-card-lbl">Cadangan Teknis</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-num">584%</div>
+        <div class="finance-card-lbl">RBC (min. regulasi 120%)</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-num">Rp8,3 T</div>
+        <div class="finance-card-lbl">Klaim & Manfaat Terbayar/Tahun</div>
+      </div>
+      <div class="finance-card">
+        <div class="finance-card-num">2 Juta+</div>
+        <div class="finance-card-lbl">Nasabah di Indonesia</div>
+      </div>
+    </div>
+
+    <p class="fade-up stagger-3" style="font-size:var(--fs-xs);color:var(--txt-muted);margin-top:var(--sp-5);text-align:center">
+      RBC (Risk Based Capital) 584% artinya Manulife memiliki kemampuan membayar klaim hampir 5x lipat dari kewajiban minimum yang ditetapkan OJK.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     VISI & MISI
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="visi-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Visi & Misi</span>
+      <h2 id="visi-heading" class="section-title fade-up">
+        Visi & Misi <span class="kw">Manulife</span>
+      </h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-6);max-width:800px;margin:0 auto">
+      <div class="finance-card fade-up" style="text-align:left;padding:var(--sp-6)">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">🎯</div>
+        <h3 style="font-family:var(--ff-head);font-size:var(--fs-lg);color:var(--txt-head);margin-bottom:var(--sp-3)">Visi</h3>
+        <p style="font-size:var(--fs-sm);color:var(--txt-sub);line-height:1.7">
+          Menjadi perusahaan penyedia layanan keuangan paling profesional di dunia, memberikan solusi yang kuat, andal, dan terdepan bagi keputusan keuangan para nasabah.
+        </p>
+      </div>
+      <div class="finance-card fade-up stagger-1" style="text-align:left;padding:var(--sp-6)">
+        <div style="font-size:28px;margin-bottom:var(--sp-3)">💚</div>
+        <h3 style="font-family:var(--ff-head);font-size:var(--fs-lg);color:var(--txt-head);margin-bottom:var(--sp-3)">Misi</h3>
+        <p style="font-size:var(--fs-sm);color:var(--txt-sub);line-height:1.7">
+          Membantu masyarakat membuat keputusan yang lebih mudah dan hidup lebih baik. Decisions made easier. Lives made better.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     RATING KREDIT INTERNASIONAL
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="rating-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Kredibilitas Global</span>
+      <h2 id="rating-heading" class="section-title fade-up">
+        Rating Kredit <span class="kw">Internasional</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Diakui oleh lembaga pemeringkat terkemuka dunia sebagai perusahaan dengan fondasi keuangan yang sangat kuat.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-6)">
+      <!-- Global Ratings -->
+      <div class="fade-up stagger-2">
+        <h3 style="font-family:var(--ff-head);font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-4);text-align:center">
+          🌍 Manulife Financial (Global)
+        </h3>
+        <div style="border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border)">
+          <table class="rating-table">
+            <thead>
+              <tr>
+                <th>Lembaga</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>AM Best</td><td class="rating-highlight">A+</td></tr>
+              <tr><td>Fitch</td><td class="rating-highlight">AA-</td></tr>
+              <tr><td>Moody's</td><td class="rating-highlight">A1</td></tr>
+              <tr><td>S&P</td><td class="rating-highlight">AA-</td></tr>
+              <tr><td>DBRS</td><td class="rating-highlight">AA-</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Indonesia Ratings -->
+      <div class="fade-up stagger-3">
+        <h3 style="font-family:var(--ff-head);font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-4);text-align:center">
+          🇮🇩 Manulife Indonesia
+        </h3>
+        <div style="border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border)">
+          <table class="rating-table">
+            <thead>
+              <tr>
+                <th>Lembaga</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>S&P</td><td class="rating-highlight">BBB</td></tr>
+              <tr><td>Fitch</td><td class="rating-highlight">BBB</td></tr>
+              <tr><td>Moody's</td><td class="rating-highlight">Baa2</td></tr>
+              <tr><td>JCR</td><td class="rating-highlight">BBB+</td></tr>
+              <tr><td>RBC</td><td class="rating-highlight">584%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRODUK & LAYANAN
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="produk-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Produk & Layanan</span>
+      <h2 id="produk-heading" class="section-title fade-up">
+        Solusi Lengkap untuk <span class="kw">Keluarga Indonesia</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:640px;margin:0 auto">
+        Manulife Indonesia menyediakan berbagai produk proteksi dan investasi untuk memenuhi kebutuhan finansial di setiap tahap kehidupan.
+      </p>
+    </div>
+
+    <div class="produk-grid">
+      <div class="produk-card fade-up">
+        <div class="produk-card-icon">🏥</div>
+        <div class="produk-card-title">Asuransi Kesehatan</div>
+        <div class="produk-card-desc">Perlindungan medis komprehensif dengan manfaat rawat inap, rawat jalan, dan penyakit kritis. Cashless di jaringan rumah sakit rekanan.</div>
+      </div>
+      <div class="produk-card fade-up stagger-1">
+        <div class="produk-card-icon">🛡️</div>
+        <div class="produk-card-title">Asuransi Jiwa</div>
+        <div class="produk-card-desc">Memberikan kepastian finansial bagi keluarga tercinta dengan santunan meninggal dunia dan manfaat cacat tetap total.</div>
+      </div>
+      <div class="produk-card fade-up stagger-2">
+        <div class="produk-card-icon">📈</div>
+        <div class="produk-card-title">Investasi & Wealth</div>
+        <div class="produk-card-desc">Solusi pertumbuhan aset melalui unit link dengan pilihan dana investasi yang dikelola oleh Manulife Investment Management.</div>
+      </div>
+      <div class="produk-card fade-up stagger-3">
+        <div class="produk-card-icon">🌅</div>
+        <div class="produk-card-title">Dana Pensiun</div>
+        <div class="produk-card-desc">Program perencanaan pensiun untuk memastikan masa tua yang nyaman dan mandiri secara finansial.</div>
+      </div>
+      <div class="produk-card fade-up">
+        <div class="produk-card-icon">☪️</div>
+        <div class="produk-card-title">Asuransi Syariah</div>
+        <div class="produk-card-desc">Produk asuransi yang sesuai dengan prinsip syariah Islam, dengan akad tolong-menolong dan surplus underwriting.</div>
+      </div>
+      <div class="produk-card fade-up stagger-1">
+        <div class="produk-card-icon">👥</div>
+        <div class="produk-card-title">Asuransi Kumpulan</div>
+        <div class="produk-card-desc">Solusi perlindungan karyawan untuk perusahaan, mencakup rawat inap, rawat jalan, kecelakaan kerja, dan santunan jiwa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KEHADIRAN GLOBAL
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="global-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Skala Global</span>
+      <h2 id="global-heading" class="section-title fade-up">
+        Kehadiran <span class="kw">Global</span> Manulife
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Manulife Financial beroperasi di berbagai negara dengan skala bisnis yang sangat besar.
+      </p>
+    </div>
+
+    <div class="global-stats fade-up stagger-2">
+      <div>
+        <div class="global-stat-num">13+</div>
+        <div class="global-stat-lbl">Negara Operasional</div>
+      </div>
+      <div>
+        <div class="global-stat-num">38.000+</div>
+        <div class="global-stat-lbl">Karyawan Seluruh Dunia</div>
+      </div>
+      <div>
+        <div class="global-stat-num">CAD $900B+</div>
+        <div class="global-stat-lbl">Aset Kelolaan Global</div>
+      </div>
+      <div>
+        <div class="global-stat-num">35 Juta+</div>
+        <div class="global-stat-lbl">Nasabah di Seluruh Dunia</div>
+      </div>
+    </div>
+
+    <div class="fade-up stagger-3" style="margin-top:var(--sp-8);text-align:center">
+      <p style="font-size:var(--fs-sm);color:var(--txt-sub);max-width:640px;margin:0 auto;line-height:1.7">
+        Manulife beroperasi di Kanada, Amerika Serikat (sebagai John Hancock), dan Asia termasuk Indonesia, Hong Kong, Singapura, Jepang, Filipina, Vietnam, Malaysia, dan Kamboja. Tercatat di Bursa Efek Toronto (TSX: MFC), New York (NYSE: MFC), dan Hong Kong (SEHK: 945).
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PENGHARGAAN
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="award-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Penghargaan</span>
+      <h2 id="award-heading" class="section-title fade-up">
+        Pengakuan & <span class="kw">Penghargaan</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Bukti komitmen Manulife Indonesia dalam memberikan layanan terbaik.
+      </p>
+    </div>
+
+    <div class="award-grid">
+      <div class="award-card fade-up">
+        <div class="award-icon">🏆</div>
+        <div class="award-title">Best Life Insurance</div>
+        <div class="award-desc">Penghargaan sebagai perusahaan asuransi jiwa terbaik dari berbagai media dan lembaga independen.</div>
+      </div>
+      <div class="award-card fade-up stagger-1">
+        <div class="award-icon">⭐</div>
+        <div class="award-title">Top Brand Award</div>
+        <div class="award-desc">Konsisten meraih Top Brand Award untuk kategori asuransi jiwa berdasarkan survei Frontier Research.</div>
+      </div>
+      <div class="award-card fade-up stagger-2">
+        <div class="award-icon">🌟</div>
+        <div class="award-title">Service Excellence</div>
+        <div class="award-desc">Pengakuan atas keunggulan layanan nasabah dan inovasi produk asuransi digital.</div>
+      </div>
+      <div class="award-card fade-up stagger-3">
+        <div class="award-icon">💼</div>
+        <div class="award-title">Best Employer</div>
+        <div class="award-desc">Diakui sebagai tempat kerja terbaik di industri asuransi dengan budaya kerja yang inklusif dan inovatif.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KOMITMEN UNTUK INDONESIA
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="komitmen-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Komitmen Kami</span>
+      <h2 id="komitmen-heading" class="section-title fade-up">
+        Komitmen untuk <span class="kw">Indonesia</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Lebih dari sekadar bisnis, Manulife berkomitmen untuk berkontribusi positif bagi masyarakat Indonesia.
+      </p>
+    </div>
+
+    <div class="komitmen-grid">
+      <div class="komitmen-card fade-up">
+        <div class="komitmen-icon">📚</div>
+        <div class="komitmen-title">Literasi Keuangan</div>
+        <div class="komitmen-desc">Aktif mengedukasi masyarakat tentang pentingnya perencanaan keuangan dan proteksi melalui berbagai program.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-1">
+        <div class="komitmen-icon">🌱</div>
+        <div class="komitmen-title">Keberlanjutan</div>
+        <div class="komitmen-desc">Berkomitmen pada praktik bisnis berkelanjutan dan investasi bertanggung jawab (ESG) untuk masa depan yang lebih baik.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-2">
+        <div class="komitmen-icon">🤝</div>
+        <div class="komitmen-title">Pemberdayaan Komunitas</div>
+        <div class="komitmen-desc">Melalui program CSR, Manulife mendukung pendidikan, kesehatan, dan pemberdayaan ekonomi masyarakat lokal.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-3">
+        <div class="komitmen-icon">💡</div>
+        <div class="komitmen-title">Inovasi Digital</div>
+        <div class="komitmen-desc">Menghadirkan layanan digital untuk kemudahan akses nasabah, termasuk pengajuan klaim online dan e-policy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="container" style="text-align:center;position:relative;z-index:1">
+    <h2 id="cta-heading" class="cta-title fade-up">Ingin Tahu Lebih Lanjut?</h2>
+    <p class="cta-sub fade-up stagger-1">Konsultasi gratis dengan agen berpengalaman tentang produk Manulife yang tepat untuk kebutuhan Anda.</p>
+    <div class="fade-up stagger-2">
+      <a href="https://wa.me/6287781896087?text=Halo%20Kak%20Petrus%2C%20aku%20mau%20tanya%20soal%20Manulife"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn--cta btn--lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer loaded by JS -->
+<div id="site-footer"></div>
+
+<script src="/assets/main.js"></script>
+</body>
+</html>
