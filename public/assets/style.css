@@ -9,13 +9,15 @@
 
 /* ── 2. CSS VARIABLES ── */
 :root {
-  /* Brand */
+  /* Brand — "jade" = brand green (Shocking Green #39FF14), kept for legacy compat */
   --jade:          #39FF14;
   --jade-light:    #7FFF00;
   --jade-dark:     #2ECC40;
+  --jade-text:     #1A7A1A;  /* WCAG AA compliant green for text on light backgrounds */
   --jade-10:       rgba(57,255,20,0.10);
   --jade-20:       rgba(57,255,20,0.20);
-  --tangerine:     #FF1493;
+  /* Accents — tangerine = warm orange accent, pink = Shocking Pink accent */
+  --tangerine:     #E64A19;
   --coral:         #FF6F61;
   --pink:          #FF1493;
   --yellow:        #FFE600;
@@ -45,7 +47,7 @@
   --sh-md:   0 4px 24px rgba(0,0,0,0.09);
   --sh-lg:   0 8px 48px rgba(0,0,0,0.11);
   --sh-jade: 0 4px 20px rgba(57,255,20,0.28);
-  --sh-cta:  0 4px 20px rgba(255,20,147,0.30);
+  --sh-cta:  0 4px 20px rgba(230,74,25,0.30);
 
   /* Typography */
   --ff-head:   'Plus Jakarta Sans', sans-serif;
@@ -98,6 +100,8 @@ html.dark {
   --txt-sub:   #94A3B8;
   --txt-muted: #64748B;
 
+  --jade-text: #39FF14;  /* Neon green is readable on dark backgrounds (12:1 contrast) */
+
   --border:    rgba(255,255,255,0.07);
   --border-md: rgba(255,255,255,0.13);
 
@@ -149,11 +153,11 @@ h4 { font-size: var(--fs-md); }
 p { color: var(--txt-sub); line-height: 1.75; }
 
 /* Keyword highlight */
-.kw { color: var(--jade); font-weight: 600; }
+.kw { color: var(--jade-text); font-weight: 600; }
 .kw-cta { color: var(--tangerine); font-weight: 600; }
 .kw-gold { color: #B8860B; font-weight: 600; }
 
-html.dark .kw { color: var(--jade-light); }
+html.dark .kw { color: var(--jade-text); }
 html.dark .kw-cta { color: #FF7F45; }
 html.dark .kw-gold { color: #F0C040; }
 
@@ -179,7 +183,7 @@ html.dark .kw-gold { color: #F0C040; }
   align-items: center;
   gap: var(--sp-2);
   background: var(--jade-10);
-  color: var(--jade);
+  color: var(--jade-text);
   font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -257,7 +261,7 @@ html.dark .kw-gold { color: #F0C040; }
 .btn--outline {
   background: transparent;
   border: 2.5px solid var(--jade);
-  color: var(--jade);
+  color: var(--jade-text);
 }
 .btn--outline:hover {
   background: var(--jade);
@@ -342,7 +346,7 @@ html.dark .site-header.scrolled {
   font-family: var(--ff-head);
   font-size: 1.1rem;
   font-weight: 900;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: -0.02em;
 }
 
@@ -372,7 +376,7 @@ html.dark .site-header.scrolled {
   white-space: nowrap;
 }
 .nav-link:hover, .nav-link.active {
-  color: var(--jade);
+  color: var(--jade-text);
   background: var(--jade-10);
 }
 
@@ -420,7 +424,7 @@ html.dark .site-header.scrolled {
 .mega-col-title {
   font-size: var(--fs-xs);
   font-weight: 700;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: var(--sp-3);
@@ -437,7 +441,7 @@ html.dark .site-header.scrolled {
   transition: all var(--ease);
 }
 .mega-link:hover {
-  color: var(--jade);
+  color: var(--jade-text);
   background: var(--jade-10);
   padding-left: 12px;
 }
@@ -462,7 +466,7 @@ html.dark .site-header.scrolled {
 }
 .icon-btn:hover {
   background: var(--jade-10);
-  color: var(--jade);
+  color: var(--jade-text);
 }
 .icon-btn svg { width: 18px; height: 18px; }
 
@@ -519,7 +523,7 @@ html.dark .site-header.scrolled {
 .mobile-section-title {
   font-size: var(--fs-xs);
   font-weight: 700;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: var(--sp-3) 0 var(--sp-2);
@@ -536,7 +540,7 @@ html.dark .site-header.scrolled {
   border-bottom: 1px solid var(--border);
   transition: color var(--ease);
 }
-.mobile-link:hover { color: var(--jade); }
+.mobile-link:hover { color: var(--jade-text); }
 
 .mobile-cta {
   padding: var(--sp-5) 0;
@@ -586,7 +590,7 @@ html.dark .site-header.scrolled {
   padding: 12px 18px;
   margin-bottom: var(--sp-4);
 }
-.search-input-wrap svg { width: 18px; height: 18px; color: var(--jade); flex-shrink: 0; }
+.search-input-wrap svg { width: 18px; height: 18px; color: var(--jade-text); flex-shrink: 0; }
 .search-input {
   flex: 1;
   border: none;
@@ -691,7 +695,7 @@ html.dark .site-header.scrolled {
 
 .hero-title em {
   font-style: normal;
-  color: var(--jade);
+  color: var(--jade-text);
 }
 
 .hero-sub {
@@ -719,7 +723,7 @@ html.dark .site-header.scrolled {
   font-family: var(--ff-head);
   font-size: var(--fs-2xl);
   font-weight: 900;
-  color: var(--jade);
+  color: var(--jade-text);
   line-height: 1;
 }
 .hero-stat-lbl {
@@ -885,7 +889,7 @@ html.dark .site-header.scrolled {
 .product-code {
   font-size: var(--fs-xs);
   font-weight: 700;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1161,7 +1165,7 @@ html.dark .site-header.scrolled {
   gap: var(--sp-2);
   background: var(--jade-10);
   border: 1px solid var(--jade-20);
-  color: var(--jade);
+  color: var(--jade-text);
   font-size: var(--fs-xs);
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1206,7 +1210,7 @@ html.dark .site-header.scrolled {
   font-family: var(--ff-head);
   font-size: var(--fs-2xl);
   font-weight: 900;
-  color: var(--jade);
+  color: var(--jade-text);
   line-height: 1;
   margin-bottom: 4px;
 }
@@ -1443,6 +1447,8 @@ html.dark .site-footer { background: #060E18; }
 }
 
 .footer-brand .logo-project { color: #fff; }
+.footer-brand .logo-cuan { color: var(--jade); }  /* Footer always has dark bg, neon green is readable */
+.site-footer .kw { color: var(--jade); }  /* Override for always-dark footer background */
 
 .footer-desc {
   font-size: var(--fs-sm);
