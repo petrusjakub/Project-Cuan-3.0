@@ -1,7 +1,7 @@
 /* ============================================================
    PASTIJAGA — DESIGN SYSTEM
    Version: 3.0 | Build: 2025
-   Brand: Shocking Green #39FF14 | Neo-Brutalism Style
+   Brand: Emerald Green #10B981 | Neo-Brutalism Style
    ============================================================ */
 
 /* ── 1. GOOGLE FONTS ── */
@@ -9,13 +9,13 @@
 
 /* ── 2. CSS VARIABLES ── */
 :root {
-  /* Brand — "jade" = brand green (Shocking Green #39FF14), kept for legacy compat */
-  --jade:          #39FF14;
-  --jade-light:    #7FFF00;
-  --jade-dark:     #2ECC40;
-  --jade-text:     #1A7A1A;  /* WCAG AA compliant green for text on light backgrounds */
-  --jade-10:       rgba(57,255,20,0.10);
-  --jade-20:       rgba(57,255,20,0.20);
+  /* Brand — "jade" = brand green (Emerald #10B981), kept for legacy compat */
+  --jade:          #10B981;
+  --jade-light:    #34D399;
+  --jade-dark:     #059669;
+  --jade-text:     #047857;  /* WCAG AA compliant green for text on light backgrounds */
+  --jade-10:       rgba(16,185,129,0.10);
+  --jade-20:       rgba(16,185,129,0.20);
   /* Accents — tangerine = warm orange accent, pink = Shocking Pink accent */
   --tangerine:     #E64A19;
   --coral:         #FF6F61;
@@ -46,7 +46,7 @@
   --sh-sm:   0 2px 10px rgba(0,0,0,0.07);
   --sh-md:   0 4px 24px rgba(0,0,0,0.09);
   --sh-lg:   0 8px 48px rgba(0,0,0,0.11);
-  --sh-jade: 0 4px 20px rgba(57,255,20,0.28);
+  --sh-jade: 0 4px 20px rgba(16,185,129,0.28);
   --sh-cta:  0 4px 20px rgba(230,74,25,0.30);
 
   /* Typography */
@@ -100,7 +100,7 @@ html.dark {
   --txt-sub:   #94A3B8;
   --txt-muted: #64748B;
 
-  --jade-text: #39FF14;  /* Neon green is readable on dark backgrounds (12:1 contrast) */
+  --jade-text: #34D399;  /* Emerald green is readable on dark backgrounds */
 
   --border:    rgba(255,255,255,0.07);
   --border-md: rgba(255,255,255,0.13);
@@ -109,7 +109,7 @@ html.dark {
   --sh-sm:  0 2px 10px rgba(0,0,0,0.45);
   --sh-md:  0 4px 24px rgba(0,0,0,0.55);
   --sh-lg:  0 8px 48px rgba(0,0,0,0.65);
-  --sh-jade: 0 4px 20px rgba(57,255,20,0.20);
+  --sh-jade: 0 4px 20px rgba(16,185,129,0.20);
 }
 
 /* ── 3. RESET & BASE ── */
