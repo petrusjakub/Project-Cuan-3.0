@@ -1,5 +1,5 @@
 /* ============================================================
-   PROJECT CUAN — LEAD GENERATION MODULE
+   PASTIJAGA — LEAD GENERATION MODULE
    Pop-up CTA | Exit Intent | Contextual Messages
    ============================================================ */
 
@@ -40,7 +40,7 @@
     '/pages/rekrutmen-agen.html':     'Halo, saya tertarik untuk bergabung sebagai agen Manulife. Bisa dibantu?'
   };
 
-  const DEFAULT_MESSAGE = 'Halo, saya dari website Project Cuan. Bisa konsultasi soal asuransi?';
+  const DEFAULT_MESSAGE = 'Halo, saya dari website PastiJaga. Bisa konsultasi soal asuransi?';
 
   /* ── HELPERS ── */
   function getContextualMessage() {

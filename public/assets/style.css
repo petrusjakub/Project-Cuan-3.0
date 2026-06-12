@@ -1,36 +1,40 @@
 /* ============================================================
-   PROJECT CUAN 2.0 — DESIGN SYSTEM
-   Version: 2.0 | Build: 2025
-   Brand: Jade Green #00AC5B | Modern Premium Style
+   PASTIJAGA — DESIGN SYSTEM
+   Version: 3.0 | Build: 2025
+   Brand: Shocking Green #39FF14 | Neo-Brutalism Style
    ============================================================ */
 
 /* ── 1. GOOGLE FONTS ── */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Lora:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 /* ── 2. CSS VARIABLES ── */
 :root {
-  /* Brand */
-  --jade:          #00AC5B;
-  --jade-light:    #00D171;
-  --jade-dark:     #008C48;
-  --jade-10:       rgba(0,172,91,0.10);
-  --jade-20:       rgba(0,172,91,0.20);
-  --tangerine:     #F15A22;
+  /* Brand — "jade" = brand green (Shocking Green #39FF14), kept for legacy compat */
+  --jade:          #39FF14;
+  --jade-light:    #7FFF00;
+  --jade-dark:     #2ECC40;
+  --jade-text:     #1A7A1A;  /* WCAG AA compliant green for text on light backgrounds */
+  --jade-10:       rgba(57,255,20,0.10);
+  --jade-20:       rgba(57,255,20,0.20);
+  /* Accents — tangerine = warm orange accent, pink = Shocking Pink accent */
+  --tangerine:     #E64A19;
   --coral:         #FF6F61;
+  --pink:          #FF1493;
+  --yellow:        #FFE600;
 
   /* Backgrounds */
   --bg:            #FFFFFF;
-  --bg-alt:        #F4F4F4;
+  --bg-alt:        #F8FAFC;
   --bg-lavender:   #EEF0FF;
   --bg-card:       #FFFFFF;
   --bg-hero:       #F0FBF6;
-  --bg-section:    #F8F9FA;
+  --bg-section:    #F8FAFC;
 
   /* Text */
-  --txt:           #1A1A1A;
-  --txt-head:      #004080;
-  --txt-sub:       #4A5A6A;
-  --txt-muted:     #8A96A2;
+  --txt:           #1E293B;
+  --txt-head:      #0F172A;
+  --txt-sub:       #475569;
+  --txt-muted:     #94A3B8;
   --txt-on-brand:  #FFFFFF;
 
   /* Borders */
@@ -42,23 +46,23 @@
   --sh-sm:   0 2px 10px rgba(0,0,0,0.07);
   --sh-md:   0 4px 24px rgba(0,0,0,0.09);
   --sh-lg:   0 8px 48px rgba(0,0,0,0.11);
-  --sh-jade: 0 4px 20px rgba(0,172,91,0.28);
-  --sh-cta:  0 4px 20px rgba(241,90,34,0.30);
+  --sh-jade: 0 4px 20px rgba(57,255,20,0.28);
+  --sh-cta:  0 4px 20px rgba(230,74,25,0.30);
 
   /* Typography */
-  --ff-head:   'Merriweather', Georgia, serif;
-  --ff-body:   'Open Sans', system-ui, sans-serif;
+  --ff-head:   'Plus Jakarta Sans', sans-serif;
+  --ff-body:   'Inter', system-ui, sans-serif;
 
-  /* Sizes */
+  /* Sizes — Compact dashboard style */
   --fs-xs:    0.75rem;   /* 12px */
   --fs-sm:    0.8125rem; /* 13px */
-  --fs-base:  0.9375rem; /* 15px */
-  --fs-md:    1.0625rem; /* 17px */
-  --fs-lg:    1.2rem;    /* 19px */
-  --fs-xl:    1.45rem;   /* 23px */
-  --fs-2xl:   1.75rem;   /* 28px */
-  --fs-3xl:   2.15rem;   /* 34px */
-  --fs-4xl:   2.7rem;    /* 43px */
+  --fs-base:  0.8125rem; /* 13px — compact */
+  --fs-md:    0.9375rem; /* 15px */
+  --fs-lg:    1.0625rem; /* 17px */
+  --fs-xl:    1.2rem;    /* 19px */
+  --fs-2xl:   1.45rem;   /* 23px */
+  --fs-3xl:   1.75rem;   /* 28px */
+  --fs-4xl:   2.15rem;   /* 34px */
 
   /* Spacing */
   --sp-1:  4px;   --sp-2:  8px;   --sp-3:  12px;
@@ -84,17 +88,19 @@
 
 /* ── DARK MODE ── */
 html.dark {
-  --bg:          #0D1B2A;
-  --bg-alt:      #0F2133;
-  --bg-lavender: #152236;
-  --bg-card:     #162638;
-  --bg-hero:     #0F2030;
-  --bg-section:  #111D2C;
+  --bg:          #0F172A;
+  --bg-alt:      #1E293B;
+  --bg-lavender: #1E293B;
+  --bg-card:     #1E293B;
+  --bg-hero:     #0F172A;
+  --bg-section:  #1E293B;
 
-  --txt:       #DDE8F0;
-  --txt-head:  #6DB8E0;
-  --txt-sub:   #7A9BB5;
-  --txt-muted: #4A6375;
+  --txt:       #F8FAFC;
+  --txt-head:  #E2E8F0;
+  --txt-sub:   #94A3B8;
+  --txt-muted: #64748B;
+
+  --jade-text: #39FF14;  /* Neon green is readable on dark backgrounds (12:1 contrast) */
 
   --border:    rgba(255,255,255,0.07);
   --border-md: rgba(255,255,255,0.13);
@@ -103,6 +109,7 @@ html.dark {
   --sh-sm:  0 2px 10px rgba(0,0,0,0.45);
   --sh-md:  0 4px 24px rgba(0,0,0,0.55);
   --sh-lg:  0 8px 48px rgba(0,0,0,0.65);
+  --sh-jade: 0 4px 20px rgba(57,255,20,0.20);
 }
 
 /* ── 3. RESET & BASE ── */
@@ -136,7 +143,7 @@ h1, h2, h3, h4 {
   font-family: var(--ff-head);
   color: var(--txt-head);
   line-height: 1.3;
-  font-weight: 700;
+  font-weight: 800;
 }
 h1 { font-size: var(--fs-4xl); }
 h2 { font-size: var(--fs-3xl); }
@@ -146,11 +153,11 @@ h4 { font-size: var(--fs-md); }
 p { color: var(--txt-sub); line-height: 1.75; }
 
 /* Keyword highlight */
-.kw { color: var(--jade); font-weight: 600; }
+.kw { color: var(--jade-text); font-weight: 600; }
 .kw-cta { color: var(--tangerine); font-weight: 600; }
 .kw-gold { color: #B8860B; font-weight: 600; }
 
-html.dark .kw { color: var(--jade-light); }
+html.dark .kw { color: var(--jade-text); }
 html.dark .kw-cta { color: #FF7F45; }
 html.dark .kw-gold { color: #F0C040; }
 
@@ -176,7 +183,7 @@ html.dark .kw-gold { color: #F0C040; }
   align-items: center;
   gap: var(--sp-2);
   background: var(--jade-10);
-  color: var(--jade);
+  color: var(--jade-text);
   font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -253,8 +260,8 @@ html.dark .kw-gold { color: #F0C040; }
 
 .btn--outline {
   background: transparent;
-  border: 1.5px solid var(--jade);
-  color: var(--jade);
+  border: 2.5px solid var(--jade);
+  color: var(--jade-text);
 }
 .btn--outline:hover {
   background: var(--jade);
@@ -280,6 +287,18 @@ html.dark .kw-gold { color: #F0C040; }
   box-shadow: 0 4px 18px rgba(37,211,102,0.32);
 }
 .btn--wa:hover { background: #1fba58; transform: translateY(-1px); }
+
+/* Neo-Brutalism accent button */
+.btn--accent {
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(255,20,147,0.30);
+}
+.btn--accent:hover {
+  background: #E0007B;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(255,20,147,0.40);
+}
 
 /* ── 7. HEADER ── */
 .site-header {
@@ -327,7 +346,7 @@ html.dark .site-header.scrolled {
   font-family: var(--ff-head);
   font-size: 1.1rem;
   font-weight: 900;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: -0.02em;
 }
 
@@ -357,7 +376,7 @@ html.dark .site-header.scrolled {
   white-space: nowrap;
 }
 .nav-link:hover, .nav-link.active {
-  color: var(--jade);
+  color: var(--jade-text);
   background: var(--jade-10);
 }
 
@@ -405,7 +424,7 @@ html.dark .site-header.scrolled {
 .mega-col-title {
   font-size: var(--fs-xs);
   font-weight: 700;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: var(--sp-3);
@@ -422,7 +441,7 @@ html.dark .site-header.scrolled {
   transition: all var(--ease);
 }
 .mega-link:hover {
-  color: var(--jade);
+  color: var(--jade-text);
   background: var(--jade-10);
   padding-left: 12px;
 }
@@ -447,7 +466,7 @@ html.dark .site-header.scrolled {
 }
 .icon-btn:hover {
   background: var(--jade-10);
-  color: var(--jade);
+  color: var(--jade-text);
 }
 .icon-btn svg { width: 18px; height: 18px; }
 
@@ -504,7 +523,7 @@ html.dark .site-header.scrolled {
 .mobile-section-title {
   font-size: var(--fs-xs);
   font-weight: 700;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: var(--sp-3) 0 var(--sp-2);
@@ -521,7 +540,7 @@ html.dark .site-header.scrolled {
   border-bottom: 1px solid var(--border);
   transition: color var(--ease);
 }
-.mobile-link:hover { color: var(--jade); }
+.mobile-link:hover { color: var(--jade-text); }
 
 .mobile-cta {
   padding: var(--sp-5) 0;
@@ -571,7 +590,7 @@ html.dark .site-header.scrolled {
   padding: 12px 18px;
   margin-bottom: var(--sp-4);
 }
-.search-input-wrap svg { width: 18px; height: 18px; color: var(--jade); flex-shrink: 0; }
+.search-input-wrap svg { width: 18px; height: 18px; color: var(--jade-text); flex-shrink: 0; }
 .search-input {
   flex: 1;
   border: none;
@@ -676,7 +695,7 @@ html.dark .site-header.scrolled {
 
 .hero-title em {
   font-style: normal;
-  color: var(--jade);
+  color: var(--jade-text);
 }
 
 .hero-sub {
@@ -704,7 +723,7 @@ html.dark .site-header.scrolled {
   font-family: var(--ff-head);
   font-size: var(--fs-2xl);
   font-weight: 900;
-  color: var(--jade);
+  color: var(--jade-text);
   line-height: 1;
 }
 .hero-stat-lbl {
@@ -841,6 +860,7 @@ html.dark .site-header.scrolled {
   box-shadow: var(--sh-md);
   border-color: var(--jade-20);
   transform: translateY(-3px);
+  border-left: 4px solid var(--pink);
 }
 
 .product-icon {
@@ -862,14 +882,14 @@ html.dark .site-header.scrolled {
   padding: 3px 9px;
   border-radius: var(--r-full);
 }
-.badge--bestseller { background: var(--tangerine); color: #fff; }
-.badge--new        { background: var(--jade); color: #fff; }
-.badge--premium    { background: var(--txt-head); color: #fff; }
+.badge--bestseller { background: var(--yellow); color: #0F172A; }
+.badge--new        { background: var(--jade); color: #0F172A; }
+.badge--premium    { background: var(--pink); color: #fff; }
 
 .product-code {
   font-size: var(--fs-xs);
   font-weight: 700;
-  color: var(--jade);
+  color: var(--jade-text);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -971,6 +991,7 @@ html.dark .site-header.scrolled {
   box-shadow: var(--sh-md);
   border-color: var(--jade-20);
   transform: translateY(-2px);
+  border-left: 4px solid var(--pink);
 }
 
 .why-icon {
@@ -1144,7 +1165,7 @@ html.dark .site-header.scrolled {
   gap: var(--sp-2);
   background: var(--jade-10);
   border: 1px solid var(--jade-20);
-  color: var(--jade);
+  color: var(--jade-text);
   font-size: var(--fs-xs);
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1189,7 +1210,7 @@ html.dark .site-header.scrolled {
   font-family: var(--ff-head);
   font-size: var(--fs-2xl);
   font-weight: 900;
-  color: var(--jade);
+  color: var(--jade-text);
   line-height: 1;
   margin-bottom: 4px;
 }
@@ -1426,6 +1447,8 @@ html.dark .site-footer { background: #060E18; }
 }
 
 .footer-brand .logo-project { color: #fff; }
+.footer-brand .logo-cuan { color: var(--jade); }  /* Footer always has dark bg, neon green is readable */
+.site-footer .kw { color: var(--jade); }  /* Override for always-dark footer background */
 
 .footer-desc {
   font-size: var(--fs-sm);

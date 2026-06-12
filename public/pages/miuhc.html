@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MiUHC — MiUltimate HealthCare | PROJECTCUAN</title>
+  <title>MiUHC — MiUltimate HealthCare | PastiJaga</title>
   <meta name="description" content="Kalkulator premi MiUHC akurat berdasarkan data resmi Manulife. Konvensional & Syariah, usia 0–85, semua plan tersedia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,7 +123,7 @@
       border-radius: 50%;
       background: var(--jade);
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,172,91,0.4);
+      box-shadow: 0 2px 8px rgba(57,255,20,0.4);
       transition: transform var(--ease);
     }
     input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
@@ -241,7 +241,7 @@
       margin-top: var(--sp-5);
     }
     html.dark .calc-result-panel {
-      background: linear-gradient(135deg, rgba(0,172,91,0.08), rgba(0,64,128,0.08));
+      background: linear-gradient(135deg, rgba(57,255,20,0.08), rgba(0,64,128,0.08));
     }
     .result-rows { display: flex; flex-direction: column; gap: var(--sp-2); margin-bottom: var(--sp-4); }
     .result-row {
@@ -522,7 +522,7 @@
                   <div class="rider-name">🏃 Rawat Jalan</div>
                   <div class="rider-note">Konsultasi dokter, lab, obat-obatan (luar rawat inap)</div>
                 </div>
-                <div id="riderJalanPremi" style="margin-left:auto;font-size:var(--fs-sm);font-weight:700;color:var(--jade);white-space:nowrap">—</div>
+                <div id="riderJalanPremi" style="margin-left:auto;font-size:var(--fs-sm);font-weight:700;color:var(--jade-text);white-space:nowrap">—</div>
               </label>
               <label class="rider-item disabled" id="riderGigiLabel">
                 <input type="checkbox" id="riderGigi" disabled>
@@ -533,7 +533,7 @@
                   <div class="rider-name">🦷 Rawat Gigi <span style="font-size:10px;background:rgba(241,90,34,0.1);color:var(--tangerine);padding:2px 6px;border-radius:var(--r-full);margin-left:4px">Syariah Only</span></div>
                   <div class="rider-note">Perawatan gigi rutin & darurat (hanya tersedia di plan Syariah)</div>
                 </div>
-                <div id="riderGigiPremi" style="margin-left:auto;font-size:var(--fs-sm);font-weight:700;color:var(--jade);white-space:nowrap">—</div>
+                <div id="riderGigiPremi" style="margin-left:auto;font-size:var(--fs-sm);font-weight:700;color:var(--jade-text);white-space:nowrap">—</div>
               </label>
             </div>
 
@@ -544,7 +544,7 @@
                 Pilih usia, plan, dan opsi di atas untuk melihat premi
               </div>
               <div id="resultContent" style="display:none">
-                <div style="font-size:var(--fs-xs);font-weight:700;color:var(--jade);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--sp-3)">Rincian Premi Tahunan</div>
+                <div style="font-size:var(--fs-xs);font-weight:700;color:var(--jade-text);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--sp-3)">Rincian Premi Tahunan</div>
                 <div class="result-rows" id="resultRows"></div>
                 <div class="result-total-row">
                   <div class="result-total-lbl">Total Premi / Tahun</div>
@@ -866,7 +866,7 @@ async function initCalc() {
     recalc();
   } catch (e) {
     document.getElementById('calcLoading').innerHTML =
-      `<div style="color:var(--tangerine)">⚠️ Gagal memuat data. Silakan reload halaman atau <a href="https://wa.me/6287781896087" target="_blank" style="color:var(--jade)">chat agen</a> langsung.</div>`;
+      `<div style="color:var(--tangerine)">⚠️ Gagal memuat data. Silakan reload halaman atau <a href="https://wa.me/6287781896087" target="_blank" style="color:var(--jade-text)">chat agen</a> langsung.</div>`;
   }
 }
 
