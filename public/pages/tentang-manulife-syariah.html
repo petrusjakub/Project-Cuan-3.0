@@ -426,6 +426,118 @@
       .steps-grid { grid-template-columns: 1fr; }
       .comparison-table { font-size: var(--fs-xs); }
       .comparison-table th, .comparison-table td { padding: 8px 10px; }
+      .produk-grid { grid-template-columns: 1fr; }
+      .komitmen-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TIMELINE (for Sejarah section) ── */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      max-width: 700px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--jade-20);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--sp-6);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      background: var(--jade);
+      border-radius: 50%;
+      border: 3px solid var(--bg-card);
+      box-shadow: 0 0 0 2px var(--jade-20);
+    }
+    .timeline-year {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--jade);
+      margin-bottom: var(--sp-1);
+    }
+    .timeline-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    /* ── PRODUK GRID (for Fatwa section) ── */
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-5);
+    }
+    .produk-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+    }
+    .produk-card:hover { border-color: var(--jade-20); transform: translateY(-3px); box-shadow: var(--sh-md); }
+    .produk-card-icon {
+      width: 48px; height: 48px;
+      background: var(--jade-10);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: var(--sp-4);
+    }
+    .produk-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .produk-card-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.65;
+    }
+
+    /* ── KOMITMEN GRID (for DPS section) ── */
+    .komitmen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--sp-5);
+    }
+    .komitmen-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .komitmen-card:hover { border-color: var(--jade-20); box-shadow: var(--sh-md); }
+    .komitmen-icon { font-size: 32px; margin-bottom: var(--sp-3); }
+    .komitmen-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .komitmen-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -963,6 +1075,246 @@
         <summary class="faq-trigger">Apakah uang kontribusi hangus jika tidak ada klaim?</summary>
         <div class="faq-body">
           <p class="faq-answer">Tidak. Dalam asuransi syariah, kontribusi tabarru' Anda adalah sedekah untuk Dana Tabarru'. Jika Dana Tabarru' surplus, Anda berhak mendapat bagian surplus. Berbeda dengan konvensional yang preminya hangus jika tidak klaim.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEJARAH MANULIFE SYARIAH
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="sejarah-syariah-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Perjalanan Kami</span>
+      <h2 id="sejarah-syariah-heading" class="section-title fade-up">
+        Sejarah <span class="kw">Manulife Syariah</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Perjalanan Manulife dalam menghadirkan solusi asuransi berbasis prinsip syariah di Indonesia.
+      </p>
+    </div>
+
+    <div class="timeline fade-up stagger-2" style="margin:0 auto">
+      <div class="timeline-item">
+        <div class="timeline-year">2009</div>
+        <div class="timeline-desc">Manulife Indonesia meluncurkan unit usaha syariah pertama, menandai komitmen dalam menyediakan produk keuangan halal.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2012</div>
+        <div class="timeline-desc">Mendapat persetujuan Dewan Pengawas Syariah (DPS) dan DSN-MUI untuk produk asuransi jiwa syariah.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-desc">Peluncuran MPS Flexi sebagai produk andalan asuransi jiwa murni syariah dengan fleksibilitas tinggi.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-desc">Total peserta syariah Manulife melampaui 100.000 orang, menunjukkan kepercayaan masyarakat terhadap produk syariah.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-desc">Inovasi digital dengan pendaftaran dan klaim syariah secara online, mempermudah akses peserta.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-desc">Pertumbuhan kontribusi syariah tumbuh 35% year-over-year, mencerminkan meningkatnya kesadaran masyarakat akan produk halal.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-desc">RBC unit syariah di atas 500% dan dana tabarru' terjaga kuat, membuktikan soliditas keuangan syariah.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     DEWAN PENGAWAS SYARIAH (DPS)
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="dps-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Pengawasan Syariah</span>
+      <h2 id="dps-heading" class="section-title fade-up">
+        Dewan Pengawas <span class="kw">Syariah (DPS)</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        DPS memastikan seluruh operasional dan produk Manulife Syariah sesuai dengan prinsip-prinsip Islam.
+      </p>
+    </div>
+
+    <div class="komitmen-grid">
+      <div class="komitmen-card fade-up">
+        <div class="komitmen-icon">📜</div>
+        <div class="komitmen-title">Pengawas Kepatuhan Syariah</div>
+        <div class="komitmen-desc">DPS berperan sebagai pengawas utama yang memastikan setiap aktivitas perusahaan sesuai prinsip syariah Islam.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-1">
+        <div class="komitmen-icon">🔎</div>
+        <div class="komitmen-title">Pengawasan Produk & Operasional</div>
+        <div class="komitmen-desc">Fungsi pengawasan mencakup seluruh produk, akad, investasi, dan operasional perusahaan.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-2">
+        <div class="komitmen-icon">✅</div>
+        <div class="komitmen-title">Kesesuaian Akad & Investasi</div>
+        <div class="komitmen-desc">Memastikan akad, investasi, dan pengelolaan dana sesuai prinsip Islam yang berlaku.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-3">
+        <div class="komitmen-icon">📝</div>
+        <div class="komitmen-title">Opini Syariah Produk Baru</div>
+        <div class="komitmen-desc">Memberikan opini dan persetujuan syariah untuk setiap produk baru sebelum diluncurkan ke pasar.</div>
+      </div>
+      <div class="komitmen-card fade-up stagger-4">
+        <div class="komitmen-icon">🔍</div>
+        <div class="komitmen-title">Audit Syariah Berkala</div>
+        <div class="komitmen-desc">Melakukan audit syariah secara berkala untuk memastikan kepatuhan yang berkelanjutan.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FATWA & REGULASI
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="fatwa-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Landasan Hukum</span>
+      <h2 id="fatwa-heading" class="section-title fade-up">
+        Fatwa & <span class="kw">Regulasi</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Landasan fatwa DSN-MUI dan regulasi OJK yang menjadi dasar operasional asuransi syariah Manulife.
+      </p>
+    </div>
+
+    <div class="produk-grid">
+      <div class="produk-card fade-up">
+        <div class="produk-card-icon">📖</div>
+        <div class="produk-card-title">Fatwa DSN-MUI No. 21/DSN-MUI/X/2001</div>
+        <div class="produk-card-desc">Pedoman Umum Asuransi Syariah yang menjadi landasan dasar operasional asuransi berbasis prinsip Islam di Indonesia.</div>
+      </div>
+      <div class="produk-card fade-up stagger-1">
+        <div class="produk-card-icon">📖</div>
+        <div class="produk-card-title">Fatwa DSN-MUI No. 51/DSN-MUI/III/2006</div>
+        <div class="produk-card-desc">Mengatur Akad Mudharabah Musytarakah untuk pengelolaan dana investasi bersama antara peserta dan pengelola.</div>
+      </div>
+      <div class="produk-card fade-up stagger-2">
+        <div class="produk-card-icon">📖</div>
+        <div class="produk-card-title">Fatwa DSN-MUI No. 52/DSN-MUI/III/2006</div>
+        <div class="produk-card-desc">Mengatur Akad Wakalah Bil Ujrah yaitu pemberian kuasa dari peserta kepada perusahaan untuk mengelola dana dengan imbalan (ujrah).</div>
+      </div>
+      <div class="produk-card fade-up stagger-3">
+        <div class="produk-card-icon">📖</div>
+        <div class="produk-card-title">Fatwa DSN-MUI No. 53/DSN-MUI/III/2006</div>
+        <div class="produk-card-desc">Mengatur Akad Tabarru' yaitu hibah/derma dari peserta untuk Dana Tabarru' yang digunakan menolong peserta lain yang tertimpa musibah.</div>
+      </div>
+      <div class="produk-card fade-up stagger-4">
+        <div class="produk-card-icon">🏛️</div>
+        <div class="produk-card-title">POJK No. 69/POJK.05/2016</div>
+        <div class="produk-card-desc">Peraturan OJK tentang Penyelenggaraan Usaha Perasuransian yang mengatur tata kelola, kesehatan keuangan, dan perlindungan peserta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONI & KASUS KLAIM SYARIAH
+═══════════════════════════════════════════ -->
+<section class="section section--alt" aria-labelledby="testimoni-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Kisah Nyata</span>
+      <h2 id="testimoni-heading" class="section-title fade-up">
+        Testimoni & <span class="kw">Kasus Klaim Syariah</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Contoh nyata bagaimana prinsip ta'awun (tolong-menolong) bekerja melindungi para peserta asuransi syariah.
+      </p>
+    </div>
+
+    <div class="produk-grid">
+      <div class="produk-card fade-up">
+        <div class="produk-card-icon">🤲</div>
+        <div class="produk-card-title">Santunan Meninggal Dunia</div>
+        <div class="produk-card-desc">Keluarga Bapak Ahmad menerima santunan meninggal dunia dari Dana Tabarru' sebesar Rp 500 juta. Dana ini berasal dari kontribusi sesama peserta yang saling tolong-menolong, bukan dari perusahaan.</div>
+      </div>
+      <div class="produk-card fade-up stagger-1">
+        <div class="produk-card-icon">💰</div>
+        <div class="produk-card-title">Surplus Underwriting</div>
+        <div class="produk-card-desc">Ibu Sari menerima surplus underwriting karena tidak ada klaim selama periode polis. Surplus dari Dana Tabarru' dibagikan sesuai proporsi kontribusi masing-masing peserta.</div>
+      </div>
+      <div class="produk-card fade-up stagger-2">
+        <div class="produk-card-icon">⚡</div>
+        <div class="produk-card-title">Klaim Transparan & Cepat</div>
+        <div class="produk-card-desc">Bapak Rudi mengajukan klaim rawat inap secara online dan diproses dalam 3 hari kerja sesuai akad. Transparansi proses membuat beliau merasa tenang dan terlindungi.</div>
+      </div>
+      <div class="produk-card fade-up stagger-3">
+        <div class="produk-card-icon">🕋</div>
+        <div class="produk-card-title">Dana Haji</div>
+        <div class="produk-card-desc">Keluarga Haji Usman terbantu melunasi biaya ibadah haji berkat manfaat dana haji dari polis syariah yang telah disiapkan selama bertahun-tahun.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ ASURANSI SYARIAH (EXPANDED)
+═══════════════════════════════════════════ -->
+<section class="section" aria-labelledby="faq-syariah-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-10)">
+      <span class="section-tag">Tanya Jawab</span>
+      <h2 id="faq-syariah-heading" class="section-title fade-up">
+        FAQ <span class="kw">Asuransi Syariah</span>
+      </h2>
+      <p class="fade-up stagger-1" style="color:var(--txt-sub);font-size:var(--fs-sm);max-width:600px;margin:0 auto">
+        Jawaban atas pertanyaan yang sering diajukan seputar asuransi syariah Manulife.
+      </p>
+    </div>
+
+    <div class="faq-list fade-up stagger-2" style="max-width:800px;margin:0 auto">
+      <details class="faq-item">
+        <summary class="faq-trigger">Apa bedanya asuransi syariah dengan konvensional?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Asuransi syariah menggunakan prinsip risk sharing (berbagi risiko) melalui Dana Tabarru' yang dimiliki bersama oleh peserta. Konvensional menggunakan risk transfer (memindahkan risiko ke perusahaan). Di syariah, jika Dana Tabarru' surplus, akan dibagikan kembali kepada peserta. Seluruh investasi wajib halal dan diawasi oleh Dewan Pengawas Syariah.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Bagaimana surplus underwriting dihitung dan dibagikan?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Surplus underwriting dihitung dari selisih antara total Dana Tabarru' yang terkumpul dikurangi total klaim dan biaya pengelolaan. Jika hasilnya positif (surplus), maka dibagikan sesuai nisbah yang disepakati dalam polis, misalnya 70% untuk peserta dan 30% untuk pengelola. Peserta dapat memilih menerima surplus atau menyedekahkannya.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Apa itu dana tabarru' dan bagaimana pengelolaannya?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Dana Tabarru' adalah dana hibah (derma) yang dikumpulkan dari kontribusi peserta untuk tujuan saling tolong-menolong. Dana ini dikelola secara terpisah dari dana perusahaan dan digunakan khusus untuk membayar klaim peserta yang tertimpa musibah. Pengelolaan dilakukan dengan prinsip amanah dan diawasi oleh DPS.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Apakah Manulife Syariah diawasi oleh DPS dan DSN-MUI?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Ya, Manulife Syariah memiliki Dewan Pengawas Syariah (DPS) yang ditunjuk dan disetujui oleh DSN-MUI. DPS bertugas mengawasi seluruh kegiatan operasional, produk, akad, dan investasi agar sesuai dengan prinsip syariah. Selain itu, Manulife Syariah juga diawasi oleh OJK untuk aspek prudensial.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Bisakah pindah dari polis konvensional ke syariah?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Perpindahan dari polis konvensional ke polis syariah dapat dilakukan dengan mengajukan polis baru berbasis syariah. Setiap kasus memiliki ketentuan berbeda tergantung produk dan masa berlaku polis yang ada. Hubungi agen atau customer service Manulife untuk konsultasi mengenai proses perpindahan yang sesuai kebutuhan Anda.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Bagaimana jika peserta meninggal dunia, siapa yang menerima manfaat?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Jika peserta meninggal dunia, manfaat asuransi akan dibayarkan kepada ahli waris atau penerima manfaat yang telah ditunjuk dalam polis. Santunan berasal dari Dana Tabarru' sesuai prinsip ta'awun (tolong-menolong). Proses klaim bisa diajukan oleh keluarga dengan melengkapi dokumen yang diperlukan.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-trigger">Apakah ada masa tunggu (waiting period)?</summary>
+        <div class="faq-body">
+          <p class="faq-answer">Ya, beberapa manfaat memiliki masa tunggu (waiting period) yang bervariasi tergantung jenis produk dan manfaat yang dipilih. Masa tunggu biasanya berlaku untuk kondisi tertentu seperti penyakit kritis. Detail masa tunggu akan dijelaskan dalam polis dan ilustrasi produk yang diberikan saat pendaftaran.</p>
         </div>
       </details>
     </div>
