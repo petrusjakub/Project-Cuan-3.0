@@ -1,0 +1,36 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Update all brand colors from Manulife green (#00A75A) to WhatsApp green (#25D366) and BMI orange (#D3541E) to Cloudflare orange (#FC7C1E) across all CSS and HTML files",
+  "status": "in_progress",
+  "steps": [
+    "In public/assets/style.css, update the :root block (lines 12-18): change --jade from #00A75A to #25D366, --jade-light from #33B876 to #50DC84, --jade-dark from #007A43 to #1DA851, --jade-text from #007A43 to #1DA851",
+    "In public/assets/style.css, update :root rgba values: --jade-10 from rgba(0,167,90,0.10) to rgba(37,211,102,0.10), --jade-20 from rgba(0,167,90,0.20) to rgba(37,211,102,0.20)",
+    "In public/assets/style.css, update :root --tangerine from #D3541E to #FC7C1E",
+    "In public/assets/style.css, update :root shadow variables: --sh-jade from rgba(0,167,90,0.28) to rgba(37,211,102,0.28), --sh-cta from rgba(211,84,30,0.30) to rgba(252,124,30,0.30)",
+    "In public/assets/style.css, update the html.dark block (around line 105): change --jade-text from #00A75A to #25D366",
+    "In public/assets/style.css, update the html.dark shadow: --sh-jade from rgba(0,167,90,0.20) to rgba(37,211,102,0.20)",
+    "In public/assets/style.css, update the comment at top (line 4) from 'Hijau Manulife #00A75A' to 'WhatsApp Green #25D366', and the comment at line 12 similarly",
+    "In public/pages/syariah.html line 10: change theme-color content from #00A75A to #25D366",
+    "In public/pages/mifip.html line 233: change hardcoded #d94d18 to #E06A10 (darker hover variant of Cloudflare orange)",
+    "In public/pages/mission.html line 210: change hardcoded #d94d18 to #E06A10 (darker hover variant of Cloudflare orange)"
+  ],
+  "acceptance_criteria": [
+    "grep for '#00A75A' in all project files returns zero matches",
+    "grep for '#007A43' in all project files returns zero matches",
+    "grep for '#33B876' in all project files returns zero matches",
+    "grep for '#D3541E' in all project files returns zero matches",
+    "grep for '#d94d18' in all project files returns zero matches",
+    "grep for 'rgba(0,167,90' in all project files returns zero matches",
+    "grep for 'rgba(211,84,30' in all project files returns zero matches",
+    "#25D366 appears in style.css as the primary jade color",
+    "#FC7C1E appears in style.css as the tangerine color"
+  ],
+  "verification": [
+    "Run: grep -rn '#00A75A\\|#007A43\\|#33B876\\|#D3541E\\|#d94d18\\|rgba(0,167,90\\|rgba(211,84,30' /projects/sandbox/Project-Cuan-3.0/public/ -- should return empty",
+    "Run: grep -n '#25D366' /projects/sandbox/Project-Cuan-3.0/public/assets/style.css -- should show the jade variable",
+    "Run: grep -n '#FC7C1E' /projects/sandbox/Project-Cuan-3.0/public/assets/style.css -- should show the tangerine variable"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

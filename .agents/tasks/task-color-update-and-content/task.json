@@ -1,0 +1,7 @@
+{
+  "task_id": "task-color-update-and-content",
+  "task_description": "Update brand colors from Manulife green to WhatsApp green and BMI orange to Cloudflare orange across all files, and enhance the tentang-manulife and tentang-manulife-syariah pages with more comprehensive content",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": null
+}

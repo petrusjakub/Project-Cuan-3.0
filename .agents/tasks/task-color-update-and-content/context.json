@@ -1,0 +1,23 @@
+{
+  "project_type": "Static HTML/CSS website (PastiJaga - insurance platform)",
+  "language": "HTML, CSS, JavaScript",
+  "build_system": "None (static files served directly)",
+  "test_framework": "None - no automated tests",
+  "build_command": null,
+  "test_command": null,
+  "verification_instructions": "Verify by checking that all color values are updated correctly in CSS and HTML files using grep. Ensure no old color values remain.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static files",
+  "environment_constraints": "No build system. Static HTML/CSS. Push via github power tools only (push_to_remote).",
+  "contribution_requirements": "Push directly to main branch.",
+  "key_patterns": "CSS variables defined in :root and html.dark blocks in style.css. Pages use inline <style> blocks for page-specific CSS. HTML pages follow consistent structure with sections, containers, and fade-up animations.",
+  "relevant_files": [
+    "public/assets/style.css",
+    "public/pages/syariah.html",
+    "public/pages/tentang-manulife.html",
+    "public/pages/tentang-manulife-syariah.html",
+    "public/pages/mifip.html",
+    "public/pages/mission.html"
+  ],
+  "directory_structure": "public/ contains index.html, assets/ (style.css), pages/ (individual HTML pages). Source/ contains reference images."
+}

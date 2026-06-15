@@ -1,7 +1,7 @@
 /* ============================================================
    PASTIJAGA — DESIGN SYSTEM
    Version: 3.0 | Build: 2025
-   Brand: Hijau Manulife #00A75A | Neo-Brutalism Style
+   Brand: WhatsApp Green #25D366 | Neo-Brutalism Style
    ============================================================ */
 
 /* ── 1. GOOGLE FONTS ── */
@@ -9,15 +9,15 @@
 
 /* ── 2. CSS VARIABLES ── */
 :root {
-  /* Brand — "jade" = brand green (Hijau Manulife #00A75A), kept for legacy compat */
-  --jade:          #00A75A;
-  --jade-light:    #33B876;
-  --jade-dark:     #007A43;
-  --jade-text:     #007A43;  /* WCAG AA compliant green for text on light backgrounds */
-  --jade-10:       rgba(0,167,90,0.10);
-  --jade-20:       rgba(0,167,90,0.20);
-  /* Accents — tangerine = Oranye BMI, pink = Neon Fuchsia accent */
-  --tangerine:     #D3541E;
+  /* Brand — "jade" = brand green (WhatsApp Green #25D366), kept for legacy compat */
+  --jade:          #25D366;
+  --jade-light:    #50DC84;
+  --jade-dark:     #1DA851;
+  --jade-text:     #1DA851;  /* WCAG AA compliant green for text on light backgrounds */
+  --jade-10:       rgba(37,211,102,0.10);
+  --jade-20:       rgba(37,211,102,0.20);
+  /* Accents — tangerine = Cloudflare Orange, pink = Neon Fuchsia accent */
+  --tangerine:     #FC7C1E;
   /* Accent neon — Electric Yellow/Lime for hover effects */
   --accent-neon:   #CCFF00;
   --coral:         #FF6F61;
@@ -48,8 +48,8 @@
   --sh-sm:   0 2px 10px rgba(0,0,0,0.07);
   --sh-md:   0 4px 24px rgba(0,0,0,0.09);
   --sh-lg:   0 8px 48px rgba(0,0,0,0.11);
-  --sh-jade: 0 4px 20px rgba(0,167,90,0.28);
-  --sh-cta:  0 4px 20px rgba(211,84,30,0.30);
+  --sh-jade: 0 4px 20px rgba(37,211,102,0.28);
+  --sh-cta:  0 4px 20px rgba(252,124,30,0.30);
 
   /* Typography */
   --ff-head:   'Plus Jakarta Sans', sans-serif;
@@ -102,7 +102,7 @@ html.dark {
   --txt-sub:   #94A3B8;
   --txt-muted: #64748B;
 
-  --jade-text: #00A75A;  /* Manulife green is readable on dark backgrounds */
+  --jade-text: #25D366;  /* WhatsApp green is readable on dark backgrounds */
 
   --border:    rgba(255,255,255,0.07);
   --border-md: rgba(255,255,255,0.13);
@@ -111,7 +111,7 @@ html.dark {
   --sh-sm:  0 2px 10px rgba(0,0,0,0.45);
   --sh-md:  0 4px 24px rgba(0,0,0,0.55);
   --sh-lg:  0 8px 48px rgba(0,0,0,0.65);
-  --sh-jade: 0 4px 20px rgba(0,167,90,0.20);
+  --sh-jade: 0 4px 20px rgba(37,211,102,0.20);
 }
 
 /* ── NEON GLOW EFFECT (Dark Mode accent) ── */
@@ -119,10 +119,10 @@ html.dark .neon-glow:hover {
   box-shadow: 0 0 12px rgba(204,255,0,0.4), 0 0 24px rgba(204,255,0,0.2);
 }
 html.dark .btn--jade:hover {
-  box-shadow: 0 6px 28px rgba(0,167,90,0.35), 0 0 12px rgba(204,255,0,0.15);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.35), 0 0 12px rgba(204,255,0,0.15);
 }
 html.dark .btn--cta:hover {
-  box-shadow: 0 6px 28px rgba(211,84,30,0.40), 0 0 12px rgba(204,255,0,0.15);
+  box-shadow: 0 6px 28px rgba(252,124,30,0.40), 0 0 12px rgba(204,255,0,0.15);
 }
 
 /* ── 3. RESET & BASE ── */
@@ -266,7 +266,7 @@ html.dark .kw-gold { color: #F0C040; }
   box-shadow: var(--sh-cta);
 }
 .btn--cta:hover {
-  background: #d94d18;
+  background: #E06A10;
   transform: translateY(-1px);
   box-shadow: 0 6px 28px rgba(241,90,34,0.40);
 }
