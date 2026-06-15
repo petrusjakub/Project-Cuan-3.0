@@ -1,0 +1,7 @@
+{
+  "task_id": "task-syariah-page-color-palette",
+  "task_description": "Add syariah.html product page with Manulife Syariah content and images, update site color palette to new Manulife branding (green #00A75A, orange #D3541E, accent #CCFF00), add pension image to MDLA Plan C, and add syariah links throughout the site.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

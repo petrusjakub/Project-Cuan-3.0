@@ -1,7 +1,7 @@
 /* ============================================================
    PASTIJAGA — DESIGN SYSTEM
    Version: 3.0 | Build: 2025
-   Brand: Vibrant Emerald #10C775 | Neo-Brutalism Style
+   Brand: Hijau Manulife #00A75A | Neo-Brutalism Style
    ============================================================ */
 
 /* ── 1. GOOGLE FONTS ── */
@@ -9,21 +9,23 @@
 
 /* ── 2. CSS VARIABLES ── */
 :root {
-  /* Brand — "jade" = brand green (Vibrant Emerald #10C775), kept for legacy compat */
-  --jade:          #10C775;
-  --jade-light:    #4DDBA0;
-  --jade-dark:     #0A9A5A;
-  --jade-text:     #0A7B4B;  /* WCAG AA compliant green for text on light backgrounds */
-  --jade-10:       rgba(16,199,117,0.10);
-  --jade-20:       rgba(16,199,117,0.20);
-  /* Accents — tangerine = warm orange accent, pink = Neon Fuchsia accent */
-  --tangerine:     #E64A19;
+  /* Brand — "jade" = brand green (Hijau Manulife #00A75A), kept for legacy compat */
+  --jade:          #00A75A;
+  --jade-light:    #33B876;
+  --jade-dark:     #007A43;
+  --jade-text:     #007A43;  /* WCAG AA compliant green for text on light backgrounds */
+  --jade-10:       rgba(0,167,90,0.10);
+  --jade-20:       rgba(0,167,90,0.20);
+  /* Accents — tangerine = Oranye BMI, pink = Neon Fuchsia accent */
+  --tangerine:     #D3541E;
+  /* Accent neon — Electric Yellow/Lime for hover effects */
+  --accent-neon:   #CCFF00;
   --coral:         #FF6F61;
   --pink:          #E0115F;
   --yellow:        #FFE600;
 
   /* Backgrounds */
-  --bg:            #FFFFFF;
+  --bg:            #F8F9FA;
   --bg-alt:        #F8FAFC;
   --bg-lavender:   #EEF0FF;
   --bg-card:       #FFFFFF;
@@ -32,7 +34,7 @@
 
   /* Text */
   --txt:           #1E293B;
-  --txt-head:      #0F172A;
+  --txt-head:      #1A1A1A;
   --txt-sub:       #475569;
   --txt-muted:     #94A3B8;
   --txt-on-brand:  #0F172A;
@@ -46,8 +48,8 @@
   --sh-sm:   0 2px 10px rgba(0,0,0,0.07);
   --sh-md:   0 4px 24px rgba(0,0,0,0.09);
   --sh-lg:   0 8px 48px rgba(0,0,0,0.11);
-  --sh-jade: 0 4px 20px rgba(16,199,117,0.28);
-  --sh-cta:  0 4px 20px rgba(230,74,25,0.30);
+  --sh-jade: 0 4px 20px rgba(0,167,90,0.28);
+  --sh-cta:  0 4px 20px rgba(211,84,30,0.30);
 
   /* Typography */
   --ff-head:   'Plus Jakarta Sans', sans-serif;
@@ -88,11 +90,11 @@
 
 /* ── DARK MODE ── */
 html.dark {
-  --bg:          #0F172A;
+  --bg:          #121824;
   --bg-alt:      #1E293B;
   --bg-lavender: #1E293B;
   --bg-card:     #1E293B;
-  --bg-hero:     #0F172A;
+  --bg-hero:     #121824;
   --bg-section:  #1E293B;
 
   --txt:       #F8FAFC;
@@ -100,7 +102,7 @@ html.dark {
   --txt-sub:   #94A3B8;
   --txt-muted: #64748B;
 
-  --jade-text: #10C775;  /* Emerald green is readable on dark backgrounds */
+  --jade-text: #00A75A;  /* Manulife green is readable on dark backgrounds */
 
   --border:    rgba(255,255,255,0.07);
   --border-md: rgba(255,255,255,0.13);
@@ -109,7 +111,18 @@ html.dark {
   --sh-sm:  0 2px 10px rgba(0,0,0,0.45);
   --sh-md:  0 4px 24px rgba(0,0,0,0.55);
   --sh-lg:  0 8px 48px rgba(0,0,0,0.65);
-  --sh-jade: 0 4px 20px rgba(16,199,117,0.20);
+  --sh-jade: 0 4px 20px rgba(0,167,90,0.20);
+}
+
+/* ── NEON GLOW EFFECT (Dark Mode accent) ── */
+html.dark .neon-glow:hover {
+  box-shadow: 0 0 12px rgba(204,255,0,0.4), 0 0 24px rgba(204,255,0,0.2);
+}
+html.dark .btn--jade:hover {
+  box-shadow: 0 6px 28px rgba(0,167,90,0.35), 0 0 12px rgba(204,255,0,0.15);
+}
+html.dark .btn--cta:hover {
+  box-shadow: 0 6px 28px rgba(211,84,30,0.40), 0 0 12px rgba(204,255,0,0.15);
 }
 
 /* ── 3. RESET & BASE ── */

@@ -1,0 +1,38 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Update color palette in style.css, create syariah.html page with Manulife Syariah product content and images, add pension image to MDLA Plan C section, and add syariah links to header, footer, and index page.",
+  "status": "in_progress",
+  "steps": [
+    "Step 1: Copy images to public/assets/. Copy Source/Syariah/Dana Pelunasan Haji 500jt.webp to public/assets/dana-pelunasan-haji-500jt.webp. Copy Source/Syariah/Perencanaan Haji Reguler Flexi C.webp to public/assets/perencanaan-haji-reguler-flexi-c.webp. Copy Source/Pensiun/Dana pensiun 1M.webp to public/assets/dana-pensiun-1m.webp.",
+    "Step 2: Update the color palette in public/assets/style.css. Change the :root CSS variables: --jade from #10C775 to #00A75A (Hijau Manulife), --jade-light to a lighter variant of #00A75A, --jade-dark to a darker variant of #00A75A, --jade-text to a WCAG-compliant text version. Change --tangerine from #E64A19 to #D3541E (Oranye BMI). Add new variable --accent-neon: #CCFF00 (Electric Yellow/Lime for hover effects). Change --bg (light background) to #F8F9FA. Change dark mode --bg from #0F172A to #121824 (Deep Charcoal/Navy). Change --txt-head to #1A1A1A (Obsidian Black). Update --jade-10 and --jade-20 to use rgba values based on new #00A75A. Update --sh-jade shadow to use new green. Update --sh-cta shadow to use new orange #D3541E. Follow the 60-30-10 rule described by the user for both light and dark mode. Add a neon glow effect class for accent elements using #CCFF00.",
+    "Step 3: Create public/pages/syariah.html - a new page about Manulife Syariah products. Follow the page structure pattern from tentang-manulife-syariah.html and mps-flexi.html. Include: (a) Hero section with syariah branding and Islamic theme. (b) Section displaying the two images: Dana Pelunasan Haji 500jt.webp and Perencanaan Haji Reguler Flexi C.webp with proper captions explaining each illustration. (c) Content about the Next Growth Partners Program based on the PDF analysis - this is a partnership/recruitment program for Islamic financial products. Include information about: Dana Pelunasan Haji (hajj savings plan reaching 500 million), Perencanaan Haji Reguler Flexi (flexible regular hajj planning). (d) Section listing other Manulife Syariah products: MPS Flexi (link to /pages/mps-flexi.html), MPPS - Perlindungan Pendidikan Syariah (link to /pages/mpps.html), MPDS - Perlindungan Diri Syariah (link to /pages/mpds.html). (e) CTA section with WhatsApp link. Include site-header and site-footer divs and main.js script. Use the green syariah color theme similar to tentang-manulife-syariah.html.",
+    "Step 4: Edit public/pages/mdla.html - Add the pension image (dana-pensiun-1m.webp) in the Plan C explanation section. Find the Plan C card in the plan comparison grid (the card with title 'Proteksi + 100% UP Maturity') and add an <img> tag showing the dana-pensiun-1m.webp image with alt text explaining it shows a 1 billion pension fund illustration for MDLA Plan C. Place it after the plan-card-features list in Plan C.",
+    "Step 5: Edit public/components/header.html - Add a link to /pages/syariah.html in the mobile menu. Add it in the Syariah section. Add a new mobile-section-title for Syariah and a mobile-link pointing to /pages/syariah.html with text 'Produk Syariah'. Place it near the existing syariah-related links (after MPDS link area or in the existing Jiwa & Kesehatan section where MPS Flexi, MPDS, MPPS are already listed). Alternatively add it as a highlighted link similar to how Magna Sehat Premium is highlighted.",
+    "Step 6: Edit public/components/footer.html - Add a link to /pages/syariah.html. Add it in the 'Asuransi Jiwa' column or create a new subsection. Use a footer-link class with text 'Produk Syariah' or 'Syariah'.",
+    "Step 7: Edit public/index.html - Add a link to /pages/syariah.html in the bottom links area (the div before site-footer that contains links to Tentang Manulife, Manulife Syariah, Khusus Agen, Link Penting). Add a new link styled consistently with the existing ones, pointing to /pages/syariah.html with text 'Produk Syariah' and an appropriate icon."
+  ],
+  "acceptance_criteria": [
+    "public/assets/dana-pelunasan-haji-500jt.webp, public/assets/perencanaan-haji-reguler-flexi-c.webp, and public/assets/dana-pensiun-1m.webp all exist",
+    "public/assets/style.css uses #00A75A as primary green (--jade), #D3541E as orange accent (--tangerine), #CCFF00 as neon accent, #F8F9FA as light background, #121824 as dark mode background, #1A1A1A as text primary",
+    "public/pages/syariah.html exists with proper HTML structure, displays both Syariah images, contains information about hajj planning products and other Syariah products",
+    "public/pages/mdla.html contains an img tag referencing dana-pensiun-1m.webp in the Plan C section",
+    "public/components/header.html contains a link to /pages/syariah.html in the mobile menu",
+    "public/components/footer.html contains a link to /pages/syariah.html",
+    "public/index.html contains a link to /pages/syariah.html in the bottom links area"
+  ],
+  "verification": [
+    "Run: ls public/assets/dana-pelunasan-haji-500jt.webp public/assets/perencanaan-haji-reguler-flexi-c.webp public/assets/dana-pensiun-1m.webp - all files exist",
+    "Run: grep '#00A75A' public/assets/style.css - confirms new green color",
+    "Run: grep '#D3541E' public/assets/style.css - confirms new orange color",
+    "Run: grep '#CCFF00' public/assets/style.css - confirms neon accent",
+    "Run: grep '#121824' public/assets/style.css - confirms dark bg",
+    "Run: grep 'syariah.html' public/pages/syariah.html - file exists and is valid HTML",
+    "Run: grep 'dana-pensiun-1m.webp' public/pages/mdla.html - pension image referenced",
+    "Run: grep 'syariah.html' public/components/header.html - link exists in header",
+    "Run: grep 'syariah.html' public/components/footer.html - link exists in footer",
+    "Run: grep 'syariah.html' public/index.html - link exists in index"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

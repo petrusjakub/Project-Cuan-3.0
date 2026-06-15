@@ -1,0 +1,29 @@
+{
+  "project_type": "Static HTML/CSS/JS website hosted on Cloudflare (wrangler.jsonc)",
+  "language": "HTML, CSS, JavaScript",
+  "build_system": "No build system - static files served directly. Deployment via Cloudflare Pages/wrangler.",
+  "test_framework": "None - static site with no tests",
+  "build_command": "N/A - static site",
+  "test_command": "N/A - validate HTML files exist and are well-formed",
+  "verification_instructions": "1. Verify all new/modified HTML files exist. 2. Verify images are copied to public/assets/. 3. Verify CSS color changes are applied. 4. Verify links in header, footer, and index reference the new syariah page.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static site",
+  "environment_constraints": "Open internet access available. No build step required.",
+  "contribution_requirements": "Push directly to main branch.",
+  "key_patterns": "Pages use shared header.html and footer.html loaded via JS (main.js). Each product page has inline <style> for page-specific CSS. Pages follow a common structure: hero section, content sections, CTA, footer. CSS variables defined in /public/assets/style.css with --jade as primary brand color. Dark mode supported via html.dark class.",
+  "relevant_files": [
+    "public/pages/syariah.html (NEW - to create)",
+    "public/pages/mdla.html (edit - add pension image at Plan C section)",
+    "public/assets/style.css (edit - change color palette)",
+    "public/components/header.html (edit - add syariah link in mobile menu)",
+    "public/components/footer.html (edit - add syariah link)",
+    "public/index.html (edit - add syariah link in bottom links area)",
+    "public/pages/mps-flexi.html (reference for syariah page pattern)",
+    "public/pages/tentang-manulife-syariah.html (reference for syariah styling)",
+    "Source/Syariah/Dana Pelunasan Haji 500jt.webp (copy to public/assets/)",
+    "Source/Syariah/Perencanaan Haji Reguler Flexi C.webp (copy to public/assets/)",
+    "Source/Syariah/Next Growth Partners Program - Socialization V1.pdf (analyze for content)",
+    "Source/Pensiun/Dana pensiun 1M.webp (copy to public/assets/)"
+  ],
+  "directory_structure": "public/ - web root: index.html, assets/ (style.css, main.js), components/ (header.html, footer.html), pages/ (product pages). Source/ - source materials with Syariah/ and Pensiun/ subfolders containing webp images and a PDF."
+}
