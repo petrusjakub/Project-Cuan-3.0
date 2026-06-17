@@ -248,10 +248,328 @@
       border-radius: 50%;
     }
 
+    /* == COMPANY PROFILE & NEW SECTIONS == */
+    .profile-section {
+      padding: var(--sp-16) 0;
+      background: var(--bg-alt);
+    }
+    .profile-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .profile-content p {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.8;
+      margin-bottom: var(--sp-4);
+    }
+
+    .leadership-section {
+      padding: var(--sp-16) 0;
+    }
+    .leadership-group {
+      margin-bottom: var(--sp-8);
+    }
+    .leadership-group-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      color: var(--jade);
+      margin-bottom: var(--sp-4);
+      padding-bottom: var(--sp-2);
+      border-bottom: 2px solid var(--jade-20);
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--sp-4);
+    }
+    .leader-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      transition: all var(--ease);
+    }
+    .leader-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+    .leader-name {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-1);
+    }
+    .leader-role {
+      font-size: var(--fs-xs);
+      color: var(--txt-sub);
+    }
+
+    .financial-section {
+      padding: var(--sp-16) 0;
+      background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
+      color: #fff;
+    }
+    .financial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-5);
+      margin-top: var(--sp-8);
+    }
+    .financial-card {
+      padding: var(--sp-6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-lg);
+      background: rgba(255,255,255,0.03);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .financial-card:hover {
+      background: rgba(37,211,102,0.12);
+      border-color: var(--jade-20);
+    }
+    .financial-card-icon {
+      font-size: 36px;
+      margin-bottom: var(--sp-3);
+    }
+    .financial-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--sp-2);
+    }
+    .financial-card-desc {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    .awards-section {
+      padding: var(--sp-16) 0;
+      background: var(--bg-alt);
+    }
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--sp-5);
+      margin-top: var(--sp-8);
+    }
+    .award-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .award-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #FFD700, #FFA500);
+    }
+    .award-card:hover {
+      border-color: var(--jade-20);
+      transform: translateY(-3px);
+      box-shadow: var(--sh-md);
+    }
+    .award-icon {
+      font-size: 32px;
+      margin-bottom: var(--sp-3);
+    }
+    .award-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .award-desc {
+      font-size: var(--fs-xs);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .csr-section {
+      padding: var(--sp-16) 0;
+    }
+    .csr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-5);
+      margin-top: var(--sp-8);
+    }
+    .csr-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      transition: all var(--ease);
+    }
+    .csr-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+    .csr-card-icon {
+      font-size: 32px;
+      margin-bottom: var(--sp-3);
+    }
+    .csr-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .csr-card-desc {
+      font-size: var(--fs-xs);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .haji-detail-section {
+      padding: var(--sp-16) 0;
+      background: var(--bg-alt);
+    }
+    .haji-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-6);
+      margin-top: var(--sp-8);
+    }
+    .haji-detail-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+    }
+    .haji-detail-card h4 {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-3);
+    }
+    .haji-detail-card p, .haji-detail-card li {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.7;
+    }
+    .haji-detail-card ul {
+      margin-top: var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+    .haji-detail-card li::before {
+      content: '\2713';
+      color: var(--jade);
+      font-weight: 700;
+      margin-right: var(--sp-2);
+    }
+    .haji-detail-card li {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .banker-section {
+      padding: var(--sp-16) 0;
+    }
+    .banker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--sp-5);
+      margin-top: var(--sp-8);
+    }
+    .banker-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .banker-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+    .banker-card-icon {
+      font-size: 36px;
+      margin-bottom: var(--sp-3);
+    }
+    .banker-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .banker-card-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
+    .brand-promise-section {
+      padding: var(--sp-12) 0;
+      background: linear-gradient(135deg, rgba(37,211,102,0.05) 0%, rgba(0,167,90,0.05) 100%);
+    }
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--sp-5);
+      margin-top: var(--sp-6);
+    }
+    .brand-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-6);
+      text-align: center;
+      transition: all var(--ease);
+    }
+    .brand-card:hover {
+      border-color: var(--jade-20);
+      box-shadow: var(--sh-md);
+    }
+    .brand-card-icon {
+      font-size: 36px;
+      margin-bottom: var(--sp-3);
+    }
+    .brand-card-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-2);
+    }
+    .brand-card-desc {
+      font-size: var(--fs-sm);
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+
     @media (max-width: 768px) {
       .haji-grid { grid-template-columns: 1fr; }
       .program-grid { grid-template-columns: 1fr; }
       .other-products-grid { grid-template-columns: 1fr; }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .financial-grid { grid-template-columns: repeat(2, 1fr); }
+      .awards-grid { grid-template-columns: 1fr; }
+      .csr-grid { grid-template-columns: 1fr; }
+      .haji-detail-grid { grid-template-columns: 1fr; }
+      .banker-grid { grid-template-columns: 1fr; }
+      .brand-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -297,6 +615,233 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
+     COMPANY PROFILE
+═══════════════════════════════════════════ -->
+<section class="profile-section" aria-labelledby="profile-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="section-tag fade-up">🏢 Profil Perusahaan</span>
+      <h2 id="profile-heading" class="section-title fade-up stagger-1">
+        PT Asuransi Jiwa <span class="kw">Manulife Indonesia Syariah</span>
+      </h2>
+      <p class="section-sub fade-up stagger-2" style="margin:0 auto">
+        Bermula dari Unit Usaha Syariah PT Asuransi Jiwa Manulife Indonesia, kemudian dipisahkan menjadi entitas mandiri dan resmi mulai beroperasi pada Desember 2024.
+      </p>
+    </div>
+
+    <div class="profile-content fade-up stagger-3">
+      <p>
+        Manulife Syariah Indonesia berafiliasi dengan Perusahaan Induk dan beroperasi di lebih dari 20 kantor pemasaran di seluruh Indonesia, melayani lebih dari 200 ribu nasabah syariah dengan dedikasi tinggi.
+      </p>
+      <p>
+        Bersinergi dalam satu kepemilikan bersama dengan Perusahaan Induk yang memiliki ribuan karyawan dan tenaga pemasar profesional berlisensi syariah, siap melayani kebutuhan perlindungan Islami masyarakat Indonesia.
+      </p>
+      <p>
+        <strong>Berizin dan diawasi oleh Otoritas Jasa Keuangan (OJK)</strong> serta diawasi oleh Dewan Pengawas Syariah (DPS) untuk memastikan seluruh operasional sesuai dengan prinsip syariah Islam.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BRAND PROMISE
+═══════════════════════════════════════════ -->
+<section class="brand-promise-section" aria-labelledby="brand-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-4)">
+      <span class="section-tag fade-up">💚 Brand Promise</span>
+      <h2 id="brand-heading" class="section-title fade-up stagger-1">
+        Berbagi, Bertumbuh, <span class="kw">Berdampak</span>
+      </h2>
+      <p class="section-sub fade-up stagger-2" style="margin:0 auto">
+        Memudahkan Keputusan dan Membuat Hidup menjadi Lebih Baik. Solusi lengkap untuk Asuransi Jiwa, Asuransi Kesehatan, Proteksi Penyakit Kritis, Pensiun, Warisan, dan Dana Masa Depan.
+      </p>
+    </div>
+
+    <div class="brand-grid fade-up stagger-3">
+      <div class="brand-card">
+        <div class="brand-card-icon">🤲</div>
+        <div class="brand-card-title">Berbagi</div>
+        <div class="brand-card-desc">Berbagi dengan sesama melalui prinsip ta'awun dan tabarru' dalam setiap produk syariah.</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-card-icon">📈</div>
+        <div class="brand-card-title">Bertumbuh</div>
+        <div class="brand-card-desc">Bertumbuh secara ekonomi dan spiritual bersama pengelolaan keuangan yang sesuai syariah.</div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-card-icon">🌍</div>
+        <div class="brand-card-title">Berdampak</div>
+        <div class="brand-card-desc">Memberikan dampak positif bagi orang lain dan komunitas melalui program sosial berkelanjutan.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEADERSHIP / JAJARAN KOMISARIS, DPS & DIREKSI
+═══════════════════════════════════════════ -->
+<section class="leadership-section" aria-labelledby="leadership-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-8)">
+      <span class="section-tag fade-up">👥 Jajaran Pimpinan</span>
+      <h2 id="leadership-heading" class="section-title fade-up stagger-1">
+        Komisaris, DPS & <span class="kw">Direksi</span>
+      </h2>
+      <p class="section-sub fade-up stagger-2" style="margin:0 auto">
+        Dipimpin oleh para profesional berpengalaman yang berkomitmen menjalankan perusahaan sesuai prinsip syariah Islam.
+      </p>
+    </div>
+
+    <!-- Dewan Pengawas Syariah -->
+    <div class="leadership-group fade-up">
+      <h3 class="leadership-group-title">☪️ Dewan Pengawas Syariah (DPS)</h3>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <div class="leader-name">Prof. Dr. K.H. Amin</div>
+          <div class="leader-role">Ketua DPS</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-name">Prof. Dr. Jaenal Effendi S.Ag. M.A.</div>
+          <div class="leader-role">Anggota DPS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dewan Komisaris -->
+    <div class="leadership-group fade-up stagger-1">
+      <h3 class="leadership-group-title">🏛️ Dewan Komisaris</h3>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <div class="leader-name">Ian Paul Pritchard</div>
+          <div class="leader-role">Presiden Komisaris</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-name">DR. dr. Endy M. Astiwara</div>
+          <div class="leader-role">Komisaris Independen</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-name">Ir. Muhammad Syakir Sula</div>
+          <div class="leader-role">Komisaris Independen</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-name">Novita J. Rumngangun</div>
+          <div class="leader-role">Komisaris</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dewan Direksi -->
+    <div class="leadership-group fade-up stagger-2">
+      <h3 class="leadership-group-title">📋 Dewan Direksi</h3>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <div class="leader-name">Fauzi Arfan</div>
+          <div class="leader-role">Presiden Direktur</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-name">Shafira Bawazier</div>
+          <div class="leader-role">Direktur Distribusi</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-name">Usti Nuraini Oktavianti</div>
+          <div class="leader-role">Direktur Keuangan & Proposisi</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-name">Randi Ikhlas Sardoni</div>
+          <div class="leader-role">Direktur Kepatuhan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KEKUATAN FINANSIAL
+═══════════════════════════════════════════ -->
+<section class="financial-section" aria-labelledby="financial-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="syariah-hero-tag">💰 Kekuatan Finansial</span>
+      <h2 id="financial-heading" style="font-family:var(--ff-head);font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:900;color:#fff;margin-top:var(--sp-3)" class="fade-up">
+        Kekuatan Finansial Manulife Syariah Indonesia
+      </h2>
+      <p class="fade-up stagger-1" style="color:rgba(255,255,255,0.7);font-size:var(--fs-sm);max-width:640px;margin:var(--sp-3) auto 0">
+        Didukung oleh kekuatan finansial yang kokoh dan diawasi oleh OJK untuk menjamin perlindungan terbaik bagi seluruh nasabah.
+      </p>
+    </div>
+
+    <div class="financial-grid fade-up stagger-2">
+      <div class="financial-card">
+        <div class="financial-card-icon">🏦</div>
+        <div class="financial-card-title">Aset 2024</div>
+        <div class="financial-card-desc">Total aset triliunan rupiah yang dikelola secara profesional dan sesuai prinsip syariah.</div>
+      </div>
+      <div class="financial-card">
+        <div class="financial-card-icon">🛡️</div>
+        <div class="financial-card-title">RBC Dana Perusahaan</div>
+        <div class="financial-card-desc">Risk Based Capital (RBC) Dana Perusahaan 2024 melebihi batas ketentuan OJK minimum 120%.</div>
+      </div>
+      <div class="financial-card">
+        <div class="financial-card-icon">📊</div>
+        <div class="financial-card-title">RBC Dana Tabarru'</div>
+        <div class="financial-card-desc">Risk Based Capital (RBC) Dana Tabarru' melebihi batas ketentuan OJK minimum 120%.</div>
+      </div>
+      <div class="financial-card">
+        <div class="financial-card-icon">🎁</div>
+        <div class="financial-card-title">Surplus Underwriting</div>
+        <div class="financial-card-desc">Surplus Underwriting positif - kelebihan jumlah Dana Tabarru' dibandingkan dengan jumlah klaim yang dibayarkan dalam satu tahun kalender.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PENGHARGAAN
+═══════════════════════════════════════════ -->
+<section class="awards-section" aria-labelledby="awards-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="section-tag fade-up">🏆 Penghargaan</span>
+      <h2 id="awards-heading" class="section-title fade-up stagger-1">
+        Penghargaan <span class="kw">Manulife Syariah</span> Indonesia
+      </h2>
+      <p class="section-sub fade-up stagger-2" style="margin:0 auto">
+        Berbagai penghargaan bergengsi yang membuktikan komitmen kami dalam memberikan layanan terbaik.
+      </p>
+    </div>
+
+    <div class="awards-grid">
+      <div class="award-card fade-up">
+        <div class="award-icon">🥇</div>
+        <div class="award-title">Best Life Insurance Sharia Unit</div>
+        <div class="award-desc">Kategori Kelompok Ekuitas Rp250 Miliar ke Atas dari Media Asuransi.</div>
+      </div>
+      <div class="award-card fade-up stagger-1">
+        <div class="award-icon">📈</div>
+        <div class="award-title">Peringkat Unitlink Saham Syariah</div>
+        <div class="award-desc">Kelompok Unitlink Saham Syariah. Produk: Manulife Dana Ekuitas Asia Pasifik ID.</div>
+      </div>
+      <div class="award-card fade-up stagger-2">
+        <div class="award-icon">🌏</div>
+        <div class="award-title">Health Insurance Initiative of the Year</div>
+        <div class="award-desc">Insurance Asia Awards 2025 - Health Insurance Initiative of the Year Indonesia.</div>
+      </div>
+      <div class="award-card fade-up stagger-3">
+        <div class="award-icon">🏅</div>
+        <div class="award-title">Insurance Awards 2025</div>
+        <div class="award-desc">Posisi pertama dalam daftar Best Life Sharia Insurance oleh Media Asuransi untuk kelompok asuransi jiwa syariah full fledge di tahun pertama berdirinya.</div>
+      </div>
+      <div class="award-card fade-up">
+        <div class="award-icon">⭐</div>
+        <div class="award-title">Indonesia Best Sharia Life Insurance 2026</div>
+        <div class="award-desc">Kategori Sharia Life Insurance di ajang Indonesia Sharia and Halal Top Brand Awards 2026 oleh Warta Ekonomi. Tema: Market Penetration Optimization through Customer Needs Based Product Innovation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
      PERENCANAAN HAJI - PRODUK UNGGULAN
 ═══════════════════════════════════════════ -->
 <section class="haji-section" aria-labelledby="haji-heading">
@@ -307,7 +852,7 @@
         Wujudkan <span class="kw">Ibadah Haji</span> dengan Perencanaan Matang
       </h2>
       <p class="section-sub fade-up stagger-2" style="margin:0 auto">
-        Manulife menyediakan solusi perencanaan dana haji yang terstruktur dan sesuai syariah. Mulai dari sekarang, agar impian ke Tanah Suci menjadi kenyataan.
+        Ibadah Haji adalah KEWAJIBAN bagi Muslim yang mampu. Mampu bukan berarti kaya, namun mampu melakukan perencanaan keuangan. Masa tunggu Haji Reguler di Indonesia mencapai lebih dari 20 tahun. Manulife menyediakan solusi perencanaan dana haji yang terstruktur dan sesuai syariah.
       </p>
     </div>
 
@@ -334,18 +879,67 @@
       <div class="haji-card fade-up stagger-1">
         <img src="/assets/perencanaan-haji-reguler-flexi-c.webp" alt="Ilustrasi Perencanaan Haji Reguler Flexi C - Program tabungan haji fleksibel Manulife Syariah" class="haji-card-img" loading="lazy">
         <div class="haji-card-body">
-          <h3 class="haji-card-title">Perencanaan Haji Reguler Flexi C</h3>
+          <h3 class="haji-card-title">MPS Flexi C - Pelunasan Haji Reguler</h3>
           <p class="haji-card-desc">
-            Solusi perencanaan haji yang fleksibel dengan manfaat ganda: proteksi jiwa dan akumulasi dana haji. Program Flexi C memberikan fleksibilitas dalam memilih jangka waktu dan besaran kontribusi sesuai kemampuan finansial Anda.
+            Flexi C adalah produk paling pas untuk pelunasan Haji Reguler. Sesuai dengan konsep dan prinsip Syariah, dengan underlying Sukuk dan Pasar Uang Syariah. Manfaat asuransi jauh lebih besar dari kontribusi yang dibayarkan.
           </p>
           <ul class="haji-card-features">
-            <li>Fleksibilitas waktu dan besaran kontribusi</li>
-            <li>Manfaat proteksi jiwa selama masa program</li>
-            <li>Pilihan Plan C dengan 100% UP saat jatuh tempo</li>
-            <li>Cocok untuk haji reguler dengan antrean panjang</li>
-            <li>Investasi pada instrumen syariah yang halal</li>
+            <li>Dana Tabarru' PASTI berupa manfaat santunan meninggal dunia</li>
+            <li>Dana Tanahud PASTI berupa manfaat hidup jika masih hidup sampai akhir kontrak</li>
+            <li>Underlying: Sukuk dan Pasar Uang Syariah</li>
+            <li>Cocok untuk haji reguler dengan antrean panjang (20+ tahun)</li>
+            <li>Biaya haji terus meningkat 2.5x - 3.6x dari tahun ke tahun</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ILUSTRASI MPS FLEXI C - DETAIL HAJI
+═══════════════════════════════════════════ -->
+<section class="haji-detail-section" aria-labelledby="haji-detail-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="section-tag fade-up">📊 Ilustrasi MPS Flexi C</span>
+      <h2 id="haji-detail-heading" class="section-title fade-up stagger-1">
+        Manfaat Asuransi sebagai <span class="kw">Pelunasan Biaya Haji</span>
+      </h2>
+      <p class="section-sub fade-up stagger-2" style="margin:0 auto">
+        Biaya haji terus meningkat setiap tahun. Subsidi pemerintah semakin kecil. Perencanaan keuangan yang matang adalah kunci untuk mewujudkan ibadah haji.
+      </p>
+    </div>
+
+    <div class="haji-detail-grid">
+      <div class="haji-detail-card fade-up">
+        <h4>📈 Kenaikan Biaya Haji</h4>
+        <p>Biaya haji terus meningkat signifikan (2.5x - 3.6x). Estimasi biaya haji di tahun mendatang:</p>
+        <ul>
+          <li>Total Biaya Haji: IDR 492 Juta</li>
+          <li>Subsidi Pemerintah: IDR 224 Juta</li>
+          <li>Bayar Sendiri: IDR 268 Juta</li>
+        </ul>
+      </div>
+      <div class="haji-detail-card fade-up stagger-1">
+        <h4>👤 Contoh Ilustrasi</h4>
+        <p>Profil: Pria, Non Smoker, 27 tahun, Menikah, Anak 2 tahun</p>
+        <ul>
+          <li>Kontribusi: IDR 14.056.600/Tahun (Hanya 1,16 Juta/Bulan)</li>
+          <li>Santunan Meninggal Dunia: IDR 268.000.000 (Growth 91%)</li>
+          <li>Manfaat Hidup Tahun ke-25 (usia 53): IDR 268.000.000</li>
+          <li>Selisih Total Kontribusi & Manfaat: IDR 120.000.000</li>
+        </ul>
+      </div>
+      <div class="haji-detail-card fade-up stagger-2">
+        <h4>⚠️ Risiko Selama Masa Tunggu</h4>
+        <p>Risiko yang dihadapi selama masa tunggu haji reguler 20+ tahun:</p>
+        <ul>
+          <li>Gaya hidup konsumtif menggerus tabungan</li>
+          <li>Perubahan biaya haji yang terus naik</li>
+          <li>Perubahan kondisi keuangan yang tidak terduga</li>
+          <li>Risiko kesehatan dan kematian</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -444,6 +1038,86 @@
           Lihat Detail
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BANKER CLAUSE SYARIAH (FLEXI AMANAH)
+═══════════════════════════════════════════ -->
+<section class="banker-section" aria-labelledby="banker-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="section-tag fade-up">🏦 Banker Clause Syariah</span>
+      <h2 id="banker-heading" class="section-title fade-up stagger-1">
+        Flexi Amanah - <span class="kw">Solusi untuk Lembaga Keuangan</span>
+      </h2>
+      <p class="section-sub fade-up stagger-2" style="margin:0 auto">
+        Produk asuransi jiwa syariah yang dirancang khusus untuk BPR, BPRS, Koperasi, dan Multifinance sebagai perlindungan kredit/pembiayaan nasabah (Banker Clause).
+      </p>
+    </div>
+
+    <div class="banker-grid">
+      <div class="banker-card fade-up">
+        <div class="banker-card-icon">📜</div>
+        <div class="banker-card-title">Santunan Asuransi</div>
+        <div class="banker-card-desc">Santunan Asuransi hingga Rp 2 Miliar untuk perlindungan kredit/pembiayaan nasabah lembaga keuangan.</div>
+      </div>
+      <div class="banker-card fade-up stagger-1">
+        <div class="banker-card-icon">📊</div>
+        <div class="banker-card-title">Kontribusi YRT</div>
+        <div class="banker-card-desc">Pembayaran Kontribusi meningkat berdasarkan usia (YRT - Yearly Renewable Term) untuk efisiensi biaya.</div>
+      </div>
+      <div class="banker-card fade-up stagger-2">
+        <div class="banker-card-icon">🏦</div>
+        <div class="banker-card-title">Prioritas Bank</div>
+        <div class="banker-card-desc">Manfaat Meninggal Dunia dibayarkan kepada Bank lebih dahulu untuk melunasi sisa kewajiban nasabah.</div>
+      </div>
+      <div class="banker-card fade-up stagger-3">
+        <div class="banker-card-icon">☪️</div>
+        <div class="banker-card-title">Sesuai Syariah</div>
+        <div class="banker-card-desc">Produk sepenuhnya sesuai prinsip syariah Islam, cocok untuk BPR Syariah dan lembaga keuangan syariah lainnya.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TANGGUNG JAWAB SOSIAL / CSR
+═══════════════════════════════════════════ -->
+<section class="csr-section" style="background:var(--bg-alt)" aria-labelledby="csr-heading">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:var(--sp-6)">
+      <span class="section-tag fade-up">🌱 Tanggung Jawab Sosial</span>
+      <h2 id="csr-heading" class="section-title fade-up stagger-1">
+        CSR <span class="kw">Manulife Syariah</span> Indonesia
+      </h2>
+      <p class="section-sub fade-up stagger-2" style="margin:0 auto">
+        Berkontribusi meningkatkan tingkat literasi dan inklusi finansial di Indonesia melalui berbagai program sosial berkelanjutan.
+      </p>
+    </div>
+
+    <div class="csr-grid">
+      <div class="csr-card fade-up">
+        <div class="csr-card-icon">💧</div>
+        <div class="csr-card-title">Program Wakaf Air</div>
+        <div class="csr-card-desc">Menyalurkan donasi untuk setiap polis yang diterbitkan mulai Desember 2024, difokuskan untuk menghadirkan akses air bersih berkelanjutan bagi masyarakat yang membutuhkan.</div>
+      </div>
+      <div class="csr-card fade-up stagger-1">
+        <div class="csr-card-icon">🤝</div>
+        <div class="csr-card-title">Global Volunteer Days</div>
+        <div class="csr-card-desc">Program sukarelawan global di Desa Ridogalih, melibatkan seluruh karyawan dalam kegiatan sosial untuk membantu masyarakat sekitar.</div>
+      </div>
+      <div class="csr-card fade-up stagger-2">
+        <div class="csr-card-icon">🚰</div>
+        <div class="csr-card-title">Sarana Air Bersih & Sanitasi</div>
+        <div class="csr-card-desc">Peresmian sarana air bersih dan sanitasi di Desa Ridogalih Bekasi, Kampung Cigaok Desa Wargajaya Bogor, dan Kampung Pasir Angin Bogor.</div>
+      </div>
+      <div class="csr-card fade-up stagger-3">
+        <div class="csr-card-icon">🎓</div>
+        <div class="csr-card-title">Literasi Keuangan</div>
+        <div class="csr-card-desc">Kegiatan edukasi literasi keuangan untuk meningkatkan pemahaman masyarakat tentang pengelolaan keuangan yang sehat dan sesuai syariah.</div>
       </div>
     </div>
   </div>
