@@ -764,6 +764,12 @@
 
   // Expose selectMdla globally for onclick handlers
   window.selectMdla = function(groupId, value, el) {
+    // Update UI active states for the clicked group
+    var group = document.getElementById(groupId);
+    var options = group.querySelectorAll('.calc-option');
+    options.forEach(function(opt) { opt.classList.remove('active'); });
+    el.classList.add('active');
+
     if (groupId === 'mdlaPlan') {
       mdlaState.plan = value;
       updateTermOptions();
@@ -779,12 +785,6 @@
     } else if (groupId === 'mdlaMpp') {
       mdlaState.mpp = value;
     }
-
-    // Update UI active states
-    var group = document.getElementById(groupId);
-    var options = group.querySelectorAll('.calc-option');
-    options.forEach(function(opt) { opt.classList.remove('active'); });
-    el.classList.add('active');
 
     calcMdla();
   };
