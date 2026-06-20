@@ -24,6 +24,8 @@
   <meta name="twitter:image" content="https://pastijaga.petrusjakub.workers.dev/assets/petrus-susan.jpg">
 
   <meta name="theme-color" content="#10C775">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/style.css">
@@ -34,6 +36,14 @@
       if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))
         document.documentElement.classList.add('dark');
     })();
+  </script>
+  <script>
+    /* Register Service Worker */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
   </script>
 </head>
 <body>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline — PastiJaga</title>
+  <meta name="theme-color" content="#10C775">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f8faf9;
+      color: #1a2e28;
+      padding: 2rem;
+      text-align: center;
+    }
+    .offline-card {
+      max-width: 400px;
+    }
+    .offline-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #10C775;
+    }
+    p {
+      font-size: 1rem;
+      color: #5a6b65;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .btn-retry {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #10C775;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-retry:hover {
+      background: #0eab64;
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-card">
+    <svg class="offline-icon" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+      <path d="M96 16 L32 48 L32 96 C32 140 96 176 96 176 C96 176 160 140 160 96 L160 48 Z" fill="#10C775"/>
+      <polyline points="68,96 88,116 124,76" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Kamu Sedang Offline</h1>
+    <p>Tidak ada koneksi internet. Periksa koneksi kamu dan coba lagi.</p>
+    <button class="btn-retry" onclick="location.reload()">Coba Lagi</button>
+  </div>
+</body>
+</html>
