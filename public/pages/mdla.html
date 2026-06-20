@@ -270,6 +270,45 @@
       border-color: var(--manulife-light) !important;
       color: var(--manulife-light) !important;
     }
+    /* Loading overlay for calculator */
+    .mdla-loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.92);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      border-radius: var(--radius-lg, 12px);
+    }
+    html.dark .mdla-loading-overlay {
+      background: rgba(30, 30, 40, 0.92);
+    }
+    .mdla-loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #e2e8f0;
+      border-top-color: var(--manulife-blue);
+      border-radius: 50%;
+      animation: mdla-spin 0.8s linear infinite;
+      margin-bottom: 12px;
+    }
+    html.dark .mdla-loading-spinner {
+      border-color: #4a5568;
+      border-top-color: var(--manulife-light);
+    }
+    @keyframes mdla-spin {
+      to { transform: rotate(360deg); }
+    }
+    .mdla-loading-overlay p {
+      font-size: var(--fs-sm, 14px);
+      color: var(--txt-sub, #64748b);
+      margin: 0;
+    }
   </style>
 </head>
 <body>
@@ -695,114 +734,185 @@
 
 <div id="site-footer"></div>
 
-<script src="/assets/mdla-premi.js"></script>
 <script>
-// === CALCULATOR STATE ===
-var mdlaState = { plan: 'A', gender: 'Pria', term: '20', mpp: '5' };
+// === MDLA CALCULATOR - Async data loading with conditional dropdowns ===
+(function() {
+  var MDLA_DATA = null;
+  var mdlaState = { plan: 'A', gender: 'Pria', term: '20', mpp: '5' };
+  var UP_LABELS = ['1M', '1.5M', '2M', '2.5M', '3M', '3.5M', '4M', '5M', '7.5M', '10M', '50M'];
 
-// UP index to label mapping
-var UP_LABELS = ['1M', '1.5M', '2M', '2.5M', '3M', '3.5M', '4M', '5M', '7.5M', '10M', '50M'];
+  // Show loading overlay
+  var calcWrap = document.querySelector('.calculator-wrap');
+  var loadingOverlay = document.createElement('div');
+  loadingOverlay.className = 'mdla-loading-overlay';
+  loadingOverlay.innerHTML = '<div class="mdla-loading-spinner"></div><p>Memuat data premi...</p>';
+  calcWrap.style.position = 'relative';
+  calcWrap.appendChild(loadingOverlay);
 
-// Available terms per plan
-var PLAN_TERMS = {
-  'A': ['20', '30'],
-  'B': ['20', '30', '40', '50', '60'],
-  'C': ['20', '30', '40', '50', '60', '70', '80', '90']
-};
+  // Load data asynchronously
+  fetch('/data/mdla-premi.json')
+    .then(function(res) { return res.json(); })
+    .then(function(json) {
+      MDLA_DATA = json;
+      loadingOverlay.remove();
+      updateTermOptions();
+    })
+    .catch(function(err) {
+      loadingOverlay.innerHTML = '<p style="color:#e53e3e">Gagal memuat data. Silakan refresh halaman.</p>';
+      console.error('Failed to load MDLA data:', err);
+    });
 
-function selectMdla(groupId, value, el) {
-  if (groupId === 'mdlaPlan') {
-    mdlaState.plan = value;
-    updateTermOptions();
-  } else if (groupId === 'mdlaGender') {
-    mdlaState.gender = value;
-  } else if (groupId === 'mdlaTerm') {
-    mdlaState.term = value;
-  } else if (groupId === 'mdlaMpp') {
-    mdlaState.mpp = value;
-  }
-
-  // Update UI active states
-  var group = document.getElementById(groupId);
-  var options = group.querySelectorAll('.calc-option');
-  options.forEach(function(opt) { opt.classList.remove('active'); });
-  el.classList.add('active');
-
-  calcMdla();
-}
-
-function updateTermOptions() {
-  var termGroup = document.getElementById('mdlaTerm');
-  var plan = mdlaState.plan;
-  var terms = PLAN_TERMS[plan] || ['20', '30'];
-
-  var html = '';
-  terms.forEach(function(t) {
-    var active = (t === mdlaState.term) ? ' active' : '';
-    html += '<div class="calc-option' + active + '" onclick="selectMdla(\'mdlaTerm\',\'' + t + '\',this)">' + t + ' Tahun</div>';
-  });
-  termGroup.innerHTML = html;
-
-  // If current term is not available for this plan, reset to 20
-  if (terms.indexOf(mdlaState.term) === -1) {
-    mdlaState.term = '20';
-    var opts = termGroup.querySelectorAll('.calc-option');
-    if (opts.length > 0) opts[0].classList.add('active');
-  }
-}
-
-function formatRp(num) {
-  return 'Rp\u00A0' + num.toLocaleString('id-ID');
-}
-
-function calcMdla() {
-  var gender = mdlaState.gender;
-  var age = document.getElementById('mdlaAge').value;
-  var plan = mdlaState.plan;
-  var term = mdlaState.term;
-  var mpp = mdlaState.mpp;
-  var upIdx = parseInt(document.getElementById('mdlaUp').value);
-  var upLabel = UP_LABELS[upIdx];
-
-  var result = null;
-  try {
-    var key = gender + '|' + age + '|' + plan + '|' + term + '|' + mpp;
-    var entry = MDLA_PREMI_DATA[key];
-    if (entry && upLabel) {
-      result = entry[upLabel];
+  // Expose selectMdla globally for onclick handlers
+  window.selectMdla = function(groupId, value, el) {
+    if (groupId === 'mdlaPlan') {
+      mdlaState.plan = value;
+      updateTermOptions();
+      return;
+    } else if (groupId === 'mdlaGender') {
+      mdlaState.gender = value;
+      updateTermOptions();
+      return;
+    } else if (groupId === 'mdlaTerm') {
+      mdlaState.term = value;
+      updatePppOptions();
+      return;
+    } else if (groupId === 'mdlaMpp') {
+      mdlaState.mpp = value;
     }
-  } catch(e) {
-    result = null;
+
+    // Update UI active states
+    var group = document.getElementById(groupId);
+    var options = group.querySelectorAll('.calc-option');
+    options.forEach(function(opt) { opt.classList.remove('active'); });
+    el.classList.add('active');
+
+    calcMdla();
+  };
+
+  // Expose calcMdla globally for onchange handlers
+  window.calcMdla = function() {
+    if (!MDLA_DATA) return;
+    var gender = mdlaState.gender;
+    var age = document.getElementById('mdlaAge').value;
+    var plan = mdlaState.plan;
+    var term = mdlaState.term;
+    var mpp = mdlaState.mpp;
+    var upIdx = parseInt(document.getElementById('mdlaUp').value);
+    var upLabel = UP_LABELS[upIdx];
+
+    var result = null;
+    try {
+      var key = gender + '|' + age + '|' + plan + '|' + term + '|' + mpp;
+      var entry = MDLA_DATA.data[key];
+      if (entry && upLabel) {
+        result = entry[upLabel];
+      }
+    } catch(e) {
+      result = null;
+    }
+
+    var annualEl = document.getElementById('mdlaAnnual');
+    var semesterEl = document.getElementById('mdlaSemester');
+    var quarterEl = document.getElementById('mdlaQuarter');
+    var monthlyEl = document.getElementById('mdlaMonthly');
+
+    if (!result || result === '-') {
+      annualEl.textContent = 'Kombinasi tidak tersedia';
+      annualEl.style.color = 'var(--txt-muted)';
+      semesterEl.textContent = '-';
+      quarterEl.textContent = '-';
+      monthlyEl.textContent = '-';
+      var noteEl = document.getElementById('mdlaNote');
+      if (noteEl) noteEl.textContent = 'Usia + Masa Pertanggungan melebihi batas yang tersedia untuk kombinasi ini.';
+    } else {
+      var annual = parseFloat(result.replace(/,/g, '')) * 1000000;
+      annualEl.textContent = formatRp(annual);
+      annualEl.style.color = '';
+      semesterEl.textContent = formatRp(Math.round(annual * 0.525));
+      quarterEl.textContent = formatRp(Math.round(annual * 0.275));
+      monthlyEl.textContent = formatRp(Math.round(annual * 0.095));
+      var noteEl = document.getElementById('mdlaNote');
+      if (noteEl) noteEl.textContent = '';
+    }
+  };
+
+  // Update Age handler to trigger term/ppp update
+  var ageSelect = document.getElementById('mdlaAge');
+  ageSelect.removeAttribute('onchange');
+  ageSelect.addEventListener('change', function() {
+    updateTermOptions();
+  });
+
+  function updateTermOptions() {
+    if (!MDLA_DATA) return;
+    var termGroup = document.getElementById('mdlaTerm');
+    var gender = mdlaState.gender;
+    var age = document.getElementById('mdlaAge').value;
+    var plan = mdlaState.plan;
+    var termKey = gender + '|' + age + '|' + plan;
+    var terms = MDLA_DATA.terms[termKey] || [];
+
+    var html = '';
+    terms.forEach(function(t) {
+      var active = (t === mdlaState.term) ? ' active' : '';
+      html += '<div class="calc-option' + active + '" onclick="selectMdla(\'mdlaTerm\',\'' + t + '\',this)">' + t + ' Tahun</div>';
+    });
+    termGroup.innerHTML = html;
+
+    // If current term is not available, reset to first available
+    if (terms.indexOf(mdlaState.term) === -1) {
+      mdlaState.term = terms.length > 0 ? terms[0] : '20';
+      var opts = termGroup.querySelectorAll('.calc-option');
+      if (opts.length > 0) opts[0].classList.add('active');
+    }
+
+    updatePppOptions();
   }
 
-  var annualEl = document.getElementById('mdlaAnnual');
-  var semesterEl = document.getElementById('mdlaSemester');
-  var quarterEl = document.getElementById('mdlaQuarter');
-  var monthlyEl = document.getElementById('mdlaMonthly');
+  function updatePppOptions() {
+    if (!MDLA_DATA) return;
+    var pppGroup = document.getElementById('mdlaMpp');
+    var gender = mdlaState.gender;
+    var age = document.getElementById('mdlaAge').value;
+    var plan = mdlaState.plan;
+    var term = mdlaState.term;
+    var pppKey = gender + '|' + age + '|' + plan + '|' + term;
+    var ppps = MDLA_DATA.ppp[pppKey] || [];
 
-  if (!result || result === '-') {
-    annualEl.textContent = 'Kombinasi tidak tersedia';
-    annualEl.style.color = 'var(--txt-muted)';
-    semesterEl.textContent = '-';
-    quarterEl.textContent = '-';
-    monthlyEl.textContent = '-';
-    var noteEl = document.getElementById('mdlaNote');
-    if (noteEl) noteEl.textContent = 'Usia + Masa Pertanggungan melebihi batas yang tersedia untuk kombinasi ini.';
-  } else {
-    var annual = parseFloat(result.replace(/,/g, '')) * 1000000;
-    annualEl.textContent = formatRp(annual);
-    annualEl.style.color = '';
-    semesterEl.textContent = formatRp(Math.round(annual * 0.525));
-    quarterEl.textContent = formatRp(Math.round(annual * 0.275));
-    monthlyEl.textContent = formatRp(Math.round(annual * 0.095));
-    var noteEl = document.getElementById('mdlaNote');
-    if (noteEl) noteEl.textContent = '';
+    var html = '';
+    ppps.forEach(function(p) {
+      var active = (p === mdlaState.mpp) ? ' active' : '';
+      html += '<div class="calc-option' + active + '" onclick="selectMdla(\'mdlaMpp\',\'' + p + '\',this)">' + p + ' Tahun</div>';
+    });
+    pppGroup.innerHTML = html;
+
+    // If current mpp is not available, reset to first available
+    if (ppps.indexOf(mdlaState.mpp) === -1) {
+      mdlaState.mpp = ppps.length > 0 ? ppps[0] : '5';
+      var opts = pppGroup.querySelectorAll('.calc-option');
+      if (opts.length > 0) opts[0].classList.add('active');
+    }
+
+    // Update active state for the group button
+    var group = document.getElementById('mdlaMpp');
+    var options = group.querySelectorAll('.calc-option');
+    options.forEach(function(opt) { opt.classList.remove('active'); });
+    options.forEach(function(opt) {
+      if (opt.textContent.replace(' Tahun', '') === mdlaState.mpp) {
+        opt.classList.add('active');
+      }
+    });
+
+    calcMdla();
   }
-}
 
-// Initialize
-updateTermOptions();
-calcMdla();
+  function formatRp(num) {
+    return 'Rp\u00A0' + num.toLocaleString('id-ID');
+  }
+
+  // Also expose formatRp globally in case it's referenced elsewhere
+  window.formatRp = formatRp;
+})();
 </script>
 <script src="/assets/main.js"></script>
 </body>
