@@ -564,7 +564,7 @@
         <!-- Age -->
         <div class="calc-select-group">
           <label>Usia Masuk (0 - 70 tahun)</label>
-          <select id="mdlaAge" onchange="calcMdla()">
+          <select id="mdlaAge">
             <option value="0">0 tahun</option>
             <option value="1">1 tahun</option>
             <option value="2">2 tahun</option>
@@ -750,17 +750,25 @@
   calcWrap.appendChild(loadingOverlay);
 
   // Load data asynchronously
-  fetch('/data/mdla-premi.json')
-    .then(function(res) { return res.json(); })
-    .then(function(json) {
-      MDLA_DATA = json;
-      loadingOverlay.remove();
-      updateTermOptions();
-    })
-    .catch(function(err) {
-      loadingOverlay.innerHTML = '<p style="color:#e53e3e">Gagal memuat data. Silakan refresh halaman.</p>';
-      console.error('Failed to load MDLA data:', err);
-    });
+  function loadMdlaData() {
+    loadingOverlay.innerHTML = '<div class="mdla-loading-spinner"></div><p>Memuat data premi...</p>';
+    if (!calcWrap.contains(loadingOverlay)) calcWrap.appendChild(loadingOverlay);
+
+    fetch('/data/mdla-premi.json')
+      .then(function(res) { return res.json(); })
+      .then(function(json) {
+        MDLA_DATA = json;
+        loadingOverlay.remove();
+        updateTermOptions();
+      })
+      .catch(function(err) {
+        loadingOverlay.innerHTML = '<p style="color:#e53e3e">Gagal memuat data.</p><button onclick="window._retryMdlaLoad()" style="margin-top:8px;padding:8px 16px;border:1px solid #e53e3e;border-radius:6px;background:transparent;color:#e53e3e;cursor:pointer;font-size:14px">Coba Lagi</button>';
+        console.error('Failed to load MDLA data:', err);
+      });
+  }
+
+  window._retryMdlaLoad = loadMdlaData;
+  loadMdlaData();
 
   // Expose selectMdla globally for onclick handlers
   window.selectMdla = function(groupId, value, el) {
@@ -838,7 +846,6 @@
 
   // Update Age handler to trigger term/ppp update
   var ageSelect = document.getElementById('mdlaAge');
-  ageSelect.removeAttribute('onchange');
   ageSelect.addEventListener('change', function() {
     updateTermOptions();
   });
@@ -892,16 +899,6 @@
       var opts = pppGroup.querySelectorAll('.calc-option');
       if (opts.length > 0) opts[0].classList.add('active');
     }
-
-    // Update active state for the group button
-    var group = document.getElementById('mdlaMpp');
-    var options = group.querySelectorAll('.calc-option');
-    options.forEach(function(opt) { opt.classList.remove('active'); });
-    options.forEach(function(opt) {
-      if (opt.textContent.replace(' Tahun', '') === mdlaState.mpp) {
-        opt.classList.add('active');
-      }
-    });
 
     calcMdla();
   }
