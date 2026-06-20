@@ -1,0 +1,35 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Update mdla.html to add (MyLife) branding throughout the page and update the calculator to use the CSV-based lookup approach. Since the CSV only has 12 sample rows for age 49, keep the existing masterPremi data intact AND also add the CSV data for age 49 (which includes Wanita data and UP_50M column that the current implementation lacks). Update the calculator to support UP_50M (Rp 50 Miliar) option. Add (MyLife) to page title, meta description, headings, and product references.",
+  "status": "in_progress",
+  "steps": [
+    "Step 1: Update the page title from 'MDLA - Manulife Dynamic Life Assurance' to 'MDLA (MyLife) - Manulife Dynamic Life Assurance' and update the meta description to include (MyLife)",
+    "Step 2: Update the hero section - add (MyLife) to the product name mention: 'MDLA (Manulife Dynamic Life Assurance MyLife)' in the paragraph text. Update the breadcrumb current item from 'MDLA' to 'MDLA (MyLife)'",
+    "Step 3: Update all WhatsApp links text from 'MDLA Manulife' to 'MDLA MyLife Manulife'",
+    "Step 4: Update the calculator heading from 'Kalkulator Premi MDLA' to 'Kalkulator Premi MDLA (MyLife)'",
+    "Step 5: Add UP_50M (Rp 50 Miliar) option to the UP dropdown (value='10' for index 10) in the calculator HTML",
+    "Step 6: Add the CSV data for age 49 to the masterPremi object - add 'wanita' key with age '49' data from the CSV (currently only 'pria' exists). Also add the age 49 pria data from CSV. The CSV columns map to UP indices 0-10: UP_1M=0, UP_1_5M=1, UP_2M=2, UP_2_5M=3, UP_3M=4, UP_3_5M=5, UP_4M=6, UP_5M=7, UP_7_5M=8, UP_10M=9, UP_50M=10. Add index 10 (UP_50M) values to all existing age entries as well (use '-' for ages 0-9 since we don't have that data)",
+    "Step 7: Update the calcMdla() function to handle the expanded UP options properly. Since the existing data for ages 0-9 only has 10 values per array (indices 0-9), and age 49 data from CSV has 11 values (indices 0-10 including UP_50M), the function needs to handle cases where index 10 is selected but the data array only has 10 elements - treat that as unavailable ('-')",
+    "Step 8: Add a note below the calculator mentioning 'Data premi berdasarkan tabel resmi Manulife Dynamic Life Assurance (MyLife)'"
+  ],
+  "acceptance_criteria": [
+    "Page title contains '(MyLife)'",
+    "Hero section paragraph mentions 'MDLA (Manulife Dynamic Life Assurance MyLife)'",
+    "Calculator heading says 'Kalkulator Premi MDLA (MyLife)'",
+    "UP dropdown includes 'Rp 50 Miliar' as the last option",
+    "Selecting Wanita gender + age 49 + Plan A + Term 20 + PPP 5 + UP 1M shows Rp 18,900,000 (from CSV data: 18.9)",
+    "Selecting Pria + age 49 + Plan A + Term 20 + PPP 5 + UP 1M shows Rp 31,700,000 (from CSV data: 31.7)",
+    "Selecting Pria + age 49 + Plan B + Term 20 + PPP 5 + UP 50M shows Rp 2,095,000,000 (from CSV: 2095.0)",
+    "Selecting Pria + age 0 + Plan A + Term 20 + PPP 5 + UP 50M shows 'Kombinasi tidak tersedia' (no 50M data for age 0)",
+    "Existing calculator functionality for ages 0-9 Pria still works correctly"
+  ],
+  "verification": [
+    "Check that the HTML file is syntactically valid by searching for proper tag closure",
+    "Verify the masterPremi object includes 'wanita' key with age 49 data",
+    "Verify UP dropdown has 11 options (1M through 50M)",
+    "Verify all (MyLife) branding additions are present in page title, meta, hero, calculator heading"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
