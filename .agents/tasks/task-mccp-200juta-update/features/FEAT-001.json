@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "feat",
   "description": "Update MCCP page with hook sentence, Dr. Sanjay Tolani quote, 200 Juta UP option in calculator, and updated premium data",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "1. In public/pages/mccp.html, add a strong hook sentence about penyakit kritis and PastiJaga at the top of the hero section (after the mccp-badge div, before the h1). The hook should be compelling, e.g. a short paragraph about how critical illness can financially devastate families, and PastiJaga (MCCP) provides protection. Style it prominently.",
     "2. In public/pages/mccp.html, add a quote section from Dr. Sanjay Tolani about critical illness insurance in simple Indonesian. Place it between the Plan Comparison section and the Premium Table section. Dr. Sanjay Tolani is known for saying things like 'The question is not IF you'll get critical illness, but WHEN' - translate to simple Indonesian. Format as a styled blockquote with attribution.",
@@ -27,5 +27,5 @@
     "Run: grep '0.2M' public/pages/mccp.html - should find the dropdown option and upLabels entry"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "All 6 steps implemented successfully. Premium data for 0.2M calculated linearly from existing 0.5M values (x0.4) or 1M values (x0.2) when 0.5M is unavailable. All 976 records updated. No build/test system - verified via Python script and grep checks."
 }
