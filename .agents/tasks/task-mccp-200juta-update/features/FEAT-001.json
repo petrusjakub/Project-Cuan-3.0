@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Update MCCP page with hook sentence, Dr. Sanjay Tolani quote, 200 Juta UP option in calculator, and updated premium data",
+  "status": "in_progress",
+  "steps": [
+    "1. In public/pages/mccp.html, add a strong hook sentence about penyakit kritis and PastiJaga at the top of the hero section (after the mccp-badge div, before the h1). The hook should be compelling, e.g. a short paragraph about how critical illness can financially devastate families, and PastiJaga (MCCP) provides protection. Style it prominently.",
+    "2. In public/pages/mccp.html, add a quote section from Dr. Sanjay Tolani about critical illness insurance in simple Indonesian. Place it between the Plan Comparison section and the Premium Table section. Dr. Sanjay Tolani is known for saying things like 'The question is not IF you'll get critical illness, but WHEN' - translate to simple Indonesian. Format as a styled blockquote with attribution.",
+    "3. In public/pages/mccp.html, add '200 Juta' as a new option in the calculator UP dropdown (id='mccp-up'). Add it as the FIRST option with value '0.2M': <option value=\"0.2M\">200 Juta</option>",
+    "4. In public/pages/mccp.html, update the upLabels object in the mccpCalc() JavaScript function to include '0.2M': '200 Juta' mapping.",
+    "5. Update public/assets/mccp-premi.js to add '0.2M' field to every record. Calculate as: if 0.5M value exists and is not '-', then 0.2M = round(float(0.5M) * 0.4, 1). If 0.5M is '-' but 1M exists and is not '-', then 0.2M = round(float(1M) * 0.2, 1). If both are '-', set 0.2M to '-'. The 0.2M field should be the FIRST field in each object (before 0.5M). Use a Python script to do this transformation.",
+    "6. In public/pages/mccp.html, add messaging about the new MPP 20 tahun affordability. In the Premium Table section header text, add a line mentioning that 'Dengan opsi bayar premi 20 tahun (MPP 20), premi menjadi lebih terjangkau.' Also consider adding a note near the Plan section about affordable premiums."
+  ],
+  "acceptance_criteria": [
+    "Hook sentence about penyakit kritis and PastiJaga is visible at the top of the hero section",
+    "Dr. Sanjay Tolani quote about critical illness insurance in simple Indonesian is displayed between Plan Comparison and Premium Table sections",
+    "Calculator dropdown includes '200 Juta' as an option with value '0.2M'",
+    "Selecting 200 Juta in the calculator returns correct premium values (e.g., Plan 1, Pria, Age 30, MPP 10 should show approximately 6.5 juta which is 0.4 * 16.2)",
+    "mccp-premi.js contains 0.2M field in every record",
+    "Page mentions MPP 20 tahun as affordable option"
+  ],
+  "verification": [
+    "Run: python3 -c \"import json; f=open('public/assets/mccp-premi.js'); d=json.loads(f.read().replace('var MCCP_PREMIUM_DATA = ','').rstrip().rstrip(';')); assert '0.2M' in d['1|pria|30|10']; print('0.2M value:', d['1|pria|30|10']['0.2M']); assert abs(float(d['1|pria|30|10']['0.2M']) - 6.5) < 0.1; print('PASS')\" from the project root",
+    "Run: grep -c '0.2M' public/assets/mccp-premi.js - should show count > 0",
+    "Run: grep 'PastiJaga' public/pages/mccp.html - should find the hook sentence",
+    "Run: grep -i 'sanjay\\|tolani' public/pages/mccp.html - should find the quote",
+    "Run: grep '0.2M' public/pages/mccp.html - should find the dropdown option and upLabels entry"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

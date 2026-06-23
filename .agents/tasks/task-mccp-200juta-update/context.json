@@ -1,0 +1,20 @@
+{
+  "project_type": "Static HTML/JS website for insurance products",
+  "language": "HTML, CSS, JavaScript",
+  "build_system": "None - static files served directly",
+  "test_framework": "None - manual verification",
+  "build_command": "N/A - static site",
+  "test_command": "N/A - verify HTML structure manually",
+  "verification_instructions": "Open mccp.html in browser, verify hook sentence at top, Dr. Sanjay Tolani quote in middle, 200 Juta option in calculator dropdown, calculator returns correct values for 200 Juta UP",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static HTML/JS files",
+  "environment_constraints": "INTEGRATIONS_ONLY network - cannot install packages. PDF extraction not possible. Premium data for 200 Juta must be derived mathematically from existing data (premiums scale linearly with UP - verified with 0% mismatch rate across 837 entries).",
+  "contribution_requirements": "Push directly to main branch",
+  "key_patterns": "Premium data stored as single-line JS variable in mccp-premi.js with format: var MCCP_PREMIUM_DATA = {\"plan|gender|age|mpp\": {\"0.5M\": \"value\", \"1M\": \"value\", ...}}. Keys: plan (1 or 2), gender (pria/wanita), age (0-60), mpp (10/15/20/RP). UP values: 0.5M, 1M, 1.5M, 2M, 2.5M, 5M, 10M. Page uses inline CSS in <style> block, inline JS at bottom. Sections: Hero, Product Info, Plan Comparison, Premium Table, Calculator, Medical Requirements, FAQ, CTA.",
+  "relevant_files": [
+    "public/pages/mccp.html",
+    "public/assets/mccp-premi.js",
+    "Source/MCCP/Tabel Premi MCCP 200 Juta.pdf"
+  ],
+  "directory_structure": "public/pages/ - HTML pages, public/assets/ - JS/CSS assets, Source/MCCP/ - source PDFs for MCCP product"
+}

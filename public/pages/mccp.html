@@ -352,6 +352,10 @@
           &#128737; Manulife Critical Care Protection
         </div>
 
+        <p style="font-size:var(--fs-md);color:var(--mccp-green);font-weight:700;margin-bottom:var(--sp-3)" class="fade-up">
+          Penyakit kritis bisa datang kapan saja tanpa peringatan. <strong>PastiJaga</strong> memastikan Anda tetap terlindungi secara finansial.
+        </p>
+
         <h1 id="mccp-title" style="font-size:clamp(1.7rem,3vw,2.4rem);color:var(--txt-head);line-height:1.25;margin-bottom:var(--sp-5)" class="fade-up">
           Apakah Anda Siap Menghadapi <span class="kw-cta">Biaya Ratusan Juta</span> Jika Tiba-tiba Terdiagnosis <span class="kw">Penyakit Kritis</span>?
         </h1>
@@ -484,6 +488,20 @@
   </div>
 </section>
 
+<!-- DR. SANJAY TOLANI QUOTE -->
+<section class="section">
+  <div class="container">
+    <blockquote style="max-width:720px;margin:0 auto;padding:var(--sp-6) var(--sp-8);background:rgba(0,135,90,0.04);border-left:4px solid var(--mccp-green);border-radius:var(--r-md);position:relative" class="fade-up">
+      <p style="font-size:var(--fs-md);color:var(--txt-head);line-height:1.8;font-style:italic;margin-bottom:var(--sp-4)">
+        &#8220;Pertanyaannya bukan APAKAH Anda akan terkena penyakit kritis, tapi KAPAN. Yang membedakan adalah apakah Anda sudah punya perlindungan finansial saat itu terjadi.&#8221;
+      </p>
+      <footer style="font-size:var(--fs-sm);color:var(--mccp-green);font-weight:700">
+        &mdash; Dr. Sanjay Tolani
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
 <!-- PREMIUM TABLE -->
 <section class="section">
   <div class="container">
@@ -492,7 +510,7 @@
       Berapa <span class="kw-gold">Investasi</span> untuk Melindungi Diri dari Penyakit Kritis?
     </h2>
     <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-6);line-height:1.7;max-width:800px" class="fade-up stagger-1">
-      Contoh premi tahunan UP 1 Miliar (dalam Juta Rupiah/tahun). Gunakan kalkulator untuk simulasi lengkap.
+      Contoh premi tahunan UP 1 Miliar (dalam Juta Rupiah/tahun). Dengan opsi bayar premi 20 tahun (MPP 20), premi menjadi lebih terjangkau. Gunakan kalkulator untuk simulasi lengkap.
     </p>
 
     <h3 style="font-size:var(--fs-md);color:var(--txt-head);margin-bottom:var(--sp-2)">Plan 1 - Pria, UP 1 Miliar</h3>
@@ -601,6 +619,7 @@
           <div class="form-group">
             <label class="form-label" for="mccp-up">Uang Pertanggungan (UP)</label>
             <select class="form-select" id="mccp-up" onchange="mccpCalc()">
+              <option value="0.2M">200 Juta</option>
               <option value="0.5M">500 Juta</option>
               <option value="1M" selected>1 Miliar</option>
               <option value="1.5M">1.5 Miliar</option>
@@ -907,7 +926,7 @@ function mccpCalc() {
   // Update profile summary
   var planNames = { '1': 'Plan 1 (Basic - 85 Penyakit)', '2': 'Plan 2 (Complete - 150 Penyakit)' };
   var genderName = gender === 'pria' ? 'Pria' : 'Wanita';
-  var upLabels = { '0.5M': '500 Juta', '1M': '1 Miliar', '1.5M': '1.5 Miliar', '2M': '2 Miliar', '2.5M': '2.5 Miliar', '5M': '5 Miliar', '10M': '10 Miliar' };
+  var upLabels = { '0.2M': '200 Juta', '0.5M': '500 Juta', '1M': '1 Miliar', '1.5M': '1.5 Miliar', '2M': '2 Miliar', '2.5M': '2.5 Miliar', '5M': '5 Miliar', '10M': '10 Miliar' };
   var mppLabels = { '10': '10 Tahun', '15': '15 Tahun', '20': '20 Tahun', 'RP': 'Regular Premium' };
   profileEl.innerHTML = '<strong>' + planNames[plan] + '</strong> | ' + genderName + ', Usia ' + age + ' tahun | UP ' + (upLabels[up] || up) + ' | MPP: ' + (mppLabels[mpp] || mpp);
 

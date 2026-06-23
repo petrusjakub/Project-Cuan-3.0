@@ -1,0 +1,7 @@
+{
+  "task_id": "task-mccp-200juta-update",
+  "task_description": "Update MCCP page: add hook sentence about penyakit kritis/PastiJaga at top, add Dr. Sanjay Tolani quote in middle, add 200 Juta UP option to calculator, update premium data with 0.2M values, add MPP 20 affordability messaging",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}
