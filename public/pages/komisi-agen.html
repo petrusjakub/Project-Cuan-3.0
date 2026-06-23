@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Komisi Agen — Tabel Komisi & Income Agen | PastiJaga</title>
+  <title>Komisi Agen - Tabel Komisi & Income Agen | PastiJaga</title>
   <meta name="description" content="Detail lengkap tabel komisi agen Manulife: FYC, Renewal, Override, Persistency Factor, dan perhitungan APE.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
     (function(){var t=localStorage.getItem('pcTheme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');})();
   </script>
   <style>
-    /* ── KOMISI PAGE EXTRAS ── */
+    /* -- KOMISI PAGE EXTRAS -- */
     .komisi-hero {
       background: linear-gradient(135deg, #0D1B2A 0%, #162638 100%);
       padding: clamp(80px, 10vw, 120px) 0 clamp(40px, 6vw, 60px);
@@ -71,15 +71,84 @@
       display: none;
     }
 
+    /* Tables */
+    .komisi-section {
+      margin-bottom: var(--sp-8);
+    }
+    .komisi-section-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin-bottom: var(--sp-5);
+      padding-bottom: var(--sp-3);
+      border-bottom: 2px solid var(--jade);
+    }
+    .komisi-subsection-title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--txt-head);
+      margin: var(--sp-6) 0 var(--sp-3) 0;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: var(--sp-6);
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+      margin-bottom: var(--sp-4);
+    }
+    .spec-table th {
+      background: var(--jade);
+      color: #0F172A;
+      padding: 10px 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .spec-table td {
+      padding: 10px 12px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--txt-sub);
+      font-size: var(--fs-xs);
+    }
+    .spec-table tr:nth-child(even) td {
+      background: var(--bg-alt);
+    }
+    .spec-table td:first-child {
+      text-align: left;
+      font-weight: 700;
+      color: var(--txt-head);
+      white-space: nowrap;
+    }
+    .spec-table td:nth-child(2) {
+      text-align: left;
+      white-space: nowrap;
+    }
+    html.dark .spec-table td { background: var(--bg-card); }
+    html.dark .spec-table tr:nth-child(even) td { background: var(--bg-alt); }
 
+    .komisi-note {
+      font-size: var(--fs-xs);
+      color: var(--txt-sub);
+      margin-top: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--bg-alt);
+      border-radius: var(--r-md);
+      border-left: 3px solid var(--jade);
+    }
   </style>
 </head>
 <body>
 <div id="site-header"></div>
 
-<!-- ═══════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="komisi-hero">
   <div class="container" style="position:relative;z-index:1">
     <nav class="breadcrumb" style="margin-bottom:var(--sp-6)">
@@ -96,12 +165,10 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     AUTH GATE
-═══════════════════════════════════════════ -->
+<!-- AUTH GATE -->
 <div id="authGate">
   <div class="auth-box">
-    <h2>🔒 Halaman Terkunci</h2>
+    <h2>&#128274; Halaman Terkunci</h2>
     <p>Masukkan password untuk melihat data komisi.</p>
     <div class="auth-error" id="authError">Password salah</div>
     <input type="password" class="auth-input" id="authPassword" placeholder="Masukkan password">
@@ -109,20 +176,300 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     PROTECTED CONTENT
-═══════════════════════════════════════════ -->
+<!-- PROTECTED CONTENT -->
 <div id="protectedContent" style="display:none">
 
 <section class="section">
   <div class="container">
-    <div class="auth-box" style="max-width:600px;margin:40px auto">
-      <h2 style="margin-bottom:var(--sp-4)">&#128204; Tabel Komisi Telah Dipindahkan</h2>
-      <p style="font-size:var(--fs-md);color:var(--txt-sub);margin-bottom:var(--sp-5)">
-        Tabel komisi dan kalkulator income telah dipindahkan ke halaman <strong>Agen Tools</strong> untuk akses yang lebih mudah bersama tools lainnya.
-      </p>
-      <a href="/pages/agen-tools.html" class="btn btn--jade btn--lg">Buka Halaman Agen Tools &rarr;</a>
+
+    <!-- ============================================
+         KOMISI PRODUK TRADISIONAL
+    ============================================= -->
+    <div class="komisi-section">
+      <h2 class="komisi-section-title">Komisi Produk Tradisional</h2>
+
+      <!-- MDWA -->
+      <h3 class="komisi-subsection-title">MDWA (Manulife Dana Wakaf Asuransi)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+              <th>Tahun &gt;5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>MDWA Plan A</td><td>Term 20 &amp; 30, SP</td><td>4%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MDWA Plan A</td><td>Term 20 &amp; 30, MPP 5</td><td>5%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MDWA Plan A</td><td>Term 20 &amp; 30, MPP 10</td><td>15%</td><td>10%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td rowspan="7">MDWA Plan B</td><td>Term 5-15, SP</td><td>2%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 20, SP</td><td>4%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 30, SP</td><td>6%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 10-14, MPP 5</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 15, MPP 5</td><td>7,5%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 20 &amp; 30, MPP 5</td><td>10%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 15, 20, 30, MPP 10</td><td>15%</td><td>10%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td rowspan="6">MDWA Plan C</td><td>Term 10 &amp; 15, SP</td><td>2%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 20, SP</td><td>4%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 30, SP</td><td>6%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 10, MPP 5</td><td>5%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 15, MPP 5</td><td>7,5%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Term 20, MPP 5</td><td>10%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td></td><td>Term 30, MPP 5</td><td>12,5%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td></td><td>Term 15, 20, 30, MPP 10</td><td>15%</td><td>10%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MDLA -->
+      <h3 class="komisi-subsection-title">MDLA (Manulife Dana Lintas Asuransi)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4">MDLA</td><td>MPP 5</td><td>10%</td><td>10%</td></tr>
+            <tr><td>MPP 10</td><td>20%</td><td>20%</td></tr>
+            <tr><td>MPP 15</td><td>22,5%</td><td>22,5%</td></tr>
+            <tr><td>MPP 20</td><td>25%</td><td>25%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MPS IDR -->
+      <h3 class="komisi-subsection-title">MPS - IDR (Manulife Perlindungan Sejahtera)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+              <th>Tahun &gt;5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="3">MPS IDR - Amanah</td><td>YRT</td><td>20%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>5% **</td></tr>
+            <tr><td>MPP 5</td><td>20%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>5% **</td></tr>
+            <tr><td>MPP 10</td><td>20%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>5% **</td></tr>
+            <tr><td rowspan="3">MPS IDR - Cermat</td><td>MPP 5</td><td>10%</td><td>10%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MPP 10</td><td>20%</td><td>20%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MPP 15</td><td>22,5%</td><td>22,5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MPS USD -->
+      <h3 class="komisi-subsection-title">MPS - USD</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+              <th>Tahun &gt;5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="3">MPS USD - Amanah</td><td>YRT</td><td>20%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>2,5% **</td></tr>
+            <tr><td>MPP 5</td><td>20%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>5% **</td></tr>
+            <tr><td>MPP 10</td><td>20%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>5% **</td></tr>
+            <tr><td rowspan="3">MPS USD - Cermat</td><td>MPP 5</td><td>7,5%</td><td>7,5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MPP 10</td><td>15%</td><td>15%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MPP 15</td><td>20%</td><td>20%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MCCP -->
+      <h3 class="komisi-subsection-title">MCCP (Manulife Critical Care Protection)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+              <th>Tahun &gt;5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4">MCCP</td><td>MPP 10</td><td>25%</td><td>15%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MPP 15</td><td>25%</td><td>22,5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MPP 20</td><td>25%</td><td>27,5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MPP RP</td><td>25%</td><td>27,5%</td><td>5%</td><td>5%</td><td>5%</td><td>2% **</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MiUCC & MiUHC -->
+      <h3 class="komisi-subsection-title">MiUCC &amp; MiUHC</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+              <th>Tahun &gt;5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>MiUCC</td><td>MPP 5</td><td>20%</td><td>5%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>MiUHC</td><td>-</td><td>15%</td><td>15%</td><td>15%</td><td>10%</td><td>10%</td><td>10% **</td></tr>
+            <tr><td rowspan="2">MiUHC</td><td>MPP 5</td><td>15%</td><td>20%</td><td>2%</td><td>2%</td><td>2%</td><td>-</td></tr>
+            <tr><td>Single</td><td>8%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MPDS -->
+      <h3 class="komisi-subsection-title">MPDS (Manulife Perlindungan Dana Spesial)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="2">MPDS</td><td>MPP 5</td><td>10%</td><td>0%</td></tr>
+            <tr><td>MPP 12</td><td>10%</td><td>10%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MPPS -->
+      <h3 class="komisi-subsection-title">MPPS (Manulife Perlindungan Prima Sejahtera)</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>Mata Uang</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="2">MPPS</td><td>IDR</td><td>25%</td><td>25%</td></tr>
+            <tr><td>USD</td><td>15%</td><td>15%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PAP -->
+      <h3 class="komisi-subsection-title">PAP</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+              <th>Tahun &gt;5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>PAP</td><td>20%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>5% **</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MiPrecious -->
+      <h3 class="komisi-subsection-title">MiPrecious</h3>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>MPP</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="3">MiPrecious Plan 30 Tahun</td><td>MPP 5</td><td>15%</td><td>15%</td><td>2%</td><td>2%</td><td>2%</td></tr>
+            <tr><td>MPP 2</td><td>5%</td><td>5%</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Single</td><td>6%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td rowspan="3">MiPrecious Plan 50 Tahun</td><td>MPP 5</td><td>20%</td><td>15%</td><td>2%</td><td>2%</td><td>2%</td></tr>
+            <tr><td>MPP 2</td><td>5%</td><td>10%</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Single</td><td>8%</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
+    <!-- ============================================
+         KOMISI PRODUK UNIT LINK
+    ============================================= -->
+    <div class="komisi-section">
+      <h2 class="komisi-section-title">Komisi Produk Unit Link</h2>
+
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>Tahun 1</th>
+              <th>Tahun 2</th>
+              <th>Tahun 3</th>
+              <th>Tahun 4</th>
+              <th>Tahun 5</th>
+              <th>Tahun &gt;5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>MDSA</td><td>25%</td><td>25%</td><td>5%</td><td>5%</td><td>5%</td><td>2%</td></tr>
+            <tr><td>Mission Syariah</td><td>25%</td><td>20%</td><td>5%</td><td>5%</td><td>5%</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Catatan -->
+    <div class="komisi-note">
+      <strong>Catatan:</strong> ** Sampai akhir masa bayar
+    </div>
+
   </div>
 </section>
 
@@ -131,9 +478,7 @@
 <div id="site-footer"></div>
 
 <!-- NOTE: This password protection is intentionally a client-side "soft lock" to discourage
-     casual visitors from accessing internal commission data. It is NOT a security measure.
-     Anyone with basic browser knowledge can bypass it. This is acceptable per requirements
-     since the data is not truly confidential, just not meant for public-facing display. -->
+     casual visitors from accessing internal commission data. It is NOT a security measure. -->
 <script>
 (function() {
   var PASSWORD = 'petrusjakub';
