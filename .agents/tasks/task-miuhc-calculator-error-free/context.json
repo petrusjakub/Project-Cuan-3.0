@@ -1,0 +1,19 @@
+{
+  "project_type": "Static website (HTML/CSS/JS) deployed via Cloudflare Workers",
+  "language": "JavaScript (vanilla), HTML, CSS",
+  "build_system": "None - static files served directly via wrangler (Cloudflare Workers)",
+  "test_framework": "None - manual browser testing",
+  "build_command": "N/A - static site, no build step",
+  "test_command": "N/A - no automated tests",
+  "verification_instructions": "Open miuhc.html in browser, verify: 1) Syariah PRIA age 0 Diamond Rawat Inap = Rp42.551.900, 2) Smart plan disabled for Sapphire (Syariah), 3) No NaN/undefined on any combination, 4) Fallback message when plan unavailable",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - static files",
+  "environment_constraints": "PDFs are binary and cannot be read. Premium data is already in miuhc-premi.js. The user confirmed sample data points that match the existing file. Focus is on calculator logic correctness.",
+  "contribution_requirements": "None specified",
+  "key_patterns": "Calculator uses window.MIUHC_PREMI global, data structure: {category}_{type}.{gender}.{age}.{plan_key}. Smart plans append ' Smart' to plan name. Syariah riders (jalan/gigi) don't have Jade Smart, Jade ID Smart, or Sapphire Smart keys. Konvensional has no gigi rider.",
+  "relevant_files": [
+    "public/pages/miuhc.html",
+    "public/assets/miuhc-premi.js"
+  ],
+  "directory_structure": "public/pages/ - HTML pages, public/assets/ - JS/CSS assets, Source/Miuhc/ - PDF source documents"
+}

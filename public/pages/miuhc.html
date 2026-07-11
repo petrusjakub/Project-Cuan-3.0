@@ -673,11 +673,18 @@ const PLAN_DESC = {
 let DATA        = null;
 let curProduk   = 'konv';
 let curGender   = 'P';
-let curUsia     = 30;
+let curUsia     = '30';
 let curPlan     = 'Jade';
 let curSmart    = false;
 let curJalan    = false;
 let curGigi     = false;
+
+/* ─── Single source of truth: plans without a Smart variant ─── */
+function getNoSmartPlans(produk) {
+  return produk === 'sya'
+    ? ['Jade', 'Jade ID', 'Sapphire']
+    : ['Sapphire'];
+}
 
 /* ─── Format ─── */
 const fmt = n => 'Rp\u00A0' + Math.round(n).toLocaleString('id-ID');
@@ -697,8 +704,8 @@ function loadData() {
 /* ─── Build plan grid ─── */
 function buildPlanGrid() {
   const plans  = curProduk === 'konv' ? PLANS_KONV : PLANS_SYA;
-  // Smart plans: sya doesn't have Jade Smart & Jade ID Smart
-  const noSmart = curProduk === 'sya' ? ['Jade Smart', 'Jade ID Smart'] : [];
+  const noSmartBase = getNoSmartPlans(curProduk);
+  const noSmart = noSmartBase.map(p => p + ' Smart');
   const grid = document.getElementById('planGrid');
   grid.innerHTML = '';
 
@@ -725,17 +732,20 @@ function buildPlanGrid() {
 
 /* ─── Smart plan availability ─── */
 function updateSmartAvailability() {
-  const noSmartSya = (curProduk === 'sya' && (curPlan === 'Jade' || curPlan === 'Jade ID'));
-  const smartLbl   = document.getElementById('smartToggleLabel');
-  if (noSmartSya) {
-    smartLbl.style.opacity   = '0.4';
-    smartLbl.style.cursor    = 'not-allowed';
+  // Plans that have NO Smart variant (single source: getNoSmartPlans)
+  const noSmartPlans = getNoSmartPlans(curProduk);
+  const smartUnavailable = noSmartPlans.includes(curPlan);
+  const smartLbl = document.getElementById('smartToggleLabel');
+
+  if (smartUnavailable) {
+    smartLbl.style.opacity = '0.4';
+    smartLbl.style.cursor = 'not-allowed';
     smartLbl.style.pointerEvents = 'none';
     document.getElementById('smartCheck').checked = false;
     curSmart = false;
   } else {
-    smartLbl.style.opacity   = '1';
-    smartLbl.style.cursor    = 'pointer';
+    smartLbl.style.opacity = '1';
+    smartLbl.style.cursor = 'pointer';
     smartLbl.style.pointerEvents = 'auto';
   }
   smartLbl.classList.toggle('active', curSmart);
@@ -745,32 +755,41 @@ function updateSmartAvailability() {
 /* ─── Gigi rider availability ─── */
 function updateGigiAvailability() {
   const gigiLbl = document.getElementById('riderGigiLabel');
+  const gigiChk = document.getElementById('riderGigi');
   if (curProduk === 'konv') {
     gigiLbl.classList.add('disabled');
-    document.getElementById('riderGigi').disabled = true;
+    gigiChk.disabled = true;
+    gigiChk.checked = false;
     curGigi = false;
     gigiLbl.classList.remove('checked');
   } else {
     gigiLbl.classList.remove('disabled');
-    document.getElementById('riderGigi').disabled = false;
+    gigiChk.disabled = false;
   }
 }
 
 /* ─── Preview rider premi ─── */
 function updateRiderPreviews() {
   if (!DATA) return;
-  const usia = curUsia;
+  const planKey = curSmart ? (curPlan + ' Smart') : curPlan;
 
   // Jalan preview
   const jalanCat = curProduk + '_jalan';
-  const planKey  = curSmart ? (curPlan + ' Smart') : curPlan;
-  const jalanD   = DATA[jalanCat]?.[curGender]?.[usia]?.[planKey];
-  document.getElementById('riderJalanPremi').textContent = jalanD ? '+' + fmt(jalanD) : '—';
+  const jalanD = DATA[jalanCat]?.[curGender]?.[curUsia]?.[planKey];
+  if (typeof jalanD === 'number' && jalanD > 0) {
+    document.getElementById('riderJalanPremi').textContent = '+' + fmt(jalanD);
+  } else {
+    document.getElementById('riderJalanPremi').textContent = '\u2014';
+  }
 
   // Gigi preview
   if (curProduk === 'sya') {
-    const gigiD = DATA['sya_gigi']?.[curGender]?.[usia]?.[planKey];
-    document.getElementById('riderGigiPremi').textContent = gigiD ? '+' + fmt(gigiD) : '—';
+    const gigiD = DATA['sya_gigi']?.[curGender]?.[curUsia]?.[planKey];
+    if (typeof gigiD === 'number' && gigiD > 0) {
+      document.getElementById('riderGigiPremi').textContent = '+' + fmt(gigiD);
+    } else {
+      document.getElementById('riderGigiPremi').textContent = '\u2014';
+    }
   } else {
     document.getElementById('riderGigiPremi').textContent = 'N/A';
   }
@@ -780,15 +799,23 @@ function updateRiderPreviews() {
 function recalc() {
   if (!DATA) return;
 
-  const usia    = curUsia;
   const planKey = curSmart ? (curPlan + ' Smart') : curPlan;
   const inapCat = curProduk + '_inap';
   const jalanCat = curProduk + '_jalan';
 
-  const inapPremi = DATA[inapCat]?.[curGender]?.[usia]?.[planKey] || 0;
+  const inapRaw = DATA[inapCat]?.[curGender]?.[curUsia]?.[planKey];
+  const inapPremi = (typeof inapRaw === 'number' && inapRaw > 0 && isFinite(inapRaw)) ? inapRaw : 0;
 
   if (!inapPremi) {
-    document.getElementById('resultEmpty').style.display = 'block';
+    // Show user-friendly unavailable message
+    const emptyEl = document.getElementById('resultEmpty');
+    emptyEl.textContent = '';
+    const iconDiv = document.createElement('div');
+    iconDiv.style.cssText = 'font-size:28px;margin-bottom:var(--sp-2)';
+    iconDiv.textContent = '\u26A0\uFE0F';
+    emptyEl.appendChild(iconDiv);
+    emptyEl.appendChild(document.createTextNode('Plan tidak tersedia untuk profil ini'));
+    emptyEl.style.display = 'block';
     document.getElementById('resultContent').style.display = 'none';
     updateRiderPreviews();
     return;
@@ -798,39 +825,52 @@ function recalc() {
   const rows = [];
 
   // Plan label
-  const prodLabel  = curProduk === 'konv' ? 'Konvensional' : 'Syariah';
+  const prodLabel = curProduk === 'konv' ? 'Konvensional' : 'Syariah';
   const smartLabel = curSmart ? ' Smart' : '';
-  const genderLbl  = curGender === 'P' ? 'Pria' : 'Wanita';
+  const genderLbl = curGender === 'P' ? 'Pria' : 'Wanita';
 
   rows.push({
-    label: `Rawat Inap ${prodLabel} — ${curPlan}${smartLabel}`,
+    label: `Rawat Inap ${prodLabel} \u2014 ${curPlan}${smartLabel}`,
     val: inapPremi
   });
 
   // Rider jalan
   if (curJalan) {
-    const jP = DATA[jalanCat]?.[curGender]?.[usia]?.[planKey] || 0;
-    if (jP) { rows.push({ label: `Rider Rawat Jalan`, val: jP }); total += jP; }
+    const jRaw = DATA[jalanCat]?.[curGender]?.[curUsia]?.[planKey];
+    const jP = (typeof jRaw === 'number' && jRaw > 0 && isFinite(jRaw)) ? jRaw : 0;
+    if (jP) {
+      rows.push({ label: 'Rider Rawat Jalan', val: jP });
+      total += jP;
+    } else {
+      rows.push({ label: 'Rider Rawat Jalan', val: null, note: 'Tidak tersedia' });
+    }
   }
 
   // Rider gigi
   if (curGigi && curProduk === 'sya') {
-    const gP = DATA['sya_gigi']?.[curGender]?.[usia]?.[planKey] || 0;
-    if (gP) { rows.push({ label: `Rider Rawat Gigi (Syariah)`, val: gP }); total += gP; }
+    const gRaw = DATA['sya_gigi']?.[curGender]?.[curUsia]?.[planKey];
+    const gP = (typeof gRaw === 'number' && gRaw > 0 && isFinite(gRaw)) ? gRaw : 0;
+    if (gP) {
+      rows.push({ label: 'Rider Rawat Gigi (Syariah)', val: gP });
+      total += gP;
+    } else {
+      rows.push({ label: 'Rider Rawat Gigi (Syariah)', val: null, note: 'Tidak tersedia' });
+    }
   }
 
   // Render rows
   const rowsEl = document.getElementById('resultRows');
-  rowsEl.innerHTML = rows.map(r =>
-    `<div class="result-row">
+  rowsEl.innerHTML = rows.map(r => {
+    const valDisplay = r.val !== null ? fmt(r.val) : `<span style="color:var(--txt-muted)">${r.note}</span>`;
+    return `<div class="result-row">
        <div class="result-row-lbl">${r.label}</div>
-       <div class="result-row-val">${fmt(r.val)}</div>
-     </div>`
-  ).join('');
+       <div class="result-row-val">${valDisplay}</div>
+     </div>`;
+  }).join('');
 
   document.getElementById('resultTotal').textContent = fmt(total);
   document.getElementById('resultPerBulan').textContent =
-    `≈ ${fmt(Math.round(total / 12))} / bulan`;
+    `\u2248 ${fmt(Math.round(total / 12))} / bulan`;
 
   document.getElementById('resultEmpty').style.display = 'none';
   document.getElementById('resultContent').style.display = 'block';
@@ -841,12 +881,12 @@ function recalc() {
   if (curGigi && curProduk === 'sya') riders.push('Rawat Gigi');
   const riderTxt = riders.length ? ` + Rider: ${riders.join(', ')}` : '';
   const waMsg = encodeURIComponent(
-    `Halo Kak, aku tertarik dengan MiUHC 🏥\n\n` +
-    `• Jenis: ${prodLabel}\n` +
-    `• Plan: ${curPlan}${smartLabel}${riderTxt}\n` +
-    `• Gender: ${genderLbl}\n` +
-    `• Usia: ${usia} tahun\n` +
-    `• Total premi: ${fmt(total)} / tahun\n\n` +
+    `Halo Kak, aku tertarik dengan MiUHC \uD83C\uDFE5\n\n` +
+    `\u2022 Jenis: ${prodLabel}\n` +
+    `\u2022 Plan: ${curPlan}${smartLabel}${riderTxt}\n` +
+    `\u2022 Gender: ${genderLbl}\n` +
+    `\u2022 Usia: ${curUsia} tahun\n` +
+    `\u2022 Total premi: ${fmt(total)} / tahun\n\n` +
     `Bisa bantu proses lebih lanjut?`
   );
   document.getElementById('calcWaBtn').href = `https://wa.me/6287781896087?text=${waMsg}`;
@@ -878,9 +918,28 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('input[name="produk"]').forEach(r =>
     r.addEventListener('change', e => {
       curProduk = e.target.value;
+      // When switching products, reset Smart if current plan has no Smart variant
+      const noSmartPlans = getNoSmartPlans(curProduk);
+      if (curSmart && noSmartPlans.includes(curPlan)) {
+        curSmart = false;
+        document.getElementById('smartCheck').checked = false;
+        document.getElementById('smartToggleLabel').classList.remove('active');
+        document.getElementById('smartSavingBadge').style.display = 'none';
+      }
       buildPlanGrid();
       updateSmartAvailability();
       updateGigiAvailability();
+      // Re-validate Jalan rider: if data is unavailable for current plan/age under new product, reset
+      if (curJalan && DATA) {
+        const planKey = curSmart ? (curPlan + ' Smart') : curPlan;
+        const jalanCat = curProduk + '_jalan';
+        const jalanVal = DATA[jalanCat]?.[curGender]?.[curUsia]?.[planKey];
+        if (!(typeof jalanVal === 'number' && jalanVal > 0 && isFinite(jalanVal))) {
+          curJalan = false;
+          document.getElementById('riderJalan').checked = false;
+          document.getElementById('riderJalanLabel').classList.remove('checked');
+        }
+      }
       recalc();
     })
   );
@@ -896,9 +955,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const disp   = document.getElementById('usiaDisplay');
 
   function setUsia(v) {
-    v = Math.max(0, Math.min(85, parseInt(v) || 0));
-    curUsia = v;
-    slider.value = v; inp.value = v; disp.textContent = v;
+    const parsed = parseInt(v, 10);
+    const clamped = isNaN(parsed) ? 0 : Math.max(0, Math.min(85, parsed));
+    curUsia = String(clamped);
+    slider.value = clamped; inp.value = clamped; disp.textContent = clamped;
     recalc();
   }
 
@@ -911,6 +971,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const smartChk = document.getElementById('smartCheck');
   smartLbl.addEventListener('click', e => {
     e.preventDefault();
+    // Don't toggle if disabled (plan has no Smart variant)
+    if (smartLbl.style.pointerEvents === 'none') return;
     curSmart = !curSmart;
     smartChk.checked = curSmart;
     smartLbl.classList.toggle('active', curSmart);
