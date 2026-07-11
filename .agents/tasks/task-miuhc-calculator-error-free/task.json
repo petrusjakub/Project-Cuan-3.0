@@ -1,0 +1,7 @@
+{
+  "task_id": "task-miuhc-calculator-error-free",
+  "task_description": "Fix MiUHC premium calculator to be error-free: proper matrix lookup algorithm, correct Smart plan restrictions based on actual data availability, boundary checks, fallback values, and comprehensive error handling per the user's blueprint.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

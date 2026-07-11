@@ -1,0 +1,32 @@
+{
+  "id": "FEAT-001",
+  "type": "fix",
+  "description": "Fix calculator logic in miuhc.html to be completely error-free per the user's blueprint: proper boundary checks, correct Smart plan restrictions based on actual data availability, fallback values, and correct lookup algorithm.",
+  "status": "in_progress",
+  "steps": [
+    "1. In public/pages/miuhc.html, update the Smart plan availability logic (updateSmartAvailability function) to disable Smart plan toggle for ALL plans that don't have a Smart variant in Syariah mode. Based on the actual sya_inap data: only Diamond Smart, Ruby Smart, Emerald Smart, Topaz Smart, and Topaz ID Smart exist. Plans without Smart variant in Syariah: Jade, Jade ID, AND Sapphire. In Konvensional mode, all plans have Smart variants including Topaz ID Smart, Jade ID Smart, etc.",
+    "2. Update the plan grid (buildPlanGrid function) to visually mark/disable plans that have no Smart variant when Smart mode is active. If Smart is already toggled ON and user switches to Syariah with an incompatible plan (Jade/Jade ID/Sapphire), auto-select a compatible plan or auto-disable Smart.",
+    "3. Add robust error handling in the recalc() function: if DATA lookup returns undefined/null/NaN for any combination, show a user-friendly message 'Plan tidak tersedia untuk profil ini' instead of displaying 0 or broken output. Never display NaN, undefined, or negative numbers.",
+    "4. Validate age input in setUsia(): ensure it's always an integer between 0-85. Handle edge cases like empty string, decimal input, negative numbers, or values over 85.",
+    "5. Ensure the Rawat Jalan rider correctly uses sya_jalan for Syariah (which only has plans up to Topaz ID Smart - no Jade Smart, Jade ID Smart, Sapphire Smart, Sapphire) and konv_jalan for Konvensional. If rider premi lookup fails, show rider as unavailable for that plan/age combo rather than adding 0.",
+    "6. Ensure the Rawat Gigi rider correctly uses sya_gigi data (also only up to Topaz ID Smart). Same fallback logic as step 5.",
+    "7. When user toggles between Konvensional and Syariah, reset any incompatible state: if on Syariah with Smart enabled and plan is Sapphire, either disable Smart or switch plan. If Gigi rider was checked and user switches to Konvensional, uncheck and disable it properly.",
+    "8. Add a check: if inapPremi is 0 but the plan should have data (i.e., the lookup path exists but value is 0 or missing), show 'Data premi tidak ditemukan' rather than an empty state.",
+    "9. Verify the user's sample calculation works correctly: Syariah, PRIA, 0 tahun, Diamond (non-Smart), should show Rp42.551.900 for Rawat Inap. With Rawat Jalan added: +Rp12.026.200. With Rawat Gigi added: +Rp2.872.300. Total: Rp57.450.400."
+  ],
+  "acceptance_criteria": [
+    "Syariah PRIA age 0 Diamond Rawat Inap displays exactly Rp 42.551.900",
+    "Smart plan toggle is disabled and unchecked when Sapphire, Jade, or Jade ID is selected in Syariah mode",
+    "No NaN, undefined, or empty values appear for any valid combination of inputs (age 0-85, all plans, both genders, both products)",
+    "When an unavailable plan/smart combo is selected, a clear message 'Plan tidak tersedia untuk profil ini' is shown",
+    "Rider premi preview shows dash when rider data is unavailable for current selection rather than +Rp 0",
+    "Total calculation is always the sum of inap + jalan (if checked and available) + gigi (if checked, Syariah, and available)",
+    "Age input is clamped to 0-85 integer, non-numeric input doesn't crash the calculator"
+  ],
+  "verification": [
+    "Open the HTML file and manually verify the sample calculation matches: Syariah, PRIA, 0 tahun, Diamond = Rp42.551.900",
+    "Verify no JavaScript errors in the calculator by checking the inline script logic handles all edge cases"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
