@@ -2,7 +2,7 @@
   "id": "FEAT-002",
   "type": "refactor",
   "description": "Address code quality issues from semantic review: deduplicate noSmartPlans array, coerce age once, switch innerHTML to textContent, and re-validate curJalan on product switch.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "1. Extract triplicated noSmartPlans logic into a single getNoSmartPlans(produk) function.",
     "2. Coerce curUsia to a string once in setUsia instead of repeating String(usia) at every lookup site.",
@@ -20,5 +20,5 @@
     "Verify sample calculation still works: Syariah PRIA age 0 Diamond = 42551900"
   ],
   "blocked_reason": null,
-  "findings": null
+  "findings": "All 4 review issues addressed. Syntax verified via Node.js Function constructor. Sample calculation verified: sya_inap P 0 Diamond = 42551900 (correct). No remaining String(usia) calls at lookup sites. getNoSmartPlans() is now the single source of truth for plan-Smart availability."
 }
