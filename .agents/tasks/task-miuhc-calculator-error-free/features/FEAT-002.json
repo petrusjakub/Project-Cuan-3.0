@@ -1,0 +1,24 @@
+{
+  "id": "FEAT-002",
+  "type": "refactor",
+  "description": "Address code quality issues from semantic review: deduplicate noSmartPlans array, coerce age once, switch innerHTML to textContent, and re-validate curJalan on product switch.",
+  "status": "in_progress",
+  "steps": [
+    "1. Extract triplicated noSmartPlans logic into a single getNoSmartPlans(produk) function.",
+    "2. Coerce curUsia to a string once in setUsia instead of repeating String(usia) at every lookup site.",
+    "3. Replace innerHTML fallback message in recalc() with textContent to prevent future XSS risk.",
+    "4. Re-validate curJalan on product switch, mirroring how curGigi is handled."
+  ],
+  "acceptance_criteria": [
+    "Only one definition of the no-Smart-plans list exists (single function or constant)",
+    "curUsia is stored as a string after setUsia; no String() calls remain at lookup sites",
+    "The fallback message in recalc uses textContent (no innerHTML for user-visible strings)",
+    "On product switch, curJalan is re-validated against the new product's rider data availability"
+  ],
+  "verification": [
+    "Verify the inline script has no syntax errors via Node.js function constructor check",
+    "Verify sample calculation still works: Syariah PRIA age 0 Diamond = 42551900"
+  ],
+  "blocked_reason": null,
+  "findings": null
+}
