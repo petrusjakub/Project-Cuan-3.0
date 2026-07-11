@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "fix",
   "description": "Fix calculator logic in miuhc.html to be completely error-free per the user's blueprint: proper boundary checks, correct Smart plan restrictions based on actual data availability, fallback values, and correct lookup algorithm.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "1. In public/pages/miuhc.html, update the Smart plan availability logic (updateSmartAvailability function) to disable Smart plan toggle for ALL plans that don't have a Smart variant in Syariah mode. Based on the actual sya_inap data: only Diamond Smart, Ruby Smart, Emerald Smart, Topaz Smart, and Topaz ID Smart exist. Plans without Smart variant in Syariah: Jade, Jade ID, AND Sapphire. In Konvensional mode, all plans have Smart variants including Topaz ID Smart, Jade ID Smart, etc.",
     "2. Update the plan grid (buildPlanGrid function) to visually mark/disable plans that have no Smart variant when Smart mode is active. If Smart is already toggled ON and user switches to Syariah with an incompatible plan (Jade/Jade ID/Sapphire), auto-select a compatible plan or auto-disable Smart.",
@@ -28,5 +28,5 @@
     "Verify no JavaScript errors in the calculator by checking the inline script logic handles all edge cases"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "Verified all data structures: sya_inap/jalan/gigi have 13 plan keys (8 base + 5 Smart: Diamond/Ruby/Emerald/Topaz/Topaz ID Smart). konv_inap/jalan have 15 keys (adds Jade Smart, Jade ID Smart). NO Sapphire Smart exists in any dataset. Topaz ID Smart IS valid and exists in all datasets despite user instruction suggesting otherwise. Sample calculation verified: sya_inap P 0 Diamond=42551900 + sya_jalan P 0 Diamond=12026200 + sya_gigi P 0 Diamond=2872300 = 57450400 (correct). No build system or tests to run (static site). Script syntax verified via Node.js function constructor."
 }
