@@ -319,7 +319,7 @@
       <p style="color:var(--txt-sub);font-size:var(--fs-sm);margin-top:var(--sp-2)">Masukkan parameter di bawah untuk menghitung estimasi kontribusi atau uang pertanggungan.</p>
     </div>
     <div class="calculator-wrap fade-up stagger-1">
-      <div class="calc-header" style="background:linear-gradient(135deg,#006838,#00a758)">
+      <div class="calc-header" style="background:#81c784">
         <h3>&#9733; Kalkulator MPS Flexi</h3>
         <p>Simulasi kontribusi/premi berdasarkan tabel resmi Manulife Indonesia</p>
       </div>
@@ -335,7 +335,7 @@
           </div>
           <div class="calc-select-group">
             <label>Jenis Kelamin</label>
-            <select id="calc-gender" onchange="calculate()">
+            <select id="calc-gender" onchange="populateAgeDropdown();calculate()">
               <option value="pria">Pria</option>
               <option value="wanita">Wanita</option>
             </select>
@@ -516,7 +516,7 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-section" style="background:linear-gradient(135deg,#006838,#00a758,#4caf50)">
+<section class="cta-section" style="background:#81c784">
   <div class="container" style="position:relative;z-index:1;text-align:center">
     <h2 class="cta-title fade-up">Lindungi Keluarga dengan MPS Flexi</h2>
     <p class="cta-sub fade-up stagger-1">Perlindungan jiwa murni tanpa risiko investasi. Pilihan Syariah dan Konvensional. Kontribusi mulai Rp 4 jutaan/tahun.</p>
@@ -565,7 +565,15 @@ function calculate() {
     const mlSelect = document.getElementById('calc-masalindung').value;
     const paymentMode = parseFloat(document.getElementById('calc-payment-mode').value);
     
-    let ml = mlSelect === 'sama' ? mb : parseInt(mlSelect);
+    // Determine masa lindung for lookup
+    let ml;
+    if (plan === 'A') {
+        ml = mb; // Plan A: masa lindung = masa bayar
+    } else if (plan === 'B') {
+        ml = 110; // Plan B: always until age 110
+    } else {
+        ml = parseInt(mlSelect); // Plan C: user selected
+    }
     
     let rawInput = document.getElementById('calc-input-nominal').value.replace(/\D/g, '');
     let nominal = parseFloat(rawInput) || 0;
@@ -576,15 +584,25 @@ function calculate() {
     if (plan === 'A') { minPremi = 4000000; minPremiUSD = 400; }
     
     const actualMinPremi = currency === 'IDR' ? minPremi : minPremiUSD;
+    
+    // Look up the base rate from data
     let ratePerMiliar = getBaseRate(plan, gender, currency, age, mb, ml);
 
     if (ratePerMiliar === null) {
         document.getElementById('result-label').innerText = 'Kontribusi/Premi';
         if (plan === 'A') {
-            document.getElementById('calc-premium').innerHTML = '<span style="color:#e53935;font-size:var(--fs-sm)">Data rate untuk usia ini dengan masa bayar ' + mb + ' tahun belum tersedia. Hubungi agen untuk ilustrasi resmi.</span>';
+            document.getElementById('calc-premium').innerHTML = '<span style="color:#e53935;font-size:var(--fs-sm)">Data rate untuk usia ' + age + ' tahun (' + (gender === 'pria' ? 'Pria' : 'Wanita') + ') dengan masa bayar ' + mb + ' tahun belum tersedia dalam tabel. Hubungi agen untuk ilustrasi resmi.</span>';
         } else {
-            document.getElementById('calc-premium').innerHTML = '<span style="color:#e53935;font-size:var(--fs-sm)">Kombinasi tidak tersedia / di bawah minimum kontribusi</span>';
+            document.getElementById('calc-premium').innerHTML = '<span style="color:#e53935;font-size:var(--fs-sm)">Kombinasi tidak tersedia untuk usia ini. Hubungi agen untuk ilustrasi resmi.</span>';
         }
+        document.getElementById('calc-detail').textContent = '';
+        document.getElementById('calc-note').textContent = '';
+        return;
+    }
+    
+    if (nominal === 0) {
+        document.getElementById('result-label').innerText = 'Kontribusi/Premi';
+        document.getElementById('calc-premium').textContent = currency === 'IDR' ? 'Rp -' : 'USD -';
         document.getElementById('calc-detail').textContent = '';
         document.getElementById('calc-note').textContent = '';
         return;
@@ -593,27 +611,37 @@ function calculate() {
     let resultPremiTahunan = 0;
     let resultUP = 0;
     
+    // Rate is per 1 Miliar IDR or per 100,000 USD
+    let baseDenominator = currency === 'IDR' ? 1000000000 : 100000;
+    
     if (method === 'UP') {
         resultUP = nominal;
-        let factor = currency === 'IDR' ? (resultUP / 1000000000) : (resultUP / 100000);
+        let factor = resultUP / baseDenominator;
         resultPremiTahunan = Math.round(ratePerMiliar * factor);
     } else {
+        // Reverse calculation: given premi, find UP
         resultPremiTahunan = nominal;
         let factor = resultPremiTahunan / ratePerMiliar;
-        resultUP = Math.round(factor * (currency === 'IDR' ? 1000000000 : 100000));
+        resultUP = Math.round(factor * baseDenominator);
     }
     
     let finalPremi = Math.round(resultPremiTahunan * paymentMode);
     
     let warningText = '';
-    if (method === 'UP' && resultPremiTahunan < actualMinPremi && nominal > 0) {
-        warningText += '&#9888; Kombinasi tidak tersedia / di bawah minimum kontribusi. Min ' + (currency === 'IDR' ? 'Rp ' + actualMinPremi.toLocaleString('id-ID') : 'USD ' + actualMinPremi.toLocaleString('id-ID')) + '/tahun.<br>';
-    }
-    if (method === 'UP' && resultUP < minUP && nominal > 0) {
-        warningText += '&#9888; UP di bawah minimum (' + (currency === 'IDR' ? 'Rp ' + minUP.toLocaleString('id-ID') : 'USD ' + minUP.toLocaleString('id-ID')) + ').<br>';
-    }
-    if (method === 'PREMI' && resultPremiTahunan < actualMinPremi && nominal > 0) {
-        warningText += '&#9888; Kombinasi tidak tersedia / di bawah minimum kontribusi. Min ' + (currency === 'IDR' ? 'Rp ' + actualMinPremi.toLocaleString('id-ID') : 'USD ' + actualMinPremi.toLocaleString('id-ID')) + '/tahun.<br>';
+    if (method === 'UP') {
+        if (resultUP < minUP) {
+            warningText += '&#9888; UP di bawah minimum (' + (currency === 'IDR' ? 'Rp ' + minUP.toLocaleString('id-ID') : 'USD ' + minUP.toLocaleString('id-ID')) + ').<br>';
+        }
+        if (resultPremiTahunan < actualMinPremi) {
+            warningText += '&#9888; Kontribusi tahunan di bawah minimum (' + (currency === 'IDR' ? 'Rp ' + actualMinPremi.toLocaleString('id-ID') : 'USD ' + actualMinPremi.toLocaleString('id-ID')) + '/tahun). Naikkan UP atau hubungi agen.<br>';
+        }
+    } else {
+        if (resultPremiTahunan < actualMinPremi) {
+            warningText += '&#9888; Kontribusi di bawah minimum (' + (currency === 'IDR' ? 'Rp ' + actualMinPremi.toLocaleString('id-ID') : 'USD ' + actualMinPremi.toLocaleString('id-ID')) + '/tahun).<br>';
+        }
+        if (resultUP < minUP) {
+            warningText += '&#9888; UP terbentuk di bawah minimum (' + (currency === 'IDR' ? 'Rp ' + minUP.toLocaleString('id-ID') : 'USD ' + minUP.toLocaleString('id-ID')) + '). Naikkan kontribusi.<br>';
+        }
     }
     
     let currSymbol = currency === 'IDR' ? 'Rp ' : 'USD ';
@@ -630,28 +658,60 @@ function calculate() {
     if (paymentMode === 0.275) modeText = 'Kuartalan';
     if (paymentMode === 0.095) modeText = 'Bulanan';
     
-    let strML = mlSelect === '110' ? 'Hingga Usia 110' : ml + ' Tahun';
-    if (plan === 'A') strML = mb + ' Tahun';
+    let strML;
+    if (plan === 'B') {
+        strML = 'Hingga Usia 110';
+    } else if (plan === 'A') {
+        strML = mb + ' Tahun (sama dgn masa bayar)';
+    } else {
+        strML = ml + ' Tahun';
+    }
+    
+    let planName = plan === 'A' ? 'Amanah (Syariah)' : plan === 'B' ? 'Berkah (Syariah)' : 'Cermat (Konvensional)';
     
     document.getElementById('calc-detail').innerHTML =
-        '<strong>Profil:</strong> ' + gender.charAt(0).toUpperCase() + gender.slice(1) + ', ' + age + ' Tahun | <strong>Plan:</strong> ' + plan + '<br>' +
+        '<strong>Profil:</strong> ' + (gender === 'pria' ? 'Pria' : 'Wanita') + ', ' + age + ' Tahun | <strong>Plan:</strong> ' + plan + ' - ' + planName + '<br>' +
         '<strong>Masa Bayar:</strong> ' + mb + ' Tahun | <strong>Masa Perlindungan:</strong> ' + strML + '<br>' +
         '<strong>Pembayaran ' + modeText + ':</strong> ' + currSymbol + finalPremi.toLocaleString('id-ID') + ' / periode<br>' +
-        '<strong>UP Terbentuk:</strong> ' + currSymbol + resultUP.toLocaleString('id-ID');
+        '<strong>UP:</strong> ' + currSymbol + resultUP.toLocaleString('id-ID') +
+        ' | <strong>Premi Tahunan:</strong> ' + currSymbol + resultPremiTahunan.toLocaleString('id-ID');
     
     document.getElementById('calc-note').innerHTML = warningText;
 }
 
-// Populate Age dropdown
-(function() {
+// Populate Age dropdown based on plan
+function populateAgeDropdown() {
+    var plan = document.getElementById('calc-plan').value;
+    var gender = document.getElementById('calc-gender').value;
     var ageSelect = document.getElementById('calc-age');
-    for (var i = 0; i <= 70; i++) {
+    var currentAge = parseInt(ageSelect.value) || 35;
+    ageSelect.innerHTML = '';
+    
+    var minAge = 0, maxAge = 70;
+    if (plan === 'A') {
+        minAge = 18;
+        maxAge = 70;
+    }
+    
+    for (var i = minAge; i <= maxAge; i++) {
         var opt = document.createElement('option');
         opt.value = i;
         opt.text = i + ' Tahun';
-        if (i === 35) opt.selected = true;
         ageSelect.appendChild(opt);
     }
+    
+    // Try to keep current age selection
+    if (currentAge >= minAge && currentAge <= maxAge) {
+        ageSelect.value = currentAge;
+    } else if (currentAge < minAge) {
+        ageSelect.value = minAge;
+    } else {
+        ageSelect.value = maxAge;
+    }
+}
+
+(function() {
+    populateAgeDropdown();
     updateCalcUI();
     calculate();
 })();
@@ -672,6 +732,9 @@ function updateCalcUI() {
     var ageRangeInfo = document.getElementById('age-range-info');
     var currMb = mb.value;
     
+    // Repopulate age dropdown when plan changes
+    populateAgeDropdown();
+    
     if (plan === 'A') {
         methodContainer.style.display = 'block';
         mb.innerHTML = '<option value="1">1 Tahun (YRT)</option><option value="5">5 Tahun</option><option value="10">10 Tahun</option>';
@@ -688,28 +751,41 @@ function updateCalcUI() {
         document.getElementById('calc-method').value = 'UP';
         mb.innerHTML = '<option value="5">5 Tahun</option><option value="10">10 Tahun</option><option value="15">15 Tahun</option>';
         ml.disabled = false;
-        
-        var currentML = ml.value;
-        ml.innerHTML = '';
-        if (mb.value === '5' || mb.value === '10') {
-            ml.innerHTML += '<option value="15">15 Tahun</option>';
-        }
-        ml.innerHTML += '<option value="25">25 Tahun</option><option value="35">35 Tahun</option>';
-        
-        var opts = ml.options;
-        for (var i = 0; i < opts.length; i++) {
-            if (opts[i].value === currentML) { ml.value = currentML; break; }
-        }
     }
     
+    // Restore mb selection if possible
     var mbOpts = mb.options;
+    var mbFound = false;
     for (var j = 0; j < mbOpts.length; j++) {
-        if (mbOpts[j].value === currMb) { mb.value = currMb; break; }
+        if (mbOpts[j].value === currMb) { mb.value = currMb; mbFound = true; break; }
+    }
+    
+    // Update Plan C masa lindung based on selected masa bayar
+    if (plan === 'C') {
+        var currentML = ml.value;
+        var selectedMB = parseInt(mb.value);
+        ml.innerHTML = '';
+        
+        // ML must be > MB. Available: 15, 25, 35
+        if (selectedMB <= 10) {
+            ml.innerHTML += '<option value="15">15 Tahun</option>';
+        }
+        if (selectedMB <= 15) {
+            ml.innerHTML += '<option value="25">25 Tahun</option>';
+        }
+        ml.innerHTML += '<option value="35">35 Tahun</option>';
+        
+        // Try to restore previous selection
+        var mlOpts = ml.options;
+        var mlFound = false;
+        for (var i = 0; i < mlOpts.length; i++) {
+            if (mlOpts[i].value === currentML) { ml.value = currentML; mlFound = true; break; }
+        }
     }
     
     // Update age range info based on plan
     if (plan === 'A') {
-        ageRangeInfo.textContent = 'Usia masuk Plan A: 18-70 tahun. Data tabel tersedia mulai usia 37 (pria) / 40 (wanita).';
+        ageRangeInfo.textContent = 'Usia masuk Plan A: 18-70 tahun. Data tabel tersedia mulai usia tertentu tergantung masa bayar & jenis kelamin.';
         ageRangeInfo.style.color = '#e65100';
     } else {
         ageRangeInfo.textContent = 'Usia masuk Plan B/C: 0-70 tahun';
