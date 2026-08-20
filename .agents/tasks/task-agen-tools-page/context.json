@@ -5,7 +5,7 @@
   "test_framework": "None - static HTML site, validation is visual/structural",
   "build_command": "N/A - static HTML site",
   "test_command": "N/A - validate HTML structure manually",
-  "verification_instructions": "1. Check that the new HTML file exists at /public/pages/agen-tools.html. 2. Verify it uses the same pattern as komisi-agen.html (site-header div, site-footer div, main.js). 3. Verify password protection uses 'petrusjakub' and sessionStorage key. 4. Verify all content sections are present. 5. Verify no 'by PL' text remains.",
+  "verification_instructions": "1. Check that the new HTML file exists at /public/pages/agen-tools.html. 2. Verify it uses the same pattern as komisi-agen.html (site-header div, site-footer div, main.js). 3. Verify password protection uses 'Agen Manulife Berlisensi' and sessionStorage key. 4. Verify all content sections are present. 5. Verify no 'by PL' text remains.",
   "snapshot_or_generated_files": null,
   "setup_instructions": "No setup needed - static HTML site",
   "environment_constraints": "INTEGRATIONS_ONLY network - no external package installs possible. All work is creating/modifying static HTML files.",

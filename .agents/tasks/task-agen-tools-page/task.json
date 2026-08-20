@@ -9,6 +9,6 @@
     "tests": "pass",
     "test_quality": "pass",
     "docker_build": "skipped",
-    "summary": "Static HTML page created successfully. All verification checks pass: 41 Google Drive links present, password protection with 'petrusjakub', sessionStorage auth, site-header/footer/main.js integration, all 5 commission tables included, no 'by PL' text found."
+    "summary": "Static HTML page created successfully. All verification checks pass: 41 Google Drive links present, password protection with 'Agen Manulife Berlisensi', sessionStorage auth, site-header/footer/main.js integration, all 5 commission tables included, no 'by PL' text found."
   }
 }

@@ -4,9 +4,9 @@
   "description": "Create the linkpenting.html page with password protection, interactive accordion UI, quick-nav buttons at top, and all source content from the converted PDF. Then add navigation links to it in index.html, header.html (mobile menu), and footer.html. This is for nasabah dan tim Project Cuan (not agents).",
   "status": "completed",
   "steps": [
-    "Create /public/pages/linkpenting.html following the exact pattern from /public/pages/agen-tools.html for structure, styling, and password authentication. Password must be 'petrusjakub'. Use sessionStorage key 'pc_linkpenting_auth' (different from agen-tools).",
+    "Create /public/pages/linkpenting.html following the exact pattern from /public/pages/agen-tools.html for structure, styling, and password authentication. Password must be 'Agen Manulife Berlisensi'. Use sessionStorage key 'pc_linkpenting_auth' (different from agen-tools).",
     "Add a hero section with title 'Link Penting' and description indicating this page is 'Perpustakaan Digital BMI Manulife - Khusus untuk Nasabah dan Tim Project Cuan'. Use breadcrumb: Beranda > Link Penting.",
-    "Add auth gate (.auth-box) identical to agen-tools.html pattern with password 'petrusjakub'.",
+    "Add auth gate (.auth-box) identical to agen-tools.html pattern with password 'Agen Manulife Berlisensi'.",
     "Inside #protectedContent, add quick-nav buttons at the top - pill/badge buttons that anchor to each main section (I. Simple Produk Knowledge with all products listed). Style as .btn--outline or similar pill shapes.",
     "Create accordion sections for Section I: Simple Produk Knowledge containing ALL 14 products from the source file. Each product gets its own accordion card with clickable header that expands/collapses. Inside each accordion, list all sub-items (A, B, C, etc.) as clickable links extracted from the source file. The 14 products are: 1. MIUHC, 2. MDLA, 3. MPS Flexi, 4. MPPS, 5. MCCP, 6. MDWA, 7. MSP, 8. MIFIP, 9. MiPrecious, 10. MPDS, 11. PAP, 12. Mission Syariah, 13. MDSA, 14. MiAction. Each product has a 'Klik Disini Untuk ISI FOLDER Lengkap' button linking to its main Google Drive folder.",
     "Add CSS for accordion behavior: .accordion-header class toggles .active, .accordion-content uses max-height transition for smooth open/close. Add chevron icon that rotates on expand. Style consistent with existing .tools-section cards and design system (--jade, --bg-card, --border, --r-xl, --sp-* variables).",
@@ -17,7 +17,7 @@
   ],
   "acceptance_criteria": [
     "File /public/pages/linkpenting.html exists and is valid HTML",
-    "Page shows password prompt on load, entering 'petrusjakub' reveals content",
+    "Page shows password prompt on load, entering 'Agen Manulife Berlisensi' reveals content",
     "All 14 products from the source file are present as accordion cards with their respective sub-item links",
     "Each product accordion card contains the correct Google Drive/YouTube links from the source",
     "Quick-nav buttons at top allow jumping to each product section",
@@ -29,7 +29,7 @@
   ],
   "verification": [
     "Check file exists: ls public/pages/linkpenting.html",
-    "Grep for password 'petrusjakub' in the file",
+    "Grep for password 'Agen Manulife Berlisensi' in the file",
     "Grep for accordion class names in the file",
     "Grep for 'linkpenting' in header.html, footer.html, and index.html",
     "Verify all 14 product sections from source are present (grep for MIUHC, MDLA, MPS, MPPS, MCCP, MDWA, MSP, MIFIP, MiPrecious, MPDS, PAP, Mission, MDSA, MiAction)"

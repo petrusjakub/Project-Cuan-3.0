@@ -8,8 +8,8 @@
 
   /* ── CONFIG ── */
   const WA_NUMBER = '6287781896087';
-  const INSTAGRAM = 'https://instagram.com/petrusjakub';
-  const EMAIL     = 'petrusjakub.asn@gmail.com';
+  const INSTAGRAM = 'https://instagram.com/Agen Manulife Berlisensi';
+  const EMAIL     = 'Agen Manulife Berlisensi.asn@gmail.com';
 
   /* ── PRODUCT INDEX (for search) ── */
   const PRODUCTS = [

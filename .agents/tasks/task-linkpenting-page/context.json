@@ -5,7 +5,7 @@
   "test_framework": "None - manual verification via file structure and HTML validity",
   "build_command": "N/A - static site, no build step",
   "test_command": "N/A - verify by checking file existence and HTML structure",
-  "verification_instructions": "1. Verify linkpenting.html exists at /public/pages/linkpenting.html. 2. Verify the file contains password protection with password 'petrusjakub'. 3. Verify accordion sections exist for all source content. 4. Verify quick-nav buttons at top. 5. Verify link added to header.html mobile menu. 6. Verify link added to footer.html. 7. Verify link added to index.html.",
+  "verification_instructions": "1. Verify linkpenting.html exists at /public/pages/linkpenting.html. 2. Verify the file contains password protection with password 'Agen Manulife Berlisensi'. 3. Verify accordion sections exist for all source content. 4. Verify quick-nav buttons at top. 5. Verify link added to header.html mobile menu. 6. Verify link added to footer.html. 7. Verify link added to index.html.",
   "snapshot_or_generated_files": null,
   "setup_instructions": "No setup needed - static HTML project",
   "environment_constraints": "No build tools needed. Static HTML files only.",
