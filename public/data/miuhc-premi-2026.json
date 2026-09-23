@@ -1,0 +1,5237 @@
+{
+  "_meta": {
+    "product": "MiUltimate HealthCare (MiUHC) & MiUHC Syariah",
+    "version": "2026 (Revamp & Repricing)",
+    "effective_date_new_business": "2026-09-20",
+    "source": "Ilustrasi Premi MiUHC & MiUHC Syariah 2026 (resmi Manulife Indonesia)",
+    "currency": "IDR",
+    "value_type": "Premi/Kontribusi TAHUNAN (mode 100%). Nominal identik untuk Konvensional & Syariah, hanya istilah Premi/Kontribusi yang berbeda.",
+    "age_range": "0-85 tahun",
+    "gender_keys": {
+      "L": "Pria",
+      "P": "Wanita"
+    },
+    "tier_keys": {
+      "Regular": "Tanpa deductible",
+      "SmartLite": "SMART Lite - deductible kecil",
+      "Smart": "SMART - deductible besar (2x SMART Lite)"
+    },
+    "plan_order_budget_to_premium": [
+      "Jade ID",
+      "Jade",
+      "Topaz ID",
+      "Topaz",
+      "Emerald",
+      "Ruby",
+      "Diamond"
+    ],
+    "payment_mode_factors": {
+      "Tahunan": 1.0,
+      "Semesteran": 0.525,
+      "Kuartalan": 0.275,
+      "Bulanan": 0.095
+    },
+    "deductible_annual_idr": {
+      "Diamond": {
+        "smartLite": 20000000,
+        "smart": 40000000
+      },
+      "Ruby": {
+        "smartLite": 15000000,
+        "smart": 30000000
+      },
+      "Emerald": {
+        "smartLite": 10000000,
+        "smart": 20000000
+      },
+      "Topaz": {
+        "smartLite": 8000000,
+        "smart": 16000000
+      },
+      "Topaz ID": {
+        "smartLite": 8000000,
+        "smart": 16000000
+      },
+      "Jade": {
+        "smartLite": 5000000,
+        "smart": 10000000
+      },
+      "Jade ID": {
+        "smartLite": 5000000,
+        "smart": 10000000
+      }
+    },
+    "non_preferred_hospital_deductible_idr_per_year": {
+      "Diamond": 0,
+      "Ruby": 0,
+      "Emerald": 50000000,
+      "Topaz": 20000000,
+      "Topaz ID": 20000000,
+      "Jade": 20000000,
+      "Jade ID": 20000000
+    },
+    "disclaimer": "Estimasi ilustratif. Belum termasuk No Claim Discount (NCD) & hasil underwriting individual."
+  },
+  "premium_by_age": {
+    "0": {
+      "L": {
+        "Regular": {
+          "Diamond": 51947300,
+          "Ruby": 35372000,
+          "Emerald": 19919100,
+          "Topaz": 14644700,
+          "Topaz ID": 11408200,
+          "Jade": 11265200,
+          "Jade ID": 8873300
+        },
+        "SmartLite": {
+          "Diamond": 44155200,
+          "Ruby": 30066200,
+          "Emerald": 16931300,
+          "Topaz": 12448000,
+          "Topaz ID": 9910900,
+          "Jade": 9575400,
+          "Jade ID": 7708700
+        },
+        "Smart": {
+          "Diamond": 31168400,
+          "Ruby": 21223200,
+          "Emerald": 11951500,
+          "Topaz": 8786800,
+          "Topaz ID": 7415300,
+          "Jade": 6759100,
+          "Jade ID": 5767600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 50256300,
+          "Ruby": 35257000,
+          "Emerald": 20321300,
+          "Topaz": 14677200,
+          "Topaz ID": 11387900,
+          "Jade": 11290100,
+          "Jade ID": 9065900
+        },
+        "SmartLite": {
+          "Diamond": 42717900,
+          "Ruby": 29968500,
+          "Emerald": 17273100,
+          "Topaz": 12475600,
+          "Topaz ID": 9893200,
+          "Jade": 9596600,
+          "Jade ID": 7876000
+        },
+        "Smart": {
+          "Diamond": 30153800,
+          "Ruby": 21154200,
+          "Emerald": 12192800,
+          "Topaz": 8806300,
+          "Topaz ID": 7402100,
+          "Jade": 6774100,
+          "Jade ID": 5892800
+        }
+      }
+    },
+    "1": {
+      "L": {
+        "Regular": {
+          "Diamond": 50963600,
+          "Ruby": 34421800,
+          "Emerald": 19000600,
+          "Topaz": 13526700,
+          "Topaz ID": 10537100,
+          "Jade": 10405100,
+          "Jade ID": 8195800
+        },
+        "SmartLite": {
+          "Diamond": 43319100,
+          "Ruby": 29258500,
+          "Emerald": 16150500,
+          "Topaz": 11497700,
+          "Topaz ID": 9154100,
+          "Jade": 8844400,
+          "Jade ID": 7120100
+        },
+        "Smart": {
+          "Diamond": 30578200,
+          "Ruby": 20653100,
+          "Emerald": 11400400,
+          "Topaz": 8116000,
+          "Topaz ID": 6849100,
+          "Jade": 6243100,
+          "Jade ID": 5327300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 49805300,
+          "Ruby": 34816200,
+          "Emerald": 19880800,
+          "Topaz": 14141100,
+          "Topaz ID": 10972000,
+          "Jade": 10877800,
+          "Jade ID": 8734700
+        },
+        "SmartLite": {
+          "Diamond": 42334500,
+          "Ruby": 29593800,
+          "Emerald": 16898700,
+          "Topaz": 12020000,
+          "Topaz ID": 9531900,
+          "Jade": 9246100,
+          "Jade ID": 7588300
+        },
+        "Smart": {
+          "Diamond": 29883200,
+          "Ruby": 20889700,
+          "Emerald": 11928500,
+          "Topaz": 8484700,
+          "Topaz ID": 7131800,
+          "Jade": 6526700,
+          "Jade ID": 5677600
+        }
+      }
+    },
+    "2": {
+      "L": {
+        "Regular": {
+          "Diamond": 50945700,
+          "Ruby": 34404000,
+          "Emerald": 18983800,
+          "Topaz": 13506300,
+          "Topaz ID": 10521200,
+          "Jade": 10389400,
+          "Jade ID": 8183500
+        },
+        "SmartLite": {
+          "Diamond": 43303800,
+          "Ruby": 29243400,
+          "Emerald": 16136200,
+          "Topaz": 11480400,
+          "Topaz ID": 9140300,
+          "Jade": 8831000,
+          "Jade ID": 7109400
+        },
+        "Smart": {
+          "Diamond": 30567400,
+          "Ruby": 20642400,
+          "Emerald": 11390300,
+          "Topaz": 8103800,
+          "Topaz ID": 6838800,
+          "Jade": 6233600,
+          "Jade ID": 5319300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 49798400,
+          "Ruby": 34802600,
+          "Emerald": 19863200,
+          "Topaz": 14119400,
+          "Topaz ID": 10955000,
+          "Jade": 10861000,
+          "Jade ID": 8721400
+        },
+        "SmartLite": {
+          "Diamond": 42328600,
+          "Ruby": 29582200,
+          "Emerald": 16883700,
+          "Topaz": 12001500,
+          "Topaz ID": 9517200,
+          "Jade": 9231900,
+          "Jade ID": 7576700
+        },
+        "Smart": {
+          "Diamond": 29879000,
+          "Ruby": 20881600,
+          "Emerald": 11917900,
+          "Topaz": 8471600,
+          "Topaz ID": 7120800,
+          "Jade": 6516600,
+          "Jade ID": 5668900
+        }
+      }
+    },
+    "3": {
+      "L": {
+        "Regular": {
+          "Diamond": 41034100,
+          "Ruby": 27734200,
+          "Emerald": 15335500,
+          "Topaz": 10962300,
+          "Topaz ID": 8539500,
+          "Jade": 8432500,
+          "Jade ID": 6642000
+        },
+        "SmartLite": {
+          "Diamond": 34879000,
+          "Ruby": 23574100,
+          "Emerald": 13035200,
+          "Topaz": 9318000,
+          "Topaz ID": 7418700,
+          "Jade": 7167600,
+          "Jade ID": 5770200
+        },
+        "Smart": {
+          "Diamond": 24620500,
+          "Ruby": 16640500,
+          "Emerald": 9201300,
+          "Topaz": 6577400,
+          "Topaz ID": 5550700,
+          "Jade": 5059500,
+          "Jade ID": 4317300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38760600,
+          "Ruby": 27118300,
+          "Emerald": 15523100,
+          "Topaz": 11097800,
+          "Topaz ID": 8610700,
+          "Jade": 8536700,
+          "Jade ID": 6855000
+        },
+        "SmartLite": {
+          "Diamond": 32946500,
+          "Ruby": 23050600,
+          "Emerald": 13194700,
+          "Topaz": 9433100,
+          "Topaz ID": 7480600,
+          "Jade": 7256200,
+          "Jade ID": 5955300
+        },
+        "Smart": {
+          "Diamond": 23256400,
+          "Ruby": 16271000,
+          "Emerald": 9313900,
+          "Topaz": 6658700,
+          "Topaz ID": 5597000,
+          "Jade": 5122000,
+          "Jade ID": 4455800
+        }
+      }
+    },
+    "4": {
+      "L": {
+        "Regular": {
+          "Diamond": 41023300,
+          "Ruby": 27723400,
+          "Emerald": 15325100,
+          "Topaz": 10953600,
+          "Topaz ID": 8532700,
+          "Jade": 8425900,
+          "Jade ID": 6636800
+        },
+        "SmartLite": {
+          "Diamond": 34869800,
+          "Ruby": 23564900,
+          "Emerald": 13026400,
+          "Topaz": 9310600,
+          "Topaz ID": 7412800,
+          "Jade": 7162000,
+          "Jade ID": 5765700
+        },
+        "Smart": {
+          "Diamond": 24614000,
+          "Ruby": 16634000,
+          "Emerald": 9195100,
+          "Topaz": 6572200,
+          "Topaz ID": 5546300,
+          "Jade": 5055500,
+          "Jade ID": 4313900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38757100,
+          "Ruby": 27114400,
+          "Emerald": 15519200,
+          "Topaz": 11094000,
+          "Topaz ID": 8626700,
+          "Jade": 8533700,
+          "Jade ID": 6856200
+        },
+        "SmartLite": {
+          "Diamond": 32943600,
+          "Ruby": 23047200,
+          "Emerald": 13191300,
+          "Topaz": 9429900,
+          "Topaz ID": 7494500,
+          "Jade": 7253600,
+          "Jade ID": 5956300
+        },
+        "Smart": {
+          "Diamond": 23254300,
+          "Ruby": 16268600,
+          "Emerald": 9311500,
+          "Topaz": 6656400,
+          "Topaz ID": 5607400,
+          "Jade": 5120200,
+          "Jade ID": 4456500
+        }
+      }
+    },
+    "5": {
+      "L": {
+        "Regular": {
+          "Diamond": 41016000,
+          "Ruby": 27719700,
+          "Emerald": 15321700,
+          "Topaz": 10945100,
+          "Topaz ID": 8545900,
+          "Jade": 8419400,
+          "Jade ID": 6635700
+        },
+        "SmartLite": {
+          "Diamond": 34863600,
+          "Ruby": 23561700,
+          "Emerald": 13023400,
+          "Topaz": 9303400,
+          "Topaz ID": 7424200,
+          "Jade": 7156500,
+          "Jade ID": 5764800
+        },
+        "Smart": {
+          "Diamond": 24609600,
+          "Ruby": 16631800,
+          "Emerald": 9193000,
+          "Topaz": 6567100,
+          "Topaz ID": 5554800,
+          "Jade": 5051600,
+          "Jade ID": 4313200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38760600,
+          "Ruby": 27114400,
+          "Emerald": 15519200,
+          "Topaz": 11094000,
+          "Topaz ID": 8702000,
+          "Jade": 8533700,
+          "Jade ID": 6888600
+        },
+        "SmartLite": {
+          "Diamond": 32946500,
+          "Ruby": 23047200,
+          "Emerald": 13191300,
+          "Topaz": 9429900,
+          "Topaz ID": 7559900,
+          "Jade": 7253600,
+          "Jade ID": 5984500
+        },
+        "Smart": {
+          "Diamond": 23256400,
+          "Ruby": 16268600,
+          "Emerald": 9311500,
+          "Topaz": 6656400,
+          "Topaz ID": 5656300,
+          "Jade": 5120200,
+          "Jade ID": 4477600
+        }
+      }
+    },
+    "6": {
+      "L": {
+        "Regular": {
+          "Diamond": 41157400,
+          "Ruby": 27814200,
+          "Emerald": 15368100,
+          "Topaz": 10978300,
+          "Topaz ID": 8604600,
+          "Jade": 8444900,
+          "Jade ID": 6656000
+        },
+        "SmartLite": {
+          "Diamond": 34983800,
+          "Ruby": 23642100,
+          "Emerald": 13062900,
+          "Topaz": 9331600,
+          "Topaz ID": 7475300,
+          "Jade": 7178200,
+          "Jade ID": 5782400
+        },
+        "Smart": {
+          "Diamond": 24694400,
+          "Ruby": 16688500,
+          "Emerald": 9220900,
+          "Topaz": 6587000,
+          "Topaz ID": 5593000,
+          "Jade": 5066900,
+          "Jade ID": 4326400
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38898500,
+          "Ruby": 27214000,
+          "Emerald": 15577400,
+          "Topaz": 11136500,
+          "Topaz ID": 8785100,
+          "Jade": 8566700,
+          "Jade ID": 6972900
+        },
+        "SmartLite": {
+          "Diamond": 33063700,
+          "Ruby": 23131900,
+          "Emerald": 13240800,
+          "Topaz": 9466000,
+          "Topaz ID": 7632100,
+          "Jade": 7281700,
+          "Jade ID": 6057700
+        },
+        "Smart": {
+          "Diamond": 23339100,
+          "Ruby": 16328400,
+          "Emerald": 9346400,
+          "Topaz": 6681900,
+          "Topaz ID": 5710300,
+          "Jade": 5140000,
+          "Jade ID": 4532400
+        }
+      }
+    },
+    "7": {
+      "L": {
+        "Regular": {
+          "Diamond": 41163500,
+          "Ruby": 27818800,
+          "Emerald": 15372500,
+          "Topaz": 10980400,
+          "Topaz ID": 8610800,
+          "Jade": 8447000,
+          "Jade ID": 6661600
+        },
+        "SmartLite": {
+          "Diamond": 34989000,
+          "Ruby": 23646000,
+          "Emerald": 13066600,
+          "Topaz": 9333300,
+          "Topaz ID": 7480600,
+          "Jade": 7180000,
+          "Jade ID": 5787300
+        },
+        "Smart": {
+          "Diamond": 24698100,
+          "Ruby": 16691300,
+          "Emerald": 9223500,
+          "Topaz": 6588200,
+          "Topaz ID": 5597000,
+          "Jade": 5068200,
+          "Jade ID": 4330000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38903500,
+          "Ruby": 27218100,
+          "Emerald": 15580600,
+          "Topaz": 11138200,
+          "Topaz ID": 8819600,
+          "Jade": 8568400,
+          "Jade ID": 7048500
+        },
+        "SmartLite": {
+          "Diamond": 33068000,
+          "Ruby": 23135400,
+          "Emerald": 13243500,
+          "Topaz": 9467500,
+          "Topaz ID": 7662000,
+          "Jade": 7283100,
+          "Jade ID": 6123400
+        },
+        "Smart": {
+          "Diamond": 23342100,
+          "Ruby": 16330900,
+          "Emerald": 9348400,
+          "Topaz": 6682900,
+          "Topaz ID": 5732700,
+          "Jade": 5141000,
+          "Jade ID": 4581500
+        }
+      }
+    },
+    "8": {
+      "L": {
+        "Regular": {
+          "Diamond": 41169600,
+          "Ruby": 27823200,
+          "Emerald": 15376700,
+          "Topaz": 10982500,
+          "Topaz ID": 8617000,
+          "Jade": 8448900,
+          "Jade ID": 6665600
+        },
+        "SmartLite": {
+          "Diamond": 34994200,
+          "Ruby": 23649700,
+          "Emerald": 13070200,
+          "Topaz": 9335100,
+          "Topaz ID": 7486000,
+          "Jade": 7181600,
+          "Jade ID": 5790700
+        },
+        "Smart": {
+          "Diamond": 24701800,
+          "Ruby": 16693900,
+          "Emerald": 9226000,
+          "Topaz": 6589500,
+          "Topaz ID": 5601100,
+          "Jade": 5069300,
+          "Jade ID": 4332600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38908500,
+          "Ruby": 27222200,
+          "Emerald": 15583700,
+          "Topaz": 11139800,
+          "Topaz ID": 8868300,
+          "Jade": 8570000,
+          "Jade ID": 7061300
+        },
+        "SmartLite": {
+          "Diamond": 33072200,
+          "Ruby": 23138900,
+          "Emerald": 13246100,
+          "Topaz": 9468800,
+          "Topaz ID": 7704300,
+          "Jade": 7284500,
+          "Jade ID": 6134500
+        },
+        "Smart": {
+          "Diamond": 23345100,
+          "Ruby": 16333300,
+          "Emerald": 9350200,
+          "Topaz": 6683900,
+          "Topaz ID": 5764400,
+          "Jade": 5142000,
+          "Jade ID": 4589800
+        }
+      }
+    },
+    "9": {
+      "L": {
+        "Regular": {
+          "Diamond": 41175700,
+          "Ruby": 27827800,
+          "Emerald": 15381100,
+          "Topaz": 10984800,
+          "Topaz ID": 8623100,
+          "Jade": 8451000,
+          "Jade ID": 6669500
+        },
+        "SmartLite": {
+          "Diamond": 34999300,
+          "Ruby": 23653600,
+          "Emerald": 13074000,
+          "Topaz": 9337100,
+          "Topaz ID": 7491300,
+          "Jade": 7183400,
+          "Jade ID": 5794100
+        },
+        "Smart": {
+          "Diamond": 24705400,
+          "Ruby": 16696700,
+          "Emerald": 9228700,
+          "Topaz": 6590900,
+          "Topaz ID": 5605000,
+          "Jade": 5070600,
+          "Jade ID": 4335200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38913400,
+          "Ruby": 27226200,
+          "Emerald": 15586800,
+          "Topaz": 11141500,
+          "Topaz ID": 8916700,
+          "Jade": 8571800,
+          "Jade ID": 7091900
+        },
+        "SmartLite": {
+          "Diamond": 33076400,
+          "Ruby": 23142300,
+          "Emerald": 13248800,
+          "Topaz": 9470300,
+          "Topaz ID": 7746400,
+          "Jade": 7286000,
+          "Jade ID": 6161100
+        },
+        "Smart": {
+          "Diamond": 23348000,
+          "Ruby": 16335700,
+          "Emerald": 9352100,
+          "Topaz": 6684900,
+          "Topaz ID": 5795900,
+          "Jade": 5143100,
+          "Jade ID": 4609700
+        }
+      }
+    },
+    "10": {
+      "L": {
+        "Regular": {
+          "Diamond": 41181800,
+          "Ruby": 27832300,
+          "Emerald": 15385400,
+          "Topaz": 10987000,
+          "Topaz ID": 8629300,
+          "Jade": 8453100,
+          "Jade ID": 6673400
+        },
+        "SmartLite": {
+          "Diamond": 35004500,
+          "Ruby": 23657500,
+          "Emerald": 13077600,
+          "Topaz": 9339000,
+          "Topaz ID": 7496700,
+          "Jade": 7185200,
+          "Jade ID": 5797500
+        },
+        "Smart": {
+          "Diamond": 24709100,
+          "Ruby": 16699400,
+          "Emerald": 9231200,
+          "Topaz": 6592200,
+          "Topaz ID": 5609000,
+          "Jade": 5071900,
+          "Jade ID": 4337700
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38918500,
+          "Ruby": 27230400,
+          "Emerald": 15589900,
+          "Topaz": 11143100,
+          "Topaz ID": 8944400,
+          "Jade": 8573400,
+          "Jade ID": 7123300
+        },
+        "SmartLite": {
+          "Diamond": 33080700,
+          "Ruby": 23145800,
+          "Emerald": 13251400,
+          "Topaz": 9471700,
+          "Topaz ID": 7770500,
+          "Jade": 7287400,
+          "Jade ID": 6188400
+        },
+        "Smart": {
+          "Diamond": 23351100,
+          "Ruby": 16338200,
+          "Emerald": 9353900,
+          "Topaz": 6685900,
+          "Topaz ID": 5813900,
+          "Jade": 5144000,
+          "Jade ID": 4630100
+        }
+      }
+    },
+    "11": {
+      "L": {
+        "Regular": {
+          "Diamond": 41189800,
+          "Ruby": 27838600,
+          "Emerald": 15389800,
+          "Topaz": 10990100,
+          "Topaz ID": 8648700,
+          "Jade": 8455100,
+          "Jade ID": 6685200
+        },
+        "SmartLite": {
+          "Diamond": 35011300,
+          "Ruby": 23662800,
+          "Emerald": 13081300,
+          "Topaz": 9341600,
+          "Topaz ID": 7513600,
+          "Jade": 7186900,
+          "Jade ID": 5807800
+        },
+        "Smart": {
+          "Diamond": 24713900,
+          "Ruby": 16703200,
+          "Emerald": 9233900,
+          "Topaz": 6594100,
+          "Topaz ID": 5621700,
+          "Jade": 5073100,
+          "Jade ID": 4345400
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38924300,
+          "Ruby": 27235400,
+          "Emerald": 15594100,
+          "Topaz": 11145900,
+          "Topaz ID": 8966800,
+          "Jade": 8575000,
+          "Jade ID": 7167500
+        },
+        "SmartLite": {
+          "Diamond": 33085700,
+          "Ruby": 23150100,
+          "Emerald": 13255000,
+          "Topaz": 9474000,
+          "Topaz ID": 7789900,
+          "Jade": 7288800,
+          "Jade ID": 6226800
+        },
+        "Smart": {
+          "Diamond": 23354600,
+          "Ruby": 16341200,
+          "Emerald": 9356500,
+          "Topaz": 6687500,
+          "Topaz ID": 5828400,
+          "Jade": 5145000,
+          "Jade ID": 4658900
+        }
+      }
+    },
+    "12": {
+      "L": {
+        "Regular": {
+          "Diamond": 41197900,
+          "Ruby": 27845000,
+          "Emerald": 15394100,
+          "Topaz": 10993300,
+          "Topaz ID": 8668900,
+          "Jade": 8457200,
+          "Jade ID": 6712800
+        },
+        "SmartLite": {
+          "Diamond": 35018200,
+          "Ruby": 23668300,
+          "Emerald": 13085000,
+          "Topaz": 9344300,
+          "Topaz ID": 7531100,
+          "Jade": 7188600,
+          "Jade ID": 5831700
+        },
+        "Smart": {
+          "Diamond": 24718700,
+          "Ruby": 16707000,
+          "Emerald": 9236500,
+          "Topaz": 6596000,
+          "Topaz ID": 5634800,
+          "Jade": 5074300,
+          "Jade ID": 4363300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38930300,
+          "Ruby": 27240500,
+          "Emerald": 15598100,
+          "Topaz": 11148600,
+          "Topaz ID": 8980400,
+          "Jade": 8576800,
+          "Jade ID": 7245400
+        },
+        "SmartLite": {
+          "Diamond": 33090800,
+          "Ruby": 23154400,
+          "Emerald": 13258400,
+          "Topaz": 9476300,
+          "Topaz ID": 7801700,
+          "Jade": 7290300,
+          "Jade ID": 6294400
+        },
+        "Smart": {
+          "Diamond": 23358200,
+          "Ruby": 16344300,
+          "Emerald": 9358900,
+          "Topaz": 6689200,
+          "Topaz ID": 5837300,
+          "Jade": 5146100,
+          "Jade ID": 4709500
+        }
+      }
+    },
+    "13": {
+      "L": {
+        "Regular": {
+          "Diamond": 41205800,
+          "Ruby": 27851500,
+          "Emerald": 15398400,
+          "Topaz": 10996600,
+          "Topaz ID": 8670000,
+          "Jade": 8459300,
+          "Jade ID": 6740700
+        },
+        "SmartLite": {
+          "Diamond": 35024900,
+          "Ruby": 23673800,
+          "Emerald": 13088600,
+          "Topaz": 9347100,
+          "Topaz ID": 7532100,
+          "Jade": 7190400,
+          "Jade ID": 5856000
+        },
+        "Smart": {
+          "Diamond": 24723500,
+          "Ruby": 16710900,
+          "Emerald": 9239000,
+          "Topaz": 6598000,
+          "Topaz ID": 5635500,
+          "Jade": 5075600,
+          "Jade ID": 4381500
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38936200,
+          "Ruby": 27245600,
+          "Emerald": 15602300,
+          "Topaz": 11151400,
+          "Topaz ID": 8995400,
+          "Jade": 8578400,
+          "Jade ID": 7319900
+        },
+        "SmartLite": {
+          "Diamond": 33095800,
+          "Ruby": 23158800,
+          "Emerald": 13262000,
+          "Topaz": 9478700,
+          "Topaz ID": 7814800,
+          "Jade": 7291600,
+          "Jade ID": 6359200
+        },
+        "Smart": {
+          "Diamond": 23361700,
+          "Ruby": 16347400,
+          "Emerald": 9361400,
+          "Topaz": 6690800,
+          "Topaz ID": 5847000,
+          "Jade": 5147000,
+          "Jade ID": 4757900
+        }
+      }
+    },
+    "14": {
+      "L": {
+        "Regular": {
+          "Diamond": 41213800,
+          "Ruby": 27857800,
+          "Emerald": 15402700,
+          "Topaz": 10999700,
+          "Topaz ID": 8674400,
+          "Jade": 8461300,
+          "Jade ID": 6771100
+        },
+        "SmartLite": {
+          "Diamond": 35031700,
+          "Ruby": 23679100,
+          "Emerald": 13092300,
+          "Topaz": 9349700,
+          "Topaz ID": 7535900,
+          "Jade": 7192100,
+          "Jade ID": 5882400
+        },
+        "Smart": {
+          "Diamond": 24728300,
+          "Ruby": 16714700,
+          "Emerald": 9241600,
+          "Topaz": 6599800,
+          "Topaz ID": 5638400,
+          "Jade": 5076800,
+          "Jade ID": 4401200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38942200,
+          "Ruby": 27250900,
+          "Emerald": 15606500,
+          "Topaz": 11154100,
+          "Topaz ID": 9010600,
+          "Jade": 8580000,
+          "Jade ID": 7393800
+        },
+        "SmartLite": {
+          "Diamond": 33100900,
+          "Ruby": 23163300,
+          "Emerald": 13265500,
+          "Topaz": 9481000,
+          "Topaz ID": 7828000,
+          "Jade": 7293000,
+          "Jade ID": 6423400
+        },
+        "Smart": {
+          "Diamond": 23365300,
+          "Ruby": 16350500,
+          "Emerald": 9363900,
+          "Topaz": 6692500,
+          "Topaz ID": 5856900,
+          "Jade": 5148000,
+          "Jade ID": 4806000
+        }
+      }
+    },
+    "15": {
+      "L": {
+        "Regular": {
+          "Diamond": 41242900,
+          "Ruby": 27877100,
+          "Emerald": 15417100,
+          "Topaz": 11007100,
+          "Topaz ID": 8683200,
+          "Jade": 8467100,
+          "Jade ID": 6803200
+        },
+        "SmartLite": {
+          "Diamond": 35056500,
+          "Ruby": 23695600,
+          "Emerald": 13104600,
+          "Topaz": 9356100,
+          "Topaz ID": 7543500,
+          "Jade": 7197100,
+          "Jade ID": 5910300
+        },
+        "Smart": {
+          "Diamond": 24745700,
+          "Ruby": 16726300,
+          "Emerald": 9250300,
+          "Topaz": 6604300,
+          "Topaz ID": 5644100,
+          "Jade": 5080300,
+          "Jade ID": 4422100
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 38966000,
+          "Ruby": 27266100,
+          "Emerald": 15613800,
+          "Topaz": 11157300,
+          "Topaz ID": 9025700,
+          "Jade": 8582600,
+          "Jade ID": 7501100
+        },
+        "SmartLite": {
+          "Diamond": 33121100,
+          "Ruby": 23176200,
+          "Emerald": 13271700,
+          "Topaz": 9483700,
+          "Topaz ID": 7841100,
+          "Jade": 7295200,
+          "Jade ID": 6516600
+        },
+        "Smart": {
+          "Diamond": 23379600,
+          "Ruby": 16359700,
+          "Emerald": 9368300,
+          "Topaz": 6694400,
+          "Topaz ID": 5866700,
+          "Jade": 5149600,
+          "Jade ID": 4875700
+        }
+      }
+    },
+    "16": {
+      "L": {
+        "Regular": {
+          "Diamond": 41543000,
+          "Ruby": 27902000,
+          "Emerald": 15421300,
+          "Topaz": 11014800,
+          "Topaz ID": 9061700,
+          "Jade": 8867800,
+          "Jade ID": 7016400
+        },
+        "SmartLite": {
+          "Diamond": 35311600,
+          "Ruby": 23716700,
+          "Emerald": 13108100,
+          "Topaz": 9362600,
+          "Topaz ID": 7872400,
+          "Jade": 7537600,
+          "Jade ID": 6095500
+        },
+        "Smart": {
+          "Diamond": 24925800,
+          "Ruby": 16741200,
+          "Emerald": 9252800,
+          "Topaz": 6608900,
+          "Topaz ID": 5890100,
+          "Jade": 5320700,
+          "Jade ID": 4560700
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 42478400,
+          "Ruby": 29476000,
+          "Emerald": 16453700,
+          "Topaz": 11555200,
+          "Topaz ID": 9446300,
+          "Jade": 9356500,
+          "Jade ID": 8256800
+        },
+        "SmartLite": {
+          "Diamond": 36106600,
+          "Ruby": 25054600,
+          "Emerald": 13985600,
+          "Topaz": 9821900,
+          "Topaz ID": 8206500,
+          "Jade": 7953000,
+          "Jade ID": 7173100
+        },
+        "Smart": {
+          "Diamond": 25487000,
+          "Ruby": 17685600,
+          "Emerald": 9872200,
+          "Topaz": 6933100,
+          "Topaz ID": 6140100,
+          "Jade": 5613900,
+          "Jade ID": 5366900
+        }
+      }
+    },
+    "17": {
+      "L": {
+        "Regular": {
+          "Diamond": 41843000,
+          "Ruby": 27998600,
+          "Emerald": 15434900,
+          "Topaz": 11023500,
+          "Topaz ID": 9077500,
+          "Jade": 8883300,
+          "Jade ID": 7021800
+        },
+        "SmartLite": {
+          "Diamond": 35566600,
+          "Ruby": 23798800,
+          "Emerald": 13119700,
+          "Topaz": 9370000,
+          "Topaz ID": 7886100,
+          "Jade": 7550800,
+          "Jade ID": 6100200
+        },
+        "Smart": {
+          "Diamond": 25105800,
+          "Ruby": 16799200,
+          "Emerald": 9260900,
+          "Topaz": 6614100,
+          "Topaz ID": 5900400,
+          "Jade": 5330000,
+          "Jade ID": 4564200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 42534300,
+          "Ruby": 29513900,
+          "Emerald": 17041100,
+          "Topaz": 11566300,
+          "Topaz ID": 9564900,
+          "Jade": 9365500,
+          "Jade ID": 8343400
+        },
+        "SmartLite": {
+          "Diamond": 36154200,
+          "Ruby": 25086800,
+          "Emerald": 14485000,
+          "Topaz": 9831400,
+          "Topaz ID": 8309500,
+          "Jade": 7960700,
+          "Jade ID": 7248300
+        },
+        "Smart": {
+          "Diamond": 25520600,
+          "Ruby": 17708300,
+          "Emerald": 10224700,
+          "Topaz": 6939800,
+          "Topaz ID": 6217200,
+          "Jade": 5619300,
+          "Jade ID": 5423200
+        }
+      }
+    },
+    "18": {
+      "L": {
+        "Regular": {
+          "Diamond": 42143000,
+          "Ruby": 28014300,
+          "Emerald": 15449200,
+          "Topaz": 11039200,
+          "Topaz ID": 9090700,
+          "Jade": 8896100,
+          "Jade ID": 7025100
+        },
+        "SmartLite": {
+          "Diamond": 35821600,
+          "Ruby": 23812200,
+          "Emerald": 13131800,
+          "Topaz": 9383300,
+          "Topaz ID": 7897600,
+          "Jade": 7561700,
+          "Jade ID": 6103100
+        },
+        "Smart": {
+          "Diamond": 25285800,
+          "Ruby": 16808600,
+          "Emerald": 9269500,
+          "Topaz": 6623500,
+          "Topaz ID": 5909000,
+          "Jade": 5337700,
+          "Jade ID": 4566300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 42564900,
+          "Ruby": 29782500,
+          "Emerald": 17052700,
+          "Topaz": 11574500,
+          "Topaz ID": 9651300,
+          "Jade": 9371900,
+          "Jade ID": 8409000
+        },
+        "SmartLite": {
+          "Diamond": 36180200,
+          "Ruby": 25315100,
+          "Emerald": 14494800,
+          "Topaz": 9838300,
+          "Topaz ID": 8384600,
+          "Jade": 7966100,
+          "Jade ID": 7305300
+        },
+        "Smart": {
+          "Diamond": 25538900,
+          "Ruby": 17869500,
+          "Emerald": 10231600,
+          "Topaz": 6944700,
+          "Topaz ID": 6273300,
+          "Jade": 5623100,
+          "Jade ID": 5465900
+        }
+      }
+    },
+    "19": {
+      "L": {
+        "Regular": {
+          "Diamond": 42443100,
+          "Ruby": 28895500,
+          "Emerald": 15675400,
+          "Topaz": 11064200,
+          "Topaz ID": 9169100,
+          "Jade": 8972800,
+          "Jade ID": 7157700
+        },
+        "SmartLite": {
+          "Diamond": 36076700,
+          "Ruby": 24561200,
+          "Emerald": 13324100,
+          "Topaz": 9404600,
+          "Topaz ID": 7965700,
+          "Jade": 7626900,
+          "Jade ID": 6218300
+        },
+        "Smart": {
+          "Diamond": 25465900,
+          "Ruby": 17337300,
+          "Emerald": 9405200,
+          "Topaz": 6638500,
+          "Topaz ID": 5959900,
+          "Jade": 5383700,
+          "Jade ID": 4652500
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 42623500,
+          "Ruby": 29936100,
+          "Emerald": 17091400,
+          "Topaz": 11644000,
+          "Topaz ID": 9800800,
+          "Jade": 9382300,
+          "Jade ID": 8512500
+        },
+        "SmartLite": {
+          "Diamond": 36230000,
+          "Ruby": 25445700,
+          "Emerald": 14527700,
+          "Topaz": 9897400,
+          "Topaz ID": 8514400,
+          "Jade": 7975000,
+          "Jade ID": 7395200
+        },
+        "Smart": {
+          "Diamond": 25574100,
+          "Ruby": 17961700,
+          "Emerald": 10254800,
+          "Topaz": 6986400,
+          "Topaz ID": 6370500,
+          "Jade": 5629400,
+          "Jade ID": 5533100
+        }
+      }
+    },
+    "20": {
+      "L": {
+        "Regular": {
+          "Diamond": 42743200,
+          "Ruby": 28935700,
+          "Emerald": 16387900,
+          "Topaz": 11104300,
+          "Topaz ID": 9215300,
+          "Jade": 9018000,
+          "Jade ID": 7211800
+        },
+        "SmartLite": {
+          "Diamond": 36331700,
+          "Ruby": 24595300,
+          "Emerald": 13929700,
+          "Topaz": 9438700,
+          "Topaz ID": 8005800,
+          "Jade": 7665300,
+          "Jade ID": 6265300
+        },
+        "Smart": {
+          "Diamond": 25645900,
+          "Ruby": 17361400,
+          "Emerald": 9832700,
+          "Topaz": 6662600,
+          "Topaz ID": 5989900,
+          "Jade": 5410800,
+          "Jade ID": 4687700
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 43346900,
+          "Ruby": 30080200,
+          "Emerald": 17223900,
+          "Topaz": 11681300,
+          "Topaz ID": 9911600,
+          "Jade": 9542400,
+          "Jade ID": 8698900
+        },
+        "SmartLite": {
+          "Diamond": 36844900,
+          "Ruby": 25568200,
+          "Emerald": 14640300,
+          "Topaz": 9929100,
+          "Topaz ID": 8610700,
+          "Jade": 8111000,
+          "Jade ID": 7557200
+        },
+        "Smart": {
+          "Diamond": 26008100,
+          "Ruby": 18048100,
+          "Emerald": 10334300,
+          "Topaz": 7008800,
+          "Topaz ID": 6442500,
+          "Jade": 5725400,
+          "Jade ID": 5654300
+        }
+      }
+    },
+    "21": {
+      "L": {
+        "Regular": {
+          "Diamond": 43043100,
+          "Ruby": 31191800,
+          "Emerald": 17100500,
+          "Topaz": 12436100,
+          "Topaz ID": 10220100,
+          "Jade": 10001300,
+          "Jade ID": 8069900
+        },
+        "SmartLite": {
+          "Diamond": 36586700,
+          "Ruby": 26513000,
+          "Emerald": 14535400,
+          "Topaz": 10570700,
+          "Topaz ID": 8878700,
+          "Jade": 8501100,
+          "Jade ID": 7010700
+        },
+        "Smart": {
+          "Diamond": 25825900,
+          "Ruby": 18715100,
+          "Emerald": 10260300,
+          "Topaz": 7461700,
+          "Topaz ID": 6643100,
+          "Jade": 6000800,
+          "Jade ID": 5245400
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 47116000,
+          "Ruby": 34286900,
+          "Emerald": 19263400,
+          "Topaz": 12890600,
+          "Topaz ID": 11076800,
+          "Jade": 10181500,
+          "Jade ID": 9324700
+        },
+        "SmartLite": {
+          "Diamond": 40048600,
+          "Ruby": 29143900,
+          "Emerald": 16373900,
+          "Topaz": 10957000,
+          "Topaz ID": 9623000,
+          "Jade": 8654300,
+          "Jade ID": 8100900
+        },
+        "Smart": {
+          "Diamond": 28269600,
+          "Ruby": 20572100,
+          "Emerald": 11558000,
+          "Topaz": 7734400,
+          "Topaz ID": 7199900,
+          "Jade": 6108900,
+          "Jade ID": 6061100
+        }
+      }
+    },
+    "22": {
+      "L": {
+        "Regular": {
+          "Diamond": 43167800,
+          "Ruby": 31598700,
+          "Emerald": 17193100,
+          "Topaz": 12481500,
+          "Topaz ID": 10257000,
+          "Jade": 10037600,
+          "Jade ID": 8102600
+        },
+        "SmartLite": {
+          "Diamond": 36692600,
+          "Ruby": 26858900,
+          "Emerald": 14614200,
+          "Topaz": 10609300,
+          "Topaz ID": 8910800,
+          "Jade": 8532000,
+          "Jade ID": 7039100
+        },
+        "Smart": {
+          "Diamond": 25900700,
+          "Ruby": 18959200,
+          "Emerald": 10315900,
+          "Topaz": 7488900,
+          "Topaz ID": 6667100,
+          "Jade": 6022600,
+          "Jade ID": 5266700
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 48143300,
+          "Ruby": 34734700,
+          "Emerald": 19639300,
+          "Topaz": 12924900,
+          "Topaz ID": 11212100,
+          "Jade": 10394200,
+          "Jade ID": 9524500
+        },
+        "SmartLite": {
+          "Diamond": 40921800,
+          "Ruby": 29524500,
+          "Emerald": 16693400,
+          "Topaz": 10986200,
+          "Topaz ID": 9740500,
+          "Jade": 8835100,
+          "Jade ID": 8274400
+        },
+        "Smart": {
+          "Diamond": 28886000,
+          "Ruby": 20840800,
+          "Emerald": 11783600,
+          "Topaz": 7754900,
+          "Topaz ID": 7287900,
+          "Jade": 6236500,
+          "Jade ID": 6190900
+        }
+      }
+    },
+    "23": {
+      "L": {
+        "Regular": {
+          "Diamond": 44536600,
+          "Ruby": 32005600,
+          "Emerald": 17657600,
+          "Topaz": 12565500,
+          "Topaz ID": 10326100,
+          "Jade": 10105200,
+          "Jade ID": 8144000
+        },
+        "SmartLite": {
+          "Diamond": 37856100,
+          "Ruby": 27204800,
+          "Emerald": 15009000,
+          "Topaz": 10680700,
+          "Topaz ID": 8970800,
+          "Jade": 8589400,
+          "Jade ID": 7075100
+        },
+        "Smart": {
+          "Diamond": 26722000,
+          "Ruby": 19203400,
+          "Emerald": 10594600,
+          "Topaz": 7539300,
+          "Topaz ID": 6712000,
+          "Jade": 6063100,
+          "Jade ID": 5293600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 48907000,
+          "Ruby": 34986200,
+          "Emerald": 19962300,
+          "Topaz": 13008500,
+          "Topaz ID": 11443600,
+          "Jade": 10557500,
+          "Jade ID": 9662300
+        },
+        "SmartLite": {
+          "Diamond": 41571000,
+          "Ruby": 29738300,
+          "Emerald": 16968000,
+          "Topaz": 11057200,
+          "Topaz ID": 9941600,
+          "Jade": 8973900,
+          "Jade ID": 8394100
+        },
+        "Smart": {
+          "Diamond": 29344200,
+          "Ruby": 20991700,
+          "Emerald": 11977400,
+          "Topaz": 7805100,
+          "Topaz ID": 7438300,
+          "Jade": 6334500,
+          "Jade ID": 6280500
+        }
+      }
+    },
+    "24": {
+      "L": {
+        "Regular": {
+          "Diamond": 45345700,
+          "Ruby": 32547900,
+          "Emerald": 18011900,
+          "Topaz": 12593200,
+          "Topaz ID": 10349000,
+          "Jade": 10127400,
+          "Jade ID": 8253500
+        },
+        "SmartLite": {
+          "Diamond": 38543800,
+          "Ruby": 27665700,
+          "Emerald": 15310100,
+          "Topaz": 10704200,
+          "Topaz ID": 8990700,
+          "Jade": 8608300,
+          "Jade ID": 7170200
+        },
+        "Smart": {
+          "Diamond": 27207400,
+          "Ruby": 19528700,
+          "Emerald": 10807100,
+          "Topaz": 7555900,
+          "Topaz ID": 6726900,
+          "Jade": 6076400,
+          "Jade ID": 5364800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 49472900,
+          "Ruby": 35394400,
+          "Emerald": 20205500,
+          "Topaz": 13040000,
+          "Topaz ID": 11652100,
+          "Jade": 10681000,
+          "Jade ID": 9747000
+        },
+        "SmartLite": {
+          "Diamond": 42052000,
+          "Ruby": 30085200,
+          "Emerald": 17174700,
+          "Topaz": 11084000,
+          "Topaz ID": 10122800,
+          "Jade": 9078900,
+          "Jade ID": 8467700
+        },
+        "Smart": {
+          "Diamond": 29683700,
+          "Ruby": 21236600,
+          "Emerald": 12123300,
+          "Topaz": 7824000,
+          "Topaz ID": 7573900,
+          "Jade": 6408600,
+          "Jade ID": 6335600
+        }
+      }
+    },
+    "25": {
+      "L": {
+        "Regular": {
+          "Diamond": 46253700,
+          "Ruby": 33690000,
+          "Emerald": 18053900,
+          "Topaz": 12734800,
+          "Topaz ID": 10465400,
+          "Jade": 10241400,
+          "Jade ID": 8474200
+        },
+        "SmartLite": {
+          "Diamond": 39315600,
+          "Ruby": 28636500,
+          "Emerald": 15345800,
+          "Topaz": 10824600,
+          "Topaz ID": 9091800,
+          "Jade": 8705200,
+          "Jade ID": 7362000
+        },
+        "Smart": {
+          "Diamond": 27752200,
+          "Ruby": 20214000,
+          "Emerald": 10832300,
+          "Topaz": 7640900,
+          "Topaz ID": 6802500,
+          "Jade": 6144800,
+          "Jade ID": 5508200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 50307000,
+          "Ruby": 35855800,
+          "Emerald": 20516900,
+          "Topaz": 13079600,
+          "Topaz ID": 11810600,
+          "Jade": 10915300,
+          "Jade ID": 9993900
+        },
+        "SmartLite": {
+          "Diamond": 42761000,
+          "Ruby": 30477400,
+          "Emerald": 17439400,
+          "Topaz": 11117700,
+          "Topaz ID": 10260500,
+          "Jade": 9278000,
+          "Jade ID": 8682200
+        },
+        "Smart": {
+          "Diamond": 30184200,
+          "Ruby": 21513500,
+          "Emerald": 12310100,
+          "Topaz": 7847800,
+          "Topaz ID": 7676900,
+          "Jade": 6549200,
+          "Jade ID": 6496000
+        }
+      }
+    },
+    "26": {
+      "L": {
+        "Regular": {
+          "Diamond": 46320400,
+          "Ruby": 33843200,
+          "Emerald": 18848400,
+          "Topaz": 12740100,
+          "Topaz ID": 10469700,
+          "Jade": 10245700,
+          "Jade ID": 8584600
+        },
+        "SmartLite": {
+          "Diamond": 39372300,
+          "Ruby": 28766700,
+          "Emerald": 16021100,
+          "Topaz": 10829100,
+          "Topaz ID": 9095600,
+          "Jade": 8708800,
+          "Jade ID": 7457900
+        },
+        "Smart": {
+          "Diamond": 27792200,
+          "Ruby": 20305900,
+          "Emerald": 11309000,
+          "Topaz": 7644100,
+          "Topaz ID": 6805300,
+          "Jade": 6147400,
+          "Jade ID": 5580000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 50326800,
+          "Ruby": 36312600,
+          "Emerald": 21526000,
+          "Topaz": 13740800,
+          "Topaz ID": 12514000,
+          "Jade": 11050100,
+          "Jade ID": 10095600
+        },
+        "SmartLite": {
+          "Diamond": 42777800,
+          "Ruby": 30865700,
+          "Emerald": 18297100,
+          "Topaz": 11679700,
+          "Topaz ID": 10871500,
+          "Jade": 9392600,
+          "Jade ID": 8770500
+        },
+        "Smart": {
+          "Diamond": 30196100,
+          "Ruby": 21787600,
+          "Emerald": 12915600,
+          "Topaz": 8244500,
+          "Topaz ID": 8134100,
+          "Jade": 6630100,
+          "Jade ID": 6562100
+        }
+      }
+    },
+    "27": {
+      "L": {
+        "Regular": {
+          "Diamond": 46592200,
+          "Ruby": 33996300,
+          "Emerald": 18867900,
+          "Topaz": 12818800,
+          "Topaz ID": 10534400,
+          "Jade": 10308900,
+          "Jade ID": 8781700
+        },
+        "SmartLite": {
+          "Diamond": 39603400,
+          "Ruby": 28896900,
+          "Emerald": 16037700,
+          "Topaz": 10896000,
+          "Topaz ID": 9151800,
+          "Jade": 8762600,
+          "Jade ID": 7629100
+        },
+        "Smart": {
+          "Diamond": 27955300,
+          "Ruby": 20397800,
+          "Emerald": 11320700,
+          "Topaz": 7691300,
+          "Topaz ID": 6847400,
+          "Jade": 6185300,
+          "Jade ID": 5708100
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 51161700,
+          "Ruby": 36741900,
+          "Emerald": 21694100,
+          "Topaz": 13965600,
+          "Topaz ID": 12722500,
+          "Jade": 11231100,
+          "Jade ID": 10259700
+        },
+        "SmartLite": {
+          "Diamond": 43487400,
+          "Ruby": 31230600,
+          "Emerald": 18440000,
+          "Topaz": 11870800,
+          "Topaz ID": 11052700,
+          "Jade": 9546500,
+          "Jade ID": 8913100
+        },
+        "Smart": {
+          "Diamond": 30697000,
+          "Ruby": 22045100,
+          "Emerald": 13016500,
+          "Topaz": 8379400,
+          "Topaz ID": 8269600,
+          "Jade": 6738700,
+          "Jade ID": 6668800
+        }
+      }
+    },
+    "28": {
+      "L": {
+        "Regular": {
+          "Diamond": 46837800,
+          "Ruby": 34035300,
+          "Emerald": 19056600,
+          "Topaz": 12883500,
+          "Topaz ID": 10587500,
+          "Jade": 10360900,
+          "Jade ID": 8970000
+        },
+        "SmartLite": {
+          "Diamond": 39812100,
+          "Ruby": 28930000,
+          "Emerald": 16198100,
+          "Topaz": 10951000,
+          "Topaz ID": 9197900,
+          "Jade": 8806800,
+          "Jade ID": 7792700
+        },
+        "Smart": {
+          "Diamond": 28102700,
+          "Ruby": 20421200,
+          "Emerald": 11434000,
+          "Topaz": 7730100,
+          "Topaz ID": 6881900,
+          "Jade": 6216500,
+          "Jade ID": 5830500
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 51976400,
+          "Ruby": 37167400,
+          "Emerald": 21862200,
+          "Topaz": 14188700,
+          "Topaz ID": 12950300,
+          "Jade": 11410400,
+          "Jade ID": 10441100
+        },
+        "SmartLite": {
+          "Diamond": 44179900,
+          "Ruby": 31592300,
+          "Emerald": 18582900,
+          "Topaz": 12060400,
+          "Topaz ID": 11250600,
+          "Jade": 9698800,
+          "Jade ID": 9070700
+        },
+        "Smart": {
+          "Diamond": 31185800,
+          "Ruby": 22300400,
+          "Emerald": 13117300,
+          "Topaz": 8513200,
+          "Topaz ID": 8417700,
+          "Jade": 6846200,
+          "Jade ID": 6786700
+        }
+      }
+    },
+    "29": {
+      "L": {
+        "Regular": {
+          "Diamond": 47132000,
+          "Ruby": 34074300,
+          "Emerald": 19247100,
+          "Topaz": 12964500,
+          "Topaz ID": 10851500,
+          "Jade": 10425900,
+          "Jade ID": 9173100
+        },
+        "SmartLite": {
+          "Diamond": 40062200,
+          "Ruby": 28963200,
+          "Emerald": 16360100,
+          "Topaz": 11019800,
+          "Topaz ID": 9427300,
+          "Jade": 8862000,
+          "Jade ID": 7969100
+        },
+        "Smart": {
+          "Diamond": 28279200,
+          "Ruby": 20444600,
+          "Emerald": 11548300,
+          "Topaz": 7778700,
+          "Topaz ID": 7053500,
+          "Jade": 6255500,
+          "Jade ID": 5962500
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 53014200,
+          "Ruby": 37887300,
+          "Emerald": 22091500,
+          "Topaz": 14689400,
+          "Topaz ID": 13393300,
+          "Jade": 11813100,
+          "Jade ID": 10670800
+        },
+        "SmartLite": {
+          "Diamond": 45062100,
+          "Ruby": 32204200,
+          "Emerald": 18777800,
+          "Topaz": 12486000,
+          "Topaz ID": 11635400,
+          "Jade": 10041200,
+          "Jade ID": 9230200
+        },
+        "Smart": {
+          "Diamond": 31808500,
+          "Ruby": 22732400,
+          "Emerald": 13254900,
+          "Topaz": 8813600,
+          "Topaz ID": 8705600,
+          "Jade": 7087900,
+          "Jade ID": 6829300
+        }
+      }
+    },
+    "30": {
+      "L": {
+        "Regular": {
+          "Diamond": 47180200,
+          "Ruby": 34113300,
+          "Emerald": 19439600,
+          "Topaz": 12970000,
+          "Topaz ID": 10936000,
+          "Jade": 10430500,
+          "Jade ID": 9325000
+        },
+        "SmartLite": {
+          "Diamond": 40103200,
+          "Ruby": 28996300,
+          "Emerald": 16523700,
+          "Topaz": 11024500,
+          "Topaz ID": 9500700,
+          "Jade": 8865900,
+          "Jade ID": 8101100
+        },
+        "Smart": {
+          "Diamond": 28308100,
+          "Ruby": 20468000,
+          "Emerald": 11663800,
+          "Topaz": 7782000,
+          "Topaz ID": 7108400,
+          "Jade": 6258300,
+          "Jade ID": 6061300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 53113500,
+          "Ruby": 38136600,
+          "Emerald": 22094600,
+          "Topaz": 14694500,
+          "Topaz ID": 13427800,
+          "Jade": 11817200,
+          "Jade ID": 10900400
+        },
+        "SmartLite": {
+          "Diamond": 45146500,
+          "Ruby": 32416100,
+          "Emerald": 18780400,
+          "Topaz": 12490300,
+          "Topaz ID": 11665400,
+          "Jade": 10044600,
+          "Jade ID": 9428900
+        },
+        "Smart": {
+          "Diamond": 31868100,
+          "Ruby": 22882000,
+          "Emerald": 13256800,
+          "Topaz": 8816700,
+          "Topaz ID": 8728100,
+          "Jade": 7090300,
+          "Jade ID": 6976300
+        }
+      }
+    },
+    "31": {
+      "L": {
+        "Regular": {
+          "Diamond": 47228400,
+          "Ruby": 34401800,
+          "Emerald": 20649800,
+          "Topaz": 13734100,
+          "Topaz ID": 11551400,
+          "Jade": 10473600,
+          "Jade ID": 9432300
+        },
+        "SmartLite": {
+          "Diamond": 40144100,
+          "Ruby": 29241500,
+          "Emerald": 17552300,
+          "Topaz": 11674000,
+          "Topaz ID": 10035300,
+          "Jade": 8902600,
+          "Jade ID": 8194300
+        },
+        "Smart": {
+          "Diamond": 28337000,
+          "Ruby": 20641100,
+          "Emerald": 12389900,
+          "Topaz": 8240500,
+          "Topaz ID": 7508400,
+          "Jade": 6284200,
+          "Jade ID": 6131000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 53439200,
+          "Ruby": 38944900,
+          "Emerald": 22753100,
+          "Topaz": 14747900,
+          "Topaz ID": 13568100,
+          "Jade": 11837400,
+          "Jade ID": 10986000
+        },
+        "SmartLite": {
+          "Diamond": 45423300,
+          "Ruby": 33103200,
+          "Emerald": 19340200,
+          "Topaz": 12535700,
+          "Topaz ID": 11787300,
+          "Jade": 10061800,
+          "Jade ID": 9502900
+        },
+        "Smart": {
+          "Diamond": 32063500,
+          "Ruby": 23366900,
+          "Emerald": 13651900,
+          "Topaz": 8848700,
+          "Topaz ID": 8819300,
+          "Jade": 7102400,
+          "Jade ID": 7031000
+        }
+      }
+    },
+    "32": {
+      "L": {
+        "Regular": {
+          "Diamond": 47983200,
+          "Ruby": 34513200,
+          "Emerald": 20977300,
+          "Topaz": 14060100,
+          "Topaz ID": 11842100,
+          "Jade": 10636300,
+          "Jade ID": 9667600
+        },
+        "SmartLite": {
+          "Diamond": 40785700,
+          "Ruby": 29336200,
+          "Emerald": 17830700,
+          "Topaz": 11951100,
+          "Topaz ID": 10287800,
+          "Jade": 9040900,
+          "Jade ID": 8362500
+        },
+        "Smart": {
+          "Diamond": 28789900,
+          "Ruby": 20707900,
+          "Emerald": 12586400,
+          "Topaz": 8436100,
+          "Topaz ID": 7697400,
+          "Jade": 6381800,
+          "Jade ID": 6187300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 54539200,
+          "Ruby": 39583600,
+          "Emerald": 23301600,
+          "Topaz": 14984000,
+          "Topaz ID": 13708400,
+          "Jade": 11849200,
+          "Jade ID": 11027100
+        },
+        "SmartLite": {
+          "Diamond": 46358300,
+          "Ruby": 33646100,
+          "Emerald": 19806400,
+          "Topaz": 12736400,
+          "Topaz ID": 11909200,
+          "Jade": 10071800,
+          "Jade ID": 9538400
+        },
+        "Smart": {
+          "Diamond": 32723500,
+          "Ruby": 23750200,
+          "Emerald": 13981000,
+          "Topaz": 8990400,
+          "Topaz ID": 8910500,
+          "Jade": 7109500,
+          "Jade ID": 7057300
+        }
+      }
+    },
+    "33": {
+      "L": {
+        "Regular": {
+          "Diamond": 48130500,
+          "Ruby": 34624700,
+          "Emerald": 21042800,
+          "Topaz": 14446000,
+          "Topaz ID": 12150800,
+          "Jade": 10669400,
+          "Jade ID": 9724900
+        },
+        "SmartLite": {
+          "Diamond": 40910900,
+          "Ruby": 29431000,
+          "Emerald": 17886400,
+          "Topaz": 12279100,
+          "Topaz ID": 10556000,
+          "Jade": 9069000,
+          "Jade ID": 8412000
+        },
+        "Smart": {
+          "Diamond": 28878300,
+          "Ruby": 20774800,
+          "Emerald": 12625700,
+          "Topaz": 8667600,
+          "Topaz ID": 7898000,
+          "Jade": 6401600,
+          "Jade ID": 6223900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 59231800,
+          "Ruby": 41310200,
+          "Emerald": 23931500,
+          "Topaz": 15694700,
+          "Topaz ID": 14294200,
+          "Jade": 12347300,
+          "Jade ID": 11453800
+        },
+        "SmartLite": {
+          "Diamond": 50347000,
+          "Ruby": 35113700,
+          "Emerald": 20341800,
+          "Topaz": 13340500,
+          "Topaz ID": 12418100,
+          "Jade": 10495200,
+          "Jade ID": 9907500
+        },
+        "Smart": {
+          "Diamond": 35539100,
+          "Ruby": 24786100,
+          "Emerald": 14358900,
+          "Topaz": 9416800,
+          "Topaz ID": 9291200,
+          "Jade": 7408400,
+          "Jade ID": 7330400
+        }
+      }
+    },
+    "34": {
+      "L": {
+        "Regular": {
+          "Diamond": 48688800,
+          "Ruby": 34736000,
+          "Emerald": 21268400,
+          "Topaz": 14773800,
+          "Topaz ID": 12497900,
+          "Jade": 10779400,
+          "Jade ID": 9773800
+        },
+        "SmartLite": {
+          "Diamond": 41385500,
+          "Ruby": 29525600,
+          "Emerald": 18078100,
+          "Topaz": 12557700,
+          "Topaz ID": 10857500,
+          "Jade": 9162500,
+          "Jade ID": 8454300
+        },
+        "Smart": {
+          "Diamond": 29213300,
+          "Ruby": 20841600,
+          "Emerald": 12761000,
+          "Topaz": 8864300,
+          "Topaz ID": 8123600,
+          "Jade": 6467600,
+          "Jade ID": 6255200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 60021500,
+          "Ruby": 42426800,
+          "Emerald": 24507800,
+          "Topaz": 17013500,
+          "Topaz ID": 15541400,
+          "Jade": 13087200,
+          "Jade ID": 12077200
+        },
+        "SmartLite": {
+          "Diamond": 51018300,
+          "Ruby": 36062800,
+          "Emerald": 20831600,
+          "Topaz": 14461500,
+          "Topaz ID": 13501600,
+          "Jade": 11124100,
+          "Jade ID": 10446800
+        },
+        "Smart": {
+          "Diamond": 36012900,
+          "Ruby": 25456100,
+          "Emerald": 14704700,
+          "Topaz": 10208100,
+          "Topaz ID": 10101900,
+          "Jade": 7852300,
+          "Jade ID": 7729400
+        }
+      }
+    },
+    "35": {
+      "L": {
+        "Regular": {
+          "Diamond": 48879500,
+          "Ruby": 35143800,
+          "Emerald": 21336500,
+          "Topaz": 14839200,
+          "Topaz ID": 12817400,
+          "Jade": 10813900,
+          "Jade ID": 9849000
+        },
+        "SmartLite": {
+          "Diamond": 41547600,
+          "Ruby": 29872200,
+          "Emerald": 18136000,
+          "Topaz": 12613300,
+          "Topaz ID": 11135100,
+          "Jade": 9191800,
+          "Jade ID": 8519400
+        },
+        "Smart": {
+          "Diamond": 29327700,
+          "Ruby": 21086300,
+          "Emerald": 12801900,
+          "Topaz": 8903500,
+          "Topaz ID": 8331300,
+          "Jade": 6488300,
+          "Jade ID": 6303400
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 61359700,
+          "Ruby": 44060000,
+          "Emerald": 25178200,
+          "Topaz": 17071000,
+          "Topaz ID": 15618800,
+          "Jade": 13131600,
+          "Jade ID": 12127700
+        },
+        "SmartLite": {
+          "Diamond": 52155700,
+          "Ruby": 37451000,
+          "Emerald": 21401500,
+          "Topaz": 14510400,
+          "Topaz ID": 13568800,
+          "Jade": 11161900,
+          "Jade ID": 10490500
+        },
+        "Smart": {
+          "Diamond": 36815800,
+          "Ruby": 26436000,
+          "Emerald": 15106900,
+          "Topaz": 10242600,
+          "Topaz ID": 10152200,
+          "Jade": 7879000,
+          "Jade ID": 7761700
+        }
+      }
+    },
+    "36": {
+      "L": {
+        "Regular": {
+          "Diamond": 49893100,
+          "Ruby": 36645800,
+          "Emerald": 21412800,
+          "Topaz": 15275300,
+          "Topaz ID": 13385100,
+          "Jade": 10851300,
+          "Jade ID": 9888500
+        },
+        "SmartLite": {
+          "Diamond": 42409200,
+          "Ruby": 31148900,
+          "Emerald": 18200900,
+          "Topaz": 12984000,
+          "Topaz ID": 11628300,
+          "Jade": 9223600,
+          "Jade ID": 8553500
+        },
+        "Smart": {
+          "Diamond": 29935900,
+          "Ruby": 21987500,
+          "Emerald": 12847700,
+          "Topaz": 9165200,
+          "Topaz ID": 8700300,
+          "Jade": 6510800,
+          "Jade ID": 6328600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 66095700,
+          "Ruby": 45282400,
+          "Emerald": 26388900,
+          "Topaz": 17196800,
+          "Topaz ID": 15674600,
+          "Jade": 13468800,
+          "Jade ID": 12344700
+        },
+        "SmartLite": {
+          "Diamond": 56181300,
+          "Ruby": 38490000,
+          "Emerald": 22430600,
+          "Topaz": 14617300,
+          "Topaz ID": 13617300,
+          "Jade": 11448500,
+          "Jade ID": 10678200
+        },
+        "Smart": {
+          "Diamond": 39657400,
+          "Ruby": 27169400,
+          "Emerald": 15833300,
+          "Topaz": 10318100,
+          "Topaz ID": 10188500,
+          "Jade": 8081300,
+          "Jade ID": 7900600
+        }
+      }
+    },
+    "37": {
+      "L": {
+        "Regular": {
+          "Diamond": 51146200,
+          "Ruby": 36933300,
+          "Emerald": 21569700,
+          "Topaz": 15564400,
+          "Topaz ID": 13867300,
+          "Jade": 10930300,
+          "Jade ID": 10006200
+        },
+        "SmartLite": {
+          "Diamond": 43474300,
+          "Ruby": 31393300,
+          "Emerald": 18334200,
+          "Topaz": 13229700,
+          "Topaz ID": 12047200,
+          "Jade": 9290800,
+          "Jade ID": 8655400
+        },
+        "Smart": {
+          "Diamond": 30687700,
+          "Ruby": 22160000,
+          "Emerald": 12941800,
+          "Topaz": 9338600,
+          "Topaz ID": 9013700,
+          "Jade": 6558200,
+          "Jade ID": 6404000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 66620500,
+          "Ruby": 47622500,
+          "Emerald": 26587000,
+          "Topaz": 17321500,
+          "Topaz ID": 15697600,
+          "Jade": 13566500,
+          "Jade ID": 12664800
+        },
+        "SmartLite": {
+          "Diamond": 56627400,
+          "Ruby": 40479100,
+          "Emerald": 22599000,
+          "Topaz": 14723300,
+          "Topaz ID": 13637300,
+          "Jade": 11531500,
+          "Jade ID": 10907600
+        },
+        "Smart": {
+          "Diamond": 39972300,
+          "Ruby": 28573500,
+          "Emerald": 15952200,
+          "Topaz": 10392900,
+          "Topaz ID": 10203400,
+          "Jade": 8139900,
+          "Jade ID": 7978800
+        }
+      }
+    },
+    "38": {
+      "L": {
+        "Regular": {
+          "Diamond": 53450700,
+          "Ruby": 38584000,
+          "Emerald": 22522500,
+          "Topaz": 15892400,
+          "Topaz ID": 14388100,
+          "Jade": 11107200,
+          "Jade ID": 10297900
+        },
+        "SmartLite": {
+          "Diamond": 45433100,
+          "Ruby": 32796400,
+          "Emerald": 19144100,
+          "Topaz": 13508500,
+          "Topaz ID": 12499700,
+          "Jade": 9441100,
+          "Jade ID": 8869100
+        },
+        "Smart": {
+          "Diamond": 32070400,
+          "Ruby": 23150400,
+          "Emerald": 13513500,
+          "Topaz": 9535400,
+          "Topaz ID": 9352300,
+          "Jade": 6664300,
+          "Jade ID": 6487700
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 70026200,
+          "Ruby": 50041600,
+          "Emerald": 27917300,
+          "Topaz": 18091500,
+          "Topaz ID": 16347300,
+          "Jade": 14237400,
+          "Jade ID": 13315500
+        },
+        "SmartLite": {
+          "Diamond": 59522300,
+          "Ruby": 42535400,
+          "Emerald": 23729700,
+          "Topaz": 15377800,
+          "Topaz ID": 14201700,
+          "Jade": 12101800,
+          "Jade ID": 11468000
+        },
+        "Smart": {
+          "Diamond": 42015700,
+          "Ruby": 30025000,
+          "Emerald": 16750400,
+          "Topaz": 10854900,
+          "Topaz ID": 10625700,
+          "Jade": 8542400,
+          "Jade ID": 8388800
+        }
+      }
+    },
+    "39": {
+      "L": {
+        "Regular": {
+          "Diamond": 54641900,
+          "Ruby": 40111600,
+          "Emerald": 23405100,
+          "Topaz": 16509600,
+          "Topaz ID": 14947300,
+          "Jade": 11539700,
+          "Jade ID": 10547700
+        },
+        "SmartLite": {
+          "Diamond": 46445600,
+          "Ruby": 34094900,
+          "Emerald": 19894400,
+          "Topaz": 14033200,
+          "Topaz ID": 12985500,
+          "Jade": 9808700,
+          "Jade ID": 9084200
+        },
+        "Smart": {
+          "Diamond": 32785100,
+          "Ruby": 24067000,
+          "Emerald": 14043100,
+          "Topaz": 9905800,
+          "Topaz ID": 9715700,
+          "Jade": 6923800,
+          "Jade ID": 6645100
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 73226400,
+          "Ruby": 51443300,
+          "Emerald": 28103600,
+          "Topaz": 18983100,
+          "Topaz ID": 17375300,
+          "Jade": 14867900,
+          "Jade ID": 13589900
+        },
+        "SmartLite": {
+          "Diamond": 62242400,
+          "Ruby": 43726800,
+          "Emerald": 23888100,
+          "Topaz": 16135700,
+          "Topaz ID": 15094800,
+          "Jade": 12637700,
+          "Jade ID": 11704300
+        },
+        "Smart": {
+          "Diamond": 43935800,
+          "Ruby": 30866000,
+          "Emerald": 16862200,
+          "Topaz": 11389900,
+          "Topaz ID": 11293900,
+          "Jade": 8920700,
+          "Jade ID": 8561600
+        }
+      }
+    },
+    "40": {
+      "L": {
+        "Regular": {
+          "Diamond": 55850200,
+          "Ruby": 41706900,
+          "Emerald": 23796600,
+          "Topaz": 16984600,
+          "Topaz ID": 15263500,
+          "Jade": 12315500,
+          "Jade ID": 11128900
+        },
+        "SmartLite": {
+          "Diamond": 47472700,
+          "Ruby": 35450900,
+          "Emerald": 20227100,
+          "Topaz": 14436900,
+          "Topaz ID": 13260200,
+          "Jade": 10468200,
+          "Jade ID": 9668200
+        },
+        "Smart": {
+          "Diamond": 33510100,
+          "Ruby": 25024100,
+          "Emerald": 14278000,
+          "Topaz": 10190800,
+          "Topaz ID": 9921300,
+          "Jade": 7389300,
+          "Jade ID": 7233800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 75769200,
+          "Ruby": 52192100,
+          "Emerald": 29239400,
+          "Topaz": 19717800,
+          "Topaz ID": 17952800,
+          "Jade": 15857000,
+          "Jade ID": 14275400
+        },
+        "SmartLite": {
+          "Diamond": 64403800,
+          "Ruby": 44363300,
+          "Emerald": 24853500,
+          "Topaz": 16760100,
+          "Topaz ID": 15596500,
+          "Jade": 13478500,
+          "Jade ID": 12401800
+        },
+        "Smart": {
+          "Diamond": 45461500,
+          "Ruby": 31315300,
+          "Emerald": 17543600,
+          "Topaz": 11830700,
+          "Topaz ID": 11669300,
+          "Jade": 9514200,
+          "Jade ID": 9279000
+        }
+      }
+    },
+    "41": {
+      "L": {
+        "Regular": {
+          "Diamond": 58233800,
+          "Ruby": 43509000,
+          "Emerald": 25405700,
+          "Topaz": 18245300,
+          "Topaz ID": 16258900,
+          "Jade": 12861100,
+          "Jade ID": 11664300
+        },
+        "SmartLite": {
+          "Diamond": 49498700,
+          "Ruby": 36982700,
+          "Emerald": 21594800,
+          "Topaz": 15508500,
+          "Topaz ID": 14124900,
+          "Jade": 10932000,
+          "Jade ID": 10133400
+        },
+        "Smart": {
+          "Diamond": 34940300,
+          "Ruby": 26105400,
+          "Emerald": 15243400,
+          "Topaz": 10947200,
+          "Topaz ID": 10568300,
+          "Jade": 7716700,
+          "Jade ID": 7581800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 76096000,
+          "Ruby": 55327400,
+          "Emerald": 31926100,
+          "Topaz": 20593200,
+          "Topaz ID": 18344900,
+          "Jade": 16561000,
+          "Jade ID": 14880700
+        },
+        "SmartLite": {
+          "Diamond": 64681600,
+          "Ruby": 47028300,
+          "Emerald": 27137200,
+          "Topaz": 17504200,
+          "Topaz ID": 15937100,
+          "Jade": 14076900,
+          "Jade ID": 12927600
+        },
+        "Smart": {
+          "Diamond": 45657600,
+          "Ruby": 33196400,
+          "Emerald": 19155700,
+          "Topaz": 12355900,
+          "Topaz ID": 11924200,
+          "Jade": 9936600,
+          "Jade ID": 9672500
+        }
+      }
+    },
+    "42": {
+      "L": {
+        "Regular": {
+          "Diamond": 60552900,
+          "Ruby": 45232900,
+          "Emerald": 26402100,
+          "Topaz": 19267600,
+          "Topaz ID": 17011000,
+          "Jade": 13365500,
+          "Jade ID": 12139400
+        },
+        "SmartLite": {
+          "Diamond": 51470000,
+          "Ruby": 38448000,
+          "Emerald": 22441800,
+          "Topaz": 16377500,
+          "Topaz ID": 14778300,
+          "Jade": 11360700,
+          "Jade ID": 10546100
+        },
+        "Smart": {
+          "Diamond": 36331700,
+          "Ruby": 27139700,
+          "Emerald": 15841300,
+          "Topaz": 11560600,
+          "Topaz ID": 11057200,
+          "Jade": 8019300,
+          "Jade ID": 7890600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 79122300,
+          "Ruby": 56535700,
+          "Emerald": 33178100,
+          "Topaz": 21397800,
+          "Topaz ID": 18691300,
+          "Jade": 17208000,
+          "Jade ID": 15390400
+        },
+        "SmartLite": {
+          "Diamond": 67254000,
+          "Ruby": 48055300,
+          "Emerald": 28201400,
+          "Topaz": 18188100,
+          "Topaz ID": 16238100,
+          "Jade": 14626800,
+          "Jade ID": 13370400
+        },
+        "Smart": {
+          "Diamond": 47473400,
+          "Ruby": 33921400,
+          "Emerald": 19906900,
+          "Topaz": 12838700,
+          "Topaz ID": 12149300,
+          "Jade": 10324800,
+          "Jade ID": 10003800
+        }
+      }
+    },
+    "43": {
+      "L": {
+        "Regular": {
+          "Diamond": 62972600,
+          "Ruby": 47034600,
+          "Emerald": 27446200,
+          "Topaz": 20367000,
+          "Topaz ID": 17840200,
+          "Jade": 13892400,
+          "Jade ID": 12578600
+        },
+        "SmartLite": {
+          "Diamond": 53526700,
+          "Ruby": 39979400,
+          "Emerald": 23329300,
+          "Topaz": 17312000,
+          "Topaz ID": 15498700,
+          "Jade": 11808500,
+          "Jade ID": 10927700
+        },
+        "Smart": {
+          "Diamond": 37783600,
+          "Ruby": 28220800,
+          "Emerald": 16467700,
+          "Topaz": 12220200,
+          "Topaz ID": 11596100,
+          "Jade": 8335400,
+          "Jade ID": 8176100
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 84170800,
+          "Ruby": 58551700,
+          "Emerald": 34667600,
+          "Topaz": 22397600,
+          "Topaz ID": 19270700,
+          "Jade": 18273200,
+          "Jade ID": 16149800
+        },
+        "SmartLite": {
+          "Diamond": 71545200,
+          "Ruby": 49768900,
+          "Emerald": 29467500,
+          "Topaz": 19038000,
+          "Topaz ID": 16741400,
+          "Jade": 15532200,
+          "Jade ID": 14030200
+        },
+        "Smart": {
+          "Diamond": 50502500,
+          "Ruby": 35131000,
+          "Emerald": 20800600,
+          "Topaz": 13438600,
+          "Topaz ID": 12526000,
+          "Jade": 10963900,
+          "Jade ID": 10497400
+        }
+      }
+    },
+    "44": {
+      "L": {
+        "Regular": {
+          "Diamond": 66964200,
+          "Ruby": 50002900,
+          "Emerald": 29158800,
+          "Topaz": 21383200,
+          "Topaz ID": 18404700,
+          "Jade": 14754300,
+          "Jade ID": 13333000
+        },
+        "SmartLite": {
+          "Diamond": 56919600,
+          "Ruby": 42502500,
+          "Emerald": 24785000,
+          "Topaz": 18175700,
+          "Topaz ID": 15989100,
+          "Jade": 12541200,
+          "Jade ID": 11583100
+        },
+        "Smart": {
+          "Diamond": 40178500,
+          "Ruby": 30001700,
+          "Emerald": 17495300,
+          "Topaz": 12829900,
+          "Topaz ID": 11963100,
+          "Jade": 8852600,
+          "Jade ID": 8666500
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 87112800,
+          "Ruby": 61094100,
+          "Emerald": 35373300,
+          "Topaz": 23508600,
+          "Topaz ID": 20038100,
+          "Jade": 18905400,
+          "Jade ID": 16827600
+        },
+        "SmartLite": {
+          "Diamond": 74045900,
+          "Ruby": 51930000,
+          "Emerald": 30067300,
+          "Topaz": 19982300,
+          "Topaz ID": 17408100,
+          "Jade": 16069600,
+          "Jade ID": 14619000
+        },
+        "Smart": {
+          "Diamond": 52267700,
+          "Ruby": 36656500,
+          "Emerald": 21224000,
+          "Topaz": 14105200,
+          "Topaz ID": 13024800,
+          "Jade": 11343200,
+          "Jade ID": 10937900
+        }
+      }
+    },
+    "45": {
+      "L": {
+        "Regular": {
+          "Diamond": 71216700,
+          "Ruby": 53164600,
+          "Emerald": 30080900,
+          "Topaz": 22700400,
+          "Topaz ID": 19015700,
+          "Jade": 15676100,
+          "Jade ID": 14210900
+        },
+        "SmartLite": {
+          "Diamond": 60534200,
+          "Ruby": 45189900,
+          "Emerald": 25568800,
+          "Topaz": 19295300,
+          "Topaz ID": 16519900,
+          "Jade": 13324700,
+          "Jade ID": 12345700
+        },
+        "Smart": {
+          "Diamond": 42730000,
+          "Ruby": 31898800,
+          "Emerald": 18048500,
+          "Topaz": 13620200,
+          "Topaz ID": 12360200,
+          "Jade": 9405700,
+          "Jade ID": 9237100
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 90159800,
+          "Ruby": 63823500,
+          "Emerald": 35800600,
+          "Topaz": 24323200,
+          "Topaz ID": 20845800,
+          "Jade": 19560700,
+          "Jade ID": 17511300
+        },
+        "SmartLite": {
+          "Diamond": 76635800,
+          "Ruby": 54250000,
+          "Emerald": 30430500,
+          "Topaz": 20674700,
+          "Topaz ID": 18109800,
+          "Jade": 16626600,
+          "Jade ID": 15212900
+        },
+        "Smart": {
+          "Diamond": 54095900,
+          "Ruby": 38294100,
+          "Emerald": 21480400,
+          "Topaz": 14593900,
+          "Topaz ID": 13549800,
+          "Jade": 11736400,
+          "Jade ID": 11382300
+        }
+      }
+    },
+    "46": {
+      "L": {
+        "Regular": {
+          "Diamond": 76043500,
+          "Ruby": 57757500,
+          "Emerald": 33326400,
+          "Topaz": 24056100,
+          "Topaz ID": 19936600,
+          "Jade": 16775200,
+          "Jade ID": 15217200
+        },
+        "SmartLite": {
+          "Diamond": 64637000,
+          "Ruby": 49093900,
+          "Emerald": 28327400,
+          "Topaz": 20447700,
+          "Topaz ID": 17319900,
+          "Jade": 14258900,
+          "Jade ID": 13220000
+        },
+        "Smart": {
+          "Diamond": 45626100,
+          "Ruby": 34654500,
+          "Emerald": 19995800,
+          "Topaz": 14433700,
+          "Topaz ID": 12958800,
+          "Jade": 10065100,
+          "Jade ID": 9891200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 97594200,
+          "Ruby": 64496700,
+          "Emerald": 38876400,
+          "Topaz": 25268500,
+          "Topaz ID": 21647600,
+          "Jade": 20320700,
+          "Jade ID": 18175400
+        },
+        "SmartLite": {
+          "Diamond": 82955100,
+          "Ruby": 54822200,
+          "Emerald": 33044900,
+          "Topaz": 21478200,
+          "Topaz ID": 18806300,
+          "Jade": 17272600,
+          "Jade ID": 15789900
+        },
+        "Smart": {
+          "Diamond": 58556500,
+          "Ruby": 38698000,
+          "Emerald": 23325800,
+          "Topaz": 15161100,
+          "Topaz ID": 14070900,
+          "Jade": 12192400,
+          "Jade ID": 11814000
+        }
+      }
+    },
+    "47": {
+      "L": {
+        "Regular": {
+          "Diamond": 82281300,
+          "Ruby": 61915100,
+          "Emerald": 34934600,
+          "Topaz": 25709400,
+          "Topaz ID": 21447100,
+          "Jade": 17829100,
+          "Jade ID": 16208300
+        },
+        "SmartLite": {
+          "Diamond": 69939100,
+          "Ruby": 52627900,
+          "Emerald": 29694400,
+          "Topaz": 21853000,
+          "Topaz ID": 18632200,
+          "Jade": 15154800,
+          "Jade ID": 14081000
+        },
+        "Smart": {
+          "Diamond": 49368800,
+          "Ruby": 37149100,
+          "Emerald": 20960800,
+          "Topaz": 15425600,
+          "Topaz ID": 13940600,
+          "Jade": 10697500,
+          "Jade ID": 10535400
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 102696100,
+          "Ruby": 67953000,
+          "Emerald": 40227000,
+          "Topaz": 26153400,
+          "Topaz ID": 22392400,
+          "Jade": 21032500,
+          "Jade ID": 18982100
+        },
+        "SmartLite": {
+          "Diamond": 87291700,
+          "Ruby": 57760100,
+          "Emerald": 34193000,
+          "Topaz": 22230400,
+          "Topaz ID": 19453400,
+          "Jade": 17877600,
+          "Jade ID": 16490700
+        },
+        "Smart": {
+          "Diamond": 61617700,
+          "Ruby": 40771800,
+          "Emerald": 24136200,
+          "Topaz": 15692000,
+          "Topaz ID": 14555100,
+          "Jade": 12619500,
+          "Jade ID": 12338400
+        }
+      }
+    },
+    "48": {
+      "L": {
+        "Regular": {
+          "Diamond": 87515800,
+          "Ruby": 65310600,
+          "Emerald": 37186500,
+          "Topaz": 26885800,
+          "Topaz ID": 23144300,
+          "Jade": 18954600,
+          "Jade ID": 17192800
+        },
+        "SmartLite": {
+          "Diamond": 74388400,
+          "Ruby": 55514000,
+          "Emerald": 31608500,
+          "Topaz": 22852900,
+          "Topaz ID": 20106600,
+          "Jade": 16111400,
+          "Jade ID": 14936200
+        },
+        "Smart": {
+          "Diamond": 52509500,
+          "Ruby": 39186400,
+          "Emerald": 22311900,
+          "Topaz": 16131500,
+          "Topaz ID": 15043800,
+          "Jade": 11372800,
+          "Jade ID": 11175300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 106299400,
+          "Ruby": 71576800,
+          "Emerald": 41631600,
+          "Topaz": 27070600,
+          "Topaz ID": 23857600,
+          "Jade": 21770000,
+          "Jade ID": 19707400
+        },
+        "SmartLite": {
+          "Diamond": 90354500,
+          "Ruby": 60840300,
+          "Emerald": 35386900,
+          "Topaz": 23010000,
+          "Topaz ID": 20726300,
+          "Jade": 18504500,
+          "Jade ID": 17120800
+        },
+        "Smart": {
+          "Diamond": 63779600,
+          "Ruby": 42946100,
+          "Emerald": 24979000,
+          "Topaz": 16242400,
+          "Topaz ID": 15507400,
+          "Jade": 13062000,
+          "Jade ID": 12809800
+        }
+      }
+    },
+    "49": {
+      "L": {
+        "Regular": {
+          "Diamond": 93093500,
+          "Ruby": 68323300,
+          "Emerald": 39892600,
+          "Topaz": 28081700,
+          "Topaz ID": 24533000,
+          "Jade": 20158900,
+          "Jade ID": 18276600
+        },
+        "SmartLite": {
+          "Diamond": 79129500,
+          "Ruby": 58074800,
+          "Emerald": 33908700,
+          "Topaz": 23869400,
+          "Topaz ID": 21313100,
+          "Jade": 17135100,
+          "Jade ID": 15877800
+        },
+        "Smart": {
+          "Diamond": 55856100,
+          "Ruby": 40994000,
+          "Emerald": 23935600,
+          "Topaz": 16849000,
+          "Topaz ID": 15946500,
+          "Jade": 12095300,
+          "Jade ID": 11879800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 110034600,
+          "Ruby": 77309900,
+          "Emerald": 42456000,
+          "Topaz": 28024900,
+          "Topaz ID": 25407200,
+          "Jade": 22537600,
+          "Jade ID": 20553800
+        },
+        "SmartLite": {
+          "Diamond": 93529400,
+          "Ruby": 65713400,
+          "Emerald": 36087600,
+          "Topaz": 23821200,
+          "Topaz ID": 22072500,
+          "Jade": 19157000,
+          "Jade ID": 17856100
+        },
+        "Smart": {
+          "Diamond": 66020800,
+          "Ruby": 46385900,
+          "Emerald": 25473600,
+          "Topaz": 16814900,
+          "Topaz ID": 16514700,
+          "Jade": 13522600,
+          "Jade ID": 13360000
+        }
+      }
+    },
+    "50": {
+      "L": {
+        "Regular": {
+          "Diamond": 97350700,
+          "Ruby": 72685500,
+          "Emerald": 42887000,
+          "Topaz": 28617700,
+          "Topaz ID": 25123200,
+          "Jade": 22200200,
+          "Jade ID": 20055700
+        },
+        "SmartLite": {
+          "Diamond": 82748100,
+          "Ruby": 61782700,
+          "Emerald": 36454000,
+          "Topaz": 24325000,
+          "Topaz ID": 21825800,
+          "Jade": 18870200,
+          "Jade ID": 17423400
+        },
+        "Smart": {
+          "Diamond": 58410400,
+          "Ruby": 43611300,
+          "Emerald": 25732200,
+          "Topaz": 17170600,
+          "Topaz ID": 16330100,
+          "Jade": 13320100,
+          "Jade ID": 13036200
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 113902300,
+          "Ruby": 80029500,
+          "Emerald": 44601300,
+          "Topaz": 29544800,
+          "Topaz ID": 26384600,
+          "Jade": 23335600,
+          "Jade ID": 21148500
+        },
+        "SmartLite": {
+          "Diamond": 96817000,
+          "Ruby": 68025100,
+          "Emerald": 37911100,
+          "Topaz": 25113100,
+          "Topaz ID": 22921600,
+          "Jade": 19835300,
+          "Jade ID": 18372800
+        },
+        "Smart": {
+          "Diamond": 68341400,
+          "Ruby": 48017700,
+          "Emerald": 26760800,
+          "Topaz": 17726900,
+          "Topaz ID": 17150000,
+          "Jade": 14001400,
+          "Jade ID": 13746500
+        }
+      }
+    },
+    "51": {
+      "L": {
+        "Regular": {
+          "Diamond": 110351100,
+          "Ruby": 82438800,
+          "Emerald": 48562900,
+          "Topaz": 32108700,
+          "Topaz ID": 28299100,
+          "Jade": 25425400,
+          "Jade ID": 22966200
+        },
+        "SmartLite": {
+          "Diamond": 93798500,
+          "Ruby": 70073000,
+          "Emerald": 41278500,
+          "Topaz": 27292400,
+          "Topaz ID": 24584800,
+          "Jade": 21611600,
+          "Jade ID": 19951900
+        },
+        "Smart": {
+          "Diamond": 66210700,
+          "Ruby": 49463300,
+          "Emerald": 29137700,
+          "Topaz": 19265200,
+          "Topaz ID": 18394400,
+          "Jade": 15255200,
+          "Jade ID": 14928000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 129764600,
+          "Ruby": 90498000,
+          "Emerald": 49653900,
+          "Topaz": 33745900,
+          "Topaz ID": 29403300,
+          "Jade": 26434000,
+          "Jade ID": 23918500
+        },
+        "SmartLite": {
+          "Diamond": 110299900,
+          "Ruby": 76923300,
+          "Emerald": 42205800,
+          "Topaz": 28684000,
+          "Topaz ID": 25544100,
+          "Jade": 22468900,
+          "Jade ID": 20779200
+        },
+        "Smart": {
+          "Diamond": 77858800,
+          "Ruby": 54298800,
+          "Emerald": 29792300,
+          "Topaz": 20247500,
+          "Topaz ID": 19112100,
+          "Jade": 15860400,
+          "Jade ID": 15547000
+        }
+      }
+    },
+    "52": {
+      "L": {
+        "Regular": {
+          "Diamond": 118179100,
+          "Ruby": 88272400,
+          "Emerald": 51910300,
+          "Topaz": 33108700,
+          "Topaz ID": 29358000,
+          "Jade": 27223700,
+          "Jade ID": 24438500
+        },
+        "SmartLite": {
+          "Diamond": 100452300,
+          "Ruby": 75031500,
+          "Emerald": 44123800,
+          "Topaz": 28142400,
+          "Topaz ID": 25725000,
+          "Jade": 23140100,
+          "Jade ID": 21230900
+        },
+        "Smart": {
+          "Diamond": 70907500,
+          "Ruby": 52963400,
+          "Emerald": 31146200,
+          "Topaz": 19865200,
+          "Topaz ID": 19669900,
+          "Jade": 16334200,
+          "Jade ID": 15885000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 136480400,
+          "Ruby": 95172500,
+          "Emerald": 52207000,
+          "Topaz": 35665000,
+          "Topaz ID": 30602000,
+          "Jade": 27803600,
+          "Jade ID": 25123100
+        },
+        "SmartLite": {
+          "Diamond": 116008300,
+          "Ruby": 80896600,
+          "Emerald": 44376000,
+          "Topaz": 30315300,
+          "Topaz ID": 26815000,
+          "Jade": 23633100,
+          "Jade ID": 21825700
+        },
+        "Smart": {
+          "Diamond": 81888200,
+          "Ruby": 57103500,
+          "Emerald": 31324200,
+          "Topaz": 21399000,
+          "Topaz ID": 20503300,
+          "Jade": 16682200,
+          "Jade ID": 16330000
+        }
+      }
+    },
+    "53": {
+      "L": {
+        "Regular": {
+          "Diamond": 126562900,
+          "Ruby": 94522100,
+          "Emerald": 55192600,
+          "Topaz": 35441500,
+          "Topaz ID": 31492800,
+          "Jade": 29142000,
+          "Jade ID": 25929300
+        },
+        "SmartLite": {
+          "Diamond": 107578500,
+          "Ruby": 80343800,
+          "Emerald": 46913700,
+          "Topaz": 30125300,
+          "Topaz ID": 27577600,
+          "Jade": 24770700,
+          "Jade ID": 22526100
+        },
+        "Smart": {
+          "Diamond": 75937700,
+          "Ruby": 56713300,
+          "Emerald": 33115600,
+          "Topaz": 21264900,
+          "Topaz ID": 21052300,
+          "Jade": 17485200,
+          "Jade ID": 16854000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 143555900,
+          "Ruby": 98463600,
+          "Emerald": 54906300,
+          "Topaz": 37520100,
+          "Topaz ID": 32057900,
+          "Jade": 29249700,
+          "Jade ID": 26224700
+        },
+        "SmartLite": {
+          "Diamond": 122022500,
+          "Ruby": 83694100,
+          "Emerald": 46670400,
+          "Topaz": 31892100,
+          "Topaz ID": 28211000,
+          "Jade": 24862200,
+          "Jade ID": 22782700
+        },
+        "Smart": {
+          "Diamond": 86133500,
+          "Ruby": 59078200,
+          "Emerald": 32943800,
+          "Topaz": 22512100,
+          "Topaz ID": 21799400,
+          "Jade": 17549800,
+          "Jade ID": 17046100
+        }
+      }
+    },
+    "54": {
+      "L": {
+        "Regular": {
+          "Diamond": 135544800,
+          "Ruby": 100367900,
+          "Emerald": 58338200,
+          "Topaz": 37936200,
+          "Topaz ID": 33758600,
+          "Jade": 31191900,
+          "Jade ID": 27623600
+        },
+        "SmartLite": {
+          "Diamond": 115213100,
+          "Ruby": 85312700,
+          "Emerald": 49587500,
+          "Topaz": 32245800,
+          "Topaz ID": 29549400,
+          "Jade": 26513100,
+          "Jade ID": 23998000
+        },
+        "Smart": {
+          "Diamond": 81326900,
+          "Ruby": 60220700,
+          "Emerald": 35002900,
+          "Topaz": 22761700,
+          "Topaz ID": 22534100,
+          "Jade": 18715100,
+          "Jade ID": 17955300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 151005000,
+          "Ruby": 103564500,
+          "Emerald": 57261400,
+          "Topaz": 38798000,
+          "Topaz ID": 33176900,
+          "Jade": 30776600,
+          "Jade ID": 27587700
+        },
+        "SmartLite": {
+          "Diamond": 128354300,
+          "Ruby": 88029800,
+          "Emerald": 48672200,
+          "Topaz": 32978300,
+          "Topaz ID": 29320100,
+          "Jade": 26160100,
+          "Jade ID": 23966800
+        },
+        "Smart": {
+          "Diamond": 90603000,
+          "Ruby": 62138700,
+          "Emerald": 34356800,
+          "Topaz": 23278800,
+          "Topaz ID": 22892100,
+          "Jade": 18466000,
+          "Jade ID": 17932000
+        }
+      }
+    },
+    "55": {
+      "L": {
+        "Regular": {
+          "Diamond": 145157900,
+          "Ruby": 103854800,
+          "Emerald": 61300600,
+          "Topaz": 40597100,
+          "Topaz ID": 36529200,
+          "Jade": 33280700,
+          "Jade ID": 29365300
+        },
+        "SmartLite": {
+          "Diamond": 123384200,
+          "Ruby": 88276600,
+          "Emerald": 52105500,
+          "Topaz": 34507600,
+          "Topaz ID": 31873800,
+          "Jade": 28288600,
+          "Jade ID": 25511100
+        },
+        "Smart": {
+          "Diamond": 87094700,
+          "Ruby": 62312900,
+          "Emerald": 36780400,
+          "Topaz": 24358300,
+          "Topaz ID": 24114700,
+          "Jade": 19968400,
+          "Jade ID": 19087400
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 158831700,
+          "Ruby": 107111800,
+          "Emerald": 58396900,
+          "Topaz": 40810200,
+          "Topaz ID": 35620700,
+          "Jade": 31819400,
+          "Jade ID": 28554700
+        },
+        "SmartLite": {
+          "Diamond": 135047400,
+          "Ruby": 91045000,
+          "Emerald": 49637400,
+          "Topaz": 34688700,
+          "Topaz ID": 31353400,
+          "Jade": 27046500,
+          "Jade ID": 24806900
+        },
+        "Smart": {
+          "Diamond": 95406900,
+          "Ruby": 64267100,
+          "Emerald": 35038100,
+          "Topaz": 24486100,
+          "Topaz ID": 24241200,
+          "Jade": 19091600,
+          "Jade ID": 18560600
+        }
+      }
+    },
+    "56": {
+      "L": {
+        "Regular": {
+          "Diamond": 153101200,
+          "Ruby": 108597000,
+          "Emerald": 63359000,
+          "Topaz": 43397900,
+          "Topaz ID": 39165000,
+          "Jade": 35261300,
+          "Jade ID": 31131700
+        },
+        "SmartLite": {
+          "Diamond": 130136000,
+          "Ruby": 92307500,
+          "Emerald": 53855200,
+          "Topaz": 36888200,
+          "Topaz ID": 34145000,
+          "Jade": 29972100,
+          "Jade ID": 27045700
+        },
+        "Smart": {
+          "Diamond": 91860700,
+          "Ruby": 65158200,
+          "Emerald": 38015400,
+          "Topaz": 26038700,
+          "Topaz ID": 25778300,
+          "Jade": 21156800,
+          "Jade ID": 20235600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 167349800,
+          "Ruby": 114801300,
+          "Emerald": 60661900,
+          "Topaz": 42840000,
+          "Topaz ID": 37662800,
+          "Jade": 33562500,
+          "Jade ID": 29955000
+        },
+        "SmartLite": {
+          "Diamond": 143086400,
+          "Ruby": 97581100,
+          "Emerald": 51562600,
+          "Topaz": 36414000,
+          "Topaz ID": 33143300,
+          "Jade": 28528100,
+          "Jade ID": 26023400
+        },
+        "Smart": {
+          "Diamond": 102647300,
+          "Ruby": 68880800,
+          "Emerald": 36397100,
+          "Topaz": 25704000,
+          "Topaz ID": 25610700,
+          "Jade": 20137500,
+          "Jade ID": 19470800
+        }
+      }
+    },
+    "57": {
+      "L": {
+        "Regular": {
+          "Diamond": 159405600,
+          "Ruby": 114123600,
+          "Emerald": 65417200,
+          "Topaz": 45036400,
+          "Topaz ID": 40869600,
+          "Jade": 36176400,
+          "Jade ID": 32035300
+        },
+        "SmartLite": {
+          "Diamond": 135589100,
+          "Ruby": 97005100,
+          "Emerald": 55604600,
+          "Topaz": 38280900,
+          "Topaz ID": 35575400,
+          "Jade": 30749900,
+          "Jade ID": 27830700
+        },
+        "Smart": {
+          "Diamond": 95894800,
+          "Ruby": 68474200,
+          "Emerald": 39250300,
+          "Topaz": 27021800,
+          "Topaz ID": 26751600,
+          "Jade": 21705800,
+          "Jade ID": 20822900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 171156600,
+          "Ruby": 117438500,
+          "Emerald": 62140900,
+          "Topaz": 44310800,
+          "Topaz ID": 39712100,
+          "Jade": 35281100,
+          "Jade ID": 31329600
+        },
+        "SmartLite": {
+          "Diamond": 146679000,
+          "Ruby": 99822700,
+          "Emerald": 52819800,
+          "Topaz": 37664200,
+          "Topaz ID": 34690300,
+          "Jade": 29989000,
+          "Jade ID": 27217600
+        },
+        "Smart": {
+          "Diamond": 105883100,
+          "Ruby": 70463100,
+          "Emerald": 37284500,
+          "Topaz": 26586500,
+          "Topaz ID": 26320600,
+          "Jade": 21168700,
+          "Jade ID": 20364200
+        }
+      }
+    },
+    "58": {
+      "L": {
+        "Regular": {
+          "Diamond": 166080900,
+          "Ruby": 120963600,
+          "Emerald": 66541800,
+          "Topaz": 45854500,
+          "Topaz ID": 41603900,
+          "Jade": 36833500,
+          "Jade ID": 32752300
+        },
+        "SmartLite": {
+          "Diamond": 141888900,
+          "Ruby": 103021900,
+          "Emerald": 56560500,
+          "Topaz": 38976300,
+          "Topaz ID": 36299400,
+          "Jade": 31308500,
+          "Jade ID": 28453600
+        },
+        "Smart": {
+          "Diamond": 101568800,
+          "Ruby": 73119100,
+          "Emerald": 39925100,
+          "Topaz": 27512700,
+          "Topaz ID": 27458600,
+          "Jade": 22100100,
+          "Jade ID": 21289000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 173724400,
+          "Ruby": 119226900,
+          "Emerald": 63155200,
+          "Topaz": 45045000,
+          "Topaz ID": 40527600,
+          "Jade": 35865900,
+          "Jade ID": 32115500
+        },
+        "SmartLite": {
+          "Diamond": 149102400,
+          "Ruby": 101382900,
+          "Emerald": 53681900,
+          "Topaz": 38288300,
+          "Topaz ID": 35363500,
+          "Jade": 30486000,
+          "Jade ID": 27900400
+        },
+        "Smart": {
+          "Diamond": 108065700,
+          "Ruby": 71642900,
+          "Emerald": 37893100,
+          "Topaz": 27027000,
+          "Topaz ID": 26756700,
+          "Jade": 21519500,
+          "Jade ID": 20875100
+        }
+      }
+    },
+    "59": {
+      "L": {
+        "Regular": {
+          "Diamond": 175305700,
+          "Ruby": 122573900,
+          "Emerald": 69157900,
+          "Topaz": 47183800,
+          "Topaz ID": 43140300,
+          "Jade": 38504800,
+          "Jade ID": 34212400
+        },
+        "SmartLite": {
+          "Diamond": 150594700,
+          "Ruby": 104541600,
+          "Emerald": 58784200,
+          "Topaz": 40106200,
+          "Topaz ID": 37472900,
+          "Jade": 32729100,
+          "Jade ID": 29722000
+        },
+        "Smart": {
+          "Diamond": 109409800,
+          "Ruby": 74487800,
+          "Emerald": 41494700,
+          "Topaz": 28310300,
+          "Topaz ID": 28027200,
+          "Jade": 23102900,
+          "Jade ID": 22238100
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 175053600,
+          "Ruby": 120169900,
+          "Emerald": 63706800,
+          "Topaz": 45469700,
+          "Topaz ID": 41158700,
+          "Jade": 37250200,
+          "Jade ID": 33575700
+        },
+        "SmartLite": {
+          "Diamond": 150356900,
+          "Ruby": 102272800,
+          "Emerald": 54150800,
+          "Topaz": 38649200,
+          "Topaz ID": 35852600,
+          "Jade": 31662700,
+          "Jade ID": 29168900
+        },
+        "Smart": {
+          "Diamond": 109195600,
+          "Ruby": 72444400,
+          "Emerald": 38224100,
+          "Topaz": 27281800,
+          "Topaz ID": 27009000,
+          "Jade": 22350100,
+          "Jade ID": 21824200
+        }
+      }
+    },
+    "60": {
+      "L": {
+        "Regular": {
+          "Diamond": 184530400,
+          "Ruby": 128459700,
+          "Emerald": 71774300,
+          "Topaz": 49115900,
+          "Topaz ID": 44564300,
+          "Jade": 39618000,
+          "Jade ID": 35518100
+        },
+        "SmartLite": {
+          "Diamond": 159300600,
+          "Ruby": 110096300,
+          "Emerald": 61008200,
+          "Topaz": 41748500,
+          "Topaz ID": 38715200,
+          "Jade": 33677000,
+          "Jade ID": 30856400
+        },
+        "Smart": {
+          "Diamond": 117250800,
+          "Ruby": 79490700,
+          "Emerald": 43064600,
+          "Topaz": 29469500,
+          "Topaz ID": 28966800,
+          "Jade": 23775300,
+          "Jade ID": 23086800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 180192400,
+          "Ruby": 120269100,
+          "Emerald": 63798900,
+          "Topaz": 45587000,
+          "Topaz ID": 43332600,
+          "Jade": 37269200,
+          "Jade ID": 33723900
+        },
+        "SmartLite": {
+          "Diamond": 155206600,
+          "Ruby": 102366500,
+          "Emerald": 54229100,
+          "Topaz": 38749000,
+          "Topaz ID": 37237400,
+          "Jade": 31678800,
+          "Jade ID": 29297600
+        },
+        "Smart": {
+          "Diamond": 113563500,
+          "Ruby": 72528700,
+          "Emerald": 38279300,
+          "Topaz": 27352200,
+          "Topaz ID": 27078700,
+          "Jade": 22361500,
+          "Jade ID": 21920500
+        }
+      }
+    },
+    "61": {
+      "L": {
+        "Regular": {
+          "Diamond": 193755100,
+          "Ruby": 135367000,
+          "Emerald": 76624800,
+          "Topaz": 52719200,
+          "Topaz ID": 47330300,
+          "Jade": 41202000,
+          "Jade ID": 37291300
+        },
+        "SmartLite": {
+          "Diamond": 168006400,
+          "Ruby": 116615100,
+          "Emerald": 65131100,
+          "Topaz": 44811300,
+          "Topaz ID": 41118200,
+          "Jade": 35171900,
+          "Jade ID": 32396800
+        },
+        "Smart": {
+          "Diamond": 125091800,
+          "Ruby": 85362000,
+          "Emerald": 45974900,
+          "Topaz": 31631500,
+          "Topaz ID": 30764700,
+          "Jade": 25121700,
+          "Jade ID": 24239300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 185331100,
+          "Ruby": 122461200,
+          "Emerald": 68611800,
+          "Topaz": 51048600,
+          "Topaz ID": 45506500,
+          "Jade": 38325600,
+          "Jade ID": 34745100
+        },
+        "SmartLite": {
+          "Diamond": 160056200,
+          "Ruby": 104435300,
+          "Emerald": 58320000,
+          "Topaz": 43391300,
+          "Topaz ID": 39533800,
+          "Jade": 32576800,
+          "Jade ID": 30184800
+        },
+        "Smart": {
+          "Diamond": 117931400,
+          "Ruby": 74392000,
+          "Emerald": 41167100,
+          "Topaz": 30629200,
+          "Topaz ID": 29579200,
+          "Jade": 22995400,
+          "Jade ID": 22584300
+        }
+      }
+    },
+    "62": {
+      "L": {
+        "Regular": {
+          "Diamond": 201110900,
+          "Ruby": 142274300,
+          "Emerald": 81475400,
+          "Topaz": 54589900,
+          "Topaz ID": 48165200,
+          "Jade": 42984200,
+          "Jade ID": 38984800
+        },
+        "SmartLite": {
+          "Diamond": 174879000,
+          "Ruby": 123133900,
+          "Emerald": 69467400,
+          "Topaz": 46401400,
+          "Topaz ID": 41843500,
+          "Jade": 36853900,
+          "Jade ID": 33868000
+        },
+        "Smart": {
+          "Diamond": 131159200,
+          "Ruby": 91233200,
+          "Emerald": 49454100,
+          "Topaz": 32753900,
+          "Topaz ID": 31307400,
+          "Jade": 26636600,
+          "Jade ID": 25340100
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 188085600,
+          "Ruby": 124322500,
+          "Emerald": 72626200,
+          "Topaz": 52784300,
+          "Topaz ID": 46169500,
+          "Jade": 39004700,
+          "Jade ID": 35290100
+        },
+        "SmartLite": {
+          "Diamond": 162655800,
+          "Ruby": 106191900,
+          "Emerald": 61732300,
+          "Topaz": 44866700,
+          "Topaz ID": 40109800,
+          "Jade": 33154000,
+          "Jade ID": 30658300
+        },
+        "Smart": {
+          "Diamond": 120272800,
+          "Ruby": 75974100,
+          "Emerald": 43575700,
+          "Topaz": 31670600,
+          "Topaz ID": 30010200,
+          "Jade": 23402800,
+          "Jade ID": 22938600
+        }
+      }
+    },
+    "63": {
+      "L": {
+        "Regular": {
+          "Diamond": 207059800,
+          "Ruby": 145502300,
+          "Emerald": 83448800,
+          "Topaz": 57361800,
+          "Topaz ID": 50323200,
+          "Jade": 44124600,
+          "Jade ID": 40084100
+        },
+        "SmartLite": {
+          "Diamond": 180052000,
+          "Ruby": 126180300,
+          "Emerald": 71329800,
+          "Topaz": 48757500,
+          "Topaz ID": 43718300,
+          "Jade": 37930100,
+          "Jade ID": 34823100
+        },
+        "Smart": {
+          "Diamond": 135039000,
+          "Ruby": 93977000,
+          "Emerald": 51131500,
+          "Topaz": 34417100,
+          "Topaz ID": 32710100,
+          "Jade": 27605900,
+          "Jade ID": 26054700
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 192181700,
+          "Ruby": 127087900,
+          "Emerald": 76109600,
+          "Topaz": 55397600,
+          "Topaz ID": 47929600,
+          "Jade": 39991100,
+          "Jade ID": 36380300
+        },
+        "SmartLite": {
+          "Diamond": 166521500,
+          "Ruby": 108801700,
+          "Emerald": 64693200,
+          "Topaz": 47088000,
+          "Topaz ID": 41638800,
+          "Jade": 34029100,
+          "Jade ID": 31605400
+        },
+        "Smart": {
+          "Diamond": 123754400,
+          "Ruby": 78324700,
+          "Emerald": 45665800,
+          "Topaz": 33238600,
+          "Topaz ID": 31154200,
+          "Jade": 24092400,
+          "Jade ID": 23647200
+        }
+      }
+    },
+    "64": {
+      "L": {
+        "Regular": {
+          "Diamond": 211718500,
+          "Ruby": 151767100,
+          "Emerald": 86770700,
+          "Topaz": 59873700,
+          "Topaz ID": 52401500,
+          "Jade": 45017800,
+          "Jade ID": 40902500
+        },
+        "SmartLite": {
+          "Diamond": 184103100,
+          "Ruby": 131971400,
+          "Emerald": 74464900,
+          "Topaz": 50892600,
+          "Topaz ID": 45523800,
+          "Jade": 38773000,
+          "Jade ID": 35534000
+        },
+        "Smart": {
+          "Diamond": 138077300,
+          "Ruby": 98978600,
+          "Emerald": 53955100,
+          "Topaz": 35924200,
+          "Topaz ID": 34061000,
+          "Jade": 28365100,
+          "Jade ID": 26586600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 200217900,
+          "Ruby": 129024700,
+          "Emerald": 79179800,
+          "Topaz": 57731500,
+          "Topaz ID": 49399200,
+          "Jade": 40736100,
+          "Jade ID": 36909800
+        },
+        "SmartLite": {
+          "Diamond": 174102500,
+          "Ruby": 110629600,
+          "Emerald": 67302800,
+          "Topaz": 49071800,
+          "Topaz ID": 42915600,
+          "Jade": 34732200,
+          "Jade ID": 32065400
+        },
+        "Smart": {
+          "Diamond": 130576800,
+          "Ruby": 79971000,
+          "Emerald": 47507900,
+          "Topaz": 34638900,
+          "Topaz ID": 32109500,
+          "Jade": 24725700,
+          "Jade ID": 23991400
+        }
+      }
+    },
+    "65": {
+      "L": {
+        "Regular": {
+          "Diamond": 222947100,
+          "Ruby": 158032200,
+          "Emerald": 92927200,
+          "Topaz": 62465600,
+          "Topaz ID": 54272100,
+          "Jade": 48348000,
+          "Jade ID": 43858500
+        },
+        "SmartLite": {
+          "Diamond": 193867100,
+          "Ruby": 137419300,
+          "Emerald": 80275000,
+          "Topaz": 53095800,
+          "Topaz ID": 47148900,
+          "Jade": 41915900,
+          "Jade ID": 38102100
+        },
+        "Smart": {
+          "Diamond": 145400300,
+          "Ruby": 103064500,
+          "Emerald": 59188100,
+          "Topaz": 37479400,
+          "Topaz ID": 35276900,
+          "Jade": 31195800,
+          "Jade ID": 28508000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 208254500,
+          "Ruby": 137855800,
+          "Emerald": 85996400,
+          "Topaz": 60409700,
+          "Topaz ID": 51131100,
+          "Jade": 43665300,
+          "Jade ID": 39382600
+        },
+        "SmartLite": {
+          "Diamond": 181090900,
+          "Ruby": 118963900,
+          "Emerald": 73734100,
+          "Topaz": 51348200,
+          "Topaz ID": 44420100,
+          "Jade": 37496600,
+          "Jade ID": 34213600
+        },
+        "Smart": {
+          "Diamond": 135818200,
+          "Ruby": 87477400,
+          "Emerald": 53296900,
+          "Topaz": 36245800,
+          "Topaz ID": 33235200,
+          "Jade": 27215500,
+          "Jade ID": 25598700
+        }
+      }
+    },
+    "66": {
+      "L": {
+        "Regular": {
+          "Diamond": 238106100,
+          "Ruby": 169022100,
+          "Emerald": 99033600,
+          "Topaz": 67220000,
+          "Topaz ID": 59031100,
+          "Jade": 51627600,
+          "Jade ID": 46912100
+        },
+        "SmartLite": {
+          "Diamond": 207048800,
+          "Ruby": 146975700,
+          "Emerald": 86038000,
+          "Topaz": 57498900,
+          "Topaz ID": 51283300,
+          "Jade": 44893600,
+          "Jade ID": 40754900
+        },
+        "Smart": {
+          "Diamond": 155286600,
+          "Ruby": 110231800,
+          "Emerald": 64378600,
+          "Topaz": 41297000,
+          "Topaz ID": 38370200,
+          "Jade": 33670200,
+          "Jade ID": 30492900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 222318000,
+          "Ruby": 147358000,
+          "Emerald": 88747700,
+          "Topaz": 64598400,
+          "Topaz ID": 54122500,
+          "Jade": 46921800,
+          "Jade ID": 41764200
+        },
+        "SmartLite": {
+          "Diamond": 193320000,
+          "Ruby": 127931600,
+          "Emerald": 76330600,
+          "Topaz": 55024700,
+          "Topaz ID": 47018900,
+          "Jade": 40569900,
+          "Jade ID": 36282600
+        },
+        "Smart": {
+          "Diamond": 144990000,
+          "Ruby": 95554300,
+          "Emerald": 55635500,
+          "Topaz": 39068600,
+          "Topaz ID": 35179600,
+          "Jade": 29983500,
+          "Jade ID": 27146700
+        }
+      }
+    },
+    "67": {
+      "L": {
+        "Regular": {
+          "Diamond": 259599200,
+          "Ruby": 184423000,
+          "Emerald": 102625800,
+          "Topaz": 72269200,
+          "Topaz ID": 64299500,
+          "Jade": 56615800,
+          "Jade ID": 51390400
+        },
+        "SmartLite": {
+          "Diamond": 225738400,
+          "Ruby": 160367800,
+          "Emerald": 89239800,
+          "Topaz": 62264100,
+          "Topaz ID": 55860200,
+          "Jade": 49231200,
+          "Jade ID": 44787200
+        },
+        "Smart": {
+          "Diamond": 169303800,
+          "Ruby": 120275900,
+          "Emerald": 66929900,
+          "Topaz": 45588800,
+          "Topaz ID": 41794700,
+          "Jade": 36923400,
+          "Jade ID": 33781800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 233902800,
+          "Ruby": 160681600,
+          "Emerald": 96156300,
+          "Topaz": 68977300,
+          "Topaz ID": 57285500,
+          "Jade": 51361500,
+          "Jade ID": 45897000
+        },
+        "SmartLite": {
+          "Diamond": 203393700,
+          "Ruby": 139723200,
+          "Emerald": 83322500,
+          "Topaz": 59157300,
+          "Topaz ID": 49766800,
+          "Jade": 44662200,
+          "Jade ID": 39873000
+        },
+        "Smart": {
+          "Diamond": 152545300,
+          "Ruby": 104792400,
+          "Emerald": 61932900,
+          "Topaz": 42790700,
+          "Topaz ID": 37235600,
+          "Jade": 33496600,
+          "Jade ID": 29833100
+        }
+      }
+    },
+    "68": {
+      "L": {
+        "Regular": {
+          "Diamond": 268986200,
+          "Ruby": 190699300,
+          "Emerald": 106217800,
+          "Topaz": 76177800,
+          "Topaz ID": 68203100,
+          "Jade": 61700500,
+          "Jade ID": 55867100
+        },
+        "SmartLite": {
+          "Diamond": 233901100,
+          "Ruby": 165825500,
+          "Emerald": 92363300,
+          "Topaz": 65952800,
+          "Topaz ID": 59251400,
+          "Jade": 53652600,
+          "Jade ID": 49012100
+        },
+        "Smart": {
+          "Diamond": 175425800,
+          "Ruby": 124369100,
+          "Emerald": 69272500,
+          "Topaz": 48911100,
+          "Topaz ID": 44332000,
+          "Jade": 40239500,
+          "Jade ID": 37587000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 245487400,
+          "Ruby": 174111800,
+          "Emerald": 104361500,
+          "Topaz": 73330900,
+          "Topaz ID": 61360700,
+          "Jade": 55893600,
+          "Jade ID": 50057800
+        },
+        "SmartLite": {
+          "Diamond": 213467300,
+          "Ruby": 151401600,
+          "Emerald": 90749100,
+          "Topaz": 63266100,
+          "Topaz ID": 53307100,
+          "Jade": 48603200,
+          "Jade ID": 43529500
+        },
+        "Smart": {
+          "Diamond": 160100400,
+          "Ruby": 113551200,
+          "Emerald": 68061800,
+          "Topaz": 46491300,
+          "Topaz ID": 39884500,
+          "Jade": 36452400,
+          "Jade ID": 32649100
+        }
+      }
+    },
+    "69": {
+      "L": {
+        "Regular": {
+          "Diamond": 278373300,
+          "Ruby": 196975900,
+          "Emerald": 109809700,
+          "Topaz": 80409400,
+          "Topaz ID": 72216400,
+          "Jade": 63832800,
+          "Jade ID": 57994500
+        },
+        "SmartLite": {
+          "Diamond": 242063700,
+          "Ruby": 171283400,
+          "Emerald": 95486700,
+          "Topaz": 69921200,
+          "Topaz ID": 62738000,
+          "Jade": 55506800,
+          "Jade ID": 51019800
+        },
+        "Smart": {
+          "Diamond": 181547800,
+          "Ruby": 128462500,
+          "Emerald": 71615000,
+          "Topaz": 52440900,
+          "Topaz ID": 46940700,
+          "Jade": 41630100,
+          "Jade ID": 39395300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 257072200,
+          "Ruby": 178919000,
+          "Emerald": 107448400,
+          "Topaz": 76881900,
+          "Topaz ID": 64908500,
+          "Jade": 57720700,
+          "Jade ID": 51852000
+        },
+        "SmartLite": {
+          "Diamond": 223541100,
+          "Ruby": 155581700,
+          "Emerald": 93433400,
+          "Topaz": 66617300,
+          "Topaz ID": 56389300,
+          "Jade": 50191900,
+          "Jade ID": 45222800
+        },
+        "Smart": {
+          "Diamond": 167655800,
+          "Ruby": 116686300,
+          "Emerald": 70075000,
+          "Topaz": 49509600,
+          "Topaz ID": 42190500,
+          "Jade": 37643900,
+          "Jade ID": 34174200
+        }
+      }
+    },
+    "70": {
+      "L": {
+        "Regular": {
+          "Diamond": 287760600,
+          "Ruby": 203252400,
+          "Emerald": 113401700,
+          "Topaz": 84004600,
+          "Topaz ID": 75825700,
+          "Jade": 67653100,
+          "Jade ID": 61449200
+        },
+        "SmartLite": {
+          "Diamond": 250226600,
+          "Ruby": 176741200,
+          "Emerald": 98610200,
+          "Topaz": 73047500,
+          "Topaz ID": 65873600,
+          "Jade": 58828800,
+          "Jade ID": 54280200
+        },
+        "Smart": {
+          "Diamond": 187670000,
+          "Ruby": 132555900,
+          "Emerald": 73957600,
+          "Topaz": 54785700,
+          "Topaz ID": 49286700,
+          "Jade": 44121600,
+          "Jade ID": 42331800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 268657000,
+          "Ruby": 188141000,
+          "Emerald": 111418400,
+          "Topaz": 80470900,
+          "Topaz ID": 69235800,
+          "Jade": 60996000,
+          "Jade ID": 54591500
+        },
+        "SmartLite": {
+          "Diamond": 233614800,
+          "Ruby": 163600900,
+          "Emerald": 96885500,
+          "Topaz": 69974700,
+          "Topaz ID": 60148600,
+          "Jade": 53040000,
+          "Jade ID": 47808200
+        },
+        "Smart": {
+          "Diamond": 175211100,
+          "Ruby": 122700700,
+          "Emerald": 72664100,
+          "Topaz": 52481000,
+          "Topaz ID": 45003300,
+          "Jade": 39780000,
+          "Jade ID": 36502800
+        }
+      }
+    },
+    "71": {
+      "L": {
+        "Regular": {
+          "Diamond": 297147700,
+          "Ruby": 209528700,
+          "Emerald": 116993800,
+          "Topaz": 85314600,
+          "Topaz ID": 77698600,
+          "Jade": 70021200,
+          "Jade ID": 63644600
+        },
+        "SmartLite": {
+          "Diamond": 258389300,
+          "Ruby": 182198900,
+          "Emerald": 101733700,
+          "Topaz": 74186600,
+          "Topaz ID": 67500700,
+          "Jade": 60888000,
+          "Jade ID": 56352100
+        },
+        "Smart": {
+          "Diamond": 193792000,
+          "Ruby": 136649100,
+          "Emerald": 76300300,
+          "Topaz": 55640000,
+          "Topaz ID": 50504100,
+          "Jade": 45666000,
+          "Jade ID": 44197900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 280241900,
+          "Ruby": 191759500,
+          "Emerald": 112904800,
+          "Topaz": 81408000,
+          "Topaz ID": 70257100,
+          "Jade": 63529100,
+          "Jade ID": 56970800
+        },
+        "SmartLite": {
+          "Diamond": 243688600,
+          "Ruby": 166747400,
+          "Emerald": 98178100,
+          "Topaz": 70789600,
+          "Topaz ID": 61035900,
+          "Jade": 55242700,
+          "Jade ID": 50053700
+        },
+        "Smart": {
+          "Diamond": 182766400,
+          "Ruby": 125060500,
+          "Emerald": 73633600,
+          "Topaz": 53092200,
+          "Topaz ID": 45667100,
+          "Jade": 41432100,
+          "Jade ID": 38525200
+        }
+      }
+    },
+    "72": {
+      "L": {
+        "Regular": {
+          "Diamond": 302003100,
+          "Ruby": 212228700,
+          "Emerald": 120585700,
+          "Topaz": 90244000,
+          "Topaz ID": 82322300,
+          "Jade": 72389200,
+          "Jade ID": 65757700
+        },
+        "SmartLite": {
+          "Diamond": 262611400,
+          "Ruby": 184546700,
+          "Emerald": 104857100,
+          "Topaz": 78473100,
+          "Topaz ID": 71751700,
+          "Jade": 62947100,
+          "Jade ID": 58346300
+        },
+        "Smart": {
+          "Diamond": 196958600,
+          "Ruby": 138410000,
+          "Emerald": 78642800,
+          "Topaz": 58854800,
+          "Topaz ID": 54134000,
+          "Jade": 47210300,
+          "Jade ID": 45994000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 287140700,
+          "Ruby": 195377900,
+          "Emerald": 116071300,
+          "Topaz": 85223900,
+          "Topaz ID": 73853900,
+          "Jade": 65556900,
+          "Jade ID": 58891300
+        },
+        "SmartLite": {
+          "Diamond": 249687600,
+          "Ruby": 169893800,
+          "Emerald": 100931600,
+          "Topaz": 74107700,
+          "Topaz ID": 64160600,
+          "Jade": 57006000,
+          "Jade ID": 51866200
+        },
+        "Smart": {
+          "Diamond": 187265700,
+          "Ruby": 127420300,
+          "Emerald": 75698700,
+          "Topaz": 55580800,
+          "Topaz ID": 48005000,
+          "Jade": 42754500,
+          "Jade ID": 40157600
+        }
+      }
+    },
+    "73": {
+      "L": {
+        "Regular": {
+          "Diamond": 305137700,
+          "Ruby": 217970500,
+          "Emerald": 124378500,
+          "Topaz": 93631200,
+          "Topaz ID": 85532600,
+          "Jade": 74757200,
+          "Jade ID": 67861000
+        },
+        "SmartLite": {
+          "Diamond": 265337100,
+          "Ruby": 189539600,
+          "Emerald": 108155200,
+          "Topaz": 81418400,
+          "Topaz ID": 74781400,
+          "Jade": 65006300,
+          "Jade ID": 60331300
+        },
+        "Smart": {
+          "Diamond": 199002800,
+          "Ruby": 142154700,
+          "Emerald": 81116400,
+          "Topaz": 61063800,
+          "Topaz ID": 56862700,
+          "Jade": 48754700,
+          "Jade ID": 47781900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 298412400,
+          "Ruby": 204874800,
+          "Emerald": 119336400,
+          "Topaz": 87979600,
+          "Topaz ID": 75980400,
+          "Jade": 67676500,
+          "Jade ID": 60951600
+        },
+        "SmartLite": {
+          "Diamond": 259489000,
+          "Ruby": 178152000,
+          "Emerald": 103770800,
+          "Topaz": 76504000,
+          "Topaz ID": 66008000,
+          "Jade": 58849100,
+          "Jade ID": 53810600
+        },
+        "Smart": {
+          "Diamond": 194616700,
+          "Ruby": 133614000,
+          "Emerald": 77828000,
+          "Topaz": 57378000,
+          "Topaz ID": 49387300,
+          "Jade": 44136800,
+          "Jade ID": 41908900
+        }
+      }
+    },
+    "74": {
+      "L": {
+        "Regular": {
+          "Diamond": 310836600,
+          "Ruby": 221324300,
+          "Emerald": 130306000,
+          "Topaz": 98707400,
+          "Topaz ID": 89653700,
+          "Jade": 77125300,
+          "Jade ID": 70002000
+        },
+        "SmartLite": {
+          "Diamond": 270292700,
+          "Ruby": 192455900,
+          "Emerald": 113309600,
+          "Topaz": 85832500,
+          "Topaz ID": 78670700,
+          "Jade": 67065500,
+          "Jade ID": 62298000
+        },
+        "Smart": {
+          "Diamond": 202719600,
+          "Ruby": 144342000,
+          "Emerald": 84982200,
+          "Topaz": 64374300,
+          "Topaz ID": 60365600,
+          "Jade": 50299100,
+          "Jade ID": 49457900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 303538900,
+          "Ruby": 211760800,
+          "Emerald": 124615400,
+          "Topaz": 92283700,
+          "Topaz ID": 79444500,
+          "Jade": 70987700,
+          "Jade ID": 64007000
+        },
+        "SmartLite": {
+          "Diamond": 263946900,
+          "Ruby": 184139800,
+          "Emerald": 108361200,
+          "Topaz": 80246700,
+          "Topaz ID": 69035700,
+          "Jade": 61728400,
+          "Jade ID": 56694100
+        },
+        "Smart": {
+          "Diamond": 197960100,
+          "Ruby": 138104900,
+          "Emerald": 81270900,
+          "Topaz": 60185000,
+          "Topaz ID": 51687800,
+          "Jade": 46296300,
+          "Jade ID": 44506000
+        }
+      }
+    },
+    "75": {
+      "L": {
+        "Regular": {
+          "Diamond": 316713000,
+          "Ruby": 225932000,
+          "Emerald": 135527600,
+          "Topaz": 103341200,
+          "Topaz ID": 93324100,
+          "Jade": 79493300,
+          "Jade ID": 72066900
+        },
+        "SmartLite": {
+          "Diamond": 275402600,
+          "Ruby": 196462600,
+          "Emerald": 117850100,
+          "Topaz": 89861900,
+          "Topaz ID": 82134600,
+          "Jade": 69124600,
+          "Jade ID": 64135600
+        },
+        "Smart": {
+          "Diamond": 206552000,
+          "Ruby": 147347000,
+          "Emerald": 88387600,
+          "Topaz": 67396400,
+          "Topaz ID": 63485500,
+          "Jade": 51843500,
+          "Jade ID": 50916800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 308779800,
+          "Ruby": 215737900,
+          "Emerald": 129142200,
+          "Topaz": 96096800,
+          "Topaz ID": 82550800,
+          "Jade": 73920500,
+          "Jade ID": 66778300
+        },
+        "SmartLite": {
+          "Diamond": 268504200,
+          "Ruby": 187598200,
+          "Emerald": 112297600,
+          "Topaz": 83562400,
+          "Topaz ID": 71967300,
+          "Jade": 64278700,
+          "Jade ID": 59309500
+        },
+        "Smart": {
+          "Diamond": 201378200,
+          "Ruby": 140698600,
+          "Emerald": 84223200,
+          "Topaz": 62671800,
+          "Topaz ID": 54328200,
+          "Jade": 48209000,
+          "Jade ID": 46861600
+        }
+      }
+    },
+    "76": {
+      "L": {
+        "Regular": {
+          "Diamond": 323560000,
+          "Ruby": 231886600,
+          "Emerald": 137197800,
+          "Topaz": 105384500,
+          "Topaz ID": 96193200,
+          "Jade": 81064900,
+          "Jade ID": 73423700
+        },
+        "SmartLite": {
+          "Diamond": 281356500,
+          "Ruby": 201640500,
+          "Emerald": 119302400,
+          "Topaz": 91638700,
+          "Topaz ID": 84842300,
+          "Jade": 70491200,
+          "Jade ID": 65343100
+        },
+        "Smart": {
+          "Diamond": 211017400,
+          "Ruby": 151230400,
+          "Emerald": 89476800,
+          "Topaz": 68729000,
+          "Topaz ID": 65924200,
+          "Jade": 52868400,
+          "Jade ID": 51875400
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 314874400,
+          "Ruby": 220644800,
+          "Emerald": 130189900,
+          "Topaz": 97372300,
+          "Topaz ID": 83500900,
+          "Jade": 74901700,
+          "Jade ID": 67768200
+        },
+        "SmartLite": {
+          "Diamond": 273803800,
+          "Ruby": 191865100,
+          "Emerald": 113208600,
+          "Topaz": 84671600,
+          "Topaz ID": 72864000,
+          "Jade": 65131900,
+          "Jade ID": 60243800
+        },
+        "Smart": {
+          "Diamond": 205352800,
+          "Ruby": 143898800,
+          "Emerald": 84906400,
+          "Topaz": 63503700,
+          "Topaz ID": 55135800,
+          "Jade": 48848900,
+          "Jade ID": 47703000
+        }
+      }
+    },
+    "77": {
+      "L": {
+        "Regular": {
+          "Diamond": 336456100,
+          "Ruby": 237841200,
+          "Emerald": 139154100,
+          "Topaz": 107756400,
+          "Topaz ID": 97319100,
+          "Jade": 82889500,
+          "Jade ID": 75029300
+        },
+        "SmartLite": {
+          "Diamond": 292570500,
+          "Ruby": 206818400,
+          "Emerald": 121003600,
+          "Topaz": 93701200,
+          "Topaz ID": 85904900,
+          "Jade": 72077800,
+          "Jade ID": 66772000
+        },
+        "Smart": {
+          "Diamond": 219427900,
+          "Ruby": 155113800,
+          "Emerald": 90752700,
+          "Topaz": 70275900,
+          "Topaz ID": 66881200,
+          "Jade": 54058400,
+          "Jade ID": 53009800
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 326694800,
+          "Ruby": 229719400,
+          "Emerald": 131352300,
+          "Topaz": 98787600,
+          "Topaz ID": 84294000,
+          "Jade": 75990500,
+          "Jade ID": 68836500
+        },
+        "SmartLite": {
+          "Diamond": 284082400,
+          "Ruby": 199756000,
+          "Emerald": 114219400,
+          "Topaz": 85902300,
+          "Topaz ID": 73612500,
+          "Jade": 66078700,
+          "Jade ID": 61251900
+        },
+        "Smart": {
+          "Diamond": 213061800,
+          "Ruby": 149817000,
+          "Emerald": 85664600,
+          "Topaz": 64426700,
+          "Topaz ID": 55809900,
+          "Jade": 49559000,
+          "Jade ID": 48611000
+        }
+      }
+    },
+    "78": {
+      "L": {
+        "Regular": {
+          "Diamond": 349352200,
+          "Ruby": 248072300,
+          "Emerald": 142395900,
+          "Topaz": 111274200,
+          "Topaz ID": 101149700,
+          "Jade": 85595500,
+          "Jade ID": 77404500
+        },
+        "SmartLite": {
+          "Diamond": 303784500,
+          "Ruby": 215715100,
+          "Emerald": 123822500,
+          "Topaz": 96760200,
+          "Topaz ID": 89520000,
+          "Jade": 74430900,
+          "Jade ID": 68885800
+        },
+        "Smart": {
+          "Diamond": 227838400,
+          "Ruby": 161786300,
+          "Emerald": 92866800,
+          "Topaz": 72570100,
+          "Topaz ID": 70137200,
+          "Jade": 55823200,
+          "Jade ID": 54687900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 338515000,
+          "Ruby": 238794300,
+          "Emerald": 133542400,
+          "Topaz": 101028400,
+          "Topaz ID": 85509200,
+          "Jade": 77714200,
+          "Jade ID": 70500100
+        },
+        "SmartLite": {
+          "Diamond": 294360900,
+          "Ruby": 207647200,
+          "Emerald": 116123800,
+          "Topaz": 87850800,
+          "Topaz ID": 74759300,
+          "Jade": 67577600,
+          "Jade ID": 62741300
+        },
+        "Smart": {
+          "Diamond": 220770700,
+          "Ruby": 155735400,
+          "Emerald": 87092800,
+          "Topaz": 65888000,
+          "Topaz ID": 56842800,
+          "Jade": 50683200,
+          "Jade ID": 49809900
+        }
+      }
+    },
+    "79": {
+      "L": {
+        "Regular": {
+          "Diamond": 362248300,
+          "Ruby": 258303200,
+          "Emerald": 144934600,
+          "Topaz": 114375100,
+          "Topaz ID": 103729000,
+          "Jade": 87980900,
+          "Jade ID": 79508500
+        },
+        "SmartLite": {
+          "Diamond": 314998500,
+          "Ruby": 224611500,
+          "Emerald": 126030100,
+          "Topaz": 99456600,
+          "Topaz ID": 91954300,
+          "Jade": 76505100,
+          "Jade ID": 70758300
+        },
+        "Smart": {
+          "Diamond": 236248900,
+          "Ruby": 168458600,
+          "Emerald": 94522600,
+          "Topaz": 74592500,
+          "Topaz ID": 72329700,
+          "Jade": 57378800,
+          "Jade ID": 56174500
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 350335300,
+          "Ruby": 247869000,
+          "Emerald": 134952000,
+          "Topaz": 102744600,
+          "Topaz ID": 85582100,
+          "Jade": 79034100,
+          "Jade ID": 71104300
+        },
+        "SmartLite": {
+          "Diamond": 304639400,
+          "Ruby": 215538300,
+          "Emerald": 117349600,
+          "Topaz": 89343200,
+          "Topaz ID": 74828100,
+          "Jade": 68725300,
+          "Jade ID": 63279000
+        },
+        "Smart": {
+          "Diamond": 228479600,
+          "Ruby": 161653700,
+          "Emerald": 88012200,
+          "Topaz": 67007400,
+          "Topaz ID": 56904800,
+          "Jade": 51544000,
+          "Jade ID": 50236700
+        }
+      }
+    },
+    "80": {
+      "L": {
+        "Regular": {
+          "Diamond": 375144400,
+          "Ruby": 268534200,
+          "Emerald": 150333500,
+          "Topaz": 118635800,
+          "Topaz ID": 107741300,
+          "Jade": 91258300,
+          "Jade ID": 82432500
+        },
+        "SmartLite": {
+          "Diamond": 326212500,
+          "Ruby": 233508000,
+          "Emerald": 130724800,
+          "Topaz": 103161600,
+          "Topaz ID": 95740900,
+          "Jade": 79355100,
+          "Jade ID": 73360400
+        },
+        "Smart": {
+          "Diamond": 244659300,
+          "Ruby": 175131000,
+          "Emerald": 98043600,
+          "Topaz": 77371200,
+          "Topaz ID": 75740100,
+          "Jade": 59516300,
+          "Jade ID": 58240300
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 362155600,
+          "Ruby": 256943800,
+          "Emerald": 139814800,
+          "Topaz": 106446800,
+          "Topaz ID": 88615100,
+          "Jade": 81882200,
+          "Jade ID": 73734300
+        },
+        "SmartLite": {
+          "Diamond": 314917900,
+          "Ruby": 223429400,
+          "Emerald": 121578100,
+          "Topaz": 92562400,
+          "Topaz ID": 77690500,
+          "Jade": 71201900,
+          "Jade ID": 65619500
+        },
+        "Smart": {
+          "Diamond": 236188500,
+          "Ruby": 167572100,
+          "Emerald": 91183600,
+          "Topaz": 69421800,
+          "Topaz ID": 59482800,
+          "Jade": 53401400,
+          "Jade ID": 52094900
+        }
+      }
+    },
+    "81": {
+      "L": {
+        "Regular": {
+          "Diamond": 390248100,
+          "Ruby": 278765200,
+          "Emerald": 159487900,
+          "Topaz": 126172500,
+          "Topaz ID": 113148000,
+          "Jade": 97055700,
+          "Jade ID": 87657600
+        },
+        "SmartLite": {
+          "Diamond": 339346200,
+          "Ruby": 242404500,
+          "Emerald": 138685100,
+          "Topaz": 109715200,
+          "Topaz ID": 100695600,
+          "Jade": 84396300,
+          "Jade ID": 78010500
+        },
+        "Smart": {
+          "Diamond": 254509700,
+          "Ruby": 181803400,
+          "Emerald": 104013800,
+          "Topaz": 82286400,
+          "Topaz ID": 79941500,
+          "Jade": 63297200,
+          "Jade ID": 61932000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 378226500,
+          "Ruby": 266072500,
+          "Emerald": 148448200,
+          "Topaz": 113019900,
+          "Topaz ID": 93758200,
+          "Jade": 86938500,
+          "Jade ID": 78403400
+        },
+        "SmartLite": {
+          "Diamond": 328892600,
+          "Ruby": 231367400,
+          "Emerald": 129085400,
+          "Topaz": 98278200,
+          "Topaz ID": 83023200,
+          "Jade": 75598700,
+          "Jade ID": 69774800
+        },
+        "Smart": {
+          "Diamond": 246669500,
+          "Ruby": 173525500,
+          "Emerald": 96814000,
+          "Topaz": 73708600,
+          "Topaz ID": 65131600,
+          "Jade": 56699000,
+          "Jade ID": 55393700
+        }
+      }
+    },
+    "82": {
+      "L": {
+        "Regular": {
+          "Diamond": 400936500,
+          "Ruby": 288996200,
+          "Emerald": 168642100,
+          "Topaz": 133709000,
+          "Topaz ID": 118554900,
+          "Jade": 102853000,
+          "Jade ID": 92882400
+        },
+        "SmartLite": {
+          "Diamond": 350643900,
+          "Ruby": 252707200,
+          "Emerald": 147417200,
+          "Topaz": 116873900,
+          "Topaz ID": 105681600,
+          "Jade": 89974600,
+          "Jade ID": 82906000
+        },
+        "Smart": {
+          "Diamond": 266822900,
+          "Ruby": 192225400,
+          "Emerald": 112042300,
+          "Topaz": 88815500,
+          "Topaz ID": 84226100,
+          "Jade": 68510700,
+          "Jade ID": 66278600
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 385796100,
+          "Ruby": 275093300,
+          "Emerald": 157081500,
+          "Topaz": 119593100,
+          "Topaz ID": 98901600,
+          "Jade": 91994600,
+          "Jade ID": 83072600
+        },
+        "SmartLite": {
+          "Diamond": 337346600,
+          "Ruby": 240497900,
+          "Emerald": 137264000,
+          "Topaz": 104481100,
+          "Topaz ID": 88105800,
+          "Jade": 80441900,
+          "Jade ID": 74118100
+        },
+        "Smart": {
+          "Diamond": 256597400,
+          "Ruby": 182838800,
+          "Emerald": 104234900,
+          "Topaz": 79294500,
+          "Topaz ID": 70112700,
+          "Jade": 61187500,
+          "Jade ID": 59193900
+        }
+      }
+    },
+    "83": {
+      "L": {
+        "Regular": {
+          "Diamond": 414862000,
+          "Ruby": 299147000,
+          "Emerald": 177796400,
+          "Topaz": 141245500,
+          "Topaz ID": 123961600,
+          "Jade": 108650300,
+          "Jade ID": 98107400
+        },
+        "SmartLite": {
+          "Diamond": 364895700,
+          "Ruby": 263038800,
+          "Emerald": 156233100,
+          "Topaz": 124100900,
+          "Topaz ID": 110019200,
+          "Jade": 95613600,
+          "Jade ID": 87829300
+        },
+        "Smart": {
+          "Diamond": 281618400,
+          "Ruby": 202858500,
+          "Emerald": 120294200,
+          "Topaz": 95526500,
+          "Topaz ID": 86781800,
+          "Jade": 73885700,
+          "Jade ID": 70699000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 398730300,
+          "Ruby": 284222000,
+          "Emerald": 165714800,
+          "Topaz": 126166300,
+          "Topaz ID": 104044900,
+          "Jade": 97050900,
+          "Jade ID": 87741700
+        },
+        "SmartLite": {
+          "Diamond": 350590900,
+          "Ruby": 249807500,
+          "Emerald": 145516500,
+          "Topaz": 110737600,
+          "Topaz ID": 92781000,
+          "Jade": 85334400,
+          "Jade ID": 78482400
+        },
+        "Smart": {
+          "Diamond": 270358600,
+          "Ruby": 192450000,
+          "Emerald": 111852600,
+          "Topaz": 85023000,
+          "Topaz ID": 74007900,
+          "Jade": 65806900,
+          "Jade ID": 63050300
+        }
+      }
+    },
+    "84": {
+      "L": {
+        "Regular": {
+          "Diamond": 430994100,
+          "Ruby": 309298000,
+          "Emerald": 186950700,
+          "Topaz": 148782100,
+          "Topaz ID": 129368400,
+          "Jade": 114447700,
+          "Jade ID": 103332300
+        },
+        "SmartLite": {
+          "Diamond": 381238500,
+          "Ruby": 273469400,
+          "Emerald": 165132800,
+          "Topaz": 131396200,
+          "Topaz ID": 115004100,
+          "Jade": 101313100,
+          "Jade ID": 92780100
+        },
+        "Smart": {
+          "Diamond": 298312400,
+          "Ruby": 213755100,
+          "Emerald": 128769600,
+          "Topaz": 102419600,
+          "Topaz ID": 91063700,
+          "Jade": 79422200,
+          "Jade ID": 75193000
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 413396700,
+          "Ruby": 293350600,
+          "Emerald": 174348100,
+          "Topaz": 132739400,
+          "Topaz ID": 109188200,
+          "Jade": 102107100,
+          "Jade ID": 92410800
+        },
+        "SmartLite": {
+          "Diamond": 365492200,
+          "Ruby": 259202500,
+          "Emerald": 153842800,
+          "Topaz": 117047500,
+          "Topaz ID": 97465500,
+          "Jade": 90805100,
+          "Jade ID": 82867900
+        },
+        "Smart": {
+          "Diamond": 285651400,
+          "Ruby": 202288900,
+          "Emerald": 119667200,
+          "Topaz": 90894200,
+          "Topaz ID": 77927600,
+          "Jade": 71968400,
+          "Jade ID": 66963000
+        }
+      }
+    },
+    "85": {
+      "L": {
+        "Regular": {
+          "Diamond": 442962800,
+          "Ruby": 319288800,
+          "Emerald": 196104900,
+          "Topaz": 156318600,
+          "Topaz ID": 134775200,
+          "Jade": 120244900,
+          "Jade ID": 108557400
+        },
+        "SmartLite": {
+          "Diamond": 394038900,
+          "Ruby": 283856400,
+          "Emerald": 174116200,
+          "Topaz": 138759600,
+          "Topaz ID": 119274700,
+          "Jade": 107073100,
+          "Jade ID": 97758700
+        },
+        "Smart": {
+          "Diamond": 312499100,
+          "Ruby": 224802400,
+          "Emerald": 137468400,
+          "Topaz": 109494500,
+          "Topaz ID": 93440400,
+          "Jade": 85120100,
+          "Jade ID": 79760900
+        }
+      },
+      "P": {
+        "Regular": {
+          "Diamond": 428246300,
+          "Ruby": 302586900,
+          "Emerald": 182981400,
+          "Topaz": 139312600,
+          "Topaz ID": 114331500,
+          "Jade": 107163400,
+          "Jade ID": 97079800
+        },
+        "SmartLite": {
+          "Diamond": 380698700,
+          "Ruby": 268778400,
+          "Emerald": 162242800,
+          "Topaz": 123411000,
+          "Topaz ID": 102159200,
+          "Jade": 95266600,
+          "Jade ID": 87274400
+        },
+        "Smart": {
+          "Diamond": 301452700,
+          "Ruby": 212430900,
+          "Emerald": 127678400,
+          "Topaz": 96908400,
+          "Topaz ID": 81872000,
+          "Jade": 75438500,
+          "Jade ID": 70932100
+        }
+      }
+    }
+  }
+}
