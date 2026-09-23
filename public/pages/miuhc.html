@@ -3,17 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MiUHC 2026 (Revamp & Repricing) - Kalkulator Premi Resmi Manulife</title>
+  <title>Kalkulator Premi MiUHC 2026 — PastiJaga | Agen Manulife Berlisensi</title>
   <meta name="description" content="Hitung estimasi Premi/Kontribusi MiUltimate HealthCare (MiUHC) & MiUHC Syariah 2026 dari Manulife — pilihan plan Regular, SMART Lite, dan SMART. Data sesuai tabel ilustrasi resmi, berlaku untuk polis baru mulai 20 September 2026.">
+  <link rel="canonical" href="https://app.pastijaga.workers.dev/pages/miuhc.html">
+
+  <!-- Open Graph (WhatsApp, Facebook, dll) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PastiJaga">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:url" content="https://app.pastijaga.workers.dev/pages/miuhc.html">
+  <meta property="og:title" content="Kalkulator Premi MiUHC 2026 — PastiJaga">
+  <meta property="og:description" content="Hitung estimasi Premi/Kontribusi MiUHC & MiUHC Syariah 2026 — Regular, SMART Lite, SMART. Konsultasi gratis dengan agen berlisensi.">
+  <meta property="og:image" content="https://app.pastijaga.workers.dev/assets/Kami.jpg">
+  <meta property="og:image:alt" content="PastiJaga — Agen Manulife Berlisensi, Financial Buddy">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalkulator Premi MiUHC 2026 — PastiJaga">
+  <meta name="twitter:description" content="Hitung estimasi Premi/Kontribusi MiUHC & MiUHC Syariah 2026 — Regular, SMART Lite, SMART.">
+  <meta name="twitter:image" content="https://app.pastijaga.workers.dev/assets/Kami.jpg">
+
+  <meta name="theme-color" content="#10C775">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    /* Prevent dark mode flash */
+    (function(){
+      var t = localStorage.getItem('pcTheme');
+      if(t==='dark'||(! t&&window.matchMedia('(prefers-color-scheme:dark)').matches))
+        document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <script>
+    /* Register Service Worker */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
   <style>
     :root {
-      --primary: #16a34a;
-      --primary-dark: #15803d;
-      --jade: #39FF14;
-      --jade-10: rgba(57, 255, 20, 0.10);
-      --jade-20: rgba(57, 255, 20, 0.20);
+      --primary: #10C775;
+      --primary-dark: #0ea866;
+      --jade: #10C775;
+      --jade-10: rgba(16, 199, 117, 0.10);
+      --jade-20: rgba(16, 199, 117, 0.20);
       --bg: #f8fafc;
       --bg-card: #ffffff;
       --bg-alt: #f1f5f9;
@@ -71,7 +110,7 @@
     }
     @media (max-width: 900px) { .calc-wrap { grid-template-columns: 1fr; } }
 
-    .calc-top { background: linear-gradient(135deg, #16a34a 0%, #39FF14 100%); padding: 20px 24px; color: #0f172a; }
+    .calc-top { background: linear-gradient(135deg, #10C775 0%, #10C775 100%); padding: 20px 24px; color: #0f172a; }
     .calc-top h3 { font-size: 1.35rem; margin-bottom: 4px; color: #0f172a; }
     .calc-top p { color: #14532d; font-size: 0.88rem; font-weight: 600; }
 
@@ -85,18 +124,18 @@
     .product-toggle input:checked+label, .gender-toggle input:checked+label { background: var(--txt-head); color: white; box-shadow: var(--sh-sm); }
 
     .usia-row { display: flex; align-items: center; gap: 16px; margin: 8px 0; }
-    .usia-num { min-width: 64px; text-align: center; font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 900; color: #16a34a; line-height: 1; }
+    .usia-num { min-width: 64px; text-align: center; font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 900; color: #10C775; line-height: 1; }
     .usia-lbl { font-size: 0.75rem; color: var(--txt-muted); }
 
     input[type=range] { flex: 1; -webkit-appearance: none; height: 6px; background: var(--bg-alt); border-radius: var(--r-full); outline: none; border: 1px solid var(--border-md); }
-    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #16a34a; cursor: pointer; box-shadow: 0 2px 8px rgba(22,163,74,0.4); border: 3px solid white; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #10C775; cursor: pointer; box-shadow: 0 2px 8px rgba(16,199,117,0.4); border: 3px solid white; }
 
     .plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-bottom: 6px; }
     .plan-option { position: relative; }
     .plan-option input { position: absolute; opacity: 0; width: 0; height: 0; }
     .plan-option label { display: block; padding: 10px 8px; border: 1.5px solid var(--border-md); border-radius: var(--r-md); cursor: pointer; text-align: center; transition: all .18s; user-select: none; background: white; }
-    .plan-option label:hover { border-color: #16a34a; background: var(--jade-10); }
-    .plan-option input:checked+label { border-color: #16a34a; background: #f0fdf4; box-shadow: 0 0 0 3px var(--jade-20); }
+    .plan-option label:hover { border-color: #10C775; background: var(--jade-10); }
+    .plan-option input:checked+label { border-color: #10C775; background: #f0fdf4; box-shadow: 0 0 0 3px var(--jade-20); }
     .plan-name { font-size: 0.88rem; font-weight: 800; color: var(--txt-head); display: block; }
     .plan-type { font-size: 10px; color: var(--txt-muted); margin-top: 2px; display: block; }
 
@@ -116,7 +155,7 @@
     .mode-option { position: relative; }
     .mode-option input { position: absolute; opacity: 0; }
     .mode-option label { display: flex; flex-direction: column; align-items: center; padding: 10px 8px; border: 1.5px solid var(--border-md); border-radius: var(--r-md); cursor: pointer; background: white; transition: .18s; }
-    .mode-option input:checked+label { border-color: #16a34a; background: #f0fdf4; }
+    .mode-option input:checked+label { border-color: #10C775; background: #f0fdf4; }
     .mode-name { font-weight: 800; font-size: 0.85rem; }
     .mode-factor { font-size: 0.72rem; color: var(--txt-muted); }
 
@@ -138,8 +177,8 @@
     .badge { display: inline-flex; align-items: center; padding: 2px 6px; border-radius: var(--r-full); font-size: 0.68rem; font-weight: 800; background: var(--jade-10); color: #166534; border: 1px solid var(--jade-20); }
 
     .btn-action { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 16px; border-radius: var(--r-md); font-weight: 800; text-decoration: none; font-size: 0.9rem; cursor: pointer; border: none; transition: .18s; margin-top: 10px; }
-    .btn-primary { background: #16a34a; color: white; }
-    .btn-primary:hover { background: #15803d; }
+    .btn-primary { background: #10C775; color: white; }
+    .btn-primary:hover { background: #0ea866; }
     .btn-wa { background: #25D366; color: #0f172a; }
     .btn-wa:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(37,211,102,0.25); }
 
@@ -171,7 +210,7 @@
     .compare-table th, .compare-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
     .compare-table th { background: var(--txt-head); color: white; font-family: 'Sora', sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
     .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table td.hl { font-weight: 800; color: #15803d; }
+    .compare-table td.hl { font-weight: 800; color: #0ea866; }
     .table-scroll { overflow-x: auto; border-radius: var(--r-md); }
 
     .callout-list { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 6px 18px; box-shadow: var(--sh-sm); }
@@ -181,9 +220,20 @@
 
     .disclaimer-box { background: var(--amber-bg); border: 1px solid var(--amber-border); border-radius: var(--r-md); padding: 14px 16px; font-size: 0.78rem; color: #92400e; line-height: 1.55; margin-bottom: 40px; }
     .disclaimer-box b { color: #78350f; }
+
+    /* Floating buttons */
+    .floating-wa { position: fixed; right: 18px; bottom: 18px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(37,211,102,0.45); z-index: 300; text-decoration: none; transition: transform .18s; }
+    .floating-wa:hover { transform: scale(1.06); }
+    .floating-wa svg { width: 28px; height: 28px; }
+    .floating-top { position: fixed; right: 22px; bottom: 86px; width: 42px; height: 42px; border-radius: 50%; background: #0f172a; color: white; border: none; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; box-shadow: var(--sh-lg); z-index: 300; display: none; opacity: 0; transition: opacity .2s; }
+    .floating-top.show { display: flex; opacity: 1; }
+    @media (max-width: 480px) { .floating-wa { right: 12px; bottom: 12px; width: 50px; height: 50px; } .floating-wa svg { width: 25px; height: 25px; } .floating-top { right: 16px; bottom: 74px; width: 38px; height: 38px; } }
   </style>
 </head>
 <body>
+
+<!-- Header loaded by JS (shared site header, same as other PastiJaga pages) -->
+<div id="site-header"></div>
 
 <div class="container">
   <header>
@@ -424,6 +474,15 @@
 
 </div>
 
+<!-- Footer loaded by JS (shared site footer, same as other PastiJaga pages) -->
+<div id="site-footer"></div>
+
+<!-- FLOATING BUTTONS -->
+<a class="floating-wa" id="floatingWaBtn" href="https://wa.me/6287781896087?text=Halo%20Kak%2C%20aku%20mau%20tanya%20soal%20MiUHC" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="floating-top" id="backToTopBtn" aria-label="Kembali ke atas">↑</button>
+
 <!-- MODAL FORM PROPOSAL -->
 <div class="modal-overlay" id="proposalModal">
   <div class="modal-card">
@@ -614,7 +673,7 @@ function calculate() {
     savingsWrap.innerHTML = '';
   }
 
-  const textWA = `Halo Agen Manulife, saya mau konsultasi MiUHC 2026:%0A- Produk: ${produk}%0A- Usia/Gender: ${usia} thn / ${gender}%0A- Plan: ${planMeta.label} (${smart})%0A- Mode: ${mode}%0A- Estimasi ${termPremi}: ${fmtRp(finalPremi)}`;
+  const textWA = `Halo Kak, aku mau konsultasi MiUHC 2026 nih:%0A- Produk: ${produk}%0A- Usia/Gender: ${usia} thn / ${gender}%0A- Plan: ${planMeta.label} (${smart})%0A- Mode: ${mode}%0A- Estimasi ${termPremi}: ${fmtRp(finalPremi)}`;
   document.getElementById('calcWaBtn').href = `https://wa.me/6287781896087?text=${textWA}`;
 }
 
@@ -627,14 +686,28 @@ function submitForm(e) {
   const phone = document.getElementById('custPhone').value;
   const city = document.getElementById('custCity').value;
 
-  const msg = `Halo Agen Manulife, mohon buatkan Proposal Resmi MiUHC 2026:%0A%0A*Data Nasabah:*%0A- Nama: ${name}%0A- WA: ${phone}%0A- Kota: ${city}%0A%0A*Rincian Plan:*%0A- Jenis: ${currentCalcData.produk}%0A- Usia/Gender: ${currentCalcData.usia} thn / ${currentCalcData.gender}%0A- Plan: ${currentCalcData.planLabel} (${currentCalcData.smart})%0A- Mode Pembayaran: ${currentCalcData.mode}%0A- Est. ${currentCalcData.termPremi}: ${fmtRp(currentCalcData.finalPremi)}`;
+  const msg = `Halo Kak, aku mau minta Proposal Resmi MiUHC 2026 ya:%0A%0A*Data Nasabah:*%0A- Nama: ${name}%0A- WA: ${phone}%0A- Kota: ${city}%0A%0A*Rincian Plan:*%0A- Jenis: ${currentCalcData.produk}%0A- Usia/Gender: ${currentCalcData.usia} thn / ${currentCalcData.gender}%0A- Plan: ${currentCalcData.planLabel} (${currentCalcData.smart})%0A- Mode Pembayaran: ${currentCalcData.mode}%0A- Est. ${currentCalcData.termPremi}: ${fmtRp(currentCalcData.finalPremi)}`;
 
   window.open(`https://wa.me/6287781896087?text=${msg}`, '_blank');
   closeModal();
 }
 
 document.addEventListener('DOMContentLoaded', initCalc);
+
+// Floating "back to top" button: show after scrolling, smooth-scroll on click
+(function () {
+  const btn = document.getElementById('backToTopBtn');
+  if (!btn) return;
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 420) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  });
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
 </script>
 
+<script src="/assets/main.js"></script>
 </body>
 </html>
