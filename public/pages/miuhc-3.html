@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiUHC 2026 (Revamp & Repricing) - Kalkulator Premi Resmi Manulife</title>
+  <meta name="description" content="Hitung estimasi Premi/Kontribusi MiUltimate HealthCare (MiUHC) & MiUHC Syariah 2026 dari Manulife — pilihan plan Regular, SMART Lite, dan SMART. Data sesuai tabel ilustrasi resmi, berlaku untuk polis baru mulai 20 September 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #16a34a;
+      --primary-dark: #15803d;
+      --jade: #39FF14;
+      --jade-10: rgba(57, 255, 20, 0.10);
+      --jade-20: rgba(57, 255, 20, 0.20);
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-alt: #f1f5f9;
+      --border: #e2e8f0;
+      --border-md: #cbd5e1;
+      --txt-head: #0f172a;
+      --txt: #334155;
+      --txt-sub: #64748b;
+      --txt-muted: #94a3b8;
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-xl: 20px;
+      --r-full: 9999px;
+      --sh-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --sh-lg: 0 10px 30px rgba(0,0,0,0.07);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Manrope', system-ui, sans-serif; background: var(--bg); color: var(--txt); line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+    h1, h2, h3 { font-family: 'Sora', sans-serif; color: var(--txt-head); }
+
+    header { text-align: center; margin-bottom: 20px; }
+    header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; color: var(--txt-head); }
+    header p { color: var(--txt-sub); font-size: 1.05rem; }
+
+    /* Update banner */
+    .update-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #14532d 100%);
+      color: #fff;
+      border-radius: var(--r-md);
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 18px;
+      font-size: 0.85rem;
+    }
+    .update-banner strong { color: var(--jade); font-family: 'Sora', sans-serif; }
+    .update-chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); padding: 4px 10px; border-radius: var(--r-full); font-size: 0.72rem; font-weight: 700; }
+
+    /* Kalkulator Styles */
+    .calc-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--sh-lg);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) { .calc-wrap { grid-template-columns: 1fr; } }
+
+    .calc-top { background: linear-gradient(135deg, #16a34a 0%, #39FF14 100%); padding: 20px 24px; color: #0f172a; }
+    .calc-top h3 { font-size: 1.35rem; margin-bottom: 4px; color: #0f172a; }
+    .calc-top p { color: #14532d; font-size: 0.88rem; font-weight: 600; }
+
+    .calc-body { padding: 24px; }
+    .section-lbl { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--txt-sub); margin-bottom: 10px; margin-top: 18px; }
+    .section-lbl:first-child { margin-top: 0; }
+
+    .product-toggle, .gender-toggle { display: grid; grid-template-columns: 1fr 1fr; background: var(--bg-alt); border: 1.5px solid var(--border-md); border-radius: var(--r-md); padding: 4px; gap: 4px; }
+    .product-toggle label, .gender-toggle label { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 12px; border-radius: var(--r-sm); cursor: pointer; font-size: 0.9rem; font-weight: 700; color: var(--txt-sub); transition: all .18s; user-select: none; }
+    .product-toggle input, .gender-toggle input { display: none; }
+    .product-toggle input:checked+label, .gender-toggle input:checked+label { background: var(--txt-head); color: white; box-shadow: var(--sh-sm); }
+
+    .usia-row { display: flex; align-items: center; gap: 16px; margin: 8px 0; }
+    .usia-num { min-width: 64px; text-align: center; font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 900; color: #16a34a; line-height: 1; }
+    .usia-lbl { font-size: 0.75rem; color: var(--txt-muted); }
+
+    input[type=range] { flex: 1; -webkit-appearance: none; height: 6px; background: var(--bg-alt); border-radius: var(--r-full); outline: none; border: 1px solid var(--border-md); }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #16a34a; cursor: pointer; box-shadow: 0 2px 8px rgba(22,163,74,0.4); border: 3px solid white; }
+
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-bottom: 6px; }
+    .plan-option { position: relative; }
+    .plan-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .plan-option label { display: block; padding: 10px 8px; border: 1.5px solid var(--border-md); border-radius: var(--r-md); cursor: pointer; text-align: center; transition: all .18s; user-select: none; background: white; }
+    .plan-option label:hover { border-color: #16a34a; background: var(--jade-10); }
+    .plan-option input:checked+label { border-color: #16a34a; background: #f0fdf4; box-shadow: 0 0 0 3px var(--jade-20); }
+    .plan-name { font-size: 0.88rem; font-weight: 800; color: var(--txt-head); display: block; }
+    .plan-type { font-size: 10px; color: var(--txt-muted); margin-top: 2px; display: block; }
+
+    .detail-box { background: var(--bg-alt); border: 1px dashed var(--border-md); border-radius: var(--r-md); padding: 10px 12px; font-size: 0.78rem; color: var(--txt); margin-top: 4px; line-height: 1.5; }
+    .detail-box b { color: var(--txt-head); }
+
+    .smart-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .smart-option { position: relative; }
+    .smart-option input { position: absolute; opacity: 0; }
+    .smart-option label { display: block; padding: 9px 6px; border: 1.5px solid var(--border-md); border-radius: var(--r-md); cursor: pointer; text-align: center; transition: .18s; background: white; }
+    .smart-option input:checked+label { background: #0f172a; color: white; border-color: #0f172a; }
+    .smart-name { font-weight: 800; font-size: 0.84rem; display: block; }
+    .smart-sub { font-size: 9.5px; color: var(--txt-muted); font-weight: 700; display: block; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.02em; }
+    .smart-option input:checked+label .smart-sub { color: rgba(255,255,255,0.65); }
+
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mode-option { position: relative; }
+    .mode-option input { position: absolute; opacity: 0; }
+    .mode-option label { display: flex; flex-direction: column; align-items: center; padding: 10px 8px; border: 1.5px solid var(--border-md); border-radius: var(--r-md); cursor: pointer; background: white; transition: .18s; }
+    .mode-option input:checked+label { border-color: #16a34a; background: #f0fdf4; }
+    .mode-name { font-weight: 800; font-size: 0.85rem; }
+    .mode-factor { font-size: 0.72rem; color: var(--txt-muted); }
+
+    .result-pane { background: #f8fafc; border-left: 1px solid var(--border); padding: 24px; display: flex; flex-direction: column; }
+    @media (max-width: 900px) { .result-pane { border-left: none; border-top: 1px solid var(--border); } }
+
+    .result-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--txt-muted); text-align: center; padding: 32px 12px; }
+    .result-content { display: none; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--border); font-size: 0.9rem; gap: 10px; }
+    .result-row-lbl { color: var(--txt-sub); font-weight: 600; }
+    .result-row-val { font-weight: 800; color: var(--txt-head); text-align: right; }
+
+    .result-total { margin-top: 16px; background: #0f172a; color: white; border-radius: var(--r-md); padding: 16px; }
+    .result-total .lbl { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .result-total .val { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 800; margin-top: 4px; }
+    .result-total .sub { font-size: 0.8rem; opacity: 0.8; margin-top: 4px; }
+    .savings-chip { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; background: var(--jade-10); border: 1px solid var(--jade-20); color: #14532d; font-weight: 800; font-size: 0.76rem; padding: 5px 10px; border-radius: var(--r-full); }
+
+    .badge { display: inline-flex; align-items: center; padding: 2px 6px; border-radius: var(--r-full); font-size: 0.68rem; font-weight: 800; background: var(--jade-10); color: #166534; border: 1px solid var(--jade-20); }
+
+    .btn-action { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 16px; border-radius: var(--r-md); font-weight: 800; text-decoration: none; font-size: 0.9rem; cursor: pointer; border: none; transition: .18s; margin-top: 10px; }
+    .btn-primary { background: #16a34a; color: white; }
+    .btn-primary:hover { background: #15803d; }
+    .btn-wa { background: #25D366; color: #0f172a; }
+    .btn-wa:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(37,211,102,0.25); }
+
+    /* Modal Styles */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 999; align-items: center; justify-content: center; padding: 16px; }
+    .modal-card { background: white; border-radius: var(--r-xl); width: 100%; max-width: 480px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); overflow: hidden; }
+    .modal-header { padding: 16px 20px; background: #0f172a; color: white; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { padding: 20px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 6px; color: var(--txt-head); }
+    .form-group input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-md); border-radius: var(--r-sm); font-family: inherit; font-size: 0.9rem; }
+
+    .note { margin-top: 14px; padding: 10px 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--r-md); font-size: 0.75rem; color: #92400e; line-height: 1.4; }
+    .footer-info { margin-top: 16px; font-size: 0.72rem; color: var(--txt-muted); line-height: 1.4; }
+
+    /* Info / explainer sections */
+    .info-section { margin-bottom: 40px; }
+    .info-section h2 { font-size: 1.5rem; margin-bottom: 6px; }
+    .info-section .section-sub { color: var(--txt-sub); font-size: 0.92rem; margin-bottom: 20px; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 700px) { .feature-grid { grid-template-columns: 1fr; } }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 16px 18px; box-shadow: var(--sh-sm); }
+    .feature-card .f-icon { font-size: 1.4rem; margin-bottom: 6px; display: block; }
+    .feature-card h4 { font-size: 0.95rem; margin-bottom: 4px; color: var(--txt-head); }
+    .feature-card p { font-size: 0.84rem; color: var(--txt-sub); line-height: 1.55; }
+
+    .compare-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: var(--r-md); overflow: hidden; box-shadow: var(--sh-sm); font-size: 0.85rem; }
+    .compare-table th, .compare-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    .compare-table th { background: var(--txt-head); color: white; font-family: 'Sora', sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td.hl { font-weight: 800; color: #15803d; }
+    .table-scroll { overflow-x: auto; border-radius: var(--r-md); }
+
+    .callout-list { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 6px 18px; box-shadow: var(--sh-sm); }
+    .callout-list li { padding: 12px 0; border-bottom: 1px dashed var(--border); font-size: 0.88rem; color: var(--txt); }
+    .callout-list li:last-child { border-bottom: none; }
+    .callout-list b { color: var(--txt-head); }
+
+    .disclaimer-box { background: var(--amber-bg); border: 1px solid var(--amber-border); border-radius: var(--r-md); padding: 14px 16px; font-size: 0.78rem; color: #92400e; line-height: 1.55; margin-bottom: 40px; }
+    .disclaimer-box b { color: #78350f; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>MiUltimate HealthCare (MiUHC)</h1>
+    <p>Hitung estimasi Premi/Kontribusi resmi Manulife 2026 secara langsung & akurat.</p>
+  </header>
+
+  <div class="update-banner">
+    <div>📢 <strong>Update Produk 2026 (Revamp & Repricing)</strong> — berlaku untuk polis baru mulai <strong>20 September 2026</strong>.</div>
+    <span class="update-chip">Deductible jadi Tahunan</span>
+    <span class="update-chip">+ Pilihan SMART Lite</span>
+    <span class="update-chip">Limit Fisioterapi 2x</span>
+    <span class="update-chip">Pemantauan Kanker 5 Thn</span>
+  </div>
+
+  <!-- CALCULATOR INTEGRATED -->
+  <div class="calc-wrap">
+    <div>
+      <div class="calc-top">
+        <h3>Kalkulator Premi MiUHC 2026</h3>
+        <p>Konvensional & Syariah • Usia 0–85 • 7 Plan Utama • Regular / SMART Lite / SMART</p>
+      </div>
+      <div class="calc-body">
+        <div class="section-lbl">Jenis Produk</div>
+        <div class="product-toggle">
+          <input type="radio" name="produk" id="produk_konv" value="konv" checked>
+          <label for="produk_konv">Konvensional</label>
+          <input type="radio" name="produk" id="produk_sya" value="sya">
+          <label for="produk_sya">Syariah</label>
+        </div>
+
+        <div class="section-lbl">Gender</div>
+        <div class="gender-toggle">
+          <input type="radio" name="gender" id="gender_pria" value="pria" checked>
+          <label for="gender_pria">👨 Pria</label>
+          <input type="radio" name="gender" id="gender_wanita" value="wanita">
+          <label for="gender_wanita">👩 Wanita</label>
+        </div>
+
+        <div class="section-lbl">Usia Nasabah</div>
+        <div class="usia-row">
+          <input type="range" id="usiaSlider" min="0" max="85" value="30" step="1">
+          <div style="display:flex;flex-direction:column;align-items:center;min-width:70px">
+            <div class="usia-num" id="usiaDisplay">30</div>
+            <div class="usia-lbl">tahun</div>
+            <input type="number" id="usiaInput" min="0" max="85" value="30" style="width:54px;text-align:center;margin-top:4px;padding:2px 4px;border:1px solid var(--border-md);border-radius:6px;font-weight:700">
+          </div>
+        </div>
+
+        <div class="section-lbl">Pilih Plan Utama</div>
+        <div class="plan-grid" id="planGrid"></div>
+        <div class="detail-box" id="planDetailBox"></div>
+
+        <div class="section-lbl">Tipe Plan (Deductible)</div>
+        <div class="smart-grid">
+          <div class="smart-option">
+            <input type="radio" name="smart" id="smart_regular" value="Regular" checked>
+            <label for="smart_regular"><span class="smart-name">Regular</span><span class="smart-sub">Tanpa Deductible</span></label>
+          </div>
+          <div class="smart-option">
+            <input type="radio" name="smart" id="smart_lite" value="SMART Lite">
+            <label for="smart_lite"><span class="smart-name">SMART Lite</span><span class="smart-sub">Deductible Kecil</span></label>
+          </div>
+          <div class="smart-option">
+            <input type="radio" name="smart" id="smart_smart" value="SMART">
+            <label for="smart_smart"><span class="smart-name">SMART</span><span class="smart-sub">Deductible Besar</span></label>
+          </div>
+        </div>
+        <div class="detail-box" id="tierDetailBox"></div>
+
+        <div class="section-lbl">Mode Pembayaran</div>
+        <div class="mode-grid">
+          <div class="mode-option">
+            <input type="radio" name="mode" id="mode_tahunan" value="Tahunan" checked>
+            <label for="mode_tahunan"><span class="mode-name">Tahunan</span><span class="mode-factor">100% × premi</span></label>
+          </div>
+          <div class="mode-option">
+            <input type="radio" name="mode" id="mode_semesteran" value="Semesteran">
+            <label for="mode_semesteran"><span class="mode-name">Semesteran</span><span class="mode-factor">52.5% • 2×/thn</span></label>
+          </div>
+          <div class="mode-option">
+            <input type="radio" name="mode" id="mode_kuartalan" value="Kuartalan">
+            <label for="mode_kuartalan"><span class="mode-name">Kuartalan</span><span class="mode-factor">27.5% • 4×/thn</span></label>
+          </div>
+          <div class="mode-option">
+            <input type="radio" name="mode" id="mode_bulanan" value="Bulanan">
+            <label for="mode_bulanan"><span class="mode-name">Bulanan</span><span class="mode-factor">9.5% • 12×/thn</span></label>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Catatan:</strong> Hasil perhitungan berdasarkan Ilustrasi Premi resmi MiUHC & MiUHC Syariah 2026 (berlaku untuk polis baru mulai 20 September 2026). Nominal Premi (Konvensional) dan Kontribusi (Syariah) adalah sama — perbedaan hanya pada istilah. Mode pembayaran non-tahunan telah disesuaikan dengan pengali rasio resmi & dibulatkan ke ratusan terdekat.
+        </div>
+      </div>
+    </div>
+
+    <!-- HASIL PERHITUNGAN -->
+    <div class="result-pane">
+      <div class="result-empty" id="resultEmpty">
+        <div style="font-size:2rem;margin-bottom:8px">🧮</div>
+        <div style="font-weight:800;color:var(--txt-head)">Siap Menghitung</div>
+        <div style="font-size:0.85rem;margin-top:4px">Silakan tentukan kriteria di sebelah kiri.</div>
+      </div>
+
+      <div class="result-content" id="resultContent">
+        <h3 style="font-size:1.1rem;margin-bottom:12px">Ringkasan Ilustrasi</h3>
+        <div id="resultRows"></div>
+
+        <div class="result-total">
+          <div class="lbl" id="totalLbl">Total Premi Tahunan</div>
+          <div class="val" id="resultTotal">Rp 0</div>
+          <div class="sub" id="resultPerBulan">≈ Rp 0 / bulan</div>
+          <div class="sub" id="resultModeInfo" style="margin-top:6px;opacity:0.75"></div>
+          <div id="savingsChipWrap"></div>
+        </div>
+
+        <button class="btn-action btn-primary" onclick="openModal()">📑 Minta Illustration Proposal</button>
+        <a id="calcWaBtn" class="btn-action btn-wa" href="https://wa.me/6287781896087" target="_blank">
+          💬 Chat via WhatsApp
+        </a>
+
+        <div class="footer-info">
+          Data diambil langsung dari Ilustrasi Premi resmi Manulife 2026. Belum termasuk potensi Diskon Premi/No Claim Discount (NCD).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APA YANG BARU -->
+  <div class="info-section">
+    <h2>🆕 Apa yang Baru di MiUHC 2026?</h2>
+    <p class="section-sub">Delapan penguatan manfaat utama dibanding produk 2025 — dijelaskan dengan bahasa sederhana.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="f-icon">🌍</span>
+        <h4>Perlindungan Luar Wilayah Makin Luas</h4>
+        <p>Dulu, biaya rawat di luar wilayah pertanggungan hanya ditanggung kalau karena kecelakaan. Sekarang <b>semua jenis perawatan</b> di luar wilayah ikut ditanggung secara prorata (persentase) dari biaya yang disetujui Manulife.</p>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">🏃</span>
+        <h4>Limit Fisioterapi Naik 2x Lipat</h4>
+        <p>Biaya terapi fisik, okupasi, dan wicara sebelum/sesudah rawat inap kini limitnya naik dua kali lipat. Contoh: Plan Diamond dari Rp1 juta/hari menjadi Rp2 juta/hari.</p>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">🎗️</span>
+        <h4>Pemantauan Kanker hingga 5 Tahun</h4>
+        <p>Biaya pemantauan rutin pasca-sembuh dari kanker kini ditanggung sampai 5 tahun, dengan limit tahunan yang lebih tinggi di setiap plan.</p>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">💚</span>
+        <h4>Manfaat Baru: Transplantasi Organ</h4>
+        <p>Biaya transplantasi organ (jantung, ginjal, hati, paru-paru, kornea, dll), termasuk untuk pendonor, kini menjadi manfaat baru yang ditanggung polis.</p>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">🎓</span>
+        <h4>Pelajar di Luar Negeri Tetap Dilindungi</h4>
+        <p>Anak yang sedang studi di luar negeri lebih dari 6 bulan tetap mendapat perlindungan penuh sesuai plan-nya, tidak lagi terputus karena lama tinggal.</p>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">🚑</span>
+        <h4>Manfaat Kecelakaan Diperpanjang</h4>
+        <p>Perawatan lanjutan akibat kecelakaan kini bisa diklaim hingga 7 hari setelah kejadian (sebelumnya hanya perawatan pertama dalam 24 jam).</p>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">🕋</span>
+        <h4>Rawat Jalan Umroh/Haji Tanpa Co-payment</h4>
+        <p>Khusus MiUHC Syariah, biaya rawat jalan darurat saat Umroh/Haji di Arab Saudi ditanggung penuh sesuai tagihan (as charged), tanpa potongan co-payment.</p>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">🧮</span>
+        <h4>Pilihan Baru: SMART Lite</h4>
+        <p>Selain SMART, sekarang ada opsi <b>SMART Lite</b> dengan deductible lebih kecil — nasabah bisa atur sendiri keseimbangan antara besar deductible dan besar premi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGULAR VS SMART LITE VS SMART -->
+  <div class="info-section">
+    <h2>🤔 Regular vs SMART Lite vs SMART — Apa Bedanya?</h2>
+    <p class="section-sub"><b>Deductible</b> adalah nominal yang perlu ditanggung sendiri lebih dulu di setiap tahun polis, sebelum Manulife membayar sisa biaya rawat inap. Semakin besar deductible yang dipilih, semakin hemat preminya.</p>
+    <div class="table-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Tipe Plan</th><th>Deductible per Tahun Polis</th><th>Cocok Untuk</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Regular</b></td><td>Tidak ada — semua biaya sesuai manfaat polis langsung ditanggung sejak rupiah pertama.</td><td>Yang mengutamakan proteksi maksimal tanpa biaya tanggungan sendiri.</td></tr>
+          <tr><td><b>SMART Lite</b></td><td>Lebih kecil (mis. Diamond: Rp20 juta/tahun) — <span class="hl">premi lebih hemat</span> dari Regular.</td><td>Yang ingin premi lebih ringan namun deductible tetap terjangkau.</td></tr>
+          <tr><td><b>SMART</b></td><td>Lebih besar, 2× dari SMART Lite (mis. Diamond: Rp40 juta/tahun) — <span class="hl">premi paling hemat</span>.</td><td>Yang sudah punya dana darurat dan mau premi paling ringan.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="section-sub" style="margin-top:14px;margin-bottom:0">Nominal deductible berbeda-beda tiap plan — lihat kotak keterangan otomatis di kalkulator saat memilih Plan & Tipe Plan.</p>
+  </div>
+
+  <!-- NON PREFERRED HOSPITAL -->
+  <div class="info-section">
+    <h2>🏥 Rawat Inap di Luar Rumah Sakit Rekanan</h2>
+    <p class="section-sub">Sesuai POJK No. 36 Tahun 2025 (Penguatan Ekosistem Asuransi Kesehatan) dari OJK, skema untuk rawat inap di rumah sakit <b>non-rekanan</b> (Non-Preferred Hospitals) berubah dari co-payment menjadi deductible tahunan.</p>
+    <div class="table-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Ketentuan</th><th>Sebelumnya</th><th>Mulai 20 Sep 2026</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Skema</td><td>Co-payment 20% dari tagihan, maksimal Rp100 juta</td><td class="hl">Deductible tahunan, maksimal Rp50 juta/tahun</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="section-sub" style="margin-top:14px;margin-bottom:6px">Besaran deductible tambahan ini tergantung plan yang dipilih:</p>
+    <div class="table-scroll">
+      <table class="compare-table">
+        <thead><tr><th>Plan</th><th>Deductible Tambahan / Tahun Polis</th></tr></thead>
+        <tbody>
+          <tr><td>Diamond & Ruby</td><td class="hl">Tidak ada — bebas deductible</td></tr>
+          <tr><td>Emerald</td><td>Rp50 juta</td></tr>
+          <tr><td>Topaz, Topaz Indonesia, Jade, Jade Indonesia</td><td>Rp20 juta</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- INFO PENTING LAINNYA -->
+  <div class="info-section">
+    <h2>📌 Info Penting Lainnya</h2>
+    <ul class="callout-list">
+      <li>🔒 <b>Plan Sapphire ditutup untuk polis baru</b> mulai 20 September 2026. Nasabah existing Plan Sapphire tetap bisa memperpanjang polis, namun tidak bisa menambah Tanggungan baru ke Plan Sapphire.</li>
+      <li>🚫 <b>Manfaat Tambahan (Rider)</b> Rawat Jalan, Perawatan Gigi, dan Melahirkan sudah <b>tidak bisa ditambahkan lagi</b> ke polis baru maupun polis existing sejak 20 September 2026. Pemegang rider yang sudah ada tetap bisa memperpanjang, termasuk saat pemulihan polis (reinstatement).</li>
+      <li>♻️ <b>No Claim Discount (NCD)</b> akan hangus dan mulai dihitung dari nol lagi pada Ulang Tahun Polis berikutnya jika nasabah melakukan penurunan plan (downgrade).</li>
+      <li>⬆️ <b>Upgrade SMART → SMART Lite:</b> nasabah existing dengan plan SMART (polis terbit sebelum 20 September 2026) bisa pindah ke SMART Lite pada kategori plan yang sama, tanpa proses re-underwriting dan tanpa mengulang masa tunggu (waiting period), mulai periode Ulang Tahun Polis 20 September 2026.</li>
+      <li>🛏️ <b>Perawatan ICU</b> kini punya batas khusus untuk kondisi koma/vegetatif, yaitu maksimum 90 hari kalender dalam 1 tahun polis (sebelumnya sesuai tagihan tanpa batas hari).</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer-box">
+    <b>Disclaimer:</b> Seluruh nominal Premi/Kontribusi pada kalkulator ini adalah estimasi ilustratif berdasarkan Ilustrasi Premi resmi MiUltimate HealthCare & MiUltimate HealthCare Syariah 2026 dari Manulife Indonesia, berlaku untuk polis baru mulai 20 September 2026, dan belum memperhitungkan Diskon Premi/No Claim Discount (NCD) maupun hasil underwriting individual. Ringkasan manfaat di halaman ini disederhanakan untuk kemudahan pemahaman — ketentuan lengkap mengenai manfaat, pengecualian, syarat, dan batasan Pertanggungan/Asuransi mengacu pada Polis dan Addendum yang berlaku. Hubungi agen Manulife untuk Ilustrasi Proposal resmi dan penjelasan lebih lanjut.
+  </div>
+
+</div>
+
+<!-- MODAL FORM PROPOSAL -->
+<div class="modal-overlay" id="proposalModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 style="font-size:1rem;color:white">Form Penawaran Resmi MiUHC</h3>
+      <button onclick="closeModal()" style="background:none;border:none;color:white;font-size:1.2rem;cursor:pointer">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="proposalForm" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="custName" placeholder="Contoh: Budi Santoso" required>
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp</label>
+          <input type="tel" id="custPhone" placeholder="Contoh: 08123456789" required>
+        </div>
+        <div class="form-group">
+          <label>Kota Domisili</label>
+          <input type="text" id="custCity" placeholder="Contoh: Jakarta" required>
+        </div>
+        <button type="submit" class="btn-action btn-wa" style="margin-top:14px">Kirim Permintaan via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA — bersumber dari Ilustrasi Premi resmi MiUHC & MiUHC
+// Syariah 2026 (berlaku polis baru mulai 20 Sep 2026) dan
+// materi Training "MiUHC & MiUHC Syariah 2026 (Reprice & Revamp)".
+// ============================================================
+
+// Urutan plan dari yang paling terjangkau ke paling lengkap
+const PLAN_ORDER = ["Jade ID", "Jade", "Topaz ID", "Topaz", "Emerald", "Ruby", "Diamond"];
+
+const PLANS = [
+  { key: "Jade ID",   label: "Jade Indonesia",   area: "Indonesia",                                    room: "Rp500 ribu/hari (atau kamar Double Standard)", note: "Kelas kamar dasar, rumah sakit rekanan se-Indonesia. Plan paling terjangkau." },
+  { key: "Jade",      label: "Jade",              area: "Asia (kec. Singapura, Hong Kong, Jepang)",     room: "Rp500 ribu/hari (atau kamar Double Standard)", note: "Kelas kamar setara Jade Indonesia, ditambah cakupan rumah sakit di kawasan Asia." },
+  { key: "Topaz ID",  label: "Topaz Indonesia",   area: "Indonesia",                                    room: "Rp1 juta/hari (atau kamar Single Standard)",   note: "Kelas kamar lebih tinggi dari Jade, cakupan rumah sakit se-Indonesia." },
+  { key: "Topaz",     label: "Topaz",             area: "Asia (kec. Singapura, Hong Kong, Jepang)",     room: "Rp1 juta/hari (atau kamar Single Standard)",   note: "Kelas kamar setara Topaz Indonesia, ditambah cakupan Asia." },
+  { key: "Emerald",   label: "Emerald",           area: "Seluruh Dunia (kec. Amerika Serikat)",         room: "Rp1 juta/hari (atau kamar Single Standard)",   note: "Kelas kamar setara Topaz, cakupan meluas ke seluruh dunia kecuali AS." },
+  { key: "Ruby",      label: "Ruby",              area: "Seluruh Dunia (kec. Amerika Serikat)",         room: "Rp2 juta/hari (atau kamar Single Standard)",   note: "Kelas kamar lebih tinggi, cakupan seluruh dunia kecuali Amerika Serikat." },
+  { key: "Diamond",   label: "Diamond",           area: "Seluruh Dunia (kec. Amerika Serikat)",         room: "Rp3 juta/hari (atau kamar Single Standard)",   note: "Kelas kamar tertinggi & plan paling lengkap, cakupan seluruh dunia kecuali AS." }
+];
+
+// Deductible tahunan untuk SMART & SMART Lite per plan (Rupiah)
+const DEDUCTIBLE = {
+  "Diamond":  { smartLite: 20000000, smart: 40000000 },
+  "Ruby":     { smartLite: 15000000, smart: 30000000 },
+  "Emerald":  { smartLite: 10000000, smart: 20000000 },
+  "Topaz":    { smartLite: 8000000,  smart: 16000000 },
+  "Topaz ID": { smartLite: 8000000,  smart: 16000000 },
+  "Jade":     { smartLite: 5000000,  smart: 10000000 },
+  "Jade ID":  { smartLite: 5000000,  smart: 10000000 }
+};
+
+// PREMIUM_DATA[usia][genderIdx][tierIdx][planIdx] = Premi Tahunan (Rupiah)
+// genderIdx: 0 = Pria, 1 = Wanita
+// tierIdx:   0 = Regular, 1 = SMART Lite, 2 = SMART
+// planIdx mengikuti urutan PLAN_ORDER di atas
+// Nominal identik untuk MiUHC (Konvensional) & MiUHC Syariah — hanya istilah "Premi"/"Kontribusi" yang berbeda.
+const PREMIUM_DATA = [[[[8873300,11265200,11408200,14644700,19919100,35372000,51947300],[7708700,9575400,9910900,12448000,16931300,30066200,44155200],[5767600,6759100,7415300,8786800,11951500,21223200,31168400]],[[9065900,11290100,11387900,14677200,20321300,35257000,50256300],[7876000,9596600,9893200,12475600,17273100,29968500,42717900],[5892800,6774100,7402100,8806300,12192800,21154200,30153800]]],[[[8195800,10405100,10537100,13526700,19000600,34421800,50963600],[7120100,8844400,9154100,11497700,16150500,29258500,43319100],[5327300,6243100,6849100,8116000,11400400,20653100,30578200]],[[8734700,10877800,10972000,14141100,19880800,34816200,49805300],[7588300,9246100,9531900,12020000,16898700,29593800,42334500],[5677600,6526700,7131800,8484700,11928500,20889700,29883200]]],[[[8183500,10389400,10521200,13506300,18983800,34404000,50945700],[7109400,8831000,9140300,11480400,16136200,29243400,43303800],[5319300,6233600,6838800,8103800,11390300,20642400,30567400]],[[8721400,10861000,10955000,14119400,19863200,34802600,49798400],[7576700,9231900,9517200,12001500,16883700,29582200,42328600],[5668900,6516600,7120800,8471600,11917900,20881600,29879000]]],[[[6642000,8432500,8539500,10962300,15335500,27734200,41034100],[5770200,7167600,7418700,9318000,13035200,23574100,34879000],[4317300,5059500,5550700,6577400,9201300,16640500,24620500]],[[6855000,8536700,8610700,11097800,15523100,27118300,38760600],[5955300,7256200,7480600,9433100,13194700,23050600,32946500],[4455800,5122000,5597000,6658700,9313900,16271000,23256400]]],[[[6636800,8425900,8532700,10953600,15325100,27723400,41023300],[5765700,7162000,7412800,9310600,13026400,23564900,34869800],[4313900,5055500,5546300,6572200,9195100,16634000,24614000]],[[6856200,8533700,8626700,11094000,15519200,27114400,38757100],[5956300,7253600,7494500,9429900,13191300,23047200,32943600],[4456500,5120200,5607400,6656400,9311500,16268600,23254300]]],[[[6635700,8419400,8545900,10945100,15321700,27719700,41016000],[5764800,7156500,7424200,9303400,13023400,23561700,34863600],[4313200,5051600,5554800,6567100,9193000,16631800,24609600]],[[6888600,8533700,8702000,11094000,15519200,27114400,38760600],[5984500,7253600,7559900,9429900,13191300,23047200,32946500],[4477600,5120200,5656300,6656400,9311500,16268600,23256400]]],[[[6656000,8444900,8604600,10978300,15368100,27814200,41157400],[5782400,7178200,7475300,9331600,13062900,23642100,34983800],[4326400,5066900,5593000,6587000,9220900,16688500,24694400]],[[6972900,8566700,8785100,11136500,15577400,27214000,38898500],[6057700,7281700,7632100,9466000,13240800,23131900,33063700],[4532400,5140000,5710300,6681900,9346400,16328400,23339100]]],[[[6661600,8447000,8610800,10980400,15372500,27818800,41163500],[5787300,7180000,7480600,9333300,13066600,23646000,34989000],[4330000,5068200,5597000,6588200,9223500,16691300,24698100]],[[7048500,8568400,8819600,11138200,15580600,27218100,38903500],[6123400,7283100,7662000,9467500,13243500,23135400,33068000],[4581500,5141000,5732700,6682900,9348400,16330900,23342100]]],[[[6665600,8448900,8617000,10982500,15376700,27823200,41169600],[5790700,7181600,7486000,9335100,13070200,23649700,34994200],[4332600,5069300,5601100,6589500,9226000,16693900,24701800]],[[7061300,8570000,8868300,11139800,15583700,27222200,38908500],[6134500,7284500,7704300,9468800,13246100,23138900,33072200],[4589800,5142000,5764400,6683900,9350200,16333300,23345100]]],[[[6669500,8451000,8623100,10984800,15381100,27827800,41175700],[5794100,7183400,7491300,9337100,13074000,23653600,34999300],[4335200,5070600,5605000,6590900,9228700,16696700,24705400]],[[7091900,8571800,8916700,11141500,15586800,27226200,38913400],[6161100,7286000,7746400,9470300,13248800,23142300,33076400],[4609700,5143100,5795900,6684900,9352100,16335700,23348000]]],[[[6673400,8453100,8629300,10987000,15385400,27832300,41181800],[5797500,7185200,7496700,9339000,13077600,23657500,35004500],[4337700,5071900,5609000,6592200,9231200,16699400,24709100]],[[7123300,8573400,8944400,11143100,15589900,27230400,38918500],[6188400,7287400,7770500,9471700,13251400,23145800,33080700],[4630100,5144000,5813900,6685900,9353900,16338200,23351100]]],[[[6685200,8455100,8648700,10990100,15389800,27838600,41189800],[5807800,7186900,7513600,9341600,13081300,23662800,35011300],[4345400,5073100,5621700,6594100,9233900,16703200,24713900]],[[7167500,8575000,8966800,11145900,15594100,27235400,38924300],[6226800,7288800,7789900,9474000,13255000,23150100,33085700],[4658900,5145000,5828400,6687500,9356500,16341200,23354600]]],[[[6712800,8457200,8668900,10993300,15394100,27845000,41197900],[5831700,7188600,7531100,9344300,13085000,23668300,35018200],[4363300,5074300,5634800,6596000,9236500,16707000,24718700]],[[7245400,8576800,8980400,11148600,15598100,27240500,38930300],[6294400,7290300,7801700,9476300,13258400,23154400,33090800],[4709500,5146100,5837300,6689200,9358900,16344300,23358200]]],[[[6740700,8459300,8670000,10996600,15398400,27851500,41205800],[5856000,7190400,7532100,9347100,13088600,23673800,35024900],[4381500,5075600,5635500,6598000,9239000,16710900,24723500]],[[7319900,8578400,8995400,11151400,15602300,27245600,38936200],[6359200,7291600,7814800,9478700,13262000,23158800,33095800],[4757900,5147000,5847000,6690800,9361400,16347400,23361700]]],[[[6771100,8461300,8674400,10999700,15402700,27857800,41213800],[5882400,7192100,7535900,9349700,13092300,23679100,35031700],[4401200,5076800,5638400,6599800,9241600,16714700,24728300]],[[7393800,8580000,9010600,11154100,15606500,27250900,38942200],[6423400,7293000,7828000,9481000,13265500,23163300,33100900],[4806000,5148000,5856900,6692500,9363900,16350500,23365300]]],[[[6803200,8467100,8683200,11007100,15417100,27877100,41242900],[5910300,7197100,7543500,9356100,13104600,23695600,35056500],[4422100,5080300,5644100,6604300,9250300,16726300,24745700]],[[7501100,8582600,9025700,11157300,15613800,27266100,38966000],[6516600,7295200,7841100,9483700,13271700,23176200,33121100],[4875700,5149600,5866700,6694400,9368300,16359700,23379600]]],[[[7016400,8867800,9061700,11014800,15421300,27902000,41543000],[6095500,7537600,7872400,9362600,13108100,23716700,35311600],[4560700,5320700,5890100,6608900,9252800,16741200,24925800]],[[8256800,9356500,9446300,11555200,16453700,29476000,42478400],[7173100,7953000,8206500,9821900,13985600,25054600,36106600],[5366900,5613900,6140100,6933100,9872200,17685600,25487000]]],[[[7021800,8883300,9077500,11023500,15434900,27998600,41843000],[6100200,7550800,7886100,9370000,13119700,23798800,35566600],[4564200,5330000,5900400,6614100,9260900,16799200,25105800]],[[8343400,9365500,9564900,11566300,17041100,29513900,42534300],[7248300,7960700,8309500,9831400,14485000,25086800,36154200],[5423200,5619300,6217200,6939800,10224700,17708300,25520600]]],[[[7025100,8896100,9090700,11039200,15449200,28014300,42143000],[6103100,7561700,7897600,9383300,13131800,23812200,35821600],[4566300,5337700,5909000,6623500,9269500,16808600,25285800]],[[8409000,9371900,9651300,11574500,17052700,29782500,42564900],[7305300,7966100,8384600,9838300,14494800,25315100,36180200],[5465900,5623100,6273300,6944700,10231600,17869500,25538900]]],[[[7157700,8972800,9169100,11064200,15675400,28895500,42443100],[6218300,7626900,7965700,9404600,13324100,24561200,36076700],[4652500,5383700,5959900,6638500,9405200,17337300,25465900]],[[8512500,9382300,9800800,11644000,17091400,29936100,42623500],[7395200,7975000,8514400,9897400,14527700,25445700,36230000],[5533100,5629400,6370500,6986400,10254800,17961700,25574100]]],[[[7211800,9018000,9215300,11104300,16387900,28935700,42743200],[6265300,7665300,8005800,9438700,13929700,24595300,36331700],[4687700,5410800,5989900,6662600,9832700,17361400,25645900]],[[8698900,9542400,9911600,11681300,17223900,30080200,43346900],[7557200,8111000,8610700,9929100,14640300,25568200,36844900],[5654300,5725400,6442500,7008800,10334300,18048100,26008100]]],[[[8069900,10001300,10220100,12436100,17100500,31191800,43043100],[7010700,8501100,8878700,10570700,14535400,26513000,36586700],[5245400,6000800,6643100,7461700,10260300,18715100,25825900]],[[9324700,10181500,11076800,12890600,19263400,34286900,47116000],[8100900,8654300,9623000,10957000,16373900,29143900,40048600],[6061100,6108900,7199900,7734400,11558000,20572100,28269600]]],[[[8102600,10037600,10257000,12481500,17193100,31598700,43167800],[7039100,8532000,8910800,10609300,14614200,26858900,36692600],[5266700,6022600,6667100,7488900,10315900,18959200,25900700]],[[9524500,10394200,11212100,12924900,19639300,34734700,48143300],[8274400,8835100,9740500,10986200,16693400,29524500,40921800],[6190900,6236500,7287900,7754900,11783600,20840800,28886000]]],[[[8144000,10105200,10326100,12565500,17657600,32005600,44536600],[7075100,8589400,8970800,10680700,15009000,27204800,37856100],[5293600,6063100,6712000,7539300,10594600,19203400,26722000]],[[9662300,10557500,11443600,13008500,19962300,34986200,48907000],[8394100,8973900,9941600,11057200,16968000,29738300,41571000],[6280500,6334500,7438300,7805100,11977400,20991700,29344200]]],[[[8253500,10127400,10349000,12593200,18011900,32547900,45345700],[7170200,8608300,8990700,10704200,15310100,27665700,38543800],[5364800,6076400,6726900,7555900,10807100,19528700,27207400]],[[9747000,10681000,11652100,13040000,20205500,35394400,49472900],[8467700,9078900,10122800,11084000,17174700,30085200,42052000],[6335600,6408600,7573900,7824000,12123300,21236600,29683700]]],[[[8474200,10241400,10465400,12734800,18053900,33690000,46253700],[7362000,8705200,9091800,10824600,15345800,28636500,39315600],[5508200,6144800,6802500,7640900,10832300,20214000,27752200]],[[9993900,10915300,11810600,13079600,20516900,35855800,50307000],[8682200,9278000,10260500,11117700,17439400,30477400,42761000],[6496000,6549200,7676900,7847800,12310100,21513500,30184200]]],[[[8584600,10245700,10469700,12740100,18848400,33843200,46320400],[7457900,8708800,9095600,10829100,16021100,28766700,39372300],[5580000,6147400,6805300,7644100,11309000,20305900,27792200]],[[10095600,11050100,12514000,13740800,21526000,36312600,50326800],[8770500,9392600,10871500,11679700,18297100,30865700,42777800],[6562100,6630100,8134100,8244500,12915600,21787600,30196100]]],[[[8781700,10308900,10534400,12818800,18867900,33996300,46592200],[7629100,8762600,9151800,10896000,16037700,28896900,39603400],[5708100,6185300,6847400,7691300,11320700,20397800,27955300]],[[10259700,11231100,12722500,13965600,21694100,36741900,51161700],[8913100,9546500,11052700,11870800,18440000,31230600,43487400],[6668800,6738700,8269600,8379400,13016500,22045100,30697000]]],[[[8970000,10360900,10587500,12883500,19056600,34035300,46837800],[7792700,8806800,9197900,10951000,16198100,28930000,39812100],[5830500,6216500,6881900,7730100,11434000,20421200,28102700]],[[10441100,11410400,12950300,14188700,21862200,37167400,51976400],[9070700,9698800,11250600,12060400,18582900,31592300,44179900],[6786700,6846200,8417700,8513200,13117300,22300400,31185800]]],[[[9173100,10425900,10851500,12964500,19247100,34074300,47132000],[7969100,8862000,9427300,11019800,16360100,28963200,40062200],[5962500,6255500,7053500,7778700,11548300,20444600,28279200]],[[10670800,11813100,13393300,14689400,22091500,37887300,53014200],[9230200,10041200,11635400,12486000,18777800,32204200,45062100],[6829300,7087900,8705600,8813600,13254900,22732400,31808500]]],[[[9325000,10430500,10936000,12970000,19439600,34113300,47180200],[8101100,8865900,9500700,11024500,16523700,28996300,40103200],[6061300,6258300,7108400,7782000,11663800,20468000,28308100]],[[10900400,11817200,13427800,14694500,22094600,38136600,53113500],[9428900,10044600,11665400,12490300,18780400,32416100,45146500],[6976300,7090300,8728100,8816700,13256800,22882000,31868100]]],[[[9432300,10473600,11551400,13734100,20649800,34401800,47228400],[8194300,8902600,10035300,11674000,17552300,29241500,40144100],[6131000,6284200,7508400,8240500,12389900,20641100,28337000]],[[10986000,11837400,13568100,14747900,22753100,38944900,53439200],[9502900,10061800,11787300,12535700,19340200,33103200,45423300],[7031000,7102400,8819300,8848700,13651900,23366900,32063500]]],[[[9667600,10636300,11842100,14060100,20977300,34513200,47983200],[8362500,9040900,10287800,11951100,17830700,29336200,40785700],[6187300,6381800,7697400,8436100,12586400,20707900,28789900]],[[11027100,11849200,13708400,14984000,23301600,39583600,54539200],[9538400,10071800,11909200,12736400,19806400,33646100,46358300],[7057300,7109500,8910500,8990400,13981000,23750200,32723500]]],[[[9724900,10669400,12150800,14446000,21042800,34624700,48130500],[8412000,9069000,10556000,12279100,17886400,29431000,40910900],[6223900,6401600,7898000,8667600,12625700,20774800,28878300]],[[11453800,12347300,14294200,15694700,23931500,41310200,59231800],[9907500,10495200,12418100,13340500,20341800,35113700,50347000],[7330400,7408400,9291200,9416800,14358900,24786100,35539100]]],[[[9773800,10779400,12497900,14773800,21268400,34736000,48688800],[8454300,9162500,10857500,12557700,18078100,29525600,41385500],[6255200,6467600,8123600,8864300,12761000,20841600,29213300]],[[12077200,13087200,15541400,17013500,24507800,42426800,60021500],[10446800,11124100,13501600,14461500,20831600,36062800,51018300],[7729400,7852300,10101900,10208100,14704700,25456100,36012900]]],[[[9849000,10813900,12817400,14839200,21336500,35143800,48879500],[8519400,9191800,11135100,12613300,18136000,29872200,41547600],[6303400,6488300,8331300,8903500,12801900,21086300,29327700]],[[12127700,13131600,15618800,17071000,25178200,44060000,61359700],[10490500,11161900,13568800,14510400,21401500,37451000,52155700],[7761700,7879000,10152200,10242600,15106900,26436000,36815800]]],[[[9888500,10851300,13385100,15275300,21412800,36645800,49893100],[8553500,9223600,11628300,12984000,18200900,31148900,42409200],[6328600,6510800,8700300,9165200,12847700,21987500,29935900]],[[12344700,13468800,15674600,17196800,26388900,45282400,66095700],[10678200,11448500,13617300,14617300,22430600,38490000,56181300],[7900600,8081300,10188500,10318100,15833300,27169400,39657400]]],[[[10006200,10930300,13867300,15564400,21569700,36933300,51146200],[8655400,9290800,12047200,13229700,18334200,31393300,43474300],[6404000,6558200,9013700,9338600,12941800,22160000,30687700]],[[12664800,13566500,15697600,17321500,26587000,47622500,66620500],[10907600,11531500,13637300,14723300,22599000,40479100,56627400],[7978800,8139900,10203400,10392900,15952200,28573500,39972300]]],[[[10297900,11107200,14388100,15892400,22522500,38584000,53450700],[8869100,9441100,12499700,13508500,19144100,32796400,45433100],[6487700,6664300,9352300,9535400,13513500,23150400,32070400]],[[13315500,14237400,16347300,18091500,27917300,50041600,70026200],[11468000,12101800,14201700,15377800,23729700,42535400,59522300],[8388800,8542400,10625700,10854900,16750400,30025000,42015700]]],[[[10547700,11539700,14947300,16509600,23405100,40111600,54641900],[9084200,9808700,12985500,14033200,19894400,34094900,46445600],[6645100,6923800,9715700,9905800,14043100,24067000,32785100]],[[13589900,14867900,17375300,18983100,28103600,51443300,73226400],[11704300,12637700,15094800,16135700,23888100,43726800,62242400],[8561600,8920700,11293900,11389900,16862200,30866000,43935800]]],[[[11128900,12315500,15263500,16984600,23796600,41706900,55850200],[9668200,10468200,13260200,14436900,20227100,35450900,47472700],[7233800,7389300,9921300,10190800,14278000,25024100,33510100]],[[14275400,15857000,17952800,19717800,29239400,52192100,75769200],[12401800,13478500,15596500,16760100,24853500,44363300,64403800],[9279000,9514200,11669300,11830700,17543600,31315300,45461500]]],[[[11664300,12861100,16258900,18245300,25405700,43509000,58233800],[10133400,10932000,14124900,15508500,21594800,36982700,49498700],[7581800,7716700,10568300,10947200,15243400,26105400,34940300]],[[14880700,16561000,18344900,20593200,31926100,55327400,76096000],[12927600,14076900,15937100,17504200,27137200,47028300,64681600],[9672500,9936600,11924200,12355900,19155700,33196400,45657600]]],[[[12139400,13365500,17011000,19267600,26402100,45232900,60552900],[10546100,11360700,14778300,16377500,22441800,38448000,51470000],[7890600,8019300,11057200,11560600,15841300,27139700,36331700]],[[15390400,17208000,18691300,21397800,33178100,56535700,79122300],[13370400,14626800,16238100,18188100,28201400,48055300,67254000],[10003800,10324800,12149300,12838700,19906900,33921400,47473400]]],[[[12578600,13892400,17840200,20367000,27446200,47034600,62972600],[10927700,11808500,15498700,17312000,23329300,39979400,53526700],[8176100,8335400,11596100,12220200,16467700,28220800,37783600]],[[16149800,18273200,19270700,22397600,34667600,58551700,84170800],[14030200,15532200,16741400,19038000,29467500,49768900,71545200],[10497400,10963900,12526000,13438600,20800600,35131000,50502500]]],[[[13333000,14754300,18404700,21383200,29158800,50002900,66964200],[11583100,12541200,15989100,18175700,24785000,42502500,56919600],[8666500,8852600,11963100,12829900,17495300,30001700,40178500]],[[16827600,18905400,20038100,23508600,35373300,61094100,87112800],[14619000,16069600,17408100,19982300,30067300,51930000,74045900],[10937900,11343200,13024800,14105200,21224000,36656500,52267700]]],[[[14210900,15676100,19015700,22700400,30080900,53164600,71216700],[12345700,13324700,16519900,19295300,25568800,45189900,60534200],[9237100,9405700,12360200,13620200,18048500,31898800,42730000]],[[17511300,19560700,20845800,24323200,35800600,63823500,90159800],[15212900,16626600,18109800,20674700,30430500,54250000,76635800],[11382300,11736400,13549800,14593900,21480400,38294100,54095900]]],[[[15217200,16775200,19936600,24056100,33326400,57757500,76043500],[13220000,14258900,17319900,20447700,28327400,49093900,64637000],[9891200,10065100,12958800,14433700,19995800,34654500,45626100]],[[18175400,20320700,21647600,25268500,38876400,64496700,97594200],[15789900,17272600,18806300,21478200,33044900,54822200,82955100],[11814000,12192400,14070900,15161100,23325800,38698000,58556500]]],[[[16208300,17829100,21447100,25709400,34934600,61915100,82281300],[14081000,15154800,18632200,21853000,29694400,52627900,69939100],[10535400,10697500,13940600,15425600,20960800,37149100,49368800]],[[18982100,21032500,22392400,26153400,40227000,67953000,102696100],[16490700,17877600,19453400,22230400,34193000,57760100,87291700],[12338400,12619500,14555100,15692000,24136200,40771800,61617700]]],[[[17192800,18954600,23144300,26885800,37186500,65310600,87515800],[14936200,16111400,20106600,22852900,31608500,55514000,74388400],[11175300,11372800,15043800,16131500,22311900,39186400,52509500]],[[19707400,21770000,23857600,27070600,41631600,71576800,106299400],[17120800,18504500,20726300,23010000,35386900,60840300,90354500],[12809800,13062000,15507400,16242400,24979000,42946100,63779600]]],[[[18276600,20158900,24533000,28081700,39892600,68323300,93093500],[15877800,17135100,21313100,23869400,33908700,58074800,79129500],[11879800,12095300,15946500,16849000,23935600,40994000,55856100]],[[20553800,22537600,25407200,28024900,42456000,77309900,110034600],[17856100,19157000,22072500,23821200,36087600,65713400,93529400],[13360000,13522600,16514700,16814900,25473600,46385900,66020800]]],[[[20055700,22200200,25123200,28617700,42887000,72685500,97350700],[17423400,18870200,21825800,24325000,36454000,61782700,82748100],[13036200,13320100,16330100,17170600,25732200,43611300,58410400]],[[21148500,23335600,26384600,29544800,44601300,80029500,113902300],[18372800,19835300,22921600,25113100,37911100,68025100,96817000],[13746500,14001400,17150000,17726900,26760800,48017700,68341400]]],[[[22966200,25425400,28299100,32108700,48562900,82438800,110351100],[19951900,21611600,24584800,27292400,41278500,70073000,93798500],[14928000,15255200,18394400,19265200,29137700,49463300,66210700]],[[23918500,26434000,29403300,33745900,49653900,90498000,129764600],[20779200,22468900,25544100,28684000,42205800,76923300,110299900],[15547000,15860400,19112100,20247500,29792300,54298800,77858800]]],[[[24438500,27223700,29358000,33108700,51910300,88272400,118179100],[21230900,23140100,25725000,28142400,44123800,75031500,100452300],[15885000,16334200,19669900,19865200,31146200,52963400,70907500]],[[25123100,27803600,30602000,35665000,52207000,95172500,136480400],[21825700,23633100,26815000,30315300,44376000,80896600,116008300],[16330000,16682200,20503300,21399000,31324200,57103500,81888200]]],[[[25929300,29142000,31492800,35441500,55192600,94522100,126562900],[22526100,24770700,27577600,30125300,46913700,80343800,107578500],[16854000,17485200,21052300,21264900,33115600,56713300,75937700]],[[26224700,29249700,32057900,37520100,54906300,98463600,143555900],[22782700,24862200,28211000,31892100,46670400,83694100,122022500],[17046100,17549800,21799400,22512100,32943800,59078200,86133500]]],[[[27623600,31191900,33758600,37936200,58338200,100367900,135544800],[23998000,26513100,29549400,32245800,49587500,85312700,115213100],[17955300,18715100,22534100,22761700,35002900,60220700,81326900]],[[27587700,30776600,33176900,38798000,57261400,103564500,151005000],[23966800,26160100,29320100,32978300,48672200,88029800,128354300],[17932000,18466000,22892100,23278800,34356800,62138700,90603000]]],[[[29365300,33280700,36529200,40597100,61300600,103854800,145157900],[25511100,28288600,31873800,34507600,52105500,88276600,123384200],[19087400,19968400,24114700,24358300,36780400,62312900,87094700]],[[28554700,31819400,35620700,40810200,58396900,107111800,158831700],[24806900,27046500,31353400,34688700,49637400,91045000,135047400],[18560600,19091600,24241200,24486100,35038100,64267100,95406900]]],[[[31131700,35261300,39165000,43397900,63359000,108597000,153101200],[27045700,29972100,34145000,36888200,53855200,92307500,130136000],[20235600,21156800,25778300,26038700,38015400,65158200,91860700]],[[29955000,33562500,37662800,42840000,60661900,114801300,167349800],[26023400,28528100,33143300,36414000,51562600,97581100,143086400],[19470800,20137500,25610700,25704000,36397100,68880800,102647300]]],[[[32035300,36176400,40869600,45036400,65417200,114123600,159405600],[27830700,30749900,35575400,38280900,55604600,97005100,135589100],[20822900,21705800,26751600,27021800,39250300,68474200,95894800]],[[31329600,35281100,39712100,44310800,62140900,117438500,171156600],[27217600,29989000,34690300,37664200,52819800,99822700,146679000],[20364200,21168700,26320600,26586500,37284500,70463100,105883100]]],[[[32752300,36833500,41603900,45854500,66541800,120963600,166080900],[28453600,31308500,36299400,38976300,56560500,103021900,141888900],[21289000,22100100,27458600,27512700,39925100,73119100,101568800]],[[32115500,35865900,40527600,45045000,63155200,119226900,173724400],[27900400,30486000,35363500,38288300,53681900,101382900,149102400],[20875100,21519500,26756700,27027000,37893100,71642900,108065700]]],[[[34212400,38504800,43140300,47183800,69157900,122573900,175305700],[29722000,32729100,37472900,40106200,58784200,104541600,150594700],[22238100,23102900,28027200,28310300,41494700,74487800,109409800]],[[33575700,37250200,41158700,45469700,63706800,120169900,175053600],[29168900,31662700,35852600,38649200,54150800,102272800,150356900],[21824200,22350100,27009000,27281800,38224100,72444400,109195600]]],[[[35518100,39618000,44564300,49115900,71774300,128459700,184530400],[30856400,33677000,38715200,41748500,61008200,110096300,159300600],[23086800,23775300,28966800,29469500,43064600,79490700,117250800]],[[33723900,37269200,43332600,45587000,63798900,120269100,180192400],[29297600,31678800,37237400,38749000,54229100,102366500,155206600],[21920500,22361500,27078700,27352200,38279300,72528700,113563500]]],[[[37291300,41202000,47330300,52719200,76624800,135367000,193755100],[32396800,35171900,41118200,44811300,65131100,116615100,168006400],[24239300,25121700,30764700,31631500,45974900,85362000,125091800]],[[34745100,38325600,45506500,51048600,68611800,122461200,185331100],[30184800,32576800,39533800,43391300,58320000,104435300,160056200],[22584300,22995400,29579200,30629200,41167100,74392000,117931400]]],[[[38984800,42984200,48165200,54589900,81475400,142274300,201110900],[33868000,36853900,41843500,46401400,69467400,123133900,174879000],[25340100,26636600,31307400,32753900,49454100,91233200,131159200]],[[35290100,39004700,46169500,52784300,72626200,124322500,188085600],[30658300,33154000,40109800,44866700,61732300,106191900,162655800],[22938600,23402800,30010200,31670600,43575700,75974100,120272800]]],[[[40084100,44124600,50323200,57361800,83448800,145502300,207059800],[34823100,37930100,43718300,48757500,71329800,126180300,180052000],[26054700,27605900,32710100,34417100,51131500,93977000,135039000]],[[36380300,39991100,47929600,55397600,76109600,127087900,192181700],[31605400,34029100,41638800,47088000,64693200,108801700,166521500],[23647200,24092400,31154200,33238600,45665800,78324700,123754400]]],[[[40902500,45017800,52401500,59873700,86770700,151767100,211718500],[35534000,38773000,45523800,50892600,74464900,131971400,184103100],[26586600,28365100,34061000,35924200,53955100,98978600,138077300]],[[36909800,40736100,49399200,57731500,79179800,129024700,200217900],[32065400,34732200,42915600,49071800,67302800,110629600,174102500],[23991400,24725700,32109500,34638900,47507900,79971000,130576800]]],[[[43858500,48348000,54272100,62465600,92927200,158032200,222947100],[38102100,41915900,47148900,53095800,80275000,137419300,193867100],[28508000,31195800,35276900,37479400,59188100,103064500,145400300]],[[39382600,43665300,51131100,60409700,85996400,137855800,208254500],[34213600,37496600,44420100,51348200,73734100,118963900,181090900],[25598700,27215500,33235200,36245800,53296900,87477400,135818200]]],[[[46912100,51627600,59031100,67220000,99033600,169022100,238106100],[40754900,44893600,51283300,57498900,86038000,146975700,207048800],[30492900,33670200,38370200,41297000,64378600,110231800,155286600]],[[41764200,46921800,54122500,64598400,88747700,147358000,222318000],[36282600,40569900,47018900,55024700,76330600,127931600,193320000],[27146700,29983500,35179600,39068600,55635500,95554300,144990000]]],[[[51390400,56615800,64299500,72269200,102625800,184423000,259599200],[44787200,49231200,55860200,62264100,89239800,160367800,225738400],[33781800,36923400,41794700,45588800,66929900,120275900,169303800]],[[45897000,51361500,57285500,68977300,96156300,160681600,233902800],[39873000,44662200,49766800,59157300,83322500,139723200,203393700],[29833100,33496600,37235600,42790700,61932900,104792400,152545300]]],[[[55867100,61700500,68203100,76177800,106217800,190699300,268986200],[49012100,53652600,59251400,65952800,92363300,165825500,233901100],[37587000,40239500,44332000,48911100,69272500,124369100,175425800]],[[50057800,55893600,61360700,73330900,104361500,174111800,245487400],[43529500,48603200,53307100,63266100,90749100,151401600,213467300],[32649100,36452400,39884500,46491300,68061800,113551200,160100400]]],[[[57994500,63832800,72216400,80409400,109809700,196975900,278373300],[51019800,55506800,62738000,69921200,95486700,171283400,242063700],[39395300,41630100,46940700,52440900,71615000,128462500,181547800]],[[51852000,57720700,64908500,76881900,107448400,178919000,257072200],[45222800,50191900,56389300,66617300,93433400,155581700,223541100],[34174200,37643900,42190500,49509600,70075000,116686300,167655800]]],[[[61449200,67653100,75825700,84004600,113401700,203252400,287760600],[54280200,58828800,65873600,73047500,98610200,176741200,250226600],[42331800,44121600,49286700,54785700,73957600,132555900,187670000]],[[54591500,60996000,69235800,80470900,111418400,188141000,268657000],[47808200,53040000,60148600,69974700,96885500,163600900,233614800],[36502800,39780000,45003300,52481000,72664100,122700700,175211100]]],[[[63644600,70021200,77698600,85314600,116993800,209528700,297147700],[56352100,60888000,67500700,74186600,101733700,182198900,258389300],[44197900,45666000,50504100,55640000,76300300,136649100,193792000]],[[56970800,63529100,70257100,81408000,112904800,191759500,280241900],[50053700,55242700,61035900,70789600,98178100,166747400,243688600],[38525200,41432100,45667100,53092200,73633600,125060500,182766400]]],[[[65757700,72389200,82322300,90244000,120585700,212228700,302003100],[58346300,62947100,71751700,78473100,104857100,184546700,262611400],[45994000,47210300,54134000,58854800,78642800,138410000,196958600]],[[58891300,65556900,73853900,85223900,116071300,195377900,287140700],[51866200,57006000,64160600,74107700,100931600,169893800,249687600],[40157600,42754500,48005000,55580800,75698700,127420300,187265700]]],[[[67861000,74757200,85532600,93631200,124378500,217970500,305137700],[60331300,65006300,74781400,81418400,108155200,189539600,265337100],[47781900,48754700,56862700,61063800,81116400,142154700,199002800]],[[60951600,67676500,75980400,87979600,119336400,204874800,298412400],[53810600,58849100,66008000,76504000,103770800,178152000,259489000],[41908900,44136800,49387300,57378000,77828000,133614000,194616700]]],[[[70002000,77125300,89653700,98707400,130306000,221324300,310836600],[62298000,67065500,78670700,85832500,113309600,192455900,270292700],[49457900,50299100,60365600,64374300,84982200,144342000,202719600]],[[64007000,70987700,79444500,92283700,124615400,211760800,303538900],[56694100,61728400,69035700,80246700,108361200,184139800,263946900],[44506000,46296300,51687800,60185000,81270900,138104900,197960100]]],[[[72066900,79493300,93324100,103341200,135527600,225932000,316713000],[64135600,69124600,82134600,89861900,117850100,196462600,275402600],[50916800,51843500,63485500,67396400,88387600,147347000,206552000]],[[66778300,73920500,82550800,96096800,129142200,215737900,308779800],[59309500,64278700,71967300,83562400,112297600,187598200,268504200],[46861600,48209000,54328200,62671800,84223200,140698600,201378200]]],[[[73423700,81064900,96193200,105384500,137197800,231886600,323560000],[65343100,70491200,84842300,91638700,119302400,201640500,281356500],[51875400,52868400,65924200,68729000,89476800,151230400,211017400]],[[67768200,74901700,83500900,97372300,130189900,220644800,314874400],[60243800,65131900,72864000,84671600,113208600,191865100,273803800],[47703000,48848900,55135800,63503700,84906400,143898800,205352800]]],[[[75029300,82889500,97319100,107756400,139154100,237841200,336456100],[66772000,72077800,85904900,93701200,121003600,206818400,292570500],[53009800,54058400,66881200,70275900,90752700,155113800,219427900]],[[68836500,75990500,84294000,98787600,131352300,229719400,326694800],[61251900,66078700,73612500,85902300,114219400,199756000,284082400],[48611000,49559000,55809900,64426700,85664600,149817000,213061800]]],[[[77404500,85595500,101149700,111274200,142395900,248072300,349352200],[68885800,74430900,89520000,96760200,123822500,215715100,303784500],[54687900,55823200,70137200,72570100,92866800,161786300,227838400]],[[70500100,77714200,85509200,101028400,133542400,238794300,338515000],[62741300,67577600,74759300,87850800,116123800,207647200,294360900],[49809900,50683200,56842800,65888000,87092800,155735400,220770700]]],[[[79508500,87980900,103729000,114375100,144934600,258303200,362248300],[70758300,76505100,91954300,99456600,126030100,224611500,314998500],[56174500,57378800,72329700,74592500,94522600,168458600,236248900]],[[71104300,79034100,85582100,102744600,134952000,247869000,350335300],[63279000,68725300,74828100,89343200,117349600,215538300,304639400],[50236700,51544000,56904800,67007400,88012200,161653700,228479600]]],[[[82432500,91258300,107741300,118635800,150333500,268534200,375144400],[73360400,79355100,95740900,103161600,130724800,233508000,326212500],[58240300,59516300,75740100,77371200,98043600,175131000,244659300]],[[73734300,81882200,88615100,106446800,139814800,256943800,362155600],[65619500,71201900,77690500,92562400,121578100,223429400,314917900],[52094900,53401400,59482800,69421800,91183600,167572100,236188500]]],[[[87657600,97055700,113148000,126172500,159487900,278765200,390248100],[78010500,84396300,100695600,109715200,138685100,242404500,339346200],[61932000,63297200,79941500,82286400,104013800,181803400,254509700]],[[78403400,86938500,93758200,113019900,148448200,266072500,378226500],[69774800,75598700,83023200,98278200,129085400,231367400,328892600],[55393700,56699000,65131600,73708600,96814000,173525500,246669500]]],[[[92882400,102853000,118554900,133709000,168642100,288996200,400936500],[82906000,89974600,105681600,116873900,147417200,252707200,350643900],[66278600,68510700,84226100,88815500,112042300,192225400,266822900]],[[83072600,91994600,98901600,119593100,157081500,275093300,385796100],[74118100,80441900,88105800,104481100,137264000,240497900,337346600],[59193900,61187500,70112700,79294500,104234900,182838800,256597400]]],[[[98107400,108650300,123961600,141245500,177796400,299147000,414862000],[87829300,95613600,110019200,124100900,156233100,263038800,364895700],[70699000,73885700,86781800,95526500,120294200,202858500,281618400]],[[87741700,97050900,104044900,126166300,165714800,284222000,398730300],[78482400,85334400,92781000,110737600,145516500,249807500,350590900],[63050300,65806900,74007900,85023000,111852600,192450000,270358600]]],[[[103332300,114447700,129368400,148782100,186950700,309298000,430994100],[92780100,101313100,115004100,131396200,165132800,273469400,381238500],[75193000,79422200,91063700,102419600,128769600,213755100,298312400]],[[92410800,102107100,109188200,132739400,174348100,293350600,413396700],[82867900,90805100,97465500,117047500,153842800,259202500,365492200],[66963000,71968400,77927600,90894200,119667200,202288900,285651400]]],[[[108557400,120244900,134775200,156318600,196104900,319288800,442962800],[97758700,107073100,119274700,138759600,174116200,283856400,394038900],[79760900,85120100,93440400,109494500,137468400,224802400,312499100]],[[97079800,107163400,114331500,139312600,182981400,302586900,428246300],[87274400,95266600,102159200,123411000,162242800,268778400,380698700],[70932100,75438500,81872000,96908400,127678400,212430900,301452700]]]];
+
+function fmtRp(n) { return "Rp " + Math.round(n).toLocaleString('id-ID'); }
+
+function getPremium(age, genderVal, tierVal, planKey) {
+  const a = Math.min(85, Math.max(0, parseInt(age, 10) || 0));
+  const gi = genderVal === 'pria' ? 0 : 1;
+  const ti = tierVal === 'Regular' ? 0 : (tierVal === 'SMART Lite' ? 1 : 2);
+  const pi = PLAN_ORDER.indexOf(planKey);
+  return PREMIUM_DATA[a][gi][ti][pi];
+}
+
+let currentCalcData = {};
+
+// Object lookup instead of Array.prototype.find() for broadest browser compatibility
+const PLANS_BY_KEY = {};
+PLANS.forEach(function (p) { PLANS_BY_KEY[p.key] = p; });
+
+function initCalc() {
+  const grid = document.getElementById('planGrid');
+  grid.innerHTML = PLANS.map((p, idx) => `
+    <div class="plan-option">
+      <input type="radio" name="plan" id="plan_${idx}" value="${p.key}" ${idx === 0 ? 'checked' : ''}>
+      <label for="plan_${idx}">
+        <span class="plan-name">${p.label}</span>
+        <span class="plan-type">${p.room}</span>
+      </label>
+    </div>
+  `).join('');
+
+  // Event Listeners (plain for-loop — NodeList.forEach isn't supported in every WebView)
+  const toBind = document.querySelectorAll('input[name="produk"], input[name="gender"], input[name="plan"], input[name="smart"], input[name="mode"]');
+  for (let i = 0; i < toBind.length; i++) {
+    toBind[i].addEventListener('change', calculate);
+  }
+
+  const slider = document.getElementById('usiaSlider');
+  const numInput = document.getElementById('usiaInput');
+  const display = document.getElementById('usiaDisplay');
+
+  slider.addEventListener('input', (e) => {
+    numInput.value = e.target.value;
+    display.innerText = e.target.value;
+    calculate();
+  });
+
+  numInput.addEventListener('input', (e) => {
+    let val = parseInt(e.target.value, 10);
+    if (isNaN(val)) val = 0;
+    if (val > 85) val = 85;
+    if (val < 0) val = 0;
+    slider.value = val;
+    display.innerText = val;
+    calculate();
+  });
+
+  calculate();
+}
+
+function calculate() {
+  const produkEl = document.querySelector('input[name="produk"]:checked').value;
+  const produk = produkEl === 'konv' ? 'Konvensional' : 'Syariah';
+  const termPremi = produkEl === 'konv' ? 'Premi' : 'Kontribusi';
+
+  const gender = document.querySelector('input[name="gender"]:checked').value;
+  const usia = document.getElementById('usiaSlider').value;
+  const planEl = document.querySelector('input[name="plan"]:checked');
+  const planKey = planEl ? planEl.value : PLAN_ORDER[0];
+  const planMeta = PLANS_BY_KEY[planKey] || PLANS[0];
+  const smart = document.querySelector('input[name="smart"]:checked').value;
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+
+  // Kotak keterangan Plan
+  document.getElementById('planDetailBox').innerHTML =
+    `<b>${planMeta.label}</b> — Wilayah: ${planMeta.area}. Kamar: ${planMeta.room}.<br>${planMeta.note}`;
+
+  // Kotak keterangan Tipe Plan (Deductible)
+  const ded = DEDUCTIBLE[planKey];
+  let tierText = '';
+  if (smart === 'Regular') {
+    tierText = `<b>Regular</b> — tanpa deductible. Seluruh biaya sesuai manfaat polis langsung ditanggung Manulife sejak rupiah pertama.`;
+  } else if (smart === 'SMART Lite') {
+    tierText = `<b>SMART Lite</b> — deductible tahunan ${fmtRp(ded.smartLite)} untuk plan ${planMeta.label}. Deductible ini dibayar sendiri lebih dulu setiap tahun polis, sebelum manfaat rawat inap dibayarkan.`;
+  } else {
+    tierText = `<b>SMART</b> — deductible tahunan ${fmtRp(ded.smart)} untuk plan ${planMeta.label} (2× lebih besar dari SMART Lite, untuk premi paling hemat).`;
+  }
+  document.getElementById('tierDetailBox').innerHTML = tierText;
+
+  const annualBase = getPremium(usia, gender, smart, planKey);
+  const annualRegular = getPremium(usia, gender, 'Regular', planKey);
+
+  let finalPremi = annualBase;
+  let factorText = '100% (Tahunan)';
+
+  if (mode === 'Semesteran') { finalPremi = Math.round((annualBase * 0.525) / 100) * 100; factorText = '52.5% (Semesteran)'; }
+  else if (mode === 'Kuartalan') { finalPremi = Math.round((annualBase * 0.275) / 100) * 100; factorText = '27.5% (Kuartalan)'; }
+  else if (mode === 'Bulanan') { finalPremi = Math.round((annualBase * 0.095) / 100) * 100; factorText = '9.5% (Bulanan)'; }
+
+  const perBulan = mode === 'Bulanan' ? finalPremi : Math.round((finalPremi / (mode === 'Tahunan' ? 12 : mode === 'Semesteran' ? 6 : 3)) / 100) * 100;
+
+  currentCalcData = { produk, termPremi, gender: gender === 'pria' ? 'Pria' : 'Wanita', usia, planLabel: planMeta.label, smart, mode, finalPremi };
+
+  document.getElementById('resultEmpty').style.display = 'none';
+  document.getElementById('resultContent').style.display = 'block';
+
+  document.getElementById('resultRows').innerHTML = `
+    <div class="result-row"><span class="result-row-lbl">Jenis Produk</span><span class="result-row-val">${produk}</span></div>
+    <div class="result-row"><span class="result-row-lbl">Gender / Usia</span><span class="result-row-val">${gender === 'pria' ? 'Pria' : 'Wanita'}, ${usia} Thn</span></div>
+    <div class="result-row"><span class="result-row-lbl">Plan Dipilih</span><span class="result-row-val">${planMeta.label} (${smart})</span></div>
+    <div class="result-row"><span class="result-row-lbl">Wilayah Pertanggungan</span><span class="result-row-val">${planMeta.area}</span></div>
+    <div class="result-row"><span class="result-row-lbl">Mode Bayar</span><span class="result-row-val">${mode}</span></div>
+  `;
+
+  document.getElementById('totalLbl').innerText = `Total ${termPremi} (${mode})`;
+  document.getElementById('resultTotal').innerText = fmtRp(finalPremi);
+  document.getElementById('resultPerBulan').innerText = `≈ ${fmtRp(perBulan)} / bulan`;
+  document.getElementById('resultModeInfo').innerText = `Faktor Skema: ${factorText}`;
+
+  const savingsWrap = document.getElementById('savingsChipWrap');
+  if (smart !== 'Regular' && annualRegular > annualBase) {
+    const savingAmt = annualRegular - annualBase;
+    const savingPct = Math.round((savingAmt / annualRegular) * 100);
+    savingsWrap.innerHTML = `<div class="savings-chip">💰 Hemat ${fmtRp(savingAmt)}/thn (${savingPct}%) vs Regular</div>`;
+  } else {
+    savingsWrap.innerHTML = '';
+  }
+
+  const textWA = `Halo Agen Manulife, saya mau konsultasi MiUHC 2026:%0A- Produk: ${produk}%0A- Usia/Gender: ${usia} thn / ${gender}%0A- Plan: ${planMeta.label} (${smart})%0A- Mode: ${mode}%0A- Estimasi ${termPremi}: ${fmtRp(finalPremi)}`;
+  document.getElementById('calcWaBtn').href = `https://wa.me/6287781896087?text=${textWA}`;
+}
+
+function openModal() { document.getElementById('proposalModal').style.display = 'flex'; }
+function closeModal() { document.getElementById('proposalModal').style.display = 'none'; }
+
+function submitForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('custName').value;
+  const phone = document.getElementById('custPhone').value;
+  const city = document.getElementById('custCity').value;
+
+  const msg = `Halo Agen Manulife, mohon buatkan Proposal Resmi MiUHC 2026:%0A%0A*Data Nasabah:*%0A- Nama: ${name}%0A- WA: ${phone}%0A- Kota: ${city}%0A%0A*Rincian Plan:*%0A- Jenis: ${currentCalcData.produk}%0A- Usia/Gender: ${currentCalcData.usia} thn / ${currentCalcData.gender}%0A- Plan: ${currentCalcData.planLabel} (${currentCalcData.smart})%0A- Mode Pembayaran: ${currentCalcData.mode}%0A- Est. ${currentCalcData.termPremi}: ${fmtRp(currentCalcData.finalPremi)}`;
+
+  window.open(`https://wa.me/6287781896087?text=${msg}`, '_blank');
+  closeModal();
+}
+
+document.addEventListener('DOMContentLoaded', initCalc);
+</script>
+
+</body>
+</html>
