@@ -25,6 +25,7 @@
     { name: 'MiFiP',      full: 'MiFuture Income Protector',                cat: 'Pensiun',   icon: '📈', url: '/pages/mifip.html' },
     { name: 'MDWA',       full: 'Manulife Dynamic Wealth Assurance',        cat: 'Pensiun',   icon: '🌿', url: '/pages/mdwa.html' },
     { name: 'MiPrecious', full: 'MiPreparation Legacy for our Assurance',   cat: 'Pensiun',   icon: '💎', url: '/pages/miprecious.html' },
+    { name: 'MyHeritage', full: 'Manulife MyHeritage Assurance',             cat: 'Pensiun',   icon: '🏛️', url: '/pages/myheritage.html' },
     /* Syariah */
     { name: 'MPS Flexi',  full: 'Manulife Perlindungan Syariah Flexi',      cat: 'Syariah',   icon: '☪️', url: '/pages/mps-flexi.html' },
     { name: 'MPPS',       full: 'Manulife Perlindungan Pendidikan Syariah', cat: 'Syariah',   icon: '📚', url: '/pages/mpps.html' },
@@ -486,3 +487,4 @@
   }
 
 })();
+ 
